@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2264746719A90C5600245A73 /* Quickblox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746619A90C5600245A73 /* Quickblox.framework */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
 		2264746B19A90C9E00245A73 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746A19A90C9E00245A73 /* SystemConfiguration.framework */; };
 		2264746D19A90CA800245A73 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746C19A90CA800245A73 /* MobileCoreServices.framework */; };
@@ -25,6 +24,7 @@
 		2264748F19A90DFB00245A73 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264748E19A90DFB00245A73 /* libstdc++.6.0.9.dylib */; };
 		2264749119A90E0600245A73 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264749019A90E0600245A73 /* libstdc++.dylib */; };
 		2264749519A90FA000245A73 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264749419A90FA000245A73 /* libxml2.dylib */; };
+		2264749719A9160200245A73 /* Quickblox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264749619A9160200245A73 /* Quickblox.framework */; };
 		22D7BCB119A8D45100D2C01C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB019A8D45100D2C01C /* Foundation.framework */; };
 		22D7BCB319A8D45100D2C01C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB219A8D45100D2C01C /* CoreGraphics.framework */; };
 		22D7BCB519A8D45100D2C01C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB419A8D45100D2C01C /* UIKit.framework */; };
@@ -55,7 +55,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2264746619A90C5600245A73 /* Quickblox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quickblox.framework; sourceTree = "<group>"; };
 		2264746819A90C9400245A73 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2264746A19A90C9E00245A73 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2264746C19A90CA800245A73 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -73,6 +72,7 @@
 		2264748E19A90DFB00245A73 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		2264749019A90E0600245A73 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		2264749419A90FA000245A73 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		2264749619A9160200245A73 /* Quickblox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quickblox.framework; path = ChatWith/Quickblox.framework; sourceTree = "<group>"; };
 		22D7BCAD19A8D45100D2C01C /* ChatWith.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatWith.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D7BCB019A8D45100D2C01C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22D7BCB219A8D45100D2C01C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -116,6 +116,7 @@
 				2264747319A90CCD00245A73 /* CoreMedia.framework in Frameworks */,
 				2264747119A90CC400245A73 /* AudioToolbox.framework in Frameworks */,
 				22D7BCB719A8D45100D2C01C /* CoreData.framework in Frameworks */,
+				2264749719A9160200245A73 /* Quickblox.framework in Frameworks */,
 				2264746F19A90CB500245A73 /* CoreLocation.framework in Frameworks */,
 				22D7BCB319A8D45100D2C01C /* CoreGraphics.framework in Frameworks */,
 				2264746D19A90CA800245A73 /* MobileCoreServices.framework in Frameworks */,
@@ -124,7 +125,6 @@
 				22D7BCB519A8D45100D2C01C /* UIKit.framework in Frameworks */,
 				22D7BCB119A8D45100D2C01C /* Foundation.framework in Frameworks */,
 				A7FE595196BB405B9F3C69C1 /* libPods.a in Frameworks */,
-				2264746719A90C5600245A73 /* Quickblox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +167,7 @@
 		22D7BCAF19A8D45100D2C01C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2264749619A9160200245A73 /* Quickblox.framework */,
 				2264749419A90FA000245A73 /* libxml2.dylib */,
 				2264749019A90E0600245A73 /* libstdc++.dylib */,
 				2264748E19A90DFB00245A73 /* libstdc++.6.0.9.dylib */,
@@ -184,7 +185,6 @@
 				2264746C19A90CA800245A73 /* MobileCoreServices.framework */,
 				2264746A19A90C9E00245A73 /* SystemConfiguration.framework */,
 				2264746819A90C9400245A73 /* CFNetwork.framework */,
-				2264746619A90C5600245A73 /* Quickblox.framework */,
 				22D7BCB019A8D45100D2C01C /* Foundation.framework */,
 				22D7BCB219A8D45100D2C01C /* CoreGraphics.framework */,
 				22D7BCB419A8D45100D2C01C /* UIKit.framework */,
@@ -523,6 +523,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ChatWith",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChatWith/ChatWith-Prefix.pch";
@@ -558,6 +559,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ChatWith",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChatWith/ChatWith-Prefix.pch";
