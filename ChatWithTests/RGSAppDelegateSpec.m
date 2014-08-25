@@ -53,22 +53,29 @@ describe(@"RGSAppDelegate", ^{
                     applicationDidFinshLaunchingFrom(sut);
                 });
             });
-            it(@"Window's frame should be called", ^{
-                UIWindow *mockWindow = [UIWindow nullMock];
-                [[mockWindow should] receive:@selector(setFrame:) withArguments:any()];
-                
-                [sut stub:@selector(window) andReturn:mockWindow];
-                
-                applicationDidFinshLaunchingFrom(sut);
+            describe(@"Window", ^{
+                __block UIWindow* mockWindow;
+                beforeEach(^{
+                    mockWindow = [UIWindow nullMock];
+                    [sut stub:@selector(window) andReturn:mockWindow];
+                });
+                afterEach(^{
+                    mockWindow = nil;
+                });
+
+                it(@"frame should be called", ^{
+                    [[mockWindow should] receive:@selector(setFrame:) withArguments:any()];
+                    
+                    applicationDidFinshLaunchingFrom(sut);
+                });
+                it(@"makeKeyAndVisible should be called", ^{
+                    [[mockWindow should] receive:@selector(makeKeyAndVisible)];
+
+                    applicationDidFinshLaunchingFrom(sut);
+                });
             });
-            it(@"Window's should makeKeyAndVisible", ^{
-                UIWindow *mockWindow = [UIWindow nullMock];
-                [[mockWindow should] receive:@selector(makeKeyAndVisible)];
-                
-                [sut stub:@selector(window) andReturn:mockWindow];
-                
-                applicationDidFinshLaunchingFrom(sut);
-            });
+            
+            
             context(@"have a saved User", ^{
                 context(@"user is login", ^{
                 });
