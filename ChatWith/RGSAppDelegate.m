@@ -12,11 +12,31 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    
+    [self.qBSettings setApplicationID:7632];
+    [self.qBSettings setAuthorizationKey:@"mxxS67kN7zNPgHn"];
+    [self.qBSettings setAuthorizationSecret:@"jD6WTRWrXFm72KF"];
+    
+    self.window.frame = [[UIScreen mainScreen] bounds];
+    
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+-(Class)qBSettings{
+    if (_qBSettings == nil)
+    {
+        _qBSettings = [QBSettings class];
+    }
+    return _qBSettings;
+}
+
+-(UIWindow *)window{
+    if (_window == nil)
+    {
+        _window = [[UIWindow alloc] init];
+    }
+    return _window;
 }
 
 @end
