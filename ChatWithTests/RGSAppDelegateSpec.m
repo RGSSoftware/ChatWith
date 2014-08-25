@@ -62,7 +62,11 @@ describe(@"RGSAppDelegate", ^{
                 afterEach(^{
                     mockWindow = nil;
                 });
-
+                it(@"should not be nil", ^{
+                    applicationDidFinshLaunchingFrom(sut);
+                    
+                    [[sut.window shouldNot] beNil];
+                });
                 it(@"frame should be called", ^{
                     [[mockWindow should] receive:@selector(setFrame:) withArguments:any()];
                     
@@ -88,6 +92,9 @@ describe(@"RGSAppDelegate", ^{
                 });
                 it(@"Window's rootViewController should be loginViewController", ^{
                 });
+            });
+            it(@"should return YES", ^{
+                [[theValue(applicationDidFinshLaunchingFrom(sut)) should] equal:theValue(YES)];
             });
         });
     });
