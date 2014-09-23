@@ -7,6 +7,7 @@
 //
 
 #import "RGSAppDelegate.h"
+#import "LocalStorageService.h"
 
 @implementation RGSAppDelegate
 
@@ -18,6 +19,15 @@
     [self.qBSettings setAuthorizationSecret:@"jD6WTRWrXFm72KF"];
     
     self.window.frame = [[UIScreen mainScreen] bounds];
+    if (self.localStorageService.savedUser) {
+        if ([self userIsLogin]) {
+            id screen = [[NSClassFromString([self.userDefaults objectForKey:@"lastVisibleViewController"]) alloc] init];
+            
+            if ([screen isKindOfClass:[UIViewController class]]) {
+                self.window.rootViewController = (UIViewController *)screen;
+            }
+        }
+    }
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -39,4 +49,20 @@
     return _window;
 }
 
+-(NSUserDefaults *)userDefaults{
+    return [NSUserDefaults standardUserDefaults];
+}
+
+-(LocalStorageService *)localStorageService{
+    return [LocalStorageService shared];
+}
+
+-(BOOL)userIsLogin{
+    QBUUser *user = self.localStorageService.savedUser;
+    
+    if (user.login && user.password && [[self.userDefaults objectForKey:@"isAutoLogin"] boolValue]) {
+        return YES;
+    }
+    return NO;
+}
 @end

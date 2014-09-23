@@ -44,6 +44,7 @@
 		226E0D0119AB53B4004029D7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746C19A90CA800245A73 /* MobileCoreServices.framework */; };
 		226E0D0219AB53B4004029D7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746A19A90C9E00245A73 /* SystemConfiguration.framework */; };
 		226E0D0319AB53B4004029D7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
+		22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A18A3419CF44DB004A266E /* LocalStorageService.m */; };
 		22D7BCB119A8D45100D2C01C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB019A8D45100D2C01C /* Foundation.framework */; };
 		22D7BCB319A8D45100D2C01C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB219A8D45100D2C01C /* CoreGraphics.framework */; };
 		22D7BCB519A8D45100D2C01C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB419A8D45100D2C01C /* UIKit.framework */; };
@@ -92,6 +93,8 @@
 		2264749419A90FA000245A73 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		2264749619A9160200245A73 /* Quickblox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quickblox.framework; path = ChatWith/Quickblox.framework; sourceTree = "<group>"; };
 		226E0CF019AB52A6004029D7 /* RGSAppDelegateSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSAppDelegateSpec.m; sourceTree = "<group>"; };
+		22A18A3319CF44DB004A266E /* LocalStorageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStorageService.h; sourceTree = "<group>"; };
+		22A18A3419CF44DB004A266E /* LocalStorageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStorageService.m; sourceTree = "<group>"; };
 		22D7BCAD19A8D45100D2C01C /* ChatWith.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatWith.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D7BCB019A8D45100D2C01C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22D7BCB219A8D45100D2C01C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -239,6 +242,8 @@
 				22D7BCC219A8D45100D2C01C /* RGSAppDelegate.m */,
 				22D7BCC719A8D45100D2C01C /* Images.xcassets */,
 				22D7BCC419A8D45100D2C01C /* ChatWith.xcdatamodeld */,
+				22A18A3319CF44DB004A266E /* LocalStorageService.h */,
+				22A18A3419CF44DB004A266E /* LocalStorageService.m */,
 				22D7BCB919A8D45100D2C01C /* Supporting Files */,
 			);
 			path = ChatWith;
@@ -437,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D7BCC619A8D45100D2C01C /* ChatWith.xcdatamodeld in Sources */,
+				22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */,
 				22D7BCBF19A8D45100D2C01C /* main.m in Sources */,
 				22D7BCC319A8D45100D2C01C /* RGSAppDelegate.m in Sources */,
 			);
