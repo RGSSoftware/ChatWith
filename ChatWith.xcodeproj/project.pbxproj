@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
 		2264746B19A90C9E00245A73 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746A19A90C9E00245A73 /* SystemConfiguration.framework */; };
 		2264746D19A90CA800245A73 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746C19A90CA800245A73 /* MobileCoreServices.framework */; };
@@ -74,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2264746819A90C9400245A73 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2264746A19A90C9E00245A73 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2264746C19A90CA800245A73 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -238,6 +240,7 @@
 		22D7BCB819A8D45100D2C01C /* ChatWith */ = {
 			isa = PBXGroup;
 			children = (
+				224FBF7619D1B7A800A924CA /* Main.storyboard */,
 				22D7BCC119A8D45100D2C01C /* RGSAppDelegate.h */,
 				22D7BCC219A8D45100D2C01C /* RGSAppDelegate.m */,
 				22D7BCC719A8D45100D2C01C /* Images.xcassets */,
@@ -358,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */,
 				22D7BCBD19A8D45100D2C01C /* InfoPlist.strings in Resources */,
 				22D7BCC819A8D45100D2C01C /* Images.xcassets in Resources */,
 			);
