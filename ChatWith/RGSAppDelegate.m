@@ -8,6 +8,8 @@
 
 #import "RGSAppDelegate.h"
 #import "LocalStorageService.h"
+#import "RGSLoginViewController.h"
+#import "RGSUserLoginDelegate.h"
 
 @implementation RGSAppDelegate
 
@@ -27,6 +29,10 @@
                 self.window.rootViewController = (UIViewController *)screen;
             }
         }
+    } else {
+        
+        self.loginViewController.delegate = self.userLoginDelegate;
+        self.window.rootViewController = self.loginViewController;
     }
     
     [self.window makeKeyAndVisible];
@@ -64,5 +70,21 @@
         return YES;
     }
     return NO;
+}
+
+-(RGSLoginViewController *)loginViewController{
+    if (_loginViewController == nil)
+    {
+        _loginViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];;
+    }
+    return _loginViewController;
+}
+
+-(RGSUserLoginDelegate *)userLoginDelegate{
+    if (_userLoginDelegate == nil)
+    {
+        _userLoginDelegate = [RGSUserLoginDelegate new];
+    }
+    return _userLoginDelegate;
 }
 @end

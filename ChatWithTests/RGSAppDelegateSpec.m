@@ -10,6 +10,10 @@
 #import "RGSAppDelegate.h"
 #import "LocalStorageService.h"
 
+#import "RGSLoginViewController.h"
+
+#import "RGSUserLoginDelegate.h"
+
 static BOOL applicationDidFinshLaunchingFrom(RGSAppDelegate *sut)
 {
     return [sut application:nil didFinishLaunchingWithOptions:nil];
@@ -23,6 +27,9 @@ describe(@"RGSAppDelegate", ^{
     
     beforeEach(^{
         sut = [[RGSAppDelegate alloc] init];
+    });
+    afterEach(^{
+        sut = nil;
     });
     
     describe(@"events", ^{
@@ -102,7 +109,7 @@ describe(@"RGSAppDelegate", ^{
                     
                     user = nil;
                 });
-                it(@"LocalStorageService should not be nil", ^{
+                it(@"should have a LocalStorageService", ^{
                     RGSAppDelegate *appDelegate = [RGSAppDelegate new];
                     
                     applicationDidFinshLaunchingFrom(appDelegate);
@@ -121,7 +128,7 @@ describe(@"RGSAppDelegate", ^{
                         
                         [userDefaults stub:@selector(objectForKey:) andReturn:[NSNumber numberWithBool:YES] withArguments:@"isAutoLogin"];
                     });
-                    it(@"userDefaults should not be nil", ^{
+                    it(@"should have userDefaults", ^{
                         RGSAppDelegate *appDelegate = [RGSAppDelegate new];
                         
                         applicationDidFinshLaunchingFrom(appDelegate);
@@ -130,28 +137,54 @@ describe(@"RGSAppDelegate", ^{
                     });
                     
                     it(@"window.rootViewController should be saved screen", ^{
-                        UIWindow *testWindow = [[UIWindow new] init];
-                        testWindow.frame = CGRectZero;
-                        [sut stub:@selector(window) andReturn:testWindow];
-
+//                        UIWindow *testWindow = [[UIWindow new] init];
+//                        testWindow.frame = CGRectZero;
+//                        [sut stub:@selector(window) andReturn:testWindow];
+//
+//                        
+//                        [userDefaults setObject:NSStringFromClass([UITableViewController class]) forKey:@"lastVisibleViewController"];
                         
-                        [userDefaults setObject:NSStringFromClass([UITableViewController class]) forKey:@"lastVisibleViewController"];
-                        
-                        applicationDidFinshLaunchingFrom(sut);
-                    
-                        [[sut.window.rootViewController should] beKindOfClass:[UITableViewController class]];
+//                        applicationDidFinshLaunchingFrom(sut);
+//                    
+//                        [[sut.window.rootViewController should] beKindOfClass:[UITableViewController class]];
                         
                     });
                 
                 });
             });
             context(@"doesn't have saved user", ^{
+                __block LocalStorageService *mockLocalStorageService;
+                
+                beforeEach(^{
+                    mockLocalStorageService = [LocalStorageService nullMock];
+                    [sut stub:@selector(localStorageService) andReturn:mockLocalStorageService];
+                    
+                    
+                    [mockLocalStorageService stub:@selector(savedUser) andReturn:nil];
+                });
+                afterEach(^{
+                    mockLocalStorageService = nil;
+                });
+
                 describe(@"loginViewController", ^{
-                    it(@"delegate should be self", ^{
+                    it(@"should be not be nil", ^{
+                        applicationDidFinshLaunchingFrom(sut);
                         
+                        [[sut.loginViewController shouldNot] beNil];
+                    });
+                    
+                    it(@"delegate should be UserLoginDelegate", ^{
+                        applicationDidFinshLaunchingFrom(sut);
+                        
+                        NSObject *lvcD = (NSObject *)sut.loginViewController.delegate;
+                        
+                        [[lvcD should] beKindOfClass:[RGSUserLoginDelegate class]];
                     });
                 });
                 it(@"Window's rootViewController should be loginViewController", ^{
+                    applicationDidFinshLaunchingFrom(sut);
+                    
+                    [[sut.window.rootViewController should] beKindOfClass:[RGSLoginViewController class]];
                 });
             });
             it(@"should return YES", ^{
