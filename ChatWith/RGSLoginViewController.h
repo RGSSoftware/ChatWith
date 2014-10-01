@@ -19,12 +19,13 @@
 @interface RGSLoginViewController : UIViewController
 
 @property (nonatomic, strong) IBOutlet UIView      *loginView;
-@property (nonatomic, weak  ) IBOutlet UITextField *userNameTextField;
-@property (nonatomic, weak  ) IBOutlet UITextField *userPasswordTextField;
-
 @property (nonatomic, strong) IBOutlet UIView      *registrationView;
-@property (nonatomic, weak  ) IBOutlet UITextField *regUserNameTextField;
-@property (nonatomic, weak  ) IBOutlet UITextField *regUserPasswordTextField;
+
+@property (nonatomic, weak  ) IBOutlet UITextField *usernameTextField;
+@property (nonatomic, weak  ) IBOutlet UITextField *passwordTextField;
+
+
+
 
 @property (nonatomic, weak)id <LoginViewControllerDelegate> delegate;
 @property (nonatomic, strong)Class alertViewClass;

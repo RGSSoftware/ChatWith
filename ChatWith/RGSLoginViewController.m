@@ -44,8 +44,8 @@
     if ([self isUserCredentialsValid]) {
         if ([self.delegate respondsToSelector:@selector(loginViewController:loginUsername:password:)]) {
             [self.delegate loginViewController:self
-                                 loginUsername:self.userNameTextField.text
-                                      password:self.userPasswordTextField.text];
+                                 loginUsername:self.usernameTextField.text
+                                      password:self.passwordTextField.text];
         }
     } else{
         UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil
@@ -62,16 +62,16 @@
     if ([self isUserCredentialsValid]) {
         if ([self.delegate respondsToSelector:@selector(loginViewController:registerUsername:password:)]) {
             [self.delegate loginViewController:self
-                              registerUsername:self.userNameTextField.text
-                                      password:self.userPasswordTextField.text];
+                              registerUsername:self.usernameTextField.text
+                                      password:self.passwordTextField.text];
         }
     }
 #warning imp diolog box to user when username is taken
 }
 
 -(BOOL)isUserCredentialsValid{
-    return ([self isUserNameValid:self.userNameTextField.text] &&
-            [self isPasswordValid:self.userPasswordTextField.text]);
+    return ([self isUserNameValid:self.usernameTextField.text] &&
+            [self isPasswordValid:self.passwordTextField.text]);
 }
 
 - (BOOL)isPasswordValid:(NSString *)password
