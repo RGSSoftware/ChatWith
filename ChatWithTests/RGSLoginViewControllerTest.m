@@ -25,6 +25,8 @@ NSString *const nonValidUserName = @"AAAAAAAAAAZZZZZZZZZZX";
 NSString *const nonValidUserPassword = @"AABB";
 
 @interface mockLoginViewControllerDelegate : NSObject <LoginViewControllerDelegate>
+@property (nonatomic, getter=isUsernameTaken)BOOL usernameTaken;
+
 @property (nonatomic, strong)NSString *username;
 @property (nonatomic, strong)NSString *password;
 
@@ -38,8 +40,11 @@ NSString *const nonValidUserPassword = @"AABB";
     self.username = username;
     self.password = password;
 }
-@end
 
+-(BOOL)loginViewController:(RGSLoginViewController *)loginViewController isUsernameTaken:(NSString *)username{
+    return self.isUsernameTaken;
+}
+@end
 
 
 
@@ -54,7 +59,7 @@ describe(@"RGSLoginViewController", ^{
         //given
         sut = [RGSLoginViewController new];
         
-        mockLVDelegate = [KWMock mockForProtocol:@protocol(LoginViewControllerDelegate)];
+        mockLVDelegate = [KWMock nullMockForProtocol:@protocol(LoginViewControllerDelegate)];
         sut.delegate = mockLVDelegate;
         
     });
@@ -102,46 +107,83 @@ describe(@"RGSLoginViewController", ^{
                     sut.passwordTextField = nil;
                 });
                 
-                it(@"should call loginViewController:registerUser: on delegate", ^{
-                    //then
-                    [[mockLVDelegate should] receive:@selector(loginViewController:registerUsername:password:)];
+                context(@"userName is NOT TAKEN", ^{
+                    __block mockLoginViewControllerDelegate *mock;
                     
-                    //when
-                    [sut registerUser:nil];
+                    beforeEach(^{
+                        mock = [mockLoginViewControllerDelegate new];
+                        mock.usernameTaken = NO;
+                    });
+                    afterEach(^{
+                        mock = nil;
+                    });
+                    
+                    it(@"should call loginViewController:registerUser: on delegate", ^{
+                        //then
+                        [[mockLVDelegate should] receive:@selector(loginViewController:registerUsername:password:)];
+                        
+                        //when
+                        [sut registerUser:nil];
+                    });
+                    
+                    
+                    it(@"should send userName to delegate", ^{
+                        //given
+                        sut.delegate = mock;
+                        
+                        //when
+                        [sut registerUser:nil];
+                        
+                        //then
+                        [[mock.username should] equal:validUserName];
+                    });
+                    it(@"should send password to delegate", ^{
+                        //given
+                        sut.delegate = mock;
+                        
+                        //when
+                        [sut registerUser:nil];
+                        
+                        //then
+                        [[mock.password should] equal:validUserPassword];
+                    });
+                    it(@"should send self as loginViewController to delgate", ^{
+                        [[mockLVDelegate should] receive:@selector(loginViewController:registerUsername:password:) withArguments:sut, any(), any()];
+                        
+                        //when
+                        [sut registerUser:nil];
+                        
+                    });
                 });
-            
-        
-                it(@"should send userName to delegate", ^{
-                    //given
-                    mockLoginViewControllerDelegate *mock = [mockLoginViewControllerDelegate new];
+                context(@"userName is TAKEN", ^{
+                    __block mockLoginViewControllerDelegate *mock;
                     
-                    sut.delegate = mock;
-                    
-                    //when
-                    [sut registerUser:nil];
-                    
-                    //then
-                    [[mock.username should] equal:validUserName];
+                    beforeEach(^{
+                        mock = [mockLoginViewControllerDelegate new];
+                        mock.usernameTaken = YES;
+                    });
+                    afterEach(^{
+                        mock = nil;
+                    });
+                    it(@"should show Alert", ^{
+                        //given
+                        sut.alertViewClass = [JMRMockAlertView class];
+                        JMRMockAlertViewVerifier *alertVerifier = [[JMRMockAlertViewVerifier alloc] init];
+                        
+                        sut.delegate = mock;
+                        
+                        [sut registerUser:nil];
+                        
+                        assertThatInt(alertVerifier.showCount, is(equalTo(@1)));
+                        assertThat(alertVerifier.title, is(nilValue()));
+                        assertThat(alertVerifier.message, is(@"Oops! Somebody already has that name. Give it another shot."));
+                        assertThat(alertVerifier.delegate, is(sameInstance(sut)));
+                        assertThat(alertVerifier.cancelButtonTitle, is(@"OKAY"));
+                        
+                    });
+
                 });
-                it(@"should send password to delegate", ^{
-                    //given
-                    mockLoginViewControllerDelegate *mock = [mockLoginViewControllerDelegate new];
-                    
-                    sut.delegate = mock;
-                    
-                    //when
-                    [sut registerUser:nil];
-                    
-                    //then
-                    [[mock.password should] equal:validUserPassword];
-                });
-                it(@"should send self as loginViewController to delgate", ^{
-                    [[mockLVDelegate should] receive:@selector(loginViewController:registerUsername:password:) withArguments:sut, any(), any()];
-                    
-                    //when
-                    [sut registerUser:nil];
-                    
-                });
+
             });
 
             context(@"password is NOT valid", ^{
@@ -175,6 +217,72 @@ describe(@"RGSLoginViewController", ^{
             });
         });
     });
+//        context(@"userName is TAKEN", ^{
+//            __block mockLoginViewControllerDelegate *LVDelegate;
+//            
+//            beforeEach(^{
+//                LVDelegate = [mockLoginViewControllerDelegate new];
+//                sut.delegate = LVDelegate;
+//            });
+//            afterEach(^{
+//                LVDelegate = nil;
+//            });
+//            
+//            it(@"should show Alert", ^{
+//                //given
+//                sut.alertViewClass = [JMRMockAlertView class];
+//                JMRMockAlertViewVerifier *alertVerifier = [[JMRMockAlertViewVerifier alloc] init];
+//                
+//                UITextField *mockUserTextField = [UITextField new];
+//                mockUserTextField = [UITextField new];
+//                mockUserTextField.text = nonValidUserName;
+//                sut.usernameTextField = mockUserTextField;
+//                
+//                [sut registerUser:nil];
+//                
+//                assertThatInt(alertVerifier.showCount, is(equalTo(@1)));
+//                assertThat(alertVerifier.title, is(nilValue()));
+//                assertThat(alertVerifier.message, is(@"Oops! Somebody already has that name. Give it another shot."));
+//                assertThat(alertVerifier.delegate, is(sameInstance(sut)));
+//                assertThat(alertVerifier.cancelButtonTitle, is(@"OKAY"));
+//                
+//            });
+//        });
+        context(@"userName is NOT valid", ^{
+            it(@"should NOT send call loginViewController:registerUsername:password: on delegate", ^{
+                //given
+                UITextField *mockUserTextField = [UITextField new];
+                mockUserTextField = [UITextField new];
+                mockUserTextField.text = nonValidUserName;
+                sut.usernameTextField = mockUserTextField;
+                
+                //then
+                [[mockLVDelegate shouldNot] receive:@selector(loginViewController:registerUsername:password:)];
+                
+                //when
+                [sut registerUser:nil];
+                
+            });
+            it(@"should show Alert", ^{
+                //given
+                sut.alertViewClass = [JMRMockAlertView class];
+                JMRMockAlertViewVerifier *alertVerifier = [[JMRMockAlertViewVerifier alloc] init];
+                
+                UITextField *mockUserTextField = [UITextField new];
+                mockUserTextField = [UITextField new];
+                mockUserTextField.text = nonValidUserName;
+                sut.usernameTextField = mockUserTextField;
+                
+                [sut registerUser:nil];
+                
+                assertThatInt(alertVerifier.showCount, is(equalTo(@1)));
+                assertThat(alertVerifier.title, is(nilValue()));
+                assertThat(alertVerifier.message, is(@"Oops! Something's not right. Give it another shot."));
+                assertThat(alertVerifier.delegate, is(sameInstance(sut)));
+                assertThat(alertVerifier.cancelButtonTitle, is(@"OKAY"));
+                
+            });
+        });
     });
     context(@"login button is clicked", ^{
         context(@"userName is valid", ^{
