@@ -10,6 +10,9 @@
 		2218FDC119DC8C6400E491F6 /* StoryBoardSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC019DC8C6400E491F6 /* StoryBoardSpec.m */; };
 		2218FDC419DC902E00E491F6 /* RGSUserLoginDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC319DC902E00E491F6 /* RGSUserLoginDelegate.m */; };
 		2218FDC619DC92E000E491F6 /* RGSUserLoginDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC519DC92E000E491F6 /* RGSUserLoginDelegateSpec.m */; };
+		2218FDC819DC9D6C00E491F6 /* RGSLoginViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC719DC9D6C00E491F6 /* RGSLoginViewControllerTest.m */; };
+		2218FDCD19DC9DAB00E491F6 /* JMRMockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCA19DC9DAB00E491F6 /* JMRMockAlertView.m */; };
+		2218FDCE19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
 		2264746B19A90C9E00245A73 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746A19A90C9E00245A73 /* SystemConfiguration.framework */; };
@@ -84,6 +87,11 @@
 		2218FDC219DC902E00E491F6 /* RGSUserLoginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSUserLoginDelegate.h; sourceTree = "<group>"; };
 		2218FDC319DC902E00E491F6 /* RGSUserLoginDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSUserLoginDelegate.m; sourceTree = "<group>"; };
 		2218FDC519DC92E000E491F6 /* RGSUserLoginDelegateSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSUserLoginDelegateSpec.m; sourceTree = "<group>"; };
+		2218FDC719DC9D6C00E491F6 /* RGSLoginViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSLoginViewControllerTest.m; sourceTree = "<group>"; };
+		2218FDC919DC9DAB00E491F6 /* JMRMockAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMRMockAlertView.h; sourceTree = "<group>"; };
+		2218FDCA19DC9DAB00E491F6 /* JMRMockAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMRMockAlertView.m; sourceTree = "<group>"; };
+		2218FDCB19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMRMockAlertViewVerifier.h; sourceTree = "<group>"; };
+		2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMRMockAlertViewVerifier.m; sourceTree = "<group>"; };
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2264746819A90C9400245A73 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2264746A19A90C9E00245A73 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -325,7 +333,12 @@
 		22D7BCD519A8D45200D2C01C /* ChatWithTests */ = {
 			isa = PBXGroup;
 			children = (
+				2218FDC919DC9DAB00E491F6 /* JMRMockAlertView.h */,
+				2218FDCA19DC9DAB00E491F6 /* JMRMockAlertView.m */,
+				2218FDCB19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.h */,
+				2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */,
 				2218FDC019DC8C6400E491F6 /* StoryBoardSpec.m */,
+				2218FDC719DC9D6C00E491F6 /* RGSLoginViewControllerTest.m */,
 				226E0CF019AB52A6004029D7 /* RGSAppDelegateSpec.m */,
 				2218FDC519DC92E000E491F6 /* RGSUserLoginDelegateSpec.m */,
 				22D7BCD619A8D45200D2C01C /* Supporting Files */,
@@ -521,8 +534,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2218FDC619DC92E000E491F6 /* RGSUserLoginDelegateSpec.m in Sources */,
+				2218FDCD19DC9DAB00E491F6 /* JMRMockAlertView.m in Sources */,
 				226E0CF119AB52A6004029D7 /* RGSAppDelegateSpec.m in Sources */,
+				2218FDCE19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m in Sources */,
 				2218FDC119DC8C6400E491F6 /* StoryBoardSpec.m in Sources */,
+				2218FDC819DC9D6C00E491F6 /* RGSLoginViewControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
