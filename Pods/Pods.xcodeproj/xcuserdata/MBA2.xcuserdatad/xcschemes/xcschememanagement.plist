@@ -8,74 +8,71 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
+		</dict>
+		<key>Pods-ChatWithTests-OCHamcrest.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ChatWithTests-OCMock.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ChatWithTests-OCMockito.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-ChatWithTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>Pods-MagicalRecord.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1A31979E3D7548049F4ED0BE</key>
+		<key>0A88B0E9696440149714739C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5F80DDC944114530871CA9B6</key>
+		<key>40836F9548984C97A848F52A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6EBA28C740FE4EDAAFDA9168</key>
+		<key>5DCEB407C83D412FA06E6DB8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>859F8F993C3F46589507EB75</key>
+		<key>AF765FA5304F4CF8BCDB46E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>982AF8F41D374E3F99E27209</key>
+		<key>BC7EC22B67A8475C9330F454</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A9F5977A94EA4096A90FD4C9</key>
+		<key>C8D79B6D24F14D07BEB0EADF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B8830CDAE6B748B1B75025AF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C2B25C9215D049F385E9E290</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DE8AFD0D5006482CBD755590</key>
+		<key>D112151626E747F293405FEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
