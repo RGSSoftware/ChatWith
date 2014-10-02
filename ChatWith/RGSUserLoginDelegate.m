@@ -40,16 +40,33 @@
         if(!result.success && result.status == 404) {self.userNameTakenBlock(NO);}
         else if (result.success && result.status == 200) {self.userNameTakenBlock(YES);}
         else if (result.success && result.status == 201) {
-            QBUUserResult *userResult = (QBUUserResult *)result;
             
-//            ManagedUser *managedUser = [ManagedUser ]
-//            userResult.user.
-            
-            self.registerSuccessBlock(YES);
-            
-            //save user to coreData
+            [self saveQBUserToCoreData:((QBUUserResult *)result).user completion:^(BOOL success) {
+                if(success) self.registerSuccessBlock(YES);
+            }];
         }
     }
+}
+
+-(void)saveQBUserToCoreData:(QBUUser *)qBUser completion:(void (^)(BOOL success))completion{
+    ManagedUser *managedUser = [ManagedUser MR_createEntity];
+    managedUser.externalUserID = [NSNumber numberWithUnsignedInteger:qBUser.externalUserID];
+    managedUser.blobID = [NSNumber numberWithInteger:qBUser.blobID];
+    managedUser.facebookID = qBUser.facebookID;
+    managedUser.twitterID = qBUser.twitterID;
+    managedUser.fullName = qBUser.fullName;
+    managedUser.email = qBUser.email;
+    managedUser.login = qBUser.login;
+    managedUser.phone = qBUser.phone;
+    managedUser.website = qBUser.website;
+    managedUser.password = qBUser.password;
+    managedUser.oldPassword = qBUser.oldPassword;
+    managedUser.lastRequestAt = qBUser.lastRequestAt;
+    managedUser.customData = qBUser.customData;
+    
+    [MagicalRecord saveWithBlock:nil completion:^(BOOL success, NSError *error) {
+        if(success) completion(success);
+    }];
 }
 
 -(Class)qBSUsers{
