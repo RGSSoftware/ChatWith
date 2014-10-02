@@ -217,37 +217,6 @@ describe(@"RGSLoginViewController", ^{
             });
         });
     });
-//        context(@"userName is TAKEN", ^{
-//            __block mockLoginViewControllerDelegate *LVDelegate;
-//            
-//            beforeEach(^{
-//                LVDelegate = [mockLoginViewControllerDelegate new];
-//                sut.delegate = LVDelegate;
-//            });
-//            afterEach(^{
-//                LVDelegate = nil;
-//            });
-//            
-//            it(@"should show Alert", ^{
-//                //given
-//                sut.alertViewClass = [JMRMockAlertView class];
-//                JMRMockAlertViewVerifier *alertVerifier = [[JMRMockAlertViewVerifier alloc] init];
-//                
-//                UITextField *mockUserTextField = [UITextField new];
-//                mockUserTextField = [UITextField new];
-//                mockUserTextField.text = nonValidUserName;
-//                sut.usernameTextField = mockUserTextField;
-//                
-//                [sut registerUser:nil];
-//                
-//                assertThatInt(alertVerifier.showCount, is(equalTo(@1)));
-//                assertThat(alertVerifier.title, is(nilValue()));
-//                assertThat(alertVerifier.message, is(@"Oops! Somebody already has that name. Give it another shot."));
-//                assertThat(alertVerifier.delegate, is(sameInstance(sut)));
-//                assertThat(alertVerifier.cancelButtonTitle, is(@"OKAY"));
-//                
-//            });
-//        });
         context(@"userName is NOT valid", ^{
             it(@"should NOT send call loginViewController:registerUsername:password: on delegate", ^{
                 //given

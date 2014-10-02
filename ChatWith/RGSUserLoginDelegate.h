@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "RGSLoginViewController.h"
 
-@interface RGSUserLoginDelegate : NSObject <LoginViewControllerDelegate>
+@interface RGSUserLoginDelegate : NSObject <LoginViewControllerDelegate, QBActionStatusDelegate>
 
+@property (nonatomic,strong)Class qBSUsers;
+
+-(void)isUsernameTaken:(NSString *)username successBlock:(void (^)(BOOL isTaken))results;
 @end

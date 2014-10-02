@@ -14,7 +14,9 @@
 -(void)loginViewController:(RGSLoginViewController *)loginViewController registerUsername:(NSString *)username password:(NSString *)password;
 -(void)loginViewController:(RGSLoginViewController *)loginViewController loginUsername:(NSString *)username password:(NSString *)password;
 
--(BOOL)loginViewController:(RGSLoginViewController *)loginViewController isUsernameTaken:(NSString *)username;
+-(void)isUsernameTaken:(NSString *)username successBlock:(void (^)(BOOL isTaken))results;
+
+-(void)registerUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL succes))success;
 
 @end
 
