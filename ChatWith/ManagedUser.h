@@ -26,5 +26,8 @@
 @property (nonatomic, retain) NSDate * lastRequestAt;
 @property (nonatomic, retain) NSString * customData;
 @property (nonatomic, retain) NSNumber * currentUser;
+@property (nonatomic, retain) NSNumber * entityID;
+@property (nonatomic, retain) NSDate * createdAt;
+@property (nonatomic, retain) NSDate * updatedAt;
 
 @end

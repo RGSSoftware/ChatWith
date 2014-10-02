@@ -40,11 +40,37 @@
 }
 
 -(IBAction)loginUser:(id)sender{
+//    if ([self isUserCredentialsValid]) {
+//        if ([self.delegate respondsToSelector:@selector(loginViewController:loginUsername:password:)]) {
+//            [self.delegate loginViewController:self
+//                                 loginUsername:self.usernameTextField.text
+//                                      password:self.passwordTextField.text];
+//        }
+//    } else{
+//        UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil
+//                                                                message:@"Oops! Something's not right. Give it another shot."
+//                                                               delegate:self
+//                                                      cancelButtonTitle:@"OKAY"
+//                                                      otherButtonTitles:nil];
+//        [alertView show];
+//    }
     if ([self isUserCredentialsValid]) {
-        if ([self.delegate respondsToSelector:@selector(loginViewController:loginUsername:password:)]) {
-            [self.delegate loginViewController:self
-                                 loginUsername:self.usernameTextField.text
-                                      password:self.passwordTextField.text];
+        if ([self.delegate respondsToSelector:@selector(loginUsername:password:successBlock:)]) {
+            [self.delegate loginUsername:self.usernameTextField.text
+                                password:self.passwordTextField.text
+                            successBlock:^(BOOL success) {
+                                if(success){
+                                    
+                                    //segway to next screen
+                                } else {
+                                    UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil
+                                                                                            message:@"Oops! Something's not right. Give it another shot."
+                                                                                           delegate:self
+                                                                                  cancelButtonTitle:@"OKAY"
+                                                                                  otherButtonTitles:nil];
+                                    [alertView show];
+                                }
+                            }];
         }
     } else{
         UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil
@@ -54,6 +80,7 @@
                                                       otherButtonTitles:nil];
         [alertView show];
     }
+
     
 }
 -(IBAction)registerUser:(id)sender{
@@ -94,6 +121,7 @@
                                                password:self.passwordTextField.text
                                            successBlock:^(BOOL succes) {
                                                if(succes){
+                                                 //login user
                                                  //segway to next screen
                                                } else {
                                                    UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil

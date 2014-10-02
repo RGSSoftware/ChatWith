@@ -12,6 +12,7 @@
 @interface RGSUserLoginDelegate ()
 @property (nonatomic, strong)void(^userNameTakenBlock)(BOOL taken);
 @property (nonatomic, strong)void(^registerSuccessBlock)(BOOL taken);
+@property (nonatomic, strong)void(^loginSuccessBlock)(BOOL taken);
 @end
 
 
@@ -23,6 +24,7 @@
     [self.qBSUsers userWithLogin:username delegate:self];
 }
 
+
 -(void)registerUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))success{
     self.registerSuccessBlock = success;
     
@@ -31,6 +33,11 @@
     user.login = username;
     user.password = password;
     [self.qBSUsers signUp:user delegate:self];
+}
+
+-(void)loginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))success{
+    self.loginSuccessBlock = success;
+    [self.qBSUsers logInWithUserLogin:username password:password delegate:self];
 }
 
 -(void)completedWithResult:(Result *)result{
@@ -45,6 +52,16 @@
                 if(success) self.registerSuccessBlock(YES);
             }];
         }
+    } else if ([[NSString stringWithFormat:@"%@", [result class]]
+                isEqualToString:[NSString stringWithFormat:@"%@", [QBUUserLogInResult class]]]){
+        if(!result.success && result.status == 401) self.loginSuccessBlock(NO);
+        else if (result.success && result.status == 202) {
+            
+    
+            self.loginSuccessBlock(YES);
+        }
+            
+        
     }
 }
 
@@ -63,6 +80,8 @@
     managedUser.oldPassword = qBUser.oldPassword;
     managedUser.lastRequestAt = qBUser.lastRequestAt;
     managedUser.customData = qBUser.customData;
+    
+    managedUser.currentUser = [NSNumber numberWithBool:YES];
     
     [MagicalRecord saveWithBlock:nil completion:^(BOOL success, NSError *error) {
         if(success) completion(success);

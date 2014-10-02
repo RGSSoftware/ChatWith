@@ -25,5 +25,8 @@
 @dynamic lastRequestAt;
 @dynamic customData;
 @dynamic currentUser;
+@dynamic entityID;
+@dynamic createdAt;
+@dynamic updatedAt;
 
 @end

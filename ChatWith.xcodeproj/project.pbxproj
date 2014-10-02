@@ -13,7 +13,7 @@
 		2218FDC819DC9D6C00E491F6 /* RGSLoginViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC719DC9D6C00E491F6 /* RGSLoginViewControllerTest.m */; };
 		2218FDCD19DC9DAB00E491F6 /* JMRMockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCA19DC9DAB00E491F6 /* JMRMockAlertView.m */; };
 		2218FDCE19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */; };
-		2218FDD119DDACB700E491F6 /* ManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD019DDACB700E491F6 /* ManagedUser.m */; };
+		2218FDD419DDC40E00E491F6 /* ManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD319DDC40E00E491F6 /* ManagedUser.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
 		2264746B19A90C9E00245A73 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746A19A90C9E00245A73 /* SystemConfiguration.framework */; };
@@ -93,8 +93,8 @@
 		2218FDCA19DC9DAB00E491F6 /* JMRMockAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMRMockAlertView.m; sourceTree = "<group>"; };
 		2218FDCB19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMRMockAlertViewVerifier.h; sourceTree = "<group>"; };
 		2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMRMockAlertViewVerifier.m; sourceTree = "<group>"; };
-		2218FDCF19DDACB700E491F6 /* ManagedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedUser.h; sourceTree = "<group>"; };
-		2218FDD019DDACB700E491F6 /* ManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedUser.m; sourceTree = "<group>"; };
+		2218FDD219DDC40E00E491F6 /* ManagedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedUser.h; sourceTree = "<group>"; };
+		2218FDD319DDC40E00E491F6 /* ManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedUser.m; sourceTree = "<group>"; };
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2264746819A90C9400245A73 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2264746A19A90C9E00245A73 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -247,8 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				22D7BCC419A8D45100D2C01C /* ChatWith.xcdatamodeld */,
-				2218FDCF19DDACB700E491F6 /* ManagedUser.h */,
-				2218FDD019DDACB700E491F6 /* ManagedUser.m */,
+				2218FDD219DDC40E00E491F6 /* ManagedUser.h */,
+				2218FDD319DDC40E00E491F6 /* ManagedUser.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -528,7 +528,7 @@
 				22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */,
 				22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */,
 				2218FDC419DC902E00E491F6 /* RGSUserLoginDelegate.m in Sources */,
-				2218FDD119DDACB700E491F6 /* ManagedUser.m in Sources */,
+				2218FDD419DDC40E00E491F6 /* ManagedUser.m in Sources */,
 				22D7BCBF19A8D45100D2C01C /* main.m in Sources */,
 				22D7BCC319A8D45100D2C01C /* RGSAppDelegate.m in Sources */,
 				22889ACB19D322A400F0541D /* RGSLoginViewController.m in Sources */,
