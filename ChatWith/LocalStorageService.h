@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class UserModel;
+@class ManagedUser;
 
 @interface LocalStorageService : NSObject
 
@@ -18,6 +19,6 @@
 //- (NSMutableArray *)messageHistoryWithUserID:(NSUInteger)userID;
 + (void)setSharedInstance:(id)sharedInstance;
 -(void)saveCurrentUser:(UserModel *)user;
--(QBUUser *)savedUser;
+-(ManagedUser *)savedUser;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "LocalStorageService.h"
+#import "ManagedUser.h"
 
 @implementation LocalStorageService{
     NSMutableDictionary *messagesHistory;
@@ -40,7 +41,7 @@ static dispatch_once_t once_token = 0;
     }
     return self;
 }
--(QBUUser *)savedUser{
+-(ManagedUser *)savedUser{
 //    NSArray *users = [UserModel MR_findByAttribute:@"uuuuserLogin" withValue:@YES];
 //    
 //    return [users firstObject];

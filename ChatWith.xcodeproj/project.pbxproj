@@ -14,6 +14,7 @@
 		2218FDCD19DC9DAB00E491F6 /* JMRMockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCA19DC9DAB00E491F6 /* JMRMockAlertView.m */; };
 		2218FDCE19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */; };
 		2218FDD419DDC40E00E491F6 /* ManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD319DDC40E00E491F6 /* ManagedUser.m */; };
+		2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
 		2264746B19A90C9E00245A73 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746A19A90C9E00245A73 /* SystemConfiguration.framework */; };
@@ -95,6 +96,8 @@
 		2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMRMockAlertViewVerifier.m; sourceTree = "<group>"; };
 		2218FDD219DDC40E00E491F6 /* ManagedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedUser.h; sourceTree = "<group>"; };
 		2218FDD319DDC40E00E491F6 /* ManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedUser.m; sourceTree = "<group>"; };
+		2218FDD519DF31B300E491F6 /* RGSApplicationSessionManagementService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSApplicationSessionManagementService.h; sourceTree = "<group>"; };
+		2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSApplicationSessionManagementService.m; sourceTree = "<group>"; };
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2264746819A90C9400245A73 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2264746A19A90C9E00245A73 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -237,6 +240,8 @@
 		22889AD219D3236400F0541D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2218FDD519DF31B300E491F6 /* RGSApplicationSessionManagementService.h */,
+				2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */,
 				22A18A3319CF44DB004A266E /* LocalStorageService.h */,
 				22A18A3419CF44DB004A266E /* LocalStorageService.m */,
 			);
@@ -532,6 +537,7 @@
 				22D7BCBF19A8D45100D2C01C /* main.m in Sources */,
 				22D7BCC319A8D45100D2C01C /* RGSAppDelegate.m in Sources */,
 				22889ACB19D322A400F0541D /* RGSLoginViewController.m in Sources */,
+				2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

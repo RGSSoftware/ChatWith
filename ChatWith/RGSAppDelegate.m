@@ -11,6 +11,8 @@
 #import "RGSLoginViewController.h"
 #import "RGSUserLoginDelegate.h"
 
+#import "RGSApplicationSessionManagementService.h"
+
 @implementation RGSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -20,21 +22,26 @@
     [self.qBSettings setAuthorizationKey:@"mxxS67kN7zNPgHn"];
     [self.qBSettings setAuthorizationSecret:@"jD6WTRWrXFm72KF"];
     
-    self.window.frame = [[UIScreen mainScreen] bounds];
-    if (self.localStorageService.savedUser) {
-        if ([self userIsLogin]) {
-            id screen = [[NSClassFromString([self.userDefaults objectForKey:@"lastVisibleViewController"]) alloc] init];
-            
-            if ([screen isKindOfClass:[UIViewController class]]) {
-                self.window.rootViewController = (UIViewController *)screen;
+    RGSApplicationSessionManagementService *appleicationSession = [RGSApplicationSessionManagementService new];
+    [appleicationSession createSessionWithCompletion:^(BOOL success) {
+        if (success) {
+            if (self.localStorageService.savedUser) {
+                if ([self userIsLogin]) {
+                    //retore last Visible screen
+                    
+//                    id screen = [[NSClassFromString([self.userDefaults objectForKey:@"lastVisibleViewController"]) alloc] init];
+//                    
+//                    if ([screen isKindOfClass:[UIViewController class]]) {
+//                        self.window.rootViewController = (UIViewController *)screen;
+                }
+            } else {
+                self.loginViewController.delegate = self.userLoginDelegate;
+                self.window.rootViewController = self.loginViewController;
             }
         }
-    } else {
-        
-        self.loginViewController.delegate = self.userLoginDelegate;
-        self.window.rootViewController = self.loginViewController;
-    }
+    }];
     
+    self.window.frame = [[UIScreen mainScreen] bounds];
     [self.window makeKeyAndVisible];
     return YES;
 }

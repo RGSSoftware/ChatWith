@@ -8,6 +8,7 @@
 
 #import "RGSUserLoginDelegate.h"
 #import "ManagedUser.h"
+#import "LocalStorageService.h"
 
 @interface RGSUserLoginDelegate ()
 @property (nonatomic, strong)void(^userNameTakenBlock)(BOOL taken);
@@ -37,7 +38,39 @@
 
 -(void)loginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))success{
     self.loginSuccessBlock = success;
-    [self.qBSUsers logInWithUserLogin:username password:password delegate:self];
+    if([[LocalStorageService shared] savedUser]){
+        if([[[LocalStorageService shared] savedUser].login isEqualToString:username]){
+            //login saved user
+            [self.qBSUsers logInWithUserLogin:username password:password delegate:self];
+        } else {
+            //delete saved user
+            [[[LocalStorageService shared] savedUser] MR_deleteEntity];
+            //save new user with {username and password}
+            [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+                ManagedUser *managedUser = [ManagedUser MR_createEntity];
+                managedUser.login = username;
+                managedUser.password = password;
+                managedUser.currentUser = [NSNumber numberWithBool:YES];
+            } completion:^(BOOL success, NSError *error) {
+                //login new user
+                if(success) [self.qBSUsers logInWithUserLogin:username password:password delegate:self];
+            }];
+        }
+    } else {
+        //save new user with {username and password}
+        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+            ManagedUser *managedUser = [ManagedUser MR_createEntity];
+            managedUser.login = username;
+            managedUser.password = password;
+            managedUser.currentUser = [NSNumber numberWithBool:YES];
+        } completion:^(BOOL success, NSError *error) {
+            //login new user
+            if(success) [self.qBSUsers logInWithUserLogin:username password:password delegate:self];
+        }];
+        
+    }
+    
+    
 }
 
 -(void)completedWithResult:(Result *)result{

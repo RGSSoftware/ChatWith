@@ -122,7 +122,14 @@
                                            successBlock:^(BOOL succes) {
                                                if(succes){
                                                  //login user
-                                                 //segway to next screen
+                                                   [self.delegate loginUsername:self.usernameTextField.text
+                                                                       password:self.passwordTextField.text
+                                                                   successBlock:^(BOOL success) {
+                                                       if(success) {
+                                                           //segway to next screen
+                                                       }
+                                                   }];
+                                                 
                                                } else {
                                                    UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil
                                                                                                            message:@"Oops! Something's not right. Give it another shot."
