@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "RGSUserLoginDelegate.h"
+#import "userMangementService.h"
 #import "ManagedUser.h"
 #import "LocalStorageService.h"
 
-@interface RGSUserLoginDelegate ()
+@interface userMangementService ()
 @property (nonatomic, strong)void(^userNameTakenBlock)(BOOL taken);
 @property (nonatomic, strong)void(^registerSuccessBlock)(BOOL taken);
 @property (nonatomic, strong)void(^loginSuccessBlock)(BOOL taken);
 @end
 
 
-@implementation RGSUserLoginDelegate
+@implementation userMangementService
 
 -(void)isUsernameTaken:(NSString *)username successBlock:(void (^)(BOOL isTaken))results{
     self.userNameTakenBlock = results;

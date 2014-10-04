@@ -9,7 +9,7 @@
 #import "RGSAppDelegate.h"
 #import "LocalStorageService.h"
 #import "RGSLoginViewController.h"
-#import "RGSUserLoginDelegate.h"
+#import "userMangementService.h"
 #import "ManagedUser.h"
 
 #import "RGSApplicationSessionManagementService.h"
@@ -85,10 +85,10 @@
     return _loginViewController;
 }
 
--(RGSUserLoginDelegate *)userLoginDelegate{
+-(userMangementService *)userLoginDelegate{
     if (_userLoginDelegate == nil)
     {
-        _userLoginDelegate = [RGSUserLoginDelegate new];
+        _userLoginDelegate = [userMangementService new];
     }
     return _userLoginDelegate;
 }

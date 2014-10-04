@@ -7,16 +7,16 @@
 //
 
 #import <Kiwi/Kiwi.h>
-#import "RGSUserLoginDelegate.h"
+#import "userMangementService.h"
 #import "RGSLoginViewController.h"
 
 SPEC_BEGIN(RGSUserLoginDelegateSpec)
 
 describe(@"RGSUserLoginDelegate", ^{
-    __block RGSUserLoginDelegate *sut;
+    __block userMangementService *sut;
     
     beforeEach(^{
-        sut = [RGSUserLoginDelegate new];
+        sut = [userMangementService new];
     });
     afterEach(^{
         sut = nil;
