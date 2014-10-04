@@ -16,7 +16,7 @@
 @interface QBUUser : Entity <NSCoding, NSCopying> {
 @private
     NSUInteger externalUserID;
-    NSInteger blobID;
+    NSUInteger blobID;
     NSString *facebookID;
     NSString *twitterID;
     NSString *fullName;
@@ -28,14 +28,13 @@
     NSString *password;
     NSString *oldPassword;
     NSDate *lastRequestAt;
-    NSString *customData;
 }
 
 /** ID of User in external system. */
 @property (nonatomic) NSUInteger externalUserID;
 
 /** ID of User associated blob (for example, ID of user's photo). */
-@property (nonatomic) NSInteger blobID;
+@property (nonatomic) NSUInteger blobID;
 
 /** ID of User in Facebook. */
 @property (nonatomic, retain) NSString *facebookID;
@@ -69,9 +68,6 @@
 
 /** User's last activity */
 @property (nonatomic, retain) NSDate *lastRequestAt;
-
-/** User's custom data field */
-@property (nonatomic, retain) NSString *customData;
 
 /** Create new user
  @return New instance of QBUUser

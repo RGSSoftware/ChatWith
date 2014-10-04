@@ -42,12 +42,7 @@ static dispatch_once_t once_token = 0;
     return self;
 }
 -(ManagedUser *)savedUser{
-//    NSArray *users = [UserModel MR_findByAttribute:@"uuuuserLogin" withValue:@YES];
-//    
-//    return [users firstObject];
-    
-//    return [currentUsers firstObject];
-    return nil;
+    return [[ManagedUser MR_findByAttribute:@"currentUser" withValue:@YES] firstObject];
 }
 
 //- (void)saveMessageToHistory:(QBChatMessage *)message withUserID:(NSUInteger)userID

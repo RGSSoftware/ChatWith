@@ -13,13 +13,12 @@
 @interface QBChatUtils : NSObject
 
 // QBUser <-> JID
-+ (NSString *)JIDFromCurrentUserID:(NSUInteger)userID;
 + (NSString *)JIDFromUserID:(NSUInteger)userID;
 + (NSUInteger)userIDFromJID:(NSString *)jid;
 
 // QBChatMessage <-> xmppMessage
 + (QBChatMessage *)messageFromXMPPMessage:(id)message roomNick:(NSString *)roomNick;
-+ (id)xmppMessageFromQBChatMessage:(QBChatMessage *)message room:(QBChatRoom *)room;
++ (id)xmppMessageFromQBChatMessage:(QBChatMessage *)message;
 
 // Presense utils
 + (NSDictionary *)parametersFromPresence:(id)presence;
@@ -48,14 +47,11 @@
 + (CGImageRef)CGImageRotatedByAngle:(CGImageRef)imgRef angle:(CGFloat)angle;
 
 
-// Extract custom params & attachments
+// Extract custom params
 + (NSMutableDictionary *)customParametersFromXMPPMessage:(id)message;
-+ (NSArray *)attachmentsFromXMPPMessage:(id)xmppMessage;
-+ (void)setCustomParameters:(NSDictionary *)customParameters attachments:(NSArray *)attachments extensionName:(NSString *)extensionName toXMPPMessage:(id)xmppMessage;
++ (void)setCustomParameters:(NSDictionary *)customParameters extensionName:(NSString *)extensionName toXMPPMessage:(id)message;
 
 // Internet
 + (NSString *)getIPAddress;
-
-+ (void)extractParametersToRequestURL:(NSMutableDictionary *)parameters requestURL:(NSMutableString *)requestURL;
 
 @end

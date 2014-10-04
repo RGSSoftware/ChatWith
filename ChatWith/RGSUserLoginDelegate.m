@@ -58,7 +58,7 @@
         }
     } else {
         //save new user with {username and password}
-        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+        [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
             ManagedUser *managedUser = [ManagedUser MR_createEntity];
             managedUser.login = username;
             managedUser.password = password;
@@ -88,35 +88,31 @@
     } else if ([[NSString stringWithFormat:@"%@", [result class]]
                 isEqualToString:[NSString stringWithFormat:@"%@", [QBUUserLogInResult class]]]){
         if(!result.success && result.status == 401) self.loginSuccessBlock(NO);
-        else if (result.success && result.status == 202) {
-            
-    
-            self.loginSuccessBlock(YES);
-        }
-            
-        
+        else if (result.success && result.status == 202) self.loginSuccessBlock(YES);
     }
 }
 
 -(void)saveQBUserToCoreData:(QBUUser *)qBUser completion:(void (^)(BOOL success))completion{
-    ManagedUser *managedUser = [ManagedUser MR_createEntity];
-    managedUser.externalUserID = [NSNumber numberWithUnsignedInteger:qBUser.externalUserID];
-    managedUser.blobID = [NSNumber numberWithInteger:qBUser.blobID];
-    managedUser.facebookID = qBUser.facebookID;
-    managedUser.twitterID = qBUser.twitterID;
-    managedUser.fullName = qBUser.fullName;
-    managedUser.email = qBUser.email;
-    managedUser.login = qBUser.login;
-    managedUser.phone = qBUser.phone;
-    managedUser.website = qBUser.website;
-    managedUser.password = qBUser.password;
-    managedUser.oldPassword = qBUser.oldPassword;
-    managedUser.lastRequestAt = qBUser.lastRequestAt;
-//    managedUser.customData = qBUser.customData;
-
-    managedUser.currentUser = [NSNumber numberWithBool:YES];
     
-    [MagicalRecord saveWithBlock:nil completion:^(BOOL success, NSError *error) {
+    
+    [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
+        ManagedUser *managedUser = [ManagedUser MR_createEntity];
+        managedUser.externalUserID = [NSNumber numberWithUnsignedInteger:qBUser.externalUserID];
+        managedUser.blobID = [NSNumber numberWithInteger:qBUser.blobID];
+        managedUser.facebookID = qBUser.facebookID;
+        managedUser.twitterID = qBUser.twitterID;
+        managedUser.fullName = qBUser.fullName;
+        managedUser.email = qBUser.email;
+        managedUser.login = qBUser.login;
+        managedUser.phone = qBUser.phone;
+        managedUser.website = qBUser.website;
+        managedUser.password = qBUser.password;
+        managedUser.oldPassword = qBUser.oldPassword;
+        managedUser.lastRequestAt = qBUser.lastRequestAt;
+        //    managedUser.customData = qBUser.customData;
+        
+        managedUser.currentUser = [NSNumber numberWithBool:YES];
+    }   completion:^(BOOL success, NSError *error) {
         if(success) completion(success);
     }];
 }

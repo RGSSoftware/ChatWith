@@ -10,6 +10,7 @@
 #import "LocalStorageService.h"
 #import "RGSLoginViewController.h"
 #import "RGSUserLoginDelegate.h"
+#import "ManagedUser.h"
 
 #import "RGSApplicationSessionManagementService.h"
 
@@ -17,6 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [MagicalRecord setupCoreDataStack];
     
     self.applicationSessionManager.applicationID = 7632;
     self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";
@@ -25,7 +27,7 @@
     [self.applicationSessionManager createSessionWithCompletion:^(BOOL success) {
         if (success) {
             if (self.localStorageService.savedUser) {
-                if ([self userIsLogin]) {
+                if (self.localStorageService.savedUser.isSignIn) {
                     //retore last Visible screen
                     
 //                    id screen = [[NSClassFromString([self.userDefaults objectForKey:@"lastVisibleViewController"]) alloc] init];
@@ -71,21 +73,8 @@
     return _window;
 }
 
--(NSUserDefaults *)userDefaults{
-    return [NSUserDefaults standardUserDefaults];
-}
-
 -(LocalStorageService *)localStorageService{
     return [LocalStorageService shared];
-}
-
--(BOOL)userIsLogin{
-    QBUUser *user = self.localStorageService.savedUser;
-    
-    if (user.login && user.password && [[self.userDefaults objectForKey:@"isAutoLogin"] boolValue]) {
-        return YES;
-    }
-    return NO;
 }
 
 -(RGSLoginViewController *)loginViewController{

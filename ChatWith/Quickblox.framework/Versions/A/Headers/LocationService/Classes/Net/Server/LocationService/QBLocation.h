@@ -32,21 +32,6 @@
 + (NSObject<Cancelable> *)createGeoData:(QBLGeoData *)geodata delegate:(NSObject<QBActionStatusDelegate> *)delegate context:(void *)context;
 
 
-/**
- Create geo data and send push to all users within radius
- 
- Type of Result - QBLGeoDataResult
- 
- @param geodata An instance of QBLGeoData
- @param pushText Push Notification text
- @param radius The distance in meters around your coordinates
- @param delegate An object for callback, must adopt QBActionStatusDelegate protocol. The delegate is retained.  Upon finish of the request, result will be an instance of QBLGeoDataResult class.
- @return An instance, which conforms Cancelable protocol. Use this instance to cancel the operation.
- */
-+ (NSObject<Cancelable> *)createGeoData:(QBLGeoData *)geodata andSendPushWithText:(NSString *)pushText toAllUsersWithinRadius:(CGFloat)radius delegate:(NSObject<QBActionStatusDelegate> *)delegate;
-+ (NSObject<Cancelable> *)createGeoData:(QBLGeoData *)geodata andSendPushWithText:(NSString *)pushText toAllUsersWithinRadius:(CGFloat)radius delegate:(NSObject<QBActionStatusDelegate> *)delegate context:(void *)context;
-
-
 #pragma mark -
 #pragma mark Get GeoData with ID
 
@@ -135,8 +120,8 @@
  
  Type of Result - QBLPlaceResult
  
- @param place An instance of QBLPlace
- @param delegate An object for callback, must adopt QBActionStatusDelegate protocol. The delegate is retained.  Upon finish of the request, result will be an instance of QBLPlaceResult class.
+ @param data An instance of QBLPlace
+ @param delegate An object for callback, must adopt QBActionStatusDelegate protocol. The delegate is retained.  Upon finish of the request, result will be an instance of QBLPlaceResult class.    
  @return An instance, which conforms Cancelable protocol. Use this instance to cancel the operation. 
  */
 + (NSObject<Cancelable> *)createPlace:(QBLPlace *)place delegate:(NSObject<QBActionStatusDelegate> *)delegate;
@@ -151,7 +136,7 @@
  
  Type of Result - QBLPlaceResult
  
- @param place An instance of QBLPlace
+ @param data An instance of QBLPlace
  @param delegate An object for callback, must adopt QBActionStatusDelegate protocol. The delegate is retained.  Upon finish of the request, result will be an instance of QBLPlaceResult class.    
  @return An instance, which conforms Cancelable protocol. Use this instance to cancel the operation. 
  */

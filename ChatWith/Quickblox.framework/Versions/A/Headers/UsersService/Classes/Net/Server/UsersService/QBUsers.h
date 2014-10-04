@@ -116,17 +116,6 @@
 + (NSObject<Cancelable> *)usersWithPagedRequest:(PagedRequest *)pagedRequest delegate:(NSObject<QBActionStatusDelegate> *)delegate;
 + (NSObject<Cancelable> *)usersWithPagedRequest:(PagedRequest *)pagedRequest delegate:(NSObject<QBActionStatusDelegate> *)delegate context:(void *)context;
 
-/**
- Retrieve all Users for current account with extended request
- 
- Type of Result - QBUUserPagedResult
- 
- @param delegate An object for callback, must adopt QBActionStatusDelegate protocol. The delegate is retained.  Upon finish of the request, result will be an instance of QBUUserPagedResult class.
- @return An instance, which conforms Cancelable protocol. Use this instance to cancel the operation.
- */
-+ (NSObject<Cancelable> *)usersWithExtendedRequest:(NSDictionary *)extendedRequest delegate:(NSObject<QBActionStatusDelegate> *)delegate;
-+ (NSObject<Cancelable> *)usersWithExtendedRequest:(NSDictionary *)extendedRequest delegate:(NSObject<QBActionStatusDelegate> *)delegate context:(void *)context;
-
 
 #pragma mark -
 #pragma mark Create User
@@ -437,7 +426,7 @@
  
  Type of Result - QBUUserPagedResult
  
- @param emails Emails of users which you want to retrieve
+ @param email Emails of users which you want to retrieve
  @param delegate An object for callback, must adopt QBActionStatusDelegate protocol. The delegate is retained.  Upon finish of the request, result will be an instance of QBUUserPagedResult class.
  @return An instance, which conforms Cancelable protocol. Use this instance to cancel the operation.
  */
@@ -449,7 +438,7 @@
  
  Type of Result - QBUUserPagedResult
  
- @param emails Emails of users which you want to retrieve
+ @param email Emails of users which you want to retrieve
  @param pagedRequest paged request
  @param delegate An object for callback, must adopt QBActionStatusDelegate protocol. The delegate is retained.  Upon finish of the request, result will be an instance of QBUUserPagedResult class.
  @return An instance, which conforms Cancelable protocol. Use this instance to cancel the operation.

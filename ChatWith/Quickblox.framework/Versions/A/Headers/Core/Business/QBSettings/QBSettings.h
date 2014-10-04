@@ -60,23 +60,27 @@
  */
 + (NSString *)authorizationSecret;
 
-/**
- Set account key
- 
- @param accountKey Account key - from admin.quickblox.com
- */
-+ (void)setAccountKey:(NSString *)accountKey;
+
+#pragma mark -
+#pragma mark Server domain
 
 /**
- Get account key
+ Set server's domain (by default: quickblox.com)
  
- @return Current account key
+ @param domain New server's domain
  */
-+ (NSString *)accountKey;
++ (void)setServerDomain:(NSString *)domain;
+
+/**
+ Get server's domain
+ 
+ @return Current server's domain
+ */
++ (NSString *)serverDomain;
 
 
 #pragma mark -
-#pragma mark Endpoints
+#pragma mark Hardcoded Server domains
 
 /**
  Set server's API domain
@@ -106,33 +110,25 @@
  */
 + (NSString *)serverChatDomain;
 
-/**
- Set TURN server domain
- 
- @param turnDomain New TURN server domain
- */
-+ (void)setTURNServerDomain:(NSString *)turnDomain;
+
+#pragma mark -
+#pragma mark Server zone
 
 /**
- Get TURN server domain
+ Set server's zone (by default: QBServerZoneProduction). Posible values: QBServerZoneProduction -> api.quickblox.com, QBServerZoneStage -> api.stage.quickblox.com
  
- @return Current TURN server domain
+ @param zone New server's zone
  */
-+ (NSString *)TURNServerDomain;
++ (void)setServerZone:(enum QBServerZone)zone;
 
 /**
- Set Content bucket
+ Get server's zone
  
- @param bucket New bucket name
+ @return Current server's zone
  */
-+ (void)setContentBucket:(NSString *)bucket;
++ (enum QBServerZone)serverZone;
 
-/**
- Get Content bucket
- 
- @return Current bucket
- */
-+ (NSString *)contentBucket;
++ (NSString *)serverZoneAsString;
 
 
 #pragma mark -
@@ -141,70 +137,16 @@
 /**
  Enable/disable HTTPS for queries
  
- @warning *Deprecated in QB iOS SDK 1.8.5:* No need to call this method, HTTPS set by default now
- 
- @param useHTTPS Enable HTTPS for queries. Default value: YES.
+ @param useHTTPS Enable HTTPS for queries. Default value: NO. 
  */
-+ (void)useHTTPS:(BOOL)useHTTPS __attribute__((deprecated("No need to call this method, HTTPS set by default now")));
++ (void)useHTTPS:(BOOL)useHTTPS;
 
 /**
  Current protocol to perform queries to QuickBlox
  
- @warning *Deprecated in QB iOS SDK 1.8.5:* No need to call this method, HTTPS set by default now
- 
  @return YES if HTTPS is enabled;
  */
-+ (BOOL)isUseHTTPS __attribute__((deprecated("No need to call this method, HTTPS set by default now")));
-
-
-#pragma mark -
-#pragma mark TLS for Chat
-
-/**
- Enable/disable TLS for chat
- 
- @param useTLSForChat Enable TLS for chat. Default value: YES.
- */
-+ (void)useTLSForChat:(BOOL)useTLSForChat;
-
-/**
- Current protocol to work with Chat
- 
- @return YES if TLS is enabled;
- */
-+ (BOOL)isUseTLSForChat;
-
-
-#pragma mark -
-#pragma mark Chat proxy
-
-/**
- Set Chat SOCKS5 proxy host
- 
- @param host SOCKS5 proxy host
- */
-+ (void)setChatSOCKS5ProxyHost:(NSString *)host;
-
-/**
- Get сhat SOCKS5 proxy host
- 
- @return Current сhat SOCKS5 proxy host
- */
-+ (NSString *)chatSOCKS5ProxyHost;
-
-/**
- Set Chat SOCKS5 proxy port
- 
- @param port SOCKS5 proxy port
- */
-+ (void)setChatSOCKS5ProxyPort:(NSUInteger)port;
-
-/**
- Get сhat SOCKS5 proxy port
- 
- @return Current сhat SOCKS5 proxy port
- */
-+ (NSUInteger)chatSOCKS5ProxyPort;
++ (BOOL)isUseHTTPS;
 
 
 #pragma mark -
@@ -268,20 +210,16 @@
 /**
  Enable session expiration auto handler
  
- @warning *Deprecated in QB iOS SDK 1.8.5:* Use [QBBaseModule sharedModule].tokenExpirationDate to get session expiration date and recreate a session if need
- 
  @param isEnable New session expiration auto handler's state
  */
-+ (void)enableSessionExpirationAutoHandler:(BOOL)isEnable __attribute__((deprecated("Use [QBBaseModule sharedModule].tokenExpirationDate to get session expiration date and recreate a session if need")));
++ (void)enableSessionExpirationAutoHandler:(BOOL)isEnable;
 
 /**
  Get session expiration auto handler's state
  
- @warning *Deprecated in QB iOS SDK 1.8.5:* Use [QBBaseModule sharedModule].tokenExpirationDate to get session expiration date and recreate a session if need
- 
  @return Current session expiration auto handler's state
  */
-+ (BOOL)isEnabledSessionExpirationAutoHandler __attribute__((deprecated("Use [QBBaseModule sharedModule].tokenExpirationDate to get session expiration date and recreate a session if need")));
++ (BOOL)isEnabledSessionExpirationAutoHandler;
 
 
 #pragma mark -
@@ -300,6 +238,24 @@
  @return YES if we use Production environment for Push Notifications
  */
 + (BOOL)isUseProductionEnvironmentForPushNotifications;
+
+
+#pragma mark -
+#pragma mark Content settings
+
+/**
+ Set Content bucked
+ 
+ @param bucket New bucket name
+ */
++ (void)setContentBucket:(NSString *)bucket;
+
+/**
+ Get Content bucked
+ 
+ @return Content current bucket
+ */
++ (NSString *)contentBucket;
 
 
 #pragma mark -

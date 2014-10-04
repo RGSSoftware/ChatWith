@@ -35,7 +35,7 @@
     redSquare.frame = CGRectMake(20, 20, 100, 100);
     redSquare.backgroundColor = [UIColor redColor];
     
-    [self.view addSubview:redSquare];
+//    [self.view addSubview:redSquare];
 
 }
 
@@ -141,11 +141,12 @@
                                            }];
                     }
                 } else {
-                    UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
                                                                             message:@"Oops! Somebody already has that name. Give it another shot."
                                                                            delegate:self
                                                                   cancelButtonTitle:@"OKAY"
                                                                   otherButtonTitles:nil];
+                    
                     [alertView show];
                 }
             }];
