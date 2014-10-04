@@ -40,20 +40,7 @@
 }
 
 -(IBAction)loginUser:(id)sender{
-//    if ([self isUserCredentialsValid]) {
-//        if ([self.delegate respondsToSelector:@selector(loginViewController:loginUsername:password:)]) {
-//            [self.delegate loginViewController:self
-//                                 loginUsername:self.usernameTextField.text
-//                                      password:self.passwordTextField.text];
-//        }
-//    } else{
-//        UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil
-//                                                                message:@"Oops! Something's not right. Give it another shot."
-//                                                               delegate:self
-//                                                      cancelButtonTitle:@"OKAY"
-//                                                      otherButtonTitles:nil];
-//        [alertView show];
-//    }
+
     if ([self isUserCredentialsValid]) {
         if ([self.delegate respondsToSelector:@selector(loginUsername:password:successBlock:)]) {
             [self.delegate loginUsername:self.usernameTextField.text
@@ -84,33 +71,6 @@
     
 }
 -(IBAction)registerUser:(id)sender{
-//    if ([self isUserCredentialsValid]) {
-//        if ([self.delegate respondsToSelector:@selector(loginViewController:isUsernameTaken:)]) {
-//            if (![self.delegate loginViewController:self isUsernameTaken:self.usernameTextField.text]) {
-//                if ([self.delegate respondsToSelector:@selector(loginViewController:registerUsername:password:)]) {
-//                    [self.delegate loginViewController:self
-//                                      registerUsername:self.usernameTextField.text
-//                                              password:self.passwordTextField.text];
-//                }
-//            } else {
-//                UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil
-//                                                                        message:@"Oops! Somebody already has that name. Give it another shot."
-//                                                                       delegate:self
-//                                                              cancelButtonTitle:@"OKAY"
-//                                                              otherButtonTitles:nil];
-//                [alertView show];
-//            }
-//        }
-//        
-//    } else{
-//        UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil
-//                                                                message:@"Oops! Something's not right. Give it another shot."
-//                                                               delegate:self
-//                                                      cancelButtonTitle:@"OKAY"
-//                                                      otherButtonTitles:nil];
-//        [alertView show];
-//    }
-    
     if ([self isUserCredentialsValid]) {
         if ([self.delegate respondsToSelector:@selector(isUsernameTaken:successBlock:)]) {
             [self.delegate isUsernameTaken:self.usernameTextField.text

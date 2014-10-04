@@ -8,19 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class RGSLoginViewController;
-
-@protocol LoginViewControllerDelegate <NSObject>
--(void)loginViewController:(RGSLoginViewController *)loginViewController registerUsername:(NSString *)username password:(NSString *)password;
--(void)loginViewController:(RGSLoginViewController *)loginViewController loginUsername:(NSString *)username password:(NSString *)password;
-
--(void)isUsernameTaken:(NSString *)username successBlock:(void (^)(BOOL isTaken))results;
-
--(void)registerUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL success))success;
-
--(void)loginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL success))success;
-
-@end
 
 @interface RGSLoginViewController : UIViewController
 
@@ -30,8 +17,9 @@
 @property (nonatomic, weak  ) IBOutlet UITextField *usernameTextField;
 @property (nonatomic, weak  ) IBOutlet UITextField *passwordTextField;
 
-@property (nonatomic, weak)id <LoginViewControllerDelegate> delegate;
 @property (nonatomic, strong)Class alertViewClass;
+
+
 
 -(IBAction)loginUser:(id)sender;
 -(IBAction)registerUser:(id)sender;
