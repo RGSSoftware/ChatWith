@@ -8,6 +8,7 @@
 
 #import "RGSLoginViewController.h"
 #import "NSString+alphaOnly.h"
+#import "userMangementService.h"
 
 @interface RGSLoginViewController ()
 
@@ -42,83 +43,53 @@
 -(IBAction)loginUser:(id)sender{
 
     if ([self isUserCredentialsValid]) {
-        if ([self.delegate respondsToSelector:@selector(loginUsername:password:successBlock:)]) {
-            [self.delegate loginUsername:self.usernameTextField.text
-                                password:self.passwordTextField.text
-                            successBlock:^(BOOL success) {
-                                if(success){
-                                    
-                                    //segway to next screen
-                                } else {
-                                    UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil
-                                                                                            message:@"Oops! Something's not right. Give it another shot."
-                                                                                           delegate:self
-                                                                                  cancelButtonTitle:@"OKAY"
-                                                                                  otherButtonTitles:nil];
-                                    [alertView show];
-                                }
-                            }];
-        }
-    } else{
-        UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil
-                                                                message:@"Oops! Something's not right. Give it another shot."
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OKAY"
-                                                      otherButtonTitles:nil];
-        [alertView show];
-    }
-
+        
+        [self.userManger loginUsername:self.usernameTextField.text
+                            password:self.passwordTextField.text
+                        successBlock:^(BOOL success) {
+                            if(success){
+                                
+                                //segway to next screen
+                            } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
+                        }];
+        
+    } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
     
 }
 -(IBAction)registerUser:(id)sender{
     if ([self isUserCredentialsValid]) {
-        if ([self.delegate respondsToSelector:@selector(isUsernameTaken:successBlock:)]) {
-            [self.delegate isUsernameTaken:self.usernameTextField.text
+            [self.userManger isUsernameTaken:self.usernameTextField.text
                               successBlock:^(BOOL isTaken) {
                 if(!isTaken){
-                    if ([self.delegate respondsToSelector:@selector(registerUsername:password:successBlock:)]) {
-                        [self.delegate registerUsername:self.usernameTextField.text
-                                               password:self.passwordTextField.text
-                                           successBlock:^(BOOL succes) {
-                                               if(succes){
-                                                 //login user
-                                                   [self.delegate loginUsername:self.usernameTextField.text
-                                                                       password:self.passwordTextField.text
-                                                                   successBlock:^(BOOL success) {
-                                                       if(success) {
-                                                           //segway to next screen
-                                                       }
-                                                   }];
-                                                 
-                                               } else {
-                                                   UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil
-                                                                                                           message:@"Oops! Something's not right. Give it another shot."
-                                                                                                          delegate:self
-                                                                                                 cancelButtonTitle:@"OKAY"
-                                                                                                 otherButtonTitles:nil];
-                                                   [alertView show];
-                                               }
-                                           }];
-                    }
-                } else {
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
-                                                                            message:@"Oops! Somebody already has that name. Give it another shot."
-                                                                           delegate:self
-                                                                  cancelButtonTitle:@"OKAY"
-                                                                  otherButtonTitles:nil];
-                    
-                    [alertView show];
-                }
+                    [self.userManger registerUsername:self.usernameTextField.text
+                                           password:self.passwordTextField.text
+                                       successBlock:^(BOOL succes) {
+                                           if(succes){
+                                             //login user
+                                               [self.userManger loginUsername:self.usernameTextField.text
+                                                                   password:self.passwordTextField.text
+                                                               successBlock:^(BOOL success) {
+                                                   if(success) {
+                                                       //segway to next screen
+                                                   }
+                                               }];
+                                             
+                                           } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
+                                       }];
+                
+                } else {[self showAlertViewWithMeassage:@"Oops! Somebody already has that name. Give it another shot."];}
             }];
-        } else {
-            UIAlertView *alertView = [[_alertViewClass alloc] initWithTitle:nil
-                                                                    message:@"Oops! Something's not right. Give it another shot."
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"OKAY"
-                                                          otherButtonTitles:nil];
-            [alertView show];
-        }
-    }
+    } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
+
+}
+- (void)showAlertViewWithMeassage:(NSString *)message{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"OKAY"
+                                              otherButtonTitles:nil];
+    
+    [alertView show];
 
 }
 
