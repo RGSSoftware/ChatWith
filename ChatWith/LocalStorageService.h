@@ -21,4 +21,8 @@
 -(void)saveCurrentUser:(UserModel *)user;
 -(ManagedUser *)savedUser;
 
+-(void)createCurrentUserWithusername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL success, NSError *error))successBlock;
+
+-(void)creteCurrentUserWithQBUser:(QBUUser *)qBUser successBlock:(void (^)(BOOL success, NSError *error))successBlock;
+
 @end

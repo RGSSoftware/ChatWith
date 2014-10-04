@@ -8,7 +8,7 @@
 
 #import "RGSLoginViewController.h"
 #import "NSString+alphaOnly.h"
-#import "userMangementService.h"
+#import "RGSUserMangementService.h"
 
 @interface RGSLoginViewController ()
 
@@ -22,11 +22,22 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self baseInit];
     }
     return self;
 }
 
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self baseInit];
+    }
+    return self;
+}
+
+-(void)baseInit{
+     _userManger = [RGSUserMangementService new];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

@@ -10,7 +10,7 @@
 @class LocalStorageService;
 
 @class RGSLoginViewController;
-@class userMangementService;
+@class RGSUserMangementService;
 
 @class RGSApplicationSessionManagementService;
 
@@ -28,6 +28,6 @@
 @property (nonatomic, strong)RGSApplicationSessionManagementService *applicationSessionManager;
 
 @property (nonatomic, strong)RGSLoginViewController *loginViewController;
-@property (nonatomic, strong)userMangementService *userLoginDelegate;
+@property (nonatomic, strong)RGSUserMangementService *userLoginDelegate;
 
 @end

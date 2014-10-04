@@ -9,7 +9,7 @@
 #import "RGSAppDelegate.h"
 #import "LocalStorageService.h"
 #import "RGSLoginViewController.h"
-#import "userMangementService.h"
+#import "RGSUserMangementService.h"
 #import "ManagedUser.h"
 
 #import "RGSApplicationSessionManagementService.h"
@@ -36,7 +36,7 @@
 //                        self.window.rootViewController = (UIViewController *)screen;
                 }
             } else {
-                self.loginViewController.delegate = self.userLoginDelegate;
+                self.loginViewController.userManger = [RGSUserMangementService new];
                 self.window.rootViewController = self.loginViewController;
             }
         } else {
@@ -85,10 +85,10 @@
     return _loginViewController;
 }
 
--(userMangementService *)userLoginDelegate{
+-(RGSUserMangementService *)userLoginDelegate{
     if (_userLoginDelegate == nil)
     {
-        _userLoginDelegate = [userMangementService new];
+        _userLoginDelegate = [RGSUserMangementService new];
     }
     return _userLoginDelegate;
 }

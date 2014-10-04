@@ -10,7 +10,7 @@
 #import "RGSLoginViewController.h"
 
 
-@interface userMangementService : NSObject <QBActionStatusDelegate>
+@interface RGSUserMangementService : NSObject <QBActionStatusDelegate>
 
 
 @property (nonatomic,strong)Class qBSUsers;

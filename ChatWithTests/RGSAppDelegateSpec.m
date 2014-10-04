@@ -12,7 +12,7 @@
 
 #import "RGSLoginViewController.h"
 
-#import "userMangementService.h"
+#import "RGSUserMangementService.h"
 
 static BOOL applicationDidFinshLaunchingFrom(RGSAppDelegate *sut)
 {
@@ -178,7 +178,7 @@ describe(@"RGSAppDelegate", ^{
                         
                         NSObject *lvcD = (NSObject *)sut.loginViewController.delegate;
                         
-                        [[lvcD should] beKindOfClass:[userMangementService class]];
+                        [[lvcD should] beKindOfClass:[RGSUserMangementService class]];
                     });
                 });
                 it(@"Window's rootViewController should be loginViewController", ^{

@@ -65,5 +65,38 @@ static dispatch_once_t once_token = 0;
 //    return messages;
 //}
 
+-(void)createCurrentUserWithusername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL, NSError *))successBlock{
+    [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
+        ManagedUser *managedUser = [ManagedUser MR_createEntity];
+        managedUser.login = username;
+        managedUser.password = password;
+        managedUser.currentUser = [NSNumber numberWithBool:YES];
+    } completion:^(BOOL success, NSError *error) {
+        successBlock(success, error);
+    }];
+}
+-(void)creteCurrentUserWithQBUser:(QBUUser *)qBUser successBlock:(void (^)(BOOL, NSError *))successBlock{
+    
+    [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
+        ManagedUser *managedUser = [ManagedUser MR_createEntity];
+        managedUser.externalUserID = [NSNumber numberWithUnsignedInteger:qBUser.externalUserID];
+        managedUser.blobID = [NSNumber numberWithInteger:qBUser.blobID];
+        managedUser.facebookID = qBUser.facebookID;
+        managedUser.twitterID = qBUser.twitterID;
+        managedUser.fullName = qBUser.fullName;
+        managedUser.email = qBUser.email;
+        managedUser.login = qBUser.login;
+        managedUser.phone = qBUser.phone;
+        managedUser.website = qBUser.website;
+        managedUser.password = qBUser.password;
+        managedUser.oldPassword = qBUser.oldPassword;
+        managedUser.lastRequestAt = qBUser.lastRequestAt;
+        
+        managedUser.currentUser = [NSNumber numberWithBool:YES];
+    }   completion:^(BOOL success, NSError *error) {
+        successBlock(success, error);
+    }];
+
+}
 
 @end

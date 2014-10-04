@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class userMangementService;
+@class RGSUserMangementService;
 
 
 @interface RGSLoginViewController : UIViewController
@@ -22,7 +22,7 @@
 @property (nonatomic, strong)Class alertViewClass;
 
 
-@property (nonatomic, strong)userMangementService  *userManger;
+@property (nonatomic, strong)RGSUserMangementService  *userManger;
 
 -(IBAction)loginUser:(id)sender;
 -(IBAction)registerUser:(id)sender;

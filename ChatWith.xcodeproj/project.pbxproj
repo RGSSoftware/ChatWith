@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2218FDC119DC8C6400E491F6 /* StoryBoardSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC019DC8C6400E491F6 /* StoryBoardSpec.m */; };
-		2218FDC419DC902E00E491F6 /* userMangementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC319DC902E00E491F6 /* userMangementService.m */; };
+		2218FDC419DC902E00E491F6 /* RGSUserMangementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC319DC902E00E491F6 /* RGSUserMangementService.m */; };
 		2218FDC619DC92E000E491F6 /* RGSUserLoginDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC519DC92E000E491F6 /* RGSUserLoginDelegateSpec.m */; };
 		2218FDC819DC9D6C00E491F6 /* RGSLoginViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC719DC9D6C00E491F6 /* RGSLoginViewControllerTest.m */; };
 		2218FDCD19DC9DAB00E491F6 /* JMRMockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCA19DC9DAB00E491F6 /* JMRMockAlertView.m */; };
@@ -85,8 +85,8 @@
 
 /* Begin PBXFileReference section */
 		2218FDC019DC8C6400E491F6 /* StoryBoardSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryBoardSpec.m; sourceTree = "<group>"; };
-		2218FDC219DC902E00E491F6 /* userMangementService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userMangementService.h; sourceTree = "<group>"; };
-		2218FDC319DC902E00E491F6 /* userMangementService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userMangementService.m; sourceTree = "<group>"; };
+		2218FDC219DC902E00E491F6 /* RGSUserMangementService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSUserMangementService.h; sourceTree = "<group>"; };
+		2218FDC319DC902E00E491F6 /* RGSUserMangementService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSUserMangementService.m; sourceTree = "<group>"; };
 		2218FDC519DC92E000E491F6 /* RGSUserLoginDelegateSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSUserLoginDelegateSpec.m; sourceTree = "<group>"; };
 		2218FDC719DC9D6C00E491F6 /* RGSLoginViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSLoginViewControllerTest.m; sourceTree = "<group>"; };
 		2218FDC919DC9DAB00E491F6 /* JMRMockAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMRMockAlertView.h; sourceTree = "<group>"; };
@@ -238,6 +238,8 @@
 		22889AD219D3236400F0541D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2218FDC219DC902E00E491F6 /* RGSUserMangementService.h */,
+				2218FDC319DC902E00E491F6 /* RGSUserMangementService.m */,
 				2218FDD519DF31B300E491F6 /* RGSApplicationSessionManagementService.h */,
 				2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */,
 				22A18A3319CF44DB004A266E /* LocalStorageService.h */,
@@ -312,8 +314,6 @@
 		22D7BCB819A8D45100D2C01C /* ChatWith */ = {
 			isa = PBXGroup;
 			children = (
-				2218FDC219DC902E00E491F6 /* userMangementService.h */,
-				2218FDC319DC902E00E491F6 /* userMangementService.m */,
 				22D7BCC119A8D45100D2C01C /* RGSAppDelegate.h */,
 				22D7BCC219A8D45100D2C01C /* RGSAppDelegate.m */,
 				22889AD019D3232600F0541D /* Controller */,
@@ -530,7 +530,7 @@
 				22D7BCC619A8D45100D2C01C /* ChatWith.xcdatamodeld in Sources */,
 				22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */,
 				22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */,
-				2218FDC419DC902E00E491F6 /* userMangementService.m in Sources */,
+				2218FDC419DC902E00E491F6 /* RGSUserMangementService.m in Sources */,
 				2218FDD419DDC40E00E491F6 /* ManagedUser.m in Sources */,
 				22D7BCBF19A8D45100D2C01C /* main.m in Sources */,
 				22D7BCC319A8D45100D2C01C /* RGSAppDelegate.m in Sources */,
