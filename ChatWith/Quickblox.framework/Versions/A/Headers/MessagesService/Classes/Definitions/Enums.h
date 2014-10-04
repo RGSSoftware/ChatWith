@@ -12,12 +12,15 @@ typedef enum QBMEventType{
 	QBMEventTypeOneShot,
     QBMEventTypeFixedDate,
     QBMEventTypePeriodDate,
+    QBMEventTypeMultiShot
 } QBMEventType;
 
 // Event notification types
 typedef enum QBMNotificationType{
 	QBMNotificationTypePush,
     QBMNotificationTypeEmail,
+    QBMNotificationTypeRequest,
+    QBMNotificationTypePull
 } QBMNotificationType;
 
 // Event push types
@@ -29,10 +32,12 @@ typedef enum QBMPushType{
 } QBMPushType;
 
 // Notification channels
-typedef enum QBMNotificationChannel{
-    QBMNotificationChannelEmail,
-    QBMNotificationChannelAPNS,
-    QBMNotificationChannelGCM,
-    QBMNotificationChannelMPNS,
-    QBMNotificationChannelBBPS,
-} QBMNotificationChannel;
+typedef enum QBMNotificatioChannel{
+    QBMNotificatioChannelEmail,
+    QBMNotificatioChannelAPNS,
+    QBMNotificatioChannelGCM,
+    QBMNotificatioChannelMPNS,
+    QBMNotificatioChannelBBPS,
+    QBMNotificatioChannelPull,
+    QBMNotificatioChannelHttpRequest
+} QBMNotificatioChannel;

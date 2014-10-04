@@ -12,9 +12,11 @@
 @class RGSLoginViewController;
 @class RGSUserLoginDelegate;
 
+@class RGSApplicationSessionManagementService;
 
 
-@interface RGSAppDelegate : UIResponder <UIApplicationDelegate>
+
+@interface RGSAppDelegate : UIResponder <UIApplicationDelegate, QBActionStatusDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -23,6 +25,7 @@
 @property (nonatomic, strong)LocalStorageService *localStorageService;
 
 @property (nonatomic, strong)NSUserDefaults *userDefaults;
+@property (nonatomic, strong)RGSApplicationSessionManagementService *applicationSessionManager;
 
 @property (nonatomic, strong)RGSLoginViewController *loginViewController;
 @property (nonatomic, strong)RGSUserLoginDelegate *userLoginDelegate;

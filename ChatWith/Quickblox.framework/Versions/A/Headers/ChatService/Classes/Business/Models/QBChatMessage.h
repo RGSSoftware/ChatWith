@@ -12,8 +12,39 @@
  Please set only text, recipientID & senderID values since ID is setted automatically by QBChat
  */
 
-@interface QBChatMessage : QBChatAbstractMessage <NSCoding, NSCopying>{
+@interface QBChatMessage : NSObject <NSCoding, NSCopying>{
+@private
+    NSString *ID;
+    NSString *text;
+    
+    NSUInteger recipientID;
+    NSUInteger senderID;
+    
+    NSDate *datetime;
+    BOOL delayed;
+    
+    NSMutableDictionary *customParameters;
 }
+
+/**
+ Unique identifier of message (sequential number)
+ */
+@property (nonatomic, copy) NSString *ID;
+
+/**
+ Message text
+ */
+@property (nonatomic, copy) NSString *text;
+
+/**
+ Message receiver ID
+ */
+@property (nonatomic, assign) NSUInteger recipientID;
+
+/**
+ Message sender ID, use only for 1-1 Chat
+ */
+@property (nonatomic, assign) NSUInteger senderID;
 
 /**
  Message sender nick, use only for group Chat 
@@ -21,20 +52,19 @@
 @property (nonatomic, copy) NSString *senderNick;
 
 /**
+ Message datetime
+ */
+@property (nonatomic, copy) NSDate *datetime;
+
+/**
  Is this message delayed
  */
 @property (nonatomic, assign) BOOL delayed;
 
 /**
- Custom Objects class name
+ Message custom parameters. Don't use 'body' & 'delay' as keys for parameters.
  */
-@property (nonatomic, copy) NSString *customObjectsClassName;
-
-/**
- Additional Custom Objects fields
- */
-@property (nonatomic, copy) NSDictionary *customObjectsAdditionalParameters;
-
+@property (nonatomic, retain) NSMutableDictionary *customParameters;
 
 /** Create new message
  @return New instance of QBChatMessage
@@ -47,5 +77,15 @@
  @param additionalParameters Additional Custom Objects fields
  */
 - (void)saveWhenDeliveredToCustomObjectsWithClassName:(NSString *)classname additionalParameters:(NSDictionary *)additionalParameters;
+
+/**
+ Custom Objects class name 
+ */
+@property (nonatomic, readonly) NSString *customObjectsClassName;
+
+/**
+ Additional Custom Objects fields
+ */
+@property (nonatomic, readonly) NSDictionary *customObjectsAdditionalParameters;
 
 @end

@@ -12,6 +12,7 @@
 @interface QBXMPPUserMemoryStorage : NSObject <QBXMPPUser, NSCopying, NSCoding>
 {
 	QBXMPPJID *jid;
+	NSMutableDictionary *itemAttributes;
 	
 	NSMutableDictionary *resources;
 	QBXMPPResourceMemoryStorage *primaryResource;
@@ -22,8 +23,6 @@
 	NSImage *photo;
 #endif
 }
-
-@property (nonatomic, assign) NSMutableDictionary *itemAttributes;
 
 /*	From the XMPPUser protocol
 	

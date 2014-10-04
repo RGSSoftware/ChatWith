@@ -18,12 +18,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    [self.qBSettings setApplicationID:7632];
-    [self.qBSettings setAuthorizationKey:@"mxxS67kN7zNPgHn"];
-    [self.qBSettings setAuthorizationSecret:@"jD6WTRWrXFm72KF"];
+    self.applicationSessionManager.applicationID = 7632;
+    self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";
+    self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
     
-    RGSApplicationSessionManagementService *appleicationSession = [RGSApplicationSessionManagementService new];
-    [appleicationSession createSessionWithCompletion:^(BOOL success) {
+    [self.applicationSessionManager createSessionWithCompletion:^(BOOL success) {
         if (success) {
             if (self.localStorageService.savedUser) {
                 if ([self userIsLogin]) {
@@ -38,12 +37,22 @@
                 self.loginViewController.delegate = self.userLoginDelegate;
                 self.window.rootViewController = self.loginViewController;
             }
+        } else {
+            
         }
     }];
     
     self.window.frame = [[UIScreen mainScreen] bounds];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+-(RGSApplicationSessionManagementService *)applicationSessionManager{
+    if (_applicationSessionManager == nil)
+    {
+        _applicationSessionManager = [RGSApplicationSessionManagementService new];
+    }
+    return _applicationSessionManager;
 }
 
 -(Class)qBSettings{

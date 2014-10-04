@@ -10,15 +10,12 @@
 extern NSString* const kQBVideoChatVideoFramesPerSecond;
 extern NSString* const kQBVideoChatCallTimeout;
 extern NSString* const kQBVideoChatBadConnectionTimeout;
+extern NSString* const kQBVideoChatTURNServerEndPoint;
 extern NSString* const kQBVideoChatFrameQualityPreset;
 extern NSString* const kQBVideoChatWriteQueueMaxVideoOperationsThreshold;
 extern NSString* const kQBVideoChatWriteQueueMaxAudioOperationsThreshold;
 extern NSString* const kQBVideoChatP2PTimeout;
 
-extern NSString *const kPresenseSubscriptionStateNone;
-extern NSString *const kPresenseSubscriptionStateTo;
-extern NSString *const kPresenseSubscriptionStateFrom;
-extern NSString *const kPresenseSubscriptionStateBoth;
 
 // video chat control messages
 #define qbvideochat_pattern @"qbvideochat_"

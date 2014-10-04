@@ -29,4 +29,30 @@
         else if (result.success && result.status == 201) {self.sessionCreationBlock(YES);}
     } else self.sessionCreationBlock(NO);
 }
+
+-(NSUInteger)applicationID{
+    return [QBSettings applicationID];
+}
+
+-(void)setApplicationID:(NSUInteger)applicationID{
+    [QBSettings setApplicationID:applicationID];
+}
+
+-(NSString *)authorizationKey{
+    return [QBSettings authorizationKey];
+}
+
+-(void)setAuthorizationKey:(NSString *)authorizationKey{
+    [QBSettings setAuthorizationKey:authorizationKey];
+}
+
+-(NSString *)authorizationSecret{
+    return [QBSettings authorizationSecret];
+}
+
+-(void)setAuthorizationSecret:(NSString *)authorizationSecret{
+    [QBSettings setAuthorizationSecret:authorizationSecret];
+}
+
+
 @end

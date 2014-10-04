@@ -9,7 +9,6 @@
 
 #define kStopVideoChatCallStatus_OpponentDidNotAnswer @"kStopVideoChatCallStatus_OpponentDidNotAnswer"
 #define kStopVideoChatCallStatus_Manually @"kStopVideoChatCallStatus_Manually"
-#define kStopVideoChatCallStatus_Cancel @"kStopVideoChatCallStatus_Cancel"
 #define kStopVideoChatCallStatus_BadConnection @"kStopVideoChatCallStatus_BadConnection"
 
 /**
@@ -18,7 +17,7 @@
  set [QBChat instance].delegate to your implementation instance to receive callbacks from QBChat
  */
 
-@class QBContactList, QBChatRoom, QBChatMessage, QBPrivacyList;
+@class QBContactList, QBChatRoom, QBChatMessage;
 
 @protocol QBChatDelegate <NSObject>
 @optional
@@ -39,10 +38,9 @@
 /**
  didNotSendMessage fired when message cannot be send to user
  
- @param message message passed to sendMessage method into QBChat
- @param error Error
+ @param message Message passed to sendMessage method into QBChat
  */
-- (void)chatDidNotSendMessage:(QBChatMessage *)message error:(NSError *)error;
+- (void)chatDidNotSendMessage:(QBChatMessage *)message;
 
 /**
  didReceiveMessage fired when new message was received from QBChat
@@ -111,25 +109,17 @@
 - (void)chatRoomDidReceiveMessage:(QBChatMessage *)message fromRoom:(NSString *)roomName;
 
 /**
- Called when room receives a message.
- 
- @param message Received message
- @param roomJID Room JID
- */
-- (void)chatRoomDidReceiveMessage:(QBChatMessage *)message fromRoomJID:(NSString *)roomJID;
-
-/**
- Called when received room information.
+ Called when received room information. 
  
  @param information Room information
- @param roomName Name of room
+ @param roomName Name of room 
  */
 - (void)chatRoomDidReceiveInformation:(NSDictionary *)information room:(NSString *)roomName;
 
 /**
  Fired when room was successfully created
  */
-- (void)chatRoomDidCreate:(NSString *)roomName;
+- (void)chatRoomDidCreate:(NSString*)roomName;
 
 /**
  Fired when you did enter to room
@@ -141,55 +131,32 @@
 /**
  Called when you didn't enter to room
  
- @param room Name of room which you haven't joined
+ @param room which you haven't joined
  @param error Error
  */
 - (void)chatRoomDidNotEnter:(NSString *)roomName error:(NSError *)error;
 
 /**
- Called when you didn't enter to room
- 
- @param roomJID  JID of room which you haven't joined
- @param error Error
- */
-- (void)chatRoomDidNotEnterRoomWithJID:(NSString *)roomJID error:(NSError *)error;
-
-/**
  Fired when you did leave room
  
- @param roomName Name of room which you have leaved
+ @param Name of room which you have leaved
  */
 - (void)chatRoomDidLeave:(NSString *)roomName;
 
 /**
- Fired when you did leave room
- 
- @param roomJID JID of room which you have leaved
- */
-- (void)chatRoomDidLeaveRoomWithJID:(NSString *)roomJID;
-
-/**
  Fired when you did destroy room
  
- @param roomName of room which you have destroyed
+ @param Name of room which you have destroyed
  */
 - (void)chatRoomDidDestroy:(NSString *)roomName;
 
 /**
- Called in case changing online users
+ Called in case changing online users  
  
  @param onlineUsers Array of online users
  @param roomName Name of room in which have changed online users
  */
 - (void)chatRoomDidChangeOnlineUsers:(NSArray *)onlineUsers room:(NSString *)roomName;
-
-/**
- Called in case changing online users
- 
- @param onlineUsers Array of online users
- @param roomJID JID of room in which has changed online users list
- */
-- (void)chatRoomDidChangeOnlineUsers:(NSArray *)onlineUsers roomJID:(NSString *)roomJID;
 
 /**
  Called in case receiving list of users who can join room
@@ -200,20 +167,12 @@
 - (void)chatRoomDidReceiveListOfUsers:(NSArray *)users room:(NSString *)roomName;
 
 /**
- Called in case receiving list of online users
+ Called in case receiving list of active users (joined)
  
  @param users Array of joined users
  @param roomName Name of room
  */
 - (void)chatRoomDidReceiveListOfOnlineUsers:(NSArray *)users room:(NSString *)roomName;
-
-/**
- Called in case receiving list of online users
- 
- @param users Array of joined users
- @param roomJID JID of room
- */
-- (void)chatRoomDidReceiveListOfOnlineUsers:(NSArray *)users roomJID:(NSString *)roomJID;
 
 
 #pragma mark -
@@ -296,105 +255,18 @@
 - (void)didStartUseTURNForVideoChat;
 
 
-#pragma mark -
-#pragma mark Custom audio session
-
-/**
- Called in case when user uses custom audio session for video chat
- 
- @param buffer Audio buffer
- */
-- (void)didReceiveAudioBuffer:(AudioBuffer)buffer;
-
-
-#pragma mark -
-#pragma mark Privacy
-
-/**
- Called in case receiving privacy list names
- 
- @param listNames array with privacy list names
- */
-- (void)chatDidReceivePrivacyListNames:(NSArray *)listNames;
-
-/**
- Called in case receiving privacy list
- 
- @param privacyList list with privacy items
- */
-- (void)chatDidReceivePrivacyList:(QBPrivacyList *)privacyList;
-
-/**
- Called when you failed to receive a list of privacy list names
- 
- @param error Error
- */
-- (void)chatDidNotReceivePrivacyListNamesDueToError:(id)error;
-
-/**
- Called when you failed to receive a list of privacy items
- @param name privacy list name
- @param error Error
- */
-- (void)chatDidNotReceivePrivacyListWithName:(NSString *)name error:(id)error;
-
-/**
- Called when you successfully created/edited a list
- @param name privacy list name
- */
-- (void)chatDidSetPrivacyListWithName:(NSString *)name;
-
-/**
- Called when you successfully set active privacy list
- @param name active privacy list name
- */
-- (void)chatDidSetActivePrivacyListWithName:(NSString *)name;
-
-/**
- Called when you successfully set default privacy list
- @param name default privacy list name
- */
-- (void)chatDidSetDefaultPrivacyListWithName:(NSString *)name;
-
-/**
- Called when you failed to create/edit privacy list
- @param name privacy list name
- @param error Error
- */
-- (void)chatDidNotSetPrivacyListWithName:(NSString *)name error:(id)error;
-
-/**
- Called when you failed to create/edit active privacy list
- @param name privacy list name
- @param error Error
- */
-- (void)chatDidNotSetActivePrivacyListWithName:(NSString *)name error:(id)error;
-
-/**
- Called when you failed to set default privacy list
- @param name privacy list name
- @param error Error
- */
-- (void)chatDidNotSetDefaultPrivacyListWithName:(NSString *)name error:(id)error;
-
-/**
- Called when you removed privacy list
- @param name privacy list name
- @param error Error
- */
-- (void)chatDidRemovedPrivacyListWithName:(NSString *)name;
-
-
-#pragma mark -
-#pragma mark Draft
-
+// TDB
 - (void)chatTURNServerDidDisconnect;
 - (void)chatTURNServerdidFailWithError:(NSError *)error;
 - (void)chatDidPassConnectionStep:(NSUInteger)step totalSteps:(NSUInteger)totalSteps;
 
-- (void)chatDidExceedWriteVideoQueueMaxOperationsThresholdWithCount:(NSUInteger)operationsInQueue;
-- (void)chatDidExceedWriteAudioQueueMaxOperationsThresholdWithCount:(NSUInteger)operationsInQueue;
+- (void)chatDidEexceedWriteVideoQueueMaxOperationsThresholdWithCount:(NSUInteger)operationsInQueue;
+- (void)chatDidEexceedWriteAudioQueueMaxOperationsThresholdWithCount:(NSUInteger)operationsInQueue;
 
+#pragma mark -
+#pragma mark Custom audio session
+
+- (void)didReceiveAudioBuffer:(AudioBuffer)buffer;
 
 @end
 

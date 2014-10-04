@@ -10,6 +10,10 @@
 
 @interface RGSApplicationSessionManagementService : NSObject <QBActionStatusDelegate>
 
+@property (nonatomic)NSUInteger applicationID;
+@property (nonatomic, strong)NSString *authorizationKey;
+@property (nonatomic, strong)NSString *authorizationSecret;
+
 -(void)createSessionWithCompletion:(void (^)(BOOL success))completion;
 
 @end

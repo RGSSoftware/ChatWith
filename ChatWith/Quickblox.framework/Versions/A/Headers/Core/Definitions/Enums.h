@@ -48,6 +48,13 @@ enum RestAnswerKind
 	RestAnswerKindValidationFailed = 422
 };
 
+enum QBServerZone
+{
+	QBServerZoneStage,
+	QBServerZoneDevelopment,
+	QBServerZoneProduction
+};
+
 enum QBLogLevel
 {
 	QBLogLevelNothing,

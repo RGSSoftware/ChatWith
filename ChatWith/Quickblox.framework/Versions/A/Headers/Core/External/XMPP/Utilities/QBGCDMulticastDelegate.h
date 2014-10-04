@@ -3,7 +3,7 @@
 @class QBGCDMulticastDelegateEnumerator;
 
 struct QBGCDMulticastDelegateListNode {
-	__unsafe_unretained id delegate;
+	id delegate;
 	dispatch_queue_t delegateQueue;
 	struct QBGCDMulticastDelegateListNode * prev;
     struct QBGCDMulticastDelegateListNode * next;

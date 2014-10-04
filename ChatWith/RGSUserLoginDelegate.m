@@ -112,8 +112,8 @@
     managedUser.password = qBUser.password;
     managedUser.oldPassword = qBUser.oldPassword;
     managedUser.lastRequestAt = qBUser.lastRequestAt;
-    managedUser.customData = qBUser.customData;
-    
+//    managedUser.customData = qBUser.customData;
+
     managedUser.currentUser = [NSNumber numberWithBool:YES];
     
     [MagicalRecord saveWithBlock:nil completion:^(BOOL success, NSError *error) {

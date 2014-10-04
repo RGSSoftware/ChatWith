@@ -1,5 +1,8 @@
 #import <Foundation/Foundation.h>
 
+#if TARGET_OS_IPHONE
+  #import "QBDDXML.h"
+#endif
 
 
 @interface NSXMLElement (QBXMPP)

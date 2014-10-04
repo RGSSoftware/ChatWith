@@ -15,6 +15,7 @@
 		2218FDCE19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */; };
 		2218FDD419DDC40E00E491F6 /* ManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD319DDC40E00E491F6 /* ManagedUser.m */; };
 		2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */; };
+		2218FDDB19E0571200E491F6 /* Quickblox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2218FDDA19E0571200E491F6 /* Quickblox.framework */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
 		2264746B19A90C9E00245A73 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746A19A90C9E00245A73 /* SystemConfiguration.framework */; };
@@ -33,9 +34,7 @@
 		2264748F19A90DFB00245A73 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264748E19A90DFB00245A73 /* libstdc++.6.0.9.dylib */; };
 		2264749119A90E0600245A73 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264749019A90E0600245A73 /* libstdc++.dylib */; };
 		2264749519A90FA000245A73 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264749419A90FA000245A73 /* libxml2.dylib */; };
-		2264749719A9160200245A73 /* Quickblox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264749619A9160200245A73 /* Quickblox.framework */; };
 		226E0CF119AB52A6004029D7 /* RGSAppDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 226E0CF019AB52A6004029D7 /* RGSAppDelegateSpec.m */; };
-		226E0CF219AB539E004029D7 /* Quickblox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264749619A9160200245A73 /* Quickblox.framework */; };
 		226E0CF319AB53A4004029D7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264749419A90FA000245A73 /* libxml2.dylib */; };
 		226E0CF419AB53AC004029D7 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264749019A90E0600245A73 /* libstdc++.dylib */; };
 		226E0CF519AB53AC004029D7 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264748E19A90DFB00245A73 /* libstdc++.6.0.9.dylib */; };
@@ -98,6 +97,7 @@
 		2218FDD319DDC40E00E491F6 /* ManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedUser.m; sourceTree = "<group>"; };
 		2218FDD519DF31B300E491F6 /* RGSApplicationSessionManagementService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSApplicationSessionManagementService.h; sourceTree = "<group>"; };
 		2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSApplicationSessionManagementService.m; sourceTree = "<group>"; };
+		2218FDDA19E0571200E491F6 /* Quickblox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quickblox.framework; path = ChatWith/Quickblox.framework; sourceTree = "<group>"; };
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2264746819A90C9400245A73 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2264746A19A90C9E00245A73 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -116,7 +116,6 @@
 		2264748E19A90DFB00245A73 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		2264749019A90E0600245A73 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		2264749419A90FA000245A73 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		2264749619A9160200245A73 /* Quickblox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quickblox.framework; path = ChatWith/Quickblox.framework; sourceTree = "<group>"; };
 		226E0CF019AB52A6004029D7 /* RGSAppDelegateSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSAppDelegateSpec.m; sourceTree = "<group>"; };
 		22889AC919D322A400F0541D /* RGSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSLoginViewController.h; sourceTree = "<group>"; };
 		22889ACA19D322A400F0541D /* RGSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSLoginViewController.m; sourceTree = "<group>"; };
@@ -166,7 +165,7 @@
 				2264747319A90CCD00245A73 /* CoreMedia.framework in Frameworks */,
 				2264747119A90CC400245A73 /* AudioToolbox.framework in Frameworks */,
 				22D7BCB719A8D45100D2C01C /* CoreData.framework in Frameworks */,
-				2264749719A9160200245A73 /* Quickblox.framework in Frameworks */,
+				2218FDDB19E0571200E491F6 /* Quickblox.framework in Frameworks */,
 				2264746F19A90CB500245A73 /* CoreLocation.framework in Frameworks */,
 				22D7BCB319A8D45100D2C01C /* CoreGraphics.framework in Frameworks */,
 				2264746D19A90CA800245A73 /* MobileCoreServices.framework in Frameworks */,
@@ -200,7 +199,6 @@
 				62CA3AD4C4404E458FBC2653 /* libPods-ChatWithTests.a in Frameworks */,
 				226E0CF619AB53AC004029D7 /* libxml2.2.dylib in Frameworks */,
 				226E0D0119AB53B4004029D7 /* MobileCoreServices.framework in Frameworks */,
-				226E0CF219AB539E004029D7 /* Quickblox.framework in Frameworks */,
 				226E0D0019AB53B4004029D7 /* CoreLocation.framework in Frameworks */,
 				226E0CF519AB53AC004029D7 /* libstdc++.6.0.9.dylib in Frameworks */,
 				226E0CFC19AB53B4004029D7 /* CoreVideo.framework in Frameworks */,
@@ -282,7 +280,7 @@
 		22D7BCAF19A8D45100D2C01C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2264749619A9160200245A73 /* Quickblox.framework */,
+				2218FDDA19E0571200E491F6 /* Quickblox.framework */,
 				2264749419A90FA000245A73 /* libxml2.dylib */,
 				2264749019A90E0600245A73 /* libstdc++.dylib */,
 				2264748E19A90DFB00245A73 /* libstdc++.6.0.9.dylib */,

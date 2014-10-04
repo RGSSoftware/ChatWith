@@ -5,10 +5,10 @@
  *
  */
 
-#import <Foundation/Foundation.h>
-
 #define N(V) (V==nil)?@"":V
 #define S(S,...) [NSString stringWithFormat:S,__VA_ARGS__]
+
+#define quickbloxStandartServerUrl @"quickblox.com"
 
 #define QBToken @"Qb-Token"
 
@@ -35,7 +35,6 @@ extern NSString* const kBaseServiceErrorSocialCredentialsNotFound;
 //Exceptions
 extern NSString* const kBaseServiceExceptionMissedAuthorization;
 extern NSString* const kBaseServiceExceptionMissedCredentials;
-extern NSString* const kBaseServiceExceptionMissedAccountKey;
 
 //Service Names
 extern NSString* const QuickbloxServiceChat;
@@ -67,5 +66,3 @@ extern NSString* const QuickbloxSocialDialogDidCloseNotification;
 #define E2(A,B) @throw [NSException exceptionWithName:A reason:B userInfo:nil];
 #define EB(B,C) E(kBaseServiceException, B,C)
 #define EB2(B) E2(kBaseServiceException, B)
-
-#define QB_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
