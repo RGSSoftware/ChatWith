@@ -12,6 +12,17 @@
 
 @implementation RGSApplicationSessionManagementService
 
++ (instancetype)shared{
+    static id shared_ = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shared_ = [[self alloc] init];
+    });
+    
+    return shared_;
+}
+
 -(void)createSessionWithCompletion:(void (^)(BOOL))completion{
     [QBRequest createSessionWithSuccessBlock:^(QBResponse *response, QBASession *session) {
         [[LocalStorageService shared].applicationSession MR_deleteEntity];

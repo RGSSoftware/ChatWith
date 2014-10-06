@@ -29,12 +29,16 @@
         if (success) {
             if (self.localStorageService.savedUser) {
                 if (self.localStorageService.savedUser.isSignIn) {
-                    //retore last Visible screen
-                    
-//                    id screen = [[NSClassFromString([self.userDefaults objectForKey:@"lastVisibleViewController"]) alloc] init];
-//                    
-//                    if ([screen isKindOfClass:[UIViewController class]]) {
-//                        self.window.rootViewController = (UIViewController *)screen;
+                    //login user
+                    [RGSUserMangementService loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.login successBlock:^(BOOL success) {
+                        if(success){ //retore last visible screen
+                        } else {
+                            //retry to login 3 more times
+                            //after 3 tries and still not success
+                            //show alert view error
+                            //show loginViewController
+                        }
+                            }];
                 }
             } else {
                 self.loginViewController.userManger = [RGSUserMangementService new];

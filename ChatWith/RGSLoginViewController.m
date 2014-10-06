@@ -9,6 +9,8 @@
 #import "RGSLoginViewController.h"
 #import "NSString+alphaOnly.h"
 #import "RGSUserMangementService.h"
+#import "RGSChatService.h"
+#import "LocalStorageService.h"
 
 @interface RGSLoginViewController ()
 
@@ -82,9 +84,10 @@
                                                                successBlock:^(BOOL success) {
                                                    if(success) {
                                                        //loign to chat
-                                                            //on success, segway to next screen
                                                        
-                                                       
+                                                       [[RGSChatService new] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
+                                                           //on success, segway to next screen
+                                                       }];
                                                    }
                                                }];
                                              

@@ -16,33 +16,17 @@
     
 }
 
-static LocalStorageService *_instance= nil;
-static dispatch_once_t once_token = 0;
-
-+ (instancetype)shared
-{
-	dispatch_once(&once_token, ^{
-          if (_instance == nil) {
-		_instance = [[LocalStorageService alloc] init];
-          }
-	});
-	
-	return _instance;
-}
-+(void)setSharedInstance:(LocalStorageService *)instance {
-    once_token = 0; // resets the once_token so dispatch_once will run again
-    _instance = instance;
++ (instancetype)shared{
+    static id shared_ = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shared_ = [[self alloc] init];
+    });
+    
+    return shared_;
 }
 
-
-- (id)init
-{
-    self = [super init];
-    if(self){
-        messagesHistory = [NSMutableDictionary dictionary];
-    }
-    return self;
-}
 -(ManagedUser *)savedUser{
     return [ManagedUser MR_findFirstByAttribute:@"currentUser" withValue:@YES];
 }

@@ -10,6 +10,8 @@
 
 @interface RGSApplicationSessionManagementService : NSObject
 
++ (instancetype)shared;
+
 @property (nonatomic)NSUInteger applicationID;
 @property (nonatomic, strong)NSString *authorizationKey;
 @property (nonatomic, strong)NSString *authorizationSecret;

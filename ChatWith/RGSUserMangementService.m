@@ -12,6 +12,17 @@
 
 @implementation RGSUserMangementService
 
++ (instancetype)shared{
+    static id shared_ = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shared_ = [[self alloc] init];
+    });
+    
+    return shared_;
+}
+
 +(void)isUsernameTaken:(NSString *)username successBlock:(void (^)(BOOL isTaken))results{
     [QBRequest userWithLogin:username successBlock:^(QBResponse *response, QBUUser *user) {
         results(YES);

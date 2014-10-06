@@ -17,10 +17,12 @@
 @property (nonatomic, strong)ApplicationSession *applicationSession;
 
 + (instancetype)shared;
-+ (void)setSharedInstance:(id)sharedInstance;
+//+ (void)setSharedInstance:(id)sharedInstance;
 
 
 -(ManagedUser *)savedUser;
+
+-(QBUUser *)savedUserAsQBUUser;
 
 -(void)crateApplicationSessionWithQBASession:(QBASession *)session successBlock:(void (^)(BOOL success, NSError *error))successBlock;
 
