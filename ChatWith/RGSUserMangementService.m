@@ -28,13 +28,19 @@
 }
 
 
--(void)registerUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))success{
-    self.registerSuccessBlock = success;
-    
+-(void)registerUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))results{
     QBUUser *user = [QBUUser user];
     user.login = username;
     user.password = password;
     [self.qBSUsers signUp:user delegate:self];
+    [QBRequest signUp:user
+         successBlock:^(QBResponse *response, QBUUser *user) {
+             [[LocalStorageService shared] creteCurrentUserWithQBUser:user successBlock:^(BOOL success, NSError *error) {
+                 if(success) results(YES);
+             }];
+         } errorBlock:^(QBResponse *response) {
+             results(NO);
+         }];
 }
 
 -(void)loginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))success{
