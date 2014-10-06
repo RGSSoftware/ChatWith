@@ -43,13 +43,12 @@
          }];
 }
 
--(void)loginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))success{
-    self.loginSuccessBlock = success;
+-(void)loginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))results{
     if([[LocalStorageService shared] savedUser]){
         //If user is trying to login, but there Credentials are saved
         if([[[LocalStorageService shared] savedUser].login isEqualToString:username]){
             //login saved user
-            [self.qBSUsers logInWithUserLogin:username password:password delegate:self];
+            [self quickBloxLoginUsername:username password:password successBlock:results];
         } else {
             //when user is not a saved user
             
@@ -58,38 +57,46 @@
             //save new user with {username and password}
             [[LocalStorageService shared] createCurrentUserWithusername:username password:password successBlock:^(BOOL success, NSError *error) {
                 //login new user
-                if(success) [self.qBSUsers logInWithUserLogin:username password:password delegate:self];
+                if(success) [self quickBloxLoginUsername:username password:password successBlock:results];
             }];
         }
     } else {
         //save new user with {username and password}
         [[LocalStorageService shared] createCurrentUserWithusername:username password:password successBlock:^(BOOL success, NSError *error) {
             //login new user
-            if(success) [self.qBSUsers logInWithUserLogin:username password:password delegate:self];
+            if(success) [self quickBloxLoginUsername:username password:password successBlock:results];
         }];
     }
     
     
 }
 
--(void)completedWithResult:(Result *)result{
-    
-    if([[NSString stringWithFormat:@"%@", [result class]]
-        isEqualToString:[NSString stringWithFormat:@"%@", [QBUUserResult class]]]){
-        if(!result.success && result.status == 404) {self.userNameTakenBlock(NO);}
-        else if (result.success && result.status == 200) {self.userNameTakenBlock(YES);}
-        else if (result.success && result.status == 201) {
-            
-            [[LocalStorageService shared] creteCurrentUserWithQBUser:((QBUUserResult *)result).user successBlock:^(BOOL success, NSError *error) {
-                if(success) self.registerSuccessBlock(YES);
-            }];
-        }
-    } else if ([[NSString stringWithFormat:@"%@", [result class]]
-                isEqualToString:[NSString stringWithFormat:@"%@", [QBUUserLogInResult class]]]){
-        if(!result.success && result.status == 401) self.loginSuccessBlock(NO);
-        else if (result.success && result.status == 202) self.loginSuccessBlock(YES);
-    }
+-(void)quickBloxLoginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))results{
+    [QBRequest logInWithUserLogin:username password:password successBlock:^(QBResponse *response, QBUUser *user) {
+        results(YES);
+    } errorBlock:^(QBResponse *response) {
+        results(NO);
+    }];
 }
+
+//-(void)completedWithResult:(Result *)result{
+//    
+//    if([[NSString stringWithFormat:@"%@", [result class]]
+//        isEqualToString:[NSString stringWithFormat:@"%@", [QBUUserResult class]]]){
+//        if(!result.success && result.status == 404) {self.userNameTakenBlock(NO);}
+//        else if (result.success && result.status == 200) {self.userNameTakenBlock(YES);}
+//        else if (result.success && result.status == 201) {
+//            
+//            [[LocalStorageService shared] creteCurrentUserWithQBUser:((QBUUserResult *)result).user successBlock:^(BOOL success, NSError *error) {
+//                if(success) self.registerSuccessBlock(YES);
+//            }];
+//        }
+//    } else if ([[NSString stringWithFormat:@"%@", [result class]]
+//                isEqualToString:[NSString stringWithFormat:@"%@", [QBUUserLogInResult class]]]){
+//        if(!result.success && result.status == 401) self.loginSuccessBlock(NO);
+//        else if (result.success && result.status == 202) self.loginSuccessBlock(YES);
+//    }
+//}
 
 -(Class)qBSUsers{
     if (_qBSUsers == nil)
