@@ -55,7 +55,7 @@
 
     if ([self isUserCredentialsValid]) {
         
-        [self.userManger loginUsername:self.usernameTextField.text
+        [RGSUserMangementService loginUsername:self.usernameTextField.text
                             password:self.passwordTextField.text
                         successBlock:^(BOOL success) {
                             if(success){
@@ -69,15 +69,15 @@
 }
 -(IBAction)registerUser:(id)sender{
     if ([self isUserCredentialsValid]) {
-            [self.userManger isUsernameTaken:self.usernameTextField.text
+            [RGSUserMangementService isUsernameTaken:self.usernameTextField.text
                               successBlock:^(BOOL isTaken) {
                 if(!isTaken){
-                    [self.userManger registerUsername:self.usernameTextField.text
+                    [RGSUserMangementService registerUsername:self.usernameTextField.text
                                            password:self.passwordTextField.text
                                        successBlock:^(BOOL succes) {
                                            if(succes){
                                              //login user
-                                               [self.userManger loginUsername:self.usernameTextField.text
+                                               [RGSUserMangementService loginUsername:self.usernameTextField.text
                                                                    password:self.passwordTextField.text
                                                                successBlock:^(BOOL success) {
                                                    if(success) {
