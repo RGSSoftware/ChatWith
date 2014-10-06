@@ -10,13 +10,6 @@
 #import "ManagedUser.h"
 #import "LocalStorageService.h"
 
-@interface RGSUserMangementService ()
-@property (nonatomic, strong)void(^userNameTakenBlock)(BOOL taken);
-@property (nonatomic, strong)void(^registerSuccessBlock)(BOOL taken);
-@property (nonatomic, strong)void(^loginSuccessBlock)(BOOL taken);
-@end
-
-
 @implementation RGSUserMangementService
 
 -(void)isUsernameTaken:(NSString *)username successBlock:(void (^)(BOOL isTaken))results{
@@ -32,7 +25,6 @@
     QBUUser *user = [QBUUser user];
     user.login = username;
     user.password = password;
-    [self.qBSUsers signUp:user delegate:self];
     [QBRequest signUp:user
          successBlock:^(QBResponse *response, QBUUser *user) {
              [[LocalStorageService shared] creteCurrentUserWithQBUser:user successBlock:^(BOOL success, NSError *error) {
@@ -77,32 +69,5 @@
     } errorBlock:^(QBResponse *response) {
         results(NO);
     }];
-}
-
-//-(void)completedWithResult:(Result *)result{
-//    
-//    if([[NSString stringWithFormat:@"%@", [result class]]
-//        isEqualToString:[NSString stringWithFormat:@"%@", [QBUUserResult class]]]){
-//        if(!result.success && result.status == 404) {self.userNameTakenBlock(NO);}
-//        else if (result.success && result.status == 200) {self.userNameTakenBlock(YES);}
-//        else if (result.success && result.status == 201) {
-//            
-//            [[LocalStorageService shared] creteCurrentUserWithQBUser:((QBUUserResult *)result).user successBlock:^(BOOL success, NSError *error) {
-//                if(success) self.registerSuccessBlock(YES);
-//            }];
-//        }
-//    } else if ([[NSString stringWithFormat:@"%@", [result class]]
-//                isEqualToString:[NSString stringWithFormat:@"%@", [QBUUserLogInResult class]]]){
-//        if(!result.success && result.status == 401) self.loginSuccessBlock(NO);
-//        else if (result.success && result.status == 202) self.loginSuccessBlock(YES);
-//    }
-//}
-
--(Class)qBSUsers{
-    if (_qBSUsers == nil)
-    {
-        _qBSUsers = [QBUsers class];
-    }
-    return _qBSUsers;
 }
 @end
