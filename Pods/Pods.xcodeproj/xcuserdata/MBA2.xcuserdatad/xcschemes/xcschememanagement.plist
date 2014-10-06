@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-QuickBlox.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0A88B0E9696440149714739C</key>
+		<key>055DC9EC3DFD4E9F9B09ED8D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>40836F9548984C97A848F52A</key>
+		<key>489E9A2187C44743A167CFA1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5DCEB407C83D412FA06E6DB8</key>
+		<key>5171973DA11249F39019F1C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF765FA5304F4CF8BCDB46E5</key>
+		<key>62118DFD359E48118C941A5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC7EC22B67A8475C9330F454</key>
+		<key>6EA56BEB12BA46A387DB1A0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C8D79B6D24F14D07BEB0EADF</key>
+		<key>A7AA0A175A9D40BEA1399B06</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D112151626E747F293405FEF</key>
+		<key>C4A4888200424921BD0CDF58</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEDD776EE5E04FB29A0F33AF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

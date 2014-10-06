@@ -81,7 +81,10 @@
                                                                    password:self.passwordTextField.text
                                                                successBlock:^(BOOL success) {
                                                    if(success) {
-                                                       //segway to next screen
+                                                       //loign to chat
+                                                            //on success, segway to next screen
+                                                       
+                                                       
                                                    }
                                                }];
                                              

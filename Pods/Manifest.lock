@@ -7,12 +7,14 @@ PODS:
   - OCMock (3.1.1)
   - OCMockito (1.3.1):
     - OCHamcrest (~> 4.0)
+  - QuickBlox (2.0.9)
 
 DEPENDENCIES:
   - Kiwi
   - MagicalRecord
   - OCMock
   - OCMockito
+  - QuickBlox
 
 SPEC CHECKSUMS:
   Kiwi: 54bece5b35564d9b8e03c608d926f1a22fcfc589
@@ -20,5 +22,6 @@ SPEC CHECKSUMS:
   OCHamcrest: b464725bbb48d0f1cd9c6f4ec3cb35fe0c4f2b94
   OCMock: f6cb8c162ab9d5620dddf411282c7b2c0ee78854
   OCMockito: 57b8c4bb54ff3a4a14eb2174f9e57faf9f56efb6
+  QuickBlox: 5a31f72824caa1903d2a3a893fec3cf1ed53591a
 
 COCOAPODS: 0.32.1

@@ -1,5 +1,6 @@
+FRAMEWORK_SEARCH_PATHS = "$(PODS_ROOT)/QuickBlox"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/Kiwi" "${PODS_ROOT}/Headers/MagicalRecord" "${PODS_ROOT}/Headers/OCHamcrest" "${PODS_ROOT}/Headers/OCMock" "${PODS_ROOT}/Headers/OCMockito"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/Kiwi" -isystem "${PODS_ROOT}/Headers/MagicalRecord" -isystem "${PODS_ROOT}/Headers/OCHamcrest" -isystem "${PODS_ROOT}/Headers/OCMock" -isystem "${PODS_ROOT}/Headers/OCMockito"
-OTHER_LDFLAGS = -ObjC -framework CoreData
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/Kiwi" "${PODS_ROOT}/Headers/MagicalRecord" "${PODS_ROOT}/Headers/OCHamcrest" "${PODS_ROOT}/Headers/OCMock" "${PODS_ROOT}/Headers/OCMockito" "${PODS_ROOT}/Headers/QuickBlox" /usr/include/libxml2
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/Kiwi" -isystem "${PODS_ROOT}/Headers/MagicalRecord" -isystem "${PODS_ROOT}/Headers/OCHamcrest" -isystem "${PODS_ROOT}/Headers/OCMock" -isystem "${PODS_ROOT}/Headers/OCMockito" -isystem "${PODS_ROOT}/Headers/QuickBlox"
+OTHER_LDFLAGS = -ObjC -lresolv -lstdc++ -lxml2 -lz -framework AVFoundation -framework Accelerate -framework AudioToolbox -framework CFNetwork -framework CoreData -framework CoreGraphics -framework CoreLocation -framework CoreMedia -framework CoreVideo -framework MobileCoreServices -framework Quickblox -framework SystemConfiguration -framework UIKit
 PODS_ROOT = ${SRCROOT}/Pods

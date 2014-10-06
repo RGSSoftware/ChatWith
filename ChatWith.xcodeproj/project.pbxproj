@@ -15,7 +15,6 @@
 		2218FDCE19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */; };
 		2218FDD419DDC40E00E491F6 /* ManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD319DDC40E00E491F6 /* ManagedUser.m */; };
 		2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */; };
-		2218FDDB19E0571200E491F6 /* Quickblox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2218FDDA19E0571200E491F6 /* Quickblox.framework */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
 		2264746B19A90C9E00245A73 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746A19A90C9E00245A73 /* SystemConfiguration.framework */; };
@@ -97,7 +96,6 @@
 		2218FDD319DDC40E00E491F6 /* ManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedUser.m; sourceTree = "<group>"; };
 		2218FDD519DF31B300E491F6 /* RGSApplicationSessionManagementService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSApplicationSessionManagementService.h; sourceTree = "<group>"; };
 		2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSApplicationSessionManagementService.m; sourceTree = "<group>"; };
-		2218FDDA19E0571200E491F6 /* Quickblox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quickblox.framework; path = ChatWith/Quickblox.framework; sourceTree = "<group>"; };
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2264746819A90C9400245A73 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2264746A19A90C9E00245A73 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -165,7 +163,6 @@
 				2264747319A90CCD00245A73 /* CoreMedia.framework in Frameworks */,
 				2264747119A90CC400245A73 /* AudioToolbox.framework in Frameworks */,
 				22D7BCB719A8D45100D2C01C /* CoreData.framework in Frameworks */,
-				2218FDDB19E0571200E491F6 /* Quickblox.framework in Frameworks */,
 				2264746F19A90CB500245A73 /* CoreLocation.framework in Frameworks */,
 				22D7BCB319A8D45100D2C01C /* CoreGraphics.framework in Frameworks */,
 				2264746D19A90CA800245A73 /* MobileCoreServices.framework in Frameworks */,
@@ -282,7 +279,6 @@
 		22D7BCAF19A8D45100D2C01C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2218FDDA19E0571200E491F6 /* Quickblox.framework */,
 				2264749419A90FA000245A73 /* libxml2.dylib */,
 				2264749019A90E0600245A73 /* libstdc++.dylib */,
 				2264748E19A90DFB00245A73 /* libstdc++.6.0.9.dylib */,
