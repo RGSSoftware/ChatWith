@@ -20,9 +20,11 @@
 @implementation RGSUserMangementService
 
 -(void)isUsernameTaken:(NSString *)username successBlock:(void (^)(BOOL isTaken))results{
-    self.userNameTakenBlock = results;
-    
-    [self.qBSUsers userWithLogin:username delegate:self];
+    [QBRequest userWithLogin:username successBlock:^(QBResponse *response, QBUUser *user) {
+        results(YES);
+    } errorBlock:^(QBResponse *response) {
+        if(response.status == QBResponseStatusCodeNotFound) results(NO);
+    }];
 }
 
 
