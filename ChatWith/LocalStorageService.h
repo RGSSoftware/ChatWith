@@ -9,17 +9,20 @@
 #import <Foundation/Foundation.h>
 @class UserModel;
 @class ManagedUser;
+@class ApplicationSession;
+
 
 @interface LocalStorageService : NSObject
 
-//@property (nonatomic, strong) QBUUser *currentUser;
+@property (nonatomic, strong)ApplicationSession *applicationSession;
 
 + (instancetype)shared;
-//- (void)saveMessageToHistory:(QBChatMessage *)message withUserID:(NSUInteger)userID;
-//- (NSMutableArray *)messageHistoryWithUserID:(NSUInteger)userID;
 + (void)setSharedInstance:(id)sharedInstance;
--(void)saveCurrentUser:(UserModel *)user;
+
+
 -(ManagedUser *)savedUser;
+
+-(void)crateApplicationSessionWithQBASession:(QBASession *)session successBlock:(void (^)(BOOL success, NSError *error))successBlock;
 
 -(void)createCurrentUserWithusername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL success, NSError *error))successBlock;
 

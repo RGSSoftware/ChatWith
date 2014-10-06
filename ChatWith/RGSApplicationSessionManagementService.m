@@ -7,6 +7,8 @@
 //
 
 #import "RGSApplicationSessionManagementService.h"
+#import "LocalStorageService.h"
+#import "ApplicationSession.h"
 
 @interface RGSApplicationSessionManagementService ()
 @property (nonatomic, strong)void(^sessionCreationBlock)(BOOL success);
@@ -16,9 +18,16 @@
 @implementation RGSApplicationSessionManagementService
 
 -(void)createSessionWithCompletion:(void (^)(BOOL))completion{
-    self.sessionCreationBlock = completion;
+//    self.sessionCreationBlock = completion;
     
-    [QBAuth createSessionWithDelegate:self];
+    [QBRequest createSessionWithSuccessBlock:^(QBResponse *response, QBASession *session) {
+        [[LocalStorageService shared].applicationSession MR_deleteEntity];
+        [[LocalStorageService shared] crateApplicationSessionWithQBASession:session successBlock:^(BOOL success, NSError *error) {
+            completion(success);
+        }];
+    } errorBlock:^(QBResponse *response) {
+        completion(NO);
+    }];
 }
 
 
@@ -31,27 +40,29 @@
 }
 
 -(NSUInteger)applicationID{
-    return [QBSettings applicationID];
+    
+    return [QBApplication sharedApplication].applicationId;
 }
 
 -(void)setApplicationID:(NSUInteger)applicationID{
-    [QBSettings setApplicationID:applicationID];
+    [QBApplication sharedApplication].applicationId = applicationID;
 }
 
--(NSString *)authorizationKey{
-    return [QBSettings authorizationKey];
-}
 
 -(void)setAuthorizationKey:(NSString *)authorizationKey{
-    [QBSettings setAuthorizationKey:authorizationKey];
-}
-
--(NSString *)authorizationSecret{
-    return [QBSettings authorizationSecret];
+    [QBConnection registerServiceKey:authorizationKey];
 }
 
 -(void)setAuthorizationSecret:(NSString *)authorizationSecret{
-    [QBSettings setAuthorizationSecret:authorizationSecret];
+    [QBConnection registerServiceSecret:authorizationSecret];
+}
+
+-(NSString *)accountKey{
+   return [QBSettings accountKey];
+}
+
+-(void)setAccountKey:(NSString *)accountKey{
+    [QBSettings setAccountKey:accountKey];
 }
 
 

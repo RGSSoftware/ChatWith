@@ -23,6 +23,7 @@
     self.applicationSessionManager.applicationID = 7632;
     self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";
     self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
+    self.applicationSessionManager.accountKey = @"byNoqE9AHiQsoffhPgdt";
     
     [self.applicationSessionManager createSessionWithCompletion:^(BOOL success) {
         if (success) {

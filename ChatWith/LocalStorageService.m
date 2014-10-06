@@ -9,6 +9,8 @@
 #import "LocalStorageService.h"
 #import "ManagedUser.h"
 
+#import "ApplicationSession.h"
+
 @implementation LocalStorageService{
     NSMutableDictionary *messagesHistory;
     
@@ -42,7 +44,7 @@ static dispatch_once_t once_token = 0;
     return self;
 }
 -(ManagedUser *)savedUser{
-    return [[ManagedUser MR_findByAttribute:@"currentUser" withValue:@YES] firstObject];
+    return [ManagedUser MR_findFirstByAttribute:@"currentUser" withValue:@YES];
 }
 
 //- (void)saveMessageToHistory:(QBChatMessage *)message withUserID:(NSUInteger)userID
@@ -93,6 +95,24 @@ static dispatch_once_t once_token = 0;
         managedUser.lastRequestAt = qBUser.lastRequestAt;
         
         managedUser.currentUser = [NSNumber numberWithBool:YES];
+    }   completion:^(BOOL success, NSError *error) {
+        successBlock(success, error);
+    }];
+}
+-(ApplicationSession *)applicationSession{
+    return [ApplicationSession MR_findFirst];
+}
+
+-(void)crateApplicationSessionWithQBASession:(QBASession *)session successBlock:(void (^)(BOOL, NSError *))successBlock{
+    [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
+        ApplicationSession *applicationSession = [ApplicationSession MR_createEntity];
+        applicationSession.applicationID = [NSNumber numberWithUnsignedInteger:session.applicationID];
+        applicationSession.userID = [NSNumber numberWithUnsignedInteger:session.userID];
+        applicationSession.deviceID = [NSNumber numberWithUnsignedInteger:session.deviceID];
+        applicationSession.timstamp = [NSNumber numberWithUnsignedInteger:session.timestamp];
+        applicationSession.nonce = [NSNumber numberWithInteger:session.nonce];
+        applicationSession.token = session.token;
+        
     }   completion:^(BOOL success, NSError *error) {
         successBlock(success, error);
     }];

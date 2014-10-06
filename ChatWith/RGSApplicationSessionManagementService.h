@@ -13,6 +13,7 @@
 @property (nonatomic)NSUInteger applicationID;
 @property (nonatomic, strong)NSString *authorizationKey;
 @property (nonatomic, strong)NSString *authorizationSecret;
+@property (nonatomic, strong)NSString *accountKey;
 
 -(void)createSessionWithCompletion:(void (^)(BOOL success))completion;
 
