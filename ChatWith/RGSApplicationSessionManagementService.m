@@ -10,16 +10,9 @@
 #import "LocalStorageService.h"
 #import "ApplicationSession.h"
 
-@interface RGSApplicationSessionManagementService ()
-@property (nonatomic, strong)void(^sessionCreationBlock)(BOOL success);
-
-@end
-
 @implementation RGSApplicationSessionManagementService
 
 -(void)createSessionWithCompletion:(void (^)(BOOL))completion{
-//    self.sessionCreationBlock = completion;
-    
     [QBRequest createSessionWithSuccessBlock:^(QBResponse *response, QBASession *session) {
         [[LocalStorageService shared].applicationSession MR_deleteEntity];
         [[LocalStorageService shared] crateApplicationSessionWithQBASession:session successBlock:^(BOOL success, NSError *error) {
@@ -28,15 +21,6 @@
     } errorBlock:^(QBResponse *response) {
         completion(NO);
     }];
-}
-
-
--(void)completedWithResult:(Result *)result{
-    if([[NSString stringWithFormat:@"%@", [result class]]
-        isEqualToString:[NSString stringWithFormat:@"%@", [QBAAuthSessionCreationResult class]]] ){
-        if(!result.success) self.sessionCreationBlock(NO);
-        else if (result.success && result.status == 201) {self.sessionCreationBlock(YES);}
-    } else self.sessionCreationBlock(NO);
 }
 
 -(NSUInteger)applicationID{

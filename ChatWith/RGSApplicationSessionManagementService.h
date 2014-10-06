@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RGSApplicationSessionManagementService : NSObject <QBActionStatusDelegate>
+@interface RGSApplicationSessionManagementService : NSObject
 
 @property (nonatomic)NSUInteger applicationID;
 @property (nonatomic, strong)NSString *authorizationKey;
