@@ -12,16 +12,24 @@
 
 @implementation RGSApplicationSessionManagementService
 
-+ (instancetype)shared{
-    static id shared_ = nil;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        shared_ = [[self alloc] init];
+static RGSApplicationSessionManagementService *_instance = nil;
+static dispatch_once_t once_token = 0;
+
++ (instancetype)shared
+{
+    dispatch_once(&once_token, ^{
+        if (_instance == nil) {
+            _instance = [[RGSApplicationSessionManagementService alloc] init];
+        }
     });
     
-    return shared_;
+    return _instance;
 }
++(void)setSharedInstance:(RGSApplicationSessionManagementService *)instance {
+    once_token = 0; // resets the once_token so dispatch_once will run again
+    _instance = instance;
+}
+
 
 -(void)createSessionWithCompletion:(void (^)(BOOL))completion{
     [QBRequest createSessionWithSuccessBlock:^(QBResponse *response, QBASession *session) {

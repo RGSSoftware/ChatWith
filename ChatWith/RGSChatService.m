@@ -10,20 +10,26 @@
 
 @interface RGSChatService () <QBChatDelegate>
 @property (nonatomic, strong)void(^loginSuccessBlock)(BOOL success);
-
 @end
 
 @implementation RGSChatService
 
-+ (instancetype)shared{
-    static id shared_ = nil;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        shared_ = [[self alloc] init];
+static RGSChatService *_instance = nil;
+static dispatch_once_t once_token = 0;
+
++ (instancetype)shared
+{
+    dispatch_once(&once_token, ^{
+        if (_instance == nil) {
+            _instance = [[RGSChatService alloc] init];
+        }
     });
     
-    return shared_;
+    return _instance;
+}
++(void)setSharedInstance:(RGSChatService *)instance {
+    once_token = 0; // resets the once_token so dispatch_once will run again
+    _instance = instance;
 }
 
 -(void)loginUser:(QBUUser *)user successBlock:(void (^)(BOOL))success{

@@ -12,18 +12,25 @@
 
 @implementation RGSUserMangementService
 
-+ (instancetype)shared{
-    static id shared_ = nil;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        shared_ = [[self alloc] init];
+static RGSUserMangementService *_instance = nil;
+static dispatch_once_t once_token = 0;
+
++ (instancetype)shared
+{
+    dispatch_once(&once_token, ^{
+        if (_instance == nil) {
+            _instance = [[RGSUserMangementService alloc] init];
+        }
     });
     
-    return shared_;
+    return _instance;
+}
++(void)setSharedInstance:(RGSUserMangementService *)instance {
+    once_token = 0; // resets the once_token so dispatch_once will run again
+    _instance = instance;
 }
 
-+(void)isUsernameTaken:(NSString *)username successBlock:(void (^)(BOOL isTaken))results{
+-(void)isUsernameTaken:(NSString *)username successBlock:(void (^)(BOOL isTaken))results{
     [QBRequest userWithLogin:username successBlock:^(QBResponse *response, QBUUser *user) {
         results(YES);
     } errorBlock:^(QBResponse *response) {
@@ -32,7 +39,7 @@
 }
 
 
-+(void)registerUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))results{
+-(void)registerUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))results{
     QBUUser *user = [QBUUser user];
     user.login = username;
     user.password = password;
@@ -46,7 +53,7 @@
          }];
 }
 
-+(void)loginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))results{
+-(void)loginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))results{
     if([[LocalStorageService shared] savedUser]){
         //If user is trying to login, but there Credentials are saved
         if([[[LocalStorageService shared] savedUser].login isEqualToString:username]){
@@ -74,7 +81,7 @@
     
 }
 
-+(void)quickBloxLoginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))results{
+-(void)quickBloxLoginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))results{
     [QBRequest logInWithUserLogin:username password:password successBlock:^(QBResponse *response, QBUUser *user) {
         results(YES);
     } errorBlock:^(QBResponse *response) {

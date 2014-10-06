@@ -28,6 +28,6 @@
 @property (nonatomic, strong)RGSApplicationSessionManagementService *applicationSessionManager;
 
 @property (nonatomic, strong)RGSLoginViewController *loginViewController;
-@property (nonatomic, strong)RGSUserMangementService *userLoginDelegate;
+@property (nonatomic, strong)RGSUserMangementService *userManager;
 
 @end

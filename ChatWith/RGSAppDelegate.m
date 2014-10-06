@@ -30,7 +30,7 @@
             if (self.localStorageService.savedUser) {
                 if (self.localStorageService.savedUser.isSignIn) {
                     //login user
-                    [RGSUserMangementService loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.login successBlock:^(BOOL success) {
+                    [self.userManager loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.login successBlock:^(BOOL success) {
                         if(success){ //retore last visible screen
                         } else {
                             //retry to login 3 more times
@@ -55,11 +55,12 @@
 }
 
 -(RGSApplicationSessionManagementService *)applicationSessionManager{
-    if (_applicationSessionManager == nil)
-    {
-        _applicationSessionManager = [RGSApplicationSessionManagementService new];
-    }
-    return _applicationSessionManager;
+    return [RGSApplicationSessionManagementService shared];
+}
+
+-(RGSUserMangementService *)userManager{
+   return [RGSUserMangementService shared];
+    
 }
 
 -(Class)qBSettings{
@@ -90,11 +91,4 @@
     return _loginViewController;
 }
 
--(RGSUserMangementService *)userLoginDelegate{
-    if (_userLoginDelegate == nil)
-    {
-        _userLoginDelegate = [RGSUserMangementService new];
-    }
-    return _userLoginDelegate;
-}
 @end

@@ -14,9 +14,9 @@
 
 + (instancetype)shared;
 
-+(void)registerUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL success))success;
-+(void)loginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL success))success;
-+(void)isUsernameTaken:(NSString *)username successBlock:(void (^)(BOOL isTaken))results;
+-(void)registerUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL success))success;
+-(void)loginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL success))success;
+-(void)isUsernameTaken:(NSString *)username successBlock:(void (^)(BOOL isTaken))results;
 @end
 
 
