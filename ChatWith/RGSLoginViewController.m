@@ -84,9 +84,12 @@
                                                                successBlock:^(BOOL success) {
                                                    if(success) {
                                                        //loign to chat
-                                                       
-                                                       [[RGSChatService new] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
-                                                           //on success, segway to next screen
+                                                       [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
+                                                           
+                                                           //on success, instantiate initial ViewController from storyboard
+                                                           if(success){
+                                                               [self presentViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController] animated:YES completion:nil];
+                                                           }
                                                        }];
                                                    }
                                                }];

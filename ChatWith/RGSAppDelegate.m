@@ -13,6 +13,7 @@
 #import "ManagedUser.h"
 
 #import "RGSApplicationSessionManagementService.h"
+#import "RGSChatService.h"
 
 @implementation RGSAppDelegate
 
@@ -31,21 +32,25 @@
                 if (self.localStorageService.savedUser.isSignIn) {
                     //login user
                     [self.userManager loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.login successBlock:^(BOOL success) {
-                        if(success){ //retore last visible screen
+                        if(success){
+                            //login to chat
+                            [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
+                                
+                                //on success, retore last visible screen
+                                if(success){
+                                    
+                                }
+                            }];
+                            
                         } else {
                             //retry to login 3 more times
-                            //after 3 tries and still not success
-                            //show alert view error
-                            //show loginViewController
+                            [self retryLoginWithMaxAttempts:3];
                         }
-                            }];
+                    }];
                 }
             } else {
-                self.loginViewController.userManger = [RGSUserMangementService new];
                 self.window.rootViewController = self.loginViewController;
             }
-        } else {
-            
         }
     }];
     
@@ -53,6 +58,33 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+-(void)retryLoginWithMaxAttempts:(int)tries{
+    [self.userManager loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.login successBlock:^(BOOL success) {
+        __block int currentTry = tries;
+        
+        if(success){
+            //login to chat
+            [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
+                
+                //on success, retore last visible screen
+                if(success){
+                    
+                }
+            }];
+        } else {
+            if(currentTry != 0){
+                currentTry--;
+                [self retryLoginWithMaxAttempts:currentTry];
+            } else {
+                //after 3 tries and still not success
+                
+                //show loginViewController
+                self.window.rootViewController = self.loginViewController;
+            }
+        }
+    }];
+}
+
 
 -(RGSApplicationSessionManagementService *)applicationSessionManager{
     return [RGSApplicationSessionManagementService shared];
