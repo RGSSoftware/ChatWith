@@ -11,6 +11,8 @@
 #import "RGSUserMangementService.h"
 #import "RGSChatService.h"
 #import "LocalStorageService.h"
+#import "ApplicationSession.h"
+
 
 @interface RGSLoginViewController ()
 
@@ -83,6 +85,8 @@
                                                                    password:self.passwordTextField.text
                                                                successBlock:^(BOOL success) {
                                                    if(success) {
+                                                       //add applicationID to saved User
+                                                       [[LocalStorageService shared] savedUserAsQBUUser].ID = [[[LocalStorageService shared] applicationSession].entityID unsignedIntegerValue];
                                                        //loign to chat
                                                        [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
                                                            

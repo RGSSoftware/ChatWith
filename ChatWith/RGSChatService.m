@@ -10,6 +10,8 @@
 
 @interface RGSChatService () <QBChatDelegate>
 @property (nonatomic, strong)void(^loginSuccessBlock)(BOOL success);
+
+@property (nonatomic, strong) NSTimer *presenceTimer;
 @end
 
 @implementation RGSChatService
@@ -41,11 +43,11 @@ static dispatch_once_t once_token = 0;
 }
 
 - (void)chatDidLogin{
-    // Start sending presences
-//    [self.presenceTimer invalidate];
-//    self.presenceTimer = [NSTimer scheduledTimerWithTimeInterval:30
-//                                                          target:[QBChat instance] selector:@selector(sendPresence)
-//                                                        userInfo:nil repeats:YES];
+//     Start sending presences
+    [self.presenceTimer invalidate];
+    self.presenceTimer = [NSTimer scheduledTimerWithTimeInterval:30
+                                                          target:[QBChat instance] selector:@selector(sendPresence)
+                                                        userInfo:nil repeats:YES];
     
     if(self.loginSuccessBlock != nil){
         self.loginSuccessBlock(YES);

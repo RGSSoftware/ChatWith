@@ -9,6 +9,17 @@
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="Converstation" representedClassName="Converstation" syncable="YES">
+        <attribute name="entityID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastMessagaeText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastMessageDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastMessageID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="roomJID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unreadMessagesCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="occupants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ManagedUser" syncable="YES"/>
+    </entity>
     <entity name="ManagedUser" representedClassName="ManagedUser" syncable="YES">
         <attribute name="blobID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -29,7 +40,8 @@
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ManagedUser" positionX="-63" positionY="-18" width="128" height="298"/>
-        <element name="ApplicationSession" positionX="-63" positionY="108" width="128" height="148"/>
+        <element name="ApplicationSession" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Converstation" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ManagedUser" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
