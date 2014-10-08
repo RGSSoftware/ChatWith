@@ -15,5 +15,5 @@
 
 -(void)loginUser:(QBUUser *)user successBlock:(void (^)(BOOL success))success;
 
-
+-(void)allConversationsFromUser:(ManagedUser *)user startingAt:(NSDate *)startDate successBlock:(void(^)(BOOL success, NSArray *conversations))successBlock;
 @end

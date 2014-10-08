@@ -7,10 +7,12 @@
 //
 
 #import "RGSChatService.h"
+#import "ManagedUser.h"
 
-@interface RGSChatService () <QBChatDelegate>
+
+@interface RGSChatService () <QBChatDelegate, QBActionStatusDelegate>
 @property (nonatomic, strong)void(^loginSuccessBlock)(BOOL success);
-
+@property (nonatomic, strong)void(^getConversationSuccessBlock)(BOOL success, NSArray *);
 @property (nonatomic, strong) NSTimer *presenceTimer;
 @end
 
@@ -63,4 +65,24 @@ static dispatch_once_t once_token = 0;
     }
 }
 
+- (void)completedWithResult:(Result *)result{
+    if (result.success && [result isKindOfClass:[QBDialogsPagedResult class]]) {
+        QBDialogsPagedResult *pagedResult = (QBDialogsPagedResult *)result;
+        self.getConversationSuccessBlock(YES, pagedResult.dialogs);
+        self.getConversationSuccessBlock = nil;
+        
+    }
+}
+
+-(void)allConversationsFromUser:(ManagedUser *)user startingAt:(NSDate *)startDate successBlock:(void (^)(BOOL, NSArray *))successBlock{
+    self.getConversationSuccessBlock = successBlock;
+    
+    NSMutableDictionary *extendedRequest = [NSMutableDictionary new];
+    extendedRequest[@"last_message_date_sent[gt]"] = startDate;
+    extendedRequest[@"occupants_ids"] = user.externalUserID;
+                    
+                    
+    [QBChat dialogsWithExtendedRequest:extendedRequest  delegate:self];
+
+}
 @end

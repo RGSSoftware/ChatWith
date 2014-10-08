@@ -10,11 +10,12 @@
 @class UserModel;
 @class ManagedUser;
 @class ApplicationSession;
-
+@class Converstation;
 
 @interface LocalStorageService : NSObject
 
 @property (nonatomic, strong)ApplicationSession *applicationSession;
+@property (nonatomic, strong)Converstation *lastestConverstation;
 
 + (instancetype)shared;
 //+ (void)setSharedInstance:(id)sharedInstance;
@@ -29,5 +30,7 @@
 -(void)createCurrentUserWithusername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL success, NSError *error))successBlock;
 
 -(void)creteCurrentUserWithQBUser:(QBUUser *)qBUser successBlock:(void (^)(BOOL success, NSError *error))successBlock;
+
+-(void)saveConversations:(NSArray *)conversations;
 
 @end

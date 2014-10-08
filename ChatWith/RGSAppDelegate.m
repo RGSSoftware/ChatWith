@@ -12,6 +12,10 @@
 #import "RGSUserMangementService.h"
 #import "ManagedUser.h"
 
+#import "Converstation.h"
+
+
+
 #import "RGSApplicationSessionManagementService.h"
 #import "RGSChatService.h"
 
@@ -35,10 +39,16 @@
                         if(success){
                             //login to chat
                             [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
-                                
-                                //on success, retore last visible screen
                                 if(success){
-                                    
+                                    //retrieve lastest Converstations From QuickBlox
+                                    //starting from lastest saved conversation
+                                    [[RGSChatService shared] allConversationsFromUser:[[LocalStorageService shared] savedUser] startingAt:[LocalStorageService shared].lastestConverstation.lastMessageDate successBlock:^(BOOL success, NSArray *conversations) {
+                                        if(success) {
+                                            //save converstations to LocalStorage
+                                            [[LocalStorageService shared] saveConversations:conversations];
+                                            //on success, retore last visible screen
+                                        }
+                                    }];
                                 }
                             }];
                             
