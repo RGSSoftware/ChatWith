@@ -37,6 +37,8 @@
                                        forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
 //    self.applicationSessionManager.applicationID = 7632;
 //    self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";
 //    self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
