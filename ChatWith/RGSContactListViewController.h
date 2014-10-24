@@ -10,5 +10,6 @@
 
 @interface RGSContactListViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end

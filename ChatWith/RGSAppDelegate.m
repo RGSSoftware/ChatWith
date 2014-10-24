@@ -37,7 +37,12 @@
                                        forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
     
+    
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];//change the color to whichever color needed
+
     
 //    self.applicationSessionManager.applicationID = 7632;
 //    self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";

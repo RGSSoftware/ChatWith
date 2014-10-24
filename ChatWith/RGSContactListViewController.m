@@ -8,6 +8,7 @@
 
 #import "RGSContactListViewController.h"
 #import "UIImage+RGSinitWithColor.h"
+#import "UIColor+RGSColorWithHexString.h"
 
 @interface RGSContactListViewController ()
 
@@ -17,7 +18,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
+    self.searchBar.backgroundColor = [UIColor clearColor];
+    self.searchBar.backgroundImage = [UIImage imageWithColor:
+                                      [UIColor colorWithHexString:@"414141" alpha:.16]];
+    
+    [self.searchBar setImage:[UIImage imageNamed:@"SearchMagnifyingGlassIcon"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+    [self.searchBar setPlaceholder:@"Search                                                  "];
+    
+    for (UIView *subview in _searchBar.subviews) {
+        for (UIView *subSubview in subview.subviews) {
+            if ([subSubview isKindOfClass:[UITextField class]]) {
+                UITextField *searchField = (UITextField *)subSubview;
+                searchField.backgroundColor = [UIColor clearColor];
+                searchField.textColor = [UIColor whiteColor];
+                break;
+            }
+        }
+    }
+    
+//    SearchMagnifyingGlassIcon
     
 }
 

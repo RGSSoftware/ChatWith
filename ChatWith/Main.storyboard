@@ -131,9 +131,8 @@
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Sjx-0b-Nkq">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="C7D-D2-aaU">
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="C7D-D2-aaU">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="LRt-5S-plK" id="7HC-bN-JQi"/>
@@ -218,6 +217,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="KTV-SM-Mjt"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="searchBar" destination="C7D-D2-aaU" id="DsK-24-ZaY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aOD-Tg-N05" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="vXw-dL-Z9v">
