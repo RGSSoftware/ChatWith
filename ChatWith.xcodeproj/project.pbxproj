@@ -17,7 +17,9 @@
 		2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */; };
 		223D4C5219E456FC0065F630 /* RGSConverstationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5119E456FC0065F630 /* RGSConverstationTableViewController.m */; };
 		223D4C5819E474540065F630 /* Converstation.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5719E474540065F630 /* Converstation.m */; };
+		223D4C9319E5CC110065F630 /* RGSMessageComposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C9219E5CC110065F630 /* RGSMessageComposerViewController.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
+		2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250787419F880D100F793EE /* RGSContactListViewController.m */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
 		2264746B19A90C9E00245A73 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746A19A90C9E00245A73 /* SystemConfiguration.framework */; };
 		2264746D19A90CA800245A73 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746C19A90CA800245A73 /* MobileCoreServices.framework */; };
@@ -55,9 +57,12 @@
 		226E0D0319AB53B4004029D7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
 		227BFAF219E24674000E7ACC /* ApplicationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 227BFAF119E24674000E7ACC /* ApplicationSession.m */; };
 		227BFAF519E31EE0000E7ACC /* RGSChatService.m in Sources */ = {isa = PBXBuildFile; fileRef = 227BFAF419E31EE0000E7ACC /* RGSChatService.m */; };
+		2287C46A19FAB3EA00039555 /* UIImage+RGSinitWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2287C46919FAB3EA00039555 /* UIImage+RGSinitWithColor.m */; };
+		2287C47319FAC58600039555 /* UIColor+RGSColorWithHexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2287C47219FAC58600039555 /* UIColor+RGSColorWithHexString.m */; };
 		22889ACB19D322A400F0541D /* RGSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22889ACA19D322A400F0541D /* RGSLoginViewController.m */; };
 		22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 22889ACD19D322E400F0541D /* NSString+alphaOnly.m */; };
 		22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A18A3419CF44DB004A266E /* LocalStorageService.m */; };
+		22D6FD5919FAB2180056C18B /* UIImage+RGSinitWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6FD5819FAB2170056C18B /* UIImage+RGSinitWithColor.m */; };
 		22D7BCB119A8D45100D2C01C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB019A8D45100D2C01C /* Foundation.framework */; };
 		22D7BCB319A8D45100D2C01C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB219A8D45100D2C01C /* CoreGraphics.framework */; };
 		22D7BCB519A8D45100D2C01C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB419A8D45100D2C01C /* UIKit.framework */; };
@@ -104,7 +109,11 @@
 		223D4C5119E456FC0065F630 /* RGSConverstationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSConverstationTableViewController.m; sourceTree = "<group>"; };
 		223D4C5619E474540065F630 /* Converstation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converstation.h; sourceTree = "<group>"; };
 		223D4C5719E474540065F630 /* Converstation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Converstation.m; sourceTree = "<group>"; };
+		223D4C9119E5CC110065F630 /* RGSMessageComposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageComposerViewController.h; sourceTree = "<group>"; };
+		223D4C9219E5CC110065F630 /* RGSMessageComposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessageComposerViewController.m; sourceTree = "<group>"; };
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2250787319F880D100F793EE /* RGSContactListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactListViewController.h; sourceTree = "<group>"; };
+		2250787419F880D100F793EE /* RGSContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactListViewController.m; sourceTree = "<group>"; };
 		2264746819A90C9400245A73 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2264746A19A90C9E00245A73 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2264746C19A90CA800245A73 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -127,12 +136,18 @@
 		227BFAF119E24674000E7ACC /* ApplicationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationSession.m; sourceTree = "<group>"; };
 		227BFAF319E31EE0000E7ACC /* RGSChatService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChatService.h; sourceTree = "<group>"; };
 		227BFAF419E31EE0000E7ACC /* RGSChatService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChatService.m; sourceTree = "<group>"; };
+		2287C46819FAB3EA00039555 /* UIImage+RGSinitWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RGSinitWithColor.h"; sourceTree = "<group>"; };
+		2287C46919FAB3EA00039555 /* UIImage+RGSinitWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RGSinitWithColor.m"; sourceTree = "<group>"; };
+		2287C47119FAC58600039555 /* UIColor+RGSColorWithHexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGSColorWithHexString.h"; sourceTree = "<group>"; };
+		2287C47219FAC58600039555 /* UIColor+RGSColorWithHexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGSColorWithHexString.m"; sourceTree = "<group>"; };
 		22889AC919D322A400F0541D /* RGSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSLoginViewController.h; sourceTree = "<group>"; };
 		22889ACA19D322A400F0541D /* RGSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSLoginViewController.m; sourceTree = "<group>"; };
 		22889ACC19D322E400F0541D /* NSString+alphaOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+alphaOnly.h"; sourceTree = "<group>"; };
 		22889ACD19D322E400F0541D /* NSString+alphaOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+alphaOnly.m"; sourceTree = "<group>"; };
 		22A18A3319CF44DB004A266E /* LocalStorageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStorageService.h; sourceTree = "<group>"; };
 		22A18A3419CF44DB004A266E /* LocalStorageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStorageService.m; sourceTree = "<group>"; };
+		22D6FD5719FAB2170056C18B /* UIImage+RGSinitWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RGSinitWithColor.h"; sourceTree = "<group>"; };
+		22D6FD5819FAB2170056C18B /* UIImage+RGSinitWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RGSinitWithColor.m"; sourceTree = "<group>"; };
 		22D7BCAD19A8D45100D2C01C /* ChatWith.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatWith.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D7BCB019A8D45100D2C01C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22D7BCB219A8D45100D2C01C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -221,6 +236,10 @@
 		22889ACF19D3230D00F0541D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				2287C47119FAC58600039555 /* UIColor+RGSColorWithHexString.h */,
+				2287C47219FAC58600039555 /* UIColor+RGSColorWithHexString.m */,
+				2287C46819FAB3EA00039555 /* UIImage+RGSinitWithColor.h */,
+				2287C46919FAB3EA00039555 /* UIImage+RGSinitWithColor.m */,
 				22889ACC19D322E400F0541D /* NSString+alphaOnly.h */,
 				22889ACD19D322E400F0541D /* NSString+alphaOnly.m */,
 			);
@@ -230,6 +249,10 @@
 		22889AD019D3232600F0541D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2250787319F880D100F793EE /* RGSContactListViewController.h */,
+				2250787419F880D100F793EE /* RGSContactListViewController.m */,
+				223D4C9119E5CC110065F630 /* RGSMessageComposerViewController.h */,
+				223D4C9219E5CC110065F630 /* RGSMessageComposerViewController.m */,
 				22889AC919D322A400F0541D /* RGSLoginViewController.h */,
 				22889ACA19D322A400F0541D /* RGSLoginViewController.m */,
 				223D4C5019E456FC0065F630 /* RGSConverstationTableViewController.h */,
@@ -241,6 +264,8 @@
 		22889AD119D3234500F0541D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				22D6FD5719FAB2170056C18B /* UIImage+RGSinitWithColor.h */,
+				22D6FD5819FAB2170056C18B /* UIImage+RGSinitWithColor.m */,
 				224FBF7619D1B7A800A924CA /* Main.storyboard */,
 			);
 			name = View;
@@ -548,14 +573,19 @@
 				227BFAF219E24674000E7ACC /* ApplicationSession.m in Sources */,
 				22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */,
 				22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */,
+				2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */,
+				2287C46A19FAB3EA00039555 /* UIImage+RGSinitWithColor.m in Sources */,
 				2218FDC419DC902E00E491F6 /* RGSUserMangementService.m in Sources */,
 				2218FDD419DDC40E00E491F6 /* ManagedUser.m in Sources */,
+				223D4C9319E5CC110065F630 /* RGSMessageComposerViewController.m in Sources */,
 				22D7BCBF19A8D45100D2C01C /* main.m in Sources */,
 				22D7BCC319A8D45100D2C01C /* RGSAppDelegate.m in Sources */,
 				22889ACB19D322A400F0541D /* RGSLoginViewController.m in Sources */,
+				22D6FD5919FAB2180056C18B /* UIImage+RGSinitWithColor.m in Sources */,
 				227BFAF519E31EE0000E7ACC /* RGSChatService.m in Sources */,
 				223D4C5219E456FC0065F630 /* RGSConverstationTableViewController.m in Sources */,
 				2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */,
+				2287C47319FAC58600039555 /* UIColor+RGSColorWithHexString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
