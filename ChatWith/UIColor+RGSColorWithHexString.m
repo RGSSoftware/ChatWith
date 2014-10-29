@@ -10,6 +10,10 @@
 
 @implementation UIColor (RGSColorWithHexString)
 
++ (UIColor *)colorWithHexString:(NSString *)hexStr;
+{
+    return [self colorWithHexString:hexStr alpha:1];
+}
 
 + (UIColor *)colorWithHexString:(NSString *)hexStr alpha:(CGFloat)alpha;
 {

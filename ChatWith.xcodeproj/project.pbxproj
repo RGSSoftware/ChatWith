@@ -15,6 +15,7 @@
 		2218FDCE19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */; };
 		2218FDD419DDC40E00E491F6 /* ManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD319DDC40E00E491F6 /* ManagedUser.m */; };
 		2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */; };
+		223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */; };
 		223D4C5219E456FC0065F630 /* RGSConverstationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5119E456FC0065F630 /* RGSConverstationTableViewController.m */; };
 		223D4C5819E474540065F630 /* Converstation.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5719E474540065F630 /* Converstation.m */; };
 		223D4C9319E5CC110065F630 /* RGSMessageComposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C9219E5CC110065F630 /* RGSMessageComposerViewController.m */; };
@@ -76,6 +77,9 @@
 		22D7BCD119A8D45200D2C01C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB419A8D45100D2C01C /* UIKit.framework */; };
 		22D7BCD219A8D45200D2C01C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB619A8D45100D2C01C /* CoreData.framework */; };
 		22D7BCDA19A8D45200D2C01C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22D7BCD819A8D45200D2C01C /* InfoPlist.strings */; };
+		22F5206A1A0073E700FD2CD5 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F520691A0073E700FD2CD5 /* UIImage+Resize.m */; };
+		22F5206F1A0074D600FD2CD5 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F5206C1A0074D600FD2CD5 /* UIImage+Alpha.m */; };
+		22F520701A0074D600FD2CD5 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F5206E1A0074D600FD2CD5 /* UIImage+RoundedCorner.m */; };
 		62CA3AD4C4404E458FBC2653 /* libPods-ChatWithTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E46A8CB4B3492D8A67B631 /* libPods-ChatWithTests.a */; };
 		A7FE595196BB405B9F3C69C1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41782C9D2BA94D51BCBE8C6B /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -104,6 +108,8 @@
 		2218FDD319DDC40E00E491F6 /* ManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedUser.m; sourceTree = "<group>"; };
 		2218FDD519DF31B300E491F6 /* RGSApplicationSessionManagementService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSApplicationSessionManagementService.h; sourceTree = "<group>"; };
 		2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSApplicationSessionManagementService.m; sourceTree = "<group>"; };
+		223A1DA71A013F0200A1B3D2 /* RGSContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactCell.h; sourceTree = "<group>"; };
+		223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactCell.m; sourceTree = "<group>"; };
 		223D4C5019E456FC0065F630 /* RGSConverstationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSConverstationTableViewController.h; sourceTree = "<group>"; };
 		223D4C5119E456FC0065F630 /* RGSConverstationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSConverstationTableViewController.m; sourceTree = "<group>"; };
 		223D4C5619E474540065F630 /* Converstation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converstation.h; sourceTree = "<group>"; };
@@ -162,6 +168,12 @@
 		22D7BCCE19A8D45200D2C01C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		22D7BCD719A8D45200D2C01C /* ChatWithTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ChatWithTests-Info.plist"; sourceTree = "<group>"; };
 		22D7BCD919A8D45200D2C01C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		22F520681A0073E700FD2CD5 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		22F520691A0073E700FD2CD5 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		22F5206B1A0074D600FD2CD5 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		22F5206C1A0074D600FD2CD5 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		22F5206D1A0074D600FD2CD5 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		22F5206E1A0074D600FD2CD5 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		41782C9D2BA94D51BCBE8C6B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D287F2134084047856B87D3 /* Pods-ChatWithTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatWithTests.xcconfig"; path = "Pods/Pods-ChatWithTests.xcconfig"; sourceTree = "<group>"; };
 		A5E46A8CB4B3492D8A67B631 /* libPods-ChatWithTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ChatWithTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +245,12 @@
 		22889ACF19D3230D00F0541D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				22F5206B1A0074D600FD2CD5 /* UIImage+Alpha.h */,
+				22F5206C1A0074D600FD2CD5 /* UIImage+Alpha.m */,
+				22F5206D1A0074D600FD2CD5 /* UIImage+RoundedCorner.h */,
+				22F5206E1A0074D600FD2CD5 /* UIImage+RoundedCorner.m */,
+				22F520681A0073E700FD2CD5 /* UIImage+Resize.h */,
+				22F520691A0073E700FD2CD5 /* UIImage+Resize.m */,
 				2287C47119FAC58600039555 /* UIColor+RGSColorWithHexString.h */,
 				2287C47219FAC58600039555 /* UIColor+RGSColorWithHexString.m */,
 				2287C46819FAB3EA00039555 /* UIImage+RGSinitWithColor.h */,
@@ -262,6 +280,8 @@
 			isa = PBXGroup;
 			children = (
 				224FBF7619D1B7A800A924CA /* Main.storyboard */,
+				223A1DA71A013F0200A1B3D2 /* RGSContactCell.h */,
+				223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -571,6 +591,7 @@
 				227BFAF219E24674000E7ACC /* ApplicationSession.m in Sources */,
 				22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */,
 				22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */,
+				22F5206A1A0073E700FD2CD5 /* UIImage+Resize.m in Sources */,
 				2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */,
 				2287C46A19FAB3EA00039555 /* UIImage+RGSinitWithColor.m in Sources */,
 				2218FDC419DC902E00E491F6 /* RGSUserMangementService.m in Sources */,
@@ -581,8 +602,11 @@
 				22889ACB19D322A400F0541D /* RGSLoginViewController.m in Sources */,
 				227BFAF519E31EE0000E7ACC /* RGSChatService.m in Sources */,
 				223D4C5219E456FC0065F630 /* RGSConverstationTableViewController.m in Sources */,
+				22F520701A0074D600FD2CD5 /* UIImage+RoundedCorner.m in Sources */,
 				2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */,
 				2287C47319FAC58600039555 /* UIColor+RGSColorWithHexString.m in Sources */,
+				22F5206F1A0074D600FD2CD5 /* UIImage+Alpha.m in Sources */,
+				223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

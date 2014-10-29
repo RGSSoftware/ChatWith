@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RGSContactListViewController : UIViewController
+@interface RGSContactListViewController : UIViewController <UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIButton *InviteFriendsButton;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIView *contactsView;
 
 @end
