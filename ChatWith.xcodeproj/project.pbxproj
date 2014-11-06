@@ -273,16 +273,16 @@
 		22889AD019D3232600F0541D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				22AC65001A050A3000B6C57F /* RGSMessageListViewController.h */,
-				22AC65011A050A3000B6C57F /* RGSMessageListViewController.m */,
+				223D4C5019E456FC0065F630 /* RGSChatListViewController.h */,
+				223D4C5119E456FC0065F630 /* RGSChatListViewController.m */,
 				2250787319F880D100F793EE /* RGSContactListViewController.h */,
 				2250787419F880D100F793EE /* RGSContactListViewController.m */,
+				22AC65001A050A3000B6C57F /* RGSMessageListViewController.h */,
+				22AC65011A050A3000B6C57F /* RGSMessageListViewController.m */,
 				223D4C9119E5CC110065F630 /* RGSMessageComposerViewController.h */,
 				223D4C9219E5CC110065F630 /* RGSMessageComposerViewController.m */,
 				22889AC919D322A400F0541D /* RGSLoginViewController.h */,
 				22889ACA19D322A400F0541D /* RGSLoginViewController.m */,
-				223D4C5019E456FC0065F630 /* RGSChatListViewController.h */,
-				223D4C5119E456FC0065F630 /* RGSChatListViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
