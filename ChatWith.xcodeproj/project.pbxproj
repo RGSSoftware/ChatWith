@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2200BAA91A099BC000A3CB47 /* RGSCustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2200BAA81A099BBF00A3CB47 /* RGSCustomNavigationController.m */; };
 		2218FDC119DC8C6400E491F6 /* StoryBoardSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC019DC8C6400E491F6 /* StoryBoardSpec.m */; };
 		2218FDC419DC902E00E491F6 /* RGSUserMangementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC319DC902E00E491F6 /* RGSUserMangementService.m */; };
 		2218FDC619DC92E000E491F6 /* RGSUserLoginDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC519DC92E000E491F6 /* RGSUserLoginDelegateSpec.m */; };
@@ -99,8 +98,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2200BAA71A099BBF00A3CB47 /* RGSCustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSCustomNavigationController.h; sourceTree = "<group>"; };
-		2200BAA81A099BBF00A3CB47 /* RGSCustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSCustomNavigationController.m; sourceTree = "<group>"; };
 		2218FDC019DC8C6400E491F6 /* StoryBoardSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryBoardSpec.m; sourceTree = "<group>"; };
 		2218FDC219DC902E00E491F6 /* RGSUserMangementService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSUserMangementService.h; sourceTree = "<group>"; };
 		2218FDC319DC902E00E491F6 /* RGSUserMangementService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSUserMangementService.m; sourceTree = "<group>"; };
@@ -276,8 +273,6 @@
 		22889AD019D3232600F0541D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2200BAA71A099BBF00A3CB47 /* RGSCustomNavigationController.h */,
-				2200BAA81A099BBF00A3CB47 /* RGSCustomNavigationController.m */,
 				22AC65001A050A3000B6C57F /* RGSMessageListViewController.h */,
 				22AC65011A050A3000B6C57F /* RGSMessageListViewController.m */,
 				2250787319F880D100F793EE /* RGSContactListViewController.h */,
@@ -625,7 +620,6 @@
 				223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */,
 				22F520701A0074D600FD2CD5 /* UIImage+RoundedCorner.m in Sources */,
 				2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */,
-				2200BAA91A099BC000A3CB47 /* RGSCustomNavigationController.m in Sources */,
 				223A1DB21A04459E00A1B3D2 /* Contact.m in Sources */,
 				223A1DB81A04F26D00A1B3D2 /* ManagedUser.m in Sources */,
 				2287C47319FAC58600039555 /* UIColor+RGSColorWithHexString.m in Sources */,

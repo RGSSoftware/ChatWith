@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EGF-iH-8R1">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -66,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="-210" y="230"/>
         </scene>
-        <!--Custom Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="Zjn-C4-izH">
             <objects>
-                <navigationController id="EGF-iH-8R1" customClass="RGSCustomNavigationController" sceneMemberID="viewController">
+                <navigationController id="EGF-iH-8R1" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KhK-4p-JrK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
