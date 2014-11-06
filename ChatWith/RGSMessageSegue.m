@@ -10,6 +10,8 @@
 #import "RGSContactListViewController.h"
 #import "RGSMessageListViewController.h"
 
+#import "RGSBaseViewController.h"
+
 #import "UIColor+RGSColorWithHexString.h"
 
 @implementation RGSMessageSegue
@@ -41,7 +43,7 @@
 
     //setting RGSContactListViewController.backgroundView to hidden
     //to caputure its view picture without the background
-    ((RGSContactListViewController *)self.sourceViewController).backgroundView.hidden = YES;
+    ((RGSBaseViewController *)self.sourceViewController).backgroundView.hidden = YES;
     UIView *sourceView = [((UIViewController *)self.sourceViewController).view snapshotViewAfterScreenUpdates:YES];
     [transtionView addSubview:sourceView];
     
