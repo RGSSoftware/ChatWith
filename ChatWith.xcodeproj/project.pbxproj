@@ -19,7 +19,6 @@
 		223A1DB81A04F26D00A1B3D2 /* ManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DB71A04F26D00A1B3D2 /* ManagedUser.m */; };
 		223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5119E456FC0065F630 /* RGSChatListViewController.m */; };
 		223D4C5819E474540065F630 /* Converstation.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5719E474540065F630 /* Converstation.m */; };
-		223D4C9319E5CC110065F630 /* RGSMessageComposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C9219E5CC110065F630 /* RGSMessageComposerViewController.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250787419F880D100F793EE /* RGSContactListViewController.m */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
@@ -119,8 +118,6 @@
 		223D4C5119E456FC0065F630 /* RGSChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChatListViewController.m; sourceTree = "<group>"; };
 		223D4C5619E474540065F630 /* Converstation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converstation.h; sourceTree = "<group>"; };
 		223D4C5719E474540065F630 /* Converstation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Converstation.m; sourceTree = "<group>"; };
-		223D4C9119E5CC110065F630 /* RGSMessageComposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageComposerViewController.h; sourceTree = "<group>"; };
-		223D4C9219E5CC110065F630 /* RGSMessageComposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessageComposerViewController.m; sourceTree = "<group>"; };
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2250787319F880D100F793EE /* RGSContactListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactListViewController.h; sourceTree = "<group>"; };
 		2250787419F880D100F793EE /* RGSContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactListViewController.m; sourceTree = "<group>"; };
@@ -279,8 +276,6 @@
 				2250787419F880D100F793EE /* RGSContactListViewController.m */,
 				22AC65001A050A3000B6C57F /* RGSMessageListViewController.h */,
 				22AC65011A050A3000B6C57F /* RGSMessageListViewController.m */,
-				223D4C9119E5CC110065F630 /* RGSMessageComposerViewController.h */,
-				223D4C9219E5CC110065F630 /* RGSMessageComposerViewController.m */,
 				22889AC919D322A400F0541D /* RGSLoginViewController.h */,
 				22889ACA19D322A400F0541D /* RGSLoginViewController.m */,
 			);
@@ -612,7 +607,6 @@
 				2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */,
 				2287C46A19FAB3EA00039555 /* UIImage+RGSinitWithColor.m in Sources */,
 				2218FDC419DC902E00E491F6 /* RGSUserMangementService.m in Sources */,
-				223D4C9319E5CC110065F630 /* RGSMessageComposerViewController.m in Sources */,
 				22D7BCBF19A8D45100D2C01C /* main.m in Sources */,
 				22D7BCC319A8D45100D2C01C /* RGSAppDelegate.m in Sources */,
 				22889ACB19D322A400F0541D /* RGSLoginViewController.m in Sources */,
