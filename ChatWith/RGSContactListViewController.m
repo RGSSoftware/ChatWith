@@ -104,15 +104,9 @@
         
     }
     
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(toMessage:)];
-    
     self.view.backgroundColor = [UIColor clearColor];
-    
 }
 
--(void)toMessage:(id)sender{
-     [self performSegueWithIdentifier:@"toMessages" sender:self];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -124,7 +118,6 @@
     id <NSFetchedResultsSectionInfo> sectionInfo =
     [[_fetchedResultsController sections] objectAtIndex:section];
     
-    int rowCount = [sectionInfo numberOfObjects];
     return [sectionInfo numberOfObjects];
 }
 
@@ -134,55 +127,30 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RGSContactCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FriendCell" forIndexPath:indexPath];
+    [cell configurePresentation];
     
     RGSContact *contact = [_fetchedResultsController objectAtIndexPath:indexPath];
+    //imp temp user.image
     if(contact.friend.imageData){
         cell.thumbnailImageView.image = [UIImage imageWithData:contact.friend.imageData];
     } else {
         cell.thumbnailImageView.image = [UIImage imageWithColor:[UIColor colorWithWhite:0.731 alpha:1.000]];
     }
     
-    cell.thumbnailImageView.layer.masksToBounds = YES;
-    //prevent every frame from requiring a re-mask on all the pixels
-    //http://stackoverflow.com/questions/4314640/setting-corner-radius-on-uiimageview-not-working#4314683
-    cell.thumbnailImageView.layer.shouldRasterize = YES;
-    [cell.thumbnailImageView.layer setCornerRadius:10];
-  
     cell.nameLabel.textColor = [UIColor whiteColor];
-    
-    
     cell.nameLabel.text = contact.friend.fullName;
-    
-
-    [cell.imageHighlightView.layer setCornerRadius:10];
-    [cell.contentView bringSubviewToFront:cell.imageHighlightView];
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//
-//    [collectionView deselectItemAtIndexPath:indexPath animated:NO];
-//    
-//    Contact *contact = [_fetchedResultsController objectAtIndexPath:indexPath];
-//    
-//    
-//    
-//    
-//}
 - (void)collectionView:(UICollectionView *)collectionView
 didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-    RGSContactCell *cell = (RGSContactCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.imageHighlightView.hidden = NO;
-    cell.imageHighlightView.backgroundColor = [UIColor redColor];
-
+    [((RGSContactCell *)[collectionView cellForItemAtIndexPath:indexPath]) highlight];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView
 didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-    RGSContactCell *cell = (RGSContactCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.imageHighlightView.hidden = YES;
+    [((RGSContactCell *)[collectionView cellForItemAtIndexPath:indexPath]) deHighlight];
 }
 
 #pragma mark – UICollectionViewDelegateFlowLayout

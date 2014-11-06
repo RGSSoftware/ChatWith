@@ -39,7 +39,7 @@
     
     
 
-    //setting RGSContactListViewController.backgroundView to hidden
+    //setting RGSBaseViewController.backgroundView to hidden
     //to caputure its view picture without the background
     ((RGSBaseViewController *)self.sourceViewController).backgroundView.hidden = YES;
     UIView *sourceView = [((UIViewController *)self.sourceViewController).view snapshotViewAfterScreenUpdates:YES];

@@ -13,4 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnailImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIView *imageHighlightView;
+
+-(void)configurePresentation;
+-(void)highlight;
+-(void)deHighlight;
 @end
