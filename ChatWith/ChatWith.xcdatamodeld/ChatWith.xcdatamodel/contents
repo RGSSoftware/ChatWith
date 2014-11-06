@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ApplicationSession" representedClassName="ApplicationSession" syncable="YES">
         <attribute name="applicationID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="deviceID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -8,6 +8,10 @@
         <attribute name="timstamp" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Contact" representedClassName="Contact" syncable="YES">
+        <relationship name="friend" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedUser" inverseName="befriend" inverseEntity="ManagedUser" syncable="YES"/>
+        <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedUser" inverseName="contacts" inverseEntity="ManagedUser" syncable="YES"/>
     </entity>
     <entity name="Converstation" representedClassName="Converstation" syncable="YES">
         <attribute name="entityID" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,6 +34,7 @@
         <attribute name="externalUserID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="facebookID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="lastRequestAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="login" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="oldPassword" optional="YES" attributeType="String" syncable="YES"/>
@@ -38,9 +43,12 @@
         <attribute name="twitterID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="befriend" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Contact" inverseName="friend" inverseEntity="Contact" syncable="YES"/>
+        <relationship name="contacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Contact" inverseName="source" inverseEntity="Contact" syncable="YES"/>
     </entity>
     <elements>
         <element name="ApplicationSession" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Contact" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Converstation" positionX="0" positionY="0" width="0" height="0"/>
         <element name="ManagedUser" positionX="0" positionY="0" width="0" height="0"/>
     </elements>

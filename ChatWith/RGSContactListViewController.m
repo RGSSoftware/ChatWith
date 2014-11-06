@@ -7,11 +7,19 @@
 //
 
 #import "RGSContactListViewController.h"
+
+#import "RGSContactCell.h"
+
+#import "ManagedUser.h"
+#import "Contact.h"
+
+#import "RGSMessageListViewController.h"
+
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
 #import "UIImage+Resize.h"
-#import "RGSContactCell.h"
 
+#import "LocalStorageService.h"
 @interface RGSContactListViewController ()
 
 @end
@@ -21,7 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view.
     self.searchBar.backgroundColor = [UIColor clearColor];
     self.searchBar.backgroundImage = [UIImage imageWithColor:
                                       [UIColor colorWithHexString:@"414141" alpha:.16]];
@@ -46,7 +53,7 @@
     self.contactsView.layer.mask = maskLayer;
     
     //http://evandavis.me/blog/2013/2/13/getting-creative-with-calayer-masks
-    //    creating gradient as mask layer
+    //creating gradient as mask layer
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     //an array of colors that dictatates the gradient(s)
     gradientLayer.colors = @[(id)[UIColor clearColor].CGColor, (id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor];
@@ -88,8 +95,24 @@
                                                                    style:UIBarButtonItemStylePlain target:nil action:nil];
     menuBarButton.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = menuBarButton;
+    
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        
+        
+    }
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(toMessage:)];
+    
+    self.view.backgroundColor = [UIColor clearColor];
+    
 }
 
+-(void)toMessage:(id)sender{
+     [self performSegueWithIdentifier:@"toMessages" sender:self];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -97,50 +120,82 @@
 }
 
 #pragma mark - UICollectionView Datasource
-// 1
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
-    return 60;
+    id <NSFetchedResultsSectionInfo> sectionInfo =
+    [[_fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
-// 2
+
 - (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
-    return 1;
+    return [[_fetchedResultsController sections] count];
 }
-// 3
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RGSContactCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FriendCell" forIndexPath:indexPath];
-    cell.thumbnailImageView.image = [UIImage imageWithColor:[UIColor colorWithWhite:0.731 alpha:1.000]];
+    
+    Contact *contact = [_fetchedResultsController objectAtIndexPath:indexPath];
+    if(contact.friend.imageData){
+        cell.thumbnailImageView.image = [UIImage imageWithData:contact.friend.imageData];
+    } else {
+        cell.thumbnailImageView.image = [UIImage imageWithColor:[UIColor colorWithWhite:0.731 alpha:1.000]];
+    }
+    
     cell.thumbnailImageView.layer.masksToBounds = YES;
+    //prevent every frame from requiring a re-mask on all the pixels
+    //http://stackoverflow.com/questions/4314640/setting-corner-radius-on-uiimageview-not-working#4314683
     cell.thumbnailImageView.layer.shouldRasterize = YES;
     [cell.thumbnailImageView.layer setCornerRadius:10];
-    
+  
     cell.nameLabel.textColor = [UIColor whiteColor];
+    
+    
+    cell.nameLabel.text = contact.friend.fullName;
+    
+
+    [cell.imageHighlightView.layer setCornerRadius:10];
+    [cell.contentView bringSubviewToFront:cell.imageHighlightView];
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    // TODO: Select Item
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//
+//    [collectionView deselectItemAtIndexPath:indexPath animated:NO];
+//    
+//    Contact *contact = [_fetchedResultsController objectAtIndexPath:indexPath];
+//    
+//    
+//    
+//    
+//}
+- (void)collectionView:(UICollectionView *)collectionView
+didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
+    RGSContactCell *cell = (RGSContactCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.imageHighlightView.hidden = NO;
+    cell.imageHighlightView.backgroundColor = [UIColor redColor];
+
 }
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Deselect item
+
+- (void)collectionView:(UICollectionView *)collectionView
+didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath{
+    RGSContactCell *cell = (RGSContactCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.imageHighlightView.hidden = YES;
 }
 
 #pragma mark – UICollectionViewDelegateFlowLayout
 
-// 1
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    // 2
     CGSize retval;
     retval.height = 80;
     retval.width = 60;
     return retval;
 }
 
-// 3
-- (UIEdgeInsets)collectionView:
-(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
+                        layout:(UICollectionViewLayout*)collectionViewLayout
+        insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(64, 16, 5, 16);
 
 }
@@ -154,12 +209,44 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
 /*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
+ In a storyboard-based application, you will often want to do a little preparation before navigation\
 */
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//     Get the new view controller using [segue destinationViewController].
+//     Pass the selected object to the new view controller.
+    RGSContactCell *contactCell = (RGSContactCell *)sender;
+    Contact *contact = [_fetchedResultsController objectAtIndexPath:[self.collectionView indexPathForCell:contactCell]];
+    
+    RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
+                                                                *)[segue destinationViewController];
+    messageListViewController.receiver = contact.friend;
+    
+//    self.backgroundView.hidden = YES;
+}
+
+
+
+-(NSFetchedResultsController *)fetchedResultsController{
+    
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[Contact MR_entityDescription]];
+
+    [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"friend.fullName" ascending:YES]]];
+    [fetchRequest setFetchBatchSize:25];
+
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"%K = %@", @"source.currentUser", [NSNumber numberWithBool:YES]]];
+    
+    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
+}
+
+-(NSManagedObjectContext *)managedObjectContext{
+    return [NSManagedObjectContext MR_defaultContext];
+}
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {

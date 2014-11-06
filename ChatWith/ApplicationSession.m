@@ -19,4 +19,7 @@
 @dynamic timstamp;
 @dynamic nonce;
 
+
+
+
 @end

@@ -9,6 +9,10 @@
 #import "RGSConverstationTableViewController.h"
 #import "Converstation.h"
 
+#import "UIImage+RGSinitWithColor.h"
+#import "UIColor+RGSColorWithHexString.h"
+#import "UIImage+Resize.h"
+
 @interface RGSConverstationTableViewController ()
 
 @end
@@ -48,7 +52,17 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UIBarButtonItem *addBarButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"Add"] resizedImage:CGSizeMake(20, 20)]
+                                                                     style:UIBarButtonItemStylePlain target:self action:@selector(toContacts:)];
+    addBarButton.tintColor = [UIColor colorWithHexString:@"46ABCC"];
+    self.navigationItem.leftBarButtonItem = addBarButton;
 }
+
+-(void)toContacts:(id)sender{
+    [self performSegueWithIdentifier:@"toContacts" sender:self];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

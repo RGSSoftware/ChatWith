@@ -13,6 +13,7 @@
 #import "ManagedUser.h"
 
 #import "Converstation.h"
+#import "Contact.h"
 
 
 
@@ -42,6 +43,65 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];//change the color to whichever color needed
+    
+//    [ManagedUser MR_truncateAll];
+//    [Contact MR_truncateAll];
+//    
+//    ManagedUser *currentUser = [ManagedUser MR_createEntity];
+//    currentUser.currentUser = [NSNumber numberWithBool:YES];
+//    
+////    for(int i = 0; i < 60; i++){
+////        ManagedUser *testUser = [ManagedUser MR_createEntity];
+////        testUser.fullName = @"test";
+////        
+////        Contact *contacTest = [Contact MR_createEntity];
+////        contacTest.source = currentUser;
+////        contacTest.friend = testUser;
+////        
+////        [currentUser addContactsObject:contacTest];
+////    }
+//    
+//    /////////////
+//    ManagedUser *barUser = [ManagedUser MR_createEntity];
+//    barUser.fullName = @"bar";
+//    
+//    Contact *contactBar = [Contact MR_createEntity];
+//    contactBar.source = currentUser;
+//    contactBar.friend = barUser;
+//    
+//    [currentUser addContactsObject:contactBar];
+//    //////////////
+//    ManagedUser *fooUser = [ManagedUser MR_createEntity];
+//    fooUser.fullName = @"foo";
+//    
+//    Contact *contactFoo = [Contact MR_createEntity];
+//    contactFoo.source = currentUser;
+//    contactFoo.friend = fooUser;
+//    
+//    [currentUser addContactsObject:contactFoo];
+//    ///////////////////
+//    ManagedUser *teeUser = [ManagedUser MR_createEntity];
+//    teeUser.fullName = @"tee";
+//    
+//    Contact *contactTee = [Contact MR_createEntity];
+//    contactTee.source = currentUser;
+//    contactTee.friend = teeUser;
+//    
+//    [currentUser addContactsObject:contactTee];
+//    /////////////////
+//    ManagedUser *weeUser = [ManagedUser MR_createEntity];
+//    weeUser.fullName = @"wee";
+//    
+//    Contact *contactWee = [Contact MR_createEntity];
+//    contactWee.source = teeUser;
+//    contactWee.friend = weeUser;
+//    
+//    [teeUser addContactsObject:contactWee];
+//    
+//    
+//    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:nil];
+//    
+//    NSLog(@"simple print-----allUsers.count------{%lu}", (unsigned long)[[ManagedUser MR_findAll] count]);
 
     
 //    self.applicationSessionManager.applicationID = 7632;
@@ -85,10 +145,10 @@
     
     self.window.frame = [[UIScreen mainScreen] bounds];
     [self.window makeKeyAndVisible];
-    
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSContactListViewController"]];
-    
-    self.window.rootViewController = nc;
+//
+//    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSContactListViewController"]];
+//    
+//    self.window.rootViewController = nc;
     return YES;
 }
 -(void)retryLoginWithMaxAttempts:(int)tries{
