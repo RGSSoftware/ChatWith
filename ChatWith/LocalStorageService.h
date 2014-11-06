@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class UserModel;
-@class ManagedUser;
+@class RGSManagedUser;
 @class ApplicationSession;
 @class Converstation;
 
@@ -21,7 +21,7 @@
 //+ (void)setSharedInstance:(id)sharedInstance;
 
 
--(ManagedUser *)savedUser;
+-(RGSManagedUser *)savedUser;
 
 -(QBUUser *)savedUserAsQBUUser;
 

@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class ManagedUser;
+@class RGSManagedUser;
 
 @interface RGSMessageListViewController : UIViewController
 
-@property (nonatomic, strong)ManagedUser *receiver;
+@property (nonatomic, strong)RGSManagedUser *receiver;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
 
--(id)initWithFriend:(ManagedUser *)friendfgf;
+-(id)initWithFriend:(RGSManagedUser *)friendfgf;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 

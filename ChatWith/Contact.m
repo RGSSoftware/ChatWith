@@ -7,7 +7,7 @@
 //
 
 #import "Contact.h"
-#import "ManagedUser.h"
+#import "RGSManagedUser.h"
 
 
 @implementation Contact

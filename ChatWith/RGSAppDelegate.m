@@ -10,7 +10,7 @@
 #import "LocalStorageService.h"
 #import "RGSLoginViewController.h"
 #import "RGSUserMangementService.h"
-#import "ManagedUser.h"
+#import "RGSManagedUser.h"
 
 #import "Converstation.h"
 #import "Contact.h"

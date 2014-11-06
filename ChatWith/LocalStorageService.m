@@ -7,7 +7,7 @@
 //
 
 #import "LocalStorageService.h"
-#import "ManagedUser.h"
+#import "RGSManagedUser.h"
 
 #import "ApplicationSession.h"
 
@@ -43,8 +43,8 @@ static dispatch_once_t once_token = 0;
     }
     return self;
 }
--(ManagedUser *)savedUser{
-    return [ManagedUser MR_findFirstByAttribute:@"currentUser" withValue:@YES];
+-(RGSManagedUser *)savedUser{
+    return [RGSManagedUser MR_findFirstByAttribute:@"currentUser" withValue:@YES];
 }
 
 //- (void)saveMessageToHistory:(QBChatMessage *)message withUserID:(NSUInteger)userID
@@ -69,7 +69,7 @@ static dispatch_once_t once_token = 0;
 
 -(void)createCurrentUserWithusername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL, NSError *))successBlock{
     [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
-        ManagedUser *managedUser = [ManagedUser MR_createEntity];
+        RGSManagedUser *managedUser = [RGSManagedUser MR_createEntity];
         managedUser.login = username;
         managedUser.password = password;
         managedUser.currentUser = [NSNumber numberWithBool:YES];
@@ -80,7 +80,7 @@ static dispatch_once_t once_token = 0;
 -(void)creteCurrentUserWithQBUser:(QBUUser *)qBUser successBlock:(void (^)(BOOL, NSError *))successBlock{
     
     [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
-        ManagedUser *managedUser = [ManagedUser MR_createEntity];
+        RGSManagedUser *managedUser = [RGSManagedUser MR_createEntity];
         managedUser.externalUserID = [NSNumber numberWithUnsignedInteger:qBUser.externalUserID];
         managedUser.blobID = [NSNumber numberWithInteger:qBUser.blobID];
         managedUser.facebookID = qBUser.facebookID;

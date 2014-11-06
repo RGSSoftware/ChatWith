@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ManagedUser;
+@class RGSManagedUser;
 
 @interface Converstation : NSManagedObject
 
@@ -26,8 +26,8 @@
 
 @interface Converstation (CoreDataGeneratedAccessors)
 
-- (void)addOccupantsObject:(ManagedUser *)value;
-- (void)removeOccupantsObject:(ManagedUser *)value;
+- (void)addOccupantsObject:(RGSManagedUser *)value;
+- (void)removeOccupantsObject:(RGSManagedUser *)value;
 - (void)addOccupants:(NSSet *)values;
 - (void)removeOccupants:(NSSet *)values;
 

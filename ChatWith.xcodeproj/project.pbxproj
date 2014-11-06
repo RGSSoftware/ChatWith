@@ -16,7 +16,7 @@
 		2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */; };
 		223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */; };
 		223A1DB21A04459E00A1B3D2 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DB11A04459E00A1B3D2 /* Contact.m */; };
-		223A1DB81A04F26D00A1B3D2 /* ManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DB71A04F26D00A1B3D2 /* ManagedUser.m */; };
+		223A1DB81A04F26D00A1B3D2 /* RGSManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DB71A04F26D00A1B3D2 /* RGSManagedUser.m */; };
 		223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5119E456FC0065F630 /* RGSChatListViewController.m */; };
 		223D4C5819E474540065F630 /* Converstation.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5719E474540065F630 /* Converstation.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
@@ -112,8 +112,8 @@
 		223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactCell.m; sourceTree = "<group>"; };
 		223A1DB01A04459E00A1B3D2 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		223A1DB11A04459E00A1B3D2 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
-		223A1DB61A04F26D00A1B3D2 /* ManagedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedUser.h; sourceTree = "<group>"; };
-		223A1DB71A04F26D00A1B3D2 /* ManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedUser.m; sourceTree = "<group>"; };
+		223A1DB61A04F26D00A1B3D2 /* RGSManagedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSManagedUser.h; sourceTree = "<group>"; };
+		223A1DB71A04F26D00A1B3D2 /* RGSManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSManagedUser.m; sourceTree = "<group>"; };
 		223D4C5019E456FC0065F630 /* RGSChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChatListViewController.h; sourceTree = "<group>"; };
 		223D4C5119E456FC0065F630 /* RGSChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChatListViewController.m; sourceTree = "<group>"; };
 		223D4C5619E474540065F630 /* Converstation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converstation.h; sourceTree = "<group>"; };
@@ -313,8 +313,8 @@
 			isa = PBXGroup;
 			children = (
 				22D7BCC419A8D45100D2C01C /* ChatWith.xcdatamodeld */,
-				223A1DB61A04F26D00A1B3D2 /* ManagedUser.h */,
-				223A1DB71A04F26D00A1B3D2 /* ManagedUser.m */,
+				223A1DB61A04F26D00A1B3D2 /* RGSManagedUser.h */,
+				223A1DB71A04F26D00A1B3D2 /* RGSManagedUser.m */,
 				223A1DB01A04459E00A1B3D2 /* Contact.h */,
 				223A1DB11A04459E00A1B3D2 /* Contact.m */,
 				223D4C5619E474540065F630 /* Converstation.h */,
@@ -615,7 +615,7 @@
 				22F520701A0074D600FD2CD5 /* UIImage+RoundedCorner.m in Sources */,
 				2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */,
 				223A1DB21A04459E00A1B3D2 /* Contact.m in Sources */,
-				223A1DB81A04F26D00A1B3D2 /* ManagedUser.m in Sources */,
+				223A1DB81A04F26D00A1B3D2 /* RGSManagedUser.m in Sources */,
 				2287C47319FAC58600039555 /* UIColor+RGSColorWithHexString.m in Sources */,
 				22F5206F1A0074D600FD2CD5 /* UIImage+Alpha.m in Sources */,
 				223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */,

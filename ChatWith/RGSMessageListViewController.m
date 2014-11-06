@@ -8,7 +8,7 @@
 
 #import "RGSMessageListViewController.h"
 
-#import "ManagedUser.h"
+#import "RGSManagedUser.h"
 
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"

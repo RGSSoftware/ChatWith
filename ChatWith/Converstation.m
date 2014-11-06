@@ -7,7 +7,7 @@
 //
 
 #import "Converstation.h"
-#import "ManagedUser.h"
+#import "RGSManagedUser.h"
 
 
 @implementation Converstation

@@ -7,7 +7,7 @@
 //
 
 #import "RGSChatService.h"
-#import "ManagedUser.h"
+#import "RGSManagedUser.h"
 
 
 @interface RGSChatService () <QBChatDelegate, QBActionStatusDelegate>
@@ -74,7 +74,7 @@ static dispatch_once_t once_token = 0;
     }
 }
 
--(void)allConversationsFromUser:(ManagedUser *)user startingAt:(NSDate *)startDate successBlock:(void (^)(BOOL, NSArray *))successBlock{
+-(void)allConversationsFromUser:(RGSManagedUser *)user startingAt:(NSDate *)startDate successBlock:(void (^)(BOOL, NSArray *))successBlock{
     self.getConversationSuccessBlock = successBlock;
     
     NSMutableDictionary *extendedRequest = [NSMutableDictionary new];

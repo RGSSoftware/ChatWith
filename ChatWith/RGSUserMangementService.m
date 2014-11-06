@@ -7,7 +7,7 @@
 //
 
 #import "RGSUserMangementService.h"
-#import "ManagedUser.h"
+#import "RGSManagedUser.h"
 #import "LocalStorageService.h"
 
 @implementation RGSUserMangementService

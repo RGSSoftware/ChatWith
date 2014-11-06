@@ -10,7 +10,7 @@
 
 #import "RGSContactCell.h"
 
-#import "ManagedUser.h"
+#import "RGSManagedUser.h"
 #import "Contact.h"
 
 #import "RGSMessageListViewController.h"

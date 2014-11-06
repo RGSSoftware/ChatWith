@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "ManagedUser.h"
+#import "RGSManagedUser.h"
 #import "Contact.h"
 
 
-@implementation ManagedUser
+@implementation RGSManagedUser
 
 @dynamic blobID;
 @dynamic createdAt;

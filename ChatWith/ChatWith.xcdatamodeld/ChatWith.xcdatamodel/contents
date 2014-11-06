@@ -10,8 +10,8 @@
         <attribute name="userID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Contact" representedClassName="Contact" syncable="YES">
-        <relationship name="friend" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedUser" inverseName="befriend" inverseEntity="ManagedUser" syncable="YES"/>
-        <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedUser" inverseName="contacts" inverseEntity="ManagedUser" syncable="YES"/>
+        <relationship name="friend" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="befriend" inverseEntity="RGSManagedUser" syncable="YES"/>
+        <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="contacts" inverseEntity="RGSManagedUser" syncable="YES"/>
     </entity>
     <entity name="Converstation" representedClassName="Converstation" syncable="YES">
         <attribute name="entityID" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,9 +22,9 @@
         <attribute name="roomJID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unreadMessagesCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="occupants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ManagedUser" syncable="YES"/>
+        <relationship name="occupants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSManagedUser" syncable="YES"/>
     </entity>
-    <entity name="ManagedUser" representedClassName="ManagedUser" syncable="YES">
+    <entity name="RGSManagedUser" representedClassName="RGSManagedUser" syncable="YES">
         <attribute name="blobID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="currentUser" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -50,6 +50,6 @@
         <element name="ApplicationSession" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Contact" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Converstation" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ManagedUser" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RGSManagedUser" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

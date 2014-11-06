@@ -11,7 +11,7 @@
 
 @class Contact;
 
-@interface ManagedUser : NSManagedObject
+@interface RGSManagedUser : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * blobID;
 @property (nonatomic, retain) NSDate * createdAt;
@@ -35,7 +35,7 @@
 @property (nonatomic, retain) NSSet *befriend;
 @end
 
-@interface ManagedUser (CoreDataGeneratedAccessors)
+@interface RGSManagedUser (CoreDataGeneratedAccessors)
 
 - (void)addContactsObject:(Contact *)value;
 - (void)removeContactsObject:(Contact *)value;
