@@ -282,9 +282,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="8bq-gn-jvD">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lzT-sE-2da">
                                 <rect key="frame" x="0.0" y="64" width="320" height="505"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -308,20 +305,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="8bq-gn-jvD" secondAttribute="bottom" id="29c-OH-uYv"/>
-                            <constraint firstItem="8bq-gn-jvD" firstAttribute="leading" secondItem="el7-ry-i7U" secondAttribute="leading" id="32c-Zu-0Om"/>
-                            <constraint firstItem="8bq-gn-jvD" firstAttribute="top" secondItem="el7-ry-i7U" secondAttribute="top" id="CjU-iX-S4T"/>
                             <constraint firstAttribute="trailing" secondItem="lzT-sE-2da" secondAttribute="trailing" id="DUl-T8-4R0"/>
                             <constraint firstItem="lzT-sE-2da" firstAttribute="leading" secondItem="el7-ry-i7U" secondAttribute="leading" id="Jpk-fv-Ogx"/>
                             <constraint firstAttribute="bottom" secondItem="lzT-sE-2da" secondAttribute="bottom" constant="-1" id="LHd-Vp-pRI"/>
-                            <constraint firstAttribute="trailing" secondItem="8bq-gn-jvD" secondAttribute="trailing" id="ju2-oU-dSZ"/>
                             <constraint firstItem="lzT-sE-2da" firstAttribute="top" secondItem="el7-ry-i7U" secondAttribute="top" constant="64" id="td0-6n-AXb"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="backgroundView" destination="8bq-gn-jvD" id="lhX-jh-QF2"/>
                         <outlet property="tableView" destination="lzT-sE-2da" id="1EA-7j-M9l"/>
                     </connections>
                 </viewController>
@@ -330,7 +322,4 @@
             <point key="canvasLocation" x="2414" y="337"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="background" width="640" height="1136"/>
-    </resources>
 </document>

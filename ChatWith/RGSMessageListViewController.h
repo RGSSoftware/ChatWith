@@ -7,15 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RGSBaseViewController.h"
 
 @class RGSManagedUser;
 
-@interface RGSMessageListViewController : UIViewController
+@interface RGSMessageListViewController : RGSBaseViewController
 
 @property (nonatomic, strong)RGSManagedUser *receiver;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
 
--(id)initWithFriend:(RGSManagedUser *)friendfgf;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
