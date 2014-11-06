@@ -76,35 +76,45 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="zWn-iH-9Jd" kind="relationship" relationship="rootViewController" id="Vff-TT-ruO"/>
+                        <segue destination="hQ2-gS-03Z" kind="relationship" relationship="rootViewController" id="lfC-KL-DZm"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gKr-LI-0Zs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="842" y="337"/>
         </scene>
-        <!--Title-->
-        <scene sceneID="fkr-ly-qnr">
+        <!--Chat List View Controller-->
+        <scene sceneID="KSU-8c-22I">
             <objects>
-                <tableViewController id="zWn-iH-9Jd" customClass="RGSChatListViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="w0A-uB-Gxg">
+                <viewController id="hQ2-gS-03Z" customClass="RGSChatListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nSa-dm-q7D"/>
+                        <viewControllerLayoutGuide type="bottom" id="aeI-Sz-beR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VEc-r9-X5u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="w0A-uB-Gxg">
+                                <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lwC-KB-E6L">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lwC-KB-E6L" id="MbX-ct-5iR">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="hQ2-gS-03Z" id="YRo-x8-MtC"/>
+                                    <outlet property="delegate" destination="hQ2-gS-03Z" id="JeP-5B-ooQ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lwC-KB-E6L">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lwC-KB-E6L" id="MbX-ct-5iR">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="zWn-iH-9Jd" id="Nsq-hb-c3h"/>
-                            <outlet property="delegate" destination="zWn-iH-9Jd" id="OAB-Qy-fzg"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="FN7-T0-Hcb">
+                    </view>
+                    <navigationItem key="navigationItem" id="KxY-hv-K9s">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="89C-bg-cD7">
                             <connections>
                                 <segue destination="LRt-5S-plK" kind="show" identifier="toContacts" id="yz6-jh-E5y"/>
@@ -112,10 +122,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UM5-eE-s9r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <connections>
+                        <outlet property="tableView" destination="w0A-uB-Gxg" id="ZvS-f5-ST1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O4o-zo-WGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1479" y="337"/>
+            <point key="canvasLocation" x="1496" y="258"/>
         </scene>
         <!--Contact List View Controller-->
         <scene sceneID="dof-XH-CoB">

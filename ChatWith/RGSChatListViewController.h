@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RGSBaseViewController.h"
 
-@interface RGSChatListViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
+@interface RGSChatListViewController : RGSBaseViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong)NSFetchedResultsController *fetchedResultsController;
 

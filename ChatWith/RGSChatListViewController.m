@@ -19,8 +19,8 @@
 
 @implementation RGSChatListViewController
 
--(id)initWithStyle:(UITableViewStyle)style{
-    self = [super initWithStyle:style];
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
     if(self){
         [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextObjectsDidChangeNotification object:nil queue:[NSOperationQueue mainQueue]
                                                       usingBlock:^(NSNotification *note) {
