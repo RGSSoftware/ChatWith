@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RGSBaseViewController.h"
 
-@interface RGSContactListViewController : UIViewController <UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate>
+@interface RGSContactListViewController : RGSBaseViewController <UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIButton *InviteFriendsButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *contactsView;
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
 @property (nonatomic, strong)NSFetchedResultsController *fetchedResultsController;
 
 @end

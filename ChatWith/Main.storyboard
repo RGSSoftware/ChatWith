@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EGF-iH-8R1">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -129,9 +128,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Sjx-0b-Nkq">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                             <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="C7D-D2-aaU">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -210,41 +206,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Sjx-0b-Nkq" firstAttribute="trailing" secondItem="F19-YL-s03" secondAttribute="trailing" id="2Vc-nv-LUe"/>
-                            <constraint firstItem="Sjx-0b-Nkq" firstAttribute="leading" secondItem="aif-y2-YsZ" secondAttribute="leadingMargin" constant="-16" id="2be-Dj-51M"/>
-                            <constraint firstItem="Sjx-0b-Nkq" firstAttribute="bottom" secondItem="tT8-2B-vMB" secondAttribute="top" id="6Ae-fA-aaD"/>
                             <constraint firstItem="C7D-D2-aaU" firstAttribute="top" secondItem="aif-y2-YsZ" secondAttribute="top" constant="64" id="AJW-jX-s25"/>
-                            <constraint firstItem="Sjx-0b-Nkq" firstAttribute="top" secondItem="aif-y2-YsZ" secondAttribute="top" id="HbQ-TN-ERP"/>
                             <constraint firstItem="C7D-D2-aaU" firstAttribute="top" secondItem="F19-YL-s03" secondAttribute="bottom" id="HhA-x1-8H5"/>
                             <constraint firstItem="u7b-09-4xt" firstAttribute="top" secondItem="C7D-D2-aaU" secondAttribute="bottom" constant="10" id="IGE-TG-x9S"/>
                             <constraint firstItem="u7b-09-4xt" firstAttribute="leading" secondItem="aif-y2-YsZ" secondAttribute="leadingMargin" constant="16" id="ILG-hk-zJo"/>
-                            <constraint firstItem="Sjx-0b-Nkq" firstAttribute="leading" secondItem="F19-YL-s03" secondAttribute="leading" id="JXs-ir-pvb"/>
-                            <constraint firstItem="Sjx-0b-Nkq" firstAttribute="leading" secondItem="C7D-D2-aaU" secondAttribute="leading" id="L6f-Yi-MlE"/>
-                            <constraint firstAttribute="trailing" secondItem="Sjx-0b-Nkq" secondAttribute="trailing" id="Off-1a-8Xp"/>
-                            <constraint firstItem="Sjx-0b-Nkq" firstAttribute="trailing" secondItem="F19-YL-s03" secondAttribute="trailing" id="PlA-QN-to8"/>
-                            <constraint firstAttribute="bottom" secondItem="Sjx-0b-Nkq" secondAttribute="bottom" id="QN6-2t-byA"/>
-                            <constraint firstItem="Sjx-0b-Nkq" firstAttribute="top" secondItem="aif-y2-YsZ" secondAttribute="top" id="SCE-z0-pUJ"/>
                             <constraint firstItem="C7D-D2-aaU" firstAttribute="leading" secondItem="F19-YL-s03" secondAttribute="leading" id="TG6-8x-e9j"/>
                             <constraint firstItem="u7b-09-4xt" firstAttribute="leading" secondItem="aif-y2-YsZ" secondAttribute="leading" constant="16" id="TQh-4p-vIY"/>
                             <constraint firstAttribute="trailing" secondItem="u7b-09-4xt" secondAttribute="trailing" constant="16" id="TWh-kj-xWj"/>
                             <constraint firstAttribute="trailing" secondItem="C7D-D2-aaU" secondAttribute="trailing" id="V8a-sa-EPg"/>
                             <constraint firstItem="C7D-D2-aaU" firstAttribute="trailing" secondItem="F19-YL-s03" secondAttribute="trailing" id="a90-W3-eEK"/>
-                            <constraint firstItem="Sjx-0b-Nkq" firstAttribute="leading" secondItem="F19-YL-s03" secondAttribute="leading" id="aQf-qi-I2u"/>
                             <constraint firstItem="u7b-09-4xt" firstAttribute="top" secondItem="C7D-D2-aaU" secondAttribute="bottom" constant="10" id="c1J-r6-6Wf"/>
                             <constraint firstItem="u7b-09-4xt" firstAttribute="leading" secondItem="aif-y2-YsZ" secondAttribute="leading" constant="16" id="dAw-TN-b4C"/>
                             <constraint firstAttribute="trailing" secondItem="E8R-IH-pSd" secondAttribute="trailing" id="dH1-ys-IWa"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Sjx-0b-Nkq" secondAttribute="trailing" constant="-16" id="dLe-Z7-8xK"/>
                             <constraint firstItem="C7D-D2-aaU" firstAttribute="top" secondItem="F19-YL-s03" secondAttribute="bottom" id="daZ-RV-jtC"/>
                             <constraint firstAttribute="trailing" secondItem="E8R-IH-pSd" secondAttribute="trailing" id="dfh-Y6-HSG"/>
                             <constraint firstAttribute="trailing" secondItem="u7b-09-4xt" secondAttribute="trailing" constant="16" id="eGd-wa-DBo"/>
-                            <constraint firstItem="Sjx-0b-Nkq" firstAttribute="leading" secondItem="aif-y2-YsZ" secondAttribute="leading" id="fY5-MW-l5C"/>
-                            <constraint firstItem="Sjx-0b-Nkq" firstAttribute="trailing" secondItem="C7D-D2-aaU" secondAttribute="trailing" id="j93-LN-umS"/>
-                            <constraint firstItem="Sjx-0b-Nkq" firstAttribute="top" secondItem="aif-y2-YsZ" secondAttribute="top" constant="66" id="kEw-Xf-Jd5"/>
                             <constraint firstItem="C7D-D2-aaU" firstAttribute="trailing" secondItem="F19-YL-s03" secondAttribute="trailing" id="nSW-UQ-IKy"/>
                             <constraint firstItem="E8R-IH-pSd" firstAttribute="leading" secondItem="aif-y2-YsZ" secondAttribute="leading" id="nwy-gs-17x"/>
                             <constraint firstItem="u7b-09-4xt" firstAttribute="centerX" secondItem="C7D-D2-aaU" secondAttribute="centerX" id="qvi-ZI-EFt"/>
                             <constraint firstItem="C7D-D2-aaU" firstAttribute="leading" secondItem="aif-y2-YsZ" secondAttribute="leading" id="sYO-As-c5W"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Sjx-0b-Nkq" secondAttribute="trailing" constant="-16" id="snt-t4-x9g"/>
                             <constraint firstItem="C7D-D2-aaU" firstAttribute="leading" secondItem="F19-YL-s03" secondAttribute="leading" id="tbH-gE-uh6"/>
                             <constraint firstAttribute="bottom" secondItem="E8R-IH-pSd" secondAttribute="bottom" id="x0S-U1-Hcz"/>
                             <constraint firstAttribute="trailing" secondItem="u7b-09-4xt" secondAttribute="trailing" constant="16" id="x7Q-zC-Ajf"/>
@@ -252,18 +232,6 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="2Vc-nv-LUe"/>
-                                <exclude reference="2be-Dj-51M"/>
-                                <exclude reference="6Ae-fA-aaD"/>
-                                <exclude reference="JXs-ir-pvb"/>
-                                <exclude reference="L6f-Yi-MlE"/>
-                                <exclude reference="PlA-QN-to8"/>
-                                <exclude reference="SCE-z0-pUJ"/>
-                                <exclude reference="aQf-qi-I2u"/>
-                                <exclude reference="dLe-Z7-8xK"/>
-                                <exclude reference="j93-LN-umS"/>
-                                <exclude reference="kEw-Xf-Jd5"/>
-                                <exclude reference="snt-t4-x9g"/>
                                 <exclude reference="HhA-x1-8H5"/>
                                 <exclude reference="TG6-8x-e9j"/>
                                 <exclude reference="a90-W3-eEK"/>
@@ -285,11 +253,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="InviteFriendsButton" destination="u7b-09-4xt" id="0hQ-QF-TZh"/>
-                        <outlet property="backgroundView" destination="Sjx-0b-Nkq" id="Pkw-nb-j08"/>
                         <outlet property="collectionView" destination="g4v-bh-3Qf" id="52J-D4-cYA"/>
                         <outlet property="contactsView" destination="E8R-IH-pSd" id="ojJ-wx-1wU"/>
                         <outlet property="searchBar" destination="C7D-D2-aaU" id="DsK-24-ZaY"/>
-                        <segue destination="zWn-iH-9Jd" kind="showDetail" identifier="toMessages" id="Sdh-sr-0bK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aOD-Tg-N05" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -302,44 +268,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2104" y="337"/>
-        </scene>
-        <!--Message List View Controller-->
-        <scene sceneID="cUy-B0-MxM">
-            <objects>
-                <tableViewController id="E5t-TK-IMD" customClass="RGSMessageListViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cvL-sx-5b8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Udc-qd-c1P" style="IBUITableViewCellStyleDefault" id="aDH-EP-TUm">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aDH-EP-TUm" id="pDz-Sy-Dg8">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Udc-qd-c1P">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="E5t-TK-IMD" id="rTo-7d-lrC"/>
-                            <outlet property="delegate" destination="E5t-TK-IMD" id="bAj-jI-4wx"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="QEn-pZ-mGP"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mlt-7y-ygZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2618" y="-46"/>
+            <point key="canvasLocation" x="1904" y="337"/>
         </scene>
         <!--Message List View Controller-->
         <scene sceneID="g6R-Ox-UsF">
@@ -375,10 +304,6 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="E5t-TK-IMD" id="cSc-yU-P5L"/>
-                                    <outlet property="delegate" destination="E5t-TK-IMD" id="kp5-4w-Jjk"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -402,13 +327,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9f-St-B4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2990" y="321"/>
+            <point key="canvasLocation" x="2414" y="337"/>
         </scene>
     </scenes>
     <resources>
         <image name="background" width="640" height="1136"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Vff-TT-ruO"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -123,6 +123,8 @@
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo =
     [[_fetchedResultsController sections] objectAtIndex:section];
+    
+    int rowCount = [sectionInfo numberOfObjects];
     return [sectionInfo numberOfObjects];
 }
 

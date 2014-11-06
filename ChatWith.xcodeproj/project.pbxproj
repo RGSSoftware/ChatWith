@@ -56,6 +56,7 @@
 		226E0D0119AB53B4004029D7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746C19A90CA800245A73 /* MobileCoreServices.framework */; };
 		226E0D0219AB53B4004029D7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746A19A90C9E00245A73 /* SystemConfiguration.framework */; };
 		226E0D0319AB53B4004029D7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
+		227ADFBE1A0C071200D03017 /* RGSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 227ADFBD1A0C071200D03017 /* RGSBaseViewController.m */; };
 		227BFAF219E24674000E7ACC /* ApplicationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 227BFAF119E24674000E7ACC /* ApplicationSession.m */; };
 		227BFAF519E31EE0000E7ACC /* RGSChatService.m in Sources */ = {isa = PBXBuildFile; fileRef = 227BFAF419E31EE0000E7ACC /* RGSChatService.m */; };
 		2287C46A19FAB3EA00039555 /* UIImage+RGSinitWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2287C46919FAB3EA00039555 /* UIImage+RGSinitWithColor.m */; };
@@ -139,6 +140,8 @@
 		2264749019A90E0600245A73 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		2264749419A90FA000245A73 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		226E0CF019AB52A6004029D7 /* RGSAppDelegateSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSAppDelegateSpec.m; sourceTree = "<group>"; };
+		227ADFBC1A0C071200D03017 /* RGSBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSBaseViewController.h; sourceTree = "<group>"; };
+		227ADFBD1A0C071200D03017 /* RGSBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSBaseViewController.m; sourceTree = "<group>"; };
 		227BFAF019E24674000E7ACC /* ApplicationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationSession.h; sourceTree = "<group>"; };
 		227BFAF119E24674000E7ACC /* ApplicationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationSession.m; sourceTree = "<group>"; };
 		227BFAF319E31EE0000E7ACC /* RGSChatService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChatService.h; sourceTree = "<group>"; };
@@ -270,6 +273,8 @@
 		22889AD019D3232600F0541D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				227ADFBC1A0C071200D03017 /* RGSBaseViewController.h */,
+				227ADFBD1A0C071200D03017 /* RGSBaseViewController.m */,
 				223D4C5019E456FC0065F630 /* RGSChatListViewController.h */,
 				223D4C5119E456FC0065F630 /* RGSChatListViewController.m */,
 				2250787319F880D100F793EE /* RGSContactListViewController.h */,
@@ -596,6 +601,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				227ADFBE1A0C071200D03017 /* RGSBaseViewController.m in Sources */,
 				223D4C5819E474540065F630 /* RGSChat.m in Sources */,
 				22D7BCC619A8D45100D2C01C /* ChatWith.xcdatamodeld in Sources */,
 				227BFAF219E24674000E7ACC /* ApplicationSession.m in Sources */,

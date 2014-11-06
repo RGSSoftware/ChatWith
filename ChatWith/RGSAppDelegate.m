@@ -44,14 +44,14 @@
     
     [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];//change the color to whichever color needed
     
-//    [ManagedUser MR_truncateAll];
-//    [Contact MR_truncateAll];
+//    [RGSManagedUser MR_truncateAll];
+//    [RGSContact MR_truncateAll];
 //    
-//    ManagedUser *currentUser = [ManagedUser MR_createEntity];
+//    RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
 //    currentUser.currentUser = [NSNumber numberWithBool:YES];
 //    
 ////    for(int i = 0; i < 60; i++){
-////        ManagedUser *testUser = [ManagedUser MR_createEntity];
+////        RGSManagedUser *testUser = [RGSManagedUser MR_createEntity];
 ////        testUser.fullName = @"test";
 ////        
 ////        Contact *contacTest = [Contact MR_createEntity];
@@ -62,37 +62,37 @@
 ////    }
 //    
 //    /////////////
-//    ManagedUser *barUser = [ManagedUser MR_createEntity];
+//    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
 //    barUser.fullName = @"bar";
 //    
-//    Contact *contactBar = [Contact MR_createEntity];
+//    RGSContact *contactBar = [RGSContact MR_createEntity];
 //    contactBar.source = currentUser;
 //    contactBar.friend = barUser;
 //    
 //    [currentUser addContactsObject:contactBar];
 //    //////////////
-//    ManagedUser *fooUser = [ManagedUser MR_createEntity];
+//    RGSManagedUser *fooUser = [RGSManagedUser MR_createEntity];
 //    fooUser.fullName = @"foo";
 //    
-//    Contact *contactFoo = [Contact MR_createEntity];
+//    RGSContact *contactFoo = [RGSContact MR_createEntity];
 //    contactFoo.source = currentUser;
 //    contactFoo.friend = fooUser;
 //    
 //    [currentUser addContactsObject:contactFoo];
 //    ///////////////////
-//    ManagedUser *teeUser = [ManagedUser MR_createEntity];
+//    RGSManagedUser *teeUser = [RGSManagedUser MR_createEntity];
 //    teeUser.fullName = @"tee";
 //    
-//    Contact *contactTee = [Contact MR_createEntity];
+//    RGSContact *contactTee = [RGSContact MR_createEntity];
 //    contactTee.source = currentUser;
 //    contactTee.friend = teeUser;
 //    
 //    [currentUser addContactsObject:contactTee];
 //    /////////////////
-//    ManagedUser *weeUser = [ManagedUser MR_createEntity];
+//    RGSManagedUser *weeUser = [RGSManagedUser MR_createEntity];
 //    weeUser.fullName = @"wee";
 //    
-//    Contact *contactWee = [Contact MR_createEntity];
+//    RGSContact *contactWee = [RGSContact MR_createEntity];
 //    contactWee.source = teeUser;
 //    contactWee.friend = weeUser;
 //    
@@ -100,8 +100,8 @@
 //    
 //    
 //    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:nil];
-//    
-//    NSLog(@"simple print-----allUsers.count------{%lu}", (unsigned long)[[ManagedUser MR_findAll] count]);
+////
+//    NSLog(@"simple print-----allUsers.count------{%lu}", (unsigned long)[[RGSManagedUser MR_findAll] count]);
 
     
 //    self.applicationSessionManager.applicationID = 7632;
