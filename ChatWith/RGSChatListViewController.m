@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "RGSConverstationTableViewController.h"
+#import "RGSChatListViewController.h"
 #import "Converstation.h"
 
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
 #import "UIImage+Resize.h"
 
-@interface RGSConverstationTableViewController ()
+@interface RGSChatListViewController ()
 
 @end
 
-@implementation RGSConverstationTableViewController
+@implementation RGSChatListViewController
 
 -(id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];

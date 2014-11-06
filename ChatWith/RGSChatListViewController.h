@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RGSConverstationTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
+@interface RGSChatListViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong)NSFetchedResultsController *fetchedResultsController;
 
