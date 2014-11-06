@@ -10,12 +10,12 @@
 @class UserModel;
 @class RGSManagedUser;
 @class ApplicationSession;
-@class Converstation;
+@class RGSChat;
 
 @interface LocalStorageService : NSObject
 
 @property (nonatomic, strong)ApplicationSession *applicationSession;
-@property (nonatomic, strong)Converstation *lastestConverstation;
+@property (nonatomic, strong)RGSChat *lastestConverstation;
 
 + (instancetype)shared;
 //+ (void)setSharedInstance:(id)sharedInstance;

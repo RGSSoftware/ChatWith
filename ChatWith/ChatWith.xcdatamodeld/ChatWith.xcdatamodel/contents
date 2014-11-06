@@ -9,7 +9,7 @@
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Converstation" representedClassName="Converstation" syncable="YES">
+    <entity name="RGSChat" representedClassName="RGSChat" syncable="YES">
         <attribute name="entityID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastMessagaeText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastMessageDate" optional="YES" attributeType="Date" syncable="YES"/>
@@ -48,8 +48,8 @@
     </entity>
     <elements>
         <element name="ApplicationSession" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RGSChat" positionX="0" positionY="0" width="0" height="0"/>
         <element name="RGSContact" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Converstation" positionX="0" positionY="0" width="0" height="0"/>
         <element name="RGSManagedUser" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

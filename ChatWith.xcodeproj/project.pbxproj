@@ -18,7 +18,7 @@
 		223A1DB21A04459E00A1B3D2 /* RGSContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DB11A04459E00A1B3D2 /* RGSContact.m */; };
 		223A1DB81A04F26D00A1B3D2 /* RGSManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DB71A04F26D00A1B3D2 /* RGSManagedUser.m */; };
 		223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5119E456FC0065F630 /* RGSChatListViewController.m */; };
-		223D4C5819E474540065F630 /* Converstation.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5719E474540065F630 /* Converstation.m */; };
+		223D4C5819E474540065F630 /* RGSChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5719E474540065F630 /* RGSChat.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250787419F880D100F793EE /* RGSContactListViewController.m */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
@@ -116,8 +116,8 @@
 		223A1DB71A04F26D00A1B3D2 /* RGSManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSManagedUser.m; sourceTree = "<group>"; };
 		223D4C5019E456FC0065F630 /* RGSChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChatListViewController.h; sourceTree = "<group>"; };
 		223D4C5119E456FC0065F630 /* RGSChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChatListViewController.m; sourceTree = "<group>"; };
-		223D4C5619E474540065F630 /* Converstation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converstation.h; sourceTree = "<group>"; };
-		223D4C5719E474540065F630 /* Converstation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Converstation.m; sourceTree = "<group>"; };
+		223D4C5619E474540065F630 /* RGSChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChat.h; sourceTree = "<group>"; };
+		223D4C5719E474540065F630 /* RGSChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChat.m; sourceTree = "<group>"; };
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2250787319F880D100F793EE /* RGSContactListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactListViewController.h; sourceTree = "<group>"; };
 		2250787419F880D100F793EE /* RGSContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactListViewController.m; sourceTree = "<group>"; };
@@ -317,8 +317,8 @@
 				223A1DB71A04F26D00A1B3D2 /* RGSManagedUser.m */,
 				223A1DB01A04459E00A1B3D2 /* RGSContact.h */,
 				223A1DB11A04459E00A1B3D2 /* RGSContact.m */,
-				223D4C5619E474540065F630 /* Converstation.h */,
-				223D4C5719E474540065F630 /* Converstation.m */,
+				223D4C5619E474540065F630 /* RGSChat.h */,
+				223D4C5719E474540065F630 /* RGSChat.m */,
 				227BFAF019E24674000E7ACC /* ApplicationSession.h */,
 				227BFAF119E24674000E7ACC /* ApplicationSession.m */,
 			);
@@ -596,7 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				223D4C5819E474540065F630 /* Converstation.m in Sources */,
+				223D4C5819E474540065F630 /* RGSChat.m in Sources */,
 				22D7BCC619A8D45100D2C01C /* ChatWith.xcdatamodeld in Sources */,
 				227BFAF219E24674000E7ACC /* ApplicationSession.m in Sources */,
 				22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */,

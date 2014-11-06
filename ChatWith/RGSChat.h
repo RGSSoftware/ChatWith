@@ -11,7 +11,7 @@
 
 @class RGSManagedUser;
 
-@interface Converstation : NSManagedObject
+@interface RGSChat : NSManagedObject
 
 @property (nonatomic, retain) NSString * entityID;
 @property (nonatomic, retain) NSString * name;
@@ -24,7 +24,7 @@
 @property (nonatomic, retain) NSSet *occupants;
 @end
 
-@interface Converstation (CoreDataGeneratedAccessors)
+@interface RGSChat (CoreDataGeneratedAccessors)
 
 - (void)addOccupantsObject:(RGSManagedUser *)value;
 - (void)removeOccupantsObject:(RGSManagedUser *)value;

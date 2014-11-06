@@ -12,7 +12,7 @@
 #import "RGSUserMangementService.h"
 #import "RGSManagedUser.h"
 
-#import "Converstation.h"
+#import "RGSChat.h"
 #import "RGSContact.h"
 
 

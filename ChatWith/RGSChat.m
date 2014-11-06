@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "Converstation.h"
+#import "RGSChat.h"
 #import "RGSManagedUser.h"
 
 
-@implementation Converstation
+@implementation RGSChat
 
 @dynamic entityID;
 @dynamic name;

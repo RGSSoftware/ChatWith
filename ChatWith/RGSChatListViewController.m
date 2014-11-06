@@ -7,7 +7,7 @@
 //
 
 #import "RGSChatListViewController.h"
-#import "Converstation.h"
+#import "RGSChat.h"
 
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
@@ -25,7 +25,7 @@
         [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextObjectsDidChangeNotification object:nil queue:[NSOperationQueue mainQueue]
                                                       usingBlock:^(NSNotification *note) {
                                                           for(NSManagedObject *object in [[note userInfo] objectForKey:NSUpdatedObjectsKey]){
-                                                              if([object.entity.name isEqualToString:NSStringFromClass([Converstation class])]){
+                                                              if([object.entity.name isEqualToString:NSStringFromClass([RGSChat class])]){
                                                                   
                                                                   NSError *error;
                                                                   if (![[self fetchedResultsController] performFetch:&error]) {
@@ -132,7 +132,7 @@ return [[_fetchedResultsController sections] count];
 -(NSFetchedResultsController *)fetchedResultsController{
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[Converstation MR_entityDescription]];
+    [fetchRequest setEntity:[RGSChat MR_entityDescription]];
     [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"lastMessageDate" ascending:NO]]];
     
     
