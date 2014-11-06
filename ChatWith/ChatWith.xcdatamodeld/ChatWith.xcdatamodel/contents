@@ -9,10 +9,6 @@
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Contact" representedClassName="Contact" syncable="YES">
-        <relationship name="friend" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="befriend" inverseEntity="RGSManagedUser" syncable="YES"/>
-        <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="contacts" inverseEntity="RGSManagedUser" syncable="YES"/>
-    </entity>
     <entity name="Converstation" representedClassName="Converstation" syncable="YES">
         <attribute name="entityID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastMessagaeText" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,6 +19,10 @@
         <attribute name="unreadMessagesCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="occupants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSManagedUser" syncable="YES"/>
+    </entity>
+    <entity name="RGSContact" representedClassName="RGSContact" syncable="YES">
+        <relationship name="friend" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="befriend" inverseEntity="RGSManagedUser" syncable="YES"/>
+        <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="contacts" inverseEntity="RGSManagedUser" syncable="YES"/>
     </entity>
     <entity name="RGSManagedUser" representedClassName="RGSManagedUser" syncable="YES">
         <attribute name="blobID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -43,12 +43,12 @@
         <attribute name="twitterID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="befriend" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Contact" inverseName="friend" inverseEntity="Contact" syncable="YES"/>
-        <relationship name="contacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Contact" inverseName="source" inverseEntity="Contact" syncable="YES"/>
+        <relationship name="befriend" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSContact" inverseName="friend" inverseEntity="RGSContact" syncable="YES"/>
+        <relationship name="contacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSContact" inverseName="source" inverseEntity="RGSContact" syncable="YES"/>
     </entity>
     <elements>
         <element name="ApplicationSession" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Contact" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RGSContact" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Converstation" positionX="0" positionY="0" width="0" height="0"/>
         <element name="RGSManagedUser" positionX="0" positionY="0" width="0" height="0"/>
     </elements>

@@ -11,7 +11,7 @@
 
 @class RGSManagedUser;
 
-@interface Contact : NSManagedObject
+@interface RGSContact : NSManagedObject
 
 @property (nonatomic, retain) RGSManagedUser *source;
 @property (nonatomic, retain) RGSManagedUser *friend;

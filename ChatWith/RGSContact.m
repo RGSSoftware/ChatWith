@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "Contact.h"
+#import "RGSContact.h"
 #import "RGSManagedUser.h"
 
 
-@implementation Contact
+@implementation RGSContact
 
 @dynamic source;
 @dynamic friend;

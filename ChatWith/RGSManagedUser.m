@@ -7,7 +7,7 @@
 //
 
 #import "RGSManagedUser.h"
-#import "Contact.h"
+#import "RGSContact.h"
 
 
 @implementation RGSManagedUser

@@ -11,7 +11,7 @@
 #import "RGSContactCell.h"
 
 #import "RGSManagedUser.h"
-#import "Contact.h"
+#import "RGSContact.h"
 
 #import "RGSMessageListViewController.h"
 
@@ -133,7 +133,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RGSContactCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FriendCell" forIndexPath:indexPath];
     
-    Contact *contact = [_fetchedResultsController objectAtIndexPath:indexPath];
+    RGSContact *contact = [_fetchedResultsController objectAtIndexPath:indexPath];
     if(contact.friend.imageData){
         cell.thumbnailImageView.image = [UIImage imageWithData:contact.friend.imageData];
     } else {
@@ -215,7 +215,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
 //     Get the new view controller using [segue destinationViewController].
 //     Pass the selected object to the new view controller.
     RGSContactCell *contactCell = (RGSContactCell *)sender;
-    Contact *contact = [_fetchedResultsController objectAtIndexPath:[self.collectionView indexPathForCell:contactCell]];
+    RGSContact *contact = [_fetchedResultsController objectAtIndexPath:[self.collectionView indexPathForCell:contactCell]];
     
     RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
                                                                 *)[segue destinationViewController];
@@ -231,7 +231,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[Contact MR_entityDescription]];
+    [fetchRequest setEntity:[RGSContact MR_entityDescription]];
 
     [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"friend.fullName" ascending:YES]]];
     [fetchRequest setFetchBatchSize:25];

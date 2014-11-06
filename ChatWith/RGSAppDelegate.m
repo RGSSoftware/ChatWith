@@ -13,7 +13,7 @@
 #import "RGSManagedUser.h"
 
 #import "Converstation.h"
-#import "Contact.h"
+#import "RGSContact.h"
 
 
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Contact;
+@class RGSContact;
 
 @interface RGSManagedUser : NSManagedObject
 
@@ -37,13 +37,13 @@
 
 @interface RGSManagedUser (CoreDataGeneratedAccessors)
 
-- (void)addContactsObject:(Contact *)value;
-- (void)removeContactsObject:(Contact *)value;
+- (void)addContactsObject:(RGSContact *)value;
+- (void)removeContactsObject:(RGSContact *)value;
 - (void)addContacts:(NSSet *)values;
 - (void)removeContacts:(NSSet *)values;
 
-- (void)addBefriendObject:(Contact *)value;
-- (void)removeBefriendObject:(Contact *)value;
+- (void)addBefriendObject:(RGSContact *)value;
+- (void)removeBefriendObject:(RGSContact *)value;
 - (void)addBefriend:(NSSet *)values;
 - (void)removeBefriend:(NSSet *)values;
 
