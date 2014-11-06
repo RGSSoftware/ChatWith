@@ -7,8 +7,6 @@
 //
 
 #import "RGSMessageSegue.h"
-#import "RGSContactListViewController.h"
-#import "RGSMessageListViewController.h"
 
 #import "RGSBaseViewController.h"
 
@@ -62,7 +60,7 @@
     destinationConNavView.alpha = .25;
     [transtionView addSubview:destinationConNavView];
    
-    ((RGSContactListViewController *)self.destinationViewController).backgroundView.hidden = YES;
+    ((RGSBaseViewController *)self.destinationViewController).backgroundView.hidden = YES;
     UIView *destinationView = [((UIViewController *)self.destinationViewController).view snapshotViewAfterScreenUpdates:YES];
     destinationView.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds),
                                        0,
@@ -88,8 +86,8 @@
         destinationView.frame = middleScreen;
         
     } completion:^(BOOL completed) {
-        ((RGSContactListViewController *)self.sourceViewController).backgroundView.hidden = NO;
-        ((RGSMessageListViewController *)self.destinationViewController).backgroundView.hidden = NO;
+        ((RGSBaseViewController *)self.sourceViewController).backgroundView.hidden = NO;
+        ((RGSBaseViewController *)self.destinationViewController).backgroundView.hidden = NO;
       
         [transtionView removeFromSuperview];
         [backgroundView removeFromSuperview];
