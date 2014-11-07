@@ -12,6 +12,9 @@
 #import "RGSUserMangementService.h"
 #import "RGSManagedUser.h"
 
+#import "RGSMessage.h"
+#import "RGSChat.h"
+
 #import "RGSChat.h"
 #import "RGSContact.h"
 
@@ -49,7 +52,7 @@
 //    
 //    RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
 //    currentUser.currentUser = [NSNumber numberWithBool:YES];
-//    
+//
 ////    for(int i = 0; i < 60; i++){
 ////        RGSManagedUser *testUser = [RGSManagedUser MR_createEntity];
 ////        testUser.fullName = @"test";
@@ -101,7 +104,20 @@
 //    
 //    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:nil];
     
-    
+//    RGSChat *chat1 = [RGSChat MR_createEntity];
+//    chat1.sender = currentUser;
+//    chat1.receiver = barUser;
+//    chat1.lastMessageDate = [NSDate date];
+//    
+//    for (int i = 0; i < 10; i++) {
+//        RGSMessage *message = [RGSMessage MR_createEntity];
+//        message.body = @"Lorem ipsum dolor sit amet, cu wisi inimicus gloriatur nec. Vis id falli eripuit. Ius nusquam detraxit senserit cu, te.";
+//        [chat1 addMessagesObject:message];
+//    }
+//    
+//    [currentUser addChatsObject:chat1];
+//    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:nil];
+
 ////
 //    NSLog(@"simple print-----allUsers.count------{%lu}", (unsigned long)[[RGSManagedUser MR_findAll] count]);
 
@@ -148,9 +164,9 @@
     self.window.frame = [[UIScreen mainScreen] bounds];
     [self.window makeKeyAndVisible];
 //
-//    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSContactListViewController"]];
-//    
-//    self.window.rootViewController = nc;
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSContactListViewController"]];
+    
+    self.window.rootViewController = nc;
     return YES;
 }
 -(void)retryLoginWithMaxAttempts:(int)tries{

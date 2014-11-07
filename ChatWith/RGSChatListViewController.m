@@ -8,6 +8,9 @@
 
 #import "RGSChatListViewController.h"
 #import "RGSChat.h"
+#import "RGSChatCell.h"
+#import "RGSMessage.h"
+#import "RGSManagedUser.h"
 
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
@@ -81,7 +84,9 @@ return [[_fetchedResultsController sections] count];
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo =
     [[_fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
+    
+    int rowCount = [sectionInfo numberOfObjects];
+    return rowCount;
 }
 
 -(IBAction)enableEditingMode:(id)sender{
@@ -90,15 +95,27 @@ return [[_fetchedResultsController sections] count];
 
 
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    RGSChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
+    RGSChat *chat = [_fetchedResultsController objectAtIndexPath:indexPath];
+    
+    cell.lastestMessageDate.text = chat.lastMessageDate.description;
+    cell.lastestMessageBody.text = ((RGSMessage *)[chat.messages anyObject]).body;
+    cell.receiverName.text = chat.receiver.fullName;
+    
+    cell.receiverImage.image = [UIImage imageWithColor:[UIColor colorWithWhite:0.731 alpha:1.000]];
+    cell.receiverImage.layer.masksToBounds = YES;
+    //prevent every frame from requiring a re-mask on all the pixels
+    //http://stackoverflow.com/questions/4314640/setting-corner-radius-on-uiimageview-not-working#4314683
+    cell.receiverImage.layer.shouldRasterize = YES;
+    [cell.receiverImage.layer setCornerRadius:10];
     
     // Configure the cell...
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -143,7 +160,7 @@ return [[_fetchedResultsController sections] count];
     
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"%K = %@", @"sender.currentUser", [NSNumber numberWithBool:YES]]];
     
-    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"nil" cacheName:@"Root"];
+    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
     _fetchedResultsController.delegate = self;
     
     return _fetchedResultsController;

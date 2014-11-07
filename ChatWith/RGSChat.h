@@ -21,8 +21,16 @@
 @property (nonatomic, retain) NSString * roomJID;
 @property (nonatomic, retain) NSNumber * unreadMessagesCount;
 @property (nonatomic, retain) NSNumber * userID;
-@property (nonatomic, retain) RGSMessage *messages;
+@property (nonatomic, retain) NSSet *messages;
 @property (nonatomic, retain) RGSManagedUser *receiver;
 @property (nonatomic, retain) RGSManagedUser *sender;
+@end
+
+@interface RGSChat (CoreDataGeneratedAccessors)
+
+- (void)addMessagesObject:(RGSMessage *)value;
+- (void)removeMessagesObject:(RGSMessage *)value;
+- (void)addMessages:(NSSet *)values;
+- (void)removeMessages:(NSSet *)values;
 
 @end

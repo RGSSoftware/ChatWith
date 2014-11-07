@@ -32,9 +32,9 @@
 @property (nonatomic, retain) NSDate * updatedAt;
 @property (nonatomic, retain) NSString * website;
 @property (nonatomic, retain) NSSet *befriend;
-@property (nonatomic, retain) RGSChat *chats;
+@property (nonatomic, retain) NSSet *chats;
 @property (nonatomic, retain) NSSet *contacts;
-@property (nonatomic, retain) RGSChat *partofChats;
+@property (nonatomic, retain) NSSet *partofChats;
 @end
 
 @interface RGSManagedUser (CoreDataGeneratedAccessors)
@@ -44,9 +44,19 @@
 - (void)addBefriend:(NSSet *)values;
 - (void)removeBefriend:(NSSet *)values;
 
+- (void)addChatsObject:(RGSChat *)value;
+- (void)removeChatsObject:(RGSChat *)value;
+- (void)addChats:(NSSet *)values;
+- (void)removeChats:(NSSet *)values;
+
 - (void)addContactsObject:(RGSContact *)value;
 - (void)removeContactsObject:(RGSContact *)value;
 - (void)addContacts:(NSSet *)values;
 - (void)removeContacts:(NSSet *)values;
+
+- (void)addPartofChatsObject:(RGSChat *)value;
+- (void)removePartofChatsObject:(RGSChat *)value;
+- (void)addPartofChats:(NSSet *)values;
+- (void)removePartofChats:(NSSet *)values;
 
 @end

@@ -98,7 +98,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lwC-KB-E6L">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" id="lwC-KB-E6L" customClass="RGSChatCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lwC-KB-E6L" id="MbX-ct-5iR">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -126,6 +126,13 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="lastestMessageBody" destination="i6V-UQ-1bZ" id="czk-Jg-TmE"/>
+                                            <outlet property="lastestMessageDate" destination="Oqa-qN-kLy" id="XZ1-IE-WH9"/>
+                                            <outlet property="receiverImage" destination="R44-pc-fxp" id="CcH-xM-64i"/>
+                                            <outlet property="receiverName" destination="TdP-bt-LRR" id="8sO-3I-phV"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

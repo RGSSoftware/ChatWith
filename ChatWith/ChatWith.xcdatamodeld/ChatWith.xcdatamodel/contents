@@ -18,7 +18,7 @@
         <attribute name="roomJID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unreadMessagesCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="messages" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSMessage" inverseName="chat" inverseEntity="RGSMessage" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSMessage" inverseName="chat" inverseEntity="RGSMessage" syncable="YES"/>
         <relationship name="receiver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="partofChats" inverseEntity="RGSManagedUser" syncable="YES"/>
         <relationship name="sender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="chats" inverseEntity="RGSManagedUser" syncable="YES"/>
     </entity>
@@ -46,9 +46,9 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="befriend" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSContact" inverseName="friend" inverseEntity="RGSContact" syncable="YES"/>
-        <relationship name="chats" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSChat" inverseName="sender" inverseEntity="RGSChat" syncable="YES"/>
+        <relationship name="chats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSChat" inverseName="sender" inverseEntity="RGSChat" syncable="YES"/>
         <relationship name="contacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSContact" inverseName="source" inverseEntity="RGSContact" syncable="YES"/>
-        <relationship name="partofChats" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSChat" inverseName="receiver" inverseEntity="RGSChat" syncable="YES"/>
+        <relationship name="partofChats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSChat" inverseName="receiver" inverseEntity="RGSChat" syncable="YES"/>
     </entity>
     <entity name="RGSMessage" representedClassName="RGSMessage" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
