@@ -21,6 +21,7 @@
 		223D4C5819E474540065F630 /* RGSChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5719E474540065F630 /* RGSChat.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250787419F880D100F793EE /* RGSContactListViewController.m */; };
+		22605ED91A0D0147003F1635 /* RGSPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22605ED81A0D0147003F1635 /* RGSPopSegue.m */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
 		2264746B19A90C9E00245A73 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746A19A90C9E00245A73 /* SystemConfiguration.framework */; };
 		2264746D19A90CA800245A73 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746C19A90CA800245A73 /* MobileCoreServices.framework */; };
@@ -122,6 +123,8 @@
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2250787319F880D100F793EE /* RGSContactListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactListViewController.h; sourceTree = "<group>"; };
 		2250787419F880D100F793EE /* RGSContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactListViewController.m; sourceTree = "<group>"; };
+		22605ED71A0D0147003F1635 /* RGSPopSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSPopSegue.h; sourceTree = "<group>"; };
+		22605ED81A0D0147003F1635 /* RGSPopSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSPopSegue.m; sourceTree = "<group>"; };
 		2264746819A90C9400245A73 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2264746A19A90C9E00245A73 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2264746C19A90CA800245A73 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -291,6 +294,8 @@
 			isa = PBXGroup;
 			children = (
 				224FBF7619D1B7A800A924CA /* Main.storyboard */,
+				22605ED71A0D0147003F1635 /* RGSPopSegue.h */,
+				22605ED81A0D0147003F1635 /* RGSPopSegue.m */,
 				22DF5F901A068E2900DC4D67 /* RGSMessageSegue.h */,
 				22DF5F911A068E2900DC4D67 /* RGSMessageSegue.m */,
 				223A1DA71A013F0200A1B3D2 /* RGSContactCell.h */,
@@ -602,6 +607,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				227ADFBE1A0C071200D03017 /* RGSBaseViewController.m in Sources */,
+				22605ED91A0D0147003F1635 /* RGSPopSegue.m in Sources */,
 				223D4C5819E474540065F630 /* RGSChat.m in Sources */,
 				22D7BCC619A8D45100D2C01C /* ChatWith.xcdatamodeld in Sources */,
 				227BFAF219E24674000E7ACC /* ApplicationSession.m in Sources */,

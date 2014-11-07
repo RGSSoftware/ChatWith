@@ -87,8 +87,8 @@
                              [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName, nil]];
     
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
-//    [button addTarget:self action:@selector(toChatListScreen:)
-//     forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(toChatListScreen:)
+     forControlEvents:UIControlEventTouchUpInside];
     [button setFrame:CGRectMake(0, 20, 80, 32)];
     
     [button setTitle:@"Cancel" forState:UIControlStateNormal];
@@ -123,6 +123,14 @@
     }
     
     self.view.backgroundColor = [UIColor clearColor];
+    
+    
+}
+
+-(void)toChatListScreen:(id)sender{
+    //toChats
+     [self performSegueWithIdentifier:@"toChats" sender:self];
+//    [self.navigationController popViewControllerAnimated:NO];
 }
 
 
@@ -202,14 +210,16 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 //     Get the new view controller using [segue destinationViewController].
 //     Pass the selected object to the new view controller.
-    RGSContactCell *contactCell = (RGSContactCell *)sender;
-    RGSContact *contact = [_fetchedResultsController objectAtIndexPath:[self.collectionView indexPathForCell:contactCell]];
-    
-    RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
-                                                                *)[segue destinationViewController];
-    messageListViewController.receiver = contact.friend;
-    
-//    self.backgroundView.hidden = YES;
+    if([segue.identifier isEqualToString:@"toMessagesScreen"]){
+        RGSContactCell *contactCell = (RGSContactCell *)sender;
+        RGSContact *contact = [_fetchedResultsController objectAtIndexPath:[self.collectionView indexPathForCell:contactCell]];
+        
+        RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
+                                                                   *)[segue destinationViewController];
+        messageListViewController.receiver = contact.friend;
+    } else if ([segue.identifier isEqualToString:@"toChats"]){
+    }
+//
 }
 
 

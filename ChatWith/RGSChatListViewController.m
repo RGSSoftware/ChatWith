@@ -59,6 +59,8 @@
     self.navigationItem.leftBarButtonItem = addBarButton;
     
     self.view.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
+//    self.backgroundView.hidden = YES;
 }
 
 -(void)toContacts:(id)sender{
