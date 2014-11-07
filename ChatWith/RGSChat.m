@@ -1,25 +1,28 @@
 //
-//  Converstation.m
+//  RGSChat.m
 //  ChatWith
 //
-//  Created by PC on 10/7/14.
+//  Created by PC on 11/7/14.
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
 #import "RGSChat.h"
 #import "RGSManagedUser.h"
+#import "RGSMessage.h"
 
 
 @implementation RGSChat
 
 @dynamic entityID;
-@dynamic name;
-@dynamic roomJID;
 @dynamic lastMessagaeText;
 @dynamic lastMessageDate;
 @dynamic lastMessageID;
+@dynamic name;
+@dynamic roomJID;
 @dynamic unreadMessagesCount;
 @dynamic userID;
-@dynamic occupants;
+@dynamic messages;
+@dynamic receiver;
+@dynamic sender;
 
 @end

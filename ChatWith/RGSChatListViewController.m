@@ -141,6 +141,8 @@ return [[_fetchedResultsController sections] count];
     
     [fetchRequest setFetchBatchSize:20];
     
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"%K = %@", @"sender.currentUser", [NSNumber numberWithBool:YES]]];
+    
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"nil" cacheName:@"Root"];
     _fetchedResultsController.delegate = self;
     

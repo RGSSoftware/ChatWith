@@ -14,11 +14,12 @@
 		2218FDCD19DC9DAB00E491F6 /* JMRMockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCA19DC9DAB00E491F6 /* JMRMockAlertView.m */; };
 		2218FDCE19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */; };
 		2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */; };
+		221A05521A0D6613006B46AD /* RGSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 221A05511A0D6613006B46AD /* RGSMessage.m */; };
+		221A05551A0D664A006B46AD /* RGSManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 221A05541A0D664A006B46AD /* RGSManagedUser.m */; };
+		221A05581A0D664B006B46AD /* RGSChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 221A05571A0D664B006B46AD /* RGSChat.m */; };
 		223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */; };
 		223A1DB21A04459E00A1B3D2 /* RGSContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DB11A04459E00A1B3D2 /* RGSContact.m */; };
-		223A1DB81A04F26D00A1B3D2 /* RGSManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DB71A04F26D00A1B3D2 /* RGSManagedUser.m */; };
 		223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5119E456FC0065F630 /* RGSChatListViewController.m */; };
-		223D4C5819E474540065F630 /* RGSChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5719E474540065F630 /* RGSChat.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250787419F880D100F793EE /* RGSContactListViewController.m */; };
 		22605ED91A0D0147003F1635 /* RGSPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22605ED81A0D0147003F1635 /* RGSPopSegue.m */; };
@@ -110,16 +111,18 @@
 		2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMRMockAlertViewVerifier.m; sourceTree = "<group>"; };
 		2218FDD519DF31B300E491F6 /* RGSApplicationSessionManagementService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSApplicationSessionManagementService.h; sourceTree = "<group>"; };
 		2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSApplicationSessionManagementService.m; sourceTree = "<group>"; };
+		221A05501A0D6613006B46AD /* RGSMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessage.h; sourceTree = "<group>"; };
+		221A05511A0D6613006B46AD /* RGSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessage.m; sourceTree = "<group>"; };
+		221A05531A0D664A006B46AD /* RGSManagedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSManagedUser.h; sourceTree = "<group>"; };
+		221A05541A0D664A006B46AD /* RGSManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSManagedUser.m; sourceTree = "<group>"; };
+		221A05561A0D664B006B46AD /* RGSChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChat.h; sourceTree = "<group>"; };
+		221A05571A0D664B006B46AD /* RGSChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChat.m; sourceTree = "<group>"; };
 		223A1DA71A013F0200A1B3D2 /* RGSContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactCell.h; sourceTree = "<group>"; };
 		223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactCell.m; sourceTree = "<group>"; };
 		223A1DB01A04459E00A1B3D2 /* RGSContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContact.h; sourceTree = "<group>"; };
 		223A1DB11A04459E00A1B3D2 /* RGSContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContact.m; sourceTree = "<group>"; };
-		223A1DB61A04F26D00A1B3D2 /* RGSManagedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSManagedUser.h; sourceTree = "<group>"; };
-		223A1DB71A04F26D00A1B3D2 /* RGSManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSManagedUser.m; sourceTree = "<group>"; };
 		223D4C5019E456FC0065F630 /* RGSChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChatListViewController.h; sourceTree = "<group>"; };
 		223D4C5119E456FC0065F630 /* RGSChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChatListViewController.m; sourceTree = "<group>"; };
-		223D4C5619E474540065F630 /* RGSChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChat.h; sourceTree = "<group>"; };
-		223D4C5719E474540065F630 /* RGSChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChat.m; sourceTree = "<group>"; };
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2250787319F880D100F793EE /* RGSContactListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactListViewController.h; sourceTree = "<group>"; };
 		2250787419F880D100F793EE /* RGSContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactListViewController.m; sourceTree = "<group>"; };
@@ -322,13 +325,15 @@
 		22889AD319D3237A00F0541D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				221A05561A0D664B006B46AD /* RGSChat.h */,
+				221A05571A0D664B006B46AD /* RGSChat.m */,
+				221A05531A0D664A006B46AD /* RGSManagedUser.h */,
+				221A05541A0D664A006B46AD /* RGSManagedUser.m */,
 				22D7BCC419A8D45100D2C01C /* ChatWith.xcdatamodeld */,
-				223A1DB61A04F26D00A1B3D2 /* RGSManagedUser.h */,
-				223A1DB71A04F26D00A1B3D2 /* RGSManagedUser.m */,
+				221A05501A0D6613006B46AD /* RGSMessage.h */,
+				221A05511A0D6613006B46AD /* RGSMessage.m */,
 				223A1DB01A04459E00A1B3D2 /* RGSContact.h */,
 				223A1DB11A04459E00A1B3D2 /* RGSContact.m */,
-				223D4C5619E474540065F630 /* RGSChat.h */,
-				223D4C5719E474540065F630 /* RGSChat.m */,
 				227BFAF019E24674000E7ACC /* ApplicationSession.h */,
 				227BFAF119E24674000E7ACC /* ApplicationSession.m */,
 			);
@@ -608,26 +613,27 @@
 			files = (
 				227ADFBE1A0C071200D03017 /* RGSBaseViewController.m in Sources */,
 				22605ED91A0D0147003F1635 /* RGSPopSegue.m in Sources */,
-				223D4C5819E474540065F630 /* RGSChat.m in Sources */,
 				22D7BCC619A8D45100D2C01C /* ChatWith.xcdatamodeld in Sources */,
 				227BFAF219E24674000E7ACC /* ApplicationSession.m in Sources */,
 				22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */,
 				22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */,
 				22F5206A1A0073E700FD2CD5 /* UIImage+Resize.m in Sources */,
 				22DF5F921A068E2900DC4D67 /* RGSMessageSegue.m in Sources */,
+				221A05551A0D664A006B46AD /* RGSManagedUser.m in Sources */,
 				22AC65021A050A3000B6C57F /* RGSMessageListViewController.m in Sources */,
 				2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */,
 				2287C46A19FAB3EA00039555 /* UIImage+RGSinitWithColor.m in Sources */,
 				2218FDC419DC902E00E491F6 /* RGSUserMangementService.m in Sources */,
 				22D7BCBF19A8D45100D2C01C /* main.m in Sources */,
+				221A05521A0D6613006B46AD /* RGSMessage.m in Sources */,
 				22D7BCC319A8D45100D2C01C /* RGSAppDelegate.m in Sources */,
 				22889ACB19D322A400F0541D /* RGSLoginViewController.m in Sources */,
 				227BFAF519E31EE0000E7ACC /* RGSChatService.m in Sources */,
 				223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */,
 				22F520701A0074D600FD2CD5 /* UIImage+RoundedCorner.m in Sources */,
+				221A05581A0D664B006B46AD /* RGSChat.m in Sources */,
 				2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */,
 				223A1DB21A04459E00A1B3D2 /* RGSContact.m in Sources */,
-				223A1DB81A04F26D00A1B3D2 /* RGSManagedUser.m in Sources */,
 				2287C47319FAC58600039555 /* UIColor+RGSColorWithHexString.m in Sources */,
 				22F5206F1A0074D600FD2CD5 /* UIImage+Alpha.m in Sources */,
 				223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */,

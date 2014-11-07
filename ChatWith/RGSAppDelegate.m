@@ -100,6 +100,8 @@
 //    
 //    
 //    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:nil];
+    
+    
 ////
 //    NSLog(@"simple print-----allUsers.count------{%lu}", (unsigned long)[[RGSManagedUser MR_findAll] count]);
 
