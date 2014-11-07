@@ -25,25 +25,35 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if(self){
-        [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextObjectsDidChangeNotification object:nil queue:[NSOperationQueue mainQueue]
+        [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:nil queue:[NSOperationQueue mainQueue]
                                                       usingBlock:^(NSNotification *note) {
-                                                          for(NSManagedObject *object in [[note userInfo] objectForKey:NSUpdatedObjectsKey]){
-                                                              if([object.entity.name isEqualToString:NSStringFromClass([RGSChat class])]){
-                                                                  
-                                                                  NSError *error;
-                                                                  if (![[self fetchedResultsController] performFetch:&error]) {
-                                                                      // Update to handle the error appropriately.
-                                                                      NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                                                                  } else {
-                                                                      [self.tableView reloadData];
-                                                                  }
-                                                                  
-                                                                  break;
-                                                              }
-                                                          }
+//                                                          NSError *error;
+//                                                          if (![[self fetchedResultsController] performFetch:&error]) {
+//                                                              // Update to handle the error appropriately.
+//                                                              NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//                                                          } else {
+//                                                              [self.tableView reloadData];
+//                                                          }
+
+//                                                          for(NSManagedObject *object in [[note userInfo] objectForKey:NSUpdatedObjectsKey]){
+//                                                              if([object.entity.name isEqualToString:NSStringFromClass([RGSChat class])]){
+//                                                                  
+//                                                                  NSError *error;
+//                                                                  if (![[self fetchedResultsController] performFetch:&error]) {
+//                                                                      // Update to handle the error appropriately.
+//                                                                      NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//                                                                  } else {
+//                                                                      [self.tableView reloadData];
+//                                                                  }
+//                                                                  
+//                                                                  break;
+//                                                              }
+//                                                          }
                                                           
                                                       }];
     }
+    
+    
     return self;
 }
 
@@ -64,6 +74,14 @@
     self.view.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
 //    self.backgroundView.hidden = YES;
+    
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        
+        
+    }
 }
 
 -(void)toContacts:(id)sender{
@@ -93,9 +111,6 @@ return [[_fetchedResultsController sections] count];
     
 }
 
-
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RGSChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
     RGSChat *chat = [_fetchedResultsController objectAtIndexPath:indexPath];
@@ -117,6 +132,34 @@ return [[_fetchedResultsController sections] count];
 }
 
 
+//ios8 introduces the layoutmargins property on cells and table views
+// therefore, to remove the cell separator leading spacing
+//You'll need to set both of them to UIEdgeInsetsZero
+//http://stackoverflow.com/questions/25770119/ios-8-uitableview-separator-inset-0-not-working#25877725
+//Part-1
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+//Part-2
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -158,7 +201,7 @@ return [[_fetchedResultsController sections] count];
     
     [fetchRequest setFetchBatchSize:20];
     
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"%K = %@", @"sender.currentUser", [NSNumber numberWithBool:YES]]];
+//    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"%K = %@", @"sender.currentUser", [NSNumber numberWithBool:YES]]];
     
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
     _fetchedResultsController.delegate = self;

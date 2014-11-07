@@ -47,11 +47,13 @@
     
     [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];//change the color to whichever color needed
     
-//    [RGSManagedUser MR_truncateAll];
-//    [RGSContact MR_truncateAll];
-//    
-//    RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
-//    currentUser.currentUser = [NSNumber numberWithBool:YES];
+    [RGSManagedUser MR_truncateAll];
+    [RGSContact MR_truncateAll];
+    [RGSMessage MR_truncateAll];
+    [RGSChat MR_truncateAll];
+//
+    RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
+    currentUser.currentUser = [NSNumber numberWithBool:YES];
 //
 ////    for(int i = 0; i < 60; i++){
 ////        RGSManagedUser *testUser = [RGSManagedUser MR_createEntity];
@@ -65,14 +67,14 @@
 ////    }
 //    
 //    /////////////
-//    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
-//    barUser.fullName = @"bar";
-//    
-//    RGSContact *contactBar = [RGSContact MR_createEntity];
-//    contactBar.source = currentUser;
-//    contactBar.friend = barUser;
-//    
-//    [currentUser addContactsObject:contactBar];
+    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
+    barUser.fullName = @"bar";
+    
+    RGSContact *contactBar = [RGSContact MR_createEntity];
+    contactBar.source = currentUser;
+    contactBar.friend = barUser;
+    
+    [currentUser addContactsObject:contactBar];
 //    //////////////
 //    RGSManagedUser *fooUser = [RGSManagedUser MR_createEntity];
 //    fooUser.fullName = @"foo";
@@ -104,22 +106,31 @@
 //    
 //    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:nil];
     
-//    RGSChat *chat1 = [RGSChat MR_createEntity];
-//    chat1.sender = currentUser;
-//    chat1.receiver = barUser;
-//    chat1.lastMessageDate = [NSDate date];
-//    
-//    for (int i = 0; i < 10; i++) {
-//        RGSMessage *message = [RGSMessage MR_createEntity];
-//        message.body = @"Lorem ipsum dolor sit amet, cu wisi inimicus gloriatur nec. Vis id falli eripuit. Ius nusquam detraxit senserit cu, te.";
-//        [chat1 addMessagesObject:message];
-//    }
-//    
-//    [currentUser addChatsObject:chat1];
-//    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:nil];
+    RGSChat *chat1 = [RGSChat MR_createEntity];
+    chat1.sender = currentUser;
+    chat1.receiver = barUser;
+    chat1.lastMessageDate = [NSDate date];
+
+    for (int i = 0; i < 10; i++) {
+        RGSMessage *message = [RGSMessage MR_createEntity];
+        message.body = @"Lorem ipsum dolor sit amet, cu wisi inimicus gloriatur nec. Vis id falli eripuit. Ius nusquam detraxit senserit cu, te.";
+        [chat1 addMessagesObject:message];
+    }
+    
+    [currentUser addChatsObject:chat1];
+    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
+        if (success) {
+            UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSChatListViewController"]];
+            //
+                self.window.rootViewController = nc;
+        }
+    }];
 
 ////
-//    NSLog(@"simple print-----allUsers.count------{%lu}", (unsigned long)[[RGSManagedUser MR_findAll] count]);
+    NSLog(@"simple print-----allUsers.count------{%lu}", (unsigned long)[[RGSManagedUser MR_findAll] count]);
+    NSLog(@"simple print-----allContacts.count------{%lu}", (unsigned long)[[RGSContact MR_findAll] count]);
+    NSLog(@"simple print-----allChats.count------{%lu}", (unsigned long)[[RGSChat MR_findAll] count]);
+    NSLog(@"simple print-----allMessage.count------{%lu}", (unsigned long)[[RGSMessage MR_findAll] count]);
 
     
 //    self.applicationSessionManager.applicationID = 7632;
@@ -164,9 +175,9 @@
     self.window.frame = [[UIScreen mainScreen] bounds];
     [self.window makeKeyAndVisible];
 //
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSContactListViewController"]];
-    
-    self.window.rootViewController = nc;
+//    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSChatListViewController"]];
+//    
+//    self.window.rootViewController = nc;
     return YES;
 }
 -(void)retryLoginWithMaxAttempts:(int)tries{
