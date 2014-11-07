@@ -86,11 +86,29 @@
                              [UIColor colorWithHexString:@"57d6ff"] ,NSForegroundColorAttributeName,
                              [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName, nil]];
     
-    UIBarButtonItem *addBarButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"Add"] resizedImage:CGSizeMake(20, 20)]
-                                                                  style:UIBarButtonItemStylePlain target:nil action:nil];
-    addBarButton.tintColor = [UIColor colorWithHexString:@"46ABCC"];
-    self.navigationItem.leftBarButtonItem = addBarButton;
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
+//    [button addTarget:self action:@selector(toChatListScreen:)
+//     forControlEvents:UIControlEventTouchUpInside];
+    [button setFrame:CGRectMake(0, 20, 80, 32)];
     
+    [button setTitle:@"Cancel" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor]
+                 forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor lightGrayColor]
+                 forState:UIControlStateHighlighted];
+    button.titleEdgeInsets = UIEdgeInsetsMake(2, -20, 2, 0);
+    button.titleLabel.textAlignment = NSTextAlignmentLeft;
+    button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
+    
+    UIImage *image = [UIImage imageNamed:@"backButton"];
+    [button setImage:[image resizedImage:CGSizeMake(20, 20)]
+            forState:UIControlStateNormal];
+    
+    button.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 2, 30);
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    self.navigationItem.leftBarButtonItem = barButton;
+
     UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"MenuIcon"] resizedImage:CGSizeMake(25, 17)]
                                                                    style:UIBarButtonItemStylePlain target:nil action:nil];
     menuBarButton.tintColor = [UIColor whiteColor];
@@ -126,7 +144,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    RGSContactCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FriendCell" forIndexPath:indexPath];
+    RGSContactCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"ContactCell" forIndexPath:indexPath];
     [cell configurePresentation];
     
     RGSContact *contact = [_fetchedResultsController objectAtIndexPath:indexPath];

@@ -57,12 +57,13 @@
                                                                      style:UIBarButtonItemStylePlain target:self action:@selector(toContacts:)];
     addBarButton.tintColor = [UIColor colorWithHexString:@"46ABCC"];
     self.navigationItem.leftBarButtonItem = addBarButton;
+    
+    self.view.backgroundColor = [UIColor clearColor];
 }
 
 -(void)toContacts:(id)sender{
     [self performSegueWithIdentifier:@"toContacts" sender:self];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

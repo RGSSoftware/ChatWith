@@ -117,7 +117,7 @@
                     <navigationItem key="navigationItem" id="KxY-hv-K9s">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="89C-bg-cD7">
                             <connections>
-                                <segue destination="LRt-5S-plK" kind="show" identifier="toContacts" id="yz6-jh-E5y"/>
+                                <segue destination="LRt-5S-plK" kind="custom" identifier="toContacts" customClass="RGSMessageSegue" id="yz6-jh-E5y"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -171,7 +171,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FriendCell" id="HZm-o0-lAS" customClass="RGSContactCell">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContactCell" id="HZm-o0-lAS" customClass="RGSContactCell">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

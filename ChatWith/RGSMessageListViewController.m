@@ -34,37 +34,33 @@
     self.view.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
     
-    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self action:@selector(toMessage:)
+    
+     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self action:@selector(toChatListScreen:)
      forControlEvents:UIControlEventTouchUpInside];
-    [button setFrame:CGRectMake(0, 0, 93, 32)];
-    
-    [button setTitle:@"Chats" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor whiteColor]
-                 forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor lightGrayColor]
-                 forState:UIControlStateHighlighted];
-    button.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 2, 25);
-    button.titleLabel.textAlignment = NSTextAlignmentLeft;
-    button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
-    
-    UIImage *image = [UIImage imageNamed:@"backButton"];
-    [button setImage:[image resizedImage:CGSizeMake(20, 20)]
-            forState:UIControlStateNormal];
-    
-//    UIEdgeInsetsMake(-2,
-//                     -30, heighter moves to right
-//                     2,
-//                     50);
-    button.imageEdgeInsets = UIEdgeInsetsMake(-2, -10, 2, 50);
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
-    
-    self.navigationItem.leftBarButtonItem = barButton;
-   
+     [button setFrame:CGRectMake(0, 20, 80, 32)];
+     
+     [button setTitle:@"Chats" forState:UIControlStateNormal];
+     [button setTitleColor:[UIColor whiteColor]
+                  forState:UIControlStateNormal];
+     [button setTitleColor:[UIColor lightGrayColor]
+                  forState:UIControlStateHighlighted];
+     button.titleEdgeInsets = UIEdgeInsetsMake(2, -20, 2, 0);
+     button.titleLabel.textAlignment = NSTextAlignmentLeft;
+     button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
+     
+     UIImage *image = [UIImage imageNamed:@"backButton"];
+     [button setImage:[image resizedImage:CGSizeMake(20, 20)]
+             forState:UIControlStateNormal];
+     
+     button.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 2, 30);
+     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+     
+     self.navigationItem.leftBarButtonItem = barButton;
     
 }
 
--(void)toMessage:(id)sender{
+-(void)toChatListScreen:(id)sender{
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count]- 3)] animated:NO];
 }
 
