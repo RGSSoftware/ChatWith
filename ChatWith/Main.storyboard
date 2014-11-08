@@ -134,6 +134,7 @@
                                             <outlet property="lastestMessageDate" destination="Oqa-qN-kLy" id="XZ1-IE-WH9"/>
                                             <outlet property="receiverImage" destination="R44-pc-fxp" id="CcH-xM-64i"/>
                                             <outlet property="receiverName" destination="TdP-bt-LRR" id="8sO-3I-phV"/>
+                                            <segue destination="Mah-Zz-rb9" kind="custom" customClass="RGSMessageSegue" id="xzz-1T-cJW"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="longerChatCell" rowHeight="140" id="cLK-KW-Qz9" customClass="RGSChatCell">
@@ -172,6 +173,7 @@
                                             <outlet property="lastestMessageDate" destination="H4B-vk-1dB" id="8BZ-bc-tEY"/>
                                             <outlet property="receiverImage" destination="Gxc-Vo-lWa" id="g4k-eh-8NI"/>
                                             <outlet property="receiverName" destination="e7w-rO-nmo" id="gOr-Ir-Sxs"/>
+                                            <segue destination="Mah-Zz-rb9" kind="custom" customClass="RGSMessageSegue" id="tmx-tc-fLD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -409,5 +411,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="tfT-FV-i3u"/>
+        <segue reference="tmx-tc-fLD"/>
     </inferredMetricsTieBreakers>
 </document>
