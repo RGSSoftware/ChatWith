@@ -126,6 +126,10 @@ return [[_fetchedResultsController sections] count];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
     }
+    UIView *selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:0.506 alpha:0.230];
+    cell.selectedBackgroundView = selectedBackgroundView;
+    
     RGSChat *chat = [_fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.lastestMessageDate.text = chat.lastMessageDate.description;
