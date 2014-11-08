@@ -235,7 +235,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     [fetchRequest setFetchBatchSize:25];
 
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"%K = %@", @"source.currentUser", [NSNumber numberWithBool:YES]]];
-    
+        
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
     _fetchedResultsController.delegate = self;
     

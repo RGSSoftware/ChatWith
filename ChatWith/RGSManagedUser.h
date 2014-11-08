@@ -2,7 +2,7 @@
 //  RGSManagedUser.h
 //  ChatWith
 //
-//  Created by PC on 11/7/14.
+//  Created by PC on 11/8/14.
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
@@ -35,6 +35,7 @@
 @property (nonatomic, retain) NSSet *chats;
 @property (nonatomic, retain) NSSet *contacts;
 @property (nonatomic, retain) NSSet *partofChats;
+@property (nonatomic, retain) NSSet *chatsEX;
 @end
 
 @interface RGSManagedUser (CoreDataGeneratedAccessors)
@@ -58,5 +59,10 @@
 - (void)removePartofChatsObject:(RGSChat *)value;
 - (void)addPartofChats:(NSSet *)values;
 - (void)removePartofChats:(NSSet *)values;
+
+- (void)addChatsEXObject:(RGSChat *)value;
+- (void)removeChatsEXObject:(RGSChat *)value;
+- (void)addChatsEX:(NSSet *)values;
+- (void)removeChatsEX:(NSSet *)values;
 
 @end

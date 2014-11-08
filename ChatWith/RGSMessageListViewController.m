@@ -9,6 +9,7 @@
 #import "RGSMessageListViewController.h"
 
 #import "RGSManagedUser.h"
+#import "RGSMessage.h"
 
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
@@ -58,10 +59,59 @@
      
      self.navigationItem.leftBarButtonItem = barButton;
     
+    NSPredicate *compoundPredicate
+    = [NSCompoundPredicate andPredicateWithSubpredicates:@[[NSPredicate predicateWithFormat:@"%K = %@", @"sender.currentUser", [NSNumber numberWithBool:YES]],
+                                                           [NSPredicate predicateWithFormat:@"%K = %@", @"receiver", self.receiver]]];
+    _fetchedResultsController.fetchRequest.predicate = compoundPredicate;
+    
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+
+    
 }
 
 -(void)toChatListScreen:(id)sender{
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count]- 3)] animated:NO];
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [[_fetchedResultsController sections] count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo =
+    [[_fetchedResultsController sections] objectAtIndex:section];
+    
+    int rowCount = [sectionInfo numberOfObjects];
+    return rowCount;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
+    RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = message.body;
+    return cell;
+    
+}
+
+-(NSFetchedResultsController *)fetchedResultsController{
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[RGSMessage MR_entityDescription]];
+    [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]]];
+    
+    
+    [fetchRequest setFetchBatchSize:20];
+    
+    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
+}
+
+-(NSManagedObjectContext *)managedObjectContext{
+    return [NSManagedObjectContext MR_defaultContext];
 }
 
 

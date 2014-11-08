@@ -2,7 +2,7 @@
 //  RGSManagedUser.m
 //  ChatWith
 //
-//  Created by PC on 11/7/14.
+//  Created by PC on 11/8/14.
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
@@ -35,5 +35,6 @@
 @dynamic chats;
 @dynamic contacts;
 @dynamic partofChats;
+@dynamic chatsEX;
 
 @end

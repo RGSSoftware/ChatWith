@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EGF-iH-8R1">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -134,7 +133,7 @@
                                             <outlet property="lastestMessageDate" destination="Oqa-qN-kLy" id="XZ1-IE-WH9"/>
                                             <outlet property="receiverImage" destination="R44-pc-fxp" id="CcH-xM-64i"/>
                                             <outlet property="receiverName" destination="TdP-bt-LRR" id="8sO-3I-phV"/>
-                                            <segue destination="Mah-Zz-rb9" kind="custom" customClass="RGSMessageSegue" id="xzz-1T-cJW"/>
+                                            <segue destination="Mah-Zz-rb9" kind="custom" identifier="toMessages" customClass="RGSMessageSegue" id="xzz-1T-cJW"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="longerChatCell" rowHeight="140" id="cLK-KW-Qz9" customClass="RGSChatCell">
@@ -173,7 +172,7 @@
                                             <outlet property="lastestMessageDate" destination="H4B-vk-1dB" id="8BZ-bc-tEY"/>
                                             <outlet property="receiverImage" destination="Gxc-Vo-lWa" id="g4k-eh-8NI"/>
                                             <outlet property="receiverName" destination="e7w-rO-nmo" id="gOr-Ir-Sxs"/>
-                                            <segue destination="Mah-Zz-rb9" kind="custom" customClass="RGSMessageSegue" id="tmx-tc-fLD"/>
+                                            <segue destination="Mah-Zz-rb9" kind="custom" identifier="toMessages" customClass="RGSMessageSegue" id="tmx-tc-fLD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -372,7 +371,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="505"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="g4y-lT-gqb" style="IBUITableViewCellStyleDefault" id="32X-K9-Xqz">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" textLabel="g4y-lT-gqb" style="IBUITableViewCellStyleDefault" id="32X-K9-Xqz">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="32X-K9-Xqz" id="9CX-Kf-39p">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -387,6 +386,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Mah-Zz-rb9" id="T7F-1s-qcS"/>
+                                    <outlet property="delegate" destination="Mah-Zz-rb9" id="ErK-JM-QTt"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

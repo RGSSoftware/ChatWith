@@ -112,7 +112,8 @@
     chat1.sender = currentUser;
     chat1.receiver = barUser;
     chat1.lastMessageDate = [NSDate date];
-
+    [chat1 addParticipantsObject:currentUser];
+    
     for (int i = 0; i < 10; i++) {
         RGSMessage *message = [RGSMessage MR_createEntity];
         message.body = @"Lorem ipsum dolor sit amet, cu wisi inimicus gloriatur nec. Vis id falli eripuit. Ius nusquam detraxit senserit cu, te.";
@@ -124,6 +125,7 @@
     for (int i = 0; i < 3; i ++) {
         RGSChat *chat = [RGSChat MR_createEntity];
         chat.sender = currentUser;
+        [chat addParticipantsObject:currentUser];
         
         if (i == 0) {
             chat.lastMessageDate = [NSDate dateYesterday];

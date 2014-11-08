@@ -7,11 +7,14 @@
 //
 
 #import "RGSChatListViewController.h"
+#import "RGSMessageListViewController.h"
 #import "RGSChat.h"
 #import "RGSChatCell.h"
 #import "RGSMessage.h"
 #import "RGSManagedUser.h"
 #import "NSDate+Utilities.h"
+
+#import "LocalStorageService.h"
 
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
@@ -237,15 +240,23 @@ return [[_fetchedResultsController sections] count];
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"toMessages"]){
+//        RGSContactCell *contactCell = (RGSContactCell *)sender;
+        RGSChat *chat = [_fetchedResultsController objectAtIndexPath:[self.tableView indexPathForCell:sender]];
+        
+        RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
+                                                                   *)[segue destinationViewController];
+        messageListViewController.receiver = chat.receiver;
+    }
 }
-*/
+
 
 -(NSFetchedResultsController *)fetchedResultsController{
     
@@ -257,6 +268,7 @@ return [[_fetchedResultsController sections] count];
     [fetchRequest setFetchBatchSize:20];
     
 //    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"%K = %@", @"sender.currentUser", [NSNumber numberWithBool:YES]]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"%@ IN %K", [[LocalStorageService shared] savedUser], @"participants"]];
     
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
     _fetchedResultsController.delegate = self;

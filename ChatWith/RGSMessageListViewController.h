@@ -11,12 +11,12 @@
 
 @class RGSManagedUser;
 
-@interface RGSMessageListViewController : RGSBaseViewController
+@interface RGSMessageListViewController : RGSBaseViewController <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong)RGSManagedUser *receiver;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
-
+@property (nonatomic, strong)NSFetchedResultsController *fetchedResultsController;
 @end

@@ -2,7 +2,7 @@
 //  RGSChat.h
 //  ChatWith
 //
-//  Created by PC on 11/7/14.
+//  Created by PC on 11/8/14.
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
@@ -24,6 +24,7 @@
 @property (nonatomic, retain) NSSet *messages;
 @property (nonatomic, retain) RGSManagedUser *receiver;
 @property (nonatomic, retain) RGSManagedUser *sender;
+@property (nonatomic, retain) NSSet *participants;
 @end
 
 @interface RGSChat (CoreDataGeneratedAccessors)
@@ -32,5 +33,10 @@
 - (void)removeMessagesObject:(RGSMessage *)value;
 - (void)addMessages:(NSSet *)values;
 - (void)removeMessages:(NSSet *)values;
+
+- (void)addParticipantsObject:(RGSManagedUser *)value;
+- (void)removeParticipantsObject:(RGSManagedUser *)value;
+- (void)addParticipants:(NSSet *)values;
+- (void)removeParticipants:(NSSet *)values;
 
 @end
