@@ -18,6 +18,8 @@
 #import "RGSChat.h"
 #import "RGSContact.h"
 
+#import "NSDate+Utilities.h"
+
 
 
 #import "RGSApplicationSessionManagementService.h"
@@ -118,6 +120,21 @@
     }
     
     [currentUser addChatsObject:chat1];
+    
+    for (int i = 0; i < 3; i ++) {
+        RGSChat *chat = [RGSChat MR_createEntity];
+        chat.sender = currentUser;
+        
+        if (i == 0) {
+            chat.lastMessageDate = [NSDate dateYesterday];
+        } else if (i == 1){
+            chat.lastMessageDate = [NSDate dateWithDaysBeforeNow:2];
+        } else if (i == 2){
+            chat.lastMessageDate = [NSDate dateWithDaysBeforeNow:40];
+        }
+        [currentUser addChatsObject:chat];
+    }
+    
     [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
         if (success) {
             UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSChatListViewController"]];

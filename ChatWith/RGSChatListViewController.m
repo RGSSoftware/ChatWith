@@ -11,6 +11,7 @@
 #import "RGSChatCell.h"
 #import "RGSMessage.h"
 #import "RGSManagedUser.h"
+#import "NSDate+Utilities.h"
 
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
@@ -111,11 +112,59 @@ return [[_fetchedResultsController sections] count];
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return 140;
+    }
+    return 75;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    RGSChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
+    RGSChatCell *cell;
+    if(indexPath.row == 0){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"longerChatCell" forIndexPath:indexPath];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
+    }
     RGSChat *chat = [_fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.lastestMessageDate.text = chat.lastMessageDate.description;
+    
+    if ([chat.lastMessageDate isEarlierThanDate:[NSDate date]]) {
+        if ([chat.lastMessageDate isToday]) {
+            static NSDateFormatter *todayDateFormatter = nil;
+            if (todayDateFormatter == nil) {
+                todayDateFormatter = [NSDateFormatter new];
+                todayDateFormatter.dateFormat = @"hh:mm a";
+            }
+            cell.lastestMessageDate.text = [todayDateFormatter stringFromDate:chat.lastMessageDate];
+        } else if ([chat.lastMessageDate isYesterday]){
+            cell.lastestMessageDate.text = @"Yesterday";
+            
+        } else if ([chat.lastMessageDate isSameWeekAsDate:[NSDate date]]){
+            static NSDateFormatter *sameweekDateFormatter = nil;
+            if (sameweekDateFormatter == nil) {
+                sameweekDateFormatter = [NSDateFormatter new];
+                sameweekDateFormatter.locale = [NSLocale currentLocale];
+                sameweekDateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"EEEE" options:0 locale:[NSLocale currentLocale]];
+            }
+            cell.lastestMessageDate.text = [sameweekDateFormatter stringFromDate:chat.lastMessageDate];
+        } else {
+            //Earlier than one week
+            static NSDateFormatter *earlierWeekDateFormatter = nil;
+            if (earlierWeekDateFormatter == nil) {
+                earlierWeekDateFormatter = [NSDateFormatter new];
+                earlierWeekDateFormatter.locale = [NSLocale currentLocale];
+                earlierWeekDateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"Mdy" options:0 locale:[NSLocale currentLocale]];
+            }
+            cell.lastestMessageDate.text = [earlierWeekDateFormatter stringFromDate:chat.lastMessageDate];
+        }
+    }
+    
+    
+    
+    
+    
     cell.lastestMessageBody.text = ((RGSMessage *)[chat.messages anyObject]).body;
     cell.receiverName.text = chat.receiver.fullName;
     
