@@ -10,6 +10,7 @@
 #import "RGSBaseViewController.h"
 
 @class RGSManagedUser;
+@class RGSChat;
 
 @interface RGSMessageListViewController : RGSBaseViewController <NSFetchedResultsControllerDelegate>
 
@@ -17,6 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic, strong)RGSChat *chat;
 
 @property (nonatomic, strong)NSFetchedResultsController *fetchedResultsController;
 @end

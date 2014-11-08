@@ -254,6 +254,7 @@ return [[_fetchedResultsController sections] count];
         RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
                                                                    *)[segue destinationViewController];
         messageListViewController.receiver = chat.receiver;
+        messageListViewController.chat = chat;
     }
 }
 
@@ -263,11 +264,8 @@ return [[_fetchedResultsController sections] count];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:[RGSChat MR_entityDescription]];
     [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"lastMessageDate" ascending:NO]]];
-    
-    
     [fetchRequest setFetchBatchSize:20];
     
-//    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"%K = %@", @"sender.currentUser", [NSNumber numberWithBool:YES]]];
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"%@ IN %K", [[LocalStorageService shared] savedUser], @"participants"]];
     
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];

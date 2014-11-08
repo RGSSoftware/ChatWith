@@ -59,10 +59,7 @@
      
      self.navigationItem.leftBarButtonItem = barButton;
     
-    NSPredicate *compoundPredicate
-    = [NSCompoundPredicate andPredicateWithSubpredicates:@[[NSPredicate predicateWithFormat:@"%K = %@", @"sender.currentUser", [NSNumber numberWithBool:YES]],
-                                                           [NSPredicate predicateWithFormat:@"%K = %@", @"receiver", self.receiver]]];
-    _fetchedResultsController.fetchRequest.predicate = compoundPredicate;
+    _fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"chat", self.chat];
     
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
