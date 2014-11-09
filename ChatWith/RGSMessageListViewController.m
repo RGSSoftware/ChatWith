@@ -29,12 +29,8 @@
         self.navigationItem.title = self.receiver.fullName;
     }
     
-//    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
-//    self.tableView.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
-    
     self.view.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
-    
     
      UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self action:@selector(toChatListScreen:)

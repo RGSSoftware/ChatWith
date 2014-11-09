@@ -79,7 +79,6 @@
     
     self.view.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
-//    self.backgroundView.hidden = YES;
     
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
@@ -170,10 +169,6 @@ return [[_fetchedResultsController sections] count];
         }
     }
     
-    
-    
-    
-    
     cell.lastestMessageBody.text = ((RGSMessage *)[chat.messages anyObject]).body;
     cell.receiverName.text = chat.receiver.fullName;
     
@@ -248,13 +243,9 @@ return [[_fetchedResultsController sections] count];
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"toMessages"]){
-//        RGSContactCell *contactCell = (RGSContactCell *)sender;
-        RGSChat *chat = [_fetchedResultsController objectAtIndexPath:[self.tableView indexPathForCell:sender]];
-        
         RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
                                                                    *)[segue destinationViewController];
-        messageListViewController.receiver = chat.receiver;
-        messageListViewController.chat = chat;
+        messageListViewController.chat = [_fetchedResultsController objectAtIndexPath:[self.tableView indexPathForCell:sender]];
     }
 }
 
