@@ -10,6 +10,7 @@
 
 #import "RGSManagedUser.h"
 #import "RGSMessage.h"
+#import "RGSMessageCell.h"
 
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
@@ -81,13 +82,45 @@
     return rowCount;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
+    RGSMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = message.body;
+//    cell.textLabel.text = message.body;
+    
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+//    [label setLineBreakMode:UILineBreakModeWordWrap];
+//    [label setMinimumFontSize:16];
+//    [label setNumberOfLines:0];
+//    [label setFont:[UIFont systemFontOfSize:16]];
+//    [label setTag:1];
+//    
+//    [[label layer] setBorderWidth:2.0f];
+//    
+//    [[cell contentView] addSubview:label];
+    
+    CGSize constraint = CGSizeMake(320 - (5 * 2), 20000.0f);
+    
+    CGSize size = [message.body sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGFloat height = MAX(size.height, 44.0f);
+    cell.body.text = message.body;
+    cell.body.frame = CGRectMake(5, 5, 320 - (5 * 2), MAX(size.height, 44.0f));
+//    cell.body.text = @"";
     return cell;
     
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
+    NSString *text = message.body;
+    
+    CGSize constraint = CGSizeMake(320 - (5 * 2), 20000.0f);
+    
+    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGFloat height = MAX(size.height, 44.0f);
+    
+    return height + (5 * 2);
+}
 -(NSFetchedResultsController *)fetchedResultsController{
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

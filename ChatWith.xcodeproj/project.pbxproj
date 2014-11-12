@@ -69,6 +69,7 @@
 		22AD00EB1A0D8686008F9EF7 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00EA1A0D8686008F9EF7 /* NSDate+Utilities.m */; };
 		22AD00EE1A0ED43C008F9EF7 /* RGSManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00ED1A0ED43C008F9EF7 /* RGSManagedUser.m */; };
 		22AD00F11A0ED43D008F9EF7 /* RGSChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00F01A0ED43D008F9EF7 /* RGSChat.m */; };
+		22AD00F41A1336E8008F9EF7 /* RGSMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00F31A1336E7008F9EF7 /* RGSMessageCell.m */; };
 		22D7BCB119A8D45100D2C01C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB019A8D45100D2C01C /* Foundation.framework */; };
 		22D7BCB319A8D45100D2C01C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB219A8D45100D2C01C /* CoreGraphics.framework */; };
 		22D7BCB519A8D45100D2C01C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB419A8D45100D2C01C /* UIKit.framework */; };
@@ -170,6 +171,8 @@
 		22AD00ED1A0ED43C008F9EF7 /* RGSManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSManagedUser.m; sourceTree = "<group>"; };
 		22AD00EF1A0ED43D008F9EF7 /* RGSChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChat.h; sourceTree = "<group>"; };
 		22AD00F01A0ED43D008F9EF7 /* RGSChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChat.m; sourceTree = "<group>"; };
+		22AD00F21A1336E7008F9EF7 /* RGSMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageCell.h; sourceTree = "<group>"; };
+		22AD00F31A1336E7008F9EF7 /* RGSMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessageCell.m; sourceTree = "<group>"; };
 		22D7BCAD19A8D45100D2C01C /* ChatWith.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatWith.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D7BCB019A8D45100D2C01C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22D7BCB219A8D45100D2C01C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -305,6 +308,8 @@
 			isa = PBXGroup;
 			children = (
 				224FBF7619D1B7A800A924CA /* Main.storyboard */,
+				22AD00F21A1336E7008F9EF7 /* RGSMessageCell.h */,
+				22AD00F31A1336E7008F9EF7 /* RGSMessageCell.m */,
 				221A055F1A0D6C7A006B46AD /* RGSChatCell.h */,
 				221A05601A0D6C7A006B46AD /* RGSChatCell.m */,
 				22605ED71A0D0147003F1635 /* RGSPopSegue.h */,
@@ -621,6 +626,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22AD00F41A1336E8008F9EF7 /* RGSMessageCell.m in Sources */,
 				227ADFBE1A0C071200D03017 /* RGSBaseViewController.m in Sources */,
 				22605ED91A0D0147003F1635 /* RGSPopSegue.m in Sources */,
 				22D7BCC619A8D45100D2C01C /* ChatWith.xcdatamodeld in Sources */,

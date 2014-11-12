@@ -371,18 +371,10 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="505"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" textLabel="g4y-lT-gqb" style="IBUITableViewCellStyleDefault" id="32X-K9-Xqz">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" id="32X-K9-Xqz" customClass="RGSMessageCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="32X-K9-Xqz" id="9CX-Kf-39p">
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g4y-lT-gqb">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -409,11 +401,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9f-St-B4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2411" y="337"/>
+            <point key="canvasLocation" x="2411" y="335"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tfT-FV-i3u"/>
+        <segue reference="Ggl-7T-reh"/>
         <segue reference="tmx-tc-fLD"/>
     </inferredMetricsTieBreakers>
 </document>
