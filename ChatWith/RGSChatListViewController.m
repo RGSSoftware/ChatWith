@@ -143,7 +143,7 @@ return [[_fetchedResultsController sections] count];
             static NSDateFormatter *todayDateFormatter = nil;
             if (todayDateFormatter == nil) {
                 todayDateFormatter = [NSDateFormatter new];
-                todayDateFormatter.dateFormat = @"hh:mm a";
+                todayDateFormatter.dateFormat = @"h:mm a";
             }
             cell.lastestMessageDate.text = [todayDateFormatter stringFromDate:chat.lastMessageDate];
         } else if ([chat.lastMessageDate isYesterday]){

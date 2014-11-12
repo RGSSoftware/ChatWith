@@ -21,5 +21,14 @@ MessageListViewController
 	add messageComposer component
 	________
 	update fetchedResultsController error handling capacity
+	______
+	sort Messages into day sections
+	______
+	config section titles to {chat time segments}
+	______
+	added load earlier Messages button
+	______
+	add time label to cells
+
 MessageSegue
 	refactor to a custom pushSegue

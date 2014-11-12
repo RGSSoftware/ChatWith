@@ -16,7 +16,14 @@
 #import "UIColor+RGSColorWithHexString.h"
 #import "UIImage+Resize.h"
 
+@interface RGSMessageListViewController ()
+@property (nonatomic, strong)UITableViewCell *referenceCell;
+
+@end
+
+
 @implementation RGSMessageListViewController
+
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -84,43 +91,58 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RGSMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
-//    cell.textLabel.text = message.body;
+
+    int cellContentMargin = 5;
+    int leftRightMargin = cellContentMargin * 2;
     
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-//    [label setLineBreakMode:UILineBreakModeWordWrap];
-//    [label setMinimumFontSize:16];
-//    [label setNumberOfLines:0];
-//    [label setFont:[UIFont systemFontOfSize:16]];
-//    [label setTag:1];
-//    
-//    [[label layer] setBorderWidth:2.0f];
-//    
-//    [[cell contentView] addSubview:label];
-    
-    CGSize constraint = CGSizeMake(320 - (5 * 2), 20000.0f);
-    
-    CGSize size = [message.body sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    
-    CGFloat height = MAX(size.height, 44.0f);
     cell.body.text = message.body;
-    cell.body.frame = CGRectMake(5, 5, 320 - (5 * 2), MAX(size.height, 44.0f));
-//    cell.body.text = @"";
+    cell.body.frame = CGRectMake(cellContentMargin,
+                                 CGRectGetMaxY(cell.timeLabel.frame),
+                                 CGRectGetWidth(cell.frame) - leftRightMargin,
+                                 [self heightWithText:message.body
+                                             maxWidth:(CGRectGetWidth(cell.frame) - leftRightMargin)]);
+    
+    static NSDateFormatter *todayDateFormatter = nil;
+    if (todayDateFormatter == nil) {
+        todayDateFormatter = [NSDateFormatter new];
+        todayDateFormatter.dateFormat = @"h:mm a";
+    }
+    cell.timeLabel.text = [todayDateFormatter stringFromDate:message.date];
+    
+    
     return cell;
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    int cellContentMargin = 5;
+    int leftRightMargin = cellContentMargin * 2;
+    int topBottonMargin = cellContentMargin * 2;
+    
     RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
-    NSString *text = message.body;
-    
-    CGSize constraint = CGSizeMake(320 - (5 * 2), 20000.0f);
-    
-    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    
-    CGFloat height = MAX(size.height, 44.0f);
-    
-    return height + (5 * 2);
+    return [self heightWithText:message.body maxWidth:(320 - leftRightMargin)] + 35;
 }
+
+-(CGFloat)heightWithText:(NSString *)text maxWidth:(float)maxWidth{
+    
+    float minBodyHeight = 44.0f;
+    float maxBodyHeight = 20000.0f;
+    
+    CGSize constraint = CGSizeMake(maxWidth, maxBodyHeight);
+    
+    
+    //sizeWithFont:ConstrainedToSize:lineBreakMode: deprecation solution
+    //http://stackoverflow.com/questions/21654671/sizewithfont-constrainedtosize-linebreakmode-method-is-deprecated-in-ios-7#21654741
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    CGRect textRect = [text boundingRectWithSize:constraint
+                                                 options:NSStringDrawingUsesLineFragmentOrigin
+                                              attributes:@{NSParagraphStyleAttributeName: paragraphStyle.copy,NSFontAttributeName:[UIFont systemFontOfSize:16]}
+                                                 context:nil];
+    
+    return MAX(CGRectGetHeight(textRect), minBodyHeight);
+}
+
 -(NSFetchedResultsController *)fetchedResultsController{
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

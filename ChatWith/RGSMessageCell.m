@@ -20,11 +20,9 @@
         [_body setNumberOfLines:0];
         [_body setFont:[UIFont systemFontOfSize:16]];
         
-        [[_body layer] setBorderWidth:2.0f];
+//        [[_body layer] setBorderWidth:2.0f];
         
         [self.contentView addSubview:_body];
-
-        
     }
     return self;
 }

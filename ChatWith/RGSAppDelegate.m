@@ -117,6 +117,7 @@
     for (int i = 0; i < 10; i++) {
         RGSMessage *message = [RGSMessage MR_createEntity];
         message.body = @"Lorem ipsum dolor sit amet, cu wisi inimicus gloriatur nec. Vis id falli eripuit. Ius nusquam detraxit senserit cu, te.";
+        message.date = [NSDate date];
         [chat1 addMessagesObject:message];
     }
     

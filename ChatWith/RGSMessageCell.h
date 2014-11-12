@@ -11,4 +11,5 @@
 @interface RGSMessageCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *body;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @end
