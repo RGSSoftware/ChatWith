@@ -16,8 +16,17 @@
 #import "UIColor+RGSColorWithHexString.h"
 #import "UIImage+Resize.h"
 
+#import "LocalStorageService.h"
+
+const int maxTextWidth = 260;
+const int cellContentMargin = 5;
+const int leftRightMargin = cellContentMargin * 2;
+const int topBottonMargin = cellContentMargin * 2;
+
 @interface RGSMessageListViewController ()
 @property (nonatomic, strong)UITableViewCell *referenceCell;
+
+@property (nonatomic, strong)RGSManagedUser *currentUser;
 
 @end
 
@@ -70,7 +79,6 @@
         // Update to handle the error appropriately.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
-
     
 }
 
@@ -91,16 +99,26 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RGSMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
-
-    int cellContentMargin = 5;
-    int leftRightMargin = cellContentMargin * 2;
     
     cell.body.text = message.body;
-    cell.body.frame = CGRectMake(cellContentMargin,
-                                 CGRectGetMaxY(cell.timeLabel.frame),
-                                 CGRectGetWidth(cell.frame) - leftRightMargin,
-                                 [self heightWithText:message.body
-                                             maxWidth:(CGRectGetWidth(cell.frame) - leftRightMargin)]);
+    
+    if([message.sender isEqual:self.currentUser]){
+        
+        float labelWithtextHeight = [self heightWithText:message.body maxWidth:(maxTextWidth - 5)];
+        cell.body.frame = CGRectMake(CGRectGetWidth(cell.frame) - maxTextWidth - 5,
+                                     cellContentMargin,
+                                     maxTextWidth - 5,
+                                     labelWithtextHeight);
+        if(labelWithtextHeight <= 24){
+            [cell.body setTextAlignment:NSTextAlignmentRight];
+        }
+    } else {
+        cell.body.frame = CGRectMake(cellContentMargin,
+                                     cellContentMargin,
+                                     maxTextWidth - leftRightMargin,
+                                     [self heightWithText:message.body
+                                                 maxWidth:(maxTextWidth - leftRightMargin)]);
+    }
     
     static NSDateFormatter *todayDateFormatter = nil;
     if (todayDateFormatter == nil) {
@@ -108,6 +126,7 @@
         todayDateFormatter.dateFormat = @"h:mm a";
     }
     cell.timeLabel.text = [todayDateFormatter stringFromDate:message.date];
+    cell.timeLabel.hidden = YES;
     
     
     return cell;
@@ -115,17 +134,13 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int cellContentMargin = 5;
-    int leftRightMargin = cellContentMargin * 2;
-    int topBottonMargin = cellContentMargin * 2;
-    
     RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
-    return [self heightWithText:message.body maxWidth:(320 - leftRightMargin)] + 35;
+    return [self heightWithText:message.body maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
 }
 
 -(CGFloat)heightWithText:(NSString *)text maxWidth:(float)maxWidth{
     
-    float minBodyHeight = 44.0f;
+    float minBodyHeight = 24.0f;
     float maxBodyHeight = 20000.0f;
     
     CGSize constraint = CGSizeMake(maxWidth, maxBodyHeight);
@@ -160,6 +175,14 @@
 
 -(NSManagedObjectContext *)managedObjectContext{
     return [NSManagedObjectContext MR_defaultContext];
+}
+
+-(RGSManagedUser *)currentUser{
+    if (_currentUser == nil)
+    {
+        _currentUser = [[LocalStorageService shared] savedUser];
+    }
+    return _currentUser;
 }
 
 

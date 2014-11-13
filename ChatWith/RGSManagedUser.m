@@ -2,13 +2,14 @@
 //  RGSManagedUser.m
 //  ChatWith
 //
-//  Created by PC on 11/8/14.
+//  Created by PC on 11/12/14.
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
 #import "RGSManagedUser.h"
 #import "RGSChat.h"
 #import "RGSContact.h"
+#import "RGSMessage.h"
 
 
 @implementation RGSManagedUser
@@ -33,8 +34,10 @@
 @dynamic website;
 @dynamic befriend;
 @dynamic chats;
+@dynamic chatsEX;
 @dynamic contacts;
 @dynamic partofChats;
-@dynamic chatsEX;
+@dynamic sentMessages;
+@dynamic receiveMessages;
 
 @end

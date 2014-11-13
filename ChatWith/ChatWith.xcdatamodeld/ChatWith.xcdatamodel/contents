@@ -51,17 +51,21 @@
         <relationship name="chatsEX" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSChat" inverseName="participants" inverseEntity="RGSChat" syncable="YES"/>
         <relationship name="contacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSContact" inverseName="source" inverseEntity="RGSContact" syncable="YES"/>
         <relationship name="partofChats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSChat" inverseName="receiver" inverseEntity="RGSChat" syncable="YES"/>
+        <relationship name="receiveMessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSMessage" inverseName="receiver" inverseEntity="RGSMessage" syncable="YES"/>
+        <relationship name="sentMessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSMessage" inverseName="sender" inverseEntity="RGSMessage" syncable="YES"/>
     </entity>
     <entity name="RGSMessage" representedClassName="RGSMessage" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="chat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSChat" inverseName="messages" inverseEntity="RGSChat" syncable="YES"/>
+        <relationship name="receiver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="receiveMessages" inverseEntity="RGSManagedUser" syncable="YES"/>
+        <relationship name="sender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="sentMessages" inverseEntity="RGSManagedUser" syncable="YES"/>
     </entity>
     <elements>
         <element name="ApplicationSession" positionX="-36" positionY="-108" width="128" height="150"/>
         <element name="RGSChat" positionX="88" positionY="81" width="128" height="223"/>
         <element name="RGSContact" positionX="-315" positionY="342" width="128" height="73"/>
-        <element name="RGSManagedUser" positionX="-333" positionY="-117" width="128" height="388"/>
-        <element name="RGSMessage" positionX="-162" positionY="99" width="128" height="88"/>
+        <element name="RGSManagedUser" positionX="-333" positionY="-117" width="128" height="418"/>
+        <element name="RGSMessage" positionX="-162" positionY="99" width="128" height="118"/>
     </elements>
 </model>

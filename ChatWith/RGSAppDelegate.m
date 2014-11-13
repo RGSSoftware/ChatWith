@@ -20,6 +20,8 @@
 
 #import "NSDate+Utilities.h"
 
+#import "LoremIpsum.h"
+
 
 
 #import "RGSApplicationSessionManagementService.h"
@@ -114,13 +116,36 @@
     chat1.lastMessageDate = [NSDate date];
     [chat1 addParticipantsObject:currentUser];
     
-    for (int i = 0; i < 10; i++) {
+//    for (int i = 0; i < 10; i++) {
+//        RGSMessage *message = [RGSMessage MR_createEntity];
+//        message.body = @"Lorem ipsum dolor sit amet, cu wisi inimicus gloriatur nec. Vis id falli eripuit. Ius nusquam detraxit senserit cu, te.";
+//        message.date = [NSDate date];
+//        [chat1 addMessagesObject:message];
+//    }
+    
+    {
         RGSMessage *message = [RGSMessage MR_createEntity];
-        message.body = @"Lorem ipsum dolor sit amet, cu wisi inimicus gloriatur nec. Vis id falli eripuit. Ius nusquam detraxit senserit cu, te.";
-        message.date = [NSDate date];
+        message.body = @"a Message to current User sent";
+        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
+        message.sender = currentUser;
         [chat1 addMessagesObject:message];
     }
-    
+
+    {
+        RGSMessage *message = [RGSMessage MR_createEntity];
+        message.body = @"a Message to Bar sent";
+        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
+        message.sender = barUser;
+        [chat1 addMessagesObject:message];
+    }
+    {
+        RGSMessage *message = [RGSMessage MR_createEntity];
+        message.body = [LoremIpsum wordsWithNumber:19];
+        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
+        message.sender = currentUser;
+        [chat1 addMessagesObject:message];
+    }
+
     [currentUser addChatsObject:chat1];
     
     for (int i = 0; i < 3; i ++) {

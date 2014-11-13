@@ -2,14 +2,14 @@
 //  RGSManagedUser.h
 //  ChatWith
 //
-//  Created by PC on 11/8/14.
+//  Created by PC on 11/12/14.
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class RGSChat, RGSContact;
+@class RGSChat, RGSContact, RGSMessage;
 
 @interface RGSManagedUser : NSManagedObject
 
@@ -33,9 +33,11 @@
 @property (nonatomic, retain) NSString * website;
 @property (nonatomic, retain) NSSet *befriend;
 @property (nonatomic, retain) NSSet *chats;
+@property (nonatomic, retain) NSSet *chatsEX;
 @property (nonatomic, retain) NSSet *contacts;
 @property (nonatomic, retain) NSSet *partofChats;
-@property (nonatomic, retain) NSSet *chatsEX;
+@property (nonatomic, retain) NSSet *sentMessages;
+@property (nonatomic, retain) NSSet *receiveMessages;
 @end
 
 @interface RGSManagedUser (CoreDataGeneratedAccessors)
@@ -50,6 +52,11 @@
 - (void)addChats:(NSSet *)values;
 - (void)removeChats:(NSSet *)values;
 
+- (void)addChatsEXObject:(RGSChat *)value;
+- (void)removeChatsEXObject:(RGSChat *)value;
+- (void)addChatsEX:(NSSet *)values;
+- (void)removeChatsEX:(NSSet *)values;
+
 - (void)addContactsObject:(RGSContact *)value;
 - (void)removeContactsObject:(RGSContact *)value;
 - (void)addContacts:(NSSet *)values;
@@ -60,9 +67,14 @@
 - (void)addPartofChats:(NSSet *)values;
 - (void)removePartofChats:(NSSet *)values;
 
-- (void)addChatsEXObject:(RGSChat *)value;
-- (void)removeChatsEXObject:(RGSChat *)value;
-- (void)addChatsEX:(NSSet *)values;
-- (void)removeChatsEX:(NSSet *)values;
+- (void)addSentMessagesObject:(RGSMessage *)value;
+- (void)removeSentMessagesObject:(RGSMessage *)value;
+- (void)addSentMessages:(NSSet *)values;
+- (void)removeSentMessages:(NSSet *)values;
+
+- (void)addReceiveMessagesObject:(RGSMessage *)value;
+- (void)removeReceiveMessagesObject:(RGSMessage *)value;
+- (void)addReceiveMessages:(NSSet *)values;
+- (void)removeReceiveMessages:(NSSet *)values;
 
 @end
