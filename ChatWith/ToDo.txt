@@ -1,7 +1,7 @@
 StoryBoard
 
 Whole App
-	optimize transition between screens
+	optimize transition between screens 
 
 NavViewController
 	rethink/update backBarButton arrow
