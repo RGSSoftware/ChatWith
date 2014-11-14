@@ -18,6 +18,8 @@
 
 #import "LocalStorageService.h"
 
+#import "UIButton+RGSUIBackButton.h"
+
 const int maxTextWidth = 260;
 const int cellContentMargin = 5;
 const int leftRightMargin = cellContentMargin * 2;
@@ -53,27 +55,14 @@ const int navigationSpacing = 65;
     self.view.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
     
-     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self action:@selector(toChatListScreen:)
-     forControlEvents:UIControlEventTouchUpInside];
-     [button setFrame:CGRectMake(0, 20, 80, 32)];
-     
-     [button setTitle:@"Chats" forState:UIControlStateNormal];
-     [button setTitleColor:[UIColor whiteColor]
-                  forState:UIControlStateNormal];
-     [button setTitleColor:[UIColor lightGrayColor]
-                  forState:UIControlStateHighlighted];
-    button.titleEdgeInsets = UIEdgeInsetsMake(2, -25, 2, 0);
-    button.titleLabel.textAlignment = NSTextAlignmentLeft;
-    button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
-    
-    UIImage *image = [UIImage imageNamed:@"backButton"];
-    [button setImage:[image resizedImage:CGSizeMake(20, 20)]
-            forState:UIControlStateNormal];
-    
-    button.imageEdgeInsets = UIEdgeInsetsMake(0, -35, 2, 0);
+    UIButton *backButton = [UIButton buttonWithCustomBackButton];
+    [backButton addTarget:self action:@selector(toChatListScreen:)
+         forControlEvents:UIControlEventTouchUpInside];
+    [backButton setTitle:@"Chats" forState:UIControlStateNormal];
+    backButton.titleLeftEdgeInset = -25;
+    backButton.imageLeftEdgeInset = -35;
 
-     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
      
      self.navigationItem.leftBarButtonItem = barButton;
     

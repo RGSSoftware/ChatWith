@@ -20,6 +20,8 @@
 #import "UIImage+Resize.h"
 
 #import "LocalStorageService.h"
+
+#import "UIButton+RGSUIBackButton.h"
 @interface RGSContactListViewController ()
 
 @end
@@ -86,26 +88,15 @@
                              [UIColor colorWithHexString:@"57d6ff"] ,NSForegroundColorAttributeName,
                              [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName, nil]];
     
-    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self action:@selector(toChatListScreen:)
+    
+    UIButton *backButton = [UIButton buttonWithCustomBackButton];
+    [backButton addTarget:self action:@selector(toChatListScreen:)
      forControlEvents:UIControlEventTouchUpInside];
-    [button setFrame:CGRectMake(0, 20, 80, 32)];
+    [backButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    backButton.titleLeftEdgeInset = -20;
+    backButton.imageLeftEdgeInset = -30;
     
-    [button setTitle:@"Cancel" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor whiteColor]
-                 forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor lightGrayColor]
-                 forState:UIControlStateHighlighted];
-    button.titleEdgeInsets = UIEdgeInsetsMake(2, -20, 2, 0);
-    button.titleLabel.textAlignment = NSTextAlignmentLeft;
-    button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
-    
-    UIImage *image = [UIImage imageNamed:@"backButton"];
-    [button setImage:[image resizedImage:CGSizeMake(20, 20)]
-            forState:UIControlStateNormal];
-    
-    button.imageEdgeInsets = UIEdgeInsetsMake(0, -30, 2, 0);
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
     self.navigationItem.leftBarButtonItem = barButton;
 
