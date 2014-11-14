@@ -122,12 +122,23 @@ return [[_fetchedResultsController sections] count];
     RGSChatCell *cell;
     if(indexPath.row == 0){
         cell = [tableView dequeueReusableCellWithIdentifier:@"longerChatCell" forIndexPath:indexPath];
+        select
+        UIView *selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 65, 320, 75)];
+        selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:0.506 alpha:0.230];
+        
+        UIView *conView = [[UIView alloc] initWithFrame:cell.frame];
+        conView.backgroundColor = [UIColor clearColor];
+        [conView addSubview:selectedBackgroundView];
+        cell.selectedBackgroundView = conView;
+
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
+        
+        UIView *selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+        selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:0.506 alpha:0.230];
+        cell.selectedBackgroundView = selectedBackgroundView;
     }
-    UIView *selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-    selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:0.506 alpha:0.230];
-    cell.selectedBackgroundView = selectedBackgroundView;
+    
     
     RGSChat *chat = [_fetchedResultsController objectAtIndexPath:indexPath];
     
