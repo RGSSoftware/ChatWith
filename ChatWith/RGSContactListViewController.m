@@ -31,6 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = @"Select Contact";
+    
     self.searchBar.backgroundColor = [UIColor clearColor];
     self.searchBar.backgroundImage = [UIImage imageWithColor:
                                       [UIColor colorWithHexString:@"414141" alpha:.16]];
@@ -82,13 +84,6 @@
     self.InviteFriendsButton.titleLabel.font = [UIFont systemFontOfSize:20];
     [self.view bringSubviewToFront:self.InviteFriendsButton];
     
-    self.navigationItem.title = @"Select Contact";
-//    [self.navigationController.navigationBar
-//     setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-//                             [UIColor colorWithHexString:@"57d6ff"] ,NSForegroundColorAttributeName,
-//                             [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName, nil]];
-    
-    
     UIButton *backButton = [UIButton buttonWithCustomBackButton];
     [backButton addTarget:self action:@selector(toChatListScreen:)
      forControlEvents:UIControlEventTouchUpInside];
@@ -97,14 +92,8 @@
     backButton.imageLeftEdgeInset = -30;
     
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    
     self.navigationItem.leftBarButtonItem = barButton;
 
-    UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"MenuIcon"] resizedImage:CGSizeMake(25, 17)]
-                                                                   style:UIBarButtonItemStylePlain target:nil action:nil];
-    menuBarButton.tintColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = menuBarButton;
-    
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
         // Update to handle the error appropriately.

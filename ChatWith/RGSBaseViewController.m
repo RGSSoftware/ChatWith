@@ -8,6 +8,7 @@
 
 #import "RGSBaseViewController.h"
 
+#import "UIImage+Resize.h"
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
 
@@ -26,6 +27,11 @@
      setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                              [UIColor colorWithHexString:@"57d6ff"] ,NSForegroundColorAttributeName,
                              [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName, nil]];
+    
+    UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"MenuIcon"] resizedImage:CGSizeMake(25, 17)]
+                                                                      style:UIBarButtonItemStylePlain target:nil action:nil];
+    menuBarButton.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = menuBarButton;
 }
 
 @end
