@@ -20,6 +20,8 @@
 
 #import "UIButton+RGSUIBackButton.h"
 
+#import "RGSBaseViewController+RGSSeparatorExtender.h"
+
 const int maxTextWidth = 260;
 const int cellContentMargin = 5;
 const int leftRightMargin = cellContentMargin * 2;
@@ -33,7 +35,6 @@ const int navigationSpacing = 65;
 @property (nonatomic, strong)UITableViewCell *referenceCell;
 
 @property (nonatomic, strong)RGSManagedUser *currentUser;
-
 
 @end
 
@@ -121,36 +122,21 @@ const int navigationSpacing = 65;
     return MAX(CGRectGetHeight(textRect), minBodyHeight);
 }
 
-
-
 -(NSManagedObjectContext *)managedObjectContext{
     return [NSManagedObjectContext MR_defaultContext];
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
+    [self fullyExtendTableViewCellSeparator:cell];
 }
 //Part-2
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     
-    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-    }
-    
-    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
-    }
+    [self fullyExtendTableViewSeparator:self.tableView];
 }
-
 
 -(RGSManagedUser *)currentUser{
     if (_currentUser == nil)

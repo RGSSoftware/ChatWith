@@ -20,6 +20,7 @@
 #import "UIColor+RGSColorWithHexString.h"
 #import "UIImage+Resize.h"
 
+#import "RGSBaseViewController+RGSSeparatorExtender.h"
 @interface RGSChatListViewController ()
 
 @end
@@ -191,27 +192,17 @@ return [[_fetchedResultsController sections] count];
 //Part-1
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
+    [self fullyExtendTableViewCellSeparator:cell];
 }
 //Part-2
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     
-    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-    }
-    
-    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
-    }
+    [self fullyExtendTableViewSeparator:self.tableView];
 }
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
