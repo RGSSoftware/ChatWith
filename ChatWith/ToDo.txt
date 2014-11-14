@@ -1,7 +1,11 @@
 StoryBoard
 
+Whole App
+	optimize transition between screens
+
 NavViewController
 	rethink/update backBarButton arrow
+
 MessageListViewController
     TableView
 *	create sender cell
@@ -12,9 +16,9 @@ MessageListViewController
     	___________
 	update table to reflect changes in coreData
 	_______
-	config backBarButton to pop one back
+*	config backBarButton to pop one back
 	_______
-	config backBarButton to pop two back
+*	config backBarButton to pop two back
 	______
 *	config backBarButton presentation
 	____________
