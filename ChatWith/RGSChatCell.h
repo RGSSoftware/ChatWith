@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *receiverName;
 @property (weak, nonatomic) IBOutlet UILabel *lastestMessageBody;
 @property (weak, nonatomic) IBOutlet UILabel *lastestMessageDate;
+
+-(UIView *)customSelectedBackgroundViewWithFrame:(CGRect)frame;
 @end

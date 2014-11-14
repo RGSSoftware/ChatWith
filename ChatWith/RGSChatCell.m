@@ -10,4 +10,9 @@
 
 @implementation RGSChatCell
 
+-(UIView *)customSelectedBackgroundViewWithFrame:(CGRect)frame{
+    UIView *selectedBackgroundView = [[UIView alloc] initWithFrame:frame];
+    selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:0.506 alpha:0.230];
+    return selectedBackgroundView;
+}
 @end
