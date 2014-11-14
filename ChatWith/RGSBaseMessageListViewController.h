@@ -1,18 +1,16 @@
 //
-//  RGSMessageListViewController.h
+//  RGSBaseMessageListViewController.h
 //  ChatWith
 //
-//  Created by PC on 11/1/14.
+//  Created by PC on 11/14/14.
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "RGSBaseViewController.h"
-
 @class RGSManagedUser;
 @class RGSChat;
 
-@interface RGSMessageListViewController : RGSBaseViewController <NSFetchedResultsControllerDelegate>
+@interface RGSBaseMessageListViewController : RGSBaseViewController <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong)RGSManagedUser *receiver;
 
@@ -21,4 +19,5 @@
 @property (nonatomic, strong)RGSChat *chat;
 
 @property (nonatomic, strong)NSFetchedResultsController *fetchedResultsController;
+
 @end

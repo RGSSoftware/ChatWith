@@ -1,12 +1,12 @@
 //
-//  RGSMessageListViewController.m
+//  RGSBaseMessageListViewController.m
 //  ChatWith
 //
-//  Created by PC on 11/1/14.
+//  Created by PC on 11/14/14.
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "RGSMessageListViewController.h"
+#import "RGSBaseMessageListViewController.h"
 
 #import "RGSManagedUser.h"
 #import "RGSMessage.h"
@@ -28,57 +28,17 @@ const int topBottonMargin = cellContentMargin * 2;
 const int fristCell = 0;
 const int navigationSpacing = 65;
 
+@interface RGSBaseMessageListViewController ()
 
-@interface RGSMessageListViewController ()
 @property (nonatomic, strong)UITableViewCell *referenceCell;
 
 @property (nonatomic, strong)RGSManagedUser *currentUser;
 
+
 @end
 
+@implementation RGSBaseMessageListViewController
 
-@implementation RGSMessageListViewController
-
-
--(void)viewDidLoad{
-    [super viewDidLoad];
-    
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    if(self.receiver){
-        self.navigationItem.title = self.receiver.fullName;
-    }
-    
-    self.view.backgroundColor = [UIColor clearColor];
-    self.tableView.backgroundColor = [UIColor clearColor];
-    
-    UIButton *backButton = [UIButton buttonWithCustomBackButton];
-    [backButton addTarget:self action:@selector(toChatListScreen:)
-         forControlEvents:UIControlEventTouchUpInside];
-    [backButton setTitle:@"Chats" forState:UIControlStateNormal];
-    backButton.titleLeftEdgeInset = -25;
-    backButton.imageLeftEdgeInset = -35;
-
-     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-     
-     self.navigationItem.leftBarButtonItem = barButton;
-    
-    _fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"chat", self.chat];
-    
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-        // Update to handle the error appropriately.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    }
-    self.tableView.showsVerticalScrollIndicator = YES;
-}
-
--(void)toChatListScreen:(id)sender{
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count]- 3)] animated:NO];
-}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [[_fetchedResultsController sections] count];
 }
@@ -154,27 +114,14 @@ const int navigationSpacing = 65;
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     CGRect textRect = [text boundingRectWithSize:constraint
-                                                 options:NSStringDrawingUsesLineFragmentOrigin
-                                              attributes:@{NSParagraphStyleAttributeName: paragraphStyle.copy,NSFontAttributeName:[UIFont systemFontOfSize:16]}
-                                                 context:nil];
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:@{NSParagraphStyleAttributeName: paragraphStyle.copy,NSFontAttributeName:[UIFont systemFontOfSize:16]}
+                                         context:nil];
     
     return MAX(CGRectGetHeight(textRect), minBodyHeight);
 }
 
--(NSFetchedResultsController *)fetchedResultsController{
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[RGSMessage MR_entityDescription]];
-    [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]]];
-    
-    
-    [fetchRequest setFetchBatchSize:20];
-    
-    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
-    _fetchedResultsController.delegate = self;
-    
-    return _fetchedResultsController;
-}
+
 
 -(NSManagedObjectContext *)managedObjectContext{
     return [NSManagedObjectContext MR_defaultContext];
@@ -213,12 +160,62 @@ const int navigationSpacing = 65;
     return _currentUser;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    if(self.receiver){
+        self.navigationItem.title = self.receiver.fullName;
+    }
+    
+    UIButton *backButton = [UIButton buttonWithCustomBackButton];
+    [backButton addTarget:self action:@selector(toChatListScreen:)
+         forControlEvents:UIControlEventTouchUpInside];
+    [backButton setTitle:@"Chats" forState:UIControlStateNormal];
+    backButton.titleLeftEdgeInset = -25;
+    backButton.imageLeftEdgeInset = -35;
 
-//-(void)viewDidAppear:(BOOL)animated{
-//    [super viewDidAppear:animated];
-//    
-//    
-//
-//}
+     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+     
+     self.navigationItem.leftBarButtonItem = barButton;
+    
+    
+    [NSFetchedResultsController deleteCacheWithName:nil];
+    self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"chat", self.chat];
+    
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    } else {
+        [self.tableView setNeedsDisplay];
+    }
+}
+
+-(NSFetchedResultsController *)fetchedResultsController{
+    
+    if (_fetchedResultsController == nil)
+    {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        [fetchRequest setEntity:[RGSMessage MR_entityDescription]];
+        [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]]];
+        _currentUser = [[LocalStorageService shared] savedUser];
+        
+        [fetchRequest setFetchBatchSize:20];
+        
+        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
+        _fetchedResultsController.delegate = self;
+        
+        return _fetchedResultsController;
+    }
+    return _fetchedResultsController;
+}
+
+-(void)toChatListScreen:(id)sender
+{
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:[NSString stringWithFormat:@"You must override %@ in a subclass",
+                                           NSStringFromSelector(_cmd)]
+                                 userInfo:nil];
+}
 
 @end

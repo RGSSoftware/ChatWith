@@ -13,7 +13,7 @@
 #import "RGSManagedUser.h"
 #import "RGSContact.h"
 
-#import "RGSMessageListViewController.h"
+#import "RGSMessageListViewControllerOnePop.h"
 
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
@@ -109,13 +109,7 @@
     if (![[self fetchedResultsController] performFetch:&error]) {
         // Update to handle the error appropriately.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        
-        
     }
-    
-    self.view.backgroundColor = [UIColor clearColor];
-    
-    
 }
 
 -(void)toChatListScreen:(id)sender{
@@ -205,7 +199,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
         RGSContactCell *contactCell = (RGSContactCell *)sender;
         RGSContact *contact = [_fetchedResultsController objectAtIndexPath:[self.collectionView indexPathForCell:contactCell]];
         
-        RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
+        RGSMessageListViewControllerOnePop *messageListViewController = (RGSMessageListViewControllerOnePop
                                                                    *)[segue destinationViewController];
         messageListViewController.receiver = contact.friend;
     } else if ([segue.identifier isEqualToString:@"toChats"]){

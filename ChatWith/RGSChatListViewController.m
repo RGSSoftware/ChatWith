@@ -7,7 +7,7 @@
 //
 
 #import "RGSChatListViewController.h"
-#import "RGSMessageListViewController.h"
+#import "RGSMessageListViewControllerOnePop.h"
 #import "RGSChat.h"
 #import "RGSChatCell.h"
 #import "RGSMessage.h"
@@ -77,15 +77,10 @@
     addBarButton.tintColor = [UIColor colorWithHexString:@"46ABCC"];
     self.navigationItem.leftBarButtonItem = addBarButton;
     
-    self.view.backgroundColor = [UIColor clearColor];
-    self.tableView.backgroundColor = [UIColor clearColor];
-    
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
         // Update to handle the error appropriately.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        
-        
     }
 }
 
@@ -243,7 +238,7 @@ return [[_fetchedResultsController sections] count];
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"toMessages"]){
-        RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
+        RGSMessageListViewControllerOnePop *messageListViewController = (RGSMessageListViewControllerOnePop
                                                                    *)[segue destinationViewController];
         messageListViewController.chat = [_fetchedResultsController objectAtIndexPath:[self.tableView indexPathForCell:sender]];
     }
