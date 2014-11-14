@@ -19,8 +19,9 @@
         [_body setMinimumScaleFactor:16];
         [_body setNumberOfLines:0];
         [_body setFont:[UIFont systemFontOfSize:16]];
+        [_body setTextColor:[UIColor whiteColor]];
         
-        [[_body layer] setBorderWidth:2.0f];
+//        [[_body layer] setBorderWidth:2.0f];
         
         [self.contentView addSubview:_body];
     }

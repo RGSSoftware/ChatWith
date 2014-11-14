@@ -104,7 +104,7 @@
     [button setImage:[image resizedImage:CGSizeMake(20, 20)]
             forState:UIControlStateNormal];
     
-    button.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 2, 30);
+    button.imageEdgeInsets = UIEdgeInsetsMake(0, -30, 2, 0);
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     
     self.navigationItem.leftBarButtonItem = barButton;

@@ -23,6 +23,10 @@ const int cellContentMargin = 5;
 const int leftRightMargin = cellContentMargin * 2;
 const int topBottonMargin = cellContentMargin * 2;
 
+const int fristCell = 0;
+const int navigationSpacing = 65;
+
+
 @interface RGSMessageListViewController ()
 @property (nonatomic, strong)UITableViewCell *referenceCell;
 
@@ -59,15 +63,16 @@ const int topBottonMargin = cellContentMargin * 2;
                   forState:UIControlStateNormal];
      [button setTitleColor:[UIColor lightGrayColor]
                   forState:UIControlStateHighlighted];
-     button.titleEdgeInsets = UIEdgeInsetsMake(2, -20, 2, 0);
-     button.titleLabel.textAlignment = NSTextAlignmentLeft;
-     button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
-     
-     UIImage *image = [UIImage imageNamed:@"backButton"];
-     [button setImage:[image resizedImage:CGSizeMake(20, 20)]
-             forState:UIControlStateNormal];
-     
-     button.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 2, 30);
+    button.titleEdgeInsets = UIEdgeInsetsMake(2, -25, 2, 0);
+    button.titleLabel.textAlignment = NSTextAlignmentLeft;
+    button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
+    
+    UIImage *image = [UIImage imageNamed:@"backButton"];
+    [button setImage:[image resizedImage:CGSizeMake(20, 20)]
+            forState:UIControlStateNormal];
+    
+    button.imageEdgeInsets = UIEdgeInsetsMake(0, -35, 2, 0);
+
      UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
      
      self.navigationItem.leftBarButtonItem = barButton;
@@ -79,7 +84,7 @@ const int topBottonMargin = cellContentMargin * 2;
         // Update to handle the error appropriately.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
-    
+    self.tableView.showsVerticalScrollIndicator = YES;
 }
 
 -(void)toChatListScreen:(id)sender{
@@ -119,6 +124,7 @@ const int topBottonMargin = cellContentMargin * 2;
                                      [self heightWithText:message.body
                                                  maxWidth:(maxTextWidth - leftRightMargin)]);
     }
+    if(indexPath.row == fristCell){cell.body.frame = [self add:navigationSpacing toRectY:cell.body.frame];}
     
     static NSDateFormatter *todayDateFormatter = nil;
     if (todayDateFormatter == nil) {
@@ -132,15 +138,23 @@ const int topBottonMargin = cellContentMargin * 2;
     return cell;
     
 }
+-(CGRect)add:(float)increase toRectY:(CGRect)rect{
+    return CGRectMake(CGRectGetMinX(rect), CGRectGetMinY(rect) + increase, CGRectGetWidth(rect), CGRectGetHeight(rect));
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
-    return [self heightWithText:message.body maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
+    float height = [self heightWithText:message.body maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
+    
+    if(indexPath.row == fristCell){
+        return height + navigationSpacing;
+    }
+    return height;
 }
 
 -(CGFloat)heightWithText:(NSString *)text maxWidth:(float)maxWidth{
     
-    float minBodyHeight = 24.0f;
+    float minBodyHeight = 16.0f;
     float maxBodyHeight = 20000.0f;
     
     CGSize constraint = CGSizeMake(maxWidth, maxBodyHeight);
@@ -176,6 +190,31 @@ const int topBottonMargin = cellContentMargin * 2;
 -(NSManagedObjectContext *)managedObjectContext{
     return [NSManagedObjectContext MR_defaultContext];
 }
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+//Part-2
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 
 -(RGSManagedUser *)currentUser{
     if (_currentUser == nil)

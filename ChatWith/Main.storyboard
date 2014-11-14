@@ -358,7 +358,7 @@
         <!--Message List View Controller-->
         <scene sceneID="g6R-Ox-UsF">
             <objects>
-                <viewController id="Mah-Zz-rb9" customClass="RGSMessageListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RGSMessageListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mah-Zz-rb9" customClass="RGSMessageListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aoL-kL-t1c"/>
                         <viewControllerLayoutGuide type="bottom" id="wIc-JV-1el"/>
@@ -367,10 +367,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lzT-sE-2da">
-                                <rect key="frame" x="0.0" y="64" width="320" height="505"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lzT-sE-2da">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.83188291489999999" green="0.83064308019999999" blue="0.85229990430000002" alpha="0.38" colorSpace="calibratedRGB"/>
                                 <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="longerMessageCell" id="oTV-rD-zEu" customClass="RGSMessageCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oTV-rD-zEu" id="Cx2-bW-p8s">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfI-3K-rab">
+                                                    <rect key="frame" x="8" y="8" width="92" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="timeLabel" destination="gfI-3K-rab" id="fwP-2B-cwm"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" id="32X-K9-Xqz" customClass="RGSMessageCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="32X-K9-Xqz" id="9CX-Kf-39p">
@@ -384,6 +403,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="timeLabel" destination="y67-mh-JlZ" id="yI5-PK-yt4"/>
                                         </connections>
@@ -399,8 +419,8 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="lzT-sE-2da" secondAttribute="trailing" id="DUl-T8-4R0"/>
                             <constraint firstItem="lzT-sE-2da" firstAttribute="leading" secondItem="el7-ry-i7U" secondAttribute="leading" id="Jpk-fv-Ogx"/>
-                            <constraint firstAttribute="bottom" secondItem="lzT-sE-2da" secondAttribute="bottom" constant="-1" id="LHd-Vp-pRI"/>
-                            <constraint firstItem="lzT-sE-2da" firstAttribute="top" secondItem="el7-ry-i7U" secondAttribute="top" constant="64" id="td0-6n-AXb"/>
+                            <constraint firstAttribute="bottom" secondItem="lzT-sE-2da" secondAttribute="bottom" id="LHd-Vp-pRI"/>
+                            <constraint firstItem="lzT-sE-2da" firstAttribute="top" secondItem="el7-ry-i7U" secondAttribute="top" id="td0-6n-AXb"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -417,6 +437,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Ggl-7T-reh"/>
-        <segue reference="tmx-tc-fLD"/>
+        <segue reference="TOH-sB-Kxt"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -4,11 +4,11 @@ NavViewController
 	rethink/update backBarButton arrow
 MessageListViewController
     TableView
-	create sender cell
-	    create cell with top space for the first cell
+*	create sender cell
+*	    create cell with top space for the first cell
 	___________________
-	create receiver cell
-	    create cell with top space for the first cell
+*	create receiver cell
+*	    create cell with top space for the first cell
     	___________
 	update table to reflect changes in coreData
 	_______
@@ -16,7 +16,7 @@ MessageListViewController
 	_______
 	config backBarButton to pop two back
 	______
-	config backBarButton presentation
+*	config backBarButton presentation
 	____________
 	add messageComposer component
 	________
@@ -29,6 +29,8 @@ MessageListViewController
 	added load earlier Messages button
 	______
 	add time label to cells
+	____
+	add the scroll indicator back 
 
 MessageSegue
 	refactor to a custom pushSegue

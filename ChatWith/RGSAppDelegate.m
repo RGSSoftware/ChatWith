@@ -27,6 +27,7 @@
 #import "RGSApplicationSessionManagementService.h"
 #import "RGSContactListViewController.h"
 #import "RGSChatService.h"
+#import "RGSMessageListViewController.h"
 
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
@@ -145,6 +146,13 @@
         message.sender = currentUser;
         [chat1 addMessagesObject:message];
     }
+    {
+        RGSMessage *message = [RGSMessage MR_createEntity];
+        message.body = @"two words";
+        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
+        message.sender = currentUser;
+        [chat1 addMessagesObject:message];
+    }
 
     [currentUser addChatsObject:chat1];
     
@@ -165,9 +173,18 @@
     
     [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
         if (success) {
+            
+//            RGSMessageListViewController *mlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSMessageListViewController"];
+//            mlvc.chat = chat1;
+//            
+//            UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mlvc];
+//            //
+//                self.window.rootViewController = nc;
+            
             UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSChatListViewController"]];
-            //
-                self.window.rootViewController = nc;
+            
+            self.window.rootViewController = nc;
+
         }
     }];
 
