@@ -83,10 +83,10 @@
     [self.view bringSubviewToFront:self.InviteFriendsButton];
     
     self.navigationItem.title = @"Select Contact";
-    [self.navigationController.navigationBar
-     setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                             [UIColor colorWithHexString:@"57d6ff"] ,NSForegroundColorAttributeName,
-                             [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName, nil]];
+//    [self.navigationController.navigationBar
+//     setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//                             [UIColor colorWithHexString:@"57d6ff"] ,NSForegroundColorAttributeName,
+//                             [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName, nil]];
     
     
     UIButton *backButton = [UIButton buttonWithCustomBackButton];
