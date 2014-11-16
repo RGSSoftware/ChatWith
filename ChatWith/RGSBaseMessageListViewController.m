@@ -169,6 +169,7 @@ const int navigationSpacing = 65;
      
      self.navigationItem.leftBarButtonItem = barButton;
     
+    [self registerForKeyboardNotifications];
 
     [NSFetchedResultsController deleteCacheWithName:nil];
     self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"chat", self.chat];
@@ -180,6 +181,48 @@ const int navigationSpacing = 65;
     } else {
         [self.tableView setNeedsDisplay];
     }
+}
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+}
+
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    self.messageComposerView.frame = CGRectMake(CGRectGetMinX(self.messageComposerView.frame), CGRectGetMinY(self.messageComposerView.frame) - kbSize.height, CGRectGetWidth(self.messageComposerView.frame), CGRectGetHeight(self.messageComposerView.frame));
+    
+//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+//    scrollView.contentInset = contentInsets;
+//    scrollView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your app might not need or want this behavior.
+//    CGRect aRect = self.view.frame;
+//    aRect.size.height -= kbSize.height;
+//    if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
+//        [self.scrollView scrollRectToVisible:activeField.frame animated:YES];
+//    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+//    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+//    scrollView.contentInset = contentInsets;
+//    scrollView.scrollIndicatorInsets = contentInsets;
 }
 
 -(NSFetchedResultsController *)fetchedResultsController{

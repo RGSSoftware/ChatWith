@@ -543,6 +543,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="messageComposerView" destination="Jwm-TU-euY" id="pfd-iI-e5M"/>
                         <outlet property="tableView" destination="SnZ-Ms-COG" id="B8K-FW-3G1"/>
                         <segue destination="hQ2-gS-03Z" kind="custom" identifier="fromMessageToChat" customClass="RGSTwoPopSegue" id="NRe-gm-LWq"/>
                     </connections>
