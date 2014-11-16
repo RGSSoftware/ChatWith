@@ -1,4 +1,23 @@
 PODS:
+  - BlocksKit (2.2.5):
+    - BlocksKit/All
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
   - Kiwi (2.3.0)
   - LoremIpsum (1.0.0)
   - MagicalRecord (2.2):
@@ -11,6 +30,7 @@ PODS:
   - QuickBlox (2.0.9)
 
 DEPENDENCIES:
+  - BlocksKit
   - Kiwi
   - LoremIpsum (~> 1.0)
   - MagicalRecord
@@ -19,6 +39,7 @@ DEPENDENCIES:
   - QuickBlox
 
 SPEC CHECKSUMS:
+  BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
   Kiwi: 54bece5b35564d9b8e03c608d926f1a22fcfc589
   LoremIpsum: a4d378ecaffcb08c7e40cdba3fb935dc41b2272c
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224

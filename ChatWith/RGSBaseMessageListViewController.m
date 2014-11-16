@@ -22,6 +22,10 @@
 
 #import "RGSBaseViewController+RGSSeparatorExtender.h"
 
+#import "CSGrowingTextView.h"
+
+#import "RGSMessageComposerView.h"
+
 const int maxTextWidth = 260;
 const int cellContentMargin = 5;
 const int leftRightMargin = cellContentMargin * 2;
@@ -35,6 +39,7 @@ const int navigationSpacing = 65;
 @property (nonatomic, strong)UITableViewCell *referenceCell;
 
 @property (nonatomic, strong)RGSManagedUser *currentUser;
+
 
 @end
 
@@ -164,7 +169,7 @@ const int navigationSpacing = 65;
      
      self.navigationItem.leftBarButtonItem = barButton;
     
-    
+
     [NSFetchedResultsController deleteCacheWithName:nil];
     self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"chat", self.chat];
     

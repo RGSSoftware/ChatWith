@@ -9,6 +9,7 @@
 #import "RGSBaseViewController.h"
 @class RGSManagedUser;
 @class RGSChat;
+@class RGSMessageComposerView;
 
 @interface RGSBaseMessageListViewController : RGSBaseViewController <NSFetchedResultsControllerDelegate>
 
@@ -18,6 +19,7 @@
 
 @property (nonatomic, strong)RGSChat *chat;
 
+@property (weak, nonatomic) IBOutlet RGSMessageComposerView *messageComposerView;
 @property (nonatomic, strong)NSFetchedResultsController *fetchedResultsController;
 
 @end

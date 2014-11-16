@@ -68,6 +68,8 @@
 		22AD00EB1A0D8686008F9EF7 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00EA1A0D8686008F9EF7 /* NSDate+Utilities.m */; };
 		22AD00F11A0ED43D008F9EF7 /* RGSChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00F01A0ED43D008F9EF7 /* RGSChat.m */; };
 		22AD00F41A1336E8008F9EF7 /* RGSMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00F31A1336E7008F9EF7 /* RGSMessageCell.m */; };
+		22B1E3171A1967660062701A /* RGSMessageComposerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1E3141A1967660062701A /* RGSMessageComposerView.m */; };
+		22B1E3181A1967660062701A /* CSGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1E3161A1967660062701A /* CSGrowingTextView.m */; };
 		22BE6EDB1A14723E00D130EB /* RGSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EDA1A14723E00D130EB /* RGSMessage.m */; };
 		22BE6EE11A14728300D130EB /* RGSManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE01A14728300D130EB /* RGSManagedUser.m */; };
 		22BE6EE71A16305A00D130EB /* UIButton+RGSUIBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE61A16305A00D130EB /* UIButton+RGSUIBackButton.m */; };
@@ -174,6 +176,10 @@
 		22AD00F01A0ED43D008F9EF7 /* RGSChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChat.m; sourceTree = "<group>"; };
 		22AD00F21A1336E7008F9EF7 /* RGSMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageCell.h; sourceTree = "<group>"; };
 		22AD00F31A1336E7008F9EF7 /* RGSMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessageCell.m; sourceTree = "<group>"; };
+		22B1E3131A1967660062701A /* RGSMessageComposerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageComposerView.h; sourceTree = "<group>"; };
+		22B1E3141A1967660062701A /* RGSMessageComposerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessageComposerView.m; sourceTree = "<group>"; };
+		22B1E3151A1967660062701A /* CSGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSGrowingTextView.h; sourceTree = "<group>"; };
+		22B1E3161A1967660062701A /* CSGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSGrowingTextView.m; sourceTree = "<group>"; };
 		22BE6ED91A14723E00D130EB /* RGSMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessage.h; sourceTree = "<group>"; };
 		22BE6EDA1A14723E00D130EB /* RGSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessage.m; sourceTree = "<group>"; };
 		22BE6EDF1A14728300D130EB /* RGSManagedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSManagedUser.h; sourceTree = "<group>"; };
@@ -329,6 +335,10 @@
 			isa = PBXGroup;
 			children = (
 				224FBF7619D1B7A800A924CA /* Main.storyboard */,
+				22B1E3131A1967660062701A /* RGSMessageComposerView.h */,
+				22B1E3141A1967660062701A /* RGSMessageComposerView.m */,
+				22B1E3151A1967660062701A /* CSGrowingTextView.h */,
+				22B1E3161A1967660062701A /* CSGrowingTextView.m */,
 				22BE6EE51A16305A00D130EB /* UIButton+RGSUIBackButton.h */,
 				22BE6EE61A16305A00D130EB /* UIButton+RGSUIBackButton.m */,
 				22AD00F21A1336E7008F9EF7 /* RGSMessageCell.h */,
@@ -681,8 +691,10 @@
 				223A1DB21A04459E00A1B3D2 /* RGSContact.m in Sources */,
 				2287C47319FAC58600039555 /* UIColor+RGSColorWithHexString.m in Sources */,
 				221A05611A0D6C7A006B46AD /* RGSChatCell.m in Sources */,
+				22B1E3171A1967660062701A /* RGSMessageComposerView.m in Sources */,
 				22E8A5EA1A168F350031403B /* RGSBaseViewController+RGSSeparatorExtender.m in Sources */,
 				22F5206F1A0074D600FD2CD5 /* UIImage+Alpha.m in Sources */,
+				22B1E3181A1967660062701A /* CSGrowingTextView.m in Sources */,
 				223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */,
 				22AD00EB1A0D8686008F9EF7 /* NSDate+Utilities.m in Sources */,
 			);
