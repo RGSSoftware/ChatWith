@@ -8,6 +8,7 @@
 
 #import "RGSMessageComposerView.h"
 #import "CSGrowingTextView.h"
+#import "UIColor+RGSColorWithHexString.h"
 
 @implementation RGSMessageComposerView
 
@@ -44,6 +45,19 @@
     //passing self to messageTextView so it can communication back the grown hitDection area.
     //The area the growingTextView Makes
     self.messageTextView.messageComposerView = self;
+    
+    
+    self.messageTextView.placeholderLabel.text = @"Chat With Friends...";
+    self.backgroundColor = [UIColor clearColor];
+//    self.messageTextView.placeholderLabel.
+    self.messageTextView.layer.cornerRadius = 10;
+    self.messageTextView.backgroundColor = [UIColor colorWithHexString:@"414141"];
+    self.backGroundView.backgroundColor = [UIColor colorWithHexString:@"363636"];
+    self.messageTextView.internalTextView.textColor = [UIColor whiteColor];
+    
+    self.sendMessagebButton.tintColor = [UIColor colorWithHexString:@"57d6ff"];
+    self.messageTextView.internalTextView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+//    self.messageTextView.internalTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 5);
 
 }
 

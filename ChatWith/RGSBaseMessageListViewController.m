@@ -197,6 +197,10 @@ const int navigationSpacing = 65;
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHidden:)
+                                                 name:UIKeyboardDidHideNotification object:nil];
+    
 }
 
 -(void)keyboardWillChangeFrame:(NSNotification *)aNotification{
@@ -247,6 +251,10 @@ const int navigationSpacing = 65;
 //    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
 //    scrollView.contentInset = contentInsets;
 //    scrollView.scrollIndicatorInsets = contentInsets;
+}
+
+- (void)keyboardDidHidden:(NSNotification*)aNotification
+{
 }
 
 -(NSFetchedResultsController *)fetchedResultsController{

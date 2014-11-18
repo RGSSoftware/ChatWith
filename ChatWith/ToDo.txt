@@ -22,7 +22,7 @@ MessageListViewController
 	______
 *	config backBarButton presentation
 	____________
-	add messageComposer component
+*	add messageComposer component
 	________
 	update fetchedResultsController error handling capacity
 	______
@@ -35,6 +35,13 @@ MessageListViewController
 	add time label to cells
 	____
 	add the scroll indicator back 
-
+	________
+	Add closing animate for messageComposer when keyboard Dismiss
+	__
+	add button in place of “addImage” image on messageComposer
+	___
+	config addImage button
+	_____
+	config send Button
 MessageSegue
-	refactor to a custom pushSegue
+*	refactor to a custom pushSegue

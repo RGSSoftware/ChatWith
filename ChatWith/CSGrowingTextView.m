@@ -10,6 +10,7 @@
 #import "RGSMessageComposerView.h"
 
 #define kPladeholderPadding 8
+const int kTopPlaceholderPadding = 11;
 
 @interface CSGrowingTextView ()
 
@@ -58,7 +59,10 @@
     _growAnimationDuration = 0.1;
     _growAnimationOptions = UIViewAnimationOptionCurveEaseInOut;
     
-    _internalTextView = [[UITextView alloc] initWithFrame:self.bounds];
+    _internalTextView = [[UITextView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.bounds),
+                                                                     CGRectGetMinY(self.bounds),
+                                                                     CGRectGetWidth(self.bounds),
+                                                                     CGRectGetHeight(self.bounds))];
     self.internalTextView.font = [UIFont systemFontOfSize:15];
     _internalTextView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
                                   UIViewAutoresizingFlexibleHeight);
@@ -67,7 +71,7 @@
     [self addSubview:self.internalTextView];
     
     _placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPladeholderPadding,
-                                                                  kPladeholderPadding + [self insetsValue],
+                                                                  kTopPlaceholderPadding + [self insetsValue],
                                                                   CGRectGetWidth(self.frame) - kPladeholderPadding * 2,
                                                                   CGRectGetHeight(self.frame) - kPladeholderPadding * 2)];
     self.placeholderLabel.numberOfLines = 0;
@@ -151,12 +155,15 @@
     CGSize size = [_placeholderLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.frame) - kPladeholderPadding * 2,
                                                              CGRectGetHeight(self.frame) - kPladeholderPadding * 2)];
     _placeholderLabel.frame = CGRectMake(kPladeholderPadding,
-                                         kPladeholderPadding + [self insetsValue],
+                                         kTopPlaceholderPadding + [self insetsValue],
                                          size.width, size.height);
     
 }
 
 - (void)updateFrame:(CGRect)frame {
+    
+    NSLog(@"simple print-----self.internalText.frame------{%@}", NSStringFromCGRect(self.internalTextView.frame));
+    NSLog(@"simple print-----frame------{%@}", NSStringFromCGRect(frame));
     
     if (CGRectEqualToRect(frame, self.internalTextView.frame) &&
         CGRectGetHeight(frame) == CGRectGetHeight(self.frame)) {
@@ -165,6 +172,16 @@
 
         return;
     }
+//    if (CGRectEqualToRect(frame, CGRectMake(CGRectGetMinX(self.internalTextView.frame),
+//                                            CGRectGetMinY(self.internalTextView.frame),
+//                                            CGRectGetWidth(self.internalTextView.frame) - 5,
+//                                            CGRectGetHeight(self.internalTextView.frame))) &&
+//        CGRectGetHeight(frame) == CGRectGetHeight(self.frame)) {
+//        
+//        [self updateTextViewContentOffsetForCaret:self.internalTextView];
+//        
+//        return;
+//    }
     
     if ([(NSObject *)_delegate respondsToSelector:@selector(growingTextView:willChangeHeight:)]) {
         [_delegate growingTextView:self
