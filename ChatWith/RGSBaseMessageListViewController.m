@@ -151,111 +151,8 @@ const int navigationSpacing = 65;
     return _currentUser;
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    if(self.receiver){
-        self.navigationItem.title = self.receiver.fullName;
-    }
-    
-    UIButton *backButton = [UIButton buttonWithCustomBackButton];
-    [backButton addTarget:self action:@selector(toChatListScreen:)
-         forControlEvents:UIControlEventTouchUpInside];
-    [backButton setTitle:@"Chats" forState:UIControlStateNormal];
-    backButton.titleLeftEdgeInset = -25;
-    backButton.imageLeftEdgeInset = -35;
 
-     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-     
-     self.navigationItem.leftBarButtonItem = barButton;
-    
-    [self registerForKeyboardNotifications];
 
-    [NSFetchedResultsController deleteCacheWithName:nil];
-    self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"chat", self.chat];
-    
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-        // Update to handle the error appropriately.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    } else {
-        [self.tableView setNeedsDisplay];
-    }
-}
-
-- (void)registerForKeyboardNotifications
-{
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(keyboardWasShown:)
-//                                                 name:UIKeyboardDidShowNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillChangeFrame:)
-                                                 name:UIKeyboardWillChangeFrameNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillBeHidden:)
-                                                 name:UIKeyboardWillHideNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidHidden:)
-                                                 name:UIKeyboardDidHideNotification object:nil];
-    
-}
-
--(void)keyboardWillChangeFrame:(NSNotification *)aNotification{
-    
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-//    [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]
-//                          delay:0
-//                        options:UIViewAnimationOptionCurveLinear
-//                     animations:^{
-//        self.messageComposerView.frame = CGRectMake(CGRectGetMinX(self.messageComposerView.frame), CGRectGetMinY(self.messageComposerView.frame) - kbSize.height, CGRectGetWidth(self.messageComposerView.frame), CGRectGetHeight(self.messageComposerView.frame));
-//    }
-//                     completion:^(BOOL finished) {
-//        
-//    }];
-    
-    CGRect endFrame;
-    float duration = [[[aNotification userInfo] valueForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-    [[[aNotification userInfo] valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&endFrame];
-    endFrame = [self.view convertRect:endFrame fromView:nil];
-    float y = (endFrame.origin.y > self.view.bounds.size.height ? self.view.bounds.size.height-44 : endFrame.origin.y-CGRectGetHeight(self.messageComposerView.frame));
-    
-    
-    [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]
-                          delay:0
-                        options:([[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16)
-                     animations:^{
-                         self.messageComposerView.frame = CGRectMake(0, y, CGRectGetWidth(self.messageComposerView.frame), CGRectGetHeight(self.messageComposerView.frame));
-                     }
-                     completion:^(BOOL finished) {
-                         
-                     }];
-}
-
-// Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWasShown:(NSNotification*)aNotification
-{
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    self.messageComposerView.frame = CGRectMake(CGRectGetMinX(self.messageComposerView.frame), CGRectGetMinY(self.messageComposerView.frame) - kbSize.height, CGRectGetWidth(self.messageComposerView.frame), CGRectGetHeight(self.messageComposerView.frame));
-    
-}
-
-// Called when the UIKeyboardWillHideNotification is sent
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
-{
-//    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-//    scrollView.contentInset = contentInsets;
-//    scrollView.scrollIndicatorInsets = contentInsets;
-}
-
-- (void)keyboardDidHidden:(NSNotification*)aNotification
-{
-}
 
 -(NSFetchedResultsController *)fetchedResultsController{
     
@@ -283,5 +180,88 @@ const int navigationSpacing = 65;
                                            NSStringFromSelector(_cmd)]
                                  userInfo:nil];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    if(self.receiver){
+        self.navigationItem.title = self.receiver.fullName;
+    }
+    
+    UIButton *backButton = [UIButton buttonWithCustomBackButton];
+    [backButton addTarget:self action:@selector(toChatListScreen:)
+         forControlEvents:UIControlEventTouchUpInside];
+    [backButton setTitle:@"Chats" forState:UIControlStateNormal];
+    backButton.titleLeftEdgeInset = -25;
+    backButton.imageLeftEdgeInset = -35;
+    
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    self.navigationItem.leftBarButtonItem = barButton;
+    
+    [self registerForKeyboardNotifications];
+    
+    [NSFetchedResultsController deleteCacheWithName:nil];
+    self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"chat", self.chat];
+    
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    } else {
+        [self.tableView setNeedsDisplay];
+    }
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self deregisterForKeyboardNotifications];
+}
+
+- (void)registerForKeyboardNotifications
+{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillChangeFrame:)
+                                                 name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHidden:)
+                                                 name:UIKeyboardDidHideNotification object:nil];
+    
+}
+- (void)deregisterForKeyboardNotifications
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+    [center removeObserver:self name:UIKeyboardDidHideNotification object:nil];
+}
+
+-(void)keyboardWillChangeFrame:(NSNotification *)aNotification{
+    
+    NSDictionary* info = [aNotification userInfo];
+    CGRect endFrame;
+    [[info valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&endFrame];
+    endFrame = [self.view convertRect:endFrame fromView:nil];
+    float y = (endFrame.origin.y > self.view.bounds.size.height ? self.view.bounds.size.height-44 : endFrame.origin.y-CGRectGetHeight(self.messageComposerView.frame));
+    
+    
+    [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]
+                          delay:0
+                        options:([[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16)
+                     animations:^{
+                         self.messageComposerView.frame = CGRectMake(0, y, CGRectGetWidth(self.messageComposerView.frame), CGRectGetHeight(self.messageComposerView.frame));
+                     }
+                     completion:nil];
+}
+
+- (void)keyboardDidHidden:(NSNotification*)aNotification
+{
+}
+
+- (void)dealloc {
+    [self deregisterForKeyboardNotifications];
+}
+
 
 @end
