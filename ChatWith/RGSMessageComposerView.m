@@ -49,16 +49,18 @@
     
     self.messageTextView.placeholderLabel.text = @"Chat With Friends...";
     self.backgroundColor = [UIColor clearColor];
-//    self.messageTextView.placeholderLabel.
+    
     self.messageTextView.layer.cornerRadius = 10;
-    self.messageTextView.backgroundColor = [UIColor colorWithHexString:@"414141"];
-    self.backGroundView.backgroundColor = [UIColor colorWithHexString:@"363636"];
+    self.messageTextView.backgroundColor = [UIColor colorWithHexString:@"414141" alpha:0];
+    self.messageTextView.layer.borderWidth = 1;
+    self.messageTextView.layer.borderColor = [[UIColor colorWithWhite:0.343 alpha:1.000] CGColor];
+    
+    self.backGroundView.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.90];
+    
     self.messageTextView.internalTextView.textColor = [UIColor whiteColor];
     
     self.sendMessagebButton.tintColor = [UIColor colorWithHexString:@"57d6ff"];
     self.messageTextView.internalTextView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-//    self.messageTextView.internalTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 5);
-
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {

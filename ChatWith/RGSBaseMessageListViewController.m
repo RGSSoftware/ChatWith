@@ -26,6 +26,8 @@
 
 #import "RGSMessageComposerView.h"
 
+#import <BlocksKit/BlocksKit.h>
+
 const int maxTextWidth = 260;
 const int cellContentMargin = 5;
 const int leftRightMargin = cellContentMargin * 2;
@@ -198,6 +200,9 @@ const int navigationSpacing = 65;
     
     self.navigationItem.leftBarButtonItem = barButton;
     
+    UIEdgeInsets tableViewInsert = UIEdgeInsetsMake(0, 0, -CGRectGetHeight(self.messageComposerView.frame), 0);
+    self.tableView.contentInset = tableViewInsert;
+    
     [self registerForKeyboardNotifications];
     
     [NSFetchedResultsController deleteCacheWithName:nil];
@@ -210,8 +215,85 @@ const int navigationSpacing = 65;
     } else {
         [self.tableView setNeedsDisplay];
     }
+    
+    UIPanGestureRecognizer *pangestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(displayReloadIndicator:)];
+    pangestureRecognizer.minimumNumberOfTouches = 1;
+    pangestureRecognizer.delegate = self;
+    [self.tableView addGestureRecognizer:pangestureRecognizer];
+    
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+
+    
+
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    
+    return YES;
+}
+- (void) displayReloadIndicator:(UIPanGestureRecognizer*) panGestureRecognizer {
+    UIGestureRecognizerState gestureRecognizerState = panGestureRecognizer.state;
+    
+    CGPoint translation = [panGestureRecognizer locationInView:nil];
+    
+    if (gestureRecognizerState == UIGestureRecognizerStateChanged){
+        NSLog(@"simple print-----just changing------{%@}", NSStringFromCGPoint(translation));
+        
+//        UIView *keyboard = [self findKeyboard];
+        
+    }
+    else if  (gestureRecognizerState == UIGestureRecognizerStateEnded
+        || gestureRecognizerState == UIGestureRecognizerStateCancelled){
+        NSLog(@"simple print-----ending------{%@}", NSStringFromCGPoint(translation));
+    }
+}
+
+-(UIView*)findKeyboard
+{
+    UIView *keyboard = nil;
+    Class keyboardClass = NSClassFromString(@"UIPeripheralHostView");
+    
+    for (UIWindow* window in [UIApplication sharedApplication].windows)
+    {
+//        for (UIView *possibleKeyboard in window.subviews)
+//        {
+//            if ([[possibleKeyboard description] hasPrefix:@"<UILayoutContainerView"])
+//            {
+//                
+//                
+//                for(UIView *keyBoard in possibleKeyboard.subviews){
+//                    
+//                    if ([[keyBoard description] hasPrefix:@"<UIInputSetHostView"]){
+//                        keyboard = keyBoard;
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+        if ([NSStringFromClass([window class]) isEqualToString:@"UITextEffectsWindow"])
+        {
+//            _keyboardWindow = window;
+            for (UIView *possibleKeyboard in window.subviews)
+            {
+                if([[possibleKeyboard description] hasPrefix:@"<UIInputSetContainerView"] == YES){
+                    
+                    for(UIView *hostkeyboard in possibleKeyboard.subviews)
+                    {
+                        if([[hostkeyboard description] hasPrefix:@"<UIInputSetHost"] == YES){
+                            keyboard = hostkeyboard;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    return keyboard;
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -242,17 +324,28 @@ const int navigationSpacing = 65;
     NSDictionary* info = [aNotification userInfo];
     CGRect endFrame;
     [[info valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&endFrame];
-    endFrame = [self.view convertRect:endFrame fromView:nil];
+    endFrame = [self.view convertRect:endFrame fromView:self.view];
     float y = (endFrame.origin.y > self.view.bounds.size.height ? self.view.bounds.size.height-44 : endFrame.origin.y-CGRectGetHeight(self.messageComposerView.frame));
     
+    NSLog(@"simple print-----endFrame.y------{%f}", endFrame.origin.y);
+//        [NSTimer bk_scheduledTimerWithTimeInterval:0 block:^(NSTimer *timer) {
+    self.messageBottomSpace.constant = CGRectGetHeight(self.view.frame) - endFrame.origin.y;
+//    self.messageComposerTop.constant = y;
     
-    [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]
-                          delay:0
-                        options:([[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16)
-                     animations:^{
-                         self.messageComposerView.frame = CGRectMake(0, y, CGRectGetWidth(self.messageComposerView.frame), CGRectGetHeight(self.messageComposerView.frame));
-                     }
-                     completion:nil];
+            [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]
+                                  delay:0
+                                options:(([[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16) | UIViewAnimationOptionBeginFromCurrentState)
+                             animations:^{
+//                                 self.messageComposerView.frame = CGRectMake(0, y, CGRectGetWidth(self.messageComposerView.frame), CGRectGetHeight(self.messageComposerView.frame));
+//                                 [self.messageComposerView layoutIfNeeded];
+                                 [self.messageComposerView setNeedsUpdateConstraints];
+                                 [self.view layoutIfNeeded];
+                             }
+                             completion:^(BOOL finished) {
+                                 NSLog(@"simple print-----messageBottomSpace------{%f}", self.messageBottomSpace.constant);
+                             }];
+//    } repeats:NO];
+
 }
 
 - (void)keyboardDidHidden:(NSNotification*)aNotification

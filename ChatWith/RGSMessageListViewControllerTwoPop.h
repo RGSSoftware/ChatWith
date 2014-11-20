@@ -10,4 +10,5 @@
 
 @interface RGSMessageListViewControllerTwoPop : RGSBaseMessageListViewController
 
+
 @end

@@ -11,7 +11,7 @@
 @class RGSChat;
 @class RGSMessageComposerView;
 
-@interface RGSBaseMessageListViewController : RGSBaseViewController <NSFetchedResultsControllerDelegate>
+@interface RGSBaseMessageListViewController : RGSBaseViewController <NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong)RGSManagedUser *receiver;
 
@@ -21,5 +21,8 @@
 
 @property (weak, nonatomic) IBOutlet RGSMessageComposerView *messageComposerView;
 @property (nonatomic, strong)NSFetchedResultsController *fetchedResultsController;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *messageComposerTop;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *messageBottomSpace;
 
 @end
