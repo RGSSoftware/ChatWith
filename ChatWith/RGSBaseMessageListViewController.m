@@ -42,6 +42,11 @@ const int navigationSpacing = 65;
 
 @property (nonatomic, strong)RGSManagedUser *currentUser;
 
+@property (nonatomic, strong)UIView *keyboardImage;
+@property (nonatomic, strong)UIView *keyboard;
+
+@property (nonatomic)double duration;
+@property (nonatomic)int option;
 
 @end
 
@@ -221,6 +226,13 @@ const int navigationSpacing = 65;
     pangestureRecognizer.delegate = self;
     [self.tableView addGestureRecognizer:pangestureRecognizer];
     
+    
+    self.keyboardImage = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(self.messageComposerView.frame), 320, 253)];
+//    self.keyboardImage.backgroundColor = [UIColor orangeColor];
+//    [self.view insertSubview:self.keyboardImage belowSubview:self.tableView];
+    [self.view addSubview:self.keyboardImage];
+    
+    
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -238,17 +250,183 @@ const int navigationSpacing = 65;
     UIGestureRecognizerState gestureRecognizerState = panGestureRecognizer.state;
     
     CGPoint translation = [panGestureRecognizer locationInView:nil];
-    
-    if (gestureRecognizerState == UIGestureRecognizerStateChanged){
-        NSLog(@"simple print-----just changing------{%@}", NSStringFromCGPoint(translation));
+    if ([self.messageComposerView.messageTextView.internalTextView isFirstResponder]) {
+        if (gestureRecognizerState == UIGestureRecognizerStateBegan) {
+            self.keyboard = [self findKeyboard];
+            NSLog(@"simple print-----keyboard.subView------{%@}", self.keyboard.subviews);
+            self.keyboardImage.frame = CGRectMake(0,
+                                                  CGRectGetMinY(self.messageComposerView.frame),
+                                                  CGRectGetWidth(self.messageComposerView.frame),
+                                                  CGRectGetHeight(self.messageComposerView.frame) + CGRectGetHeight(self.keyboard.frame));
+            self.keyboardImage.backgroundColor = [UIColor orangeColor];
+            UIView *messageComposerViewImage = [self.messageComposerView snapshotViewAfterScreenUpdates:NO];
+            CGRect mcvif = messageComposerViewImage.frame;
+            mcvif.origin = CGPointMake(0, 0);
+            messageComposerViewImage.frame = mcvif;
+            
+            UIView *keyboardViewImage = [self.keyboard snapshotViewAfterScreenUpdates:NO];
+            CGRect kvif = keyboardViewImage.frame;
+            kvif.origin = CGPointMake(0, CGRectGetHeight(messageComposerViewImage.frame));
+            keyboardViewImage.frame = kvif;
+            
+            UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.messageComposerView.frame) + CGRectGetHeight(self.keyboard.frame))];
+            //        container.backgroundColor = [UIColor purpleColor];
+            [container addSubview:messageComposerViewImage];
+            [container addSubview:keyboardViewImage];
+            
+            
+            
+            [self.keyboardImage addSubview:container];
+            self.keyboardImage.backgroundColor = [UIColor clearColor];
+            self.keyboard.hidden = YES;
+            self.messageComposerView.hidden = YES;
+            self.keyboardImage.hidden = NO;
+            
+            NSLog(@"simple print-----keyboaudImage.frame------{%@}", NSStringFromCGRect(self.keyboardImage.frame));
+        }
         
-//        UIView *keyboard = [self findKeyboard];
-        
+        if (gestureRecognizerState == UIGestureRecognizerStateChanged){
+            
+            
+            //        UIView *keyboard = [self findKeyboard];
+            //        self.keyboardImage.subview
+            //        self.keyboardImage = [keyboard snapshotViewAfterScreenUpdates:YES];
+            
+            if (translation.y < self.keyboardImage.frame.origin.y) {
+                self.keyboardImage.frame = CGRectMake(0, CGRectGetMinY(self.messageComposerView.frame), 320, 232);
+            }
+            if (translation.y >= CGRectGetMinY(self.messageComposerView.frame)) {
+                self.keyboardImage.frame = CGRectMake(0, translation.y, 320, 232);
+                NSLog(@"simple print-----just changing------{%f}", translation.y);
+            }
+            
+            
+            
+        }
+        else if  (gestureRecognizerState == UIGestureRecognizerStateEnded
+                  || gestureRecognizerState == UIGestureRecognizerStateCancelled){
+            NSLog(@"simple print-----ending------{%@}", NSStringFromCGPoint(translation));
+            
+            if (translation.y >= CGRectGetMinY(self.messageComposerView.frame)) {
+                
+                [self.messageComposerView.messageTextView.internalTextView resignFirstResponder];
+                //            self.messageBottomSpace.constant = 0;
+                [UIView animateWithDuration:self.duration delay:0
+                                    options:self.option << 16
+                                 animations:^{
+                                     self.keyboardImage.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.messageComposerView.frame), 320, 232);
+                                     //                [self.messageComposerView setNeedsUpdateConstraints];
+                                     //                [self.view layoutIfNeeded];
+                                     
+                                 } completion:^(BOOL finished) {
+                                     self.keyboardImage.hidden = YES;
+                                     [self.keyboardImage.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+                                     //
+                                     self.keyboard.hidden = NO;
+                                     self.keyboard = nil;
+                                     //
+                                     self.messageComposerView.hidden = NO;
+                                 }];
+            } else {
+                [self.keyboardImage.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+                
+                self.keyboard.hidden = NO;
+                self.keyboard = nil;
+                
+                self.messageComposerView.hidden = NO;
+            }
+            
+            
+        }
+
     }
-    else if  (gestureRecognizerState == UIGestureRecognizerStateEnded
-        || gestureRecognizerState == UIGestureRecognizerStateCancelled){
-        NSLog(@"simple print-----ending------{%@}", NSStringFromCGPoint(translation));
-    }
+//    if (gestureRecognizerState == UIGestureRecognizerStateBegan) {
+//        self.keyboard = [self findKeyboard];
+//        NSLog(@"simple print-----keyboard.subView------{%@}", self.keyboard.subviews);
+//        self.keyboardImage.frame = CGRectMake(0,
+//                                              CGRectGetMinY(self.messageComposerView.frame),
+//                                              CGRectGetWidth(self.messageComposerView.frame),
+//                                              CGRectGetHeight(self.messageComposerView.frame) + CGRectGetHeight(self.keyboard.frame));
+//        self.keyboardImage.backgroundColor = [UIColor orangeColor];
+//        UIView *messageComposerViewImage = [self.messageComposerView snapshotViewAfterScreenUpdates:NO];
+//        CGRect mcvif = messageComposerViewImage.frame;
+//        mcvif.origin = CGPointMake(0, 0);
+//        messageComposerViewImage.frame = mcvif;
+//        
+//        UIView *keyboardViewImage = [self.keyboard snapshotViewAfterScreenUpdates:NO];
+//        CGRect kvif = keyboardViewImage.frame;
+//        kvif.origin = CGPointMake(0, CGRectGetHeight(messageComposerViewImage.frame));
+//        keyboardViewImage.frame = kvif;
+//        
+//        UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.messageComposerView.frame) + CGRectGetHeight(self.keyboard.frame))];
+////        container.backgroundColor = [UIColor purpleColor];
+//        [container addSubview:messageComposerViewImage];
+//        [container addSubview:keyboardViewImage];
+//        
+//        
+//        
+//        [self.keyboardImage addSubview:container];
+//        self.keyboardImage.backgroundColor = [UIColor clearColor];
+//        self.keyboard.hidden = YES;
+//        self.messageComposerView.hidden = YES;
+//        self.keyboardImage.hidden = NO;
+//        
+//        NSLog(@"simple print-----keyboaudImage.frame------{%@}", NSStringFromCGRect(self.keyboardImage.frame));
+//    }
+//    
+//    if (gestureRecognizerState == UIGestureRecognizerStateChanged){
+//       
+//        
+////        UIView *keyboard = [self findKeyboard];
+////        self.keyboardImage.subview
+////        self.keyboardImage = [keyboard snapshotViewAfterScreenUpdates:YES];
+//        
+//        if (translation.y < self.keyboardImage.frame.origin.y) {
+//            self.keyboardImage.frame = CGRectMake(0, CGRectGetMinY(self.messageComposerView.frame), 320, 232);
+//        }
+//        if (translation.y >= CGRectGetMinY(self.messageComposerView.frame)) {
+//             self.keyboardImage.frame = CGRectMake(0, translation.y, 320, 232);
+//             NSLog(@"simple print-----just changing------{%f}", translation.y);
+//        }
+//       
+//        
+//        
+//    }
+//    else if  (gestureRecognizerState == UIGestureRecognizerStateEnded
+//        || gestureRecognizerState == UIGestureRecognizerStateCancelled){
+//        NSLog(@"simple print-----ending------{%@}", NSStringFromCGPoint(translation));
+//        
+//        if (translation.y >= CGRectGetMinY(self.messageComposerView.frame)) {
+//            
+//            [self.messageComposerView.messageTextView.internalTextView resignFirstResponder];
+////            self.messageBottomSpace.constant = 0;
+//            [UIView animateWithDuration:self.duration delay:0
+//                                options:self.option << 16
+//                             animations:^{
+//                self.keyboardImage.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.messageComposerView.frame), 320, 232);
+////                [self.messageComposerView setNeedsUpdateConstraints];
+////                [self.view layoutIfNeeded];
+//
+//            } completion:^(BOOL finished) {
+//                self.keyboardImage.hidden = YES;
+//                [self.keyboardImage.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+////
+//                self.keyboard.hidden = NO;
+//                self.keyboard = nil;
+////
+//                self.messageComposerView.hidden = NO;
+//            }];
+//        } else {
+//            [self.keyboardImage.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//            
+//            self.keyboard.hidden = NO;
+//            self.keyboard = nil;
+//            
+//            self.messageComposerView.hidden = NO;
+//        }
+//
+//        
+//    }
 }
 
 -(UIView*)findKeyboard
@@ -278,7 +456,11 @@ const int navigationSpacing = 65;
 //            _keyboardWindow = window;
             for (UIView *possibleKeyboard in window.subviews)
             {
-                if([[possibleKeyboard description] hasPrefix:@"<UIInputSetContainerView"] == YES){
+                if ([[possibleKeyboard description] hasPrefix:@"<UIPeripheralHost"] == YES) {
+                    keyboard = possibleKeyboard;
+                    break;
+                }
+                else if ([[possibleKeyboard description] hasPrefix:@"<UIInputSetContainerView"] == YES){
                     
                     for(UIView *hostkeyboard in possibleKeyboard.subviews)
                     {
@@ -325,26 +507,23 @@ const int navigationSpacing = 65;
     CGRect endFrame;
     [[info valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&endFrame];
     endFrame = [self.view convertRect:endFrame fromView:self.view];
-    float y = (endFrame.origin.y > self.view.bounds.size.height ? self.view.bounds.size.height-44 : endFrame.origin.y-CGRectGetHeight(self.messageComposerView.frame));
-    
-    NSLog(@"simple print-----endFrame.y------{%f}", endFrame.origin.y);
-//        [NSTimer bk_scheduledTimerWithTimeInterval:0 block:^(NSTimer *timer) {
+
     self.messageBottomSpace.constant = CGRectGetHeight(self.view.frame) - endFrame.origin.y;
-//    self.messageComposerTop.constant = y;
     
-            [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]
-                                  delay:0
-                                options:(([[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16) | UIViewAnimationOptionBeginFromCurrentState)
-                             animations:^{
-//                                 self.messageComposerView.frame = CGRectMake(0, y, CGRectGetWidth(self.messageComposerView.frame), CGRectGetHeight(self.messageComposerView.frame));
-//                                 [self.messageComposerView layoutIfNeeded];
-                                 [self.messageComposerView setNeedsUpdateConstraints];
-                                 [self.view layoutIfNeeded];
-                             }
-                             completion:^(BOOL finished) {
-                                 NSLog(@"simple print-----messageBottomSpace------{%f}", self.messageBottomSpace.constant);
-                             }];
-//    } repeats:NO];
+    
+    [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]
+                          delay:0
+                        options:(([[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16) | UIViewAnimationOptionBeginFromCurrentState)
+                     animations:^{
+
+                         [self.messageComposerView setNeedsUpdateConstraints];
+                         [self.view layoutIfNeeded];
+                     }
+                     completion:nil];
+    
+    self.duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    self.option =[[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+
 
 }
 
