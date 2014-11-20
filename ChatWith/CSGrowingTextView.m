@@ -200,11 +200,6 @@ const int kTopPlaceholderPadding = 11;
     yOrigin = (_growDirection == CSGrowDirectionUp ?
                yOrigin - diff : yOrigin);
     
-    
-    //passing back the hitDetion area that is created from the growth
-    //this code should be refactored because i only need to care about the {rect.y}
-    self.messageComposerView.hitRect = CGRectMake(0, (_messageComposerStartingY + (yOrigin)) - 5, 0, CGRectGetHeight(frame));
-    
     __weak id this = self;
     [UIView animateWithDuration:_growAnimationDuration delay:0.0
                         options:_growAnimationOptions

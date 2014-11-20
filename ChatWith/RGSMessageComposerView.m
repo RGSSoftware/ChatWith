@@ -36,39 +36,24 @@
 }
 -(void)awakeFromNib{
     
-    
-    self.backgroundColor = [UIColor blackColor];
-    
-    self.messageTextView.enablesNewlineCharacter = YES;
-    
-    
-    self.backGroundStartFrame = self.backGroundView.frame;
-    
-    //passing backGorundView because if i passed self to grow the backGround it will also move growingTextView
-    //sendButton and anything that a direct subView of self, therefore I make a backGroundView that will grow
-    self.messageTextView.growAnimationWithLinkingView = self.backGroundView;
-    
-    //passing self to messageTextView so it can communication back the grown hitDection area.
-    //The area the growingTextView Makes
-    self.messageTextView.messageComposerView = self;
-    
-    
-    self.messageTextView.placeholderLabel.text = @"Chat With Friends...";
     self.backgroundColor = [UIColor clearColor];
     
+    self.backGroundStartFrame = self.backGroundView.frame;
+    self.messageTextView.enablesNewlineCharacter = YES;
+    self.messageTextView.placeholderLabel.text = @"Chat With Friends...";
     self.messageTextView.layer.cornerRadius = 10;
     self.messageTextView.backgroundColor = [UIColor colorWithHexString:@"414141" alpha:0];
     self.messageTextView.layer.borderWidth = 1;
     self.messageTextView.layer.borderColor = [[UIColor colorWithWhite:0.343 alpha:1.000] CGColor];
+    self.messageTextView.delegate = self;
+    
+    self.messageTextView.internalTextView.textColor = [UIColor whiteColor];
+    self.messageTextView.internalTextView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     
     self.backGroundView.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.90];
     
-    self.messageTextView.internalTextView.textColor = [UIColor whiteColor];
-    
     self.sendMessagebButton.tintColor = [UIColor colorWithHexString:@"57d6ff"];
-    self.messageTextView.internalTextView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     
-    self.messageTextView.delegate = self;
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
@@ -88,10 +73,14 @@
     }
     return nil;
 }
-- (void)growingTextView:(CSGrowingTextView *)growingTextView didChangeHeight:(CGFloat)height{
-    
-}
+
 -(void)growingTextView:(CSGrowingTextView *)growingTextView willChangeHeight:(CGFloat)height{
+    CGRect tempRect = CGRectZero;
+    tempRect.size = CGSizeMake(CGRectGetWidth(self.frame), height + 9);
+    tempRect.origin = CGPointMake(0, (CGRectGetMaxY(self.backGroundStartFrame) - (height)) - 8);
+    self.hitRect = tempRect;
+
+    
     [UIView animateWithDuration:self.messageTextView.growAnimationDuration delay:0.0
                         options:self.messageTextView.growAnimationOptions
                      animations:^{
