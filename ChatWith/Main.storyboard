@@ -567,14 +567,14 @@
                                     <outlet property="delegate" destination="HDb-MM-iOr" id="khJ-d8-btC"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jwm-TU-euY" customClass="RGSMessageComposerView">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jwm-TU-euY" customClass="RGSMessageComposerView">
                                 <rect key="frame" x="0.0" y="525" width="320" height="43"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cu4-UM-hnS">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cu4-UM-hnS">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.2576392743" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmB-Va-uy8">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmB-Va-uy8">
                                         <rect key="frame" x="266" y="7" width="46" height="30"/>
                                         <state key="normal" title="Send">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -584,7 +584,7 @@
                                         <rect key="frame" x="47" y="9" width="211" height="30"/>
                                         <color key="backgroundColor" red="0.93725496529999996" green="0.91372555489999996" blue="0.72156864399999998" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="camera41" translatesAutoresizingMaskIntoConstraints="NO" id="ldO-rh-CXS">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" image="camera41" translatesAutoresizingMaskIntoConstraints="NO" id="ldO-rh-CXS">
                                         <rect key="frame" x="11" y="10" width="24" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="90p-DE-79Q"/>
@@ -615,6 +615,7 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="Usa-Af-Y3d"/>
                                         <exclude reference="5Qd-Pb-GMv"/>
                                         <exclude reference="NRT-78-2qr"/>
                                         <exclude reference="eWS-kT-0Bs"/>

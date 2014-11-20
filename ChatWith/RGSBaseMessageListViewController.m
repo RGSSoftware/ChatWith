@@ -232,6 +232,11 @@ const int navigationSpacing = 65;
 //    [self.view insertSubview:self.keyboardImage belowSubview:self.tableView];
     [self.view addSubview:self.keyboardImage];
     
+//    [self.messageComposerView.backGroundView bk_addObserverForKeyPath:@"frame" options:NSKeyValueObservingOptionNew task:^(id obj, NSDictionary *change) {
+//        self.keyboardImage.frame = [change[@"NSKeyValueChangeNewKey"] CGRectValue];
+//        
+//    }];
+    
     
 }
 -(void)viewDidAppear:(BOOL)animated{
@@ -253,16 +258,33 @@ const int navigationSpacing = 65;
     if ([self.messageComposerView.messageTextView.internalTextView isFirstResponder]) {
         if (gestureRecognizerState == UIGestureRecognizerStateBegan) {
             self.keyboard = [self findKeyboard];
-            NSLog(@"simple print-----keyboard.subView------{%@}", self.keyboard.subviews);
             self.keyboardImage.frame = CGRectMake(0,
-                                                  CGRectGetMinY(self.messageComposerView.frame),
+                                                  CGRectGetMinY(self.messageComposerView.frame) - (CGRectGetHeight(self.messageComposerView.backGroundView.frame) - CGRectGetHeight(self.messageComposerView.frame)),
                                                   CGRectGetWidth(self.messageComposerView.frame),
-                                                  CGRectGetHeight(self.messageComposerView.frame) + CGRectGetHeight(self.keyboard.frame));
-            self.keyboardImage.backgroundColor = [UIColor orangeColor];
-            UIView *messageComposerViewImage = [self.messageComposerView snapshotViewAfterScreenUpdates:NO];
+                                                  CGRectGetHeight(self.messageComposerView.backGroundView.frame) + CGRectGetHeight(self.keyboard.frame));
+            
+            UIView *messageComposerViewImage = [self.messageComposerView.backGroundView snapshotViewAfterScreenUpdates:NO];
             CGRect mcvif = messageComposerViewImage.frame;
-            mcvif.origin = CGPointMake(0, 0);
+            mcvif.origin = CGPointMake(0, 1);
             messageComposerViewImage.frame = mcvif;
+            
+            
+//            [self addmessageViewFromMessageComposerViewAsImageTo:messageComposerViewImage];
+            
+            [self addVauleForKeyPath:@"messageComposerView.messageTextView" AsImageToView:messageComposerViewImage withYinsert:4];
+            
+            
+            UIView *addImageButtonImage = [self.messageComposerView.addImageButton snapshotViewAfterScreenUpdates:NO];
+            CGRect aibif = self.messageComposerView.addImageButton.frame;
+            aibif.origin = CGPointMake(CGRectGetMinX(self.messageComposerView.addImageButton.frame), CGRectGetMaxY(messageComposerViewImage.frame) - CGRectGetMaxY(self.messageComposerView.addImageButton.frame) - 2);
+            addImageButtonImage.frame = aibif;
+            [messageComposerViewImage addSubview:addImageButtonImage];
+            
+            UIView *sendButtonImage = [self.messageComposerView.sendMessagebButton snapshotViewAfterScreenUpdates:NO];
+            CGRect sbif = self.messageComposerView.sendMessagebButton.frame;
+            sbif.origin = CGPointMake(CGRectGetMinX(self.messageComposerView.sendMessagebButton.frame), CGRectGetMaxY(messageComposerViewImage.frame) - CGRectGetMaxY(self.messageComposerView.sendMessagebButton.frame)- 1);
+            sendButtonImage.frame = sbif;
+            [messageComposerViewImage addSubview:sendButtonImage];
             
             UIView *keyboardViewImage = [self.keyboard snapshotViewAfterScreenUpdates:NO];
             CGRect kvif = keyboardViewImage.frame;
@@ -293,10 +315,10 @@ const int navigationSpacing = 65;
             //        self.keyboardImage = [keyboard snapshotViewAfterScreenUpdates:YES];
             
             if (translation.y < self.keyboardImage.frame.origin.y) {
-                self.keyboardImage.frame = CGRectMake(0, CGRectGetMinY(self.messageComposerView.frame), 320, 232);
+                self.keyboardImage.frame = CGRectMake(0, CGRectGetMinY(self.messageComposerView.frame) - (CGRectGetHeight(self.messageComposerView.backGroundView.frame) - CGRectGetHeight(self.messageComposerView.frame)), 320, CGRectGetHeight(self.messageComposerView.backGroundView.frame) + CGRectGetHeight(self.keyboard.frame));
             }
-            if (translation.y >= CGRectGetMinY(self.messageComposerView.frame)) {
-                self.keyboardImage.frame = CGRectMake(0, translation.y, 320, 232);
+            if (translation.y >= CGRectGetMinY(self.messageComposerView.frame) - (CGRectGetHeight(self.messageComposerView.backGroundView.frame) - CGRectGetHeight(self.messageComposerView.frame))) {
+                self.keyboardImage.frame = CGRectMake(0, translation.y, 320, CGRectGetHeight(self.messageComposerView.backGroundView.frame) + CGRectGetHeight(self.keyboard.frame));
                 NSLog(@"simple print-----just changing------{%f}", translation.y);
             }
             
@@ -314,7 +336,7 @@ const int navigationSpacing = 65;
                 [UIView animateWithDuration:self.duration delay:0
                                     options:self.option << 16
                                  animations:^{
-                                     self.keyboardImage.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.messageComposerView.frame), 320, 232);
+                                     self.keyboardImage.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.messageComposerView.backGroundView.frame), 320, CGRectGetHeight(self.messageComposerView.backGroundView.frame) + CGRectGetHeight(self.keyboard.frame));
                                      
                                  } completion:^(BOOL finished) {
                                      self.keyboardImage.hidden = YES;
@@ -336,6 +358,24 @@ const int navigationSpacing = 65;
             }
         }
     }
+}
+
+-(void)addmessageViewFromMessageComposerViewAsImageTo:(UIView *)toView{
+    UIView *messageImage = [self.messageComposerView.messageTextView snapshotViewAfterScreenUpdates:NO];
+    CGRect meif = self.messageComposerView.messageTextView.frame;
+    meif.origin = CGPointMake(CGRectGetMinX(self.messageComposerView.messageTextView.frame), 4);
+    messageImage.frame = meif;
+    [toView addSubview:messageImage];
+}
+
+-(void)addVauleForKeyPath:(NSString *)propertyKey AsImageToView:(UIView *)toView withYinsert:(int)yInsert{
+    UIView *view = [self valueForKeyPath:propertyKey];
+    UIView *messageImage = [view snapshotViewAfterScreenUpdates:NO];
+    CGRect meif = view.frame;
+    meif.origin = CGPointMake(CGRectGetMinX(view.frame), 4);
+    messageImage.frame = meif;
+    [toView addSubview:messageImage];
+    
 }
 
 -(UIView*)findKeyboard

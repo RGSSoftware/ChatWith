@@ -13,33 +13,21 @@
 @interface RGSMessageComposerView()
 
 @property (nonatomic)CGRect backGroundStartFrame;
+@property (nonatomic)CGRect startFrame;
 @property(nonatomic)CGRect hitRect;
 
+@property(nonatomic)int updates;
 @end
 
 @implementation RGSMessageComposerView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
--(id)initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
-    if(self){
-        
-        
-    }
-    return self;
-}
 -(void)awakeFromNib{
     
     self.backgroundColor = [UIColor clearColor];
     
     self.backGroundStartFrame = self.backGroundView.frame;
+    self.startFrame = self.frame;
+    
     self.messageTextView.enablesNewlineCharacter = YES;
     self.messageTextView.placeholderLabel.text = @"Chat With Friends...";
     self.messageTextView.layer.cornerRadius = 10;
@@ -81,14 +69,26 @@
     self.hitRect = tempRect;
 
     
-    [UIView animateWithDuration:self.messageTextView.growAnimationDuration delay:0.0
-                        options:self.messageTextView.growAnimationOptions
-                     animations:^{
-
-    self.backGroundView.frame = CGRectMake(0,
-                                           (CGRectGetMaxY(self.backGroundStartFrame) - (height)) - 8,
-                                           CGRectGetWidth(self.backGroundView.frame),
-                                           height + 9);
-                     } completion:nil];
+//    if (self.updates > 0) {
+//        self.updates = 0;
+//    } else {
+        [UIView animateWithDuration:self.messageTextView.growAnimationDuration delay:0.0
+                            options:self.messageTextView.growAnimationOptions
+                         animations:^{
+                             
+            self.backGroundView.frame = CGRectMake(0,
+                                                   (CGRectGetMaxY(self.backGroundStartFrame) - (height)) - 8,
+                                                   CGRectGetWidth(self.backGroundView.frame),
+                                                   height + 9);
+                             
+//                             self.frame = CGRectMake(0,
+//                                                     (CGRectGetMinY(self.frame) - (height - CGRectGetHeight(self.frame))),
+//                                                     CGRectGetWidth(self.backGroundView.frame),
+//                                                     height + 9);
+                         } completion:nil];
+//        self.updates++;
+//    }
+    
+    
 }
 @end
