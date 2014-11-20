@@ -217,17 +217,7 @@ const int kTopPlaceholderPadding = 11;
                                                        CGRectGetHeight(frame));
                          
                          
-                         //the backGroundView is being animated here
-                         //The frist time this code is ran, it will change the frame causing a smaller frame
-                         //therefor, -5 is being subtracted from {rect.y}
-                         //also secen it's being moved up the y-aixe
-                         //the rect.height will need to be increase
-                         //+9
-                         strongThis.growAnimationWithLinkingView.frame = CGRectMake(0,
-                                                                                    (_messageComposerStartingY + (yOrigin)) - 5,
-                                                                                    CGRectGetWidth(self.growAnimationWithLinkingView.frame),
-                                                                                    CGRectGetHeight(frame) + 9);
-                         
+                        
                          strongThis.internalTextView.frame = frame;
                      } completion:^(BOOL finished) {
                          

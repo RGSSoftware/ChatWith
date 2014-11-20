@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EGF-iH-8R1">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -569,29 +570,57 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jwm-TU-euY" customClass="RGSMessageComposerView">
                                 <rect key="frame" x="0.0" y="525" width="320" height="43"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cu4-UM-hnS">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cu4-UM-hnS">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.2576392743" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmB-Va-uy8">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmB-Va-uy8">
                                         <rect key="frame" x="266" y="7" width="46" height="30"/>
                                         <state key="normal" title="Send">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ovv-WN-N71" customClass="CSGrowingTextView">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ovv-WN-N71" customClass="CSGrowingTextView">
                                         <rect key="frame" x="47" y="9" width="211" height="30"/>
                                         <color key="backgroundColor" red="0.93725496529999996" green="0.91372555489999996" blue="0.72156864399999998" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="camera41" translatesAutoresizingMaskIntoConstraints="NO" id="ldO-rh-CXS">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="camera41" translatesAutoresizingMaskIntoConstraints="NO" id="ldO-rh-CXS">
                                         <rect key="frame" x="11" y="10" width="24" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="90p-DE-79Q"/>
+                                            <constraint firstAttribute="height" constant="23" id="Zma-H4-pur"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86980977000000004" green="0.93541638979999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Cu4-UM-hnS" firstAttribute="top" secondItem="Jwm-TU-euY" secondAttribute="top" id="4dY-IC-Sph"/>
+                                    <constraint firstItem="ldO-rh-CXS" firstAttribute="leading" secondItem="Jwm-TU-euY" secondAttribute="leading" constant="11" id="5Qd-Pb-GMv"/>
+                                    <constraint firstAttribute="trailing" secondItem="ovv-WN-N71" secondAttribute="trailing" constant="62" id="EYj-za-wMM"/>
+                                    <constraint firstAttribute="bottom" secondItem="bmB-Va-uy8" secondAttribute="bottom" constant="6" id="HkC-nS-dpd"/>
+                                    <constraint firstItem="ovv-WN-N71" firstAttribute="leading" secondItem="ldO-rh-CXS" secondAttribute="trailing" constant="12" id="MTW-Jb-UOe"/>
+                                    <constraint firstItem="ovv-WN-N71" firstAttribute="leading" secondItem="ldO-rh-CXS" secondAttribute="trailing" constant="12" id="NRT-78-2qr"/>
+                                    <constraint firstAttribute="bottom" secondItem="ldO-rh-CXS" secondAttribute="bottom" constant="10" id="NTd-Mh-7P2"/>
+                                    <constraint firstItem="ldO-rh-CXS" firstAttribute="centerY" secondItem="Cu4-UM-hnS" secondAttribute="centerY" id="RQk-IR-hIy"/>
+                                    <constraint firstItem="Cu4-UM-hnS" firstAttribute="leading" secondItem="Jwm-TU-euY" secondAttribute="leading" id="UNe-Jo-0i4"/>
                                     <constraint firstAttribute="height" constant="43" id="Usa-Af-Y3d"/>
+                                    <constraint firstItem="bmB-Va-uy8" firstAttribute="leading" secondItem="ovv-WN-N71" secondAttribute="trailing" constant="8" id="Y8A-oh-Dyy"/>
+                                    <constraint firstAttribute="bottom" secondItem="ovv-WN-N71" secondAttribute="bottom" constant="4" id="aKq-ZJ-jNs"/>
+                                    <constraint firstItem="bmB-Va-uy8" firstAttribute="leading" secondItem="ovv-WN-N71" secondAttribute="trailing" constant="8" id="adC-Qh-obk"/>
+                                    <constraint firstItem="ovv-WN-N71" firstAttribute="leading" secondItem="ldO-rh-CXS" secondAttribute="trailing" constant="12" id="eWS-kT-0Bs"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cu4-UM-hnS" secondAttribute="trailing" id="oq9-SP-dsR"/>
+                                    <constraint firstItem="ovv-WN-N71" firstAttribute="leading" secondItem="Jwm-TU-euY" secondAttribute="leading" constant="47" id="snE-EC-RvT"/>
                                     <constraint firstAttribute="width" constant="320" id="t65-Lf-8rc"/>
+                                    <constraint firstAttribute="trailing" secondItem="bmB-Va-uy8" secondAttribute="trailing" constant="8" id="ubq-sR-hKq"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5Qd-Pb-GMv"/>
+                                        <exclude reference="NRT-78-2qr"/>
+                                        <exclude reference="eWS-kT-0Bs"/>
+                                        <exclude reference="adC-Qh-obk"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="addImageButton" destination="ldO-rh-CXS" id="4Hv-eZ-BFG"/>
                                     <outlet property="backGroundView" destination="Cu4-UM-hnS" id="KQM-Kh-thk"/>

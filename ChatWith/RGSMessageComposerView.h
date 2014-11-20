@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class CSGrowingTextView;
+#import "CSGrowingTextView.h"
 
-@interface RGSMessageComposerView : UIView
+@interface RGSMessageComposerView : UIView <CSGrowingTextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *addImageButton;
 @property (nonatomic, weak)IBOutlet UIButton *sendMessagebButton;

@@ -10,6 +10,12 @@
 #import "CSGrowingTextView.h"
 #import "UIColor+RGSColorWithHexString.h"
 
+@interface RGSMessageComposerView()
+
+@property (nonatomic)CGRect backGroundStartFrame;
+
+@end
+
 @implementation RGSMessageComposerView
 
 /*
@@ -35,8 +41,8 @@
     
     self.messageTextView.enablesNewlineCharacter = YES;
     
-    //passing the starting place of backGroundView because the growth animation will grow from this offset
-    self.messageTextView.messageComposerStartingY = self.backGroundView.frame.origin.y;
+    
+    self.backGroundStartFrame = self.backGroundView.frame;
     
     //passing backGorundView because if i passed self to grow the backGround it will also move growingTextView
     //sendButton and anything that a direct subView of self, therefore I make a backGroundView that will grow
@@ -61,6 +67,8 @@
     
     self.sendMessagebButton.tintColor = [UIColor colorWithHexString:@"57d6ff"];
     self.messageTextView.internalTextView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+    
+    self.messageTextView.delegate = self;
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
@@ -79,5 +87,19 @@
         return self;
     }
     return nil;
+}
+- (void)growingTextView:(CSGrowingTextView *)growingTextView didChangeHeight:(CGFloat)height{
+    
+}
+-(void)growingTextView:(CSGrowingTextView *)growingTextView willChangeHeight:(CGFloat)height{
+    [UIView animateWithDuration:self.messageTextView.growAnimationDuration delay:0.0
+                        options:self.messageTextView.growAnimationOptions
+                     animations:^{
+
+    self.backGroundView.frame = CGRectMake(0,
+                                           (CGRectGetMaxY(self.backGroundStartFrame) - (height)) - 8,
+                                           CGRectGetWidth(self.backGroundView.frame),
+                                           height + 9);
+                     } completion:nil];
 }
 @end
