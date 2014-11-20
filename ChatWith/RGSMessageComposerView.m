@@ -13,6 +13,7 @@
 @interface RGSMessageComposerView()
 
 @property (nonatomic)CGRect backGroundStartFrame;
+@property(nonatomic)CGRect hitRect;
 
 @end
 
@@ -53,7 +54,6 @@
     self.backGroundView.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.90];
     
     self.sendMessagebButton.tintColor = [UIColor colorWithHexString:@"57d6ff"];
-    
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {

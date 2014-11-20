@@ -17,6 +17,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *backGroundView;
 
-@property(nonatomic)CGRect hitRect;
+//@property(nonatomic)CGRect hitRect;
 
 @end
