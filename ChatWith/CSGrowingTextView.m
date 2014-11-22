@@ -265,14 +265,6 @@ const int kTopPlaceholderPadding = 11;
     }
 }
 
--(BOOL)hasImageAttachment{
-    NSString *attributedTextString = [self.internalTextView.attributedText description];
-    if([attributedTextString rangeOfString:@"NSAttachment"].location != NSNotFound){
-        return YES;
-    }
-    return NO;
-}
-
 #pragma mark - Responders
 
 - (BOOL)becomeFirstResponder {

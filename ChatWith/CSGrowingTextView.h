@@ -68,13 +68,6 @@ typedef NS_ENUM(NSInteger, CSGrowDirection) {
  */
 @property (nonatomic, readwrite) UIViewAnimationOptions growAnimationOptions;
 
-@property (nonatomic, readwrite) UIView *growAnimationWithLinkingView;
-
-@property (nonatomic)CGFloat messageComposerStartingY;
-
-@property(nonatomic, weak)RGSMessageComposerView *messageComposerView;
-
-@property(nonatomic)BOOL hasImageAttachment;
 
 -(void)updateLayout;
 
