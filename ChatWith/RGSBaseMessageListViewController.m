@@ -310,10 +310,7 @@ const int navigationSpacing = 65;
 
 -(void)performUserScrollSetUp{
     self.keyboard = [self findKeyboard];
-    self.messageComposerViewWithKeyboardImage.frame = CGRectMake(0,
-                                                                 CGRectGetMinY(self.messageComposerView.frame) - (CGRectGetHeight(self.messageComposerView.backGroundView.frame) - CGRectGetHeight(self.messageComposerView.frame)),
-                                                                 CGRectGetWidth(self.messageComposerView.frame),
-                                                                 CGRectGetHeight(self.messageComposerView.backGroundView.frame) + CGRectGetHeight(self.keyboard.frame));
+    self.messageComposerViewWithKeyboardImage.frame = [self messageComposerViewWithKeyboardImageframeWithY:[self messgeComposerViewMinY]];
     
     UIView *messageComposerViewImage = [self createMessageComposerViewImage];
     
@@ -322,7 +319,7 @@ const int navigationSpacing = 65;
     kvif.origin = CGPointMake(0, CGRectGetHeight(messageComposerViewImage.frame));
     keyboardViewImage.frame = kvif;
     
-    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(messageComposerViewImage.frame) + CGRectGetHeight(keyboardViewImage.frame))];
+    UIView *container = [[UIView alloc] initWithFrame:[self messageComposerViewWithKeyboardImageframeWithY:0]];
     [container addSubview:messageComposerViewImage];
     [container addSubview:keyboardViewImage];
     
@@ -397,21 +394,6 @@ const int navigationSpacing = 65;
     
     for (UIWindow* window in [UIApplication sharedApplication].windows)
     {
-//        for (UIView *possibleKeyboard in window.subviews)
-//        {
-//            if ([[possibleKeyboard description] hasPrefix:@"<UILayoutContainerView"])
-//            {
-//                
-//                
-//                for(UIView *keyBoard in possibleKeyboard.subviews){
-//                    
-//                    if ([[keyBoard description] hasPrefix:@"<UIInputSetHostView"]){
-//                        keyboard = keyBoard;
-//                        break;
-//                    }
-//                }
-//            }
-//        }
         if ([NSStringFromClass([window class]) isEqualToString:@"UITextEffectsWindow"])
         {
 //            _keyboardWindow = window;
