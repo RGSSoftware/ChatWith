@@ -48,8 +48,8 @@ const int navigationSpacing = 65;
 @property (nonatomic, strong)UIView *messageComposerViewWithKeyboardImage;
 @property (nonatomic, strong)UIView *keyboard;
 
-@property (nonatomic)double duration;
-@property (nonatomic)int option;
+@property (nonatomic)double keyboardAnimationDuration;
+@property (nonatomic)int keyboardAnimationCurve;
 
 @end
 
@@ -161,9 +161,6 @@ const int navigationSpacing = 65;
     return _currentUser;
 }
 
-
-
-
 -(NSFetchedResultsController *)fetchedResultsController{
     
     if (_fetchedResultsController == nil)
@@ -231,20 +228,11 @@ const int navigationSpacing = 65;
     
     
     self.messageComposerViewWithKeyboardImage = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(self.messageComposerView.frame), 320, 253)];
-//    self.keyboardImage.backgroundColor = [UIColor orangeColor];
-//    [self.view insertSubview:self.keyboardImage belowSubview:self.tableView];
+
     [self.view addSubview:self.messageComposerViewWithKeyboardImage];
     
     [self.messageComposerView.sendMessagebButton addTarget:self action:@selector(testAddImageToTextField) forControlEvents:UIControlEventTouchUpInside];
     
-    
-}
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-
-    
-
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -280,8 +268,8 @@ const int navigationSpacing = 65;
                 
                 [self.messageComposerView.messageTextView.internalTextView resignFirstResponder];
                 
-                [UIView animateWithDuration:self.duration delay:0
-                                    options:self.option << 16
+                [UIView animateWithDuration:self.keyboardAnimationDuration delay:0
+                                    options:self.keyboardAnimationCurve << 16
                                  animations:^{
                                      self.messageComposerViewWithKeyboardImage.frame = [self messageComposerViewWithKeyboardImageframeWithY:[self messgeComposerViewMinY]];
                                      
@@ -390,13 +378,10 @@ const int navigationSpacing = 65;
 -(UIView*)findKeyboard
 {
     UIView *keyboard = nil;
-    Class keyboardClass = NSClassFromString(@"UIPeripheralHostView");
-    
     for (UIWindow* window in [UIApplication sharedApplication].windows)
     {
         if ([NSStringFromClass([window class]) isEqualToString:@"UITextEffectsWindow"])
         {
-//            _keyboardWindow = window;
             for (UIView *possibleKeyboard in window.subviews)
             {
                 if ([[possibleKeyboard description] hasPrefix:@"<UIPeripheralHost"] == YES) {
@@ -464,8 +449,8 @@ const int navigationSpacing = 65;
                      }
                      completion:nil];
     
-    self.duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    self.option =[[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    self.keyboardAnimationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    self.keyboardAnimationCurve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
 
 
 }
@@ -481,7 +466,6 @@ const int navigationSpacing = 65;
     
     //I'm subtracting 10px to make the image display nicely, accounting
     //for the padding inside the textView
-    CGFloat scaleFactor = oldWidth / (textView.frame.size.width - 10);
     textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
     NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
     attrStringWithImage = [attrStringWithImage attributedStringWithFont:self.messageComposerView.messageTextView.internalTextView.font Color:self.messageComposerView.messageTextView.internalTextView.textColor];
@@ -505,6 +489,8 @@ const int navigationSpacing = 65;
 - (void)dealloc {
     [self deregisterForKeyboardNotifications];
 }
+
+
 
 
 @end

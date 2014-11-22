@@ -66,17 +66,11 @@
 }
 
 -(void)growingTextView:(CSGrowingTextView *)growingTextView willChangeHeight:(CGFloat)height{
-    NSLog(@"simple print-----self.text------{%@}", self.messageTextView.internalTextView.text);
-    
     CGRect tempRect = CGRectZero;
     tempRect.size = CGSizeMake(CGRectGetWidth(self.frame), height + 9);
     tempRect.origin = CGPointMake(0, (CGRectGetMaxY(self.backGroundStartFrame) - (height)) - 8);
     self.hitRect = tempRect;
 
-    
-//    if (self.updates > 0) {
-//        self.updates = 0;
-//    } else {
         [UIView animateWithDuration:self.messageTextView.growAnimationDuration delay:0.0
                             options:self.messageTextView.growAnimationOptions
                          animations:^{
@@ -86,14 +80,6 @@
                                                    CGRectGetWidth(self.backGroundView.frame),
                                                    height + 9);
                              
-//                             self.frame = CGRectMake(0,
-//                                                     (CGRectGetMinY(self.frame) - (height - CGRectGetHeight(self.frame))),
-//                                                     CGRectGetWidth(self.backGroundView.frame),
-//                                                     height + 9);
                          } completion:nil];
-//        self.updates++;
-//    }
-    
-    
 }
 @end

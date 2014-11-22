@@ -11,12 +11,12 @@
 
 @interface RGSMessageComposerView : UIView <CSGrowingTextViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *addImageButton;
+@property (weak, nonatomic) IBOutlet UIImageView *addImageButton2;
 @property (nonatomic, weak)IBOutlet UIButton *sendMessagebButton;
 @property (weak, nonatomic) IBOutlet CSGrowingTextView *messageTextView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *backGroundView;
 
-//@property(nonatomic)CGRect hitRect;
+@property (weak, nonatomic) IBOutlet UIButton *addImageButton;
 
 @end

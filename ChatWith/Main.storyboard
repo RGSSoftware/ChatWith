@@ -446,9 +446,16 @@
                                         <rect key="frame" x="47" y="9" width="211" height="30"/>
                                         <color key="backgroundColor" red="0.93725496529999996" green="0.91372555489999996" blue="0.72156864399999998" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="camera41" translatesAutoresizingMaskIntoConstraints="NO" id="tha-9d-BDz">
+                                    <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="camera41" translatesAutoresizingMaskIntoConstraints="NO" id="tha-9d-BDz">
                                         <rect key="frame" x="11" y="10" width="24" height="23"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPD-Bd-eNM">
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="43"/>
+                                        <inset key="contentEdgeInsets" minX="12" minY="13" maxX="12" maxY="13"/>
+                                        <state key="normal" title="Button" image="camera41">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86980977000000004" green="0.93541638979999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -456,7 +463,8 @@
                                     <constraint firstAttribute="width" constant="320" id="ob9-Kw-B6N"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="addImageButton" destination="tha-9d-BDz" id="8D1-Fb-x7m"/>
+                                    <outlet property="addImageButton" destination="bPD-Bd-eNM" id="8Au-fr-uFr"/>
+                                    <outlet property="addImageButton2" destination="tha-9d-BDz" id="vJo-Pk-jb4"/>
                                     <outlet property="backGroundView" destination="gzg-os-hGc" id="xz8-Qd-U1G"/>
                                     <outlet property="messageTextView" destination="KU4-cs-mIq" id="RAW-jQ-EBY"/>
                                     <outlet property="sendMessagebButton" destination="zUL-Zf-Bh0" id="I16-k6-Ymt"/>
@@ -584,13 +592,20 @@
                                         <rect key="frame" x="47" y="9" width="211" height="30"/>
                                         <color key="backgroundColor" red="0.93725496529999996" green="0.91372555489999996" blue="0.72156864399999998" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" image="camera41" translatesAutoresizingMaskIntoConstraints="NO" id="ldO-rh-CXS">
+                                    <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" image="camera41" translatesAutoresizingMaskIntoConstraints="NO" id="ldO-rh-CXS">
                                         <rect key="frame" x="11" y="10" width="24" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="90p-DE-79Q"/>
                                             <constraint firstAttribute="height" constant="23" id="Zma-H4-pur"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZi-6F-yoQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="43"/>
+                                        <inset key="contentEdgeInsets" minX="12" minY="13" maxX="12" maxY="13"/>
+                                        <state key="normal" title="Button" image="camera41">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86980977000000004" green="0.93541638979999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -623,7 +638,8 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <outlet property="addImageButton" destination="ldO-rh-CXS" id="4Hv-eZ-BFG"/>
+                                    <outlet property="addImageButton" destination="UZi-6F-yoQ" id="YQO-sT-oIt"/>
+                                    <outlet property="addImageButton2" destination="ldO-rh-CXS" id="QEV-yq-a6e"/>
                                     <outlet property="backGroundView" destination="Cu4-UM-hnS" id="KQM-Kh-thk"/>
                                     <outlet property="messageTextView" destination="ovv-WN-N71" id="UGY-uS-tAI"/>
                                     <outlet property="sendMessagebButton" destination="bmB-Va-uy8" id="N4h-7A-r8q"/>
