@@ -31,13 +31,16 @@
     self.messageTextView.enablesNewlineCharacter = YES;
     self.messageTextView.placeholderLabel.text = @"Chat With Friends...";
     self.messageTextView.layer.cornerRadius = 10;
-    self.messageTextView.backgroundColor = [UIColor colorWithHexString:@"414141" alpha:0];
+    self.messageTextView.backgroundColor = [UIColor clearColor];
     self.messageTextView.layer.borderWidth = 1;
     self.messageTextView.layer.borderColor = [[UIColor colorWithWhite:0.343 alpha:1.000] CGColor];
     self.messageTextView.delegate = self;
+    self.messageTextView.maximumNumberOfLines = 8;
     
     self.messageTextView.internalTextView.textColor = [UIColor whiteColor];
     self.messageTextView.internalTextView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+//    self.messageTextView.internalTextView.backgroundColor = [UIColor purpleColor];
+//    self.messageTextView.internalTextView.font = [UIFont systemFontOfSize:20];
     
     self.backGroundView.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.90];
     
@@ -63,6 +66,8 @@
 }
 
 -(void)growingTextView:(CSGrowingTextView *)growingTextView willChangeHeight:(CGFloat)height{
+    NSLog(@"simple print-----self.text------{%@}", self.messageTextView.internalTextView.text);
+    
     CGRect tempRect = CGRectZero;
     tempRect.size = CGSizeMake(CGRectGetWidth(self.frame), height + 9);
     tempRect.origin = CGPointMake(0, (CGRectGetMaxY(self.backGroundStartFrame) - (height)) - 8);

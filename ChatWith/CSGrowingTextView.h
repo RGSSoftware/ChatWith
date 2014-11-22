@@ -74,7 +74,13 @@ typedef NS_ENUM(NSInteger, CSGrowDirection) {
 
 @property(nonatomic, weak)RGSMessageComposerView *messageComposerView;
 
+@property(nonatomic)BOOL hasImageAttachment;
+
+-(void)updateLayout;
+
 @end
+
+
 
 @protocol CSGrowingTextViewDelegate <NSObject>
 
