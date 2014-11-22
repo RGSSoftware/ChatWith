@@ -254,7 +254,7 @@ const int navigationSpacing = 65;
 - (void) displayReloadIndicator:(UIPanGestureRecognizer*) panGestureRecognizer {
     UIGestureRecognizerState gestureRecognizerState = panGestureRecognizer.state;
     
-    CGPoint translation = [panGestureRecognizer locationInView:nil];
+    CGPoint userTouchCoordinate = [panGestureRecognizer locationInView:nil];
     if ([self.messageComposerView.messageTextView.internalTextView isFirstResponder]) {
         if (gestureRecognizerState == UIGestureRecognizerStateBegan) {
             
@@ -264,29 +264,26 @@ const int navigationSpacing = 65;
         if (gestureRecognizerState == UIGestureRecognizerStateChanged){
             
             
-            if (translation.y < CGRectGetMinY(self.messageComposerViewWithKeyboardImage.frame)) {
-                self.messageComposerViewWithKeyboardImage.frame = CGRectMake(0, CGRectGetMinY(self.messageComposerView.frame) - (CGRectGetHeight(self.messageComposerView.backGroundView.frame) - CGRectGetHeight(self.messageComposerView.frame)), 320, CGRectGetHeight(self.messageComposerView.backGroundView.frame) + CGRectGetHeight(self.keyboard.frame));
+            if (userTouchCoordinate.y < CGRectGetMinY(self.messageComposerViewWithKeyboardImage.frame)) {
+                self.messageComposerViewWithKeyboardImage.frame = [self messageComposerViewWithKeyboardImageframeWithY:[self messgeComposerViewMinY]];
             }
-            if (translation.y >= CGRectGetMinY(self.messageComposerView.frame) - (CGRectGetHeight(self.messageComposerView.backGroundView.frame) - CGRectGetHeight(self.messageComposerView.frame))) {
-                self.messageComposerViewWithKeyboardImage.frame = CGRectMake(0, translation.y, 320, CGRectGetHeight(self.messageComposerView.backGroundView.frame) + CGRectGetHeight(self.keyboard.frame));
-                NSLog(@"simple print-----just changing------{%f}", translation.y);
+            if (userTouchCoordinate.y >= [self messgeComposerViewMinY]) {
+                self.messageComposerViewWithKeyboardImage.frame = [self messageComposerViewWithKeyboardImageframeWithY:userTouchCoordinate.y];
+//                NSLog(@"simple print-----just changing------{%f}", userTouchCoordinate.y);
             }
-            
-            
-            
         }
         else if  (gestureRecognizerState == UIGestureRecognizerStateEnded
                   || gestureRecognizerState == UIGestureRecognizerStateCancelled){
-            NSLog(@"simple print-----ending------{%@}", NSStringFromCGPoint(translation));
+//            NSLog(@"simple print-----ending------{%@}", NSStringFromCGPoint(userTouchCoordinate));
             
-            if (translation.y >= CGRectGetMinY(self.messageComposerView.frame) - (CGRectGetHeight(self.messageComposerView.backGroundView.frame) - CGRectGetHeight(self.messageComposerView.frame))) {
+            if (userTouchCoordinate.y >= [self messgeComposerViewMinY]) {
                 
                 [self.messageComposerView.messageTextView.internalTextView resignFirstResponder];
                 
                 [UIView animateWithDuration:self.duration delay:0
                                     options:self.option << 16
                                  animations:^{
-                                     self.messageComposerViewWithKeyboardImage.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.messageComposerView.backGroundView.frame), 320, CGRectGetHeight(self.messageComposerView.backGroundView.frame) + CGRectGetHeight(self.keyboard.frame));
+                                     self.messageComposerViewWithKeyboardImage.frame = [self messageComposerViewWithKeyboardImageframeWithY:[self messgeComposerViewMinY]];
                                      
                                  } completion:^(BOOL finished) {
                                      [self performUserScrollTeardown];
@@ -297,6 +294,18 @@ const int navigationSpacing = 65;
         }
     }
 }
+-(CGRect)messageComposerViewWithKeyboardImageframeWithY:(CGFloat)y{
+    return CGRectMake(0, y, CGRectGetWidth(self.messageComposerView.frame), [self messageComposerViewAndKeyboardHeight]);
+}
+
+-(CGFloat)messageComposerViewAndKeyboardHeight{
+    return CGRectGetHeight(self.messageComposerView.backGroundView.frame) + CGRectGetHeight(self.keyboard.frame);
+}
+
+-(CGFloat)messgeComposerViewMinY{
+    return CGRectGetMinY(self.messageComposerView.frame) - (CGRectGetHeight(self.messageComposerView.backGroundView.frame) - CGRectGetHeight(self.messageComposerView.frame));
+}
+
 //-(UIView *)createMessageComposerViewImageWithKeyboardImage
 
 -(void)performUserScrollSetUp{

@@ -137,9 +137,6 @@ const int kTopPlaceholderPadding = 11;
 }
 
 - (void)updateLayout {
-    
-    
-
     CGRect textViewFrame = CGRectMake(0, 0,
                                       CGRectGetWidth(self.frame),
                                       [self textViewHeight]);
