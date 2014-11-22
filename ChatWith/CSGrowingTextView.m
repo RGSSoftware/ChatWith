@@ -51,8 +51,6 @@ const int kTopPlaceholderPadding = 11;
 }
 
 - (void)initialize {
-    
-    _hasImageAttachment = NO;
 
     _minimumNumberOfLines = 1;
     _maximumNumberOfLines = 4;
@@ -166,11 +164,6 @@ const int kTopPlaceholderPadding = 11;
 
 - (void)updateFrame:(CGRect)frame {
     
-     NSLog(@"simple print-----self.text------{%@}", self.internalTextView.attributedText);
-    
-    NSLog(@"simple print-----self.internalText.frame------{%@}", NSStringFromCGRect(self.internalTextView.frame));
-    NSLog(@"simple print-----frame------{%@}", NSStringFromCGRect(frame));
-    
     if (CGRectEqualToRect(frame, self.internalTextView.frame) &&
         CGRectGetHeight(frame) == CGRectGetHeight(self.frame)) {
         
@@ -178,16 +171,6 @@ const int kTopPlaceholderPadding = 11;
 
         return;
     }
-//    if (CGRectEqualToRect(frame, CGRectMake(CGRectGetMinX(self.internalTextView.frame),
-//                                            CGRectGetMinY(self.internalTextView.frame),
-//                                            CGRectGetWidth(self.internalTextView.frame) - 5,
-//                                            CGRectGetHeight(self.internalTextView.frame))) &&
-//        CGRectGetHeight(frame) == CGRectGetHeight(self.frame)) {
-//        
-//        [self updateTextViewContentOffsetForCaret:self.internalTextView];
-//        
-//        return;
-//    }
     
     if ([(NSObject *)_delegate respondsToSelector:@selector(growingTextView:willChangeHeight:)]) {
         [_delegate growingTextView:self
