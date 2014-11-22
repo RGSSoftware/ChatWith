@@ -237,54 +237,28 @@ const int kTopPlaceholderPadding = 11;
 #pragma mark - Height
 
 - (CGFloat)textViewHeight {
-
-//    CGFloat contentHeight = (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1 ?
-//                             ceilf([self.internalTextView sizeThatFits:self.bounds.size].height) :
-//                             self.internalTextView.contentSize.height);
+    
+    CGFloat contentHeight = (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1 ?
+                             ceilf([self.internalTextView sizeThatFits:self.bounds.size].height) :
+                             self.internalTextView.contentSize.height);
     
     
-    
-    CGFloat contentHeight;
-    
-    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
-        NSLog(@"simple print-----self.bound.height------{%f}", self.bounds.size.height);
-        NSLog(@"simple print-----internalTextView.frame------{%@}", NSStringFromCGRect(self.internalTextView.frame));
-        NSLog(@"simple print-----internalTextView.bound------{%@}", NSStringFromCGRect(self.internalTextView.bounds));
-        contentHeight = [self.internalTextView sizeThatFits:self.bounds.size].height;
-    } else {
-        contentHeight =  self.internalTextView.contentSize.height;
-    }
-    
-    
-    NSLog(@"simple print-----lineHeight------{%f}", self.internalTextView.font.lineHeight);
     NSInteger lines = contentHeight / self.internalTextView.font.lineHeight;
-    
     lines = (lines < self.minimumNumberOfLines ? self.minimumNumberOfLines :
              (lines > self.maximumNumberOfLines ? self.maximumNumberOfLines : lines));
-    
     
     UIEdgeInsets iOS6Insets = UIEdgeInsetsMake(-7, 0, -7, 0);
     CGFloat insets = (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1 ?
                       self.internalTextView.textContainerInset.top + self.internalTextView.textContainerInset.bottom :
                       -iOS6Insets.top + (-iOS6Insets.bottom));
-
+    
     CGFloat lineHeight = self.internalTextView.font.lineHeight;
-    
-    
-    
-//    if(self.hasImageAttachment){
-//        lines = self.maximumNumberOfLines;
-//        lineHeight = 18;
-//    }
-    
     if (lineHeight) {
         lineHeight = (lineHeight - (NSInteger)lineHeight < 0.5 ?
                       lineHeight - (lineHeight - (NSInteger)lineHeight) + 0.5 :
                       ceil(lineHeight));
         
-        int temp = ceil(lineHeight * lines + insets);
-        NSLog(@"simple print-----temp------{%d}", temp);
-        return temp;
+        return ceil(lineHeight * lines + insets);
     }
     else {
         return ceil(lineHeight * lines + insets);
