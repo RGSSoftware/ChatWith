@@ -233,6 +233,7 @@ const int navigationSpacing = 65;
     
     [self.messageComposerView.sendMessagebButton addTarget:self action:@selector(testAddImageToTextField) forControlEvents:UIControlEventTouchUpInside];
     
+    [self.view bringSubviewToFront:self.messageComposerView];    
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {

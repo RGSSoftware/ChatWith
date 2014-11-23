@@ -42,12 +42,18 @@
 //    self.messageTextView.internalTextView.backgroundColor = [UIColor purpleColor];
 //    self.messageTextView.internalTextView.font = [UIFont systemFontOfSize:20];
     
+    [self.addImageButton setTitleColor:[UIColor lightGrayColor]
+                 forState:UIControlStateHighlighted];
+    
     self.backGroundView.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.90];
     
     self.sendMessagebButton.tintColor = [UIColor colorWithHexString:@"57d6ff"];
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    
+    NSLog(@"simple print-----messageComoserView.isUserInteractionEnabled------{%hhd}", self.isUserInteractionEnabled);
+    
     if (!self.isUserInteractionEnabled || self.isHidden || self.alpha <= 0.01) {
         return nil;
     }

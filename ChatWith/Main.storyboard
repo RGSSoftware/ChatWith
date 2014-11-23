@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EGF-iH-8R1">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -452,9 +451,12 @@
                                     <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPD-Bd-eNM">
                                         <rect key="frame" x="0.0" y="0.0" width="46" height="43"/>
                                         <inset key="contentEdgeInsets" minX="12" minY="13" maxX="12" maxY="13"/>
-                                        <state key="normal" title="Button" image="camera41">
+                                        <state key="normal" image="camera41">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Bfw-jy-8oM" kind="custom" customClass="RGSOverviewSegue" id="Gki-nL-zVj"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86980977000000004" green="0.93541638979999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -605,6 +607,9 @@
                                         <state key="normal" title="Button" image="camera41">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Bfw-jy-8oM" kind="custom" customClass="RGSOverviewSegue" id="NSB-ld-eSo"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86980977000000004" green="0.93541638979999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -690,12 +695,137 @@
             </objects>
             <point key="canvasLocation" x="2327" y="1113"/>
         </scene>
+        <!--Message Attachment View Controller-->
+        <scene sceneID="Vcn-rE-R34">
+            <objects>
+                <viewController id="Bfw-jy-8oM" customClass="RGSMessageAttachmentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1oy-is-Yo9"/>
+                        <viewControllerLayoutGuide type="bottom" id="8pN-Ec-d4T"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fxL-Ag-nsY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njC-2M-RYI">
+                                <rect key="frame" x="16" y="500" width="288" height="48"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="NvM-3m-CxZ"/>
+                                    <constraint firstAttribute="width" constant="288" id="hHK-F4-EUr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelAttachment:" destination="Bfw-jy-8oM" eventType="touchUpInside" id="a1e-wG-pPj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bR3-On-xkd">
+                                <rect key="frame" x="16" y="359" width="140" height="133"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="3fa-bD-CCX"/>
+                                    <constraint firstAttribute="height" constant="133" id="5jM-Tr-NSb"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="-68" minY="69" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="36" minY="23" maxX="35" maxY="58"/>
+                                <state key="normal" title="Choose Photo" image="Forma">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="choosePhoto:" destination="Bfw-jy-8oM" eventType="touchUpInside" id="EGA-rg-RhJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="kL2-gv-bDh">
+                                <rect key="frame" x="165" y="359" width="139" height="133"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="139" id="WnW-pL-Iko"/>
+                                    <constraint firstAttribute="height" constant="133" id="p9V-wR-iyV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="titleEdgeInsets" minX="-54" minY="68" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="38" minY="-34" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Take Photo" image="white_camera41">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" title="Take Photo">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="takePhoto:" destination="Bfw-jy-8oM" eventType="touchUpInside" id="bPn-Xd-2wY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.20999999999999999" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kL2-gv-bDh" firstAttribute="leading" secondItem="bR3-On-xkd" secondAttribute="trailing" constant="9" id="7H5-W6-zNg"/>
+                            <constraint firstItem="bR3-On-xkd" firstAttribute="top" secondItem="1oy-is-Yo9" secondAttribute="bottom" constant="339" id="7kC-VX-hmj"/>
+                            <constraint firstAttribute="trailing" secondItem="njC-2M-RYI" secondAttribute="trailing" constant="16" id="Agi-KZ-CSO"/>
+                            <constraint firstAttribute="bottom" secondItem="njC-2M-RYI" secondAttribute="bottom" constant="20" id="Dc0-Kf-Wp3"/>
+                            <constraint firstItem="8pN-Ec-d4T" firstAttribute="top" secondItem="njC-2M-RYI" secondAttribute="bottom" constant="20" id="Dm0-B2-S5B"/>
+                            <constraint firstItem="bR3-On-xkd" firstAttribute="leading" secondItem="fxL-Ag-nsY" secondAttribute="leading" constant="16" id="FVA-e2-2es"/>
+                            <constraint firstItem="njC-2M-RYI" firstAttribute="leading" secondItem="fxL-Ag-nsY" secondAttribute="leading" constant="16" id="FaN-xX-FMu"/>
+                            <constraint firstItem="njC-2M-RYI" firstAttribute="top" secondItem="bR3-On-xkd" secondAttribute="bottom" constant="8" id="GDx-MF-5ip"/>
+                            <constraint firstItem="bR3-On-xkd" firstAttribute="bottom" secondItem="kL2-gv-bDh" secondAttribute="bottom" id="LS0-Jf-na7"/>
+                            <constraint firstItem="njC-2M-RYI" firstAttribute="top" secondItem="kL2-gv-bDh" secondAttribute="bottom" constant="8" id="Mio-lW-Oyf"/>
+                            <constraint firstAttribute="bottom" secondItem="kL2-gv-bDh" secondAttribute="bottom" constant="71" id="RCe-Zb-zcp"/>
+                            <constraint firstItem="bR3-On-xkd" firstAttribute="top" secondItem="kL2-gv-bDh" secondAttribute="top" id="c5R-3m-S6F"/>
+                            <constraint firstItem="njC-2M-RYI" firstAttribute="top" secondItem="bR3-On-xkd" secondAttribute="bottom" constant="8" symbolic="YES" id="fIo-O5-Wk7"/>
+                            <constraint firstItem="kL2-gv-bDh" firstAttribute="leading" secondItem="bR3-On-xkd" secondAttribute="trailing" constant="9" id="tMD-ZZ-H6C"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7kC-VX-hmj"/>
+                                <exclude reference="LS0-Jf-na7"/>
+                                <exclude reference="c5R-3m-S6F"/>
+                                <exclude reference="RCe-Zb-zcp"/>
+                                <exclude reference="fIo-O5-Wk7"/>
+                                <exclude reference="Dm0-B2-S5B"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="cancelAttachmentButton" destination="njC-2M-RYI" id="wAi-LW-rcZ"/>
+                        <outlet property="choosePhotoButton" destination="bR3-On-xkd" id="aia-De-mlt"/>
+                        <outlet property="takePhotoButton" destination="kL2-gv-bDh" id="Mql-Rr-qwT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MIT-VN-HxN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2746" y="828"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Forma" width="66" height="66"/>
         <image name="camera41" width="58" height="41"/>
+        <image name="white_camera41" width="58" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NRe-gm-LWq"/>
+        <segue reference="NSB-ld-eSo"/>
         <segue reference="tmx-tc-fLD"/>
     </inferredMetricsTieBreakers>
 </document>
