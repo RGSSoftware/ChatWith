@@ -89,7 +89,7 @@ const int navigationSpacing = 65;
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self deregisterForKeyboardNotifications];
+    [self deRegisterForKeyboardNotifications];
 }
 #pragma mark - UITableViewDataSource ()
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -145,9 +145,6 @@ const int navigationSpacing = 65;
 }
 
 
--(NSManagedObjectContext *)managedObjectContext{
-    return [NSManagedObjectContext MR_defaultContext];
-}
 #pragma mark - UITableViewDelegate ()
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -192,6 +189,10 @@ const int navigationSpacing = 65;
     [self fullyExtendTableViewSeparator:self.tableView];
 }
 
+-(NSManagedObjectContext *)managedObjectContext{
+    return [NSManagedObjectContext MR_defaultContext];
+}
+
 -(RGSManagedUser *)currentUser{
     if (_currentUser == nil)
     {
@@ -200,6 +201,23 @@ const int navigationSpacing = 65;
     return _currentUser;
 }
 
+- (UIBarButtonItem *)customBarBackButton {
+    UIButton *backButton = [UIButton buttonAsCustomBackButton];
+    [backButton addTarget:self action:@selector(toChatListScreen:)
+         forControlEvents:UIControlEventTouchUpInside];
+    [backButton setTitle:@"Chats" forState:UIControlStateNormal];
+    backButton.titleLeftEdgeInset = -25;
+    backButton.imageLeftEdgeInset = -35;
+    
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    return barButton;
+}
+
+- (UIEdgeInsets)messageComposerViewInsert {
+    UIEdgeInsets tableViewInsert = UIEdgeInsetsMake(0, 0, -CGRectGetHeight(self.messageComposerView.frame), 0);
+    return tableViewInsert;
+}
+#pragma mark - fetchedResultsController ()
 -(NSFetchedResultsController *)fetchedResultsController{
     
     if (_fetchedResultsController == nil)
@@ -219,30 +237,6 @@ const int navigationSpacing = 65;
     return _fetchedResultsController;
 }
 
--(void)toChatListScreen:(id)sender
-{
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:[NSString stringWithFormat:@"You must override %@ in a subclass",
-                                           NSStringFromSelector(_cmd)]
-                                 userInfo:nil];
-}
-- (UIBarButtonItem *)customBarBackButton {
-    UIButton *backButton = [UIButton buttonAsCustomBackButton];
-    [backButton addTarget:self action:@selector(toChatListScreen:)
-         forControlEvents:UIControlEventTouchUpInside];
-    [backButton setTitle:@"Chats" forState:UIControlStateNormal];
-    backButton.titleLeftEdgeInset = -25;
-    backButton.imageLeftEdgeInset = -35;
-    
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    return barButton;
-}
-
-- (UIEdgeInsets)messageComposerViewInsert {
-    UIEdgeInsets tableViewInsert = UIEdgeInsetsMake(0, 0, -CGRectGetHeight(self.messageComposerView.frame), 0);
-    return tableViewInsert;
-}
-
 - (void)initFetchedResultsControllerWithFetch {
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
@@ -252,6 +246,7 @@ const int navigationSpacing = 65;
         [self.tableView setNeedsDisplay];
     }
 }
+
 - (void)fetchedResultsControllerWithFetchBlock:(void (^)(BOOL success, NSError *error))completionBlock {
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
@@ -261,23 +256,23 @@ const int navigationSpacing = 65;
     }
 }
 
+-(NSPredicate *)currentChatPredicate{
+    return [NSPredicate predicateWithFormat:@"%K = %@", @"chat", self.chat];
+}
+
+#pragma mark - gestureRecognizer ()
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
 - (UIPanGestureRecognizer *)closeKeyboardPanGestureRecognizer {
-    UIPanGestureRecognizer *pangestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(displayReloadIndicator:)];
+    UIPanGestureRecognizer *pangestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(closeKeyboardPanGestureAction:)];
     pangestureRecognizer.minimumNumberOfTouches = 1;
     pangestureRecognizer.delegate = self;
     return pangestureRecognizer;
 }
 
-
-
--(NSPredicate *)currentChatPredicate{
-    return [NSPredicate predicateWithFormat:@"%K = %@", @"chat", self.chat];
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
-}
-- (void) displayReloadIndicator:(UIPanGestureRecognizer*) panGestureRecognizer {
+- (void)closeKeyboardPanGestureAction:(UIPanGestureRecognizer*) panGestureRecognizer {
     UIGestureRecognizerState gestureRecognizerState = panGestureRecognizer.state;
     
     CGPoint userTouchCoordinate = [panGestureRecognizer locationInView:nil];
@@ -329,41 +324,6 @@ const int navigationSpacing = 65;
 -(CGFloat)messgeComposerViewMinY{
     return CGRectGetMinY(self.messageComposerView.frame) - (CGRectGetHeight(self.messageComposerView.backGroundView.frame) - CGRectGetHeight(self.messageComposerView.frame));
 }
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    if ([segue.destinationViewController isKindOfClass:[RGSMessageAttachmentViewController class]]) {
-        RGSMessageAttachmentViewController *destinationViewController = segue.destinationViewController;
-        destinationViewController.delegate = self;
-    }
-}
--(void)RGSMessageAttachmentViewController:(RGSMessageAttachmentViewController *)messageAttachmentViewController imageAttachment:(UIImage *)imageAttachment{
-    
-    [self dismissViewControllerAnimated:NO completion:nil];
-    
-    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-    textAttachment.image = imageAttachment;
-    CGFloat oldWidth = textAttachment.image.size.width;
-    
-    //I'm subtracting 10px to make the image display nicely, accounting
-    //for the padding inside the textView
-    textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
-    NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
-    attrStringWithImage = [attrStringWithImage attributedStringWithFont:self.messageComposerView.messageTextView.internalTextView.font Color:self.messageComposerView.messageTextView.internalTextView.textColor];
-    
-    
-    NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : self.messageComposerView.messageTextView.internalTextView.font}];
-    
-    [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
-    
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.messageComposerView.messageTextView.internalTextView.attributedText];
-    [attributedString replaceCharactersInRange:NSMakeRange(1, 1) withAttributedString:imageWithNewLine];
-    self.messageComposerView.messageTextView.internalTextView.attributedText = attributedString;
-    
-    [self.messageComposerView.messageTextView updateLayout];
-    
-}
-
 -(void)performUserScrollSetUp{
     self.keyboard = [self findKeyboard];
     self.messageComposerViewWithKeyboardImage.frame = [self messageComposerViewWithKeyboardImageframeWithY:[self messgeComposerViewMinY]];
@@ -444,6 +404,99 @@ const int navigationSpacing = 65;
     
 }
 
+#pragma mark - Segue ()
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([segue.destinationViewController isKindOfClass:[RGSMessageAttachmentViewController class]]) {
+        RGSMessageAttachmentViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.delegate = self;
+    }
+}
+
+-(void)toChatListScreen:(id)sender
+{
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:[NSString stringWithFormat:@"You must override %@ in a subclass",
+                                           NSStringFromSelector(_cmd)]
+                                 userInfo:nil];
+}
+
+#pragma mark - RGSMessageAttachmentViewControllerDelegate ()
+-(void)RGSMessageAttachmentViewController:(RGSMessageAttachmentViewController *)messageAttachmentViewController imageAttachment:(UIImage *)imageAttachment{
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
+    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+    textAttachment.image = imageAttachment;
+    
+    //I'm subtracting 10px to make the image display nicely, accounting
+    //for the padding inside the textView
+    textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
+    NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
+    attrStringWithImage = [attrStringWithImage attributedStringWithFont:self.messageComposerView.messageTextView.internalTextView.font Color:self.messageComposerView.messageTextView.internalTextView.textColor];
+    
+    
+    NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : self.messageComposerView.messageTextView.internalTextView.font}];
+    
+    [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.messageComposerView.messageTextView.internalTextView.attributedText];
+    [attributedString replaceCharactersInRange:NSMakeRange(1, 1) withAttributedString:imageWithNewLine];
+    self.messageComposerView.messageTextView.internalTextView.attributedText = attributedString;
+    
+    [self.messageComposerView.messageTextView updateLayout];
+    
+}
+
+#pragma mark - UIKeyboard ()
+-(void)keyboardWillChangeFrame:(NSNotification *)aNotification{
+    
+    NSDictionary* info = [aNotification userInfo];
+    CGRect endFrame;
+    [[info valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&endFrame];
+    endFrame = [self.view convertRect:endFrame fromView:self.view];
+
+    self.messageBottomSpace.constant = CGRectGetHeight(self.view.frame) - endFrame.origin.y;
+    
+    
+    [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]
+                          delay:0
+                        options:(([[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16) | UIViewAnimationOptionBeginFromCurrentState)
+                     animations:^{
+
+                         [self.messageComposerView setNeedsUpdateConstraints];
+                         [self.view layoutIfNeeded];
+                     }
+                     completion:nil];
+    
+    self.keyboardAnimationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    self.keyboardAnimationCurve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+}
+
+- (void)registerForKeyboardNotifications
+{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillChangeFrame:)
+                                                 name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHidden:)
+                                                 name:UIKeyboardDidHideNotification object:nil];
+    
+}
+
+- (void)deRegisterForKeyboardNotifications
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+    [center removeObserver:self name:UIKeyboardDidHideNotification object:nil];
+}
+
+- (void)keyboardDidHidden:(NSNotification*)aNotification
+{
+}
+
 -(UIView*)findKeyboard
 {
     UIView *keyboard = nil;
@@ -474,85 +527,8 @@ const int navigationSpacing = 65;
     return keyboard;
 }
 
-
-- (void)registerForKeyboardNotifications
-{
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillChangeFrame:)
-                                                 name:UIKeyboardWillChangeFrameNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidHidden:)
-                                                 name:UIKeyboardDidHideNotification object:nil];
-    
-}
-- (void)deregisterForKeyboardNotifications
-{
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
-    [center removeObserver:self name:UIKeyboardDidHideNotification object:nil];
-}
-
--(void)keyboardWillChangeFrame:(NSNotification *)aNotification{
-    
-    NSDictionary* info = [aNotification userInfo];
-    CGRect endFrame;
-    [[info valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&endFrame];
-    endFrame = [self.view convertRect:endFrame fromView:self.view];
-
-    self.messageBottomSpace.constant = CGRectGetHeight(self.view.frame) - endFrame.origin.y;
-    
-    
-    [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]
-                          delay:0
-                        options:(([[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16) | UIViewAnimationOptionBeginFromCurrentState)
-                     animations:^{
-
-                         [self.messageComposerView setNeedsUpdateConstraints];
-                         [self.view layoutIfNeeded];
-                     }
-                     completion:nil];
-    
-    self.keyboardAnimationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    self.keyboardAnimationCurve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
-
-
-}
-
--(void)testAddImageToTextField{
-//   self.messageComposerView.messageTextView.internalTextView.attr
-    
-    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0,0,140,140)];
-    
-    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-    textAttachment.image = [UIImage imageNamed:@"SearchMagnifyingGlassIcon"];
-    CGFloat oldWidth = textAttachment.image.size.width;
-    
-    //I'm subtracting 10px to make the image display nicely, accounting
-    //for the padding inside the textView
-    textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
-    NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
-    attrStringWithImage = [attrStringWithImage attributedStringWithFont:self.messageComposerView.messageTextView.internalTextView.font Color:self.messageComposerView.messageTextView.internalTextView.textColor];
-    
-    
-    NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : self.messageComposerView.messageTextView.internalTextView.font}];
-    
-    [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
-    
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.messageComposerView.messageTextView.internalTextView.attributedText];
-    [attributedString replaceCharactersInRange:NSMakeRange(1, 1) withAttributedString:imageWithNewLine];
-    self.messageComposerView.messageTextView.internalTextView.attributedText = attributedString;
-    
-    [self.messageComposerView.messageTextView updateLayout];
-}
-
-- (void)keyboardDidHidden:(NSNotification*)aNotification
-{
-}
-
 - (void)dealloc {
-    [self deregisterForKeyboardNotifications];
+    [self deRegisterForKeyboardNotifications];
 }
 
 
