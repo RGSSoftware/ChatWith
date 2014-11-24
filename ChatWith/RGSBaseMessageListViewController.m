@@ -56,6 +56,41 @@ const int navigationSpacing = 65;
 @end
 
 @implementation RGSBaseMessageListViewController
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    if(self.receiver){
+        self.navigationItem.title = self.receiver.fullName;
+    }
+    
+    self.navigationItem.leftBarButtonItem = [self customBarBackButton];
+    
+    self.tableView.contentInset = [self messageComposerViewInsert];
+    
+    [self registerForKeyboardNotifications];
+    
+    [NSFetchedResultsController deleteCacheWithName:nil];
+    self.fetchedResultsController.fetchRequest.predicate = [self currentChatPredicate];
+    
+    [self fetchedResultsControllerWithFetchBlock:^(BOOL success, NSError *error) {
+        if(!error && success)[self.tableView setNeedsDisplay];
+    }];
+    
+    [self.tableView addGestureRecognizer:[self closeKeyboardPanGestureRecognizer]];
+    
+    
+    self.messageComposerViewWithKeyboardImage = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(self.messageComposerView.frame), CGRectGetWidth(self.messageComposerView.frame), CGRectGetHeight([self findKeyboard].frame))];
+    [self.view addSubview:self.messageComposerViewWithKeyboardImage];
+    
+    
+    [self.view bringSubviewToFront:self.messageComposerView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self deregisterForKeyboardNotifications];
+}
 #pragma mark - UITableViewDataSource ()
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [[_fetchedResultsController sections] count];
@@ -233,35 +268,7 @@ const int navigationSpacing = 65;
     return pangestureRecognizer;
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    if(self.receiver){
-        self.navigationItem.title = self.receiver.fullName;
-    }
-    
-    self.navigationItem.leftBarButtonItem = [self customBarBackButton];
-    
-    self.tableView.contentInset = [self messageComposerViewInsert];
-    
-    [self registerForKeyboardNotifications];
-    
-    [NSFetchedResultsController deleteCacheWithName:nil];
-    self.fetchedResultsController.fetchRequest.predicate = [self currentChatPredicate];
-    
-    [self fetchedResultsControllerWithFetchBlock:^(BOOL success, NSError *error) {
-        if(!error && success)[self.tableView setNeedsDisplay];
-    }];
-    
-    [self.tableView addGestureRecognizer:[self closeKeyboardPanGestureRecognizer]];
-    
-    
-    self.messageComposerViewWithKeyboardImage = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(self.messageComposerView.frame), CGRectGetWidth(self.messageComposerView.frame), CGRectGetHeight([self findKeyboard].frame))];
-    [self.view addSubview:self.messageComposerViewWithKeyboardImage];
-    
-    
-    [self.view bringSubviewToFront:self.messageComposerView];    
-}
+
 
 -(NSPredicate *)currentChatPredicate{
     return [NSPredicate predicateWithFormat:@"%K = %@", @"chat", self.chat];
@@ -357,8 +364,6 @@ const int navigationSpacing = 65;
     
 }
 
-
-
 -(void)performUserScrollSetUp{
     self.keyboard = [self findKeyboard];
     self.messageComposerViewWithKeyboardImage.frame = [self messageComposerViewWithKeyboardImageframeWithY:[self messgeComposerViewMinY]];
@@ -381,6 +386,7 @@ const int navigationSpacing = 65;
     self.messageComposerViewWithKeyboardImage.hidden = NO;
     
 }
+
 -(void)performUserScrollTeardown{
     self.messageComposerViewWithKeyboardImage.hidden = YES;
     [self.messageComposerViewWithKeyboardImage.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -396,9 +402,10 @@ const int navigationSpacing = 65;
     mcvif.origin = CGPointMake(0, 1);
     messageComposerViewImage.frame = mcvif;
     
-    [self addVauleForKeyPathAsImage:@"messageComposerView.messageTextView" ToView:messageComposerViewImage withYinsert:4];
-    [self addVauleForKeyPathAsImage:@"messageComposerView.addImageButton" ToView:messageComposerViewImage withYinsertFromBottom:2];
-    [self addVauleForKeyPathAsImage:@"messageComposerView.sendMessagebButton" ToView:messageComposerViewImage withYinsertFromBottom:1];
+    [self addViewAsImage:self.messageComposerView.messageTextView ToView:messageComposerViewImage withYinsert:4];
+    [self addViewAsImage:self.messageComposerView.addImageButton ToView:messageComposerViewImage withYinsertFromBottom:2];
+    [self addViewAsImage:self.messageComposerView.sendMessagebButton ToView:messageComposerViewImage withYinsertFromBottom:1];
+    
     return messageComposerViewImage;
 }
 
@@ -418,8 +425,8 @@ const int navigationSpacing = 65;
     [toView addSubview:messageImage];
 }
 
--(void)addVauleForKeyPathAsImage:(NSString *)propertyKey ToView:(UIView *)toView withYinsert:(int)yInsert{
-    UIView *view = [self valueForKeyPath:propertyKey];
+
+-(void)addViewAsImage:(UIView *)view ToView:(UIView *)toView withYinsert:(int)yInsert{
     UIView *messageImage = [view snapshotViewAfterScreenUpdates:NO];
     CGRect meif = view.frame;
     meif.origin = CGPointMake(CGRectGetMinX(view.frame), yInsert);
@@ -427,8 +434,8 @@ const int navigationSpacing = 65;
     [toView addSubview:messageImage];
     
 }
--(void)addVauleForKeyPathAsImage:(NSString *)propertyKey ToView:(UIView *)toView withYinsertFromBottom:(int)yInsert{
-    UIView *view = [self valueForKeyPath:propertyKey];
+
+-(void)addViewAsImage:(UIView *)view  ToView:(UIView *)toView withYinsertFromBottom:(int)yInsert{
     UIView *messageImage = [view snapshotViewAfterScreenUpdates:NO];
     CGRect meif = view.frame;
     meif.origin = CGPointMake(CGRectGetMinX(view.frame), CGRectGetMaxY(toView.frame) - CGRectGetMaxY(view.frame) - yInsert);
@@ -436,7 +443,6 @@ const int navigationSpacing = 65;
     [toView addSubview:messageImage];
     
 }
-
 
 -(UIView*)findKeyboard
 {
@@ -468,10 +474,6 @@ const int navigationSpacing = 65;
     return keyboard;
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self deregisterForKeyboardNotifications];
-}
 
 - (void)registerForKeyboardNotifications
 {
