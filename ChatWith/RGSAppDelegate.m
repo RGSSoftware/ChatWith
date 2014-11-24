@@ -189,10 +189,10 @@
     }];
 
 ////
-    NSLog(@"simple print-----allUsers.count------{%lu}", (unsigned long)[[RGSManagedUser MR_findAll] count]);
-    NSLog(@"simple print-----allContacts.count------{%lu}", (unsigned long)[[RGSContact MR_findAll] count]);
-    NSLog(@"simple print-----allChats.count------{%lu}", (unsigned long)[[RGSChat MR_findAll] count]);
-    NSLog(@"simple print-----allMessage.count------{%lu}", (unsigned long)[[RGSMessage MR_findAll] count]);
+//    NSLog(@"simple print-----allUsers.count------{%lu}", (unsigned long)[[RGSManagedUser MR_findAll] count]);
+//    NSLog(@"simple print-----allContacts.count------{%lu}", (unsigned long)[[RGSContact MR_findAll] count]);
+//    NSLog(@"simple print-----allChats.count------{%lu}", (unsigned long)[[RGSChat MR_findAll] count]);
+//    NSLog(@"simple print-----allMessage.count------{%lu}", (unsigned long)[[RGSMessage MR_findAll] count]);
 
     
 //    self.applicationSessionManager.applicationID = 7632;

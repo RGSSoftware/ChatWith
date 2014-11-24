@@ -63,26 +63,6 @@
     return self;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    
-    
-    if([keyPath isEqualToString:@"view.frame"]) {
-        CGRect oldFrame = CGRectNull;
-        CGRect newFrame = CGRectNull;
-        if([change objectForKey:@"old"] != [NSNull null]) {
-            oldFrame = [[change objectForKey:@"old"] CGRectValue];
-        }
-        if([object valueForKeyPath:keyPath] != [NSNull null]) {
-            newFrame = [[object valueForKeyPath:keyPath] CGRectValue];
-        }
-        NSLog(@"simple print-----old------{%@}", NSStringFromCGRect(oldFrame));
-        NSLog(@"simple print-----new------{%@}", NSStringFromCGRect(newFrame));
-        if(oldFrame.origin.x < 0 && newFrame.origin.x > 0){
-         [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];   
-        }
-    }
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     

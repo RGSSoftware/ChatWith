@@ -105,76 +105,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSChatListViewController.m"
-            timestampString = "437688537.231585"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSChatListViewController.m"
-            timestampString = "437688537.231585"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSChatListViewController.m"
-            timestampString = "437688313.364054"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSChatListViewController.m"
-            timestampString = "437688300.567861"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438529791.602445"
+            timestampString = "438530038.544593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "517"
-            endingLineNumber = "517"
+            startingLineNumber = "514"
+            endingLineNumber = "514"
             landmarkName = "-keyboardWillChangeFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438529791.602445"
+            timestampString = "438530038.544593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "522"
-            endingLineNumber = "522"
+            startingLineNumber = "519"
+            endingLineNumber = "519"
             landmarkName = "-keyboardWillChangeFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438529791.602445"
+            timestampString = "438530038.544593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "522"
-            endingLineNumber = "522"
+            startingLineNumber = "519"
+            endingLineNumber = "519"
             landmarkName = "-keyboardWillChangeFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -318,11 +254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438529791.602445"
+            timestampString = "438530038.544593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
             landmarkName = "-addVauleForKeyPathAsImage:ToView:withYinsert:"
             landmarkType = "5">
          </BreakpointContent>
@@ -334,11 +270,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438529791.602445"
+            timestampString = "438530038.544593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "429"
-            endingLineNumber = "429"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
             landmarkName = "-addVauleForKeyPathAsImage:ToView:withYinsert:"
             landmarkType = "5">
          </BreakpointContent>
@@ -350,11 +286,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438529791.602445"
+            timestampString = "438530038.544593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
             landmarkName = "-createMessageComposerViewImage"
             landmarkType = "5">
          </BreakpointContent>
@@ -366,11 +302,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438529791.602445"
+            timestampString = "438530038.544593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "439"
-            endingLineNumber = "439"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
             landmarkName = "-addVauleForKeyPathAsImage:ToView:withYinsertFromBottom:"
             landmarkType = "5">
          </BreakpointContent>
@@ -478,11 +414,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438529791.602445"
+            timestampString = "438530038.544593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "-displayReloadIndicator:"
             landmarkType = "5">
          </BreakpointContent>
@@ -574,11 +510,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438529791.602445"
+            timestampString = "438530038.544593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "-RGSMessageAttachmentViewController:imageAttachment:"
             landmarkType = "5">
          </BreakpointContent>
@@ -590,11 +526,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438529791.602445"
+            timestampString = "438530038.544593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "-RGSMessageAttachmentViewController:imageAttachment:"
             landmarkType = "5">
          </BreakpointContent>
