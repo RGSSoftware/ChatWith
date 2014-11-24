@@ -9,3 +9,4 @@ git commit -m "$1"
 
 #push {send}new commits on local branch to remote{github}
 git push github HEAD
+
