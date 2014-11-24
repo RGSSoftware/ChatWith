@@ -32,34 +32,8 @@
     if(self){
         [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:nil queue:[NSOperationQueue mainQueue]
                                                       usingBlock:^(NSNotification *note) {
-//                                                          NSError *error;
-//                                                          if (![[self fetchedResultsController] performFetch:&error]) {
-//                                                              // Update to handle the error appropriately.
-//                                                              NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-//                                                          } else {
-//                                                              [self.tableView reloadData];
-//                                                          }
-
-//                                                          for(NSManagedObject *object in [[note userInfo] objectForKey:NSUpdatedObjectsKey]){
-//                                                              if([object.entity.name isEqualToString:NSStringFromClass([RGSChat class])]){
-//                                                                  
-//                                                                  NSError *error;
-//                                                                  if (![[self fetchedResultsController] performFetch:&error]) {
-//                                                                      // Update to handle the error appropriately.
-//                                                                      NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-//                                                                  } else {
-//                                                                      [self.tableView reloadData];
-//                                                                  }
-//                                                                  
-//                                                                  break;
-//                                                              }
-//                                                          }
-                                                          
                                                       }];
     }
-    
-    
-    
     return self;
 }
 
@@ -67,12 +41,6 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"Chats";
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     UIBarButtonItem *addBarButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"Add"] resizedImage:CGSizeMake(20, 20)]
                                                                      style:UIBarButtonItemStylePlain target:self action:@selector(toContacts:)];
@@ -95,13 +63,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-//    [self addObserver:self forKeyPath:@"view.frame" options:NSKeyValueObservingOptionOld context:NULL];
-    
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -116,9 +77,6 @@ return [[_fetchedResultsController sections] count];
     return rowCount;
 }
 
--(IBAction)enableEditingMode:(id)sender{
-    
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
@@ -211,29 +169,6 @@ return [[_fetchedResultsController sections] count];
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -266,5 +201,21 @@ return [[_fetchedResultsController sections] count];
 -(NSManagedObjectContext *)managedObjectContext{
     return [NSManagedObjectContext MR_defaultContext];
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self deregisterForNSManagedObjectNotifications];
+    
+}
+-(void)dealloc{
+    [self deregisterForNSManagedObjectNotifications];
+}
+- (void)deregisterForNSManagedObjectNotifications
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self name:NSManagedObjectContextDidSaveNotification object:nil];
+}
+
+
 
 @end
