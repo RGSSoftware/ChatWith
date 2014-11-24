@@ -84,7 +84,7 @@
     self.InviteFriendsButton.titleLabel.font = [UIFont systemFontOfSize:20];
     [self.view bringSubviewToFront:self.InviteFriendsButton];
     
-    UIButton *backButton = [UIButton buttonWithCustomBackButton];
+    UIButton *backButton = [UIButton buttonAsCustomBackButton];
     [backButton addTarget:self action:@selector(toChatListScreen:)
      forControlEvents:UIControlEventTouchUpInside];
     [backButton setTitle:@"Cancel" forState:UIControlStateNormal];

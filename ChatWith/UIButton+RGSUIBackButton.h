@@ -13,6 +13,6 @@
 @property (nonatomic)CGFloat titleLeftEdgeInset;
 @property (nonatomic)CGFloat imageLeftEdgeInset;
 
-+(UIButton *)buttonWithCustomBackButton;
++(UIButton *)buttonAsCustomBackButton;
 
 @end

@@ -14,7 +14,7 @@
 @dynamic titleLeftEdgeInset;
 @dynamic imageLeftEdgeInset;
 
-+(UIButton *)buttonWithCustomBackButton{
++(UIButton *)buttonAsCustomBackButton{
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:CGRectMake(0, 20, 80, 32)];
     

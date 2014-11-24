@@ -56,7 +56,7 @@ const int navigationSpacing = 65;
 @end
 
 @implementation RGSBaseMessageListViewController
-
+#pragma mark - UITableViewDataSource ()
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [[_fetchedResultsController sections] count];
 }
@@ -108,6 +108,17 @@ const int navigationSpacing = 65;
 -(CGRect)add:(float)increase toRectY:(CGRect)rect{
     return CGRectMake(CGRectGetMinX(rect), CGRectGetMinY(rect) + increase, CGRectGetWidth(rect), CGRectGetHeight(rect));
 }
+
+
+-(NSManagedObjectContext *)managedObjectContext{
+    return [NSManagedObjectContext MR_defaultContext];
+}
+#pragma mark - UITableViewDelegate ()
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self fullyExtendTableViewCellSeparator:cell];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
@@ -137,15 +148,6 @@ const int navigationSpacing = 65;
                                          context:nil];
     
     return MAX(CGRectGetHeight(textRect), minBodyHeight);
-}
-
--(NSManagedObjectContext *)managedObjectContext{
-    return [NSManagedObjectContext MR_defaultContext];
-}
-
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self fullyExtendTableViewCellSeparator:cell];
 }
 //Part-2
 -(void)viewDidLayoutSubviews
@@ -189,14 +191,8 @@ const int navigationSpacing = 65;
                                            NSStringFromSelector(_cmd)]
                                  userInfo:nil];
 }
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    if(self.receiver){
-        self.navigationItem.title = self.receiver.fullName;
-    }
-    
-    UIButton *backButton = [UIButton buttonWithCustomBackButton];
+- (UIBarButtonItem *)customBarBackButton {
+    UIButton *backButton = [UIButton buttonAsCustomBackButton];
     [backButton addTarget:self action:@selector(toChatListScreen:)
          forControlEvents:UIControlEventTouchUpInside];
     [backButton setTitle:@"Chats" forState:UIControlStateNormal];
@@ -204,17 +200,15 @@ const int navigationSpacing = 65;
     backButton.imageLeftEdgeInset = -35;
     
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    
-    self.navigationItem.leftBarButtonItem = barButton;
-    
+    return barButton;
+}
+
+- (UIEdgeInsets)messageComposerViewInsert {
     UIEdgeInsets tableViewInsert = UIEdgeInsetsMake(0, 0, -CGRectGetHeight(self.messageComposerView.frame), 0);
-    self.tableView.contentInset = tableViewInsert;
-    
-    [self registerForKeyboardNotifications];
-    
-    [NSFetchedResultsController deleteCacheWithName:nil];
-    self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"chat", self.chat];
-    
+    return tableViewInsert;
+}
+
+- (void)initFetchedResultsControllerWithFetch {
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
         // Update to handle the error appropriately.
@@ -222,24 +216,58 @@ const int navigationSpacing = 65;
     } else {
         [self.tableView setNeedsDisplay];
     }
-    
+}
+- (void)fetchedResultsControllerWithFetchBlock:(void (^)(BOOL success, NSError *error))completionBlock {
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        completionBlock(NO, error);
+    } else {
+        completionBlock(YES, error);
+    }
+}
+
+- (UIPanGestureRecognizer *)closeKeyboardPanGestureRecognizer {
     UIPanGestureRecognizer *pangestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(displayReloadIndicator:)];
     pangestureRecognizer.minimumNumberOfTouches = 1;
     pangestureRecognizer.delegate = self;
-    [self.tableView addGestureRecognizer:pangestureRecognizer];
-    
-    
-    self.messageComposerViewWithKeyboardImage = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(self.messageComposerView.frame), 320, 253)];
+    return pangestureRecognizer;
+}
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    if(self.receiver){
+        self.navigationItem.title = self.receiver.fullName;
+    }
+    
+    self.navigationItem.leftBarButtonItem = [self customBarBackButton];
+    
+    self.tableView.contentInset = [self messageComposerViewInsert];
+    
+    [self registerForKeyboardNotifications];
+    
+    [NSFetchedResultsController deleteCacheWithName:nil];
+    self.fetchedResultsController.fetchRequest.predicate = [self currentChatPredicate];
+    
+    [self fetchedResultsControllerWithFetchBlock:^(BOOL success, NSError *error) {
+        if(!error && success)[self.tableView setNeedsDisplay];
+    }];
+    
+    [self.tableView addGestureRecognizer:[self closeKeyboardPanGestureRecognizer]];
+    
+    
+    self.messageComposerViewWithKeyboardImage = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(self.messageComposerView.frame), CGRectGetWidth(self.messageComposerView.frame), CGRectGetHeight([self findKeyboard].frame))];
     [self.view addSubview:self.messageComposerViewWithKeyboardImage];
     
-    [self.messageComposerView.sendMessagebButton addTarget:self action:@selector(testAddImageToTextField) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view bringSubviewToFront:self.messageComposerView];    
 }
 
+-(NSPredicate *)currentChatPredicate{
+    return [NSPredicate predicateWithFormat:@"%K = %@", @"chat", self.chat];
+}
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    
     return YES;
 }
 - (void) displayReloadIndicator:(UIPanGestureRecognizer*) panGestureRecognizer {
@@ -260,12 +288,10 @@ const int navigationSpacing = 65;
             }
             if (userTouchCoordinate.y >= [self messgeComposerViewMinY]) {
                 self.messageComposerViewWithKeyboardImage.frame = [self messageComposerViewWithKeyboardImageframeWithY:userTouchCoordinate.y];
-//                NSLog(@"simple print-----just changing------{%f}", userTouchCoordinate.y);
             }
         }
         else if  (gestureRecognizerState == UIGestureRecognizerStateEnded
                   || gestureRecognizerState == UIGestureRecognizerStateCancelled){
-//            NSLog(@"simple print-----ending------{%@}", NSStringFromCGPoint(userTouchCoordinate));
             
             if (userTouchCoordinate.y >= [self messgeComposerViewMinY]) {
                 
