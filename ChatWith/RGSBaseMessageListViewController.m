@@ -30,6 +30,8 @@
 
 #import "NSAttributedString+RGSFontSize.h"
 
+#import "RGSMessageAttachmentViewController.h"
+
 
 const int maxTextWidth = 260;
 const int cellContentMargin = 5;
@@ -295,7 +297,41 @@ const int navigationSpacing = 65;
     return CGRectGetMinY(self.messageComposerView.frame) - (CGRectGetHeight(self.messageComposerView.backGroundView.frame) - CGRectGetHeight(self.messageComposerView.frame));
 }
 
-//-(UIView *)createMessageComposerViewImageWithKeyboardImage
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([segue.destinationViewController isKindOfClass:[RGSMessageAttachmentViewController class]]) {
+        RGSMessageAttachmentViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.delegate = self;
+    }
+}
+-(void)RGSMessageAttachmentViewController:(RGSMessageAttachmentViewController *)messageAttachmentViewController imageAttachment:(UIImage *)imageAttachment{
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
+    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+    textAttachment.image = imageAttachment;
+    CGFloat oldWidth = textAttachment.image.size.width;
+    
+    //I'm subtracting 10px to make the image display nicely, accounting
+    //for the padding inside the textView
+    textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
+    NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
+    attrStringWithImage = [attrStringWithImage attributedStringWithFont:self.messageComposerView.messageTextView.internalTextView.font Color:self.messageComposerView.messageTextView.internalTextView.textColor];
+    
+    
+    NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : self.messageComposerView.messageTextView.internalTextView.font}];
+    
+    [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.messageComposerView.messageTextView.internalTextView.attributedText];
+    [attributedString replaceCharactersInRange:NSMakeRange(1, 1) withAttributedString:imageWithNewLine];
+    self.messageComposerView.messageTextView.internalTextView.attributedText = attributedString;
+    
+    [self.messageComposerView.messageTextView updateLayout];
+    
+}
+
+
 
 -(void)performUserScrollSetUp{
     self.keyboard = [self findKeyboard];

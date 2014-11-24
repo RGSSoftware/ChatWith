@@ -6,6 +6,23 @@ Whole App
 NavViewController
 	rethink/update backBarButton arrow
 
+MessageAttactmentViewController
+	change BackButton on “choose Photo” navigationController
+	____________
+	change title color and font  on “choose Photo” navigationController
+	____________
+	add detail view on image selection conformation	“see message.app”
+	____________
+	try to remove delay from selecting image and going back to messageList
+	____________
+	try to remove viewing delay of self
+	____________
+	change position of “choose” and “take” Photo Buttons
+	____________
+	Bold cancel button title
+	____________
+	config “choose”, “take” and “cancel” button fonts’
+
 MessageListViewController
     TableView
 *	create sender cell
@@ -36,12 +53,18 @@ MessageListViewController
 	____
 	add the scroll indicator back 
 	________
-	Add closing animate for messageComposer when keyboard Dismiss
+*	Add closing animate for messageComposer when keyboard Dismiss
 	__
-	add button in place of “addImage” image on messageComposer
+*	add button in place of “addImage” image on messageComposer
 	___
-	config addImage button
+*	config addImage button
 	_____
 	config send Button
+	________
+	add image at the position of caret
+	____________
+	round corner of Image in message composer
+	_______
+	add composing message to MessageList
 MessageSegue
 *	refactor to a custom pushSegue

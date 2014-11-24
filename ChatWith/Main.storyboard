@@ -698,7 +698,7 @@
         <!--Message Attachment View Controller-->
         <scene sceneID="Vcn-rE-R34">
             <objects>
-                <viewController id="Bfw-jy-8oM" customClass="RGSMessageAttachmentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RGSMessageAttachmentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Bfw-jy-8oM" customClass="RGSMessageAttachmentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1oy-is-Yo9"/>
                         <viewControllerLayoutGuide type="bottom" id="8pN-Ec-d4T"/>
