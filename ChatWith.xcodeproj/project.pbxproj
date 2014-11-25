@@ -68,6 +68,7 @@
 		228EABA41A23F105007D555E /* RGSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABA31A23F105007D555E /* RGSImage.m */; };
 		228EABA71A23F4A4007D555E /* NSAttributedString+RGSAttributedStringWithExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABA61A23F4A4007D555E /* NSAttributedString+RGSAttributedStringWithExtras.m */; };
 		228EABAA1A23FA12007D555E /* UITextView+RGSSelectedRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABA91A23FA12007D555E /* UITextView+RGSSelectedRange.m */; };
+		228EABAD1A240E96007D555E /* RGSMessageComposerImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABAC1A240E96007D555E /* RGSMessageComposerImage.m */; };
 		22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A18A3419CF44DB004A266E /* LocalStorageService.m */; };
 		22AC65021A050A3000B6C57F /* RGSMessageListViewControllerOnePop.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AC65011A050A3000B6C57F /* RGSMessageListViewControllerOnePop.m */; };
 		22AD00EB1A0D8686008F9EF7 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00EA1A0D8686008F9EF7 /* NSDate+Utilities.m */; };
@@ -182,6 +183,8 @@
 		228EABA61A23F4A4007D555E /* NSAttributedString+RGSAttributedStringWithExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+RGSAttributedStringWithExtras.m"; sourceTree = "<group>"; };
 		228EABA81A23FA12007D555E /* UITextView+RGSSelectedRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+RGSSelectedRange.h"; sourceTree = "<group>"; };
 		228EABA91A23FA12007D555E /* UITextView+RGSSelectedRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+RGSSelectedRange.m"; sourceTree = "<group>"; };
+		228EABAB1A240E96007D555E /* RGSMessageComposerImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageComposerImage.h; sourceTree = "<group>"; };
+		228EABAC1A240E96007D555E /* RGSMessageComposerImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessageComposerImage.m; sourceTree = "<group>"; };
 		22A18A3319CF44DB004A266E /* LocalStorageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStorageService.h; sourceTree = "<group>"; };
 		22A18A3419CF44DB004A266E /* LocalStorageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStorageService.m; sourceTree = "<group>"; };
 		22AC65001A050A3000B6C57F /* RGSMessageListViewControllerOnePop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageListViewControllerOnePop.h; sourceTree = "<group>"; };
@@ -403,6 +406,8 @@
 		22889AD319D3237A00F0541D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				228EABAB1A240E96007D555E /* RGSMessageComposerImage.h */,
+				228EABAC1A240E96007D555E /* RGSMessageComposerImage.m */,
 				22D7BCC419A8D45100D2C01C /* ChatWith.xcdatamodeld */,
 				228EABA21A23F105007D555E /* RGSImage.h */,
 				228EABA31A23F105007D555E /* RGSImage.m */,
@@ -702,6 +707,7 @@
 				22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */,
 				22BE6EE71A16305A00D130EB /* UIButton+RGSUIBackButton.m in Sources */,
 				22BE6EF01A16482400D130EB /* RGSTwoPopSegue.m in Sources */,
+				228EABAD1A240E96007D555E /* RGSMessageComposerImage.m in Sources */,
 				22F5206A1A0073E700FD2CD5 /* UIImage+Resize.m in Sources */,
 				22DF5F921A068E2900DC4D67 /* RGSMessageSegue.m in Sources */,
 				22AC65021A050A3000B6C57F /* RGSMessageListViewControllerOnePop.m in Sources */,
