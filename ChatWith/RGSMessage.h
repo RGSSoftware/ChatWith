@@ -2,7 +2,7 @@
 //  RGSMessage.h
 //  ChatWith
 //
-//  Created by PC on 11/12/14.
+//  Created by PC on 11/24/14.
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
@@ -16,7 +16,16 @@
 @property (nonatomic, retain) NSString * body;
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) RGSChat *chat;
-@property (nonatomic, retain) RGSManagedUser *sender;
 @property (nonatomic, retain) RGSManagedUser *receiver;
+@property (nonatomic, retain) RGSManagedUser *sender;
+@property (nonatomic, retain) NSSet *images;
+@end
+
+@interface RGSMessage (CoreDataGeneratedAccessors)
+
+- (void)addImagesObject:(NSManagedObject *)value;
+- (void)removeImagesObject:(NSManagedObject *)value;
+- (void)addImages:(NSSet *)values;
+- (void)removeImages:(NSSet *)values;
 
 @end

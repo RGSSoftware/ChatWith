@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class RGSManagedUser;
+@class RGSMessage;
 
 @interface RGSChatService : NSObject
 
@@ -16,4 +17,6 @@
 -(void)loginUser:(QBUUser *)user successBlock:(void (^)(BOOL success))success;
 
 -(void)allConversationsFromUser:(RGSManagedUser *)user startingAt:(NSDate *)startDate successBlock:(void(^)(BOOL success, NSArray *conversations))successBlock;
+
+-(void)sendMessage:(RGSMessage *)message;
 @end

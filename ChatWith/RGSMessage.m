@@ -2,7 +2,7 @@
 //  RGSMessage.m
 //  ChatWith
 //
-//  Created by PC on 11/12/14.
+//  Created by PC on 11/24/14.
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
@@ -16,7 +16,8 @@
 @dynamic body;
 @dynamic date;
 @dynamic chat;
-@dynamic sender;
 @dynamic receiver;
+@dynamic sender;
+@dynamic images;
 
 @end

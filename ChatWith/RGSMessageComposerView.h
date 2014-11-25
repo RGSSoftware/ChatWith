@@ -19,4 +19,11 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *addImageButton;
 
+@property (nonatomic, weak) id delegate;
+
+@end
+
+@protocol RGSMessageComposerViewDelegate <NSObject>
+
+- (BOOL)messageComposerView:(RGSMessageComposerView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text;
 @end

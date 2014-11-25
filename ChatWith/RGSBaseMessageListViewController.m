@@ -17,6 +17,7 @@
 #import "UIImage+Resize.h"
 
 #import "LocalStorageService.h"
+#import "RGSChatService.h"
 
 #import "UIButton+RGSUIBackButton.h"
 
@@ -28,9 +29,15 @@
 
 #import <BlocksKit/BlocksKit.h>
 
-#import "NSAttributedString+RGSFontSize.h"
+#import "NSAttributedString+RGSAttributedStringWithExtras.h"
 
 #import "RGSMessageAttachmentViewController.h"
+
+#import "RGSMessage.h"
+
+#import "RGSImage.h"
+
+#import "UITextView+RGSSelectedRange.h"
 
 
 const int maxTextWidth = 260;
@@ -52,6 +59,8 @@ const int navigationSpacing = 65;
 
 @property (nonatomic)double keyboardAnimationDuration;
 @property (nonatomic)int keyboardAnimationCurve;
+
+@property(nonatomic, strong)NSMutableArray *messageComposeTempImages;
 
 @end
 
@@ -83,8 +92,9 @@ const int navigationSpacing = 65;
     self.messageComposerViewWithKeyboardImage = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(self.messageComposerView.frame), CGRectGetWidth(self.messageComposerView.frame), CGRectGetHeight([self findKeyboard].frame))];
     [self.view addSubview:self.messageComposerViewWithKeyboardImage];
     
-    
     [self.view bringSubviewToFront:self.messageComposerView];
+    self.messageComposerView.delegate = self;
+    [self.messageComposerView.sendMessagebButton addTarget:self action:@selector(sendMessage:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -421,33 +431,6 @@ const int navigationSpacing = 65;
                                  userInfo:nil];
 }
 
-#pragma mark - RGSMessageAttachmentViewControllerDelegate ()
--(void)RGSMessageAttachmentViewController:(RGSMessageAttachmentViewController *)messageAttachmentViewController imageAttachment:(UIImage *)imageAttachment{
-    
-    [self dismissViewControllerAnimated:NO completion:nil];
-    
-    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-    textAttachment.image = imageAttachment;
-    
-    //I'm subtracting 10px to make the image display nicely, accounting
-    //for the padding inside the textView
-    textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
-    NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
-    attrStringWithImage = [attrStringWithImage attributedStringWithFont:self.messageComposerView.messageTextView.internalTextView.font Color:self.messageComposerView.messageTextView.internalTextView.textColor];
-    
-    
-    NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : self.messageComposerView.messageTextView.internalTextView.font}];
-    
-    [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
-    
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.messageComposerView.messageTextView.internalTextView.attributedText];
-    [attributedString replaceCharactersInRange:NSMakeRange(1, 1) withAttributedString:imageWithNewLine];
-    self.messageComposerView.messageTextView.internalTextView.attributedText = attributedString;
-    
-    [self.messageComposerView.messageTextView updateLayout];
-    
-}
-
 #pragma mark - UIKeyboard ()
 -(void)keyboardWillChangeFrame:(NSNotification *)aNotification{
     
@@ -526,12 +509,66 @@ const int navigationSpacing = 65;
     
     return keyboard;
 }
+#pragma mark - RGSMessageComposerViewDelegate ()
+- (BOOL)messageComposerView:(RGSMessageComposerView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
+    
+    return YES;
+}
+
+#pragma mark - RGSMessageAttachmentViewControllerDelegate ()
+-(void)RGSMessageAttachmentViewController:(RGSMessageAttachmentViewController *)messageAttachmentViewController imageAttachment:(UIImage *)imageAttachment{
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
+    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+    textAttachment.image = imageAttachment;
+    textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
+    
+    NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment
+                                                                                            Font:self.messageComposerView.messageTextView.internalTextView.font
+                                                                                           Color:self.messageComposerView.messageTextView.internalTextView.textColor];
+    
+    NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : self.messageComposerView.messageTextView.internalTextView.font}];
+    
+    [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.messageComposerView.messageTextView.internalTextView.attributedText];
+    
+    [attributedString insertAttributedString:imageWithNewLine atIndex:self.messageComposerView.messageTextView.internalTextView.selectedRange.location];
+    self.messageComposerView.messageTextView.internalTextView.attributedText = attributedString;
+    
+    
+    
+    [self.messageComposerView.messageTextView updateLayout];
+    
+}
+
+-(void)sendMessage:(id)sender{
+    NSLog(@"simple print-----textViewCursor.location------{%@}", NSStringFromRange(self.messageComposerView.messageTextView.internalTextView.selectedRange));
+    
+//    RGSMessage *message = [RGSMessage MR_createEntity];
+//    message.sender = self.currentUser;
+//    message.receiver = self.receiver;
+//    message.chat = self.chat;
+//    message.body = self.messageComposerView.messageTextView.internalTextView.text;
+//    
+//    [self.messageComposeTempImages
+//     enumerateObjectsUsingBlock:
+//     ^(UIImage *uiImage, NSUInteger index, BOOL *stop)
+//     {
+//         RGSImage *image = [RGSImage MR_createEntity];
+//         image.index = [NSNumber numberWithInteger:index];
+//         image.imageData = UIImageJPEGRepresentation(uiImage,0.0);
+//         
+//         [message addImagesObject:image];
+//     }];
+//    
+//    [[RGSChatService shared] sendMessage:message];
+}
 
 - (void)dealloc {
     [self deRegisterForKeyboardNotifications];
 }
-
-
-
 
 @end
