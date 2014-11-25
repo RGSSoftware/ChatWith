@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RGSMessageComposerImage : NSObject
+@interface RGSMessageComposeImage : NSObject
 
 @property (strong, nonatomic)UIImage *image;
 @property NSInteger location;

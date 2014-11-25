@@ -39,6 +39,8 @@
 
 #import "UITextView+RGSSelectedRange.h"
 
+#import "RGSMessageComposeImage.h"
+
 
 const int maxTextWidth = 260;
 const int cellContentMargin = 5;
@@ -60,11 +62,19 @@ const int navigationSpacing = 65;
 @property (nonatomic)double keyboardAnimationDuration;
 @property (nonatomic)int keyboardAnimationCurve;
 
-@property(nonatomic, strong)NSMutableArray *messageComposeTempImages;
+@property(nonatomic, strong)NSMutableArray *messageComposeImages;
 
 @end
 
 @implementation RGSBaseMessageListViewController
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if(self){
+        self.messageComposeImages = [NSMutableArray new];
+    }
+    return self;
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -95,6 +105,8 @@ const int navigationSpacing = 65;
     [self.view bringSubviewToFront:self.messageComposerView];
     self.messageComposerView.delegate = self;
     [self.messageComposerView.sendMessagebButton addTarget:self action:@selector(sendMessage:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -513,6 +525,25 @@ const int navigationSpacing = 65;
 - (BOOL)messageComposerView:(RGSMessageComposerView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     
     
+    RGSMessageComposeImage *mark;
+    for(RGSMessageComposeImage *storedImage in self.messageComposeImages){
+        if(range.length == 1 && [text isEqualToString:@""]){
+            if(storedImage.location == range.location){
+                mark = storedImage;
+            }
+        } else if (storedImage.location >= range.location){
+            storedImage.location++;
+        }
+    }
+    if(mark){
+        for(RGSMessageComposeImage *storedImage in self.messageComposeImages){
+            if(storedImage.location > mark.location){
+                storedImage.index--;
+            }
+        }
+        [self.messageComposeImages removeObject:mark];
+    }
+    
     return YES;
 }
 
@@ -533,19 +564,39 @@ const int navigationSpacing = 65;
     
     [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
     
+    NSInteger currentLocation = self.messageComposerView.messageTextView.internalTextView.selectedRange.location;
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.messageComposerView.messageTextView.internalTextView.attributedText];
     
-    [attributedString insertAttributedString:imageWithNewLine atIndex:self.messageComposerView.messageTextView.internalTextView.selectedRange.location];
+    [attributedString insertAttributedString:imageWithNewLine atIndex:currentLocation];
     self.messageComposerView.messageTextView.internalTextView.attributedText = attributedString;
     
     
     
-    [self.messageComposerView.messageTextView updateLayout];
+    RGSMessageComposeImage *currentImage = [RGSMessageComposeImage new];
+    currentImage.image = imageAttachment;
+    currentImage.location = currentLocation;
+    if(self.messageComposeImages.count == 0){
+        currentImage.index = 0;
+    } else {
+        for(RGSMessageComposeImage *storedImage in self.messageComposeImages){
+            if(storedImage.location >= currentImage.location){
+                currentImage.index = storedImage.index;
+                
+                storedImage.location++;
+                storedImage.index++;
+            } else {
+                currentImage.index = storedImage.index + 1;
+            }
+        }
+    }
+    [self.messageComposeImages addObject:currentImage];
     
+    
+    [self.messageComposerView.messageTextView updateLayout];
 }
 
 -(void)sendMessage:(id)sender{
-    NSLog(@"simple print-----textViewCursor.location------{%@}", NSStringFromRange(self.messageComposerView.messageTextView.internalTextView.selectedRange));
+//    NSLog(@"simple print-----textViewCursor.location------{%@}", NSStringFromRange(self.messageComposerView.messageTextView.internalTextView.selectedRange));
     
 //    RGSMessage *message = [RGSMessage MR_createEntity];
 //    message.sender = self.currentUser;

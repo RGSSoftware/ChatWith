@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "RGSMessageComposerImage.h"
+#import "RGSMessageComposeImage.h"
 
-@implementation RGSMessageComposerImage
+@implementation RGSMessageComposeImage
 
 @end
