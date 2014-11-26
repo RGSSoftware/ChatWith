@@ -39,8 +39,7 @@
     
     self.messageTextView.internalTextView.textColor = [UIColor whiteColor];
     self.messageTextView.internalTextView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-//    self.messageTextView.internalTextView.backgroundColor = [UIColor purpleColor];
-//    self.messageTextView.internalTextView.font = [UIFont systemFontOfSize:20];
+    self.messageTextView.internalTextView.scrollIndicatorInsets = UIEdgeInsetsMake(7, 0, 7, 0);
     
     [self.addImageButton setTitleColor:[UIColor lightGrayColor]
                  forState:UIControlStateHighlighted];

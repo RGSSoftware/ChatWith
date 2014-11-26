@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EGF-iH-8R1">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -435,14 +436,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.2576392743" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUL-Zf-Bh0">
-                                        <rect key="frame" x="266" y="7" width="46" height="30"/>
-                                        <state key="normal" title="Send">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KU4-cs-mIq" customClass="CSGrowingTextView">
-                                        <rect key="frame" x="47" y="9" width="211" height="30"/>
+                                        <rect key="frame" x="47" y="9" width="220" height="30"/>
                                         <color key="backgroundColor" red="0.93725496529999996" green="0.91372555489999996" blue="0.72156864399999998" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
                                     <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="camera41" translatesAutoresizingMaskIntoConstraints="NO" id="tha-9d-BDz">
@@ -457,6 +452,13 @@
                                         <connections>
                                             <segue destination="Bfw-jy-8oM" kind="custom" customClass="RGSOverviewSegue" id="Gki-nL-zVj"/>
                                         </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUL-Zf-Bh0">
+                                        <rect key="frame" x="268" y="0.0" width="52" height="43"/>
+                                        <inset key="titleEdgeInsets" minX="-2" minY="1" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86980977000000004" green="0.93541638979999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -824,8 +826,8 @@
         <image name="white_camera41" width="58" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NRe-gm-LWq"/>
-        <segue reference="NSB-ld-eSo"/>
+        <segue reference="Gki-nL-zVj"/>
         <segue reference="tmx-tc-fLD"/>
+        <segue reference="DZR-Vd-oo4"/>
     </inferredMetricsTieBreakers>
 </document>
