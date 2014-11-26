@@ -85,4 +85,9 @@ static dispatch_once_t once_token = 0;
     [QBChat dialogsWithExtendedRequest:extendedRequest  delegate:self];
 
 }
+
+-(void)sendMessage:(RGSMessage *)message{
+    
+    
+}
 @end

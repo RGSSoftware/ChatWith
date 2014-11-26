@@ -530,6 +530,11 @@ const int navigationSpacing = 65;
         if(range.length == 1 && [text isEqualToString:@""]){
             if(storedImage.location == range.location){
                 mark = storedImage;
+            } else if (storedImage.location > range.location){
+                if(!mark){
+                    storedImage.location--;
+                }
+                
             }
         } else if (storedImage.location >= range.location){
             storedImage.location++;
@@ -538,6 +543,7 @@ const int navigationSpacing = 65;
     if(mark){
         for(RGSMessageComposeImage *storedImage in self.messageComposeImages){
             if(storedImage.location > mark.location){
+                storedImage.location--;
                 storedImage.index--;
             }
         }
@@ -564,6 +570,7 @@ const int navigationSpacing = 65;
     
     [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
     
+    NSRange currentRange = self.messageComposerView.messageTextView.internalTextView.selectedRange;
     NSInteger currentLocation = self.messageComposerView.messageTextView.internalTextView.selectedRange.location;
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.messageComposerView.messageTextView.internalTextView.attributedText];
     
@@ -593,29 +600,28 @@ const int navigationSpacing = 65;
     
     
     [self.messageComposerView.messageTextView updateLayout];
+    
+    [self.messageComposerView.messageTextView.internalTextView setSelectedRange:NSMakeRange(currentLocation + 1, currentRange.length)];
 }
 
--(void)sendMessage:(id)sender{
-//    NSLog(@"simple print-----textViewCursor.location------{%@}", NSStringFromRange(self.messageComposerView.messageTextView.internalTextView.selectedRange));
+-(void)sendMessage:(id)sender{    
+    RGSMessage *message = [RGSMessage MR_createEntity];
+    message.sender = self.currentUser;
+    message.receiver = self.receiver;
+    message.chat = self.chat;
+    message.body = self.messageComposerView.messageTextView.internalTextView.text;
+    message.date = [NSDate date];
     
-//    RGSMessage *message = [RGSMessage MR_createEntity];
-//    message.sender = self.currentUser;
-//    message.receiver = self.receiver;
-//    message.chat = self.chat;
-//    message.body = self.messageComposerView.messageTextView.internalTextView.text;
-//    
-//    [self.messageComposeTempImages
-//     enumerateObjectsUsingBlock:
-//     ^(UIImage *uiImage, NSUInteger index, BOOL *stop)
-//     {
-//         RGSImage *image = [RGSImage MR_createEntity];
-//         image.index = [NSNumber numberWithInteger:index];
-//         image.imageData = UIImageJPEGRepresentation(uiImage,0.0);
-//         
-//         [message addImagesObject:image];
-//     }];
-//    
-//    [[RGSChatService shared] sendMessage:message];
+    for(RGSMessageComposeImage *sortedImage in self.messageComposeImages){
+        RGSImage *image = [RGSImage MR_createEntity];
+        image.imageData = UIImageJPEGRepresentation(sortedImage.image,0.0);
+        image.index = [NSNumber numberWithInteger:sortedImage.index];
+        image.message = message;
+        
+        [message addImagesObject:image];
+    }
+    
+    [[RGSChatService shared] sendMessage:message];
 }
 
 - (void)dealloc {

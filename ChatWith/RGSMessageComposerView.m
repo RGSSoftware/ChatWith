@@ -51,9 +51,6 @@
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    
-    NSLog(@"simple print-----messageComoserView.isUserInteractionEnabled------{%hhd}", self.isUserInteractionEnabled);
-    
     if (!self.isUserInteractionEnabled || self.isHidden || self.alpha <= 0.01) {
         return nil;
     }

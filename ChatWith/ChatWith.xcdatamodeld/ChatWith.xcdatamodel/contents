@@ -28,7 +28,7 @@
         <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="contacts" inverseEntity="RGSManagedUser" syncable="YES"/>
     </entity>
     <entity name="RGSImage" representedClassName="RGSImage" syncable="YES">
-        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
         <relationship name="message" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSMessage" inverseName="images" inverseEntity="RGSMessage" syncable="YES"/>
     </entity>
@@ -71,8 +71,8 @@
         <element name="ApplicationSession" positionX="-36" positionY="-108" width="128" height="150"/>
         <element name="RGSChat" positionX="88" positionY="81" width="128" height="223"/>
         <element name="RGSContact" positionX="-315" positionY="342" width="128" height="73"/>
+        <element name="RGSImage" positionX="-126" positionY="36" width="128" height="90"/>
         <element name="RGSManagedUser" positionX="-333" positionY="-117" width="128" height="418"/>
         <element name="RGSMessage" positionX="-162" positionY="99" width="128" height="133"/>
-        <element name="RGSImage" positionX="-126" positionY="36" width="128" height="88"/>
     </elements>
 </model>
