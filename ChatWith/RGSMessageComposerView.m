@@ -68,6 +68,10 @@
 }
 
 -(void)growingTextView:(CSGrowingTextView *)growingTextView willChangeHeight:(CGFloat)height{
+    if([self.delegate respondsToSelector:@selector(messageComposerView:willChangeHeight:)]){
+         [self.delegate messageComposerView:self willChangeHeight:height + 9];
+    }
+    
     CGRect tempRect = CGRectZero;
     tempRect.size = CGSizeMake(CGRectGetWidth(self.frame), height + 9);
     tempRect.origin = CGPointMake(0, (CGRectGetMaxY(self.backGroundStartFrame) - (height)) - 8);

@@ -26,4 +26,5 @@
 @protocol RGSMessageComposerViewDelegate <NSObject>
 
 - (BOOL)messageComposerView:(RGSMessageComposerView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text;
+- (void)messageComposerView:(RGSMessageComposerView *)textView willChangeHeight:(CGFloat)height;
 @end

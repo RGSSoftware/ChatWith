@@ -50,6 +50,11 @@ const int topBottonMargin = cellContentMargin * 2;
 const int fristCell = 0;
 const int navigationSpacing = 65;
 
+struct {
+    int messageComposer;
+    int keyBoard;
+} messageComposerWithKeyBoardHeight;
+
 @interface RGSBaseMessageListViewController ()
 
 @property (nonatomic, strong)UITableViewCell *referenceCell;
@@ -64,6 +69,8 @@ const int navigationSpacing = 65;
 
 @property(nonatomic, strong)NSMutableArray *messageComposeImages;
 
+@property (nonatomic, assign) BOOL shouldScrollToLastRow;
+
 @end
 
 @implementation RGSBaseMessageListViewController
@@ -74,6 +81,13 @@ const int navigationSpacing = 65;
         self.messageComposeImages = [NSMutableArray new];
     }
     return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    _shouldScrollToLastRow = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -210,6 +224,13 @@ const int navigationSpacing = 65;
     [super viewDidLayoutSubviews];
     
     [self fullyExtendTableViewSeparator:self.tableView];
+    
+    // Scroll table view to the last row
+    if (_shouldScrollToLastRow)
+    {
+        _shouldScrollToLastRow = NO;
+        [self.tableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
+    }
 }
 
 -(NSManagedObjectContext *)managedObjectContext{
@@ -454,7 +475,11 @@ const int navigationSpacing = 65;
 
     self.messageBottomSpace.constant = CGRectGetHeight(self.view.frame) - endFrame.origin.y;
     
-    UIEdgeInsets messageViewKeyboard = UIEdgeInsetsMake(0, 0, CGRectGetHeight(self.messageComposerView.frame) + self.messageBottomSpace.constant, 0);
+    messageComposerWithKeyBoardHeight.messageComposer = CGRectGetHeight(self.messageComposerView.backGroundView.frame);
+    messageComposerWithKeyBoardHeight.keyBoard = self.messageBottomSpace.constant;
+                                                                        
+    
+    UIEdgeInsets messageViewKeyboard = UIEdgeInsetsMake(0, 0, messageComposerWithKeyBoardHeight.messageComposer + messageComposerWithKeyBoardHeight.keyBoard, 0);
     self.tableView.contentInset = messageViewKeyboard;
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationSpacing, 0, messageViewKeyboard.bottom, 0);
     
@@ -554,6 +579,19 @@ const int navigationSpacing = 65;
     }
     
     return YES;
+}
+
+- (void)messageComposerView:(RGSMessageComposerView *)textView willChangeHeight:(CGFloat)height{
+    
+    messageComposerWithKeyBoardHeight.messageComposer = height;
+    
+    UIEdgeInsets messageViewKeyboard = UIEdgeInsetsMake(0, 0, messageComposerWithKeyBoardHeight.messageComposer + messageComposerWithKeyBoardHeight.keyBoard, 0);
+    self.tableView.contentInset = messageViewKeyboard;
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationSpacing, 0, messageViewKeyboard.bottom, 0);
+    
+//    CGPoint offset = CGPointMake(0, self.tableView.contentSize.height -     self.tableView.frame.size.height);
+//    [self.tableView setContentOffset:offset animated:YES];
+    
 }
 
 #pragma mark - RGSMessageAttachmentViewControllerDelegate ()

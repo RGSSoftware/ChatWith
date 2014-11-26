@@ -174,11 +174,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageComposerView.m"
-            timestampString = "438709362.159655"
+            timestampString = "438713717.844474"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "-growingTextView:willChangeHeight:"
             landmarkType = "5">
          </BreakpointContent>
@@ -366,11 +366,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438711190.091081"
+            timestampString = "438715071.762916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "590"
-            endingLineNumber = "590"
+            startingLineNumber = "627"
+            endingLineNumber = "627"
             landmarkName = "-RGSMessageAttachmentViewController:imageAttachment:"
             landmarkType = "5">
          </BreakpointContent>
@@ -382,11 +382,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438711190.091081"
+            timestampString = "438715071.762916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "564"
-            endingLineNumber = "564"
+            startingLineNumber = "602"
+            endingLineNumber = "602"
             landmarkName = "-RGSMessageAttachmentViewController:imageAttachment:"
             landmarkType = "5">
          </BreakpointContent>
@@ -398,11 +398,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438711190.091081"
+            timestampString = "438715071.762916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "584"
-            endingLineNumber = "584"
+            startingLineNumber = "621"
+            endingLineNumber = "621"
             landmarkName = "-RGSMessageAttachmentViewController:imageAttachment:"
             landmarkType = "5">
          </BreakpointContent>
@@ -414,11 +414,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438708966.101608"
+            timestampString = "438715071.762916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "548"
-            endingLineNumber = "548"
+            startingLineNumber = "573"
+            endingLineNumber = "573"
             landmarkName = "-messageComposerView:shouldChangeTextInRange:replacementText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -430,11 +430,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438708966.101608"
+            timestampString = "438715071.762916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "548"
-            endingLineNumber = "548"
+            startingLineNumber = "573"
+            endingLineNumber = "573"
             landmarkName = "-messageComposerView:shouldChangeTextInRange:replacementText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -446,11 +446,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438708966.101608"
+            timestampString = "438715071.762916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "540"
-            endingLineNumber = "540"
+            startingLineNumber = "565"
+            endingLineNumber = "565"
             landmarkName = "-messageComposerView:shouldChangeTextInRange:replacementText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -462,11 +462,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438708966.101608"
+            timestampString = "438715071.762916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "535"
-            endingLineNumber = "535"
+            startingLineNumber = "560"
+            endingLineNumber = "560"
             landmarkName = "-messageComposerView:shouldChangeTextInRange:replacementText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -478,11 +478,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSBaseMessageListViewController.m"
-            timestampString = "438708966.101608"
+            timestampString = "438715071.762916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "549"
-            endingLineNumber = "549"
+            startingLineNumber = "574"
+            endingLineNumber = "574"
             landmarkName = "-messageComposerView:shouldChangeTextInRange:replacementText:"
             landmarkType = "5">
          </BreakpointContent>
