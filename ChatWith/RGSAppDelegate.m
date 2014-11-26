@@ -171,6 +171,14 @@
         [currentUser addChatsObject:chat];
     }
     
+    for (int i = 0; i < 20; i ++) {
+        RGSMessage *message = [RGSMessage MR_createEntity];
+        message.body = [LoremIpsum wordsWithNumber:10];
+        message.sender = currentUser;
+        [chat1 addMessagesObject:message];
+    }
+
+    
     [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
         if (success) {
             

@@ -86,6 +86,7 @@ const int navigationSpacing = 65;
     self.navigationItem.leftBarButtonItem = [self customBarBackButton];
     
     self.tableView.contentInset = [self messageComposerViewInsert];
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationSpacing, 0, CGRectGetHeight(self.messageComposerView.frame), 0);
     
     [self registerForKeyboardNotifications];
     
@@ -236,7 +237,7 @@ const int navigationSpacing = 65;
 }
 
 - (UIEdgeInsets)messageComposerViewInsert {
-    UIEdgeInsets tableViewInsert = UIEdgeInsetsMake(0, 0, -CGRectGetHeight(self.messageComposerView.frame), 0);
+    UIEdgeInsets tableViewInsert = UIEdgeInsetsMake(0, 0, CGRectGetHeight(self.messageComposerView.frame), 0);
     return tableViewInsert;
 }
 #pragma mark - fetchedResultsController ()
@@ -453,6 +454,9 @@ const int navigationSpacing = 65;
 
     self.messageBottomSpace.constant = CGRectGetHeight(self.view.frame) - endFrame.origin.y;
     
+    UIEdgeInsets messageViewKeyboard = UIEdgeInsetsMake(0, 0, CGRectGetHeight(self.messageComposerView.frame) + self.messageBottomSpace.constant, 0);
+    self.tableView.contentInset = messageViewKeyboard;
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationSpacing, 0, messageViewKeyboard.bottom, 0);
     
     [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]
                           delay:0
@@ -524,7 +528,6 @@ const int navigationSpacing = 65;
 #pragma mark - RGSMessageComposerViewDelegate ()
 - (BOOL)messageComposerView:(RGSMessageComposerView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     
-    
     RGSMessageComposeImage *mark;
     for(RGSMessageComposeImage *storedImage in self.messageComposeImages){
         if(range.length == 1 && [text isEqualToString:@""]){
@@ -571,17 +574,15 @@ const int navigationSpacing = 65;
     [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
     
     NSRange currentRange = self.messageComposerView.messageTextView.internalTextView.selectedRange;
-    NSInteger currentLocation = self.messageComposerView.messageTextView.internalTextView.selectedRange.location;
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.messageComposerView.messageTextView.internalTextView.attributedText];
     
-    [attributedString insertAttributedString:imageWithNewLine atIndex:currentLocation];
+    [attributedString insertAttributedString:imageWithNewLine atIndex:currentRange.location];
     self.messageComposerView.messageTextView.internalTextView.attributedText = attributedString;
-    
     
     
     RGSMessageComposeImage *currentImage = [RGSMessageComposeImage new];
     currentImage.image = imageAttachment;
-    currentImage.location = currentLocation;
+    currentImage.location = currentRange.location;
     if(self.messageComposeImages.count == 0){
         currentImage.index = 0;
     } else {
@@ -601,7 +602,7 @@ const int navigationSpacing = 65;
     
     [self.messageComposerView.messageTextView updateLayout];
     
-    [self.messageComposerView.messageTextView.internalTextView setSelectedRange:NSMakeRange(currentLocation + 1, currentRange.length)];
+    [self.messageComposerView.messageTextView.internalTextView setSelectedRange:NSMakeRange(currentRange.location + 1, currentRange.length)];
 }
 
 -(void)sendMessage:(id)sender{    
