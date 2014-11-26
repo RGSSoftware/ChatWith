@@ -86,9 +86,6 @@
 }
 
 - (BOOL)growingTextView:(CSGrowingTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    
-//    NSRange temprange = NSMakeRange(9, 1);
-//    temprange.location = 7;
     if([self.delegate respondsToSelector:@selector(messageComposerView:shouldChangeTextInRange:replacementText:)]){
        return [self.delegate messageComposerView:self shouldChangeTextInRange:range replacementText:text];
     }

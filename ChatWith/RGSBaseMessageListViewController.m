@@ -576,7 +576,7 @@ const int navigationSpacing = 65;
     NSRange currentRange = self.messageComposerView.messageTextView.internalTextView.selectedRange;
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.messageComposerView.messageTextView.internalTextView.attributedText];
     
-    [attributedString insertAttributedString:imageWithNewLine atIndex:currentRange.location];
+    [attributedString replaceCharactersInRange:currentRange withAttributedString:imageWithNewLine];
     self.messageComposerView.messageTextView.internalTextView.attributedText = attributedString;
     
     
