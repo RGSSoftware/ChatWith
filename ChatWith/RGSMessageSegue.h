@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RGSMessageSegue : UIStoryboardSegue
+@interface RGSMessageSegue : UIStoryboardSegue <UINavigationControllerDelegate, UIViewControllerAnimatedTransitioning>
 
 
 @end
