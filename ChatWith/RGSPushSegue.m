@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "RGSMessageSegue.h"
+#import "RGSPushSegue.h"
 
 #import "RGSBaseViewController.h"
 
-@interface RGSMessageSegue()
+@interface RGSPushSegue()
 @property (nonatomic, strong)UIImageView *backgroundView;
 @end
 
-@implementation RGSMessageSegue
+@implementation RGSPushSegue
 -(void)perform{
     [((UIViewController *)self.sourceViewController).navigationController setDelegate:self];
     [((UIViewController *)self.sourceViewController).navigationController pushViewController:self.destinationViewController animated:YES];

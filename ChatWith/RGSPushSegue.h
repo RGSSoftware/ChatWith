@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RGSMessageSegue : UIStoryboardSegue <UINavigationControllerDelegate, UIViewControllerAnimatedTransitioning>
+@interface RGSPushSegue : UIStoryboardSegue <UINavigationControllerDelegate, UIViewControllerAnimatedTransitioning>
 
 
 @end
