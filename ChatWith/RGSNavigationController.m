@@ -7,13 +7,13 @@
 //
 
 #import "RGSNavigationController.h"
-#import "RGSPpopSegue.h"
+#import "RGSPopSegue.h"
 
 #import "RGSPushAnimationController.h"
 #import "RGSPopAnimationController.h"
 
 @interface RGSNavigationController ()
-@property(nonatomic, strong)RGSPpopSegue *popSegue;
+@property(nonatomic, strong)RGSPopSegue *popSegue;
 @end
 
 @implementation RGSNavigationController
@@ -23,7 +23,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    self.popSegue = [RGSPpopSegue new];
+    self.popSegue = [RGSPopSegue new];
     self.delegate = self;
 }
 
