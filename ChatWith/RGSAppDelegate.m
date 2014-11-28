@@ -189,9 +189,9 @@
 //            //
 //                self.window.rootViewController = nc;
             
-            UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSChatListViewController"]];
-            
-            self.window.rootViewController = nc;
+//            UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSChatListViewController"]];
+//            
+//            self.window.rootViewController = nc;
 
         }
     }];

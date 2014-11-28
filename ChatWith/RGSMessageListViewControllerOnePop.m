@@ -13,7 +13,8 @@
 -(void)toChatListScreen:(id)sender{
 //    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count]- 3)] animated:NO];
     
-    [self performSegueWithIdentifier:@"toChat" sender:self];
+    [self performSegueWithIdentifier:@"unwindToChatLis" sender:self];
+  
 
     
 }

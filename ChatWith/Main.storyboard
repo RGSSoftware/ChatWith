@@ -70,7 +70,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Zjn-C4-izH">
             <objects>
-                <navigationController id="EGF-iH-8R1" sceneMemberID="viewController">
+                <navigationController id="EGF-iH-8R1" customClass="RGSNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KhK-4p-JrK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -500,9 +500,11 @@
                         <outlet property="messageComposerView" destination="o6j-TH-Eeo" id="0DT-kz-Rxq"/>
                         <outlet property="tableView" destination="lzT-sE-2da" id="1EA-7j-M9l"/>
                         <segue destination="hQ2-gS-03Z" kind="custom" identifier="toChat" customClass="RGSPopSegue" id="DZR-Vd-oo4"/>
+                        <segue destination="lcB-Nd-ks1" kind="unwind" identifier="unwindToChatLis" unwindAction="unwindToChatList:" id="j82-Pm-59d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9f-St-B4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="lcB-Nd-ks1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1863" y="384"/>
         </scene>
@@ -826,8 +828,8 @@
         <image name="white_camera41" width="58" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NRe-gm-LWq"/>
-        <segue reference="NSB-ld-eSo"/>
         <segue reference="tmx-tc-fLD"/>
+        <segue reference="DZR-Vd-oo4"/>
+        <segue reference="Gki-nL-zVj"/>
     </inferredMetricsTieBreakers>
 </document>
