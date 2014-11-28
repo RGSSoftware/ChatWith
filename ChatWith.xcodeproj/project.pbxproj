@@ -81,7 +81,6 @@
 		22BE6EE11A14728300D130EB /* RGSManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE01A14728300D130EB /* RGSManagedUser.m */; };
 		22BE6EE71A16305A00D130EB /* UIButton+RGSUIBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE61A16305A00D130EB /* UIButton+RGSUIBackButton.m */; };
 		22BE6EEA1A163B1D00D130EB /* RGSMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE91A163B1D00D130EB /* RGSMessageListViewController.m */; };
-		22BE6EF01A16482400D130EB /* RGSTwoPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EEF1A16482400D130EB /* RGSTwoPopSegue.m */; };
 		22D6474B1A211D4B00CD66BD /* RGSOverviewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */; };
 		22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474D1A22599E00CD66BD /* RGSMessageAttachmentViewController.m */; };
 		22D7BCB119A8D45100D2C01C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB019A8D45100D2C01C /* Foundation.framework */; };
@@ -210,8 +209,6 @@
 		22BE6EE61A16305A00D130EB /* UIButton+RGSUIBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+RGSUIBackButton.m"; sourceTree = "<group>"; };
 		22BE6EE81A163B1D00D130EB /* RGSMessageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageListViewController.h; sourceTree = "<group>"; };
 		22BE6EE91A163B1D00D130EB /* RGSMessageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessageListViewController.m; sourceTree = "<group>"; };
-		22BE6EEE1A16482400D130EB /* RGSTwoPopSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSTwoPopSegue.h; sourceTree = "<group>"; };
-		22BE6EEF1A16482400D130EB /* RGSTwoPopSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSTwoPopSegue.m; sourceTree = "<group>"; };
 		22D647491A211D4B00CD66BD /* RGSOverviewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSOverviewSegue.h; sourceTree = "<group>"; };
 		22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSOverviewSegue.m; sourceTree = "<group>"; };
 		22D6474C1A22599E00CD66BD /* RGSMessageAttachmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageAttachmentViewController.h; sourceTree = "<group>"; };
@@ -362,8 +359,6 @@
 		22889AD119D3234500F0541D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				22A001621A27672500B22EEE /* RGSPopSegue.h */,
-				22A001631A27672500B22EEE /* RGSPopSegue.m */,
 				224FBF7619D1B7A800A924CA /* Main.storyboard */,
 				22041ED61A2764F800210E59 /* RGSNavigationController.h */,
 				22041ED71A2764F800210E59 /* RGSNavigationController.m */,
@@ -377,12 +372,12 @@
 				22AD00F31A1336E7008F9EF7 /* RGSMessageCell.m */,
 				221A055F1A0D6C7A006B46AD /* RGSChatCell.h */,
 				221A05601A0D6C7A006B46AD /* RGSChatCell.m */,
-				22BE6EEE1A16482400D130EB /* RGSTwoPopSegue.h */,
 				22D647491A211D4B00CD66BD /* RGSOverviewSegue.h */,
 				22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */,
-				22BE6EEF1A16482400D130EB /* RGSTwoPopSegue.m */,
 				22DF5F901A068E2900DC4D67 /* RGSPushSegue.h */,
 				22DF5F911A068E2900DC4D67 /* RGSPushSegue.m */,
+				22A001621A27672500B22EEE /* RGSPopSegue.h */,
+				22A001631A27672500B22EEE /* RGSPopSegue.m */,
 				22A001651A27789F00B22EEE /* RGSPushAnimationController.h */,
 				22A001661A27789F00B22EEE /* RGSPushAnimationController.m */,
 				227472071A277ABB00F61663 /* RGSPopAnimationController.h */,
@@ -711,7 +706,6 @@
 				22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */,
 				22BE6EE71A16305A00D130EB /* UIButton+RGSUIBackButton.m in Sources */,
 				22A001641A27672500B22EEE /* RGSPopSegue.m in Sources */,
-				22BE6EF01A16482400D130EB /* RGSTwoPopSegue.m in Sources */,
 				228EABAD1A240E96007D555E /* RGSMessageComposeImage.m in Sources */,
 				22F5206A1A0073E700FD2CD5 /* UIImage+Resize.m in Sources */,
 				22DF5F921A068E2900DC4D67 /* RGSPushSegue.m in Sources */,
