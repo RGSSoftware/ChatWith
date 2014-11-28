@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EGF-iH-8R1">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -270,7 +269,7 @@
                                                     <outlet property="imageHighlightView" destination="Wh7-ev-OGJ" id="RIh-Dv-wTg"/>
                                                     <outlet property="nameLabel" destination="Si7-fT-Y5o" id="3eV-2R-HC3"/>
                                                     <outlet property="thumbnailImageView" destination="N4Y-Jr-bcy" id="Vhr-eK-Yn0"/>
-                                                    <segue destination="Mah-Zz-rb9" kind="custom" customClass="RGSPushSegue" id="Kon-O1-Q6A"/>
+                                                    <segue destination="y8p-4J-8Sh" kind="unwind" unwindAction="unwindToChatList:" id="UxQ-WD-zkq"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -355,7 +354,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1650" y="1084"/>
+            <point key="canvasLocation" x="1432" y="1117"/>
         </scene>
         <!--Message List View Controller-->
         <scene sceneID="g6R-Ox-UsF">
@@ -628,7 +627,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MIT-VN-HxN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2357" y="384"/>
+            <point key="canvasLocation" x="1863" y="1117"/>
         </scene>
     </scenes>
     <resources>

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "RGSBaseViewController.h"
 
+@class RGSContact;
+
 @interface RGSContactListViewController : RGSBaseViewController <UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -18,4 +20,11 @@
 
 @property (nonatomic, strong)NSFetchedResultsController *fetchedResultsController;
 
+@property (nonatomic, weak) id delegate;
+
+@end
+
+@protocol RGSContactListViewControllerDelegate <NSObject>
+
+-(void)contactListViewController:(RGSContactListViewController *)contactListViewController didSelectContact:(RGSContact *)contact;
 @end
