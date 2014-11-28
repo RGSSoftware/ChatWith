@@ -7,7 +7,9 @@
 //
 
 #import "RGSMessageAttachmentViewController.h"
+
 #import "RGSMessageListViewController.h"
+
 #import "RGSMessageComposerView.h"
 #import "CSGrowingTextView.h"
 

@@ -8,39 +8,30 @@
 
 #import "RGSMessageListViewController.h"
 
+#import "RGSMessageAttachmentViewController.h"
+
 #import "RGSManagedUser.h"
 #import "RGSMessage.h"
-#import "RGSMessageCell.h"
+#import "RGSImage.h"
 
-#import "UIImage+RGSinitWithColor.h"
-#import "UIColor+RGSColorWithHexString.h"
-#import "UIImage+Resize.h"
+#import "RGSMessage.h"
+
+#import "RGSMessageCell.h"
 
 #import "LocalStorageService.h"
 #import "RGSChatService.h"
 
+#import "UIImage+Resize.h"
+#import "UIColor+RGSColorWithHexString.h"
+#import "UIImage+RGSinitWithColor.h"
 #import "UIButton+RGSUIBackButton.h"
-
 #import "RGSBaseViewController+RGSSeparatorExtender.h"
-
-#import "CSGrowingTextView.h"
-
-#import "RGSMessageComposerView.h"
-
-#import <BlocksKit/BlocksKit.h>
-
 #import "NSAttributedString+RGSAttributedStringWithExtras.h"
-
-#import "RGSMessageAttachmentViewController.h"
-
-#import "RGSMessage.h"
-
-#import "RGSImage.h"
-
 #import "UITextView+RGSSelectedRange.h"
 
 #import "RGSMessageComposeImage.h"
-
+#import "RGSMessageComposerView.h"
+#import "CSGrowingTextView.h"
 
 const int maxTextWidth = 260;
 const int cellContentMargin = 5;

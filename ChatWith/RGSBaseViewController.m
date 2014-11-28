@@ -9,7 +9,6 @@
 #import "RGSBaseViewController.h"
 
 #import "UIImage+Resize.h"
-#import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
 
 @implementation RGSBaseViewController

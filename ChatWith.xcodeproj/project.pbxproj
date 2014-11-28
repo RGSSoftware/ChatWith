@@ -333,6 +333,8 @@
 				2287C46919FAB3EA00039555 /* UIImage+RGSinitWithColor.m */,
 				22889ACC19D322E400F0541D /* NSString+alphaOnly.h */,
 				22889ACD19D322E400F0541D /* NSString+alphaOnly.m */,
+				22BE6EE51A16305A00D130EB /* UIButton+RGSUIBackButton.h */,
+				22BE6EE61A16305A00D130EB /* UIButton+RGSUIBackButton.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -366,12 +368,12 @@
 				22B1E3141A1967660062701A /* RGSMessageComposerView.m */,
 				22B1E3151A1967660062701A /* CSGrowingTextView.h */,
 				22B1E3161A1967660062701A /* CSGrowingTextView.m */,
-				22BE6EE51A16305A00D130EB /* UIButton+RGSUIBackButton.h */,
-				22BE6EE61A16305A00D130EB /* UIButton+RGSUIBackButton.m */,
 				22AD00F21A1336E7008F9EF7 /* RGSMessageCell.h */,
 				22AD00F31A1336E7008F9EF7 /* RGSMessageCell.m */,
 				221A055F1A0D6C7A006B46AD /* RGSChatCell.h */,
 				221A05601A0D6C7A006B46AD /* RGSChatCell.m */,
+				223A1DA71A013F0200A1B3D2 /* RGSContactCell.h */,
+				223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */,
 				22D647491A211D4B00CD66BD /* RGSOverviewSegue.h */,
 				22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */,
 				22DF5F901A068E2900DC4D67 /* RGSPushSegue.h */,
@@ -382,8 +384,6 @@
 				22A001661A27789F00B22EEE /* RGSPushAnimationController.m */,
 				227472071A277ABB00F61663 /* RGSPopAnimationController.h */,
 				227472081A277ABB00F61663 /* RGSPopAnimationController.m */,
-				223A1DA71A013F0200A1B3D2 /* RGSContactCell.h */,
-				223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
