@@ -18,8 +18,6 @@
 
 @implementation RGSNavigationController
 
-
-
 -(void)viewDidLoad{
     [super viewDidLoad];
     
