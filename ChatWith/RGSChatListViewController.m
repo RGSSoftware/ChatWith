@@ -212,6 +212,10 @@ return [[_fetchedResultsController sections] count];
     [self deregisterForNSManagedObjectNotifications];
     
 }
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+}
 -(void)dealloc{
     [self deregisterForNSManagedObjectNotifications];
 }
