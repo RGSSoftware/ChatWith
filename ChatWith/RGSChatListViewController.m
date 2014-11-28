@@ -21,7 +21,7 @@
 
 #import "RGSBaseViewController+RGSSeparatorExtender.h"
 
-#import "RGSBaseMessageListViewController.h"
+#import "RGSMessageListViewController.h"
 @interface RGSChatListViewController ()
 
 @end
@@ -177,7 +177,7 @@ return [[_fetchedResultsController sections] count];
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"toMessages"]){
-        RGSBaseMessageListViewController *messageListViewController = (RGSBaseMessageListViewController
+        RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
                                                                    *)[segue destinationViewController];
         messageListViewController.chat = [_fetchedResultsController objectAtIndexPath:[self.tableView indexPathForCell:sender]];
     }

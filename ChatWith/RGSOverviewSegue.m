@@ -7,7 +7,7 @@
 //
 
 #import "RGSOverviewSegue.h"
-#import "RGSBaseMessageListViewController.h"
+#import "RGSMessageListViewController.h"
 #import "RGSMessageComposerView.h"
 
 @interface RGSOverviewSegue () <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
@@ -21,7 +21,7 @@
         [((UIViewController *)self.destinationViewController) setTransitioningDelegate:self];
         ((UIViewController *)self.destinationViewController).modalPresentationStyle = UIModalPresentationCustom;
         
-         [((RGSBaseMessageListViewController *)self.sourceViewController).messageComposerView.messageTextView resignFirstResponder];
+         [((RGSMessageListViewController *)self.sourceViewController).messageComposerView.messageTextView resignFirstResponder];
     
     [((UIViewController *)self.sourceViewController) presentViewController:self.destinationViewController animated:YES completion:nil];
 }

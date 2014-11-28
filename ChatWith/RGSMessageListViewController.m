@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "RGSBaseMessageListViewController.h"
+#import "RGSMessageListViewController.h"
 
 #import "RGSManagedUser.h"
 #import "RGSMessage.h"
@@ -55,7 +55,7 @@ struct {
     int keyBoard;
 } messageComposerWithKeyBoardHeight;
 
-@interface RGSBaseMessageListViewController ()
+@interface RGSMessageListViewController ()
 
 @property (nonatomic, strong)UITableViewCell *referenceCell;
 
@@ -73,7 +73,7 @@ struct {
 
 @end
 
-@implementation RGSBaseMessageListViewController
+@implementation RGSMessageListViewController
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];

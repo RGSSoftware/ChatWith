@@ -11,7 +11,7 @@
 @class RGSChat;
 @class RGSMessageComposerView;
 
-@interface RGSBaseMessageListViewController : RGSBaseViewController <NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate>
+@interface RGSMessageListViewController : RGSBaseViewController <NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong)RGSManagedUser *receiver;
 

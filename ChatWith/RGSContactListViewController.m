@@ -13,7 +13,7 @@
 #import "RGSManagedUser.h"
 #import "RGSContact.h"
 
-#import "RGSBaseMessageListViewController.h"
+#import "RGSMessageListViewController.h"
 
 
 #import "UIImage+RGSinitWithColor.h"
@@ -189,7 +189,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
         RGSContactCell *contactCell = (RGSContactCell *)sender;
         RGSContact *contact = [_fetchedResultsController objectAtIndexPath:[self.collectionView indexPathForCell:contactCell]];
         
-        RGSBaseMessageListViewController *messageListViewController = (RGSBaseMessageListViewController
+        RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
                                                                    *)[segue destinationViewController];
         messageListViewController.receiver = contact.friend;
     } else if ([segue.identifier isEqualToString:@"toChats"]){

@@ -81,7 +81,7 @@
 		22B1E3181A1967660062701A /* CSGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1E3161A1967660062701A /* CSGrowingTextView.m */; };
 		22BE6EE11A14728300D130EB /* RGSManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE01A14728300D130EB /* RGSManagedUser.m */; };
 		22BE6EE71A16305A00D130EB /* UIButton+RGSUIBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE61A16305A00D130EB /* UIButton+RGSUIBackButton.m */; };
-		22BE6EEA1A163B1D00D130EB /* RGSBaseMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE91A163B1D00D130EB /* RGSBaseMessageListViewController.m */; };
+		22BE6EEA1A163B1D00D130EB /* RGSMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE91A163B1D00D130EB /* RGSMessageListViewController.m */; };
 		22BE6EF01A16482400D130EB /* RGSTwoPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EEF1A16482400D130EB /* RGSTwoPopSegue.m */; };
 		22D6474B1A211D4B00CD66BD /* RGSOverviewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */; };
 		22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474D1A22599E00CD66BD /* RGSMessageAttachmentViewController.m */; };
@@ -211,8 +211,8 @@
 		22BE6EE01A14728300D130EB /* RGSManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSManagedUser.m; sourceTree = "<group>"; };
 		22BE6EE51A16305A00D130EB /* UIButton+RGSUIBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+RGSUIBackButton.h"; sourceTree = "<group>"; };
 		22BE6EE61A16305A00D130EB /* UIButton+RGSUIBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+RGSUIBackButton.m"; sourceTree = "<group>"; };
-		22BE6EE81A163B1D00D130EB /* RGSBaseMessageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSBaseMessageListViewController.h; sourceTree = "<group>"; };
-		22BE6EE91A163B1D00D130EB /* RGSBaseMessageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSBaseMessageListViewController.m; sourceTree = "<group>"; };
+		22BE6EE81A163B1D00D130EB /* RGSMessageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageListViewController.h; sourceTree = "<group>"; };
+		22BE6EE91A163B1D00D130EB /* RGSMessageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessageListViewController.m; sourceTree = "<group>"; };
 		22BE6EEE1A16482400D130EB /* RGSTwoPopSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSTwoPopSegue.h; sourceTree = "<group>"; };
 		22BE6EEF1A16482400D130EB /* RGSTwoPopSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSTwoPopSegue.m; sourceTree = "<group>"; };
 		22D647491A211D4B00CD66BD /* RGSOverviewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSOverviewSegue.h; sourceTree = "<group>"; };
@@ -354,8 +354,8 @@
 				223D4C5119E456FC0065F630 /* RGSChatListViewController.m */,
 				2250787319F880D100F793EE /* RGSContactListViewController.h */,
 				2250787419F880D100F793EE /* RGSContactListViewController.m */,
-				22BE6EE81A163B1D00D130EB /* RGSBaseMessageListViewController.h */,
-				22BE6EE91A163B1D00D130EB /* RGSBaseMessageListViewController.m */,
+				22BE6EE81A163B1D00D130EB /* RGSMessageListViewController.h */,
+				22BE6EE91A163B1D00D130EB /* RGSMessageListViewController.m */,
 				22889AC919D322A400F0541D /* RGSLoginViewController.h */,
 				22889ACA19D322A400F0541D /* RGSLoginViewController.m */,
 			);
@@ -711,7 +711,7 @@
 				227ADFBE1A0C071200D03017 /* RGSBaseViewController.m in Sources */,
 				22605ED91A0D0147003F1635 /* RGSPopSegue.m in Sources */,
 				22D7BCC619A8D45100D2C01C /* ChatWith.xcdatamodeld in Sources */,
-				22BE6EEA1A163B1D00D130EB /* RGSBaseMessageListViewController.m in Sources */,
+				22BE6EEA1A163B1D00D130EB /* RGSMessageListViewController.m in Sources */,
 				227BFAF219E24674000E7ACC /* ApplicationSession.m in Sources */,
 				22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */,
 				22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */,
