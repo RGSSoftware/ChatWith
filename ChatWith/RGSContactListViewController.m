@@ -195,7 +195,13 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     }
 //
 }
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if ([self.delegate respondsToSelector:@selector(contactListViewController:didSelectContact:)]) {
+        
+        RGSContact *contact = [_fetchedResultsController objectAtIndexPath:indexPath];
+        [self.delegate contactListViewController:self didSelectContact:contact];
+    }
+}
 
 
 -(NSFetchedResultsController *)fetchedResultsController{

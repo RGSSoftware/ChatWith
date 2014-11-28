@@ -75,6 +75,7 @@
 		22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A18A3419CF44DB004A266E /* LocalStorageService.m */; };
 		22AA4CC11A28A18F008DE41B /* RGSShowModallyAnimatonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AA4CC01A28A18E008DE41B /* RGSShowModallyAnimatonController.m */; };
 		22AA4CC41A28A30F008DE41B /* RGSDismissModallyAnimatonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AA4CC31A28A30F008DE41B /* RGSDismissModallyAnimatonController.m */; };
+		22AA4CC71A28DFDA008DE41B /* UINavigationController+RGSBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AA4CC61A28DFDA008DE41B /* UINavigationController+RGSBlock.m */; };
 		22AD00EB1A0D8686008F9EF7 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00EA1A0D8686008F9EF7 /* NSDate+Utilities.m */; };
 		22AD00F11A0ED43D008F9EF7 /* RGSChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00F01A0ED43D008F9EF7 /* RGSChat.m */; };
 		22AD00F41A1336E8008F9EF7 /* RGSMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00F31A1336E7008F9EF7 /* RGSMessageCell.m */; };
@@ -199,6 +200,8 @@
 		22AA4CC01A28A18E008DE41B /* RGSShowModallyAnimatonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSShowModallyAnimatonController.m; sourceTree = "<group>"; };
 		22AA4CC21A28A30F008DE41B /* RGSDismissModallyAnimatonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSDismissModallyAnimatonController.h; sourceTree = "<group>"; };
 		22AA4CC31A28A30F008DE41B /* RGSDismissModallyAnimatonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSDismissModallyAnimatonController.m; sourceTree = "<group>"; };
+		22AA4CC51A28DFDA008DE41B /* UINavigationController+RGSBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+RGSBlock.h"; sourceTree = "<group>"; };
+		22AA4CC61A28DFDA008DE41B /* UINavigationController+RGSBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+RGSBlock.m"; sourceTree = "<group>"; };
 		22AD00E91A0D8686008F9EF7 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		22AD00EA1A0D8686008F9EF7 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		22AD00EF1A0ED43D008F9EF7 /* RGSChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChat.h; sourceTree = "<group>"; };
@@ -317,6 +320,8 @@
 		22889ACF19D3230D00F0541D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				22AA4CC51A28DFDA008DE41B /* UINavigationController+RGSBlock.h */,
+				22AA4CC61A28DFDA008DE41B /* UINavigationController+RGSBlock.m */,
 				228EABA81A23FA12007D555E /* UITextView+RGSSelectedRange.h */,
 				228EABA91A23FA12007D555E /* UITextView+RGSSelectedRange.m */,
 				228EABA51A23F4A4007D555E /* NSAttributedString+RGSAttributedStringWithExtras.h */,
@@ -712,6 +717,7 @@
 				22D7BCC619A8D45100D2C01C /* ChatWith.xcdatamodeld in Sources */,
 				22BE6EEA1A163B1D00D130EB /* RGSMessageListViewController.m in Sources */,
 				227BFAF219E24674000E7ACC /* ApplicationSession.m in Sources */,
+				22AA4CC71A28DFDA008DE41B /* UINavigationController+RGSBlock.m in Sources */,
 				22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */,
 				22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */,
 				22BE6EE71A16305A00D130EB /* UIButton+RGSUIBackButton.m in Sources */,

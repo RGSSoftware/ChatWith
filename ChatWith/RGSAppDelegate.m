@@ -59,6 +59,28 @@
 //
     RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
     currentUser.currentUser = [NSNumber numberWithBool:YES];
+    
+    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
+    barUser.fullName = @"bar";
+    
+    RGSContact *contact = [RGSContact MR_createEntity];
+    contact.source = currentUser;
+    contact.friend = barUser;
+    
+    RGSChat *chat = [RGSChat MR_createEntity];
+    chat.sender = currentUser;
+    chat.receiver = barUser;
+    chat.lastMessageDate = [NSDate date];
+    [chat addParticipantsObject:currentUser];
+    [chat addParticipantsObject:barUser];
+    
+    for (int i = 0; i < 20; i ++) {
+        RGSMessage *message = [RGSMessage MR_createEntity];
+        message.body = [LoremIpsum wordsWithNumber:10];
+        message.sender = currentUser;
+        [chat addMessagesObject:message];
+    }
+
 //
 ////    for(int i = 0; i < 60; i++){
 ////        RGSManagedUser *testUser = [RGSManagedUser MR_createEntity];
@@ -72,14 +94,20 @@
 ////    }
 //    
 //    /////////////
-    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
-    barUser.fullName = @"bar";
+//    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
+//    barUser.fullName = @"bar";
+//    
+//    RGSChat *chat1 = [RGSChat MR_createEntity];
+//    chat1.sender = currentUser;
+//    chat1.receiver = barUser;
+//    chat1.lastMessageDate = [NSDate date];
+//    [chat1 addParticipantsObject:currentUser];
     
-    RGSContact *contactBar = [RGSContact MR_createEntity];
-    contactBar.source = currentUser;
-    contactBar.friend = barUser;
-    
-    [currentUser addContactsObject:contactBar];
+//    RGSContact *contactBar = [RGSContact MR_createEntity];
+//    contactBar.source = currentUser;
+//    contactBar.friend = barUser;
+//    
+//    [currentUser addContactsObject:contactBar];
 //    //////////////
 //    RGSManagedUser *fooUser = [RGSManagedUser MR_createEntity];
 //    fooUser.fullName = @"foo";
@@ -111,11 +139,11 @@
 //    
 //    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:nil];
     
-    RGSChat *chat1 = [RGSChat MR_createEntity];
-    chat1.sender = currentUser;
-    chat1.receiver = barUser;
-    chat1.lastMessageDate = [NSDate date];
-    [chat1 addParticipantsObject:currentUser];
+//    RGSChat *chat1 = [RGSChat MR_createEntity];
+//    chat1.sender = currentUser;
+//    chat1.receiver = barUser;
+//    chat1.lastMessageDate = [NSDate date];
+//    [chat1 addParticipantsObject:currentUser];
     
 //    for (int i = 0; i < 10; i++) {
 //        RGSMessage *message = [RGSMessage MR_createEntity];
@@ -124,59 +152,59 @@
 //        [chat1 addMessagesObject:message];
 //    }
     
-    {
-        RGSMessage *message = [RGSMessage MR_createEntity];
-        message.body = @"a Message to current User sent";
-        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
-        message.sender = currentUser;
-        [chat1 addMessagesObject:message];
-    }
-
-    {
-        RGSMessage *message = [RGSMessage MR_createEntity];
-        message.body = @"a Message to Bar sent";
-        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
-        message.sender = barUser;
-        [chat1 addMessagesObject:message];
-    }
-    {
-        RGSMessage *message = [RGSMessage MR_createEntity];
-        message.body = [LoremIpsum wordsWithNumber:19];
-        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
-        message.sender = currentUser;
-        [chat1 addMessagesObject:message];
-    }
-    {
-        RGSMessage *message = [RGSMessage MR_createEntity];
-        message.body = @"two words";
-        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
-        message.sender = currentUser;
-        [chat1 addMessagesObject:message];
-    }
-
-    [currentUser addChatsObject:chat1];
-    
-    for (int i = 0; i < 3; i ++) {
-        RGSChat *chat = [RGSChat MR_createEntity];
-        chat.sender = currentUser;
-        [chat addParticipantsObject:currentUser];
-        
-        if (i == 0) {
-            chat.lastMessageDate = [NSDate dateYesterday];
-        } else if (i == 1){
-            chat.lastMessageDate = [NSDate dateWithDaysBeforeNow:2];
-        } else if (i == 2){
-            chat.lastMessageDate = [NSDate dateWithDaysBeforeNow:40];
-        }
-        [currentUser addChatsObject:chat];
-    }
-    
-    for (int i = 0; i < 20; i ++) {
-        RGSMessage *message = [RGSMessage MR_createEntity];
-        message.body = [LoremIpsum wordsWithNumber:10];
-        message.sender = currentUser;
-        [chat1 addMessagesObject:message];
-    }
+//    {
+//        RGSMessage *message = [RGSMessage MR_createEntity];
+//        message.body = @"a Message to current User sent";
+//        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
+//        message.sender = currentUser;
+//        [chat1 addMessagesObject:message];
+//    }
+//
+//    {
+//        RGSMessage *message = [RGSMessage MR_createEntity];
+//        message.body = @"a Message to Bar sent";
+//        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
+//        message.sender = barUser;
+//        [chat1 addMessagesObject:message];
+//    }
+//    {
+//        RGSMessage *message = [RGSMessage MR_createEntity];
+//        message.body = [LoremIpsum wordsWithNumber:19];
+//        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
+//        message.sender = currentUser;
+//        [chat1 addMessagesObject:message];
+//    }
+//    {
+//        RGSMessage *message = [RGSMessage MR_createEntity];
+//        message.body = @"two words";
+//        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
+//        message.sender = currentUser;
+//        [chat1 addMessagesObject:message];
+//    }
+//
+//    [currentUser addChatsObject:chat1];
+//    
+//    for (int i = 0; i < 3; i ++) {
+//        RGSChat *chat = [RGSChat MR_createEntity];
+//        chat.sender = currentUser;
+//        [chat addParticipantsObject:currentUser];
+//        
+//        if (i == 0) {
+//            chat.lastMessageDate = [NSDate dateYesterday];
+//        } else if (i == 1){
+//            chat.lastMessageDate = [NSDate dateWithDaysBeforeNow:2];
+//        } else if (i == 2){
+//            chat.lastMessageDate = [NSDate dateWithDaysBeforeNow:40];
+//        }
+//        [currentUser addChatsObject:chat];
+//    }
+//    
+//    for (int i = 0; i < 20; i ++) {
+//        RGSMessage *message = [RGSMessage MR_createEntity];
+//        message.body = [LoremIpsum wordsWithNumber:10];
+//        message.sender = currentUser;
+//        [chat1 addMessagesObject:message];
+//    }
 
     
     [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {

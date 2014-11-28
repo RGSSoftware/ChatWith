@@ -12,6 +12,7 @@
 
 #import "RGSChat.h"
 #import "RGSMessage.h"
+#import "RGSContact.h"
 #import "RGSManagedUser.h"
 
 #import "RGSChatCell.h"
@@ -22,11 +23,14 @@
 #import "UIColor+RGSColorWithHexString.h"
 #import "UIImage+RGSinitWithColor.h"
 #import "NSDate+Utilities.h"
+#import "UINavigationController+RGSBlock.h"
 
 #import "RGSBaseViewController+RGSSeparatorExtender.h"
 
 
 @interface RGSChatListViewController ()
+
+@property (nonatomic, strong)RGSChat *showChat;
 
 @end
 
@@ -180,11 +184,15 @@ return [[_fetchedResultsController sections] count];
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([segue.identifier isEqualToString:@"toMessages"]){
+    if([segue.destinationViewController isKindOfClass:[RGSMessageListViewController class]]){
         RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
                                                                    *)[segue destinationViewController];
-        messageListViewController.chat = [_fetchedResultsController objectAtIndexPath:[self.tableView indexPathForCell:sender]];
-
+        if (self.showChat) {
+            messageListViewController.chat = self.showChat;
+        } else {
+            messageListViewController.chat = [_fetchedResultsController objectAtIndexPath:[self.tableView indexPathForCell:sender]];
+        }
+        
     } else if ([segue.destinationViewController isKindOfClass:[RGSContactListViewController class]]){
         RGSContactListViewController *contactListViewController = (RGSContactListViewController
                                                                    *)[segue destinationViewController];
@@ -192,6 +200,30 @@ return [[_fetchedResultsController sections] count];
     }
 }
 
+-(void)contactListViewController:(RGSContactListViewController *)contactListViewController didSelectContact:(RGSContact *)contact{
+
+    [self.navigationController popViewControllerAnimated:YES completion:^{
+        NSPredicate *chatPredicate = [NSPredicate predicateWithFormat:@"(%@ IN %K) AND (%@ IN %K)", [[LocalStorageService shared] savedUser], @"participants", contact.friend, @"participants"];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        [fetchRequest setEntity:[RGSChat MR_entityDescription]];
+        [fetchRequest setPredicate:chatPredicate];
+        
+        NSError *error;
+        NSArray *result = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+        if (!result.count == 0) {
+            NSLog(@"simple print-----result------{%@}", result);
+            NSLog(@"simple print-----contact.source------{%@}", contact.source);
+            self.showChat = [result firstObject];
+            [self bk_performBlock:^(id obj) {
+                [self performSegueWithIdentifier:@"toMessages" sender:self];
+            } afterDelay:0];
+            
+            
+        } else {
+            
+        };
+    }];
+}
 
 -(NSFetchedResultsController *)fetchedResultsController{
     
@@ -214,6 +246,7 @@ return [[_fetchedResultsController sections] count];
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    self.showChat = nil;
     [self deregisterForNSManagedObjectNotifications];
     
 }
