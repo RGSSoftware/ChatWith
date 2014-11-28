@@ -11,7 +11,7 @@
 
 @implementation RGSPpopSegue
 -(void)perform{
-    [self.fromViewController.navigationController popViewControllerAnimated:YES];
+    [self.fromViewController.navigationController popToViewController:self.toViewController animated:YES];
 }
 
 @end

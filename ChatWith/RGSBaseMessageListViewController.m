@@ -457,12 +457,8 @@ struct {
     }
 }
 
--(void)toChatListScreen:(id)sender
-{
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:[NSString stringWithFormat:@"You must override %@ in a subclass",
-                                           NSStringFromSelector(_cmd)]
-                                 userInfo:nil];
+-(void)toChatListScreen:(id)sender{
+    [self performSegueWithIdentifier:@"unwindToChatLis" sender:self];
 }
 
 #pragma mark - UIKeyboard ()
@@ -642,6 +638,8 @@ struct {
     
     [self.messageComposerView.messageTextView.internalTextView setSelectedRange:NSMakeRange(currentRange.location + 1, currentRange.length)];
 }
+
+
 
 -(void)sendMessage:(id)sender{    
     RGSMessage *message = [RGSMessage MR_createEntity];

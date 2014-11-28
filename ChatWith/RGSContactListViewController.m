@@ -103,7 +103,7 @@
 
 -(void)toChatListScreen:(id)sender{
     //toChats
-     [self performSegueWithIdentifier:@"toChats" sender:self];
+     [self performSegueWithIdentifier:@"fromContactToChatListSegue" sender:self];
 //    [self.navigationController popViewControllerAnimated:NO];
 }
 
