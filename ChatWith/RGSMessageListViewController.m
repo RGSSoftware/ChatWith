@@ -115,6 +115,12 @@ struct {
     
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentSize.height -CGRectGetHeight(self.tableView.frame) + self.tableView.contentInset.bottom) animated:YES];
+
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self deRegisterForKeyboardNotifications];
@@ -217,11 +223,11 @@ struct {
     [self fullyExtendTableViewSeparator:self.tableView];
     
     // Scroll table view to the last row
-    if (_shouldScrollToLastRow)
-    {
-        _shouldScrollToLastRow = NO;
-        [self.tableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
-    }
+//    if (_shouldScrollToLastRow)
+//    {
+//        _shouldScrollToLastRow = NO;
+//        [self.tableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
+//    }
 }
 
 -(NSManagedObjectContext *)managedObjectContext{
@@ -470,6 +476,8 @@ struct {
     self.tableView.contentInset = messageViewKeyboard;
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationSpacing, 0, messageViewKeyboard.bottom, 0);
     
+    [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentSize.height -CGRectGetHeight(self.tableView.frame) + self.tableView.contentInset.bottom) animated:NO];
+    
     [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]
                           delay:0
                         options:(([[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16) | UIViewAnimationOptionBeginFromCurrentState)
@@ -576,9 +584,7 @@ struct {
     self.tableView.contentInset = messageViewKeyboard;
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationSpacing, 0, messageViewKeyboard.bottom, 0);
     
-//    CGPoint offset = CGPointMake(0, self.tableView.contentSize.height -     self.tableView.frame.size.height);
-//    [self.tableView setContentOffset:offset animated:YES];
-    
+     [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentSize.height -CGRectGetHeight(self.tableView.frame) + self.tableView.contentInset.bottom) animated:NO];
 }
 
 #pragma mark - RGSMessageAttachmentViewControllerDelegate ()
