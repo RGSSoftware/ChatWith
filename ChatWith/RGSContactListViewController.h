@@ -10,6 +10,12 @@
 #import "RGSBaseViewController.h"
 
 @class RGSContact;
+@class RGSContactListViewController;
+
+@protocol RGSContactListViewControllerDelegate <NSObject>
+
+-(void)contactListViewController:(RGSContactListViewController *)contactListViewController didSelectContact:(RGSContact *)contact;
+@end
 
 @interface RGSContactListViewController : RGSBaseViewController <UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate>
 
@@ -20,11 +26,8 @@
 
 @property (nonatomic, strong)NSFetchedResultsController *fetchedResultsController;
 
-@property (nonatomic, weak) id delegate;
+@property (nonatomic, weak) IBOutlet id <RGSContactListViewControllerDelegate> delegate;
 
 @end
 
-@protocol RGSContactListViewControllerDelegate <NSObject>
 
--(void)contactListViewController:(RGSContactListViewController *)contactListViewController didSelectContact:(RGSContact *)contact;
-@end

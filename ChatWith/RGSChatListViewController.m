@@ -184,6 +184,11 @@ return [[_fetchedResultsController sections] count];
         RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
                                                                    *)[segue destinationViewController];
         messageListViewController.chat = [_fetchedResultsController objectAtIndexPath:[self.tableView indexPathForCell:sender]];
+
+    } else if ([segue.destinationViewController isKindOfClass:[RGSContactListViewController class]]){
+        RGSContactListViewController *contactListViewController = (RGSContactListViewController
+                                                                   *)[segue destinationViewController];
+        contactListViewController.delegate = self;
     }
 }
 
