@@ -357,10 +357,10 @@
             </objects>
             <point key="canvasLocation" x="1650" y="1084"/>
         </scene>
-        <!--Message List View Controller One Pop-->
+        <!--Base Message List View Controller-->
         <scene sceneID="g6R-Ox-UsF">
             <objects>
-                <viewController storyboardIdentifier="RGSMessageListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mah-Zz-rb9" customClass="RGSMessageListViewControllerOnePop" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RGSMessageListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mah-Zz-rb9" customClass="RGSBaseMessageListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aoL-kL-t1c"/>
                         <viewControllerLayoutGuide type="bottom" id="wIc-JV-1el"/>

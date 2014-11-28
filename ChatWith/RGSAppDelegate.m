@@ -27,7 +27,7 @@
 #import "RGSApplicationSessionManagementService.h"
 #import "RGSContactListViewController.h"
 #import "RGSChatService.h"
-#import "RGSMessageListViewControllerOnePop.h"
+
 
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
