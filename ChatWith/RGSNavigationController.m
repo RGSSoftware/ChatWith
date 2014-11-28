@@ -12,6 +12,12 @@
 #import "RGSPushAnimationController.h"
 #import "RGSPopAnimationController.h"
 
+#import "RGSShowModallyAnimatonController.h"
+#import "RGSDismissModallyAnimatonController.h"
+
+#import "RGSChatListViewController.h"
+#import "RGSContactListViewController.h"
+
 @interface RGSNavigationController ()
 @property(nonatomic, strong)RGSPopSegue *popSegue;
 @end
@@ -32,6 +38,12 @@
 }
 
 -(id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    if([fromVC isKindOfClass:[RGSChatListViewController class]] && [toVC isKindOfClass:[RGSContactListViewController class]]){
+        if(operation == UINavigationControllerOperationPush) return [RGSShowModallyAnimatonController new];
+        
+    } else if ([fromVC isKindOfClass:[RGSContactListViewController class]] && [toVC isKindOfClass:[RGSChatListViewController class]]){
+        if(operation == UINavigationControllerOperationPop) return [RGSDismissModallyAnimatonController new];
+    }
     if(operation == UINavigationControllerOperationPush) return [RGSPushAnimationController new];
     else return [RGSPopAnimationController new];
 }

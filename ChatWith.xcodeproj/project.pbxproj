@@ -73,6 +73,8 @@
 		22A001641A27672500B22EEE /* RGSPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A001631A27672500B22EEE /* RGSPopSegue.m */; };
 		22A001671A27789F00B22EEE /* RGSPushAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A001661A27789F00B22EEE /* RGSPushAnimationController.m */; };
 		22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A18A3419CF44DB004A266E /* LocalStorageService.m */; };
+		22AA4CC11A28A18F008DE41B /* RGSShowModallyAnimatonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AA4CC01A28A18E008DE41B /* RGSShowModallyAnimatonController.m */; };
+		22AA4CC41A28A30F008DE41B /* RGSDismissModallyAnimatonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AA4CC31A28A30F008DE41B /* RGSDismissModallyAnimatonController.m */; };
 		22AD00EB1A0D8686008F9EF7 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00EA1A0D8686008F9EF7 /* NSDate+Utilities.m */; };
 		22AD00F11A0ED43D008F9EF7 /* RGSChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00F01A0ED43D008F9EF7 /* RGSChat.m */; };
 		22AD00F41A1336E8008F9EF7 /* RGSMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00F31A1336E7008F9EF7 /* RGSMessageCell.m */; };
@@ -193,6 +195,10 @@
 		22A001661A27789F00B22EEE /* RGSPushAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSPushAnimationController.m; sourceTree = "<group>"; };
 		22A18A3319CF44DB004A266E /* LocalStorageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStorageService.h; sourceTree = "<group>"; };
 		22A18A3419CF44DB004A266E /* LocalStorageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStorageService.m; sourceTree = "<group>"; };
+		22AA4CBF1A28A18E008DE41B /* RGSShowModallyAnimatonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSShowModallyAnimatonController.h; sourceTree = "<group>"; };
+		22AA4CC01A28A18E008DE41B /* RGSShowModallyAnimatonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSShowModallyAnimatonController.m; sourceTree = "<group>"; };
+		22AA4CC21A28A30F008DE41B /* RGSDismissModallyAnimatonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSDismissModallyAnimatonController.h; sourceTree = "<group>"; };
+		22AA4CC31A28A30F008DE41B /* RGSDismissModallyAnimatonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSDismissModallyAnimatonController.m; sourceTree = "<group>"; };
 		22AD00E91A0D8686008F9EF7 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		22AD00EA1A0D8686008F9EF7 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		22AD00EF1A0ED43D008F9EF7 /* RGSChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChat.h; sourceTree = "<group>"; };
@@ -384,6 +390,10 @@
 				22A001661A27789F00B22EEE /* RGSPushAnimationController.m */,
 				227472071A277ABB00F61663 /* RGSPopAnimationController.h */,
 				227472081A277ABB00F61663 /* RGSPopAnimationController.m */,
+				22AA4CBF1A28A18E008DE41B /* RGSShowModallyAnimatonController.h */,
+				22AA4CC01A28A18E008DE41B /* RGSShowModallyAnimatonController.m */,
+				22AA4CC21A28A30F008DE41B /* RGSDismissModallyAnimatonController.h */,
+				22AA4CC31A28A30F008DE41B /* RGSDismissModallyAnimatonController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -706,6 +716,7 @@
 				22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */,
 				22BE6EE71A16305A00D130EB /* UIButton+RGSUIBackButton.m in Sources */,
 				22A001641A27672500B22EEE /* RGSPopSegue.m in Sources */,
+				22AA4CC41A28A30F008DE41B /* RGSDismissModallyAnimatonController.m in Sources */,
 				228EABAD1A240E96007D555E /* RGSMessageComposeImage.m in Sources */,
 				22F5206A1A0073E700FD2CD5 /* UIImage+Resize.m in Sources */,
 				22DF5F921A068E2900DC4D67 /* RGSPushSegue.m in Sources */,
@@ -739,6 +750,7 @@
 				22B1E3181A1967660062701A /* CSGrowingTextView.m in Sources */,
 				223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */,
 				22AD00EB1A0D8686008F9EF7 /* NSDate+Utilities.m in Sources */,
+				22AA4CC11A28A18F008DE41B /* RGSShowModallyAnimatonController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
