@@ -46,6 +46,27 @@ static dispatch_once_t once_token = 0;
 -(RGSManagedUser *)savedUser{
     return [RGSManagedUser MR_findFirstByAttribute:@"currentUser" withValue:@YES];
 }
+-(QBUUser *)savedUserAsQBUUser{
+    RGSManagedUser *currentUser = [RGSManagedUser MR_findFirstByAttribute:@"currentUser" withValue:@YES];
+    
+    QBUUser *qbUser = [QBUUser user];
+    qbUser.externalUserID = [currentUser.externalUserID unsignedIntegerValue];
+    qbUser.blobID = [currentUser.blobID integerValue];
+    qbUser.facebookID = currentUser.facebookID;
+    qbUser.twitterID = currentUser.twitterID;
+    qbUser.fullName = currentUser.fullName;
+    qbUser.email = currentUser.email;
+    qbUser.login = currentUser.login;
+    qbUser.phone = currentUser.phone;
+    qbUser.website = currentUser.website;
+    qbUser.password = currentUser.password;
+    qbUser.oldPassword = currentUser.oldPassword;
+    qbUser.lastRequestAt = currentUser.lastRequestAt;
+    qbUser.ID = [currentUser.entityID integerValue];
+        
+    return qbUser;
+    
+}
 
 //- (void)saveMessageToHistory:(QBChatMessage *)message withUserID:(NSUInteger)userID
 //{

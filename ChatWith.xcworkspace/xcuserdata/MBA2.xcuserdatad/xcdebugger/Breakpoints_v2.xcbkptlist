@@ -494,11 +494,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSChatService.m"
-            timestampString = "438708163.119297"
+            timestampString = "439052233.577972"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-sendMessage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -622,11 +622,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/UINavigationController+RGSBlock.m"
-            timestampString = "438889027.637811"
+            timestampString = "438889823.038059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "-navigationController:didShowViewController:animated:"
             landmarkType = "5">
          </BreakpointContent>
@@ -638,11 +638,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/UINavigationController+RGSBlock.m"
-            timestampString = "438889027.637811"
+            timestampString = "438889823.038059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "-navigationController:didShowViewController:animated:"
             landmarkType = "5">
          </BreakpointContent>
@@ -660,6 +660,54 @@
             startingLineNumber = "23"
             endingLineNumber = "23"
             landmarkName = "-animateTransition:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatWith/RGSChatService.m"
+            timestampString = "439052213.615491"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-loginUser:successBlock:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatWith/LocalStorageService.m"
+            timestampString = "439053951.861587"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-savedUserAsQBUUser"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatWith/RGSUserMangementService.m"
+            timestampString = "439053951.861587"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-quickBloxLoginUsername:password:successBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

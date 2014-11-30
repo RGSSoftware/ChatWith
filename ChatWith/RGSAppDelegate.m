@@ -9,6 +9,7 @@
 #import "RGSAppDelegate.h"
 #import "LocalStorageService.h"
 #import "RGSLoginViewController.h"
+#import "RGSMessageListViewController.h"
 #import "RGSUserMangementService.h"
 #import "RGSManagedUser.h"
 
@@ -57,29 +58,29 @@
     [RGSMessage MR_truncateAll];
     [RGSChat MR_truncateAll];
 //
-    RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
-    currentUser.currentUser = [NSNumber numberWithBool:YES];
-    
-    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
-    barUser.fullName = @"bar";
-    
-    RGSContact *contact = [RGSContact MR_createEntity];
-    contact.source = currentUser;
-    contact.friend = barUser;
-    
-    RGSChat *chat = [RGSChat MR_createEntity];
-    chat.sender = currentUser;
-    chat.receiver = barUser;
-    chat.lastMessageDate = [NSDate date];
-    [chat addParticipantsObject:currentUser];
-    [chat addParticipantsObject:barUser];
-    
-    for (int i = 0; i < 20; i ++) {
-        RGSMessage *message = [RGSMessage MR_createEntity];
-        message.body = [LoremIpsum wordsWithNumber:10];
-        message.sender = currentUser;
-        [chat addMessagesObject:message];
-    }
+//    RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
+//    currentUser.currentUser = [NSNumber numberWithBool:YES];
+//    
+//    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
+//    barUser.fullName = @"bar";
+//
+//    RGSContact *contact = [RGSContact MR_createEntity];
+//    contact.source = currentUser;
+//    contact.friend = barUser;
+//    
+//    RGSChat *chat = [RGSChat MR_createEntity];
+//    chat.sender = currentUser;
+//    chat.receiver = barUser;
+//    chat.lastMessageDate = [NSDate date];
+//    [chat addParticipantsObject:currentUser];
+//    [chat addParticipantsObject:barUser];
+//    
+//    for (int i = 0; i < 20; i ++) {
+//        RGSMessage *message = [RGSMessage MR_createEntity];
+//        message.body = [LoremIpsum wordsWithNumber:10];
+//        message.sender = currentUser;
+//        [chat addMessagesObject:message];
+//    }
 
 //
 ////    for(int i = 0; i < 60; i++){
@@ -207,9 +208,9 @@
 //    }
 
     
-    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
-        if (success) {
-            
+//    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
+//        if (success) {
+//
 //            RGSMessageListViewController *mlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSMessageListViewController"];
 //            mlvc.chat = chat1;
 //            
@@ -221,8 +222,8 @@
 //            
 //            self.window.rootViewController = nc;
 
-        }
-    }];
+//        }
+//    }];
 
 ////
 //    NSLog(@"simple print-----allUsers.count------{%lu}", (unsigned long)[[RGSManagedUser MR_findAll] count]);
@@ -231,17 +232,87 @@
 //    NSLog(@"simple print-----allMessage.count------{%lu}", (unsigned long)[[RGSMessage MR_findAll] count]);
 
     
-//    self.applicationSessionManager.applicationID = 7632;
-//    self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";
-//    self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
-//    self.applicationSessionManager.accountKey = @"byNoqE9AHiQsoffhPgdt";
+    self.applicationSessionManager.applicationID = 7632;
+    self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";
+    self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
+    self.applicationSessionManager.accountKey = @"byNoqE9AHiQsoffhPgdt";
+    
+    RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
+    currentUser.currentUser = [NSNumber numberWithBool:YES];
+    currentUser.fullName = @"rr";
+    currentUser.password = @"h5ljh4aKOcLw";
+    
+    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
+    barUser.fullName = @"bar";
+    barUser.password = @"abc123456";
+    
+    RGSChat *chat = [RGSChat MR_createEntity];
+    chat.sender = currentUser;
+    chat.receiver = barUser;
+    chat.lastMessageDate = [NSDate date];
+    [chat addParticipantsObject:currentUser];
+    [chat addParticipantsObject:barUser];
+    
+    for (int i = 0; i < 20; i ++) {
+        RGSMessage *message = [RGSMessage MR_createEntity];
+        message.body = [LoremIpsum wordsWithNumber:10];
+        message.sender = currentUser;
+        [chat addMessagesObject:message];
+    }
+
+
+//    QBSessionParameters *parameters = [QBSessionParameters new];
+//    parameters.userLogin = currentUser.fullName;
+//    parameters.userPassword = currentUser.password;
 //    
+//    [QBRequest createSessionWithExtendedParameters:parameters successBlock:^(QBResponse *response, QBASession *session) {
+//        // Sign In to QuickBlox Chat
+////        
+//    } errorBlock:^(QBResponse *response) {
+//        // error handling
+//        NSLog(@"error: %@", response.error);
+//    }];
+    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
+        if (success) {
+            [self.applicationSessionManager createSessionWithCompletion:^(BOOL success) {
+                if (success) {
+                    
+                    [self.userManager registerUsername:barUser.fullName password:barUser.password successBlock:^(BOOL success) {
+                        if (success) {
+                            [self.userManager loginUsername:currentUser.fullName password:currentUser.password successBlock:^(BOOL success) {
+                                if (success) {
+                                    [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
+                                        if (success) {
+                                            
+                                            RGSMessageListViewController *mlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSMessageListViewController"];
+                                            mlvc.chat = chat;
+                                            
+                                            UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mlvc];
+                                            
+                                            self.window.rootViewController = nc;
+
+                                        }
+                                        
+                                    }];
+                                }
+                            }];
+                        } else {
+                            NSLog(@"simple print-----error in registing user Bar------");
+                        }
+                    }];
+                    
+                }
+            }];
+        }
+    }];
+
+    
 //    [self.applicationSessionManager createSessionWithCompletion:^(BOOL success) {
 //        if (success) {
 //            if (self.localStorageService.savedUser) {
 //                if (self.localStorageService.savedUser.isSignIn) {
 //                    //login user
-//                    [self.userManager loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.login successBlock:^(BOOL success) {
+//                    [self.userManager loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.password successBlock:^(BOOL success) {
 //                        if(success){
 //                            //login to chat
 //                            [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {

@@ -211,8 +211,6 @@ return [[_fetchedResultsController sections] count];
         NSError *error;
         NSArray *result = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
         if (!result.count == 0) {
-            NSLog(@"simple print-----result------{%@}", result);
-            NSLog(@"simple print-----contact.source------{%@}", contact.source);
             self.showChat = [result firstObject];
             [self bk_performBlock:^(id obj) {
                 [self performSegueWithIdentifier:@"toMessages" sender:self];

@@ -56,7 +56,8 @@ static dispatch_once_t once_token = 0;
 -(void)loginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))results{
     if([[LocalStorageService shared] savedUser]){
         //If user is trying to login, but there Credentials are saved
-        if([[[LocalStorageService shared] savedUser].login isEqualToString:username]){
+//        if([[[LocalStorageService shared] savedUser].login isEqualToString:username]){
+        if(TRUE){
             //login saved user
             [self quickBloxLoginUsername:username password:password successBlock:results];
         } else {
@@ -83,7 +84,13 @@ static dispatch_once_t once_token = 0;
 
 -(void)quickBloxLoginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))results{
     [QBRequest logInWithUserLogin:username password:password successBlock:^(QBResponse *response, QBUUser *user) {
-        results(YES);
+        RGSManagedUser *currentUser = [[LocalStorageService shared] savedUser];
+        
+        [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
+            currentUser.entityID = [NSNumber numberWithInteger:user.ID];
+        } completion:^(BOOL success, NSError *error) {
+            results(success);
+        }];
     } errorBlock:^(QBResponse *response) {
         results(NO);
     }];

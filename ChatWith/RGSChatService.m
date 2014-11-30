@@ -8,6 +8,9 @@
 
 #import "RGSChatService.h"
 #import "RGSManagedUser.h"
+#import "ApplicationSession.h"
+
+#import "LocalStorageService.h"
 
 
 @interface RGSChatService () <QBChatDelegate, QBActionStatusDelegate>
@@ -38,6 +41,9 @@ static dispatch_once_t once_token = 0;
 
 -(void)loginUser:(QBUUser *)user successBlock:(void (^)(BOOL))success{
     self.loginSuccessBlock = success;
+    
+    
+    
     
     [QBChat instance].delegate = self;
     [[QBChat instance] loginWithUser:user];
