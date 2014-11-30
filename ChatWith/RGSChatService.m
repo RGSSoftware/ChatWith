@@ -8,6 +8,7 @@
 
 #import "RGSChatService.h"
 #import "RGSManagedUser.h"
+#import "RGSMessage.h"
 #import "ApplicationSession.h"
 
 #import "LocalStorageService.h"
@@ -93,7 +94,15 @@ static dispatch_once_t once_token = 0;
 }
 
 -(void)sendMessage:(RGSMessage *)message{
+    QBChatMessage *qbMessage = [QBChatMessage message];
+    qbMessage.text = message.body;
+    qbMessage.recipientID = [message.receiver.entityID integerValue];
     
+    [[QBChat instance] sendMessage:qbMessage];
+    
+}
+
+- (void)chatDidReceiveMessage:(QBChatMessage *)message{
     
 }
 @end
