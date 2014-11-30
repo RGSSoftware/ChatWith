@@ -241,44 +241,32 @@
     currentUser.currentUser = [NSNumber numberWithBool:YES];
     currentUser.fullName = @"rr";
     currentUser.password = @"h5ljh4aKOcLw";
-    
+//
     RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
     barUser.fullName = @"bar";
     barUser.password = @"abc123456";
-    
+    barUser.entityID = @2036179;
+//
     RGSChat *chat = [RGSChat MR_createEntity];
     chat.sender = currentUser;
     chat.receiver = barUser;
     chat.lastMessageDate = [NSDate date];
     [chat addParticipantsObject:currentUser];
     [chat addParticipantsObject:barUser];
-    
-    for (int i = 0; i < 20; i ++) {
-        RGSMessage *message = [RGSMessage MR_createEntity];
-        message.body = [LoremIpsum wordsWithNumber:10];
-        message.sender = currentUser;
-        [chat addMessagesObject:message];
-    }
-
-
-//    QBSessionParameters *parameters = [QBSessionParameters new];
-//    parameters.userLogin = currentUser.fullName;
-//    parameters.userPassword = currentUser.password;
-//    
-//    [QBRequest createSessionWithExtendedParameters:parameters successBlock:^(QBResponse *response, QBASession *session) {
-//        // Sign In to QuickBlox Chat
-////        
-//    } errorBlock:^(QBResponse *response) {
-//        // error handling
-//        NSLog(@"error: %@", response.error);
-//    }];
+//
+//    for (int i = 0; i < 20; i ++) {
+//        RGSMessage *message = [RGSMessage MR_createEntity];
+//        message.body = [LoremIpsum wordsWithNumber:10];
+//        message.sender = currentUser;
+//        [chat addMessagesObject:message];
+//    }
     [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
         if (success) {
             [self.applicationSessionManager createSessionWithCompletion:^(BOOL success) {
                 if (success) {
                     
-                    [self.userManager registerUsername:barUser.fullName password:barUser.password successBlock:^(BOOL success) {
-                        if (success) {
+//                    [self.userManager registerUsername:barUser.fullName password:barUser.password successBlock:^(BOOL success) {
+//                        if (success) {
                             [self.userManager loginUsername:currentUser.fullName password:currentUser.password successBlock:^(BOOL success) {
                                 if (success) {
                                     [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
@@ -286,25 +274,93 @@
                                             
                                             RGSMessageListViewController *mlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSMessageListViewController"];
                                             mlvc.chat = chat;
+                                            mlvc.receiver = barUser;
                                             
                                             UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mlvc];
                                             
                                             self.window.rootViewController = nc;
-
+                                            
                                         }
                                         
                                     }];
                                 }
-                            }];
-                        } else {
-                            NSLog(@"simple print-----error in registing user Bar------");
-                        }
+//                            }];
+//                        } else {
+//                            NSLog(@"simple print-----error in registing user Bar------");
+//                        }
                     }];
                     
                 }
             }];
         }
     }];
+
+    
+    
+//    {
+//        RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
+//        currentUser.currentUser = [NSNumber numberWithBool:YES];
+//        currentUser.fullName = @"bar";
+//        currentUser.password = @"abc123456";
+//        
+//        RGSManagedUser *rrUser = [RGSManagedUser MR_createEntity];
+//        rrUser.fullName = @"rr";
+//        rrUser.password = @"h5ljh4aKOcLw";
+//        rrUser.entityID = @894248;
+//        
+//        RGSChat *chat = [RGSChat MR_createEntity];
+//        chat.sender = currentUser;
+//        chat.receiver = rrUser;
+//        chat.lastMessageDate = [NSDate date];
+//        [chat addParticipantsObject:currentUser];
+//        [chat addParticipantsObject:rrUser];
+//        
+//        [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
+//            if (success) {
+//                [self.applicationSessionManager createSessionWithCompletion:^(BOOL success) {
+//                    if (success) {
+//
+//                        [self.userManager loginUsername:currentUser.fullName password:currentUser.password successBlock:^(BOOL success) {
+//                            if (success) {
+//                                [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
+//                                    if (success) {
+//                                        
+//                                        RGSMessageListViewController *mlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSMessageListViewController"];
+//                                        mlvc.chat = chat;
+//                                        mlvc.receiver = rrUser;
+//                                        
+//                                        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mlvc];
+//                                        
+//                                        self.window.rootViewController = nc;
+//                                        
+//                                    }
+//                                    
+//                                }];
+//                            }
+//                        }];
+//                    }
+//                    
+//                }];
+//            }
+//        }];
+//
+//    }
+
+
+    
+    
+//    QBSessionParameters *parameters = [QBSessionParameters new];
+//    parameters.userLogin = currentUser.fullName;
+//    parameters.userPassword = currentUser.password;
+//
+//    [QBRequest createSessionWithExtendedParameters:parameters successBlock:^(QBResponse *response, QBASession *session) {
+//        // Sign In to QuickBlox Chat
+////        
+//    } errorBlock:^(QBResponse *response) {
+//        // error handling
+//        NSLog(@"error: %@", response.error);
+//    }];
+    
 
     
 //    [self.applicationSessionManager createSessionWithCompletion:^(BOOL success) {

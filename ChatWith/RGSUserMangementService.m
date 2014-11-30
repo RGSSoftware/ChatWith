@@ -45,7 +45,12 @@ static dispatch_once_t once_token = 0;
     user.password = password;
     [QBRequest signUp:user
          successBlock:^(QBResponse *response, QBUUser *user) {
-             results(YES);
+             RGSManagedUser *saveUser = [RGSManagedUser MR_findFirstByAttribute:@"fullName" withValue:user.login];
+             [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
+                 saveUser.entityID = [NSNumber numberWithInteger:user.ID];
+             } completion:^(BOOL success, NSError *error) {
+                 results(success);
+             }];
          } errorBlock:^(QBResponse *response) {
              results(NO);
          }];

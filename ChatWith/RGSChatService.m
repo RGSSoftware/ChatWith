@@ -7,6 +7,7 @@
 //
 
 #import "RGSChatService.h"
+#import "RGSChat.h"
 #import "RGSManagedUser.h"
 #import "RGSMessage.h"
 #import "ApplicationSession.h"
@@ -35,6 +36,7 @@ static dispatch_once_t once_token = 0;
     
     return _instance;
 }
+
 +(void)setSharedInstance:(RGSChatService *)instance {
     once_token = 0; // resets the once_token so dispatch_once will run again
     _instance = instance;
@@ -97,12 +99,41 @@ static dispatch_once_t once_token = 0;
     QBChatMessage *qbMessage = [QBChatMessage message];
     qbMessage.text = message.body;
     qbMessage.recipientID = [message.receiver.entityID integerValue];
-    
+    qbMessage.senderID = [message.sender.entityID integerValue];
+
     [[QBChat instance] sendMessage:qbMessage];
     
 }
 
-- (void)chatDidReceiveMessage:(QBChatMessage *)message{
+- (void)chatDidReceiveMessage:(QBChatMessage *)qbMessage{
+    NSArray *users = [RGSManagedUser MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"(%K = %@) OR (%K = %@)",
+                                                              NSStringFromSelector(@selector(entityID)),
+                                                              [NSNumber numberWithInteger:qbMessage.senderID],
+                                                              NSStringFromSelector(@selector(entityID)),
+                                                              [NSNumber numberWithInteger:qbMessage.recipientID]]];
     
+    RGSManagedUser *sender;
+    RGSManagedUser *receiver;
+    
+    
+    RGSMessage *message = [RGSMessage MR_createEntity];
+    for(RGSManagedUser *user in users){
+        if([[NSNumber numberWithUnsignedInteger:qbMessage.senderID] isEqualToNumber:user.entityID]){
+            sender = user;
+        } else receiver = user;
+    }
+    
+    message.sender = sender;
+    message.receiver = receiver;
+    message.body = qbMessage.text;
+    
+    
+    NSPredicate *chatPredicate = [NSPredicate predicateWithFormat:@"(%@ IN %K) AND (%@ IN %K)", sender, @"participants", receiver, @"participants"];
+    RGSChat *chat = [RGSChat MR_findFirstWithPredicate:chatPredicate];
+    
+    message.chat = chat;
+
+    [[NSManagedObjectContext MR_defaultContext] MR_saveOnlySelfAndWait];
+
 }
 @end

@@ -70,6 +70,27 @@ struct {
     self = [super initWithCoder:aDecoder];
     if(self){
         self.messageComposeImages = [NSMutableArray new];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:nil queue:[NSOperationQueue mainQueue]
+                                                      usingBlock:^(NSNotification *note) {
+                                                          for(NSManagedObject *object in [[note userInfo] objectForKey:NSInsertedObjectsKey]){
+                                                              if([object.entity.name isEqualToString:NSStringFromClass([RGSMessage class])]){
+                                                                  
+                                                                  [NSFetchedResultsController deleteCacheWithName:nil];
+                                                                  
+                                                                  NSError *error;
+                                                                  if (![[self fetchedResultsController] performFetch:&error]) {
+                                                                      // Update to handle the error appropriately.
+                                                                      NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                                                                  } else {
+                                                                      [self.tableView reloadData];
+                                                                  }
+                                                                  
+                                                                  break;
+                                                              }
+                                                          }
+                                                          
+                                                      }];
     }
     return self;
 }
@@ -135,6 +156,7 @@ struct {
     [[_fetchedResultsController sections] objectAtIndex:section];
     
     int rowCount = [sectionInfo numberOfObjects];
+    
     return rowCount;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
