@@ -670,6 +670,9 @@ struct {
         [message addImagesObject:image];
     }
     
+    [[self managedObjectContext] MR_saveOnlySelfAndWait];
+    self.messageComposerView.messageTextView.internalTextView.text = nil;
+    
     [[RGSChatService shared] sendMessage:message];
 }
 
