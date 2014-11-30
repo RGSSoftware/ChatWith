@@ -280,7 +280,7 @@ struct {
     {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         [fetchRequest setEntity:[RGSMessage MR_entityDescription]];
-        [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]]];
+        [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES]]];
         _currentUser = [[LocalStorageService shared] savedUser];
         
         [fetchRequest setFetchBatchSize:20];

@@ -123,7 +123,7 @@ static dispatch_once_t once_token = 0;
     message.sender = sender;
     message.receiver = receiver;
     message.body = qbMessage.text;
-    
+    message.date = qbMessage.datetime;
     
     NSPredicate *chatPredicate = [NSPredicate predicateWithFormat:@"(%@ IN %K) AND (%@ IN %K)", sender, @"participants", receiver, @"participants"];
     RGSChat *chat = [RGSChat MR_findFirstWithPredicate:chatPredicate];
