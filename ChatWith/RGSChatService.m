@@ -97,6 +97,10 @@ static dispatch_once_t once_token = 0;
     qbMessage.text = message.body;
     qbMessage.recipientID = [message.receiver.entityID integerValue];
     qbMessage.senderID = [message.sender.entityID integerValue];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"save_to_history"] = @YES;
+    [qbMessage setCustomParameters:params];
 
     [[QBChat instance] sendMessage:qbMessage];
     
