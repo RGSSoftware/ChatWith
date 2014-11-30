@@ -45,11 +45,7 @@ static dispatch_once_t once_token = 0;
     user.password = password;
     [QBRequest signUp:user
          successBlock:^(QBResponse *response, QBUUser *user) {
-             
-             
-             [[LocalStorageService shared] creteCurrentUserWithQBUser:user successBlock:^(BOOL success, NSError *error) {
-                 if(success) results(YES);
-             }];
+             results(YES);
          } errorBlock:^(QBResponse *response) {
              results(NO);
          }];
