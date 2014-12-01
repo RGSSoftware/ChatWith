@@ -11,8 +11,11 @@
 #import "RGSManagedUser.h"
 #import "RGSMessage.h"
 #import "ApplicationSession.h"
+#import "RGSImage.h"
 
 #import "LocalStorageService.h"
+
+#import "RGSImageBatchUploadRequest.h"
 
 
 @interface RGSChatService () <QBChatDelegate, QBActionStatusDelegate>
@@ -98,11 +101,43 @@ static dispatch_once_t once_token = 0;
     qbMessage.recipientID = [message.receiver.entityID integerValue];
     qbMessage.senderID = [message.sender.entityID integerValue];
     
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"save_to_history"] = @YES;
-    [qbMessage setCustomParameters:params];
-
-    [[QBChat instance] sendMessage:qbMessage];
+    
+    NSLog(@"simple print-----message.image.count------{%lu}", (unsigned long)message.images.count);
+    if (message.images) {
+        RGSImageBatchUploadRequest *imageBatchUpload = [[RGSImageBatchUploadRequest alloc] initWithMessage:message successBlock:^(NSSet *customObjects) {
+            
+            NSMutableArray *attachments = [NSMutableArray new];
+            for (QBCOCustomObject *customObject in customObjects) {
+                QBChatAttachment *attachment = [QBChatAttachment new];
+                attachment.type = @"image";
+                attachment.ID = customObject.ID;
+                
+                [attachments addObject:attachment];
+            }
+            
+            qbMessage.attachments = attachments;
+            
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            params[@"save_to_history"] = @YES;
+            [qbMessage setCustomParameters:params];
+            
+            [[QBChat instance] sendMessage:qbMessage];
+            
+        } statusBlock:^(NSInteger status) {
+            
+        } errorBlock:^(NSError *error) {
+            
+        }];
+        [imageBatchUpload startUpload];
+    } else {
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        params[@"save_to_history"] = @YES;
+        [qbMessage setCustomParameters:params];
+        
+        [[QBChat instance] sendMessage:qbMessage];
+    }
+    
+    
     
 }
 

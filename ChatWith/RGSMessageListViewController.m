@@ -672,6 +672,7 @@ struct {
     
     [[self managedObjectContext] MR_saveOnlySelfAndWait];
     self.messageComposerView.messageTextView.internalTextView.text = nil;
+    [self.messageComposeImages removeAllObjects];
     
     [[RGSChatService shared] sendMessage:message];
 }
