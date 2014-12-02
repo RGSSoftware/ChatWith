@@ -11,22 +11,13 @@
 #import "RGSMessage.h"
 #import "RGSImage.h"
 
-@interface RGSImageUploadOpertion : NSObject 
+NSString *const messageImageClass = @"MessageImage";
+NSString *const messageImagePropertyIndex = @"index";
+NSString *const messageImagePropertyImage = @"image";
+
+@interface RGSOpertion : NSObject
 @property (nonatomic, strong)QBCOCustomObject *object;
 
-@property (nonatomic)BOOL isCompleted;
-@property (nonatomic)float percentOfCompletion;
-@property (nonatomic, strong)NSError *error;
-@end
-
-@implementation RGSImageUploadOpertion
-
-
-
-@end
-
-@interface RGSImageDownloadOpertion : NSObject
-@property (nonatomic, strong)QBCOCustomObject *object;
 @property (nonatomic, strong)NSData *fileData;
 
 @property (nonatomic)BOOL isCompleted;
@@ -34,17 +25,30 @@
 @property (nonatomic, strong)NSError *error;
 @end
 
-@implementation RGSImageDownloadOpertion
-
-
-
+@implementation RGSOpertion
 @end
+
+
+static int completedOpertionsCount(NSArray *opertions){
+    int completedOpertions = 0;
+    for (RGSOpertion *opetion in opertions) {
+        if (opetion.isCompleted) {
+            completedOpertions++;
+        }
+    }
+    return completedOpertions;
+}
+
+static BOOL isOpertionsComplete(NSArray *opertions){
+    return (completedOpertionsCount(opertions) == opertions.count) ? YES : NO;
+}
 
 @interface RGSImageBatchRequest ()
 
-@property (nonatomic, strong)RGSMessage *messsage;
-@property (nonatomic, strong)QBChatMessage *qbMessage ;
-@property (nonatomic, strong)void(^successBlock)(NSSet *customObjects);
+@property (nonatomic, strong)RGSMessage *rgsMesssage;
+@property (nonatomic, strong)QBChatMessage *qbMessage;
+
+@property (nonatomic, strong)void(^successUploadBlock)(NSSet *customObjects);
 @property (nonatomic, strong)void(^successDownloadBlock)(NSSet *image);
 @property (nonatomic, strong)void(^statusBlock)(NSInteger status);
 @property (nonatomic, strong)void(^errorBlock)(NSError *error);
@@ -52,7 +56,7 @@
 @property (nonatomic, strong)NSMutableArray *uploadOpertions;
 @property (nonatomic, strong)NSMutableArray *downloadOpertions;
 
-@property (nonatomic, strong)NSTimer *timer;
+@property (nonatomic, strong)NSTimer *checkTimer;
 @end
 
 @class RGSMessage;
@@ -71,8 +75,8 @@
                   successBlock:(void (^)(NSSet *))successBlock
                    statusBlock:(void (^)(NSInteger))statusBlock
                     errorBlock:(void (^)(NSError *))errorBlock{
-    self.messsage = message;
-    self.successBlock = successBlock;
+    self.rgsMesssage = message;
+    self.successUploadBlock = successBlock;
     self.statusBlock = statusBlock;
     self.errorBlock = errorBlock;
 }
@@ -89,48 +93,44 @@
 }
 
 -(void)startUpload{
-    
-    NSMutableDictionary *successUploadImage = [NSMutableDictionary dictionary];
-    
-    
-    for (RGSImage *image in self.messsage.images) {
+    for (RGSImage *image in self.rgsMesssage.images) {
         QBCOFile *file = [QBCOFile file];
         file.name = @"image";
         file.contentType = @"image/jpeg";
         file.data = image.imageData;
         
-        
         QBCOCustomObject *object = [QBCOCustomObject customObject];
-        object.className = @"MessageImage";
-        object.fields[@"index"] = image.index;
+        object.className = messageImageClass;
+        object.fields[messageImagePropertyIndex] = image.index;
         
-        RGSImageUploadOpertion *uploadOpertion = [RGSImageUploadOpertion new];
+        RGSOpertion *uploadOpertion = [RGSOpertion new];
         uploadOpertion.object = object;
         [self.uploadOpertions addObject:uploadOpertion];
         
         [QBRequest createObject:object successBlock:^(QBResponse *response, QBCOCustomObject *object) {
-            // do something when object is successfully created on a server
             
-            [QBRequest uploadFile:file className:@"MessageImage" objectID:object.ID fileFieldName:@"image" successBlock:^(QBResponse *response, QBCOFileUploadInfo *info) {
-                successUploadImage[object.ID] = object;
+            [QBRequest uploadFile:file className:messageImageClass objectID:object.ID fileFieldName:messageImagePropertyImage successBlock:^(QBResponse *response, QBCOFileUploadInfo *info) {
+            
                 uploadOpertion.object = object;
                 uploadOpertion.isCompleted = YES;
-                NSLog(@"simple print-----file iamge upload is good------");
+                NSLog(@"file image upload: Resonse status: %d", response.status);
                 
             } statusBlock:^(QBRequest *request, QBRequestStatus *status) {
                 uploadOpertion.percentOfCompletion = status.percentOfCompletion;
                 
             } errorBlock:^(QBResponse *response) {
                 NSLog(@"creating file Image: Response error: %@", [response.error description]);
+                [self.checkTimer invalidate];
+                if (self.errorBlock) self.errorBlock(response.error.error);
             }];
         } errorBlock:^(QBResponse *response) {
-            // error handling
             NSLog(@"creating MessageImage: Response error: %@", [response.error description]);
+            [self.checkTimer invalidate];
+            if (self.errorBlock) self.errorBlock(response.error.error);
         }];
     }
     
-//    [self observeUploadStatus];
-      self.timer = [NSTimer bk_scheduledTimerWithTimeInterval:.5 block:^(NSTimer *timer) {
+      self.checkTimer = [NSTimer bk_scheduledTimerWithTimeInterval:.5 block:^(NSTimer *timer) {
         [self observeUploadStatus];
     } repeats:YES];
 
@@ -138,13 +138,13 @@
 
 -(void)startDownload{
     for (QBChatAttachment *attachment in self.qbMessage.attachments) {
-        RGSImageDownloadOpertion *downloadOpertion = [RGSImageDownloadOpertion new];
+        RGSOpertion *downloadOpertion = [RGSOpertion new];
         [self.downloadOpertions addObject:downloadOpertion];
-        [QBRequest objectWithClassName:@"MessageImage" ID:attachment.ID  successBlock:^(QBResponse *response, QBCOCustomObject *object) {
+        [QBRequest objectWithClassName:messageImageClass ID:attachment.ID  successBlock:^(QBResponse *response, QBCOCustomObject *object) {
             
             downloadOpertion.object = object;
             
-            [QBRequest downloadFileFromClassName:@"MessageImage" objectID:object.ID fileFieldName:@"image" successBlock:^(QBResponse *response, NSData *loadedData) {
+            [QBRequest downloadFileFromClassName:messageImageClass objectID:object.ID fileFieldName:messageImagePropertyImage successBlock:^(QBResponse *response, NSData *loadedData) {
                 
                 downloadOpertion.fileData = loadedData;
                 downloadOpertion.isCompleted = YES;
@@ -153,73 +153,49 @@
                 downloadOpertion.percentOfCompletion = status.percentOfCompletion;
 
             } errorBlock:^(QBResponse *response) {
-                NSLog(@"error: %@", response.error);
-                [self.timer invalidate];
+                NSLog(@"downloading file image: Response error: %@", [response.error description]);
+                [self.checkTimer invalidate];
+                if (self.errorBlock) {
+                    if (self.errorBlock) self.errorBlock(response.error.error);
+                }
             }];
         } errorBlock:^(QBResponse *response) {
-            NSLog(@"error: %@", response.error);
-            [self.timer invalidate];
+            NSLog(@"downloading MessageImage: Response error: %@", [response.error description]);
+            [self.checkTimer invalidate];
+            if (self.errorBlock) self.errorBlock(response.error.error);
         }];
     }
-    self.timer = [NSTimer bk_scheduledTimerWithTimeInterval:.5 block:^(NSTimer *timer) {
+    
+    self.checkTimer = [NSTimer bk_scheduledTimerWithTimeInterval:.5 block:^(NSTimer *timer) {
         [self observeDownloadStatus];
     } repeats:YES];
 }
 
 -(void)observeDownloadStatus{
-    BOOL isAllOpertionsCompleted = NO;
-    int completedOpertions = 0;
-    
-    for (RGSImageDownloadOpertion *opetion in self.downloadOpertions) {
-        if (opetion.isCompleted) {
-            completedOpertions++;
-        }
-    }
-    if (completedOpertions == self.qbMessage.attachments.count) {
-        [self.timer invalidate];
-        
-        isAllOpertionsCompleted = YES;
+    if (isOpertionsComplete(self.downloadOpertions)) {
+        [self.checkTimer invalidate];
         
         NSMutableSet *images = [NSMutableSet new];
-        for(RGSImageDownloadOpertion *opetion in self.downloadOpertions){
+        for(RGSOpertion *opetion in self.downloadOpertions){
             RGSImage *image = [RGSImage MR_createEntity];
             image.imageData = opetion.fileData;
-            image.index = opetion.object.fields[@"index"];
+            image.index = opetion.object.fields[messageImagePropertyIndex];
             [images addObject:image];
         }
-        self.successDownloadBlock(images);
-    } else {
-        completedOpertions = 0;
-        isAllOpertionsCompleted = NO;
+        if (self.successDownloadBlock) self.successDownloadBlock(images);
     }
-
-    
 }
 
 -(void)observeUploadStatus{
-    BOOL isAllOpertionsCompleted = NO;
-    int completedOpertions = 0;
-    
-        for (RGSImageUploadOpertion *opetion in self.uploadOpertions) {
-            if (opetion.isCompleted) {
-                completedOpertions++;
-            }
+    if (isOpertionsComplete(self.uploadOpertions)) {
+        [self.checkTimer invalidate];
+        
+        NSMutableSet *customObjects = [NSMutableSet new];
+        for(RGSOpertion *opetion in self.uploadOpertions){
+            [customObjects addObject:opetion.object];
         }
-        if (completedOpertions == self.messsage.images.count) {
-            [self.timer invalidate];
-            
-            isAllOpertionsCompleted = YES;
-            
-            NSMutableSet *customObjects = [NSMutableSet new];
-            for(RGSImageUploadOpertion *opetion in self.uploadOpertions){
-                [customObjects addObject:opetion.object];
-            }
-            self.successBlock(customObjects);
-        } else {
-            completedOpertions = 0;
-            isAllOpertionsCompleted = NO;
-        }
+        if (self.successUploadBlock) self.successUploadBlock(customObjects);
+    }
 }
-
 @end
 
