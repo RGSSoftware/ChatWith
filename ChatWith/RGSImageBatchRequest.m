@@ -74,22 +74,26 @@
     }
     return self;
 }
-
--(id)initWithQBMessage:(QBChatMessage *)qbMessage
-        successBlock:(void(^)(NSSet *images))successBlock
-         statusBlock:(void(^)(NSInteger status))statusBlock
-          errorBlock:(void(^)(NSError *error))errorBlock{
-    self = [super init];
+-(id)init{
     if (self) {
-        _qbMessage = qbMessage;
-        
-        _successDownloadBlock = successBlock;
-        _statusBlock = statusBlock;
-        _errorBlock = errorBlock;
-        
+        _uploadOpertions = [NSMutableArray new];
         _downloadOpertions = [NSMutableArray new];
     }
     return self;
+}
+
+
+
+-(void)downloadImagesWithQBMessage:(QBChatMessage *)qBMessage
+                      successBlock:(void (^)(NSSet *))successBlock
+                       statusBlock:(void (^)(NSInteger))statusBlock
+                        errorBlock:(void (^)(NSError *))errorBlock{
+    
+    self.qbMessage = qBMessage;
+    self.successDownloadBlock = successBlock;
+    self.statusBlock = statusBlock;
+    self.errorBlock = errorBlock;
+    
 }
 
 -(void)startUpload{

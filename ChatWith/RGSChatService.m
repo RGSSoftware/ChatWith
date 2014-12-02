@@ -172,18 +172,17 @@ static dispatch_once_t once_token = 0;
     
     
     if (qbMessage.attachments) {
-        RGSImageBatchRequest *imageBatchDownload = [[RGSImageBatchRequest alloc] initWithQBMessage:qbMessage successBlock:^(NSSet *images) {
+        RGSImageBatchRequest *imageBatchDownload = [[RGSImageBatchRequest alloc] init];
+        
+        [imageBatchDownload downloadImagesWithQBMessage:qbMessage successBlock:^(NSSet *images) {
             for (RGSImage *image in images) {
                 image.message = message;
             }
             message.images = images;
             
             [[NSManagedObjectContext MR_defaultContext] MR_saveOnlySelfAndWait];
-        } statusBlock:^(NSInteger status) {
-            
-        } errorBlock:^(NSError *error) {
-            
-        }];
+        } statusBlock:nil errorBlock:nil];
+        
         [imageBatchDownload startDownload];
     } else {
         

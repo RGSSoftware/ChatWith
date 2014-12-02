@@ -718,11 +718,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSChatService.m"
-            timestampString = "439241303.811643"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "-chatDidReceiveMessage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -798,11 +798,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "-observeUploadStatus"
             landmarkType = "5">
          </BreakpointContent>
@@ -814,11 +814,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241303.811643"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "-startUpload"
             landmarkType = "5">
          </BreakpointContent>
@@ -830,11 +830,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "-observeUploadStatus"
             landmarkType = "5">
          </BreakpointContent>
@@ -846,11 +846,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241303.811643"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "-startUpload"
             landmarkType = "5">
          </BreakpointContent>
@@ -862,11 +862,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "-observeUploadStatus"
             landmarkType = "5">
          </BreakpointContent>
@@ -878,11 +878,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "-observeUploadStatus"
             landmarkType = "5">
          </BreakpointContent>
@@ -894,11 +894,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "-observeUploadStatus"
             landmarkType = "5">
          </BreakpointContent>
@@ -910,11 +910,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "-observeUploadStatus"
             landmarkType = "5">
          </BreakpointContent>
@@ -926,11 +926,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "-observeUploadStatus"
             landmarkType = "5">
          </BreakpointContent>
@@ -942,11 +942,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "-observeUploadStatus"
             landmarkType = "5">
          </BreakpointContent>
@@ -958,11 +958,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "-observeUploadStatus"
             landmarkType = "5">
          </BreakpointContent>
@@ -1054,91 +1054,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "-startDownload"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241303.811643"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "-startDownload"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSChatService.m"
-            timestampString = "439241303.811643"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "-chatDidReceiveMessage:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "-startDownload"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "-observeDownloadStatus"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "183"
             endingLineNumber = "183"
+            landmarkName = "-startDownload"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatWith/RGSImageBatchRequest.m"
+            timestampString = "439247935.309857"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "-startDownload"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatWith/RGSImageBatchRequest.m"
+            timestampString = "439247935.309857"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "-startDownload"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatWith/RGSImageBatchRequest.m"
+            timestampString = "439247935.309857"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "-observeDownloadStatus"
             landmarkType = "5">
          </BreakpointContent>
@@ -1150,11 +1118,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "-observeDownloadStatus"
             landmarkType = "5">
          </BreakpointContent>
@@ -1166,11 +1134,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "-observeDownloadStatus"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatWith/RGSImageBatchRequest.m"
+            timestampString = "439247935.309857"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "-observeDownloadStatus"
             landmarkType = "5">
          </BreakpointContent>
@@ -1214,11 +1198,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSImageBatchRequest.m"
-            timestampString = "439241829.906038"
+            timestampString = "439247935.309857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "-observeDownloadStatus"
             landmarkType = "5">
          </BreakpointContent>
