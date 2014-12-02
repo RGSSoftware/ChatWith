@@ -163,16 +163,19 @@ struct {
     RGSMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
     
-//    cell.body.text = message.body;
     
-//    for (int i = 0; i <= message.images.count; i++) {
-//        NSPredicate *imageWithIndex = [NSPredicate pr
-////        RGSImage *image = message.images b
-//    }
-    NSMutableAttributedString *messageWithImage = [[NSMutableAttributedString alloc] initWithString:message.body];;
+    NSMutableAttributedString *messageWithImage = [[NSMutableAttributedString alloc] initWithString:message.body];
+    
+    NSLog(@"simple print-----message.images.count------{%lu}", (unsigned long)message.images.count);
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
-    for (RGSImage *image in [message.images sortedArrayUsingDescriptors:@[sortDescriptor]]) {
+    
+    NSArray *sortedImages = [message.images sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
+    NSRange currentImageRange = NSMakeRange(0, message.body.length);
+    for (int i = 0; i < sortedImages.count; i++) {
+        RGSImage *image = sortedImages[i];
+        
         NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
         textAttachment.image = [UIImage imageWithData:image.imageData];
         textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
@@ -185,9 +188,14 @@ struct {
         
         [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
         
+        currentImageRange = [message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"] options:NSLiteralSearch range:currentImageRange];
         
-        [messageWithImage replaceCharactersInRange:[message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"]] withAttributedString:imageWithNewLine];
+        [messageWithImage replaceCharactersInRange:currentImageRange withAttributedString:imageWithNewLine];
+        
+        currentImageRange = NSMakeRange(currentImageRange.location + currentImageRange.length, message.body.length - currentImageRange.length);
     }
+   
+    NSLog(@"simple print-----messageWithImage------{%@}", [messageWithImage string]);
     cell.body.attributedText = messageWithImage;
     
     if([message.sender isEqual:self.currentUser]){
@@ -245,7 +253,7 @@ struct {
 
 -(CGFloat)heightWithText:(NSString *)text maxWidth:(float)maxWidth{
     
-    float minBodyHeight = 16.0f;
+    float minBodyHeight = 140.0f;
     float maxBodyHeight = 20000.0f;
     
     CGSize constraint = CGSizeMake(maxWidth, maxBodyHeight);
