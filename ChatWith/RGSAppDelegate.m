@@ -167,8 +167,6 @@
     
     [self loginAsRRWithBarAsMessagesReceiver];
     
-    
-    
 //    [self loginAsBarWithRRAsMessagesReceiver];
 //
 //    RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
@@ -473,4 +471,13 @@
     return _loginViewController;
 }
 
+
+-(NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding
+{
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                 (CFStringRef)self,
+                                                                                 NULL,
+                                                                                 (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
+                                                                                 CFStringConvertNSStringEncodingToEncoding(encoding)));
+}
 @end

@@ -101,8 +101,13 @@ static dispatch_once_t once_token = 0;
     qbMessage.recipientID = [message.receiver.entityID integerValue];
     qbMessage.senderID = [message.sender.entityID integerValue];
     
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [qbMessage setCustomParameters:params];
+    params[@"save_to_history"] = @YES;
     
-    NSLog(@"simple print-----message.image.count------{%lu}", (unsigned long)message.images.count);
+    params[@"attributed_text"] = [message.body stringByReplacingOccurrencesOfString:[NSString stringWithUTF8String:"\ufffc"]
+                                                                         withString:@"{%8*IMAGE*8%}"];
+
     if (message.images) {
         RGSImageBatchUploadRequest *imageBatchUpload = [[RGSImageBatchUploadRequest alloc] initWithMessage:message successBlock:^(NSSet *customObjects) {
             
@@ -117,10 +122,6 @@ static dispatch_once_t once_token = 0;
             
             qbMessage.attachments = attachments;
             
-            NSMutableDictionary *params = [NSMutableDictionary dictionary];
-            params[@"save_to_history"] = @YES;
-            [qbMessage setCustomParameters:params];
-            
             [[QBChat instance] sendMessage:qbMessage];
             
         } statusBlock:^(NSInteger status) {
@@ -130,9 +131,6 @@ static dispatch_once_t once_token = 0;
         }];
         [imageBatchUpload startUpload];
     } else {
-        NSMutableDictionary *params = [NSMutableDictionary dictionary];
-        params[@"save_to_history"] = @YES;
-        [qbMessage setCustomParameters:params];
         
         [[QBChat instance] sendMessage:qbMessage];
     }
@@ -161,7 +159,10 @@ static dispatch_once_t once_token = 0;
     
     message.sender = sender;
     message.receiver = receiver;
-    message.body = qbMessage.text;
+    
+    message.body = [qbMessage.customParameters[@"attributed_text"] stringByReplacingOccurrencesOfString:@"{%8*IMAGE*8%}"
+                                                                                             withString:[NSString stringWithUTF8String:"\ufffc"]];
+
     message.date = qbMessage.datetime;
     
     NSPredicate *chatPredicate = [NSPredicate predicateWithFormat:@"(%@ IN %K) AND (%@ IN %K)", sender, @"participants", receiver, @"participants"];

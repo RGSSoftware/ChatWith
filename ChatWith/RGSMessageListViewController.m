@@ -658,7 +658,9 @@ struct {
     message.sender = self.currentUser;
     message.receiver = self.receiver;
     message.chat = self.chat;
-    message.body = self.messageComposerView.messageTextView.internalTextView.text;
+    message.body = self.messageComposerView.messageTextView.internalTextView.attributedText.string;
+    
+    
     message.date = [NSDate date];
     
     for(RGSMessageComposeImage *sortedImage in self.messageComposeImages){
