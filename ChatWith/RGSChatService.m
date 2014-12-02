@@ -109,7 +109,9 @@ static dispatch_once_t once_token = 0;
                                                                          withString:@"{%8*IMAGE*8%}"];
 
     if (message.images) {
-        RGSImageBatchRequest *imageBatchUpload = [[RGSImageBatchRequest alloc] initWithMessage:message successBlock:^(NSSet *customObjects) {
+        RGSImageBatchRequest *imageBatchUpload = [[RGSImageBatchRequest alloc] init];
+        
+        [imageBatchUpload uploadImagesWithMessage:message successBlock:^(NSSet *customObjects) {
             
             NSMutableArray *attachments = [NSMutableArray new];
             for (QBCOCustomObject *customObject in customObjects) {
@@ -123,12 +125,7 @@ static dispatch_once_t once_token = 0;
             qbMessage.attachments = attachments;
             
             [[QBChat instance] sendMessage:qbMessage];
-            
-        } statusBlock:^(NSInteger status) {
-            
-        } errorBlock:^(NSError *error) {
-            
-        }];
+        } statusBlock:nil errorBlock:nil];
         [imageBatchUpload startUpload];
     } else {
         

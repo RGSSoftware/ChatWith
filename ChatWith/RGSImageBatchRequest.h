@@ -11,10 +11,10 @@
 
 @interface RGSImageBatchRequest : NSObject
 
--(id)initWithMessage:(RGSMessage *)message
-        successBlock:(void(^)(NSSet *customObjects))successBlock
-         statusBlock:(void(^)(NSInteger status))statusBlock
-          errorBlock:(void(^)(NSError *error))errorBlock;
+-(void)uploadImagesWithMessage:(RGSMessage *)message
+          successBlock:(void(^)(NSSet *customObjects))successBlock
+           statusBlock:(void(^)(NSInteger status))statusBlock
+            errorBlock:(void(^)(NSError *error))errorBlock;
 
 
 -(void)downloadImagesWithQBMessage:(QBChatMessage *)qBMessage

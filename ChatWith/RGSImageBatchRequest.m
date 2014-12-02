@@ -58,22 +58,7 @@
 @class RGSMessage;
 
 @implementation RGSImageBatchRequest
--(id)initWithMessage:(RGSMessage *)message
-        successBlock:(void(^)(NSSet *customObjects))successBlock
-         statusBlock:(void(^)(NSInteger status))statusBlock
-          errorBlock:(void(^)(NSError *error))errorBlock{
-    self = [super init];
-    if (self) {
-        _messsage = message;
-        
-        _successBlock = successBlock;
-        _statusBlock = statusBlock;
-        _errorBlock = errorBlock;
-        
-        _uploadOpertions = [NSMutableArray new];
-    }
-    return self;
-}
+
 -(id)init{
     if (self) {
         _uploadOpertions = [NSMutableArray new];
@@ -82,7 +67,15 @@
     return self;
 }
 
-
+-(void)uploadImagesWithMessage:(RGSMessage *)message
+                  successBlock:(void (^)(NSSet *))successBlock
+                   statusBlock:(void (^)(NSInteger))statusBlock
+                    errorBlock:(void (^)(NSError *))errorBlock{
+    self.messsage = message;
+    self.successBlock = successBlock;
+    self.statusBlock = statusBlock;
+    self.errorBlock = errorBlock;
+}
 
 -(void)downloadImagesWithQBMessage:(QBChatMessage *)qBMessage
                       successBlock:(void (^)(NSSet *))successBlock
@@ -93,7 +86,6 @@
     self.successDownloadBlock = successBlock;
     self.statusBlock = statusBlock;
     self.errorBlock = errorBlock;
-    
 }
 
 -(void)startUpload{
