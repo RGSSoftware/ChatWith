@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22041ED81A2764F800210E59 /* RGSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22041ED71A2764F800210E59 /* RGSNavigationController.m */; };
-		221129C01A2CAA3F00C084BA /* RGSImageBatchUploadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 221129BF1A2CAA3F00C084BA /* RGSImageBatchUploadRequest.m */; };
+		221129C01A2CAA3F00C084BA /* RGSImageBatchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 221129BF1A2CAA3F00C084BA /* RGSImageBatchRequest.m */; };
 		2218FDC119DC8C6400E491F6 /* StoryBoardSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC019DC8C6400E491F6 /* StoryBoardSpec.m */; };
 		2218FDC419DC902E00E491F6 /* RGSUserMangementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC319DC902E00E491F6 /* RGSUserMangementService.m */; };
 		2218FDC619DC92E000E491F6 /* RGSUserLoginDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDC519DC92E000E491F6 /* RGSUserLoginDelegateSpec.m */; };
@@ -123,8 +123,8 @@
 /* Begin PBXFileReference section */
 		22041ED61A2764F800210E59 /* RGSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSNavigationController.h; sourceTree = "<group>"; };
 		22041ED71A2764F800210E59 /* RGSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSNavigationController.m; sourceTree = "<group>"; };
-		221129BE1A2CAA3F00C084BA /* RGSImageBatchUploadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSImageBatchUploadRequest.h; sourceTree = "<group>"; };
-		221129BF1A2CAA3F00C084BA /* RGSImageBatchUploadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSImageBatchUploadRequest.m; sourceTree = "<group>"; };
+		221129BE1A2CAA3F00C084BA /* RGSImageBatchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSImageBatchRequest.h; sourceTree = "<group>"; };
+		221129BF1A2CAA3F00C084BA /* RGSImageBatchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSImageBatchRequest.m; sourceTree = "<group>"; };
 		2218FDC019DC8C6400E491F6 /* StoryBoardSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryBoardSpec.m; sourceTree = "<group>"; };
 		2218FDC219DC902E00E491F6 /* RGSUserMangementService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSUserMangementService.h; sourceTree = "<group>"; };
 		2218FDC319DC902E00E491F6 /* RGSUserMangementService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSUserMangementService.m; sourceTree = "<group>"; };
@@ -411,8 +411,8 @@
 			children = (
 				227BFAF319E31EE0000E7ACC /* RGSChatService.h */,
 				227BFAF419E31EE0000E7ACC /* RGSChatService.m */,
-				221129BE1A2CAA3F00C084BA /* RGSImageBatchUploadRequest.h */,
-				221129BF1A2CAA3F00C084BA /* RGSImageBatchUploadRequest.m */,
+				221129BE1A2CAA3F00C084BA /* RGSImageBatchRequest.h */,
+				221129BF1A2CAA3F00C084BA /* RGSImageBatchRequest.m */,
 				2218FDC219DC902E00E491F6 /* RGSUserMangementService.h */,
 				2218FDC319DC902E00E491F6 /* RGSUserMangementService.m */,
 				2218FDD519DF31B300E491F6 /* RGSApplicationSessionManagementService.h */,
@@ -716,7 +716,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				221129C01A2CAA3F00C084BA /* RGSImageBatchUploadRequest.m in Sources */,
+				221129C01A2CAA3F00C084BA /* RGSImageBatchRequest.m in Sources */,
 				22AD00F41A1336E8008F9EF7 /* RGSMessageCell.m in Sources */,
 				228EAB9E1A23EEFB007D555E /* RGSMessage.m in Sources */,
 				227ADFBE1A0C071200D03017 /* RGSBaseViewController.m in Sources */,

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @class RGSMessage;
 
-@interface RGSImageBatchUploadRequest : NSObject
+@interface RGSImageBatchRequest : NSObject
 
 -(id)initWithMessage:(RGSMessage *)message
         successBlock:(void(^)(NSSet *customObjects))successBlock

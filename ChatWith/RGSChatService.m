@@ -15,7 +15,7 @@
 
 #import "LocalStorageService.h"
 
-#import "RGSImageBatchUploadRequest.h"
+#import "RGSImageBatchRequest.h"
 
 
 @interface RGSChatService () <QBChatDelegate, QBActionStatusDelegate>
@@ -109,7 +109,7 @@ static dispatch_once_t once_token = 0;
                                                                          withString:@"{%8*IMAGE*8%}"];
 
     if (message.images) {
-        RGSImageBatchUploadRequest *imageBatchUpload = [[RGSImageBatchUploadRequest alloc] initWithMessage:message successBlock:^(NSSet *customObjects) {
+        RGSImageBatchRequest *imageBatchUpload = [[RGSImageBatchRequest alloc] initWithMessage:message successBlock:^(NSSet *customObjects) {
             
             NSMutableArray *attachments = [NSMutableArray new];
             for (QBCOCustomObject *customObject in customObjects) {
@@ -172,7 +172,7 @@ static dispatch_once_t once_token = 0;
     
     
     if (qbMessage.attachments) {
-        RGSImageBatchUploadRequest *imageBatchDownload = [[RGSImageBatchUploadRequest alloc] initWithQBMessage:qbMessage successBlock:^(NSSet *images) {
+        RGSImageBatchRequest *imageBatchDownload = [[RGSImageBatchRequest alloc] initWithQBMessage:qbMessage successBlock:^(NSSet *images) {
             for (RGSImage *image in images) {
                 image.message = message;
             }

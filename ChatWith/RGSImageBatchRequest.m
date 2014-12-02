@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "RGSImageBatchUploadRequest.h"
+#import "RGSImageBatchRequest.h"
 
 #import "RGSMessage.h"
 #import "RGSImage.h"
@@ -40,7 +40,7 @@
 
 @end
 
-@interface RGSImageBatchUploadRequest ()
+@interface RGSImageBatchRequest ()
 
 @property (nonatomic, strong)RGSMessage *messsage;
 @property (nonatomic, strong)QBChatMessage *qbMessage ;
@@ -57,7 +57,7 @@
 
 @class RGSMessage;
 
-@implementation RGSImageBatchUploadRequest
+@implementation RGSImageBatchRequest
 -(id)initWithMessage:(RGSMessage *)message
         successBlock:(void(^)(NSSet *customObjects))successBlock
          statusBlock:(void(^)(NSInteger status))statusBlock
