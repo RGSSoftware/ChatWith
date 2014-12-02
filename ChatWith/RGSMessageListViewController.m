@@ -163,7 +163,32 @@ struct {
     RGSMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
     
-    cell.body.text = message.body;
+//    cell.body.text = message.body;
+    
+//    for (int i = 0; i <= message.images.count; i++) {
+//        NSPredicate *imageWithIndex = [NSPredicate pr
+////        RGSImage *image = message.images b
+//    }
+    NSMutableAttributedString *messageWithImage = [[NSMutableAttributedString alloc] initWithString:message.body];;
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
+    for (RGSImage *image in [message.images sortedArrayUsingDescriptors:@[sortDescriptor]]) {
+        NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+        textAttachment.image = [UIImage imageWithData:image.imageData];
+        textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
+        
+        NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment
+                                                                                                Font:cell.body.font
+                                                                                               Color:cell.body.textColor];
+        
+        NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : cell.body.font}];
+        
+        [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
+        
+        
+        [messageWithImage replaceCharactersInRange:[message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"]] withAttributedString:imageWithNewLine];
+    }
+    cell.body.attributedText = messageWithImage;
     
     if([message.sender isEqual:self.currentUser]){
         
@@ -659,7 +684,6 @@ struct {
     message.receiver = self.receiver;
     message.chat = self.chat;
     message.body = self.messageComposerView.messageTextView.internalTextView.attributedText.string;
-    
     
     message.date = [NSDate date];
     

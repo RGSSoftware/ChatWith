@@ -16,6 +16,12 @@
          statusBlock:(void(^)(NSInteger status))statusBlock
           errorBlock:(void(^)(NSError *error))errorBlock;
 
+-(id)initWithQBMessage:(QBChatMessage *)qBMessage
+        successBlock:(void(^)(NSSet *images))successBlock
+         statusBlock:(void(^)(NSInteger status))statusBlock
+          errorBlock:(void(^)(NSError *error))errorBlock;
+
 -(void)startUpload;
+-(void)startDownload;
 
 @end

@@ -472,12 +472,15 @@
 }
 
 
--(NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding
-{
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                                 (CFStringRef)self,
-                                                                                 NULL,
-                                                                                 (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
-                                                                                 CFStringConvertNSStringEncodingToEncoding(encoding)));
+-(void)applicationWillTerminate:(UIApplication *)application{
+    [[QBChat instance] logout];
+    
+    [QBRequest logOutWithSuccessBlock:nil errorBlock:nil];
+}
+
+-(void)applicationWillResignActive:(UIApplication *)application{
+    [[QBChat instance] logout];
+    
+    [QBRequest logOutWithSuccessBlock:nil errorBlock:nil];
 }
 @end

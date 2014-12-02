@@ -169,8 +169,29 @@ static dispatch_once_t once_token = 0;
     RGSChat *chat = [RGSChat MR_findFirstWithPredicate:chatPredicate];
     
     message.chat = chat;
+    
+    
+    if (qbMessage.attachments) {
+        RGSImageBatchUploadRequest *imageBatchDownload = [[RGSImageBatchUploadRequest alloc] initWithQBMessage:qbMessage successBlock:^(NSSet *images) {
+            for (RGSImage *image in images) {
+                image.message = message;
+            }
+            message.images = images;
+            
+            [[NSManagedObjectContext MR_defaultContext] MR_saveOnlySelfAndWait];
+        } statusBlock:^(NSInteger status) {
+            
+        } errorBlock:^(NSError *error) {
+            
+        }];
+        [imageBatchDownload startDownload];
+    } else {
+        
+        [[NSManagedObjectContext MR_defaultContext] MR_saveOnlySelfAndWait];
+    }
 
-    [[NSManagedObjectContext MR_defaultContext] MR_saveOnlySelfAndWait];
+
+    
 
 }
 @end
