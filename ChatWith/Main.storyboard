@@ -228,6 +228,9 @@
                                 <state key="normal" title="Invite Friends to ChatWith">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="YGo-i8-c0b" kind="custom" customClass="RGSOverviewSegue" id="dCK-FV-4b2"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E8R-IH-pSd">
                                 <rect key="frame" x="0.0" y="108" width="320" height="460"/>
@@ -356,6 +359,25 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1432" y="1117"/>
+        </scene>
+        <!--Invite View Controller-->
+        <scene sceneID="TSn-MF-cjV">
+            <objects>
+                <viewController id="YGo-i8-c0b" customClass="RGSInviteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kHS-zQ-WdA"/>
+                        <viewControllerLayoutGuide type="bottom" id="IfJ-lz-JPW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="61u-hI-OhJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rXe-ff-yxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1432" y="1846"/>
         </scene>
         <!--Message List View Controller-->
         <scene sceneID="g6R-Ox-UsF">

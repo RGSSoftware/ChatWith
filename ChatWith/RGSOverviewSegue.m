@@ -21,7 +21,7 @@
         [((UIViewController *)self.destinationViewController) setTransitioningDelegate:self];
         ((UIViewController *)self.destinationViewController).modalPresentationStyle = UIModalPresentationCustom;
         
-         [((RGSMessageListViewController *)self.sourceViewController).messageComposerView.messageTextView resignFirstResponder];
+//         [((RGSMessageListViewController *)self.sourceViewController).messageComposerView.messageTextView resignFirstResponder];
     
     [((UIViewController *)self.sourceViewController) presentViewController:self.destinationViewController animated:YES completion:nil];
 }

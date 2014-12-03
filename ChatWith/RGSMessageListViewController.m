@@ -132,8 +132,7 @@ struct {
     [self.view bringSubviewToFront:self.messageComposerView];
     self.messageComposerView.delegate = self;
     [self.messageComposerView.sendMessagebButton addTarget:self action:@selector(sendMessage:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
+        
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -224,10 +223,6 @@ struct {
     return cell;
     
 }
--(CGRect)add:(float)increase toRectY:(CGRect)rect{
-    return CGRectMake(CGRectGetMinX(rect), CGRectGetMinY(rect) + increase, CGRectGetWidth(rect), CGRectGetHeight(rect));
-}
-
 
 #pragma mark - UITableViewDelegate ()
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -277,27 +272,6 @@ struct {
     return textAttachment;
 }
 
--(CGFloat)heightWithText:(NSString *)text maxWidth:(float)maxWidth{
-    
-    float minBodyHeight = 16.0f;
-    float maxBodyHeight = 20000.0f;
-    
-    CGSize constraint = CGSizeMake(maxWidth, maxBodyHeight);
-    
-    
-    //sizeWithFont:ConstrainedToSize:lineBreakMode: deprecation solution
-    //http://stackoverflow.com/questions/21654671/sizewithfont-constrainedtosize-linebreakmode-method-is-deprecated-in-ios-7#21654741
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    CGRect textRect = [text boundingRectWithSize:constraint
-                                         options:NSStringDrawingUsesLineFragmentOrigin
-                                      attributes:@{NSParagraphStyleAttributeName: paragraphStyle.copy,NSFontAttributeName:[UIFont systemFontOfSize:16]}
-                                         context:nil];
-    
-    
-    
-    return MAX(CGRectGetHeight(textRect), minBodyHeight);
-}
 -(CGFloat)heightWithAttributedText:(NSAttributedString *)text maxWidth:(float)maxWidth{
     
     float minBodyHeight = 16.0f;
@@ -314,12 +288,15 @@ struct {
                                          options:NSStringDrawingUsesLineFragmentOrigin
                                          context:nil];
     
-    
-    
     return MAX(CGRectGetHeight(textRect), minBodyHeight);
 
     
 }
+
+-(CGRect)add:(float)increase toRectY:(CGRect)rect{
+    return CGRectMake(CGRectGetMinX(rect), CGRectGetMinY(rect) + increase, CGRectGetWidth(rect), CGRectGetHeight(rect));
+}
+
 
 //Part-2
 -(void)viewDidLayoutSubviews

@@ -23,6 +23,8 @@
 		223907BF1A20CF74000BD986 /* NSAttributedString+RGSFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 223907BE1A20CF74000BD986 /* NSAttributedString+RGSFontSize.m */; };
 		223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */; };
 		223A1DB21A04459E00A1B3D2 /* RGSContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DB11A04459E00A1B3D2 /* RGSContact.m */; };
+		223B067E1A2F607400B2344F /* IBActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 223B067D1A2F607400B2344F /* IBActionSheet.m */; };
+		223B06811A2F660E00B2344F /* RGSInviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223B06801A2F660E00B2344F /* RGSInviteViewController.m */; };
 		223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5119E456FC0065F630 /* RGSChatListViewController.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250787419F880D100F793EE /* RGSContactListViewController.m */; };
@@ -151,6 +153,10 @@
 		223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactCell.m; sourceTree = "<group>"; };
 		223A1DB01A04459E00A1B3D2 /* RGSContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContact.h; sourceTree = "<group>"; };
 		223A1DB11A04459E00A1B3D2 /* RGSContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContact.m; sourceTree = "<group>"; };
+		223B067C1A2F607400B2344F /* IBActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBActionSheet.h; sourceTree = "<group>"; };
+		223B067D1A2F607400B2344F /* IBActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBActionSheet.m; sourceTree = "<group>"; };
+		223B067F1A2F660E00B2344F /* RGSInviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSInviteViewController.h; sourceTree = "<group>"; };
+		223B06801A2F660E00B2344F /* RGSInviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSInviteViewController.m; sourceTree = "<group>"; };
 		223D4C5019E456FC0065F630 /* RGSChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChatListViewController.h; sourceTree = "<group>"; };
 		223D4C5119E456FC0065F630 /* RGSChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChatListViewController.m; sourceTree = "<group>"; };
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -361,6 +367,8 @@
 		22889AD019D3232600F0541D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				223B067F1A2F660E00B2344F /* RGSInviteViewController.h */,
+				223B06801A2F660E00B2344F /* RGSInviteViewController.m */,
 				227ADFBC1A0C071200D03017 /* RGSBaseViewController.h */,
 				227ADFBD1A0C071200D03017 /* RGSBaseViewController.m */,
 				223D4C5019E456FC0065F630 /* RGSChatListViewController.h */,
@@ -381,6 +389,8 @@
 			isa = PBXGroup;
 			children = (
 				224FBF7619D1B7A800A924CA /* Main.storyboard */,
+				223B067C1A2F607400B2344F /* IBActionSheet.h */,
+				223B067D1A2F607400B2344F /* IBActionSheet.m */,
 				22041ED61A2764F800210E59 /* RGSNavigationController.h */,
 				22041ED71A2764F800210E59 /* RGSNavigationController.m */,
 				22B1E3131A1967660062701A /* RGSMessageComposerView.h */,
@@ -733,6 +743,7 @@
 				22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */,
 				22BE6EE71A16305A00D130EB /* UIButton+RGSUIBackButton.m in Sources */,
 				22A001641A27672500B22EEE /* RGSPopSegue.m in Sources */,
+				223B06811A2F660E00B2344F /* RGSInviteViewController.m in Sources */,
 				22126CA41A2F3FC800A983E7 /* NSSet+RGSisEmpty.m in Sources */,
 				22AA4CC41A28A30F008DE41B /* RGSDismissModallyAnimatonController.m in Sources */,
 				228EABAD1A240E96007D555E /* RGSMessageComposeImage.m in Sources */,
@@ -757,6 +768,7 @@
 				2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */,
 				22A001671A27789F00B22EEE /* RGSPushAnimationController.m in Sources */,
 				22BE6EE11A14728300D130EB /* RGSManagedUser.m in Sources */,
+				223B067E1A2F607400B2344F /* IBActionSheet.m in Sources */,
 				223A1DB21A04459E00A1B3D2 /* RGSContact.m in Sources */,
 				2287C47319FAC58600039555 /* UIColor+RGSColorWithHexString.m in Sources */,
 				221A05611A0D6C7A006B46AD /* RGSChatCell.m in Sources */,
