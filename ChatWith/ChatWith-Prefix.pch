@@ -18,4 +18,6 @@
     #import <Quickblox/Quickblox.h>
     #import <MagicalRecord/CoreData+MagicalRecord.h>
     #import <BlocksKit/BlocksKit.h>
+
+    #import "NSSet+RGSisEmpty.h"
 #endif

@@ -366,11 +366,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279257.960003"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "760"
-            endingLineNumber = "760"
+            startingLineNumber = "719"
+            endingLineNumber = "719"
             landmarkName = "-RGSMessageAttachmentViewController:imageAttachment:"
             landmarkType = "5">
          </BreakpointContent>
@@ -382,11 +382,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279257.960003"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "735"
-            endingLineNumber = "735"
+            startingLineNumber = "694"
+            endingLineNumber = "694"
             landmarkName = "-RGSMessageAttachmentViewController:imageAttachment:"
             landmarkType = "5">
          </BreakpointContent>
@@ -398,11 +398,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279257.960003"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "754"
-            endingLineNumber = "754"
+            startingLineNumber = "713"
+            endingLineNumber = "713"
             landmarkName = "-RGSMessageAttachmentViewController:imageAttachment:"
             landmarkType = "5">
          </BreakpointContent>
@@ -414,11 +414,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279257.960003"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "708"
-            endingLineNumber = "708"
+            startingLineNumber = "667"
+            endingLineNumber = "667"
             landmarkName = "-messageComposerView:shouldChangeTextInRange:replacementText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -430,11 +430,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279257.960003"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "708"
-            endingLineNumber = "708"
+            startingLineNumber = "667"
+            endingLineNumber = "667"
             landmarkName = "-messageComposerView:shouldChangeTextInRange:replacementText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -446,11 +446,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279257.960003"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "700"
-            endingLineNumber = "700"
+            startingLineNumber = "659"
+            endingLineNumber = "659"
             landmarkName = "-messageComposerView:shouldChangeTextInRange:replacementText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -462,11 +462,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279257.960003"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "695"
-            endingLineNumber = "695"
+            startingLineNumber = "654"
+            endingLineNumber = "654"
             landmarkName = "-messageComposerView:shouldChangeTextInRange:replacementText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -478,11 +478,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279257.960003"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "709"
-            endingLineNumber = "709"
+            startingLineNumber = "668"
+            endingLineNumber = "668"
             landmarkName = "-messageComposerView:shouldChangeTextInRange:replacementText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -718,11 +718,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSChatService.m"
-            timestampString = "439252346.728351"
+            timestampString = "439303166.366982"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "-chatDidReceiveMessage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -798,11 +798,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279791.697647"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "791"
-            endingLineNumber = "791"
+            startingLineNumber = "750"
+            endingLineNumber = "750"
             landmarkName = "-sendMessage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -814,11 +814,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279257.960003"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "788"
-            endingLineNumber = "788"
+            startingLineNumber = "747"
+            endingLineNumber = "747"
             landmarkName = "-sendMessage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -836,22 +836,6 @@
             startingLineNumber = "169"
             endingLineNumber = "169"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439253267.286869"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -894,11 +878,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279257.960003"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -910,11 +894,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279257.960003"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -926,11 +910,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279257.960003"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "-tableView:heightForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -942,28 +926,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279839.926004"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "810"
-            endingLineNumber = "810"
+            startingLineNumber = "769"
+            endingLineNumber = "769"
             landmarkName = "-sendMessage:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279324.122278"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -974,11 +942,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279359.617849"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "-tableView:heightForRowAtIndexPath:"
             landmarkType = "5">
             <Locations>
@@ -1020,11 +988,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279839.926004"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "805"
-            endingLineNumber = "805"
+            startingLineNumber = "764"
+            endingLineNumber = "764"
             landmarkName = "-sendMessage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1036,27 +1004,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279605.870305"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
-            landmarkName = "-tableView:heightForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279919.823887"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "-tableView:heightForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1068,27 +1020,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439279998.284984"
+            timestampString = "439304744.744883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSMessageListViewController.m"
-            timestampString = "439280044.892663"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>

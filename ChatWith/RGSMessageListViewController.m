@@ -166,55 +166,26 @@ struct {
     
     NSMutableAttributedString *messageWithImage = [[NSMutableAttributedString alloc] initWithString:message.body];
     
-    NSLog(@"simple print-----message.images.count------{%lu}", (unsigned long)message.images.count);
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
-    
-    NSArray *sortedImages = [message.images sortedArrayUsingDescriptors:@[sortDescriptor]];
-    
     NSRange currentImageRange = NSMakeRange(0, message.body.length);
-    if (message.images.count > 0) {
-        for (int i = 0; i < sortedImages.count; i++) {
-            RGSImage *image = sortedImages[i];
-            
-            NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-            textAttachment.image = [UIImage imageWithData:image.imageData];
-            textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
-            
-            NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment
-                                                                                                    Font:cell.body.font
-                                                                                                   Color:cell.body.textColor];
-            
-            NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : cell.body.font}];
-            
-            [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
+    if (!message.images.isEmpty) {
+        for (int i = 0; i < message.images.count; i++) {
             
             currentImageRange = [message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"] options:NSLiteralSearch range:currentImageRange];
             
-            [messageWithImage replaceCharactersInRange:currentImageRange withString:@" "];
+            NSString *space = @" ";
+            [messageWithImage replaceCharactersInRange:currentImageRange withString:space];
             
-            currentImageRange = NSMakeRange(currentImageRange.location + 1, message.body.length - 1);
+            currentImageRange = NSMakeRange(currentImageRange.location + space.length, message.body.length - space.length);
         }
-    } else if (message.image){
-        NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-        textAttachment.image = [UIImage imageWithData:message.image.imageData];
-        textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
         
-        NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment
+    } else if (message.image){
+        NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:[self textAttachmentWithImage:message.image.imageData]
                                                                                                 Font:cell.body.font
                                                                                                Color:cell.body.textColor];
         
-        NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : cell.body.font}];
-        
-        [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
-        
-        currentImageRange = [message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"] options:NSLiteralSearch range:currentImageRange];
-        
-        [messageWithImage replaceCharactersInRange:currentImageRange withAttributedString:imageWithNewLine];
+        [messageWithImage replaceCharactersInRange:[message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"]] withAttributedString:attrStringWithImage];
     }
     
-   
-    NSLog(@"simple print-----messageWithImage------{%@}", [messageWithImage string]);
     cell.body.attributedText = messageWithImage;
     
     if([message.sender isEqual:self.currentUser]){
@@ -224,9 +195,14 @@ struct {
                                      cellContentMargin,
                                      maxTextWidth - 5,
                                      labelWithtextHeight);
-        if(labelWithtextHeight <= 24){
+        if(message.image){
             [cell.body setTextAlignment:NSTextAlignmentRight];
+        } else {
+            if(labelWithtextHeight <= 24){
+                [cell.body setTextAlignment:NSTextAlignmentRight];
+            }
         }
+        
     } else {
         cell.body.frame = CGRectMake(cellContentMargin,
                                      cellContentMargin,
@@ -265,57 +241,40 @@ struct {
     
     
      NSMutableAttributedString *messageWithImage = [[NSMutableAttributedString alloc] initWithString:message.body];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
-    NSArray *sortedImages = [message.images sortedArrayUsingDescriptors:@[sortDescriptor]];
     
     NSRange currentImageRange = NSMakeRange(0, message.body.length);
-    if (message.images.count > 0) {
-        for (int i = 0; i < sortedImages.count; i++) {
-            RGSImage *image = sortedImages[i];
-            
-            NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-            textAttachment.image = [UIImage imageWithData:image.imageData];
-            textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
-            
-            NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment
-                                                                                                    Font:[UIFont systemFontOfSize:16]
-                                                                                                   Color:[UIColor whiteColor]];
-            
-            NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]}];
-            
-            [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
-            
+    if (!message.images.isEmpty) {
+        for (int i = 0; i < message.images.count; i++) {
+        
             currentImageRange = [message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"] options:NSLiteralSearch range:currentImageRange];
             
-            [messageWithImage replaceCharactersInRange:currentImageRange withString:@" "];
+            NSString *space = @" ";
+            [messageWithImage replaceCharactersInRange:currentImageRange withString:space];
             
-            currentImageRange = NSMakeRange(currentImageRange.location + 1, message.body.length - 1);
+            currentImageRange = NSMakeRange(currentImageRange.location + space.length, message.body.length - space.length);
         }
 
     } else if (message.image){
-        NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-        textAttachment.image = [UIImage imageWithData:message.image.imageData];
-        textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
-        
-        NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment
+       
+        NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:[self textAttachmentWithImage:message.image.imageData]
                                                                                                 Font:[UIFont systemFontOfSize:16]
                                                                                                Color:[UIColor whiteColor]];
         
-        NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]}];
-        
-        [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
-        
-        currentImageRange = [message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"] options:NSLiteralSearch range:currentImageRange];
-        
-        [messageWithImage replaceCharactersInRange:currentImageRange withAttributedString:imageWithNewLine];
+        [messageWithImage replaceCharactersInRange:[message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"]] withAttributedString:attrStringWithImage];
     }
     
-//    float height = [self heightWithText:message.body maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
     float height = [self heightWithAttributedText:messageWithImage maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
     if(indexPath.row == fristCell){
         return height + navigationSpacing;
     }
     return height;
+}
+
+-(NSTextAttachment *)textAttachmentWithImage:(NSData *)imageData{
+    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+    textAttachment.image = [UIImage imageWithData:imageData];
+    textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
+    return textAttachment;
 }
 
 -(CGFloat)heightWithText:(NSString *)text maxWidth:(float)maxWidth{
