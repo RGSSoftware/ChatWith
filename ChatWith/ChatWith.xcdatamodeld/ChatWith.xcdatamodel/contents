@@ -31,6 +31,7 @@
         <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
         <relationship name="message" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSMessage" inverseName="images" inverseEntity="RGSMessage" syncable="YES"/>
+        <relationship name="messageImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSMessage" inverseName="image" inverseEntity="RGSMessage" syncable="YES"/>
     </entity>
     <entity name="RGSManagedUser" representedClassName="RGSManagedUser" syncable="YES">
         <attribute name="blobID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -63,6 +64,7 @@
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="chat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSChat" inverseName="messages" inverseEntity="RGSChat" syncable="YES"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSImage" inverseName="messageImage" inverseEntity="RGSImage" syncable="YES"/>
         <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSImage" inverseName="message" inverseEntity="RGSImage" syncable="YES"/>
         <relationship name="receiver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="receiveMessages" inverseEntity="RGSManagedUser" syncable="YES"/>
         <relationship name="sender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="sentMessages" inverseEntity="RGSManagedUser" syncable="YES"/>
@@ -71,8 +73,8 @@
         <element name="ApplicationSession" positionX="-36" positionY="-108" width="128" height="150"/>
         <element name="RGSChat" positionX="88" positionY="81" width="128" height="223"/>
         <element name="RGSContact" positionX="-315" positionY="342" width="128" height="73"/>
-        <element name="RGSImage" positionX="-126" positionY="36" width="128" height="90"/>
+        <element name="RGSImage" positionX="-126" positionY="36" width="128" height="105"/>
         <element name="RGSManagedUser" positionX="-333" positionY="-117" width="128" height="418"/>
-        <element name="RGSMessage" positionX="-162" positionY="99" width="128" height="133"/>
+        <element name="RGSMessage" positionX="-162" positionY="99" width="128" height="148"/>
     </elements>
 </model>

@@ -172,8 +172,22 @@ static dispatch_once_t once_token = 0;
         RGSImageBatchRequest *imageBatchDownload = [[RGSImageBatchRequest alloc] init];
         
         [imageBatchDownload downloadImagesWithQBMessage:qbMessage successBlock:^(NSSet *images) {
+            NSMutableArray *messageImages = [NSMutableArray new];
+
             for (RGSImage *image in images) {
                 image.message = message;
+                
+                RGSMessage *messageImage = [RGSMessage MR_createEntity];
+                messageImage.sender = sender;
+                messageImage.receiver = receiver;
+                messageImage.chat = chat;
+                messageImage.body = [NSString stringWithUTF8String:"\ufffc"];
+                messageImage.image = image;
+                
+                image.messageImage = messageImage;
+                
+                [messageImages addObject:messageImages];
+
             }
             message.images = images;
             

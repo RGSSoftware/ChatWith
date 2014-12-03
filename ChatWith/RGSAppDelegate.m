@@ -165,9 +165,9 @@
     self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
     self.applicationSessionManager.accountKey = @"byNoqE9AHiQsoffhPgdt";
     
-    [self loginAsRRWithBarAsMessagesReceiver];
+//    [self loginAsRRWithBarAsMessagesReceiver];
     
-//    [self loginAsBarWithRRAsMessagesReceiver];
+    [self loginAsBarWithRRAsMessagesReceiver];
 //
 //    RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
 //    currentUser.currentUser = [NSNumber numberWithBool:YES];

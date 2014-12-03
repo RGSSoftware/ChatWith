@@ -2,7 +2,7 @@
 //  RGSImage.m
 //  ChatWith
 //
-//  Created by PC on 11/26/14.
+//  Created by PC on 12/2/14.
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
@@ -15,5 +15,6 @@
 @dynamic imageData;
 @dynamic index;
 @dynamic message;
+@dynamic messageImage;
 
 @end

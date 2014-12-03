@@ -173,11 +173,31 @@ struct {
     NSArray *sortedImages = [message.images sortedArrayUsingDescriptors:@[sortDescriptor]];
     
     NSRange currentImageRange = NSMakeRange(0, message.body.length);
-    for (int i = 0; i < sortedImages.count; i++) {
-        RGSImage *image = sortedImages[i];
-        
+    if (message.images.count > 0) {
+        for (int i = 0; i < sortedImages.count; i++) {
+            RGSImage *image = sortedImages[i];
+            
+            NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+            textAttachment.image = [UIImage imageWithData:image.imageData];
+            textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
+            
+            NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment
+                                                                                                    Font:cell.body.font
+                                                                                                   Color:cell.body.textColor];
+            
+            NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : cell.body.font}];
+            
+            [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
+            
+            currentImageRange = [message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"] options:NSLiteralSearch range:currentImageRange];
+            
+            [messageWithImage replaceCharactersInRange:currentImageRange withString:@" "];
+            
+            currentImageRange = NSMakeRange(currentImageRange.location + 1, message.body.length - 1);
+        }
+    } else if (message.image){
         NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-        textAttachment.image = [UIImage imageWithData:image.imageData];
+        textAttachment.image = [UIImage imageWithData:message.image.imageData];
         textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
         
         NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment
@@ -191,16 +211,15 @@ struct {
         currentImageRange = [message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"] options:NSLiteralSearch range:currentImageRange];
         
         [messageWithImage replaceCharactersInRange:currentImageRange withAttributedString:imageWithNewLine];
-        
-        currentImageRange = NSMakeRange(currentImageRange.location + currentImageRange.length, message.body.length - currentImageRange.length);
     }
+    
    
     NSLog(@"simple print-----messageWithImage------{%@}", [messageWithImage string]);
     cell.body.attributedText = messageWithImage;
     
     if([message.sender isEqual:self.currentUser]){
         
-        float labelWithtextHeight = [self heightWithText:message.body maxWidth:(maxTextWidth - 5)];
+        float labelWithtextHeight = [self heightWithAttributedText:messageWithImage maxWidth:(maxTextWidth - 5)];
         cell.body.frame = CGRectMake(CGRectGetWidth(cell.frame) - maxTextWidth - 5,
                                      cellContentMargin,
                                      maxTextWidth - 5,
@@ -212,7 +231,7 @@ struct {
         cell.body.frame = CGRectMake(cellContentMargin,
                                      cellContentMargin,
                                      maxTextWidth - leftRightMargin,
-                                     [self heightWithText:message.body
+                                     [self heightWithAttributedText:messageWithImage
                                                  maxWidth:(maxTextWidth - leftRightMargin)]);
     }
     if(indexPath.row == fristCell){cell.body.frame = [self add:navigationSpacing toRectY:cell.body.frame];}
@@ -243,8 +262,56 @@ struct {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
-    float height = [self heightWithText:message.body maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
     
+    
+     NSMutableAttributedString *messageWithImage = [[NSMutableAttributedString alloc] initWithString:message.body];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
+    NSArray *sortedImages = [message.images sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
+    NSRange currentImageRange = NSMakeRange(0, message.body.length);
+    if (message.images.count > 0) {
+        for (int i = 0; i < sortedImages.count; i++) {
+            RGSImage *image = sortedImages[i];
+            
+            NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+            textAttachment.image = [UIImage imageWithData:image.imageData];
+            textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
+            
+            NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment
+                                                                                                    Font:[UIFont systemFontOfSize:16]
+                                                                                                   Color:[UIColor whiteColor]];
+            
+            NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]}];
+            
+            [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
+            
+            currentImageRange = [message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"] options:NSLiteralSearch range:currentImageRange];
+            
+            [messageWithImage replaceCharactersInRange:currentImageRange withString:@" "];
+            
+            currentImageRange = NSMakeRange(currentImageRange.location + 1, message.body.length - 1);
+        }
+
+    } else if (message.image){
+        NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+        textAttachment.image = [UIImage imageWithData:message.image.imageData];
+        textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
+        
+        NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment
+                                                                                                Font:[UIFont systemFontOfSize:16]
+                                                                                               Color:[UIColor whiteColor]];
+        
+        NSMutableAttributedString *imageWithNewLine = [[NSMutableAttributedString alloc] initWithString:@"I" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]}];
+        
+        [imageWithNewLine replaceCharactersInRange:NSMakeRange(0, 1) withAttributedString:attrStringWithImage];
+        
+        currentImageRange = [message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"] options:NSLiteralSearch range:currentImageRange];
+        
+        [messageWithImage replaceCharactersInRange:currentImageRange withAttributedString:imageWithNewLine];
+    }
+    
+//    float height = [self heightWithText:message.body maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
+    float height = [self heightWithAttributedText:messageWithImage maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
     if(indexPath.row == fristCell){
         return height + navigationSpacing;
     }
@@ -253,7 +320,7 @@ struct {
 
 -(CGFloat)heightWithText:(NSString *)text maxWidth:(float)maxWidth{
     
-    float minBodyHeight = 140.0f;
+    float minBodyHeight = 16.0f;
     float maxBodyHeight = 20000.0f;
     
     CGSize constraint = CGSizeMake(maxWidth, maxBodyHeight);
@@ -268,8 +335,33 @@ struct {
                                       attributes:@{NSParagraphStyleAttributeName: paragraphStyle.copy,NSFontAttributeName:[UIFont systemFontOfSize:16]}
                                          context:nil];
     
+    
+    
     return MAX(CGRectGetHeight(textRect), minBodyHeight);
 }
+-(CGFloat)heightWithAttributedText:(NSAttributedString *)text maxWidth:(float)maxWidth{
+    
+    float minBodyHeight = 16.0f;
+    float maxBodyHeight = 20000.0f;
+    
+    CGSize constraint = CGSizeMake(maxWidth, maxBodyHeight);
+    
+    
+    //sizeWithFont:ConstrainedToSize:lineBreakMode: deprecation solution
+    //http://stackoverflow.com/questions/21654671/sizewithfont-constrainedtosize-linebreakmode-method-is-deprecated-in-ios-7#21654741
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    CGRect textRect = [text boundingRectWithSize:constraint
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                         context:nil];
+    
+    
+    
+    return MAX(CGRectGetHeight(textRect), minBodyHeight);
+
+    
+}
+
 //Part-2
 -(void)viewDidLayoutSubviews
 {
@@ -691,10 +783,11 @@ struct {
     message.sender = self.currentUser;
     message.receiver = self.receiver;
     message.chat = self.chat;
-    message.body = self.messageComposerView.messageTextView.internalTextView.attributedText.string;
+    message.body = self.messageComposerView.messageTextView.internalTextView.text;
     
     message.date = [NSDate date];
     
+    NSMutableArray *messageImages = [NSMutableArray new];
     for(RGSMessageComposeImage *sortedImage in self.messageComposeImages){
         RGSImage *image = [RGSImage MR_createEntity];
         image.imageData = UIImageJPEGRepresentation(sortedImage.image,0.0);
@@ -702,13 +795,24 @@ struct {
         image.message = message;
         
         [message addImagesObject:image];
+        
+        RGSMessage *messageImage = [RGSMessage MR_createEntity];
+        messageImage.sender = self.currentUser;
+        messageImage.receiver = self.receiver;
+        messageImage.chat = self.chat;
+        messageImage.body = [NSString stringWithUTF8String:"\ufffc"];
+        messageImage.image = image;
+        
+        image.messageImage = messageImage;
+        
+        [messageImages addObject:messageImages];
     }
     
     [[self managedObjectContext] MR_saveOnlySelfAndWait];
     self.messageComposerView.messageTextView.internalTextView.text = nil;
     [self.messageComposeImages removeAllObjects];
     
-    [[RGSChatService shared] sendMessage:message];
+//    [[RGSChatService shared] sendMessage:message];
 }
 
 - (void)dealloc {

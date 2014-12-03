@@ -2,7 +2,7 @@
 //  RGSImage.h
 //  ChatWith
 //
-//  Created by PC on 11/26/14.
+//  Created by PC on 12/2/14.
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
@@ -16,5 +16,6 @@
 @property (nonatomic, retain) NSData * imageData;
 @property (nonatomic, retain) NSNumber * index;
 @property (nonatomic, retain) RGSMessage *message;
+@property (nonatomic, retain) RGSMessage *messageImage;
 
 @end
