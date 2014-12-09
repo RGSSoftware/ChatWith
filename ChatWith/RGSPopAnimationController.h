@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RGSBaseAnimatonController.h"
 
-@interface RGSPopAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
+@interface RGSPopAnimationController : RGSBaseAnimatonController
 
 @end

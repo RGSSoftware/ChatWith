@@ -16,8 +16,13 @@
 
 @implementation RGSPopAnimationController
 
-- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
-    return 0.25;
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.transitionDuration = .25;
+    }
+    return self;
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
