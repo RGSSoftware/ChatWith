@@ -23,10 +23,10 @@
 
 #import "UIButton+RGSUIBackButton.h"
 
-#import "RGSOverviewAnimatonController.h"
+#import "RGSShowOverviewAnimatonController.h"
 @interface RGSContactListViewController ()
 
-@property (nonatomic, strong)RGSOverviewAnimatonController *overviewAnimationController;
+@property (nonatomic, strong)RGSShowOverviewAnimatonController *overviewAnimationController;
 
 @end
 
@@ -104,7 +104,7 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
     
-    self.overviewAnimationController = [RGSOverviewAnimatonController new];
+    self.overviewAnimationController = [RGSShowOverviewAnimatonController new];
 }
 
 -(void)toChatListScreen:(id)sender{

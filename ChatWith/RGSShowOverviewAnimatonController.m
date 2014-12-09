@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "RGSOverviewAnimatonController.h"
+#import "RGSShowOverviewAnimatonController.h"
 
-@interface RGSOverviewAnimatonController()
+@interface RGSShowOverviewAnimatonController()
 @property float transitionDuration;
 @end
 
-@implementation RGSOverviewAnimatonController
+@implementation RGSShowOverviewAnimatonController
 
 - (instancetype)init
 {

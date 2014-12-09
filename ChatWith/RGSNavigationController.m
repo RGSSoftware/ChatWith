@@ -15,7 +15,7 @@
 #import "RGSShowModallyAnimatonController.h"
 #import "RGSDismissModallyAnimatonController.h"
 
-#import "RGSOverviewAnimatonController.h"
+#import "RGSShowOverviewAnimatonController.h"
 #import "RGSDismissOverviewAnimatonController.h"
 
 #import "RGSChatListViewController.h"
@@ -52,7 +52,7 @@
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    return [RGSOverviewAnimatonController new];
+    return [RGSShowOverviewAnimatonController new];
 }
 -(id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
     return [RGSDismissOverviewAnimatonController new];
