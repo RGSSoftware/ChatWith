@@ -22,10 +22,6 @@
     }
     return self;
 }
-- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
-    return self.transitionDuration;
-}
-
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
     
     UIView *inView = [transitionContext containerView];

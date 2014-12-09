@@ -9,10 +9,15 @@
 #import "RGSDismissOverviewAnimatonController.h"
 
 @implementation RGSDismissOverviewAnimatonController
-- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
-    return .21;
-}
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.transitionDuration = .21;
+    }
+    return self;
+}
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
     
     UIView *inView = [transitionContext containerView];
@@ -28,7 +33,7 @@
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
-    [UIView transitionWithView:[transitionContext containerView] duration:0.21 options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews animations:^{
+    [UIView transitionWithView:[transitionContext containerView] duration:self.transitionDuration options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews animations:^{
         backgroundView.alpha = 0;
         [fromVC.view setFrame:CGRectMake(0, CGRectGetHeight([[UIScreen mainScreen] bounds]), fromVC.view.frame.size.width, fromVC.view.frame.size.height)];
     } completion:^(BOOL finished) {

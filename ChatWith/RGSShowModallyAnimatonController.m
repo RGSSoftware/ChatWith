@@ -16,8 +16,13 @@
 
 @implementation RGSShowModallyAnimatonController
 
-- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
-    return 0.35;
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.transitionDuration = .35;
+    }
+    return self;
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
@@ -41,7 +46,10 @@
     CGRect centerScreenRect = toViewController.view.frame;
     centerScreenRect.origin = CGPointZero;
     
-    [UIView transitionWithView:[transitionContext containerView] duration:0.35 options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews animations:^{
+    [UIView transitionWithView:[transitionContext containerView]
+                      duration:self.transitionDuration
+                       options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews
+                    animations:^{
         
         toViewController.view.frame = centerScreenRect;
         fromViewController.view.frame = topOffScreenRect;
