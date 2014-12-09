@@ -105,7 +105,7 @@
 		22D7BCD219A8D45200D2C01C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB619A8D45100D2C01C /* CoreData.framework */; };
 		22D7BCDA19A8D45200D2C01C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22D7BCD819A8D45200D2C01C /* InfoPlist.strings */; };
 		22DDEB2C1A371DA600B2A691 /* RGSDismissOverviewAnimatonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DDEB2B1A371DA600B2A691 /* RGSDismissOverviewAnimatonController.m */; };
-		22DDEB2F1A37240900B2A691 /* RGSBaseAnimatonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DDEB2E1A37240900B2A691 /* RGSBaseAnimatonController.m */; };
+		22DDEB2F1A37240900B2A691 /* RGSBaseAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DDEB2E1A37240900B2A691 /* RGSBaseAnimationController.m */; };
 		22DF5F921A068E2900DC4D67 /* RGSPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DF5F911A068E2900DC4D67 /* RGSPushSegue.m */; };
 		22E8A5EA1A168F350031403B /* RGSBaseViewController+RGSSeparatorExtender.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E8A5E91A168F350031403B /* RGSBaseViewController+RGSSeparatorExtender.m */; };
 		22F418F81A361A53009BF951 /* RGSShowOverviewAnimatonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F418F71A361A53009BF951 /* RGSShowOverviewAnimatonController.m */; };
@@ -256,8 +256,8 @@
 		22D7BCD919A8D45200D2C01C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		22DDEB2A1A371DA600B2A691 /* RGSDismissOverviewAnimatonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSDismissOverviewAnimatonController.h; sourceTree = "<group>"; };
 		22DDEB2B1A371DA600B2A691 /* RGSDismissOverviewAnimatonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSDismissOverviewAnimatonController.m; sourceTree = "<group>"; };
-		22DDEB2D1A37240900B2A691 /* RGSBaseAnimatonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSBaseAnimatonController.h; sourceTree = "<group>"; };
-		22DDEB2E1A37240900B2A691 /* RGSBaseAnimatonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSBaseAnimatonController.m; sourceTree = "<group>"; };
+		22DDEB2D1A37240900B2A691 /* RGSBaseAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSBaseAnimationController.h; sourceTree = "<group>"; };
+		22DDEB2E1A37240900B2A691 /* RGSBaseAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSBaseAnimationController.m; sourceTree = "<group>"; };
 		22DF5F901A068E2900DC4D67 /* RGSPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSPushSegue.h; sourceTree = "<group>"; };
 		22DF5F911A068E2900DC4D67 /* RGSPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSPushSegue.m; sourceTree = "<group>"; };
 		22E8A5E81A168F350031403B /* RGSBaseViewController+RGSSeparatorExtender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RGSBaseViewController+RGSSeparatorExtender.h"; sourceTree = "<group>"; };
@@ -418,20 +418,7 @@
 				22DF5F911A068E2900DC4D67 /* RGSPushSegue.m */,
 				22A001621A27672500B22EEE /* RGSPopSegue.h */,
 				22A001631A27672500B22EEE /* RGSPopSegue.m */,
-				22DDEB2D1A37240900B2A691 /* RGSBaseAnimatonController.h */,
-				22DDEB2E1A37240900B2A691 /* RGSBaseAnimatonController.m */,
-				22A001651A27789F00B22EEE /* RGSPushAnimationController.h */,
-				22A001661A27789F00B22EEE /* RGSPushAnimationController.m */,
-				227472071A277ABB00F61663 /* RGSPopAnimationController.h */,
-				227472081A277ABB00F61663 /* RGSPopAnimationController.m */,
-				22F418F61A361A53009BF951 /* RGSShowOverviewAnimatonController.h */,
-				22F418F71A361A53009BF951 /* RGSShowOverviewAnimatonController.m */,
-				22DDEB2A1A371DA600B2A691 /* RGSDismissOverviewAnimatonController.h */,
-				22DDEB2B1A371DA600B2A691 /* RGSDismissOverviewAnimatonController.m */,
-				22AA4CBF1A28A18E008DE41B /* RGSShowModallyAnimatonController.h */,
-				22AA4CC01A28A18E008DE41B /* RGSShowModallyAnimatonController.m */,
-				22AA4CC21A28A30F008DE41B /* RGSDismissModallyAnimatonController.h */,
-				22AA4CC31A28A30F008DE41B /* RGSDismissModallyAnimatonController.m */,
+				22C5B0C61A3728EA0018A5F3 /* AnimationControllers */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -473,6 +460,27 @@
 				227BFAF119E24674000E7ACC /* ApplicationSession.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		22C5B0C61A3728EA0018A5F3 /* AnimationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				22DDEB2D1A37240900B2A691 /* RGSBaseAnimationController.h */,
+				22DDEB2E1A37240900B2A691 /* RGSBaseAnimationController.m */,
+				22A001651A27789F00B22EEE /* RGSPushAnimationController.h */,
+				22A001661A27789F00B22EEE /* RGSPushAnimationController.m */,
+				227472071A277ABB00F61663 /* RGSPopAnimationController.h */,
+				227472081A277ABB00F61663 /* RGSPopAnimationController.m */,
+				22F418F61A361A53009BF951 /* RGSShowOverviewAnimatonController.h */,
+				22F418F71A361A53009BF951 /* RGSShowOverviewAnimatonController.m */,
+				22DDEB2A1A371DA600B2A691 /* RGSDismissOverviewAnimatonController.h */,
+				22DDEB2B1A371DA600B2A691 /* RGSDismissOverviewAnimatonController.m */,
+				22AA4CBF1A28A18E008DE41B /* RGSShowModallyAnimatonController.h */,
+				22AA4CC01A28A18E008DE41B /* RGSShowModallyAnimatonController.m */,
+				22AA4CC21A28A30F008DE41B /* RGSDismissModallyAnimatonController.h */,
+				22AA4CC31A28A30F008DE41B /* RGSDismissModallyAnimatonController.m */,
+			);
+			name = AnimationControllers;
 			sourceTree = "<group>";
 		};
 		22D7BCA419A8D45000D2C01C = {
@@ -782,7 +790,7 @@
 				22126CA11A2ECBC100A983E7 /* RGSMessage.m in Sources */,
 				223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */,
 				22F520701A0074D600FD2CD5 /* UIImage+RoundedCorner.m in Sources */,
-				22DDEB2F1A37240900B2A691 /* RGSBaseAnimatonController.m in Sources */,
+				22DDEB2F1A37240900B2A691 /* RGSBaseAnimationController.m in Sources */,
 				2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */,
 				22A001671A27789F00B22EEE /* RGSPushAnimationController.m in Sources */,
 				22BE6EE11A14728300D130EB /* RGSManagedUser.m in Sources */,

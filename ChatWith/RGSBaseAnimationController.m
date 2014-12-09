@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "RGSBaseAnimatonController.h"
+#import "RGSBaseAnimationController.h"
 
-@implementation RGSBaseAnimatonController
+@implementation RGSBaseAnimationController
 
 - (instancetype)init
 {

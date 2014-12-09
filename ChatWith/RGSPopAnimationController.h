@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RGSBaseAnimatonController.h"
+#import "RGSBaseAnimationController.h"
 
-@interface RGSPopAnimationController : RGSBaseAnimatonController
+@interface RGSPopAnimationController : RGSBaseAnimationController
 
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RGSBaseAnimatonController : NSObject <UIViewControllerAnimatedTransitioning>
+@interface RGSBaseAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
 
 @property float transitionDuration;
 
