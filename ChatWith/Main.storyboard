@@ -594,7 +594,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.20999999999999999" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kL2-gv-bDh" firstAttribute="leading" secondItem="bR3-On-xkd" secondAttribute="trailing" constant="9" id="7H5-W6-zNg"/>
                             <constraint firstItem="bR3-On-xkd" firstAttribute="top" secondItem="1oy-is-Yo9" secondAttribute="bottom" constant="339" id="7kC-VX-hmj"/>

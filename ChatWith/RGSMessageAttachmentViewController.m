@@ -45,7 +45,7 @@
         if(!CGRectContainsPoint(self.choosePhotoButton.frame, userTouchCoordinate) ||
            !CGRectContainsPoint(self.takePhotoButton.frame, userTouchCoordinate)){
             
-            [self dismissViewControllerAnimated:NO completion:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     }
 }
@@ -62,7 +62,7 @@
      [self presentViewController:self.imagePickerController animated:YES completion:nil];
 }
 
-- (IBAction)cancelAttachment:(id)sender {[self dismissViewControllerAnimated:NO completion:nil];}
+- (IBAction)cancelAttachment:(id)sender {[self dismissViewControllerAnimated:YES completion:nil];}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image=[info objectForKey:UIImagePickerControllerOriginalImage];
