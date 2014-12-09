@@ -33,7 +33,7 @@
         if(!CGRectContainsPoint(self.sendSmsButton.frame, userTouchCoordinate) ||
            !CGRectContainsPoint(self.sendEmailButton.frame, userTouchCoordinate)){
             
-            [self dismissViewControllerAnimated:NO completion:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     }
 }

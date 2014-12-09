@@ -19,9 +19,6 @@
     UIViewController* toVC = (UIViewController*)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController* fromVC = (UIViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
-//    CGRect bottomScreenRect = toVC.view.frame;
-//    bottomScreenRect.origin = CGPointMake(0, CGRectGetHeight([[UIScreen mainScreen] bounds]));
-//    toVC.view.frame = bottomScreenRect;
     [inView addSubview:fromVC.view];
     
     UIView *backgroundView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -30,28 +27,13 @@
     [inView insertSubview:backgroundView belowSubview:toVC.view];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-//    [UIView animateWithDuration:.21
-//                     animations:^{
-//                         backgroundView.alpha = 0;
-//                         [fromVC.view setFrame:CGRectMake(0, CGRectGetHeight([[UIScreen mainScreen] bounds]), fromVC.view.frame.size.width, fromVC.view.frame.size.height)];
-//                     }
-//                     completion:^(BOOL finished) {
-//                         [transitionContext completeTransition:YES];
-//                     }];
     
     [UIView transitionWithView:[transitionContext containerView] duration:0.21 options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews animations:^{
         backgroundView.alpha = 0;
         [fromVC.view setFrame:CGRectMake(0, CGRectGetHeight([[UIScreen mainScreen] bounds]), fromVC.view.frame.size.width, fromVC.view.frame.size.height)];
     } completion:^(BOOL finished) {
-        
-        //        fromViewController.backgroundView.hidden = NO;
-        //        toViewController.backgroundView.hidden = NO;
-        //
-        //        [self.backgroundView removeFromSuperview];
-        //        self.backgroundView = nil;
-        //
-        //        [fromViewController.view removeFromSuperview];
-        
+        [fromVC.view removeFromSuperview];
+
         [transitionContext completeTransition:YES];
     }];
 }
