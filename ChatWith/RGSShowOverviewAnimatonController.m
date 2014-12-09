@@ -8,10 +8,6 @@
 
 #import "RGSShowOverviewAnimatonController.h"
 
-@interface RGSShowOverviewAnimatonController()
-@property float transitionDuration;
-@end
-
 @implementation RGSShowOverviewAnimatonController
 
 - (instancetype)init

@@ -402,22 +402,12 @@
 				223B067D1A2F607400B2344F /* IBActionSheet.m */,
 				22041ED61A2764F800210E59 /* RGSNavigationController.h */,
 				22041ED71A2764F800210E59 /* RGSNavigationController.m */,
-				22B1E3131A1967660062701A /* RGSMessageComposerView.h */,
-				22B1E3141A1967660062701A /* RGSMessageComposerView.m */,
-				22B1E3151A1967660062701A /* CSGrowingTextView.h */,
-				22B1E3161A1967660062701A /* CSGrowingTextView.m */,
-				22AD00F21A1336E7008F9EF7 /* RGSMessageCell.h */,
-				22AD00F31A1336E7008F9EF7 /* RGSMessageCell.m */,
 				221A055F1A0D6C7A006B46AD /* RGSChatCell.h */,
 				221A05601A0D6C7A006B46AD /* RGSChatCell.m */,
 				223A1DA71A013F0200A1B3D2 /* RGSContactCell.h */,
 				223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */,
-				22D647491A211D4B00CD66BD /* RGSOverviewSegue.h */,
-				22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */,
-				22DF5F901A068E2900DC4D67 /* RGSPushSegue.h */,
-				22DF5F911A068E2900DC4D67 /* RGSPushSegue.m */,
-				22A001621A27672500B22EEE /* RGSPopSegue.h */,
-				22A001631A27672500B22EEE /* RGSPopSegue.m */,
+				22C5B0C81A3729980018A5F3 /* MessageListViewComponents */,
+				22C5B0C71A3729750018A5F3 /* Segues */,
 				22C5B0C61A3728EA0018A5F3 /* AnimationControllers */,
 			);
 			name = View;
@@ -481,6 +471,32 @@
 				22AA4CC31A28A30F008DE41B /* RGSDismissModallyAnimatonController.m */,
 			);
 			name = AnimationControllers;
+			sourceTree = "<group>";
+		};
+		22C5B0C71A3729750018A5F3 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				22D647491A211D4B00CD66BD /* RGSOverviewSegue.h */,
+				22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */,
+				22DF5F901A068E2900DC4D67 /* RGSPushSegue.h */,
+				22DF5F911A068E2900DC4D67 /* RGSPushSegue.m */,
+				22A001621A27672500B22EEE /* RGSPopSegue.h */,
+				22A001631A27672500B22EEE /* RGSPopSegue.m */,
+			);
+			name = Segues;
+			sourceTree = "<group>";
+		};
+		22C5B0C81A3729980018A5F3 /* MessageListViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				22B1E3131A1967660062701A /* RGSMessageComposerView.h */,
+				22B1E3141A1967660062701A /* RGSMessageComposerView.m */,
+				22B1E3151A1967660062701A /* CSGrowingTextView.h */,
+				22B1E3161A1967660062701A /* CSGrowingTextView.m */,
+				22AD00F21A1336E7008F9EF7 /* RGSMessageCell.h */,
+				22AD00F31A1336E7008F9EF7 /* RGSMessageCell.m */,
+			);
+			name = MessageListViewComponents;
 			sourceTree = "<group>";
 		};
 		22D7BCA419A8D45000D2C01C = {
