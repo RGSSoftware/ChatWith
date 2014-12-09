@@ -8,10 +8,22 @@
 
 #import "RGSOverviewAnimatonController.h"
 
+@interface RGSOverviewAnimatonController()
+@property float transitionDuration;
+@end
+
 @implementation RGSOverviewAnimatonController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.transitionDuration = .21;
+    }
+    return self;
+}
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
-    return .21;
+    return self.transitionDuration;
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
@@ -31,28 +43,15 @@
     [inView insertSubview:backgroundView belowSubview:toVC.view];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-//    [UIView animateWithDuration:.21
-//                     animations:^{
-//                         backgroundView.alpha = .21;
-//                         [toVC.view setFrame:CGRectMake(0, 0, fromVC.view.frame.size.width, fromVC.view.frame.size.height)];
-//                     }
-//                     completion:^(BOOL finished) {
-//                         [transitionContext completeTransition:YES];
-//                     }];
     
-    [UIView transitionWithView:[transitionContext containerView] duration:0.21 options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews animations:^{
+    [UIView transitionWithView:[transitionContext containerView]
+                      duration:self.transitionDuration
+                       options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews
+                    animations:^{
         backgroundView.alpha = .21;
         [toVC.view setFrame:CGRectMake(0, 0, fromVC.view.frame.size.width, fromVC.view.frame.size.height)];
-    } completion:^(BOOL finished) {
-        
-//        fromViewController.backgroundView.hidden = NO;
-//        toViewController.backgroundView.hidden = NO;
-//        
-//        [self.backgroundView removeFromSuperview];
-//        self.backgroundView = nil;
-//        
-//        [fromViewController.view removeFromSuperview];
-        
+    }
+                    completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
     }];
 }

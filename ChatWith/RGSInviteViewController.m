@@ -57,7 +57,7 @@
     //include your app icon here
     [mcvc addAttachmentData:UIImageJPEGRepresentation(image, 1) mimeType:@"image/jpg" fileName:@"icon.jpg"];
     // your message and link
-    NSString *defaultBody =@"check out this cool apps, link....";
+    NSString *defaultBody = @"check out this cool apps, link....";
     [mcvc setMessageBody:defaultBody isHTML:YES];
     [self presentViewController:mcvc animated:YES completion:nil];
     
