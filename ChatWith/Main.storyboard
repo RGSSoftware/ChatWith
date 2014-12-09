@@ -229,7 +229,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="YGo-i8-c0b" kind="custom" customClass="RGSOverviewSegue" id="dCK-FV-4b2"/>
+                                    <segue destination="oVQ-ve-Jft" kind="custom" identifier="toInviteScreen" customClass="RGSOverviewSegue" id="q7g-BT-Gwn"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E8R-IH-pSd">
@@ -359,25 +359,6 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1432" y="1117"/>
-        </scene>
-        <!--Invite View Controller-->
-        <scene sceneID="TSn-MF-cjV">
-            <objects>
-                <viewController id="YGo-i8-c0b" customClass="RGSInviteViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kHS-zQ-WdA"/>
-                        <viewControllerLayoutGuide type="bottom" id="IfJ-lz-JPW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="61u-hI-OhJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rXe-ff-yxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1432" y="1846"/>
         </scene>
         <!--Message List View Controller-->
         <scene sceneID="g6R-Ox-UsF">
@@ -652,10 +633,134 @@
             </objects>
             <point key="canvasLocation" x="1863" y="1117"/>
         </scene>
+        <!--Invite View Controller-->
+        <scene sceneID="DM1-w2-VYR">
+            <objects>
+                <viewController id="oVQ-ve-Jft" customClass="RGSInviteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3b0-AE-eBe"/>
+                        <viewControllerLayoutGuide type="bottom" id="XGg-Bs-9VQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="49B-sm-Oiy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9H-Fp-Sgi">
+                                <rect key="frame" x="16" y="500" width="288" height="48"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="2ep-mx-OwS"/>
+                                    <constraint firstAttribute="width" constant="288" id="K3E-Xr-eXd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelInvite:" destination="oVQ-ve-Jft" eventType="touchUpInside" id="IKj-h5-dyp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0i-Jp-z4q">
+                                <rect key="frame" x="16" y="359" width="140" height="133"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="133" id="p8k-aE-POH"/>
+                                    <constraint firstAttribute="width" constant="140" id="voW-fq-34V"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="-120" minY="76" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="32" minY="27" maxX="34" maxY="63"/>
+                                <state key="normal" title="eMail" image="em-25">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendEmail:" destination="oVQ-ve-Jft" eventType="touchUpInside" id="EkW-wK-u5a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hh6-OQ-sRj">
+                                <rect key="frame" x="165" y="359" width="139" height="133"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="139" id="Tlf-3f-X74"/>
+                                    <constraint firstAttribute="height" constant="133" id="Z4J-RN-hQA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="titleEdgeInsets" minX="-71" minY="68" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="50" minY="12" maxX="50" maxY="59"/>
+                                <state key="normal" title="Text" image="phone-25">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendSms:" destination="oVQ-ve-Jft" eventType="touchUpInside" id="7QT-tB-RK0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hh6-OQ-sRj" firstAttribute="leading" secondItem="x0i-Jp-z4q" secondAttribute="trailing" constant="9" id="1f9-L1-JDc"/>
+                            <constraint firstItem="XGg-Bs-9VQ" firstAttribute="top" secondItem="q9H-Fp-Sgi" secondAttribute="bottom" constant="20" id="1vs-nd-TgS"/>
+                            <constraint firstAttribute="bottom" secondItem="q9H-Fp-Sgi" secondAttribute="bottom" constant="20" id="5SR-fz-yxs"/>
+                            <constraint firstItem="Hh6-OQ-sRj" firstAttribute="leading" secondItem="x0i-Jp-z4q" secondAttribute="trailing" constant="9" id="5to-Ad-3gz"/>
+                            <constraint firstItem="q9H-Fp-Sgi" firstAttribute="leading" secondItem="49B-sm-Oiy" secondAttribute="leading" constant="16" id="IQ0-uo-6rI"/>
+                            <constraint firstItem="q9H-Fp-Sgi" firstAttribute="top" secondItem="x0i-Jp-z4q" secondAttribute="bottom" constant="8" symbolic="YES" id="KXB-Rb-x10"/>
+                            <constraint firstItem="x0i-Jp-z4q" firstAttribute="bottom" secondItem="Hh6-OQ-sRj" secondAttribute="bottom" id="SUC-L4-c0h"/>
+                            <constraint firstItem="x0i-Jp-z4q" firstAttribute="top" secondItem="3b0-AE-eBe" secondAttribute="bottom" constant="339" id="Wb7-p1-mp8"/>
+                            <constraint firstItem="x0i-Jp-z4q" firstAttribute="top" secondItem="Hh6-OQ-sRj" secondAttribute="top" id="Yp0-rz-lZa"/>
+                            <constraint firstItem="q9H-Fp-Sgi" firstAttribute="top" secondItem="Hh6-OQ-sRj" secondAttribute="bottom" constant="8" id="jSa-7C-XeW"/>
+                            <constraint firstItem="q9H-Fp-Sgi" firstAttribute="top" secondItem="x0i-Jp-z4q" secondAttribute="bottom" constant="8" id="sYc-4l-mwA"/>
+                            <constraint firstItem="x0i-Jp-z4q" firstAttribute="leading" secondItem="49B-sm-Oiy" secondAttribute="leading" constant="16" id="ttG-mZ-p00"/>
+                            <constraint firstAttribute="bottom" secondItem="Hh6-OQ-sRj" secondAttribute="bottom" constant="71" id="wbT-fk-UWB"/>
+                            <constraint firstAttribute="trailing" secondItem="q9H-Fp-Sgi" secondAttribute="trailing" constant="16" id="zC3-hE-haW"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="SUC-L4-c0h"/>
+                                <exclude reference="Wb7-p1-mp8"/>
+                                <exclude reference="Yp0-rz-lZa"/>
+                                <exclude reference="wbT-fk-UWB"/>
+                                <exclude reference="KXB-Rb-x10"/>
+                                <exclude reference="1vs-nd-TgS"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="cancelInviteButton" destination="q9H-Fp-Sgi" id="hOP-Wg-FhQ"/>
+                        <outlet property="sendEmailButton" destination="x0i-Jp-z4q" id="tg2-iA-vbN"/>
+                        <outlet property="sendSmsButton" destination="Hh6-OQ-sRj" id="Elq-F4-qVO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ox-JZ-HFk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1432" y="1864"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Forma" width="66" height="66"/>
         <image name="camera41" width="58" height="41"/>
+        <image name="em-25" width="121" height="69"/>
+        <image name="phone-25" width="69" height="120"/>
         <image name="white_camera41" width="58" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>

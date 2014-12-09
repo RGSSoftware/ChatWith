@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RGSNavigationController : UINavigationController <UINavigationControllerDelegate>
+@interface RGSNavigationController : UINavigationController <UINavigationControllerDelegate,UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 
 @end

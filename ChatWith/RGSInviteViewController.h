@@ -10,4 +10,12 @@
 
 @interface RGSInviteViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *sendSmsButton;
+@property (weak, nonatomic) IBOutlet UIButton *sendEmailButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelInviteButton;
+
+- (IBAction)sendSms:(id)sender;
+- (IBAction)sendEmail:(id)sender;
+- (IBAction)cancelInvite:(id)sender;
+
 @end

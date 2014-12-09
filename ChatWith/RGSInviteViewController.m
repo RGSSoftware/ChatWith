@@ -9,7 +9,9 @@
 #import "RGSInviteViewController.h"
 #import "IBActionSheet.h"
 
-@interface RGSInviteViewController () <UIActionSheetDelegate, IBActionSheetDelegate>
+#import <MessageUI/MessageUI.h>
+
+@interface RGSInviteViewController () <UIActionSheetDelegate, IBActionSheetDelegate, MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
 
 
 @property IBActionSheet *standardIBAS;
@@ -17,47 +19,51 @@
 
 @implementation RGSInviteViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+-(void)viewWillAppear:(BOOL)animated{
+    UITapGestureRecognizer *tapGestureRecongnizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecongnizer:)];
+    [self.view addGestureRecognizer:tapGestureRecongnizer];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
--(void)viewDidAppear:(BOOL)animated{
-    self.standardIBAS = [[IBActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitlesArray:@[@"FaceBook", @"Text"]];
+-(void)tapRecongnizer:(UIGestureRecognizer *)sender{
     
-    [self.standardIBAS setButtonBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.75]];
-    [self.standardIBAS setButtonTextColor:[UIColor whiteColor]];
-    [self.standardIBAS setButtonTextColor:[UIColor blueColor] forButtonAtIndex:2];
-    
-    
-    [self.standardIBAS showInView:self.view];
-}
-
-// the delegate method to receive notifications is exactly the same as the one for UIActionSheet
-- (void)actionSheet:(IBActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    
-    NSLog(@"Button at index: %ld clicked\nIt's title is '%@'", (long)buttonIndex, [actionSheet buttonTitleAtIndex:buttonIndex]);
+    CGPoint userTouchCoordinate = [sender locationInView:nil];
+    if (sender.state == UIGestureRecognizerStateEnded)
+    {
+        if(CGRectContainsPoint(self.cancelInviteButton.frame, userTouchCoordinate))return;
+        if(!CGRectContainsPoint(self.sendSmsButton.frame, userTouchCoordinate) ||
+           !CGRectContainsPoint(self.sendEmailButton.frame, userTouchCoordinate)){
+            
+            [self dismissViewControllerAnimated:NO completion:nil];
+        }
+    }
 }
 
 
--(void)actionSheetDidDismiss:(IBActionSheet *)actionSheet{
-    [self dismissViewControllerAnimated:NO completion:nil];
-
+-(IBAction)sendSms:(id)sender{
+    MFMessageComposeViewController *smsController = [[MFMessageComposeViewController alloc] init];
+    if([MFMessageComposeViewController canSendText]){
+        
+        smsController.messageComposeDelegate = self;
+        smsController.body = @"check out apps, link";
+        [self presentViewController:smsController animated:YES completion:nil];
+    }
+    
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(IBAction)sendEmail:(id)sender{
+    MFMailComposeViewController *mcvc = [[MFMailComposeViewController alloc] init];
+    mcvc.mailComposeDelegate = self;
+    [mcvc setSubject:@"Check out this app"];
+    UIImage *image = [UIImage imageNamed:@"Icon"];
+    //include your app icon here
+    [mcvc addAttachmentData:UIImageJPEGRepresentation(image, 1) mimeType:@"image/jpg" fileName:@"icon.jpg"];
+    // your message and link
+    NSString *defaultBody =@"check out this cool apps, link....";
+    [mcvc setMessageBody:defaultBody isHTML:YES];
+    [self presentViewController:mcvc animated:YES completion:nil];
+    
 }
-*/
+-(IBAction)cancelInvite:(id)sender{
+     [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

@@ -15,6 +15,9 @@
 #import "RGSShowModallyAnimatonController.h"
 #import "RGSDismissModallyAnimatonController.h"
 
+#import "RGSOverviewAnimatonController.h"
+#import "RGSDismissOverviewAnimatonController.h"
+
 #import "RGSChatListViewController.h"
 #import "RGSContactListViewController.h"
 
@@ -22,7 +25,7 @@
 @property(nonatomic, strong)RGSPopSegue *popSegue;
 @end
 
-@implementation RGSNavigationController
+@implementation RGSNavigationController 
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -48,5 +51,10 @@
     else return [RGSPopAnimationController new];
 }
 
-
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    return [RGSOverviewAnimatonController new];
+}
+-(id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
+    return [RGSDismissOverviewAnimatonController new];
+}
 @end

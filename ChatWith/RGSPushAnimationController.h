@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RGSPushAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
+@interface RGSPushAnimationController : NSObject <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 
 @end

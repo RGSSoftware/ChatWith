@@ -22,7 +22,11 @@
 #import "UIImage+RGSinitWithColor.h"
 
 #import "UIButton+RGSUIBackButton.h"
+
+#import "RGSOverviewAnimatonController.h"
 @interface RGSContactListViewController ()
+
+@property (nonatomic, strong)RGSOverviewAnimatonController *overviewAnimationController;
 
 @end
 
@@ -99,6 +103,8 @@
         // Update to handle the error appropriately.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
+    
+    self.overviewAnimationController = [RGSOverviewAnimatonController new];
 }
 
 -(void)toChatListScreen:(id)sender{
@@ -191,7 +197,9 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
         RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
                                                                    *)[segue destinationViewController];
         messageListViewController.receiver = contact.friend;
-    } else if ([segue.identifier isEqualToString:@"toChats"]){
+    } else if ([segue.identifier isEqualToString:@"toInviteScreen"]){
+        UIViewController *toVC = [segue destinationViewController];
+//        toVC.transitioningDelegate = [self overviewAnimationController];
     }
 //
 }
