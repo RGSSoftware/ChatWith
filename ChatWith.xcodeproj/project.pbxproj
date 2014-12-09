@@ -88,6 +88,7 @@
 		22BE6EE11A14728300D130EB /* RGSManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE01A14728300D130EB /* RGSManagedUser.m */; };
 		22BE6EE71A16305A00D130EB /* UIButton+RGSUIBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE61A16305A00D130EB /* UIButton+RGSUIBackButton.m */; };
 		22BE6EEA1A163B1D00D130EB /* RGSMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE91A163B1D00D130EB /* RGSMessageListViewController.m */; };
+		22C5B0CB1A3739E30018A5F3 /* RGSInitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */; };
 		22D6474B1A211D4B00CD66BD /* RGSOverviewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */; };
 		22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474D1A22599E00CD66BD /* RGSMessageAttachmentViewController.m */; };
 		22D7BCB119A8D45100D2C01C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB019A8D45100D2C01C /* Foundation.framework */; };
@@ -233,6 +234,8 @@
 		22BE6EE61A16305A00D130EB /* UIButton+RGSUIBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+RGSUIBackButton.m"; sourceTree = "<group>"; };
 		22BE6EE81A163B1D00D130EB /* RGSMessageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageListViewController.h; sourceTree = "<group>"; };
 		22BE6EE91A163B1D00D130EB /* RGSMessageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessageListViewController.m; sourceTree = "<group>"; };
+		22C5B0C91A3739E20018A5F3 /* RGSInitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSInitialViewController.h; sourceTree = "<group>"; };
+		22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSInitialViewController.m; sourceTree = "<group>"; };
 		22D647491A211D4B00CD66BD /* RGSOverviewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSOverviewSegue.h; sourceTree = "<group>"; };
 		22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSOverviewSegue.m; sourceTree = "<group>"; };
 		22D6474C1A22599E00CD66BD /* RGSMessageAttachmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageAttachmentViewController.h; sourceTree = "<group>"; };
@@ -390,6 +393,8 @@
 				22889ACA19D322A400F0541D /* RGSLoginViewController.m */,
 				22D6474C1A22599E00CD66BD /* RGSMessageAttachmentViewController.h */,
 				22D6474D1A22599E00CD66BD /* RGSMessageAttachmentViewController.m */,
+				22C5B0C91A3739E20018A5F3 /* RGSInitialViewController.h */,
+				22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -802,6 +807,7 @@
 				22AD00F11A0ED43D008F9EF7 /* RGSChat.m in Sources */,
 				22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */,
 				227BFAF519E31EE0000E7ACC /* RGSChatService.m in Sources */,
+				22C5B0CB1A3739E30018A5F3 /* RGSInitialViewController.m in Sources */,
 				227472091A277ABB00F61663 /* RGSPopAnimationController.m in Sources */,
 				22126CA11A2ECBC100A983E7 /* RGSMessage.m in Sources */,
 				223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */,
@@ -962,6 +968,7 @@
 					"${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "ChatWith/ChatWith-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1002,6 +1009,7 @@
 					"${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "ChatWith/ChatWith-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

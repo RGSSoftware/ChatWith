@@ -30,9 +30,7 @@
     backgroundView.backgroundColor = [UIColor blackColor];
     backgroundView.alpha = .21;
     [inView insertSubview:backgroundView belowSubview:toVC.view];
-    
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    
+        
     [UIView transitionWithView:[transitionContext containerView] duration:self.transitionDuration options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews animations:^{
         backgroundView.alpha = 0;
         [fromVC.view setFrame:CGRectMake(0, CGRectGetHeight([[UIScreen mainScreen] bounds]), fromVC.view.frame.size.width, fromVC.view.frame.size.height)];
