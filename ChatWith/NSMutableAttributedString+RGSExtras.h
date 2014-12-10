@@ -11,4 +11,6 @@
 @interface NSMutableAttributedString (RGSExtras)
 -(void)setAlignment:(NSTextAlignment)textAlignment;
 -(void)setColor:(UIColor *)color;
+-(void)setFont:(UIFont *)font;
+
 @end

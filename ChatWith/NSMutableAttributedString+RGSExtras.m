@@ -23,7 +23,12 @@
     [self removeAttribute:NSForegroundColorAttributeName range:NSMakeRange(0, [self length])];
     [self addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, [self length])];
     [self endEditing];
-    
 }
 
+-(void)setFont:(UIFont *)font{
+    [self beginEditing];
+    [self removeAttribute:NSFontAttributeName range:NSMakeRange(0, [self length])];
+    [self addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, [self length])];
+    [self endEditing];
+}
 @end
