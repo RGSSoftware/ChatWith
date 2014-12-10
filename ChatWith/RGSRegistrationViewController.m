@@ -14,6 +14,8 @@
 #import "NSMutableAttributedString+RGSExtras.h"
 #import "NSString+RGSAttributedString.h"
 
+
+
 @interface RGSRegistrationViewController ()
 @property (nonatomic, strong)NSMutableArray *textFields;
 @property (nonatomic, strong)NSMutableArray *buttons;
@@ -77,6 +79,8 @@
         button.titleLabel.font = [UIFont systemFontOfSize:20];
     }
     
+    [self.userImage.layer setCornerRadius:10];
+    
     
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -89,6 +93,9 @@
     }
     
     self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) + 150);
+    self.scrollView.contentInset = UIEdgeInsetsMake(65, 0, 0, 0);
+    self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(65, 0, 0, 0);
+    self.scrollView.contentOffset = CGPointMake(0, -65);
 }
 
 
