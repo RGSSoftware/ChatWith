@@ -26,7 +26,7 @@
 #import "UIImage+RGSinitWithColor.h"
 #import "UIButton+RGSUIBackButton.h"
 #import "RGSBaseViewController+RGSSeparatorExtender.h"
-#import "NSAttributedString+RGSAttributedStringWithExtras.h"
+#import "NSAttributedString+RGSExtras.h"
 #import "UITextView+RGSSelectedRange.h"
 
 #import "RGSMessageComposeImage.h"

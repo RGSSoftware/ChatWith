@@ -8,12 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSAttributedString (RGSAttributedStringWithExtras)
+@interface NSAttributedString (RGSExtras)
 +(NSAttributedString *)attributedStringWithAttachment:(NSTextAttachment *)attachment
                                                  Font:(UIFont *)font
                                                 Color:(UIColor *)color;
 
--(NSAttributedString *) attributedStringWithColor:(UIColor *)color;
+
+
+-(NSAttributedString *)attributedStringWithFont:(UIFont *)font;
+-(NSAttributedString *)attributedStringWithColor:(UIColor *)color;
+
+-(NSAttributedString *)attributedStringWithFont:(UIFont *)font Color:(UIColor *)color;
 
 
 

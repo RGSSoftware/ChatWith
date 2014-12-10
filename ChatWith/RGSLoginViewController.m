@@ -14,7 +14,7 @@
 #import "ApplicationSession.h"
 
 #import "UIColor+RGSColorWithHexString.h"
-#import "NSAttributedString+RGSAttributedStringWithExtras.h"
+#import "NSAttributedString+RGSExtras.h"
 #import "NSMutableAttributedString+RGSExtras.h"
 
 

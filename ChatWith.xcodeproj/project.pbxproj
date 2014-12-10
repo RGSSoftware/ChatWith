@@ -20,7 +20,6 @@
 		2218FDCE19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */; };
 		2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */; };
 		221A05611A0D6C7A006B46AD /* RGSChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 221A05601A0D6C7A006B46AD /* RGSChatCell.m */; };
-		223907BF1A20CF74000BD986 /* NSAttributedString+RGSFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 223907BE1A20CF74000BD986 /* NSAttributedString+RGSFontSize.m */; };
 		223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */; };
 		223A1DB21A04459E00A1B3D2 /* RGSContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DB11A04459E00A1B3D2 /* RGSContact.m */; };
 		223B067E1A2F607400B2344F /* IBActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 223B067D1A2F607400B2344F /* IBActionSheet.m */; };
@@ -72,7 +71,7 @@
 		2287C47319FAC58600039555 /* UIColor+RGSColorWithHexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2287C47219FAC58600039555 /* UIColor+RGSColorWithHexString.m */; };
 		22889ACB19D322A400F0541D /* RGSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22889ACA19D322A400F0541D /* RGSLoginViewController.m */; };
 		22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 22889ACD19D322E400F0541D /* NSString+alphaOnly.m */; };
-		228EABA71A23F4A4007D555E /* NSAttributedString+RGSAttributedStringWithExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABA61A23F4A4007D555E /* NSAttributedString+RGSAttributedStringWithExtras.m */; };
+		228EABA71A23F4A4007D555E /* NSAttributedString+RGSExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABA61A23F4A4007D555E /* NSAttributedString+RGSExtras.m */; };
 		228EABAA1A23FA12007D555E /* UITextView+RGSSelectedRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABA91A23FA12007D555E /* UITextView+RGSSelectedRange.m */; };
 		228EABAD1A240E96007D555E /* RGSMessageComposeImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABAC1A240E96007D555E /* RGSMessageComposeImage.m */; };
 		22A001641A27672500B22EEE /* RGSPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A001631A27672500B22EEE /* RGSPopSegue.m */; };
@@ -152,8 +151,6 @@
 		2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSApplicationSessionManagementService.m; sourceTree = "<group>"; };
 		221A055F1A0D6C7A006B46AD /* RGSChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChatCell.h; sourceTree = "<group>"; };
 		221A05601A0D6C7A006B46AD /* RGSChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChatCell.m; sourceTree = "<group>"; };
-		223907BD1A20CF73000BD986 /* NSAttributedString+RGSFontSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RGSFontSize.h"; sourceTree = "<group>"; };
-		223907BE1A20CF74000BD986 /* NSAttributedString+RGSFontSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+RGSFontSize.m"; sourceTree = "<group>"; };
 		223A1DA71A013F0200A1B3D2 /* RGSContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactCell.h; sourceTree = "<group>"; };
 		223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactCell.m; sourceTree = "<group>"; };
 		223A1DB01A04459E00A1B3D2 /* RGSContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContact.h; sourceTree = "<group>"; };
@@ -203,8 +200,8 @@
 		22889ACA19D322A400F0541D /* RGSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSLoginViewController.m; sourceTree = "<group>"; };
 		22889ACC19D322E400F0541D /* NSString+alphaOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+alphaOnly.h"; sourceTree = "<group>"; };
 		22889ACD19D322E400F0541D /* NSString+alphaOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+alphaOnly.m"; sourceTree = "<group>"; };
-		228EABA51A23F4A4007D555E /* NSAttributedString+RGSAttributedStringWithExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RGSAttributedStringWithExtras.h"; sourceTree = "<group>"; };
-		228EABA61A23F4A4007D555E /* NSAttributedString+RGSAttributedStringWithExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+RGSAttributedStringWithExtras.m"; sourceTree = "<group>"; };
+		228EABA51A23F4A4007D555E /* NSAttributedString+RGSExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RGSExtras.h"; sourceTree = "<group>"; };
+		228EABA61A23F4A4007D555E /* NSAttributedString+RGSExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+RGSExtras.m"; sourceTree = "<group>"; };
 		228EABA81A23FA12007D555E /* UITextView+RGSSelectedRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+RGSSelectedRange.h"; sourceTree = "<group>"; };
 		228EABA91A23FA12007D555E /* UITextView+RGSSelectedRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+RGSSelectedRange.m"; sourceTree = "<group>"; };
 		228EABAB1A240E96007D555E /* RGSMessageComposeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageComposeImage.h; sourceTree = "<group>"; };
@@ -353,10 +350,8 @@
 				22AA4CC61A28DFDA008DE41B /* UINavigationController+RGSBlock.m */,
 				228EABA81A23FA12007D555E /* UITextView+RGSSelectedRange.h */,
 				228EABA91A23FA12007D555E /* UITextView+RGSSelectedRange.m */,
-				228EABA51A23F4A4007D555E /* NSAttributedString+RGSAttributedStringWithExtras.h */,
-				228EABA61A23F4A4007D555E /* NSAttributedString+RGSAttributedStringWithExtras.m */,
-				223907BD1A20CF73000BD986 /* NSAttributedString+RGSFontSize.h */,
-				223907BE1A20CF74000BD986 /* NSAttributedString+RGSFontSize.m */,
+				228EABA51A23F4A4007D555E /* NSAttributedString+RGSExtras.h */,
+				228EABA61A23F4A4007D555E /* NSAttributedString+RGSExtras.m */,
 				224A06781A382BAC00292777 /* NSMutableAttributedString+RGSExtras.h */,
 				224A06791A382BAC00292777 /* NSMutableAttributedString+RGSExtras.m */,
 				22E8A5E81A168F350031403B /* RGSBaseViewController+RGSSeparatorExtender.h */,
@@ -808,8 +803,7 @@
 				22F418F81A361A53009BF951 /* RGSShowOverviewAnimatonController.m in Sources */,
 				22D7BCC319A8D45100D2C01C /* RGSAppDelegate.m in Sources */,
 				22889ACB19D322A400F0541D /* RGSLoginViewController.m in Sources */,
-				228EABA71A23F4A4007D555E /* NSAttributedString+RGSAttributedStringWithExtras.m in Sources */,
-				223907BF1A20CF74000BD986 /* NSAttributedString+RGSFontSize.m in Sources */,
+				228EABA71A23F4A4007D555E /* NSAttributedString+RGSExtras.m in Sources */,
 				22AD00F11A0ED43D008F9EF7 /* RGSChat.m in Sources */,
 				22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */,
 				227BFAF519E31EE0000E7ACC /* RGSChatService.m in Sources */,
