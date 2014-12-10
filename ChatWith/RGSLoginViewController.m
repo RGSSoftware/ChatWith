@@ -15,7 +15,7 @@
 
 #import "UIColor+RGSColorWithHexString.h"
 #import "NSAttributedString+RGSAttributedStringWithExtras.h"
-#import "NSMutableAttributedString+RGSAlignment.h"
+#import "NSMutableAttributedString+RGSExtras.h"
 
 
 @interface RGSLoginViewController ()

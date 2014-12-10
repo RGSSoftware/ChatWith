@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSMutableAttributedString (RGSAlignment)
+@interface NSMutableAttributedString (RGSExtras)
 -(void)setAlignment:(NSTextAlignment)textAlignment;
 -(void)setColor:(UIColor *)color;
 @end

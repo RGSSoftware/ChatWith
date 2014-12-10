@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "NSMutableAttributedString+RGSAlignment.h"
+#import "NSMutableAttributedString+RGSExtras.h"
 
-@implementation NSMutableAttributedString (RGSAlignment)
+@implementation NSMutableAttributedString (RGSExtras)
 -(void)setAlignment:(NSTextAlignment)textAlignment{
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
     [paragraphStyle setAlignment:textAlignment];
