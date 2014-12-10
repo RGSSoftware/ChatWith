@@ -13,9 +13,13 @@
 #import "LocalStorageService.h"
 #import "ApplicationSession.h"
 
+#import "UIColor+RGSColorWithHexString.h"
+#import "NSAttributedString+RGSAttributedStringWithExtras.h"
+#import "NSMutableAttributedString+RGSAlignment.h"
+
 
 @interface RGSLoginViewController ()
-
+@property (nonatomic, strong)NSMutableArray *textFields;
 @end
 
 @implementation RGSLoginViewController
@@ -27,6 +31,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self baseInit];
+        
     }
     return self;
 }
@@ -41,6 +46,8 @@
 
 -(void)baseInit{
      _userManger = [RGSUserMangementService new];
+    
+    _textFields = [NSMutableArray arrayWithCapacity:2];
 }
 - (void)viewDidLoad
 {
@@ -51,8 +58,42 @@
     redSquare.frame = CGRectMake(20, 20, 100, 100);
     redSquare.backgroundColor = [UIColor redColor];
     
-//    [self.view addSubview:redSquare];
-
+    
+    [self.textFields addObjectsFromArray:@[self.usernameTextField, self.passwordTextField]];
+    
+    for (UITextField *textField in self.textFields) {
+        textField.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.20];
+        textField.layer.borderColor = [[UIColor clearColor] CGColor];
+        textField.textColor = [UIColor whiteColor];
+        textField.layer.borderWidth = 1;
+        textField.layer.cornerRadius = 10;
+    }
+    
+    self.loginButton.backgroundColor = [UIColor colorWithHexString:@"414141" alpha:.45];
+    [self.loginButton.layer setCornerRadius:10];
+    [self.loginButton setTitleColor:[UIColor colorWithHexString:@"68DAFF"] forState:UIControlStateNormal];
+    self.loginButton.titleLabel.font = [UIFont systemFontOfSize:20];
+    
+    self.registerButton.backgroundColor = [UIColor colorWithHexString:@"353535" alpha:.65];
+    [self.registerButton.layer setCornerRadius:10];
+    [self.registerButton setTitleColor:[UIColor colorWithHexString:@"68DAFF"] forState:UIControlStateNormal];
+    
+    self.forgotButton.backgroundColor = [UIColor colorWithHexString:@"353535" alpha:.65];
+    [self.forgotButton.layer setCornerRadius:10];
+    
+    NSMutableAttributedString *attributedString = [self.forgotButton.currentAttributedTitle mutableCopy];
+    [attributedString setAlignment:NSTextAlignmentCenter];
+    [attributedString setColor:[UIColor colorWithHexString:@"68DAFF"]];
+    [self.forgotButton setAttributedTitle:attributedString forState:UIControlStateNormal];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    for (UITextField *textField in self.textFields) {
+        UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+        [textField setLeftViewMode:UITextFieldViewModeAlways];
+        [textField setLeftView:spacerView];
+    }
 }
 
 -(IBAction)loginUser:(id)sender{

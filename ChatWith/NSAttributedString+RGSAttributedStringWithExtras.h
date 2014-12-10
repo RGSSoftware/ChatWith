@@ -13,4 +13,8 @@
                                                  Font:(UIFont *)font
                                                 Color:(UIColor *)color;
 
+-(NSAttributedString *) attributedStringWithColor:(UIColor *)color;
+
+
+
 @end

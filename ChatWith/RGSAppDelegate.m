@@ -160,40 +160,40 @@
     [RGSMessage MR_truncateAll];
     [RGSChat MR_truncateAll];
     
-    self.applicationSessionManager.applicationID = 7632;
-    self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";
-    self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
-    self.applicationSessionManager.accountKey = @"byNoqE9AHiQsoffhPgdt";
+//    self.applicationSessionManager.applicationID = 7632;
+//    self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";
+//    self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
+//    self.applicationSessionManager.accountKey = @"byNoqE9AHiQsoffhPgdt";
     
 //    [self loginAsRRWithBarAsMessagesReceiver];
     
 //    [self loginAsBarWithRRAsMessagesReceiver];
 //
-    RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
-    currentUser.currentUser = [NSNumber numberWithBool:YES];
-    
-    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
-    barUser.fullName = @"bar";
-
-    RGSContact *contact = [RGSContact MR_createEntity];
-    contact.source = currentUser;
-    contact.friend = barUser;
-    
-    RGSChat *chat = [RGSChat MR_createEntity];
-    chat.sender = currentUser;
-    chat.receiver = barUser;
-    chat.lastMessageDate = [NSDate date];
-    [chat addParticipantsObject:currentUser];
-    [chat addParticipantsObject:barUser];
-    
-    for (int i = 0; i < 20; i ++) {
-        RGSMessage *message = [RGSMessage MR_createEntity];
-        message.body = [LoremIpsum wordsWithNumber:10];
-        message.sender = currentUser;
-        [chat addMessagesObject:message];
-    }
-    
-    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:nil];
+//    RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
+//    currentUser.currentUser = [NSNumber numberWithBool:YES];
+//    
+//    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
+//    barUser.fullName = @"bar";
+//
+//    RGSContact *contact = [RGSContact MR_createEntity];
+//    contact.source = currentUser;
+//    contact.friend = barUser;
+//    
+//    RGSChat *chat = [RGSChat MR_createEntity];
+//    chat.sender = currentUser;
+//    chat.receiver = barUser;
+//    chat.lastMessageDate = [NSDate date];
+//    [chat addParticipantsObject:currentUser];
+//    [chat addParticipantsObject:barUser];
+//    
+//    for (int i = 0; i < 20; i ++) {
+//        RGSMessage *message = [RGSMessage MR_createEntity];
+//        message.body = [LoremIpsum wordsWithNumber:10];
+//        message.sender = currentUser;
+//        [chat addMessagesObject:message];
+//    }
+//    
+//    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:nil];
 
 
 //

@@ -26,6 +26,7 @@
 		223B067E1A2F607400B2344F /* IBActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 223B067D1A2F607400B2344F /* IBActionSheet.m */; };
 		223B06811A2F660E00B2344F /* RGSInviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223B06801A2F660E00B2344F /* RGSInviteViewController.m */; };
 		223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5119E456FC0065F630 /* RGSChatListViewController.m */; };
+		224A067A1A382BAC00292777 /* NSMutableAttributedString+RGSAlignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 224A06791A382BAC00292777 /* NSMutableAttributedString+RGSAlignment.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250787419F880D100F793EE /* RGSContactListViewController.m */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
@@ -163,6 +164,8 @@
 		223B06801A2F660E00B2344F /* RGSInviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSInviteViewController.m; sourceTree = "<group>"; };
 		223D4C5019E456FC0065F630 /* RGSChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChatListViewController.h; sourceTree = "<group>"; };
 		223D4C5119E456FC0065F630 /* RGSChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChatListViewController.m; sourceTree = "<group>"; };
+		224A06781A382BAC00292777 /* NSMutableAttributedString+RGSAlignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+RGSAlignment.h"; sourceTree = "<group>"; };
+		224A06791A382BAC00292777 /* NSMutableAttributedString+RGSAlignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+RGSAlignment.m"; sourceTree = "<group>"; };
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2250787319F880D100F793EE /* RGSContactListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactListViewController.h; sourceTree = "<group>"; };
 		2250787419F880D100F793EE /* RGSContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactListViewController.m; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 				228EABA61A23F4A4007D555E /* NSAttributedString+RGSAttributedStringWithExtras.m */,
 				223907BD1A20CF73000BD986 /* NSAttributedString+RGSFontSize.h */,
 				223907BE1A20CF74000BD986 /* NSAttributedString+RGSFontSize.m */,
+				224A06781A382BAC00292777 /* NSMutableAttributedString+RGSAlignment.h */,
+				224A06791A382BAC00292777 /* NSMutableAttributedString+RGSAlignment.m */,
 				22E8A5E81A168F350031403B /* RGSBaseViewController+RGSSeparatorExtender.h */,
 				22E8A5E91A168F350031403B /* RGSBaseViewController+RGSSeparatorExtender.m */,
 				22AD00E91A0D8686008F9EF7 /* NSDate+Utilities.h */,
@@ -783,6 +788,7 @@
 				227BFAF219E24674000E7ACC /* ApplicationSession.m in Sources */,
 				22126C9E1A2ECBC000A983E7 /* RGSImage.m in Sources */,
 				22AA4CC71A28DFDA008DE41B /* UINavigationController+RGSBlock.m in Sources */,
+				224A067A1A382BAC00292777 /* NSMutableAttributedString+RGSAlignment.m in Sources */,
 				22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */,
 				22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */,
 				22BE6EE71A16305A00D130EB /* UIButton+RGSUIBackButton.m in Sources */,

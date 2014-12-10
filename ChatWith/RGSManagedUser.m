@@ -40,4 +40,22 @@
 @dynamic sentMessages;
 @dynamic receiveMessages;
 
+-(BOOL)isSignIn{
+    NSString *login;
+    NSString *password;
+    
+    [self willAccessValueForKey:@"login"];
+    login = [self login];
+    [self didAccessValueForKey:@"login"];
+    
+    [self willAccessValueForKey:@"password"];
+    password = [self password];
+    [self didAccessValueForKey:@"password"];
+    
+    if (login && password && [[[NSUserDefaults standardUserDefaults] objectForKey:@"isAutoLogin"] boolValue]) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

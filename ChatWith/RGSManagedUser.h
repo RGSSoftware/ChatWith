@@ -38,6 +38,8 @@
 @property (nonatomic, retain) NSSet *partofChats;
 @property (nonatomic, retain) NSSet *sentMessages;
 @property (nonatomic, retain) NSSet *receiveMessages;
+
+@property (readonly)BOOL isSignIn;
 @end
 
 @interface RGSManagedUser (CoreDataGeneratedAccessors)
@@ -76,5 +78,4 @@
 - (void)removeReceiveMessagesObject:(RGSMessage *)value;
 - (void)addReceiveMessages:(NSSet *)values;
 - (void)removeReceiveMessages:(NSSet *)values;
-
 @end

@@ -21,4 +21,25 @@
     
 }
 
+-(NSAttributedString *)attributedStringWithColor:(UIColor *)color{
+    NSMutableAttributedString* attributedString = [self mutableCopy];
+    
+    {
+        [attributedString beginEditing];
+        
+        [attributedString enumerateAttribute:NSFontAttributeName inRange:NSMakeRange(0, attributedString.length) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
+            
+            [attributedString removeAttribute:NSForegroundColorAttributeName range:range];
+            [attributedString addAttribute:NSForegroundColorAttributeName value:color range:range];
+        }];
+        
+        [attributedString endEditing];
+    }
+    
+    return [attributedString copy];
+    
+}
+
+
+
 @end
