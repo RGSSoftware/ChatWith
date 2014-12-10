@@ -12,13 +12,15 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UIButton *addUserImageButtom;
 
-@property (weak, nonatomic) IBOutlet UITextField *usernameTextFelid;
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *firstnameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastnameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phonenumberTextField;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (IBAction)addUserImage:(id)sender;
 - (IBAction)submit:(id)sender;

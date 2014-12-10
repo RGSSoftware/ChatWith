@@ -113,65 +113,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DnN-dp-AwG">
-                                <rect key="frame" x="34" y="28" width="85" height="85"/>
-                                <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI7-na-ais">
-                                <rect key="frame" x="149" y="51" width="123" height="40"/>
-                                <state key="normal" title="Add Image">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addUserImage:" destination="Irj-PV-mo2" eventType="touchUpInside" id="WPY-xG-3ZJ"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="UserName" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zaw-Oa-dLs">
-                                <rect key="frame" x="34" y="126" width="253" height="40"/>
-                                <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2xG-tV-Dog">
-                                <rect key="frame" x="34" y="174" width="253" height="40"/>
-                                <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y49-pu-5mZ">
-                                <rect key="frame" x="34" y="222" width="253" height="40"/>
-                                <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="optional - First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CYE-Hu-Ttu">
-                                <rect key="frame" x="34" y="294" width="253" height="40"/>
-                                <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="optional - Last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SbN-Gs-cga">
-                                <rect key="frame" x="34" y="342" width="253" height="40"/>
-                                <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="optional-Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ydm-hf-yq8">
-                                <rect key="frame" x="34" y="390" width="253" height="40"/>
-                                <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lC-Qr-m2r">
-                                <rect key="frame" x="34" y="438" width="253" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Submit">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="submit:" destination="Irj-PV-mo2" eventType="touchUpInside" id="Z27-xN-4La"/>
-                                </connections>
-                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yus-ry-Zbv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DnN-dp-AwG">
+                                        <rect key="frame" x="34" y="28" width="85" height="85"/>
+                                        <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI7-na-ais">
+                                        <rect key="frame" x="149" y="51" width="123" height="40"/>
+                                        <state key="normal" title="Add Image">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addUserImage:" destination="Irj-PV-mo2" eventType="touchUpInside" id="WPY-xG-3ZJ"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="UserName" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zaw-Oa-dLs">
+                                        <rect key="frame" x="34" y="126" width="253" height="40"/>
+                                        <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2xG-tV-Dog">
+                                        <rect key="frame" x="34" y="174" width="253" height="40"/>
+                                        <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y49-pu-5mZ">
+                                        <rect key="frame" x="34" y="222" width="253" height="40"/>
+                                        <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="optional - First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CYE-Hu-Ttu">
+                                        <rect key="frame" x="34" y="294" width="253" height="40"/>
+                                        <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="optional - Last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SbN-Gs-cga">
+                                        <rect key="frame" x="34" y="342" width="253" height="40"/>
+                                        <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="optional-Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ydm-hf-yq8">
+                                        <rect key="frame" x="34" y="390" width="253" height="40"/>
+                                        <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lC-Qr-m2r">
+                                        <rect key="frame" x="34" y="438" width="253" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="submit:" destination="Irj-PV-mo2" eventType="touchUpInside" id="Z27-xN-4La"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -182,9 +187,10 @@
                         <outlet property="lastnameTextField" destination="SbN-Gs-cga" id="Uz8-7F-Zuf"/>
                         <outlet property="passwordTextField" destination="2xG-tV-Dog" id="zZ0-wg-iiu"/>
                         <outlet property="phonenumberTextField" destination="Ydm-hf-yq8" id="tFS-vt-eIr"/>
+                        <outlet property="scrollView" destination="yus-ry-Zbv" id="CSZ-jg-N0A"/>
                         <outlet property="submitButton" destination="8lC-Qr-m2r" id="ScE-xH-Yl7"/>
                         <outlet property="userImage" destination="DnN-dp-AwG" id="Jjs-Ar-2U8"/>
-                        <outlet property="usernameTextFelid" destination="Zaw-Oa-dLs" id="Wah-UT-GII"/>
+                        <outlet property="usernameTextField" destination="Zaw-Oa-dLs" id="ls0-Pm-wHl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hMe-zI-n5W" userLabel="First Responder" sceneMemberID="firstResponder"/>

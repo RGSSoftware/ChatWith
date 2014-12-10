@@ -50,7 +50,7 @@
     // Do any additional setup after loading the view.
     
     
-    [self.textFields addObjectsFromArray:@[self.usernameTextFelid,
+    [self.textFields addObjectsFromArray:@[self.usernameTextField,
                                            self.passwordTextField,
                                            self.emailTextField,
                                            self.firstnameTextField,
@@ -77,24 +77,7 @@
         button.titleLabel.font = [UIFont systemFontOfSize:20];
     }
     
-//    self.loginButton.backgroundColor = [UIColor colorWithHexString:@"414141" alpha:.45];
-//    [self.loginButton.layer setCornerRadius:10];
-//    [self.loginButton setTitleColor:[UIColor colorWithHexString:@"68DAFF"] forState:UIControlStateNormal];
-//    self.loginButton.titleLabel.font = [UIFont systemFontOfSize:20];
-//    
-//    self.registerButton.backgroundColor = [UIColor colorWithHexString:@"353535" alpha:.65];
-//    [self.registerButton.layer setCornerRadius:10];
-//    [self.registerButton setTitleColor:[UIColor colorWithHexString:@"68DAFF"] forState:UIControlStateNormal];
-//    self.registerButton.titleLabel.font = [self.registerButton.titleLabel.font fontWithSize:13];
-//    
-//    self.forgotButton.backgroundColor = [UIColor colorWithHexString:@"353535" alpha:.65];
-//    [self.forgotButton.layer setCornerRadius:10];
-//    
-//    NSMutableAttributedString *attributedString = [self.forgotButton.currentAttributedTitle mutableCopy];
-//    [attributedString setAlignment:NSTextAlignmentCenter];
-//    [attributedString setColor:[UIColor colorWithHexString:@"68DAFF"]];
-//    [attributedString setFont:[self.registerButton.titleLabel.font fontWithSize:13]];
-//    [self.forgotButton setAttributedTitle:attributedString forState:UIControlStateNormal];
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -104,6 +87,8 @@
         [textField setLeftViewMode:UITextFieldViewModeAlways];
         [textField setLeftView:spacerView];
     }
+    
+    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) + 150);
 }
 
 
