@@ -22,6 +22,5 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-- (IBAction)addUserImage:(id)sender;
 - (IBAction)submit:(id)sender;
 @end

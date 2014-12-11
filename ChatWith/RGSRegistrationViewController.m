@@ -8,6 +8,8 @@
 
 #import "RGSRegistrationViewController.h"
 
+#import "RGSMessageAttachmentViewController.h"
+
 #import "UIColor+RGSColorWithHexString.h"
 
 #import "NSAttributedString+RGSExtras.h"
@@ -80,8 +82,12 @@
     }
     
     [self.userImage.layer setCornerRadius:10];
+    self.userImage.clipsToBounds = YES;
     
     
+}
+- (void)viewDidLayoutSubviews {
+self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetMaxY(self.submitButton.frame) + 5);
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -92,14 +98,26 @@
         [textField setLeftView:spacerView];
     }
     
-    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) + 150);
     self.scrollView.contentInset = UIEdgeInsetsMake(65, 0, 0, 0);
     self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(65, 0, 0, 0);
     self.scrollView.contentOffset = CGPointMake(0, -65);
+//    self.scrollView.delaysContentTouches = NO;
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([segue.destinationViewController isKindOfClass:[RGSMessageAttachmentViewController class]]) {
+        RGSMessageAttachmentViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.delegate = self;
+    }
+}
 
-- (IBAction)addUserImage:(id)sender {
+#pragma mark - RGSMessageAttachmentViewControllerDelegate ()
+-(void)RGSMessageAttachmentViewController:(RGSMessageAttachmentViewController *)messageAttachmentViewController imageAttachment:(UIImage *)imageAttachment{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    self.userImage.image = imageAttachment;
 }
 
 - (IBAction)submit:(id)sender {
