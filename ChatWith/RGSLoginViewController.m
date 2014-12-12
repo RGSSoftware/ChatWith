@@ -110,7 +110,7 @@
                             password:self.passwordTextField.text
                         successBlock:^(BOOL success) {
                             if(success){
-                                
+                                [self performSegueWithIdentifier:@"unwindToInitView" sender:self];
                                 //segway to next screen
                             } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
                         }];
@@ -118,41 +118,7 @@
     } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
     
 }
--(IBAction)registerUser:(id)sender{
-    if ([self isUserCredentialsValid]) {
-            [[RGSUserMangementService shared] isUsernameTaken:self.usernameTextField.text
-                              successBlock:^(BOOL isTaken) {
-                if(!isTaken){
-                    [[RGSUserMangementService shared] registerUsername:self.usernameTextField.text
-                                           password:self.passwordTextField.text
-                                       successBlock:^(BOOL succes) {
-                                           if(succes){
-                                             //login user
-                                               [[RGSUserMangementService shared] loginUsername:self.usernameTextField.text
-                                                                   password:self.passwordTextField.text
-                                                               successBlock:^(BOOL success) {
-                                                   if(success) {
-                                                       //add applicationID to saved User
-                                                       [[LocalStorageService shared] savedUserAsQBUUser].ID = [[[LocalStorageService shared] applicationSession].entityID unsignedIntegerValue];
-                                                       //loign to chat
-                                                       [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
-                                                           
-                                                           //on success, instantiate initial ViewController from storyboard
-                                                           if(success){
-                                                               [self presentViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController] animated:YES completion:nil];
-                                                           }
-                                                       }];
-                                                   }
-                                               }];
-                                             
-                                           } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
-                                       }];
-                
-                } else {[self showAlertViewWithMeassage:@"Oops! Somebody already has that name. Give it another shot."];}
-            }];
-    } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
 
-}
 - (void)showAlertViewWithMeassage:(NSString *)message{
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
                                                         message:message
@@ -163,7 +129,6 @@
     [alertView show];
 
 }
-
 -(BOOL)isUserCredentialsValid{
     return ([self isUserNameValid:self.usernameTextField.text] &&
             [self isPasswordValid:self.passwordTextField.text]);

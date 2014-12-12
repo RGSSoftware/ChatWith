@@ -10,6 +10,8 @@
 #import "RGSManagedUser.h"
 #import "LocalStorageService.h"
 
+
+
 @implementation RGSUserMangementService
 
 static RGSUserMangementService *_instance = nil;

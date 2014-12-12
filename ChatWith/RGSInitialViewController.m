@@ -49,6 +49,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES];
+}
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
@@ -128,6 +133,10 @@
 }
 
 
+- (IBAction)unwindToInitViewController:(UIStoryboardSegue *)unwindSegue
+{
+    
+}
 -(RGSApplicationSessionManagementService *)applicationSessionManager{
     return [RGSApplicationSessionManagementService shared];
 }

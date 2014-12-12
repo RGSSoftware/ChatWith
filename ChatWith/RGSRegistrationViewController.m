@@ -7,6 +7,12 @@
 //
 
 #import "RGSRegistrationViewController.h"
+#import "RGSUserMangementService.h"
+#import "RGSChatService.h"
+#import "LocalStorageService.h"
+#import "ApplicationSession.h"
+
+#import "NSString+alphaOnly.h"
 
 #import "RGSMessageAttachmentViewController.h"
 
@@ -15,6 +21,8 @@
 #import "NSAttributedString+RGSExtras.h"
 #import "NSMutableAttributedString+RGSExtras.h"
 #import "NSString+RGSAttributedString.h"
+
+#import <Quickblox/QBRequest+QBAuth.h>
 
 
 
@@ -101,7 +109,8 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
     self.scrollView.contentInset = UIEdgeInsetsMake(65, 0, 0, 0);
     self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(65, 0, 0, 0);
     self.scrollView.contentOffset = CGPointMake(0, -65);
-//    self.scrollView.delaysContentTouches = NO;
+
+    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -121,5 +130,78 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
 }
 
 - (IBAction)submit:(id)sender {
+    
+    if ([self isUserCredentialsValid]) {
+        [[RGSUserMangementService shared]
+         isUsernameTaken:self.usernameTextField.text
+         successBlock:^(BOOL isTaken) {
+         if(!isTaken){
+             
+             
+             QBUUser *user = [QBUUser user];
+             user.login = self.usernameTextField.text;
+             user.password = self.passwordTextField.text;
+             [QBRequest signUp:user successBlock:^(QBResponse *response, QBUUser *user) {
+                 if(response.success && !response.error){
+                     //login user
+                     [QBRequest logInWithUserLogin:user.login password:user.password successBlock:^(QBResponse *response, QBUUser *user) {
+                         if(response.success){
+                             [[LocalStorageService shared] creteCurrentUserWithQBUser:user successBlock:^(BOOL success, NSError *error) {
+                                 //loign to chat
+                                 [[RGSChatService shared] loginUser:user successBlock:^(BOOL success) {
+                                     
+                                     //on success, instantiate initial ViewController from storyboard
+                                     if(success){
+                                         [self presentViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController] animated:YES completion:nil];
+                                     }
+                                 }];
+                             }];
+                         }
+                     } errorBlock:^(QBResponse *response) {
+                         
+                     }];
+                 }
+             } errorBlock:^(QBResponse *response) {
+                 {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
+             }];
+             
+         } else {[self showAlertViewWithMeassage:@"Oops! Somebody already has that name. Give it another shot."];}
+                                             }];
+    } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
 }
+
+- (BOOL)isPasswordValid:(NSString *)password
+{
+    if (password && !(password.length <= 4) && (password.length <=15)) {
+        return YES;
+    }
+    
+    return NO;
+}
+- (BOOL)isUserNameValid:(NSString *)username
+{
+    if(username && !(username.length == 0) && (username.length <= 20)){
+        
+        return [username isAlphaNumeric];
+    }
+    return NO;
+}
+
+
+-(BOOL)isUserCredentialsValid{
+    return ([self isUserNameValid:self.usernameTextField.text] &&
+            [self isPasswordValid:self.passwordTextField.text]);
+}
+
+- (void)showAlertViewWithMeassage:(NSString *)message{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"OKAY"
+                                              otherButtonTitles:nil];
+    
+    [alertView show];
+    
+}
+
 @end

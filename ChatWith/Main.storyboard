@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="da2-c2-OKh">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -97,9 +96,11 @@
                         <outlet property="passwordTextField" destination="UrL-Eo-mC9" id="PUA-Hm-Y2r"/>
                         <outlet property="registerButton" destination="7cK-h8-SbK" id="bGx-SJ-91e"/>
                         <outlet property="usernameTextField" destination="TOT-6N-ker" id="Iwf-I1-WYC"/>
+                        <segue destination="7f8-af-ZJG" kind="unwind" identifier="unwindToInitView" unwindAction="unwindToInitViewController:" id="00g-XM-AdC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4N-tB-izt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7f8-af-ZJG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="94" y="1568"/>
         </scene>
@@ -227,9 +228,11 @@
                         <outlet property="submitButton" destination="8lC-Qr-m2r" id="ScE-xH-Yl7"/>
                         <outlet property="userImage" destination="DnN-dp-AwG" id="Jjs-Ar-2U8"/>
                         <outlet property="usernameTextField" destination="Zaw-Oa-dLs" id="ls0-Pm-wHl"/>
+                        <segue destination="F9e-0a-DcU" kind="unwind" identifier="unwindRegistrationToInitView" unwindAction="unwindToInitViewController:" id="Lxg-q5-j9b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hMe-zI-n5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="F9e-0a-DcU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="618" y="1568"/>
         </scene>
@@ -267,6 +270,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="qU6-Sp-dDd"/>
                     <connections>
                         <segue destination="EGF-iH-8R1" kind="show" id="Gvv-9q-q1J"/>
                         <segue destination="rBb-vm-Qvq" kind="show" identifier="toLoginScreen" id="xT6-nI-bhw"/>
@@ -274,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m64-yk-Wq4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48" y="265"/>
+            <point key="canvasLocation" x="-222" y="251"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zjn-C4-izH">
