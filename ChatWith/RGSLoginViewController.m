@@ -106,14 +106,22 @@
 
     if ([self isUserCredentialsValid]) {
         
-        [[RGSUserMangementService shared] loginUsername:self.usernameTextField.text
-                            password:self.passwordTextField.text
-                        successBlock:^(BOOL success) {
-                            if(success){
-                                [self performSegueWithIdentifier:@"unwindToInitView" sender:self];
-                                //segway to next screen
-                            } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
-                        }];
+        QBUUser *user = [QBUUser user];
+        user.login = self.usernameTextField.text;
+        user.password = self.passwordTextField.text;
+        
+        [QBRequest logInWithUserLogin:user.login password:user.password successBlock:^(QBResponse *response, QBUUser *user) {
+            if(response.success){
+                [[LocalStorageService shared] creteCurrentUserWithQBUser:user successBlock:^(BOOL success, NSError *error) {
+                    if(success){
+                        [self performSegueWithIdentifier:@"unwindToInitView" sender:self];
+                        //segway to next screen
+                    } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
+                }];
+            }
+        } errorBlock:^(QBResponse *response) {
+           [self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."]; 
+        }];
         
     } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
     

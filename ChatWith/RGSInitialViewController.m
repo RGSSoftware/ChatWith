@@ -67,6 +67,7 @@
         [[LocalStorageService shared] crateApplicationSessionWithQBASession:session successBlock:^(BOOL success, NSError *error) {
             if (success) {
                 if (self.localStorageService.savedUser) {
+                    
                     if (self.localStorageService.savedUser.isSignIn) {
                         //login user
                         [self.userManager loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.password successBlock:^(BOOL success) {
