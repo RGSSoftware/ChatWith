@@ -16,6 +16,7 @@
 #import "UIColor+RGSColorWithHexString.h"
 #import "NSAttributedString+RGSExtras.h"
 #import "NSMutableAttributedString+RGSExtras.h"
+#import "NSString+RGSAttributedString.h"
 
 
 @interface RGSLoginViewController ()
@@ -69,6 +70,10 @@
         textField.textColor = [UIColor whiteColor];
         textField.layer.borderWidth = 1;
         textField.layer.cornerRadius = 10;
+        
+        NSMutableAttributedString *attributedString = [[textField.placeholder attributedString] mutableCopy];
+        [attributedString setColor:[UIColor colorWithWhite:0.830 alpha:1.000]];
+        textField.attributedPlaceholder = attributedString;
     }
     
     
