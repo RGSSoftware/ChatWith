@@ -114,7 +114,7 @@
             if(response.success){
                 [[LocalStorageService shared] creteCurrentUserWithQBUser:user successBlock:^(BOOL success, NSError *error) {
                     if(success){
-                        [self performSegueWithIdentifier:@"unwindToInitView" sender:self];
+                        [self performSegueWithIdentifier:@"unwindFromLoginScreenToInitViewScreen" sender:self];
                         //segway to next screen
                     } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
                 }];
