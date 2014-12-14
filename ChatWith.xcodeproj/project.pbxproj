@@ -25,6 +25,7 @@
 		223B067E1A2F607400B2344F /* IBActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 223B067D1A2F607400B2344F /* IBActionSheet.m */; };
 		223B06811A2F660E00B2344F /* RGSInviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223B06801A2F660E00B2344F /* RGSInviteViewController.m */; };
 		223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5119E456FC0065F630 /* RGSChatListViewController.m */; };
+		2242571B1A3E24A000628405 /* RGSForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2242571A1A3E24A000628405 /* RGSForgotPasswordViewController.m */; };
 		224A067A1A382BAC00292777 /* NSMutableAttributedString+RGSExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 224A06791A382BAC00292777 /* NSMutableAttributedString+RGSExtras.m */; };
 		224A067D1A38888400292777 /* RGSRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224A067C1A38888400292777 /* RGSRegistrationViewController.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
@@ -164,6 +165,8 @@
 		223B06801A2F660E00B2344F /* RGSInviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSInviteViewController.m; sourceTree = "<group>"; };
 		223D4C5019E456FC0065F630 /* RGSChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChatListViewController.h; sourceTree = "<group>"; };
 		223D4C5119E456FC0065F630 /* RGSChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChatListViewController.m; sourceTree = "<group>"; };
+		224257191A3E24A000628405 /* RGSForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSForgotPasswordViewController.h; sourceTree = "<group>"; };
+		2242571A1A3E24A000628405 /* RGSForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSForgotPasswordViewController.m; sourceTree = "<group>"; };
 		224A06781A382BAC00292777 /* NSMutableAttributedString+RGSExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+RGSExtras.h"; sourceTree = "<group>"; };
 		224A06791A382BAC00292777 /* NSMutableAttributedString+RGSExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+RGSExtras.m"; sourceTree = "<group>"; };
 		224A067B1A38888400292777 /* RGSRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSRegistrationViewController.h; sourceTree = "<group>"; };
@@ -390,24 +393,26 @@
 		22889AD019D3232600F0541D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				223B067F1A2F660E00B2344F /* RGSInviteViewController.h */,
-				223B06801A2F660E00B2344F /* RGSInviteViewController.m */,
+				22C5B0C91A3739E20018A5F3 /* RGSInitialViewController.h */,
+				22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */,
 				227ADFBC1A0C071200D03017 /* RGSBaseViewController.h */,
 				227ADFBD1A0C071200D03017 /* RGSBaseViewController.m */,
 				223D4C5019E456FC0065F630 /* RGSChatListViewController.h */,
 				223D4C5119E456FC0065F630 /* RGSChatListViewController.m */,
 				2250787319F880D100F793EE /* RGSContactListViewController.h */,
 				2250787419F880D100F793EE /* RGSContactListViewController.m */,
+				223B067F1A2F660E00B2344F /* RGSInviteViewController.h */,
+				223B06801A2F660E00B2344F /* RGSInviteViewController.m */,
 				22BE6EE81A163B1D00D130EB /* RGSMessageListViewController.h */,
 				22BE6EE91A163B1D00D130EB /* RGSMessageListViewController.m */,
 				22889AC919D322A400F0541D /* RGSLoginViewController.h */,
 				22889ACA19D322A400F0541D /* RGSLoginViewController.m */,
+				224257191A3E24A000628405 /* RGSForgotPasswordViewController.h */,
+				2242571A1A3E24A000628405 /* RGSForgotPasswordViewController.m */,
 				224A067B1A38888400292777 /* RGSRegistrationViewController.h */,
 				224A067C1A38888400292777 /* RGSRegistrationViewController.m */,
 				22D6474C1A22599E00CD66BD /* RGSMessageAttachmentViewController.h */,
 				22D6474D1A22599E00CD66BD /* RGSMessageAttachmentViewController.m */,
-				22C5B0C91A3739E20018A5F3 /* RGSInitialViewController.h */,
-				22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -805,6 +810,7 @@
 				22BE6EE71A16305A00D130EB /* UIButton+RGSUIBackButton.m in Sources */,
 				22A001641A27672500B22EEE /* RGSPopSegue.m in Sources */,
 				223B06811A2F660E00B2344F /* RGSInviteViewController.m in Sources */,
+				2242571B1A3E24A000628405 /* RGSForgotPasswordViewController.m in Sources */,
 				22126CA41A2F3FC800A983E7 /* NSSet+RGSisEmpty.m in Sources */,
 				22AA4CC41A28A30F008DE41B /* RGSDismissModallyAnimatonController.m in Sources */,
 				228EABAD1A240E96007D555E /* RGSMessageComposeImage.m in Sources */,

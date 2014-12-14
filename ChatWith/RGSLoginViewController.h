@@ -30,7 +30,6 @@
 @property (nonatomic, strong)RGSUserMangementService  *userManger;
 
 -(IBAction)loginUser:(id)sender;
--(IBAction)registerUser:(id)sender;
-
+- (IBAction)forgotPassword:(id)sender;
 @end
 

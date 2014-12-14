@@ -17,17 +17,17 @@
 #import "NSAttributedString+RGSExtras.h"
 #import "NSMutableAttributedString+RGSExtras.h"
 #import "NSString+RGSAttributedString.h"
+#import "UIImage+Resize.h"
 
 
-@interface RGSLoginViewController ()
+@interface RGSLoginViewController () <UIAlertViewDelegate>
 @property (nonatomic, strong)NSMutableArray *textFields;
 
+@property (nonatomic, strong)UIAlertView *sendToDevloperAlert;
 
 @end
 
 @implementation RGSLoginViewController
-
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -77,7 +77,6 @@
     }
     
     
-    
     self.loginButton.backgroundColor = [UIColor colorWithHexString:@"414141" alpha:.45];
     [self.loginButton.layer setCornerRadius:10];
     [self.loginButton setTitleColor:[UIColor colorWithHexString:@"68DAFF"] forState:UIControlStateNormal];
@@ -107,6 +106,23 @@
     }
 }
 
+- (void)unwindToInitViewScreen {
+    //segway to next screen
+    [self performSegueWithIdentifier:@"unwindFromLoginScreenToInitViewScreen" sender:self];
+}
+
+- (void)showAlertAskingForSendPermissionToDeveloper {
+    //ask to send message to devloper
+    NSString *message = @"Oops! this is a really bad. Can I send the problem to the developer so they can fix it?";
+    
+    [UIAlertView bk_showAlertViewWithTitle:nil message:message cancelButtonTitle:nil otherButtonTitles:@[@"YES", @"NO"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if (buttonIndex == 0)
+        {
+            //send message Error to devloper
+        }
+    }];
+}
+
 -(IBAction)loginUser:(id)sender{
 
     if ([self isUserCredentialsValid]) {
@@ -115,22 +131,33 @@
         user.login = self.usernameTextField.text;
         user.password = self.passwordTextField.text;
         
-        [QBRequest logInWithUserLogin:user.login password:user.password successBlock:^(QBResponse *response, QBUUser *user) {
+        [self tryLoginWithMaxAttempts:3 successBlock:^(QBResponse *response, QBUUser *user) {
             if(response.success){
                 [[LocalStorageService shared] creteCurrentUserWithQBUser:user successBlock:^(BOOL success, NSError *error) {
                     if(success){
-                        [self performSegueWithIdentifier:@"unwindFromLoginScreenToInitViewScreen" sender:self];
-                        //segway to next screen
-                    } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
+                        [self unwindToInitViewScreen];
+                    } else {[self showAlertAskingForSendPermissionToDeveloper];}
                 }];
             }
-        } errorBlock:^(QBResponse *response) {
-           [self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."]; 
-        }];
-        
-    } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
+        } errorBlock:^(QBResponse *response) {[self showAlertAskingForSendPermissionToDeveloper];}];
+    } else {[self showAlertViewWithMeassage:@"Oops! Username or Password is invalid. Give it another shot."];}
     
 }
+
+//- (IBAction)forgotPassword:(id)sender {
+//    [QBRequest resetUserPasswordWithEmail:@"randel.smith34@gmail.com" successBlock:^(QBResponse *response) {
+//        // Reset was successful
+//        
+//        
+//    } errorBlock:^(QBResponse *response) {
+//        // Error
+//        
+//        
+//    }];
+//    
+//}
+
+
 
 - (void)showAlertViewWithMeassage:(NSString *)message{
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
@@ -138,7 +165,6 @@
                                                        delegate:self
                                               cancelButtonTitle:@"OKAY"
                                               otherButtonTitles:nil];
-    
     [alertView show];
 
 }
@@ -164,11 +190,31 @@
     return NO;
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)tryLoginWithMaxAttempts:(int)tries
+                    successBlock:(void (^)(QBResponse *response, QBUUser *user))successBlock
+                      errorBlock:(void (^)(QBResponse *response))errorBlock{
+    QBUUser *user = [QBUUser user];
+    user.login = self.usernameTextField.text;
+    user.password = self.passwordTextField.text;
+    
+    [QBRequest logInWithUserLogin:user.login password:user.password successBlock:^(QBResponse *response, QBUUser *user) {
+        successBlock(response, user);
+        
+    } errorBlock:^(QBResponse *response) {
+        __block int currentTry = tries;
+        if(currentTry != 0){
+            currentTry--;
+            [self tryLoginWithMaxAttempts:currentTry successBlock:successBlock errorBlock:errorBlock];
+        } else {
+            errorBlock(response);
+        }
+    }];
 }
 
 
