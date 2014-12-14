@@ -28,6 +28,12 @@
     self.emailTextField.textColor = [UIColor whiteColor];
     self.emailTextField.layer.borderWidth = 1;
     self.emailTextField.layer.cornerRadius = 10;
+    self.emailTextField.returnKeyType = UIReturnKeyDone;
+    self.emailTextField.bk_shouldReturnBlock = ^BOOL(UITextField *textField){
+        [textField resignFirstResponder];
+        return YES;
+    };
+    
     
     NSMutableAttributedString *attributedString = [[self.emailTextField.placeholder attributedString] mutableCopy];
     [attributedString setColor:[UIColor colorWithWhite:0.830 alpha:1.000]];
@@ -57,27 +63,43 @@
 
 
 - (IBAction)reset:(id)sender {
-    [UIView animateWithDuration:.3 animations:^{
-        self.resetSuccessMessage.alpha = 1;
-    } completion:^(BOOL finished) {
-        [NSTimer bk_scheduledTimerWithTimeInterval:4 block:^(NSTimer *timer) {
-            [UIView animateWithDuration:.3 animations:^{
-                self.resetSuccessMessage.alpha = 0;
-            }];
-        } repeats:NO];
-    }];
-    
-//    [QBRequest resetUserPasswordWithEmail:self.emailTextField.text successBlock:^(QBResponse *response) {
-//        // Reset was successful
-//        
-//        
-//    } errorBlock:^(QBResponse *response) {
-//        // Error
-//        
-//        
-//    }];
-    
-    
+    if([self validateEmail:self.emailTextField.text]){
 
+        [QBRequest resetUserPasswordWithEmail:self.emailTextField.text successBlock:^(QBResponse *response) {
+        [UIView animateWithDuration:.3 animations:^{
+            self.resetSuccessMessage.alpha = 1;
+        } completion:^(BOOL finished) {
+            [NSTimer bk_scheduledTimerWithTimeInterval:4 block:^(NSTimer *timer) {
+                [UIView animateWithDuration:.3 animations:^{
+                    self.resetSuccessMessage.alpha = 0;
+                }];
+            } repeats:NO];
+        }];
+        } errorBlock:^(QBResponse *response) {
+            // Error
+            
+            
+        }];
+    } else {
+        UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Oops! That's not a valid email. Give it another shot"];
+        [alertView bk_setCancelButtonWithTitle:@"OKAY" handler:^{
+            [self.emailTextField becomeFirstResponder];
+        }];
+        [alertView show];
+        }
+}
+
+- (BOOL) validateEmail: (NSString *) candidate {
+    NSString *emailRegex =
+    @"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"
+    @"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"
+    @"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"
+    @"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"
+    @"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"
+    @"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"
+    @"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES[c] %@", emailRegex];
+    
+    return [emailTest evaluateWithObject:candidate];
 }
 @end
