@@ -4,6 +4,7 @@ pod 'MagicalRecord'
 pod 'QuickBlox'
 pod 'LoremIpsum', '~> 1.0'
 pod 'BlocksKit'
+pod 'MFSideMenu'
 
 
 target :ChatWithTests, :exclusive => true do
