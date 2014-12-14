@@ -144,21 +144,6 @@
     
 }
 
-//- (IBAction)forgotPassword:(id)sender {
-//    [QBRequest resetUserPasswordWithEmail:@"randel.smith34@gmail.com" successBlock:^(QBResponse *response) {
-//        // Reset was successful
-//        
-//        
-//    } errorBlock:^(QBResponse *response) {
-//        // Error
-//        
-//        
-//    }];
-//    
-//}
-
-
-
 - (void)showAlertViewWithMeassage:(NSString *)message{
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
                                                         message:message

@@ -8,6 +8,11 @@
 
 #import "RGSForgotPasswordViewController.h"
 
+#import "UIColor+RGSColorWithHexString.h"
+#import "NSAttributedString+RGSExtras.h"
+#import "NSMutableAttributedString+RGSExtras.h"
+#import "NSString+RGSAttributedString.h"
+
 @interface RGSForgotPasswordViewController ()
 
 @end
@@ -16,7 +21,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.navigationItem.rightBarButtonItem = nil;
+    
+    self.emailTextField.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.20];
+    self.emailTextField.layer.borderColor = [[UIColor clearColor] CGColor];
+    self.emailTextField.textColor = [UIColor whiteColor];
+    self.emailTextField.layer.borderWidth = 1;
+    self.emailTextField.layer.cornerRadius = 10;
+    
+    NSMutableAttributedString *attributedString = [[self.emailTextField.placeholder attributedString] mutableCopy];
+    [attributedString setColor:[UIColor colorWithWhite:0.830 alpha:1.000]];
+    self.emailTextField.attributedPlaceholder = attributedString;
+    
+    self.resetButton.backgroundColor = [UIColor colorWithHexString:@"414141" alpha:.45];
+    [self.resetButton.layer setCornerRadius:10];
+    [self.resetButton setTitleColor:[UIColor colorWithHexString:@"68DAFF"] forState:UIControlStateNormal];
+    self.resetButton.titleLabel.font = [UIFont systemFontOfSize:20];
+
+    self.resetSuccessMessage.layer.cornerRadius = 10;
+    self.resetSuccessMessage.alpha = 0;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    [self.emailTextField setLeftViewMode:UITextFieldViewModeAlways];
+    [self.emailTextField setLeftView:spacerView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,29 +55,28 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)reset:(id)sender {
-    
-    
-    [QBRequest resetUserPasswordWithEmail:self.emailTextField.text successBlock:^(QBResponse *response) {
-        // Reset was successful
-        
-        
-    } errorBlock:^(QBResponse *response) {
-        // Error
-        
-        
+    [UIView animateWithDuration:.3 animations:^{
+        self.resetSuccessMessage.alpha = 1;
+    } completion:^(BOOL finished) {
+        [NSTimer bk_scheduledTimerWithTimeInterval:4 block:^(NSTimer *timer) {
+            [UIView animateWithDuration:.3 animations:^{
+                self.resetSuccessMessage.alpha = 0;
+            }];
+        } repeats:NO];
     }];
-        
+    
+//    [QBRequest resetUserPasswordWithEmail:self.emailTextField.text successBlock:^(QBResponse *response) {
+//        // Reset was successful
+//        
+//        
+//    } errorBlock:^(QBResponse *response) {
+//        // Error
+//        
+//        
+//    }];
+    
     
 
 }
