@@ -24,6 +24,7 @@
     toVC.backgroundView.hidden = YES;
     RGSBaseViewController* fromVC = (RGSBaseViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     fromVC.backgroundView.hidden = YES;
+//    fromVC.view.backgroundColor = [UIColor redColor];
     
     CGRect rightOffScreenRect = toVC.view.frame;
     rightOffScreenRect.origin = CGPointMake(toVC.buttonsTableView.frame.size.width, 0);
@@ -31,40 +32,55 @@
     [inView addSubview:toVC.view];
     
     
-    UIView *snapFromView = [[UIView alloc] initWithFrame:[fromVC.view snapshotViewAfterScreenUpdates:YES].frame];
-    snapFromView.backgroundColor = [UIColor redColor];
+    UIView *snapFromView = [fromVC.view snapshotViewAfterScreenUpdates:NO];
+//    snapFromView.backgroundColor = [UIColor redColor];
     [inView addSubview:snapFromView];
     
     CGRect offScreen = fromVC.view.frame;
     offScreen.origin.x = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     fromVC.view.frame = offScreen;
     
+//    toVC.fromView.backgroundColor = [UIColor purpleColor];
     [[transitionContext containerView] addSubview:self.backgroundView];
     [[transitionContext containerView] sendSubviewToBack:self.backgroundView];
     
     [UIView transitionWithView:[transitionContext containerView]
                       duration:self.transitionDuration
-                       options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews
+                       options:UIViewAnimationOptionCurveLinear
                     animations:^{
         
-        CGRect leftToSide = toVC.fromView.frame;
+                        CGRect leftToSide = toVC.fromView.frame;
         
-        leftToSide.size.height = 380;
-                        snapFromView.frame =leftToSide;
+                        leftToSide.size.height = 380;
+                        snapFromView.frame = leftToSide;
         
-        CGRect middle = toVC.view.frame;
-        middle.origin.x = 0;
-        toVC.view.frame = middle;
+                        CGRect middle = toVC.view.frame;
+                        middle.origin.x = 0;
+                        toVC.view.frame = middle;
        
     } completion:^(BOOL finished) {
-//         toVC.fromView = snapFromView;
         
-        [self.backgroundView removeFromSuperview];
-        self.backgroundView = nil;
+        if(finished){
+//            CGRect testRect = snapFromView.frame;
+////            testRect.origin = CGPointMake(8, 0);
+//            snapFromView.frame = testRect;
+            toVC.subFromView = snapFromView;
+            [toVC.view addSubview:snapFromView];
+//            toVC.fromView = snapFromView;
+//            [toVC.fromView addSubview:snapFromView];
+            
+            
+            [toVC.view bringSubviewToFront:toVC.closeTapView];
+            
+            
+            [self.backgroundView removeFromSuperview];
+            self.backgroundView = nil;
+//            [snapFromView removeFromSuperview];
+//            toVC.backgroundView.hidden = NO;
+            
+            [transitionContext completeTransition:YES];
+        }
         
-        toVC.backgroundView.hidden = NO;
-                
-        [transitionContext completeTransition:YES];
     }];
 
 }

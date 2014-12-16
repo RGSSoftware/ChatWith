@@ -30,6 +30,7 @@
 		224A067D1A38888400292777 /* RGSRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224A067C1A38888400292777 /* RGSRegistrationViewController.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250787419F880D100F793EE /* RGSContactListViewController.m */; };
+		2252F6B91A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2252F6B81A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.m */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
 		2264746B19A90C9E00245A73 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746A19A90C9E00245A73 /* SystemConfiguration.framework */; };
 		2264746D19A90CA800245A73 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746C19A90CA800245A73 /* MobileCoreServices.framework */; };
@@ -176,6 +177,8 @@
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2250787319F880D100F793EE /* RGSContactListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactListViewController.h; sourceTree = "<group>"; };
 		2250787419F880D100F793EE /* RGSContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactListViewController.m; sourceTree = "<group>"; };
+		2252F6B71A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSCloseSideMenuAnimationController.h; sourceTree = "<group>"; };
+		2252F6B81A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSCloseSideMenuAnimationController.m; sourceTree = "<group>"; };
 		2264746819A90C9400245A73 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2264746A19A90C9E00245A73 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2264746C19A90CA800245A73 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -506,6 +509,8 @@
 				22AA4CC31A28A30F008DE41B /* RGSDismissModallyAnimatonController.m */,
 				22C4F4061A3F949D009CB1C2 /* RGShowSideMenuAnimationController.h */,
 				22C4F4071A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m */,
+				2252F6B71A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.h */,
+				2252F6B81A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.m */,
 			);
 			name = AnimationControllers;
 			sourceTree = "<group>";
@@ -820,6 +825,7 @@
 				22C4F4051A3F93CB009CB1C2 /* RGSSideMenuViewController.m in Sources */,
 				221129C01A2CAA3F00C084BA /* RGSImageBatchRequest.m in Sources */,
 				22AD00F41A1336E8008F9EF7 /* RGSMessageCell.m in Sources */,
+				2252F6B91A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.m in Sources */,
 				227ADFBE1A0C071200D03017 /* RGSBaseViewController.m in Sources */,
 				22D7BCC619A8D45100D2C01C /* ChatWith.xcdatamodeld in Sources */,
 				22BE6EEA1A163B1D00D130EB /* RGSMessageListViewController.m in Sources */,

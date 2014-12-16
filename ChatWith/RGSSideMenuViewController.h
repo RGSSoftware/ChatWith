@@ -13,5 +13,8 @@
 @interface RGSSideMenuViewController : RGSBaseViewController
 
 @property (weak, nonatomic) IBOutlet UIView *fromView;
+@property (weak, nonatomic) IBOutlet UIView *closeTapView;
 @property (weak, nonatomic) IBOutlet UITableView *buttonsTableView;
+
+@property (weak, nonatomic) UIView *subFromView;
 @end

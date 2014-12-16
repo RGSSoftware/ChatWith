@@ -23,6 +23,15 @@
     self.backgroundView.frame = self.view.bounds;
     [self.view addSubview:self.backgroundView];
     [self.view sendSubviewToBack:self.backgroundView];
+    self.backgroundView.hidden = YES;
+    
+    UIView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
+    view.contentMode = UIViewContentModeScaleAspectFill;
+    view.frame = self.view.bounds;
+    
+    UIWindow *mainWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
+    [mainWindow addSubview:view];
+    [mainWindow sendSubviewToBack:view];
     
     [self.navigationController.navigationBar
      setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -40,11 +49,18 @@
     self.navigationItem.rightBarButtonItem = menuBarButton;
 
 }
+-(void)viewWillAppear:(BOOL)animated{
+    
+    
+    
+}
 
 -(RGSSideMenuViewController *)sideViewController{
     RGSSideMenuViewController *vc = [RGSSideMenuViewController new];
     vc.view.backgroundColor = [UIColor redColor];
     return [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSSideMenuViewController"];
 }
+
+
 
 @end

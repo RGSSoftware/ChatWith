@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EGF-iH-8R1">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -1081,6 +1080,10 @@
                                     <outlet property="delegate" destination="4bz-RU-KFK" id="ARZ-kx-V41"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u7F-0m-ehp">
+                                <rect key="frame" x="0.0" y="64" width="222" height="504"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1101,6 +1104,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="buttonsTableView" destination="97Y-6m-6ZL" id="y4U-23-nj4"/>
+                        <outlet property="closeTapView" destination="u7F-0m-ehp" id="Zzu-Bu-WAz"/>
                         <outlet property="fromView" destination="u4x-dW-e0B" id="tMO-ba-fdh"/>
                     </connections>
                 </viewController>

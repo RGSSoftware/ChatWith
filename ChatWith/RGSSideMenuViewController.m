@@ -19,6 +19,15 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    
+    [self.closeTapView bk_whenTapped:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

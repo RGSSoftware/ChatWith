@@ -19,6 +19,7 @@
 #import "RGSDismissOverviewAnimatonController.h"
 
 #import "RGShowSideMenuAnimationController.h"
+#import "RGSCloseSideMenuAnimationController.h"
 
 #import "RGSChatListViewController.h"
 #import "RGSContactListViewController.h"
@@ -43,7 +44,7 @@
     return self.popSegue;
 }
 
--(id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+-(id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(RGSBaseViewController *)fromVC toViewController:(UIViewController *)toVC{
     if([fromVC isKindOfClass:[RGSChatListViewController class]] && [toVC isKindOfClass:[RGSContactListViewController class]]){
         if(operation == UINavigationControllerOperationPush) return [RGSShowModallyAnimatonController new];
         
@@ -54,6 +55,11 @@
         if(operation == UINavigationControllerOperationPush){
             return [RGShowSideMenuAnimationController new];
         }
+    } else if ([fromVC isKindOfClass:[RGSSideMenuViewController class]]){
+        if(operation == UINavigationControllerOperationPop) {
+            return [RGSCloseSideMenuAnimationController new];
+        }
+        
     }
     if(operation == UINavigationControllerOperationPush) return [RGSPushAnimationController new];
     else return [RGSPopAnimationController new];

@@ -515,14 +515,14 @@
 
 
 -(void)applicationWillTerminate:(UIApplication *)application{
-    [[QBChat instance] logout];
-    
-    [QBRequest logOutWithSuccessBlock:nil errorBlock:nil];
+//    [[QBChat instance] logout];
+//    
+//    [QBRequest logOutWithSuccessBlock:nil errorBlock:nil];
 }
 
 -(void)applicationWillResignActive:(UIApplication *)application{
-    [[QBChat instance] logout];
-    
-    [QBRequest logOutWithSuccessBlock:nil errorBlock:nil];
+//    [[QBChat instance] logout];
+//    
+//    [QBRequest logOutWithSuccessBlock:nil errorBlock:nil];
 }
 @end
