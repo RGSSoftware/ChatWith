@@ -54,9 +54,13 @@ typedef enum {
                                                   leftMenuViewController:(id)leftMenuViewController
                                                  rightMenuViewController:(id)rightMenuViewController {
     MFSideMenuContainerViewController *controller = [MFSideMenuContainerViewController new];
+    
     controller.leftMenuViewController = leftMenuViewController;
     controller.centerViewController = centerViewController;
     controller.rightMenuViewController = rightMenuViewController;
+    
+    
+    controller.navigationItem.rightBarButtonItem = ((UIViewController *)controller.centerViewController).navigationItem.rightBarButtonItem;
     return controller;
 }
 
@@ -336,7 +340,12 @@ typedef enum {
 - (void)openRightSideMenuCompletion:(void (^)(void))completion {
     if(!self.rightMenuViewController) return;
     [self.menuContainerView bringSubviewToFront:[self.rightMenuViewController view]];
-    [self setCenterViewControllerOffset:-1*self.rightMenuWidth animated:YES completion:completion];
+    
+    [self setCenterViewControllerRectOffset:CGRectMake(-1*self.rightMenuWidth,
+                                                       155,
+                                                       CGRectGetWidth(((UIViewController *)self.centerViewController).view.frame) - 30,
+                                                       CGRectGetHeight(((UIViewController *)self.centerViewController).view.frame) - 30) animated:YES completion:completion];
+//    [self setCenterViewControllerOffset:-1*self.rightMenuWidth animated:YES completion:completion];
 }
 
 - (void)closeSideMenuCompletion:(void (^)(void))completion {
@@ -723,9 +732,44 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 #pragma mark -
 #pragma mark - Center View Controller Movement
 
+
+- (void)setCenterViewControllerRectOffset:(CGRect)rect animated:(BOOL)animated completion:(void (^)(void))completion {
+    [self setCenterViewControllerRectOffset:rect additionalAnimations:nil
+                               animated:animated completion:completion];
+}
+
 - (void)setCenterViewControllerOffset:(CGFloat)offset animated:(BOOL)animated completion:(void (^)(void))completion {
     [self setCenterViewControllerOffset:offset additionalAnimations:nil
                                animated:animated completion:completion];
+}
+
+- (void)setCenterViewControllerRectOffset:(CGRect)rect
+                 additionalAnimations:(void (^)(void))additionalAnimations
+                             animated:(BOOL)animated
+                           completion:(void (^)(void))completion {
+    
+    void (^innerCompletion)() = ^ {
+        self.panGestureVelocity = 0.0;
+        if(completion) completion();
+    };
+    
+    if(animated) {
+        CGFloat centerViewControllerXPosition = ABS([self.centerViewController view].frame.origin.x);
+        CGFloat duration = [self animationDurationFromStartPosition:centerViewControllerXPosition toEndPosition:rect.origin.x];
+        
+        [UIView animateWithDuration:duration animations:^{
+            [self setCenterViewControllerRectOffset:rect];
+            if(additionalAnimations) additionalAnimations();
+        } completion:^(BOOL finished) {
+            innerCompletion();
+        }];
+    } else {
+        [self setCenterViewControllerRectOffset:rect];
+        if(additionalAnimations) additionalAnimations();
+        innerCompletion();
+    }
+
+    
 }
 
 - (void)setCenterViewControllerOffset:(CGFloat)offset
@@ -753,6 +797,28 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         innerCompletion();
     }
 }
+
+- (void) setCenterViewControllerRectOffset:(CGRect)rect {
+    
+//    CGRect frame = [self.centerViewController view].frame;
+//    frame.origin.x = xOffset;
+    [self.centerViewController view].frame = rect;
+    
+    if(!self.menuSlideAnimationEnabled) return;
+    
+    if(rect.origin.x > 0){
+        [self alignLeftMenuControllerWithCenterViewController];
+        [self setRightSideMenuFrameToClosedPosition];
+    } else if(rect.origin.x < 0){
+        [self alignRightMenuControllerWithCenterViewController];
+        [self setLeftSideMenuFrameToClosedPosition];
+    } else {
+        [self setLeftSideMenuFrameToClosedPosition];
+        [self setRightSideMenuFrameToClosedPosition];
+    }
+
+}
+
 
 - (void) setCenterViewControllerOffset:(CGFloat)xOffset {
     CGRect frame = [self.centerViewController view].frame;

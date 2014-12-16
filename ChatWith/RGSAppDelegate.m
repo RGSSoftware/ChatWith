@@ -19,11 +19,7 @@
 #import "RGSChat.h"
 #import "RGSContact.h"
 
-#import "NSDate+Utilities.h"
-
 #import "LoremIpsum.h"
-
-
 
 #import "RGSApplicationSessionManagementService.h"
 #import "RGSContactListViewController.h"
@@ -32,6 +28,11 @@
 
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
+#import "NSDate+Utilities.h"
+
+#import "RGSNavigationController.h"
+
+
 
 @implementation RGSAppDelegate
 
@@ -160,6 +161,45 @@
     [RGSMessage MR_truncateAll];
     [RGSChat MR_truncateAll];
     
+    
+    {
+        RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
+        currentUser.currentUser = [NSNumber numberWithBool:YES];
+        currentUser.fullName = @"bar";
+        currentUser.password = @"abc123456";
+        
+        RGSManagedUser *rrUser = [RGSManagedUser MR_createEntity];
+        rrUser.fullName = @"rr";
+        rrUser.password = @"h5ljh4aKOcLw";
+        rrUser.entityID = @894248;
+        
+        RGSChat *chat = [RGSChat MR_createEntity];
+        chat.sender = currentUser;
+        chat.receiver = rrUser;
+        chat.lastMessageDate = [NSDate date];
+        [chat addParticipantsObject:currentUser];
+        [chat addParticipantsObject:rrUser];
+        
+        [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
+            if (success) {
+                
+//                UIViewController *vc = [UIViewController new];
+//                vc.view.backgroundColor = [UIColor redColor];
+//                
+//                 MFSideMenuContainerViewController *container = [MFSideMenuContainerViewController containerWithCenterViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController] leftMenuViewController:nil rightMenuViewController:vc];
+//                container.rightMenuWidth = 150;
+//                
+//                RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:container];
+                
+                
+                self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+            }
+        }];
+        
+    }
+    
+    self.window.frame = [[UIScreen mainScreen] bounds];
+    [self.window makeKeyAndVisible];
 //    self.applicationSessionManager.applicationID = 7632;
 //    self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";
 //    self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
@@ -399,8 +439,7 @@
 //        }
 //    }];
     
-    self.window.frame = [[UIScreen mainScreen] bounds];
-    [self.window makeKeyAndVisible];
+    
 //
 //    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSChatListViewController"]];
 //    

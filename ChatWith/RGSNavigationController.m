@@ -18,8 +18,11 @@
 #import "RGSShowOverviewAnimatonController.h"
 #import "RGSDismissOverviewAnimatonController.h"
 
+#import "RGShowSideMenuAnimationController.h"
+
 #import "RGSChatListViewController.h"
 #import "RGSContactListViewController.h"
+#import "RGSSideMenuViewController.h"
 
 @interface RGSNavigationController ()
 @property(nonatomic, strong)RGSPopSegue *popSegue;
@@ -46,6 +49,11 @@
         
     } else if ([fromVC isKindOfClass:[RGSContactListViewController class]] && [toVC isKindOfClass:[RGSChatListViewController class]]){
         if(operation == UINavigationControllerOperationPop) return [RGSDismissModallyAnimatonController new];
+    }
+    if([toVC isKindOfClass:[RGSSideMenuViewController class]]){
+        if(operation == UINavigationControllerOperationPush){
+            return [RGShowSideMenuAnimationController new];
+        }
     }
     if(operation == UINavigationControllerOperationPush) return [RGSPushAnimationController new];
     else return [RGSPopAnimationController new];

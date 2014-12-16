@@ -106,6 +106,11 @@
     }];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+
+}
+
 -(void)retryLoginWithMaxAttempts:(int)tries{
     [self.userManager loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.login successBlock:^(BOOL success) {
         __block int currentTry = tries;
