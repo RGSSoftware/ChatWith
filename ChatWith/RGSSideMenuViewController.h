@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RGSSideMenuViewController : UIViewController
+#import "RGSBaseViewController.h"
 
+@interface RGSSideMenuViewController : RGSBaseViewController
+
+@property (weak, nonatomic) IBOutlet UIView *fromView;
+@property (weak, nonatomic) IBOutlet UITableView *buttonsTableView;
 @end

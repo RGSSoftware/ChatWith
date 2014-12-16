@@ -8,7 +8,7 @@
 
 #import "RGSSideMenuViewController.h"
 
-@interface RGSSideMenuViewController ()
+@interface RGSSideMenuViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -22,6 +22,37 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 3;
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 130;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
+    switch (indexPath.row) {
+  case 0:
+    cell.backgroundColor = [UIColor cyanColor];
+    break;
+  case 1:
+            cell.backgroundColor = [UIColor orangeColor];
+            break;
+        case 2:
+            cell.backgroundColor = [UIColor purpleColor];
+            break;
+
+  default:
+    break;
+}
+    return cell;
 }
 
 /*

@@ -44,7 +44,7 @@
 -(RGSSideMenuViewController *)sideViewController{
     RGSSideMenuViewController *vc = [RGSSideMenuViewController new];
     vc.view.backgroundColor = [UIColor redColor];
-    return vc;
+    return [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSSideMenuViewController"];
 }
 
 @end
