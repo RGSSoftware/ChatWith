@@ -26,12 +26,20 @@
         self.centerScreenRect = CGRectZero;
         
         CGRect leftOffScreenRect = CGRectZero;
-        leftOffScreenRect.origin = CGPointMake(-[UIScreen mainScreen].bounds.size.width, 0);
+        leftOffScreenRect.origin = CGPointMake(-1 * [UIScreen mainScreen].bounds.size.width, 0);
         self.leftOffScreenRect = leftOffScreenRect;
         
         CGRect rightOffScreenRect = CGRectZero;
-        leftOffScreenRect.origin = CGPointMake([UIScreen mainScreen].bounds.size.width, 0);
+        rightOffScreenRect.origin = CGPointMake([UIScreen mainScreen].bounds.size.width, 0);
         self.rightOffScreenRect = rightOffScreenRect;
+        
+        CGRect bottomOffScreenRect = CGRectZero;
+        bottomOffScreenRect.origin = CGPointMake(0, [UIScreen mainScreen].bounds.size.height);
+        self.bottomOffScreenRect = bottomOffScreenRect;
+        
+        CGRect topOffScreenRect = CGRectZero;
+        topOffScreenRect.origin = CGPointMake(0, -1 * [UIScreen mainScreen].bounds.size.height);
+        self.topOffScreenRect = topOffScreenRect;
     }
     return self;
 }
@@ -77,5 +85,17 @@
     CGRect rect = self.rightOffScreenRect;
     rect.size = size;
     self.rightOffScreenRect = rect;
+}
+
+-(void)setBottomOffScreenRectSize:(CGSize)size{
+    CGRect rect = self.bottomOffScreenRect;
+    rect.size = size;
+    self.bottomOffScreenRect = rect;
+}
+
+-(void)setTopOffScreenRectSize:(CGSize)size{
+    CGRect rect = self.topOffScreenRect;
+    rect.size = size;
+    self.topOffScreenRect = rect;
 }
 @end

@@ -100,6 +100,7 @@ struct {
     [super viewDidLoad];
     
     _shouldScrollToLastRow = YES;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{

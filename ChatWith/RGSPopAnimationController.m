@@ -21,35 +21,25 @@
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
-    RGSBaseViewController *fromViewController = (RGSBaseViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
-    RGSBaseViewController *toViewController = (RGSBaseViewController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    [self setLeftOffScreenRectSize:self.toViewController.view.frame.size];
+    self.toViewController.view.frame = self.leftOffScreenRect;
+    [[transitionContext containerView] addSubview:self.toViewController.view];
     
-    CGRect rightOffScreenRect = fromViewController.view.frame;
-    rightOffScreenRect.origin = CGPointMake([UIScreen mainScreen].bounds.size.width, 0);
+   [self setRightOffScreenRectSize:self.fromViewController.view.frame.size];
     
-    
-    
-    CGRect leftOffScreenRect = toViewController.view.frame;
-    leftOffScreenRect.origin = CGPointMake(-[UIScreen mainScreen].bounds.size.width, 0);
-    toViewController.view.frame = leftOffScreenRect;
-    [[transitionContext containerView] addSubview:toViewController.view];
-    
-
-    
-    CGRect centerScreenRect = toViewController.view.frame;
-    centerScreenRect.origin = CGPointZero;
+    [self setCenterScreenRectSize:self.toViewController.view.frame.size];
     
     [UIView transitionWithView:[transitionContext containerView] duration:self.transitionDuration options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews animations:^{
         
-        toViewController.view.frame = centerScreenRect;
-        fromViewController.view.frame = rightOffScreenRect;
+        self.toViewController.view.frame = self.centerScreenRect;
+        self.fromViewController.view.frame = self.rightOffScreenRect;
     } completion:^(BOOL finished) {
-        
-        
-        [fromViewController.view removeFromSuperview];
-        
-        [transitionContext completeTransition:YES];
+        if(finished){
+            [self.fromViewController.view removeFromSuperview];
+            
+            [transitionContext completeTransition:YES];
+        }
     }];
     
 }

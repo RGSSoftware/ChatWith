@@ -27,6 +27,7 @@
     [[transitionContext containerView] addSubview:self.toViewController.view];
  
     [self setLeftOffScreenRectSize:self.fromViewController.view.frame.size];
+    
     [self setCenterScreenRectSize:self.toViewController.view.frame.size];
     
     [UIView transitionWithView:[transitionContext containerView] duration:self.transitionDuration options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews animations:^{
