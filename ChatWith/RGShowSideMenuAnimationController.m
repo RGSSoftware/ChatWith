@@ -15,46 +15,42 @@
 @implementation RGShowSideMenuAnimationController
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
-    UIView *inView = [transitionContext containerView];
-    RGSSideMenuViewController* toVC = (RGSSideMenuViewController*)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    RGSBaseViewController* fromVC = (RGSBaseViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    RGSSideMenuViewController* toViewController = (RGSSideMenuViewController*)self.toViewController;
     
-    CGRect rightOffScreenRect = toVC.view.frame;
-    rightOffScreenRect.origin = CGPointMake(toVC.buttonsTableView.frame.size.width, 0);
-    toVC.view.frame = rightOffScreenRect;
-    [inView addSubview:toVC.view];
+    CGRect rightOffScreenRect = toViewController.view.frame;
+    rightOffScreenRect.origin = CGPointMake(toViewController.buttonsTableView.frame.size.width, 0);
+    toViewController.view.frame = rightOffScreenRect;
+    [[transitionContext containerView] addSubview:toViewController.view];
     
     
-    UIView *snapFromView = [fromVC.view snapshotViewAfterScreenUpdates:NO];
-    [inView addSubview:snapFromView];
+    UIView *snapFromView = [self.fromViewController.view snapshotViewAfterScreenUpdates:NO];
+    [[transitionContext containerView] addSubview:snapFromView];
     
-    CGRect offScreen = fromVC.view.frame;
-    offScreen.origin.x = CGRectGetWidth([[UIScreen mainScreen] bounds]);
-    fromVC.view.frame = offScreen;
+    self.fromViewController.view.hidden = YES;
     
     [UIView transitionWithView:[transitionContext containerView]
                       duration:self.transitionDuration
                        options:UIViewAnimationOptionCurveLinear
                     animations:^{
         
-                        CGRect leftToSide = toVC.fromView.frame;
+                        CGRect leftToSide = toViewController.fromView.frame;
         
                         leftToSide.size.height = 380;
                         snapFromView.frame = leftToSide;
         
-                        CGRect middle = toVC.view.frame;
+                        CGRect middle = toViewController.view.frame;
                         middle.origin.x = 0;
-                        toVC.view.frame = middle;
+                        toViewController.view.frame = middle;
        
     } completion:^(BOOL finished) {
         
         if(finished){
 
-            toVC.subFromView = snapFromView;
-            [toVC.view addSubview:snapFromView];
+            toViewController.subFromView = snapFromView;
+            [toViewController.view addSubview:snapFromView];
 
             
-            [toVC.view bringSubviewToFront:toVC.closeTapView];
+            [toViewController.view bringSubviewToFront:toViewController.closeTapView];
     
 
             [transitionContext completeTransition:YES];
