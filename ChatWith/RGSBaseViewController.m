@@ -13,6 +13,10 @@
 
 #import "RGSSideMenuViewController.h"
 
+@interface RGSBaseViewController ()
+@property (nonatomic, strong)RGSSideMenuViewController *sideViewController;
+@end
+
 @implementation RGSBaseViewController
 
 -(void)viewDidLoad{
@@ -56,10 +60,15 @@
 }
 
 -(RGSSideMenuViewController *)sideViewController{
-    RGSSideMenuViewController *vc = [RGSSideMenuViewController new];
-    vc.view.backgroundColor = [UIColor redColor];
-    return [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSSideMenuViewController"];
-}
+    if (_sideViewController == nil) {
+        RGSSideMenuViewController *vc = [RGSSideMenuViewController new];
+        vc.view.backgroundColor = [UIColor redColor];
+        _sideViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSSideMenuViewController"];
+ 
+    }
+    
+    return _sideViewController;
+    }
 
 
 

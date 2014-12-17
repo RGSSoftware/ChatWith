@@ -7,6 +7,7 @@
 //
 
 #import "RGSSideMenuViewController.h"
+#import "UIImage+Resize.h"
 
 @interface RGSSideMenuViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -17,6 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] bk_initWithImage:[[UIImage imageNamed:@"MenuIcon"] resizedImage:CGSizeMake(25, 17)] style:UIBarButtonItemStylePlain handler:^(id sender) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    menuBarButton.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = menuBarButton;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
