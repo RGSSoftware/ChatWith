@@ -17,4 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *buttonsTableView;
 
 @property (weak, nonatomic) UIView *subFromView;
+
+@property (weak, nonatomic) UIView *outLineView;
 @end

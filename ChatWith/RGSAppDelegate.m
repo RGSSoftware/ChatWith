@@ -12,6 +12,7 @@
 #import "RGSMessageListViewController.h"
 #import "RGSUserMangementService.h"
 #import "RGSManagedUser.h"
+#import "RGSSideMenuViewController.h"
 
 #import "RGSMessage.h"
 #import "RGSChat.h"
@@ -190,9 +191,15 @@
 //                container.rightMenuWidth = 150;
 //                
 //                RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:container];
+                UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+                if([vc isKindOfClass:[RGSSideMenuViewController class]]){
+                    RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:vc];
+                    self.window.rootViewController = nav;
+                } else {
+                    self.window.rootViewController = vc;
+                }
                 
                 
-                self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
             }
         }];
         

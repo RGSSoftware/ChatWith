@@ -24,6 +24,18 @@
     UIView *snapFromView = [self.fromViewController.view snapshotViewAfterScreenUpdates:NO];
     [[transitionContext containerView] addSubview:snapFromView];
     
+    UIView *outLineView = [[UIView alloc] initWithFrame:snapFromView.frame];
+    outLineView.backgroundColor = [UIColor clearColor];
+    outLineView.layer.borderWidth = 2;
+    outLineView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+//    outLineView.layer.bor
+    outLineView.alpha = 0;
+//    [[transitionContext containerView] addSubview:outLineView];
+    
+    UIView *tintView = [[UIView alloc] initWithFrame:snapFromView.frame];
+    tintView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.050];
+    tintView.alpha = 0;
+    [[transitionContext containerView] addSubview:tintView];
     self.fromViewController.view.hidden = YES;
     
     [UIView transitionWithView:[transitionContext containerView]
@@ -35,6 +47,12 @@
         
                         leftToSide.size.height = 380;
                         snapFromView.frame = leftToSide;
+                        
+                        outLineView.alpha = 1;
+                        outLineView.frame = leftToSide;
+                        
+                        tintView.alpha = 1;
+                        tintView.frame = leftToSide;
         
                         CGRect middle = toViewController.view.frame;
                         middle.origin.x = 0;
@@ -46,7 +64,9 @@
 
             toViewController.subFromView = snapFromView;
             [toViewController.view addSubview:snapFromView];
-
+            
+//            toViewController.outLineView = outLineView;
+//            [toViewController.view addSubview:outLineView];
             
             [toViewController.view bringSubviewToFront:toViewController.closeTapView];
     

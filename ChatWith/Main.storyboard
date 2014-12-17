@@ -1083,11 +1083,15 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AnP-jt-TXY">
+                                                    <rect key="frame" x="20" y="15" width="60" height="60"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="icon" destination="AEy-Qt-CzP" id="39A-Bg-TJ7"/>
+                                            <outlet property="iconSelected" destination="AnP-jt-TXY" id="fIA-zj-6Ph"/>
                                             <outlet property="menuLabel" destination="hg1-9j-oJ2" id="Fap-Ws-vm2"/>
                                         </connections>
                                     </tableViewCell>

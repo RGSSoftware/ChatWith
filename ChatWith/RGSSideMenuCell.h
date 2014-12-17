@@ -11,6 +11,7 @@
 @interface RGSSideMenuCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UIImageView *iconSelected;
 @property (weak, nonatomic) IBOutlet UILabel *menuLabel;
 
 @end
