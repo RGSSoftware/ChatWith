@@ -10,7 +10,7 @@
 
 #import "RGSBaseViewController.h"
 
-@interface RGSSideMenuViewController : RGSBaseViewController
+@interface RGSSideMenuViewController : RGSBaseViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIView *fromView;
 @property (weak, nonatomic) IBOutlet UIView *closeTapView;
