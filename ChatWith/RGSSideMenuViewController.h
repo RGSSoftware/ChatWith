@@ -19,4 +19,5 @@
 @property (weak, nonatomic) UIView *subFromView;
 
 @property (weak, nonatomic) UIView *outLineView;
+@property (weak, nonatomic) UIView *tintView;
 @end

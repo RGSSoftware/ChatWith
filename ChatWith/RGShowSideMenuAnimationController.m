@@ -8,6 +8,8 @@
 
 #import "RGShowSideMenuAnimationController.h"
 
+#import "dashBorderView.h"
+
 #import "RGSSideMenuViewController.h"
 
 @implementation RGShowSideMenuAnimationController
@@ -24,16 +26,13 @@
     UIView *snapFromView = [self.fromViewController.view snapshotViewAfterScreenUpdates:NO];
     [[transitionContext containerView] addSubview:snapFromView];
     
-    UIView *outLineView = [[UIView alloc] initWithFrame:snapFromView.frame];
+    dashBorderView *outLineView = [[dashBorderView alloc] initWithFrame:snapFromView.frame];
     outLineView.backgroundColor = [UIColor clearColor];
-    outLineView.layer.borderWidth = 2;
-    outLineView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-//    outLineView.layer.bor
     outLineView.alpha = 0;
-//    [[transitionContext containerView] addSubview:outLineView];
+    [[transitionContext containerView] addSubview:outLineView];
     
     UIView *tintView = [[UIView alloc] initWithFrame:snapFromView.frame];
-    tintView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.050];
+    tintView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.030];
     tintView.alpha = 0;
     [[transitionContext containerView] addSubview:tintView];
     self.fromViewController.view.hidden = YES;
@@ -65,8 +64,11 @@
             toViewController.subFromView = snapFromView;
             [toViewController.view addSubview:snapFromView];
             
-//            toViewController.outLineView = outLineView;
-//            [toViewController.view addSubview:outLineView];
+            toViewController.outLineView = outLineView;
+            [toViewController.view addSubview:outLineView];
+            
+            toViewController.tintView = tintView;
+            [toViewController.view addSubview:tintView];
             
             [toViewController.view bringSubviewToFront:toViewController.closeTapView];
     

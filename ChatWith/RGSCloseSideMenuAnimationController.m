@@ -21,6 +21,7 @@
     
     [[transitionContext containerView] addSubview:fromViewController.subFromView];
     [[transitionContext containerView] addSubview:fromViewController.outLineView];
+    [[transitionContext containerView] addSubview:fromViewController.tintView];
     
     [UIView transitionWithView:[transitionContext containerView]
                       duration:self.transitionDuration
@@ -32,14 +33,18 @@
                         fromViewController.view.frame = offScreen;
             
                         fromViewController.subFromView.frame = [UIScreen mainScreen].bounds;
+                        
                         fromViewController.outLineView.alpha = 0;
                         fromViewController.outLineView .frame = [UIScreen mainScreen].bounds;
+                        fromViewController.tintView.alpha = 0;
+                        fromViewController.tintView .frame = [UIScreen mainScreen].bounds;
 
                     } completion:^(BOOL finished) {
                         if (finished) {
                             self.toViewController.view.hidden = NO;
                             [fromViewController.subFromView removeFromSuperview];
                             [fromViewController.outLineView removeFromSuperview];
+                            [fromViewController.tintView removeFromSuperview];
                             
                             [transitionContext completeTransition:YES];
                         }
