@@ -96,4 +96,10 @@
     rect.size = size;
     self.topOffScreenRect = rect;
 }
+-(UIView *)tintViewWithFrame:(CGRect)rect{
+    UIView *tintView = [[UIView alloc] initWithFrame:rect];
+    tintView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.250];
+    tintView.alpha = 0;
+    return tintView;
+}
 @end

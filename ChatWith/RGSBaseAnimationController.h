@@ -29,4 +29,6 @@
 
 @property CGRect leftOffScreenRect;
 -(void)setLeftOffScreenRectSize:(CGSize)size;
+
+-(UIView *)tintViewWithFrame:(CGRect)rect;
 @end

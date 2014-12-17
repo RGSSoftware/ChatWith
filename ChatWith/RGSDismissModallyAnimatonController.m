@@ -27,13 +27,21 @@
     
     [self setCenterScreenRectSize:self.toViewController.view.frame.size];
     
+    UIView *tintView = [self tintViewWithFrame:self.topOffScreenRect];
+    tintView.alpha = .7;
+    [[transitionContext containerView] addSubview:tintView];
+    
     [UIView transitionWithView:[transitionContext containerView] duration:self.transitionDuration options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews animations:^{
         
         self.toViewController.view.frame = self.centerScreenRect;
         self.fromViewController.view.frame = self.bottomOffScreenRect;
+        
+        tintView.alpha = 0;
+        tintView.frame = self.centerScreenRect;
     } completion:^(BOOL finished) {
         if(finished){
             [self.fromViewController.view removeFromSuperview];
+            [tintView removeFromSuperview];
             
             [transitionContext completeTransition:YES];
         }

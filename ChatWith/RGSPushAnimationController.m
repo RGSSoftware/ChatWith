@@ -9,6 +9,8 @@
 #import "RGSPushAnimationController.h"
 #import "RGSBaseViewController.h"
 
+#import "dashBorderView.h"
+
 
 @implementation RGSPushAnimationController
 
@@ -30,13 +32,21 @@
     
     [self setCenterScreenRectSize:self.toViewController.view.frame.size];
     
+    UIView *tintView = [self tintViewWithFrame:self.centerScreenRect];
+    [[transitionContext containerView] addSubview:tintView];
+    
     [UIView transitionWithView:[transitionContext containerView] duration:self.transitionDuration options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews animations:^{
         
         self.toViewController.view.frame = self.centerScreenRect;
         self.fromViewController.view.frame = self.leftOffScreenRect;
+        
+        tintView.alpha = 1;
+        tintView.frame = self.leftOffScreenRect;
+        
     } completion:^(BOOL finished) {
         if(finished){
             [self.fromViewController.view removeFromSuperview];
+            [tintView removeFromSuperview];
             
             [transitionContext completeTransition:YES];
         }
