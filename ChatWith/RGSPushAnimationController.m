@@ -22,31 +22,23 @@
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
-    RGSBaseViewController *fromViewController = (RGSBaseViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    
-    RGSBaseViewController *toViewController = (RGSBaseViewController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    
-    CGRect rightOffScreenRect = toViewController.view.frame;
-    rightOffScreenRect.origin = CGPointMake([UIScreen mainScreen].bounds.size.width, 0);
-    toViewController.view.frame = rightOffScreenRect;
-    [[transitionContext containerView] addSubview:toViewController.view];
+    [self setRightOffScreenRectSize:self.fromViewController.view.frame.size];
+    self.toViewController.view.frame = self.rightOffScreenRect;
+    [[transitionContext containerView] addSubview:self.toViewController.view];
  
-    CGRect leftOffScreenRect = fromViewController.view.frame;
-    leftOffScreenRect.origin = CGPointMake(-[UIScreen mainScreen].bounds.size.width, 0);
-    
-    CGRect centerScreenRect = toViewController.view.frame;
-    centerScreenRect.origin = CGPointZero;
+    [self setLeftOffScreenRectSize:self.fromViewController.view.frame.size];
+    [self setCenterScreenRectSize:self.toViewController.view.frame.size];
     
     [UIView transitionWithView:[transitionContext containerView] duration:self.transitionDuration options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews animations:^{
         
-        toViewController.view.frame = centerScreenRect;
-        fromViewController.view.frame = leftOffScreenRect;
+        self.toViewController.view.frame = self.centerScreenRect;
+        self.fromViewController.view.frame = self.leftOffScreenRect;
     } completion:^(BOOL finished) {
-       
-        [fromViewController.view removeFromSuperview];
-        
-        [transitionContext completeTransition:YES];
+        if(finished){
+            [self.fromViewController.view removeFromSuperview];
+            
+            [transitionContext completeTransition:YES];
+        }
     }];
-    
 }
 @end

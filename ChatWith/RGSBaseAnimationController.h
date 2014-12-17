@@ -12,4 +12,16 @@
 
 @property float transitionDuration;
 
+@property(nonatomic, readonly)UIViewController *fromViewController;
+@property(nonatomic, readonly)UIViewController *toViewController;
+
+@property CGRect centerScreenRect;
+-(void)setCenterScreenRectSize:(CGSize)size;
+
+@property CGRect leftOffScreenRect;
+-(void)setLeftOffScreenRectSize:(CGSize)size;
+
+@property CGRect rightOffScreenRect;
+-(void)setRightOffScreenRectSize:(CGSize)size;
+
 @end
