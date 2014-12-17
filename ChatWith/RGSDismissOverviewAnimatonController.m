@@ -7,6 +7,7 @@
 //
 
 #import "RGSDismissOverviewAnimatonController.h"
+#import "RGSBaseOverviewViewController.h"
 
 @implementation RGSDismissOverviewAnimatonController
 
@@ -14,30 +15,40 @@
 {
     self = [super init];
     if (self) {
-        self.transitionDuration = .21;
+        self.transitionDuration = .18;
     }
     return self;
 }
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
+    RGSBaseOverviewViewController *overviewViewController = (RGSBaseOverviewViewController *)self.fromViewController;
     
-    UIView *inView = [transitionContext containerView];
-    UIViewController* toVC = (UIViewController*)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    UIViewController* fromVC = (UIViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    [[transitionContext containerView] addSubview:overviewViewController.view];
     
-    [inView addSubview:fromVC.view];
+    [[transitionContext containerView] insertSubview:overviewViewController.tintView belowSubview:self.toViewController.view];
     
-    UIView *backgroundView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    backgroundView.backgroundColor = [UIColor blackColor];
-    backgroundView.alpha = .21;
-    [inView insertSubview:backgroundView belowSubview:toVC.view];
+    overviewViewController.tintView.alpha = .21;
         
-    [UIView transitionWithView:[transitionContext containerView] duration:self.transitionDuration options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews animations:^{
-        backgroundView.alpha = 0;
-        [fromVC.view setFrame:CGRectMake(0, CGRectGetHeight([[UIScreen mainScreen] bounds]), fromVC.view.frame.size.width, fromVC.view.frame.size.height)];
+    [UIView transitionWithView:[transitionContext containerView]
+                      duration:self.transitionDuration
+                       options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews
+                    animations:^{
+                        
+        overviewViewController.tintView.alpha = 0;
+                        
+        [overviewViewController.view setFrame:CGRectMake(0,
+                                                         200,
+                                                         overviewViewController.view.frame.size.width,
+                                                         overviewViewController.view.frame.size.height)];
     } completion:^(BOOL finished) {
-        [fromVC.view removeFromSuperview];
+        if(finished){
+            
+            [overviewViewController.tintView removeFromSuperview];
 
-        [transitionContext completeTransition:YES];
+            [overviewViewController.view removeFromSuperview];
+            
+            [transitionContext completeTransition:YES];
+   
+        }
     }];
 }
 

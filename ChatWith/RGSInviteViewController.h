@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RGSInviteViewController : UIViewController
+#import "RGSBaseOverviewViewController.h"
+
+@interface RGSInviteViewController : RGSBaseOverviewViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *sendSmsButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendEmailButton;

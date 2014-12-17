@@ -12,8 +12,6 @@
 #import <MessageUI/MessageUI.h>
 
 @interface RGSInviteViewController () <UIActionSheetDelegate, MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
-
-
 @property IBActionSheet *standardIBAS;
 @end
 

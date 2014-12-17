@@ -8,6 +8,8 @@
 
 #import "RGSShowOverviewAnimatonController.h"
 
+#import "RGSBaseOverviewViewController.h"
+
 @implementation RGSShowOverviewAnimatonController
 
 - (instancetype)init
@@ -19,32 +21,30 @@
     return self;
 }
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
+    RGSBaseOverviewViewController *overviewViewController = (RGSBaseOverviewViewController *)self.toViewController;
     
-    UIView *inView = [transitionContext containerView];
-    UIViewController* toVC = (UIViewController*)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    UIViewController* fromVC = (UIViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    CGRect bottomScreenRect = overviewViewController.view.frame;
+    bottomScreenRect.origin = CGPointMake(0, 200);
+    overviewViewController.view.frame = bottomScreenRect;
+    [[transitionContext containerView] addSubview:self.toViewController.view];
     
-    CGRect bottomScreenRect = toVC.view.frame;
-    bottomScreenRect.origin = CGPointMake(0, CGRectGetHeight([[UIScreen mainScreen] bounds]));
-    toVC.view.frame = bottomScreenRect;
-    [inView addSubview:toVC.view];
-    
-    UIView *backgroundView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    backgroundView.backgroundColor = [UIColor blackColor];
-    backgroundView.alpha = 0;
-    [inView insertSubview:backgroundView belowSubview:toVC.view];
-    
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    [[transitionContext containerView] insertSubview:overviewViewController.tintView belowSubview:overviewViewController.view];
     
     [UIView transitionWithView:[transitionContext containerView]
                       duration:self.transitionDuration
-                       options:UIViewAnimationOptionCurveLinear| UIViewAnimationOptionShowHideTransitionViews
+                       options:UIViewAnimationOptionCurveEaseIn| UIViewAnimationOptionShowHideTransitionViews
                     animations:^{
-        backgroundView.alpha = .21;
-        [toVC.view setFrame:CGRectMake(0, 0, fromVC.view.frame.size.width, fromVC.view.frame.size.height)];
+        overviewViewController.tintView.alpha = .21;
+        [overviewViewController.view setFrame:CGRectMake(0, 0, self.fromViewController.view.frame.size.width, self.fromViewController.view.frame.size.height)];
     }
                     completion:^(BOOL finished) {
-        [transitionContext completeTransition:YES];
+                        if(finished){
+                            [overviewViewController.view addSubview:overviewViewController.tintView];
+                            [overviewViewController.view sendSubviewToBack:overviewViewController.tintView];
+                            
+                            [transitionContext completeTransition:YES];
+
+                        }
     }];
 }
 @end
