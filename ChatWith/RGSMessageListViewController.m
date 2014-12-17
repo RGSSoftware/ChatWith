@@ -225,6 +225,7 @@ struct {
 }
 
 #pragma mark - UITableViewDelegate ()
+//Part-1
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self fullyExtendTableViewCellSeparator:cell];

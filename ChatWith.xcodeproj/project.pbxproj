@@ -20,6 +20,7 @@
 		2218FDCE19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */; };
 		2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */; };
 		221A05611A0D6C7A006B46AD /* RGSChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 221A05601A0D6C7A006B46AD /* RGSChatCell.m */; };
+		222292A21A4147AB00BAF177 /* RGSSideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 222292A11A4147AB00BAF177 /* RGSSideMenuCell.m */; };
 		223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */; };
 		223A1DB21A04459E00A1B3D2 /* RGSContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DB11A04459E00A1B3D2 /* RGSContact.m */; };
 		223B067E1A2F607400B2344F /* IBActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 223B067D1A2F607400B2344F /* IBActionSheet.m */; };
@@ -158,6 +159,8 @@
 		2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSApplicationSessionManagementService.m; sourceTree = "<group>"; };
 		221A055F1A0D6C7A006B46AD /* RGSChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChatCell.h; sourceTree = "<group>"; };
 		221A05601A0D6C7A006B46AD /* RGSChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChatCell.m; sourceTree = "<group>"; };
+		222292A01A4147AB00BAF177 /* RGSSideMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSSideMenuCell.h; sourceTree = "<group>"; };
+		222292A11A4147AB00BAF177 /* RGSSideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSSideMenuCell.m; sourceTree = "<group>"; };
 		223A1DA71A013F0200A1B3D2 /* RGSContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactCell.h; sourceTree = "<group>"; };
 		223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactCell.m; sourceTree = "<group>"; };
 		223A1DB01A04459E00A1B3D2 /* RGSContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContact.h; sourceTree = "<group>"; };
@@ -406,10 +409,10 @@
 			children = (
 				22C5B0C91A3739E20018A5F3 /* RGSInitialViewController.h */,
 				22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */,
-				227ADFBC1A0C071200D03017 /* RGSBaseViewController.h */,
-				227ADFBD1A0C071200D03017 /* RGSBaseViewController.m */,
 				22C4F4031A3F93CB009CB1C2 /* RGSSideMenuViewController.h */,
 				22C4F4041A3F93CB009CB1C2 /* RGSSideMenuViewController.m */,
+				227ADFBC1A0C071200D03017 /* RGSBaseViewController.h */,
+				227ADFBD1A0C071200D03017 /* RGSBaseViewController.m */,
 				223D4C5019E456FC0065F630 /* RGSChatListViewController.h */,
 				223D4C5119E456FC0065F630 /* RGSChatListViewController.m */,
 				2250787319F880D100F793EE /* RGSContactListViewController.h */,
@@ -444,6 +447,8 @@
 				221A05601A0D6C7A006B46AD /* RGSChatCell.m */,
 				223A1DA71A013F0200A1B3D2 /* RGSContactCell.h */,
 				223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */,
+				222292A01A4147AB00BAF177 /* RGSSideMenuCell.h */,
+				222292A11A4147AB00BAF177 /* RGSSideMenuCell.m */,
 				22C5B0C81A3729980018A5F3 /* MessageListViewComponents */,
 				22C5B0C71A3729750018A5F3 /* Segues */,
 				22C5B0C61A3728EA0018A5F3 /* AnimationControllers */,
@@ -844,6 +849,7 @@
 				22AA4CC41A28A30F008DE41B /* RGSDismissModallyAnimatonController.m in Sources */,
 				228EABAD1A240E96007D555E /* RGSMessageComposeImage.m in Sources */,
 				22F5206A1A0073E700FD2CD5 /* UIImage+Resize.m in Sources */,
+				222292A21A4147AB00BAF177 /* RGSSideMenuCell.m in Sources */,
 				22DF5F921A068E2900DC4D67 /* RGSPushSegue.m in Sources */,
 				22D6474B1A211D4B00CD66BD /* RGSOverviewSegue.m in Sources */,
 				2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */,
