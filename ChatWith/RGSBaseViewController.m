@@ -21,14 +21,7 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
-    self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
-    self.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
-    self.backgroundView.frame = self.view.bounds;
-    [self.view addSubview:self.backgroundView];
-    [self.view sendSubviewToBack:self.backgroundView];
-    self.backgroundView.hidden = YES;
-    
+ 
     UIView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
     view.contentMode = UIViewContentModeScaleAspectFill;
     view.frame = self.view.bounds;
@@ -42,9 +35,6 @@
                              [UIColor colorWithHexString:@"57d6ff"] ,NSForegroundColorAttributeName,
                              [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName, nil]];
     
-//    UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"MenuIcon"] resizedImage:CGSizeMake(25, 17)]
-//                                                                      style:UIBarButtonItemStylePlain target:nil action:nil];
-    
     UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] bk_initWithImage:[[UIImage imageNamed:@"MenuIcon"] resizedImage:CGSizeMake(25, 17)] style:UIBarButtonItemStylePlain handler:^(id sender) {
         [self.navigationController pushViewController:[self sideViewController] animated:YES];
     }];
@@ -52,11 +42,6 @@
     menuBarButton.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = menuBarButton;
 
-}
--(void)viewWillAppear:(BOOL)animated{
-    
-    
-    
 }
 
 -(RGSSideMenuViewController *)sideViewController{

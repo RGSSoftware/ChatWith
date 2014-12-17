@@ -21,11 +21,8 @@
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
     UIView *inView = [transitionContext containerView];
     RGSBaseViewController* toVC = (RGSBaseViewController*)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    toVC.backgroundView.hidden = YES;
     RGSSideMenuViewController* fromVC = (RGSSideMenuViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    fromVC.backgroundView.hidden = YES;
-    
-    
+        
     CGRect middleScreenRect = toVC.view.frame;
     middleScreenRect.origin = CGPointZero;
     toVC.view.frame = middleScreenRect;

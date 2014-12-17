@@ -11,7 +11,7 @@
 #import "RGSBaseViewController.h"
 
 @interface RGSDismissModallyAnimatonController ()
-@property (nonatomic, strong)UIImageView *backgroundView;
+
 @end
 
 
@@ -29,18 +29,14 @@
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
     RGSBaseViewController *fromViewController = (RGSBaseViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    fromViewController.backgroundView.hidden = YES;
     
     RGSBaseViewController *toViewController = (RGSBaseViewController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    toViewController.backgroundView.hidden = YES;
     
     CGRect topOffScreenRect = toViewController.view.frame;
     topOffScreenRect.origin = CGPointMake(0, -[UIScreen mainScreen].bounds.size.height);
     toViewController.view.frame = topOffScreenRect;
     [[transitionContext containerView] addSubview:toViewController.view];
     
-    [[transitionContext containerView] addSubview:self.backgroundView];
-    [[transitionContext containerView] sendSubviewToBack:self.backgroundView];
     
     CGRect bottomOffScreenRect = fromViewController.view.frame;
     bottomOffScreenRect.origin = CGPointMake(0, [UIScreen mainScreen].bounds.size.height);
@@ -54,11 +50,6 @@
         fromViewController.view.frame = bottomOffScreenRect;
     } completion:^(BOOL finished) {
         
-        fromViewController.backgroundView.hidden = NO;
-        toViewController.backgroundView.hidden = NO;
-        
-        [self.backgroundView removeFromSuperview];
-        self.backgroundView = nil;
         
         [fromViewController.view removeFromSuperview];
         
@@ -67,12 +58,5 @@
     
 }
 
--(UIImageView *)backgroundView{
-    if(_backgroundView == nil){
-        _backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
-        _backgroundView.frame = [UIScreen mainScreen].bounds;
-        _backgroundView.contentMode = UIViewContentModeScaleAspectFill;
-    }
-    return _backgroundView;
-}
+
 @end
