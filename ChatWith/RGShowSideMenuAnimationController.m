@@ -10,8 +10,6 @@
 
 #import "RGSSideMenuViewController.h"
 
-#import "RGSBaseViewController.h"
-
 @implementation RGShowSideMenuAnimationController
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {

@@ -7,9 +7,6 @@
 //
 
 #import "RGSShowModallyAnimatonController.h"
-#import "RGSBaseViewController.h"
-
-
 
 @implementation RGSShowModallyAnimatonController
 

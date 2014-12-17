@@ -23,23 +23,21 @@
     if (self) {
         self.transitionDuration = .21;
         
-        self.centerScreenRect = CGRectZero;
+        CGRect rect = CGRectZero;
         
-        CGRect leftOffScreenRect = CGRectZero;
-        leftOffScreenRect.origin = CGPointMake(-1 * [UIScreen mainScreen].bounds.size.width, 0);
-        self.leftOffScreenRect = leftOffScreenRect;
+        self.centerScreenRect = rect;
         
-        CGRect rightOffScreenRect = CGRectZero;
-        rightOffScreenRect.origin = CGPointMake([UIScreen mainScreen].bounds.size.width, 0);
-        self.rightOffScreenRect = rightOffScreenRect;
+        rect.origin = CGPointMake(0, -1 * [UIScreen mainScreen].bounds.size.height);
+        self.topOffScreenRect = rect;
+    
+        rect.origin = CGPointMake([UIScreen mainScreen].bounds.size.width, 0);
+        self.rightOffScreenRect = rect;
         
-        CGRect bottomOffScreenRect = CGRectZero;
-        bottomOffScreenRect.origin = CGPointMake(0, [UIScreen mainScreen].bounds.size.height);
-        self.bottomOffScreenRect = bottomOffScreenRect;
+        rect.origin = CGPointMake(0, [UIScreen mainScreen].bounds.size.height);
+        self.bottomOffScreenRect = rect;
         
-        CGRect topOffScreenRect = CGRectZero;
-        topOffScreenRect.origin = CGPointMake(0, -1 * [UIScreen mainScreen].bounds.size.height);
-        self.topOffScreenRect = topOffScreenRect;
+        rect.origin = CGPointMake(-1 * [UIScreen mainScreen].bounds.size.width, 0);
+        self.leftOffScreenRect = rect;
     }
     return self;
 }

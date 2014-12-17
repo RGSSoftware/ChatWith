@@ -9,13 +9,6 @@
 #import "RGSCloseSideMenuAnimationController.h"
 
 #import "RGSSideMenuViewController.h"
-
-#import "RGSBaseViewController.h"
-
-@interface RGSCloseSideMenuAnimationController ()
-@property (nonatomic, strong)UIImageView *backgroundView;
-@end
-
 @implementation RGSCloseSideMenuAnimationController
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {

@@ -18,8 +18,8 @@
 @property CGRect centerScreenRect;
 -(void)setCenterScreenRectSize:(CGSize)size;
 
-@property CGRect leftOffScreenRect;
--(void)setLeftOffScreenRectSize:(CGSize)size;
+@property CGRect topOffScreenRect;
+-(void)setTopOffScreenRectSize:(CGSize)size;
 
 @property CGRect rightOffScreenRect;
 -(void)setRightOffScreenRectSize:(CGSize)size;
@@ -27,7 +27,6 @@
 @property CGRect bottomOffScreenRect;
 -(void)setBottomOffScreenRectSize:(CGSize)size;
 
-@property CGRect topOffScreenRect;
--(void)setTopOffScreenRectSize:(CGSize)size;
-
+@property CGRect leftOffScreenRect;
+-(void)setLeftOffScreenRectSize:(CGSize)size;
 @end

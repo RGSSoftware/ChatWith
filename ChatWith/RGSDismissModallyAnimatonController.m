@@ -7,14 +7,6 @@
 //
 
 #import "RGSDismissModallyAnimatonController.h"
-
-#import "RGSBaseViewController.h"
-
-@interface RGSDismissModallyAnimatonController ()
-
-@end
-
-
 @implementation RGSDismissModallyAnimatonController
 
 - (instancetype)init
