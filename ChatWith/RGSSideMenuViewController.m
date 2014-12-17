@@ -19,20 +19,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] bk_initWithImage:[[UIImage imageNamed:@"MenuIcon"] resizedImage:CGSizeMake(25, 17)] style:UIBarButtonItemStylePlain handler:^(id sender) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
-    
-    menuBarButton.tintColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = menuBarButton;
+    self.navigationItem.rightBarButtonItem.target = self;
+    self.navigationItem.rightBarButtonItem.action = @selector(closeMenu:);
 }
 
+-(void)closeMenu:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
     
     [self.closeTapView bk_whenTapped:^{
-        [self.navigationController popViewControllerAnimated:YES];
+        [self closeMenu:nil];
     }];
 }
 
