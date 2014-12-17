@@ -15,7 +15,25 @@
 
 #import "UIButton+RGSUIBackButton.h"
 #import "UIImage+Resize.h"
+
+#import "UINavigationController+RGSBlock.h"
+#import "RGSBaseViewController.h"
 @implementation RGSSideMenuViewController
+
+static RGSSideMenuViewController *_instance = nil;
+static dispatch_once_t once_token = 0;
+
++ (instancetype)shared
+{
+    dispatch_once(&once_token, ^{
+        if (_instance == nil) {
+            _instance = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSSideMenuViewController"];
+        }
+    });
+    
+    return _instance;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,6 +43,7 @@
     
     self.buttonsTableView.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.20];
     self.buttonsTableView.scrollEnabled = NO;
+//    self.buttonsTableView.s
     
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -100,6 +119,20 @@
             break;
     }
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(indexPath.row == 0){
+            RGSBaseViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSChatListViewController"];
+        
+        [self.navigationController popViewControllerAnimated:YES withReplaceStack:@[vc]];
+    } else if (indexPath.row == 1){
+            RGSBaseViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSContactListViewController"];
+            
+            [self.navigationController popViewControllerAnimated:YES withReplaceStack:@[vc]];
+    }
+
 }
 
 -(void)viewDidLayoutSubviews

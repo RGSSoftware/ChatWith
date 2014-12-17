@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EGF-iH-8R1">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -361,13 +360,13 @@
         <!--Navigation Controller-->
         <scene sceneID="Zjn-C4-izH">
             <objects>
-                <navigationController id="EGF-iH-8R1" customClass="RGSNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ChatListWithNav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EGF-iH-8R1" customClass="RGSNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KhK-4p-JrK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="hQ2-gS-03Z" kind="relationship" relationship="rootViewController" id="lfC-KL-DZm"/>
+                        <segue destination="hQ2-gS-03Z" kind="relationship" relationship="rootViewController" id="uHd-f2-Pye"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gKr-LI-0Zs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -789,6 +788,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="yXQ-Ov-jBu"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -1147,7 +1147,7 @@
         <image name="white_camera41" width="58" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ilp-jo-k4O"/>
         <segue reference="tmx-tc-fLD"/>
+        <segue reference="Ilp-jo-k4O"/>
     </inferredMetricsTieBreakers>
 </document>

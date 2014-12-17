@@ -36,7 +36,7 @@
                              [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName, nil]];
     
     UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] bk_initWithImage:[[UIImage imageNamed:@"MenuIcon"] resizedImage:CGSizeMake(25, 17)] style:UIBarButtonItemStylePlain handler:^(id sender) {
-        [self.navigationController pushViewController:[self sideViewController] animated:YES];
+        [self.navigationController pushViewController:[RGSSideMenuViewController shared] animated:YES];
     }];
     
     menuBarButton.tintColor = [UIColor whiteColor];

@@ -11,7 +11,10 @@
 @interface UINavigationController (RGSBlock)
 
 @property (nonatomic, strong)void(^popCompletion)();
+@property (nonatomic, strong)NSArray *newStack;
 
 -(UIViewController *)popViewControllerAnimated:(BOOL)animated completion:(void (^)())popCompletion;
+
+-(UIViewController *)popViewControllerAnimated:(BOOL)animated withReplaceStack:(NSArray *)newStack;
 
 @end

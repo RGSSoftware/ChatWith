@@ -20,6 +20,18 @@
     if(self.popCompletion != nil) self.popCompletion();
     self.popCompletion = nil;
     
+    if(self.newStack != nil){
+        [NSTimer bk_scheduledTimerWithTimeInterval:.4
+                                             block:^(NSTimer *timer) {
+                                                [self setViewControllers:self.newStack animated:NO];
+                                                self.newStack = nil;
+            } repeats:NO];
+    }
+}
+
+-(UIViewController *)popViewControllerAnimated:(BOOL)animated withReplaceStack:(NSArray *)newStack{
+    self.newStack = newStack;
+    return [self popViewControllerAnimated:animated];
 }
 
 - (void)setPopCompletion:(void (^)())popCompletion
@@ -30,5 +42,15 @@
 - (void (^)())popCompletion
 {
     return objc_getAssociatedObject(self, @selector(popCompletion));
+}
+
+- (void)setNewStack:(NSArray *)newStack
+{
+    objc_setAssociatedObject(self, @selector(newStack), newStack, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSArray *)newStack
+{
+    return objc_getAssociatedObject(self, @selector(newStack));
 }
 @end
