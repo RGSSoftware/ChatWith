@@ -11,6 +11,10 @@
 
 #import "RGSSideMenuCell.h"
 
+#import "RGSChatListViewController.h"
+#import "RGSContactListViewController.h"
+#import "RGSSettingViewController.h"
+
 #import "RGSBaseViewController+RGSSeparatorExtender.h"
 
 #import "UIButton+RGSUIBackButton.h"
@@ -74,6 +78,15 @@ static dispatch_once_t once_token = 0;
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    UIViewController *rootViewController = self.navigationController.viewControllers[0];
+    if([rootViewController isKindOfClass:[RGSChatListViewController class]]){
+        [self.buttonsTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+    } else if ([rootViewController isKindOfClass:[RGSContactListViewController class]]){
+        [self.buttonsTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+    } else if ([rootViewController isKindOfClass:[RGSSettingViewController class]]){
+        [self.buttonsTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+    }
     
     [self.closeTapView bk_whenTapped:^{
         [self closeMenu:nil];
