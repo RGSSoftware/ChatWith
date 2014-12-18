@@ -62,6 +62,9 @@
         // Update to handle the error appropriately.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
+    
+    self.view.layer.borderWidth = 2;
+    self.tableView.contentInset = UIEdgeInsetsZero;
 }
 
 -(void)toContacts:(id)sender{
@@ -89,26 +92,29 @@ return [[_fetchedResultsController sections] count];
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        return 140;
-    }
+//    if (indexPath.row == 0) {
+//        return 140;
+//    }
     return 75;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RGSChatCell *cell;
-    if(indexPath.row == 0){
-        cell = [tableView dequeueReusableCellWithIdentifier:@"longerChatCell" forIndexPath:indexPath];
-        
-        UIView *conView = [[UIView alloc] initWithFrame:cell.frame];
-        conView.backgroundColor = [UIColor clearColor];
-        [conView addSubview:[cell customSelectedBackgroundViewWithFrame:CGRectMake(0, 65, 320, 75)]];
-        cell.selectedBackgroundView = conView;
-
-    } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
-        cell.selectedBackgroundView = [cell customSelectedBackgroundViewWithFrame:cell.frame];
-    }
+    
+//    if(indexPath.row == 0){
+//        cell = [tableView dequeueReusableCellWithIdentifier:@"longerChatCell" forIndexPath:indexPath];
+//        
+//        UIView *conView = [[UIView alloc] initWithFrame:cell.frame];
+//        conView.backgroundColor = [UIColor clearColor];
+//        [conView addSubview:[cell customSelectedBackgroundViewWithFrame:CGRectMake(0, 65, 320, 75)]];
+//        cell.selectedBackgroundView = conView;
+//
+//    } else {
+//        cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
+//        cell.selectedBackgroundView = [cell customSelectedBackgroundViewWithFrame:cell.frame];
+//    }
+    cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
+    cell.selectedBackgroundView = [cell customSelectedBackgroundViewWithFrame:cell.frame];
     
     
     RGSChat *chat = [_fetchedResultsController objectAtIndexPath:indexPath];
@@ -157,7 +163,7 @@ return [[_fetchedResultsController sections] count];
     [cell.receiverImage.layer setCornerRadius:10];
     
     // Configure the cell...
-    
+    cell.layer.borderWidth = 2;
     return cell;
 }
 

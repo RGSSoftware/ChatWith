@@ -15,7 +15,7 @@ MessageAttactmentViewController
 	____________
 	try to remove delay from selecting image and going back to messageList
 	____________
-	try to remove viewing delay of self
+*	try to remove viewing delay of self
 	____________
 	change position of “choose” and “take” Photo Buttons
 	____________
@@ -31,7 +31,7 @@ MessageListViewController
 *	create receiver cell
 *	    create cell with top space for the first cell
     	___________
-	update table to reflect changes in coreData
+*	update table to reflect changes in coreData
 	_______
 *	config backBarButton to pop one back
 	_______
@@ -51,7 +51,7 @@ MessageListViewController
 	______
 	add time label to cells
 	____
-	add the scroll indicator back 
+*	add the scroll indicator back 
 	________
 *	Add closing animate for messageComposer when keyboard Dismiss
 	__
@@ -59,9 +59,9 @@ MessageListViewController
 	___
 *	config addImage button
 	_____
-	config send Button
+*	config send Button
 	________
-	add image at the position of caret
+*	add image at the position of caret
 	____________
 	round corner of Image in message composer
 	_______
