@@ -1,10 +1,33 @@
 StoryBoard
 
 Whole App
-	optimize transition between screens 
+	optimize transition between screens
+	____________
+	internationalize app
+	____________
+	show notification when app is not active
+
 
 NavViewController
 	rethink/update backBarButton arrow
+
+SideMenu
+	loading of current User image in user icon
+	_______________
+	loading if current User userName in nav
+	____________
+	open user profile on nav click in profile area
+	____________
+	added chat update notification to chat Menu Button
+
+Setting Screen
+
+ChatList Screen
+	added chat update notification
+	____________
+	when chat is transition to messageList remove update notification
+	
+	
 
 MessageAttactmentViewController
 	change BackButton on “choose Photo” navigationController

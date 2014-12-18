@@ -47,8 +47,6 @@ static dispatch_once_t once_token = 0;
     
     self.buttonsTableView.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.20];
     self.buttonsTableView.scrollEnabled = NO;
-//    self.buttonsTableView.s
-    
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 20, 220, 40)];
