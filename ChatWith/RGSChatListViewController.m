@@ -198,6 +198,8 @@ return [[_fetchedResultsController sections] count];
         RGSContactListViewController *contactListViewController = (RGSContactListViewController
                                                                    *)[segue destinationViewController];
         contactListViewController.delegate = self;
+        contactListViewController.navigationItem.title = @"Select Contact";
+        contactListViewController.showLeftBarButtonItem = YES;
     }
 }
 

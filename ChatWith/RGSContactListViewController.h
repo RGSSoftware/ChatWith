@@ -28,6 +28,8 @@
 
 @property (nonatomic, weak) IBOutlet id <RGSContactListViewControllerDelegate> delegate;
 
+@property BOOL showLeftBarButtonItem;
+
 @end
 
 

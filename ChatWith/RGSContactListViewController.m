@@ -35,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"Select Contact";
+    self.navigationItem.title = @"Contacts";
     
     self.searchBar.backgroundColor = [UIColor clearColor];
     self.searchBar.backgroundImage = [UIImage imageWithColor:
@@ -88,15 +88,17 @@
     self.InviteFriendsButton.titleLabel.font = [UIFont systemFontOfSize:20];
     [self.view bringSubviewToFront:self.InviteFriendsButton];
     
-    UIButton *backButton = [UIButton buttonAsCustomBackButton];
-    [backButton addTarget:self action:@selector(toChatListScreen:)
-     forControlEvents:UIControlEventTouchUpInside];
-    [backButton setTitle:@"Cancel" forState:UIControlStateNormal];
-    backButton.titleLeftEdgeInset = -20;
-    backButton.imageLeftEdgeInset = -30;
-    
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    self.navigationItem.leftBarButtonItem = barButton;
+    if(self.showLeftBarButtonItem){
+        UIButton *backButton = [UIButton buttonAsCustomBackButton];
+        [backButton addTarget:self action:@selector(toChatListScreen:)
+             forControlEvents:UIControlEventTouchUpInside];
+        [backButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        backButton.titleLeftEdgeInset = -20;
+        backButton.imageLeftEdgeInset = -30;
+        
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+        self.navigationItem.leftBarButtonItem = barButton;
+    }
 
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {

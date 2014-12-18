@@ -136,16 +136,26 @@ static dispatch_once_t once_token = 0;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    UIViewController *rootViewController = self.navigationController.viewControllers[0];
+    if([rootViewController isEqual:self.navigationController.topViewController]){
+        [self closeMenu:nil];
+    }
     if(indexPath.row == 0){
-            RGSBaseViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSChatListViewController"];
+       
+        RGSBaseViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSChatListViewController"];
         
         [self.navigationController popViewControllerAnimated:YES withReplaceStack:@[vc]];
+
+        
     } else if (indexPath.row == 1){
             RGSBaseViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSContactListViewController"];
             
             [self.navigationController popViewControllerAnimated:YES withReplaceStack:@[vc]];
+    } else if (indexPath.row == 2){
+//        RGSBaseViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSContactListViewController"];
+//        
+//        [self.navigationController popViewControllerAnimated:YES withReplaceStack:@[vc]];
     }
-
 }
 
 -(void)viewDidLayoutSubviews
