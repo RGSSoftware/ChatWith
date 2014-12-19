@@ -1,5 +1,12 @@
-StoryBoard
+App store
+	create preview images
+	____________
+	create app description
 
+StoryBoard
+	Refactor Screens Ids
+	____________
+	Refactor segue ids
 Whole App
 	optimize transition between screens
 	____________
@@ -8,7 +15,15 @@ Whole App
 	show new message notification when app is not active
 	____________
 	support device rotation
-
+Images
+	Refactor images name to a standard format
+	____________
+	create 2x and 3x images
+	____________
+	create app icon
+	____________
+	create app launch image
+	
 contactList
 	search for user across whole app
 	____________
