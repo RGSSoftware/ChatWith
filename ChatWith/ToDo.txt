@@ -5,8 +5,31 @@ Whole App
 	____________
 	internationalize app
 	____________
-	show notification when app is not active
+	show new message notification when app is not active
+	____________
+	support device rotation
 
+contactList
+	search for user across whole app
+	____________
+	detail overlay view
+		delete contact
+		____________
+		message button
+	____________
+	start chat with user select from search view
+	____________
+    Invite Friends overlay screen
+	property set button icons frames with 
+	____________
+	config buttons text
+	____________
+	create proper message for email invites
+	____________
+	create proper message for sms invites
+	____________
+	look into changing the nav bar inside the sms and email screens
+	
 
 NavViewController
 	rethink/update backBarButton arrow
