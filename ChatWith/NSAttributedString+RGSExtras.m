@@ -20,6 +20,9 @@
                                                 Color:color];
     
 }
++(NSAttributedString *)attributedStringWithString:(NSString *)string Color:(UIColor *)color{
+    return [[NSAttributedString alloc] initWithString:string attributes:@{NSForegroundColorAttributeName:color}];
+}
 
 -(NSAttributedString *)attributedStringWithColor:(UIColor *)color{
     NSMutableAttributedString* attributedString = [self mutableCopy];

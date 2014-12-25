@@ -13,12 +13,14 @@
                                                  Font:(UIFont *)font
                                                 Color:(UIColor *)color;
 
-
++(NSAttributedString *)attributedStringWithString:(NSString *)string Color:(UIColor *)color;
 
 -(NSAttributedString *)attributedStringWithFont:(UIFont *)font;
 -(NSAttributedString *)attributedStringWithColor:(UIColor *)color;
 
 -(NSAttributedString *)attributedStringWithFont:(UIFont *)font Color:(UIColor *)color;
+
+-(void)setForegroundColor:(UIColor *)color;
 
 
 

@@ -7,6 +7,7 @@ StoryBoard
 	Refactor Screens Ids
 	____________
 	Refactor segue ids
+
 Whole App
 	optimize transition between screens
 	____________
@@ -15,6 +16,7 @@ Whole App
 	show new message notification when app is not active
 	____________
 	support device rotation
+
 Images
 	Refactor images name to a standard format
 	____________
@@ -45,7 +47,6 @@ contactList
 	____________
 	look into changing the nav bar inside the sms and email screens
 	
-
 NavViewController
 	rethink/update backBarButton arrow
 
@@ -64,8 +65,6 @@ ChatList Screen
 	added chat update notification
 	____________
 	when chat is transition to messageList remove update notification
-	
-	
 
 MessageAttactmentViewController
 	change BackButton on “choose Photo” navigationController
@@ -127,5 +126,6 @@ MessageListViewController
 	round corner of Image in message composer
 	_______
 	add composing message to MessageList
+
 MessageSegue
 *	refactor to a custom pushSegue

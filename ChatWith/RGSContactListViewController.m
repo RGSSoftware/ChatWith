@@ -21,9 +21,13 @@
 #import "UIColor+RGSColorWithHexString.h"
 #import "UIImage+RGSinitWithColor.h"
 
+#import "NSAttributedString+RGSExtras.h"
+
 #import "UIButton+RGSUIBackButton.h"
 
 #import "RGSShowOverviewAnimatonController.h"
+
+#import "RGSSearchBar.h"
 @interface RGSContactListViewController ()
 
 @property (nonatomic, strong)RGSShowOverviewAnimatonController *overviewAnimationController;
@@ -107,6 +111,10 @@
     }
     
     self.overviewAnimationController = [RGSShowOverviewAnimatonController new];
+    
+    [self.searchBar bk_addObserverForKeyPath:@"isFirstResponder" task:^(id target) {
+        
+    }];
 }
 
 -(void)toChatListScreen:(id)sender{
@@ -238,6 +246,30 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    
+    
+}
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller
+ willShowSearchResultsTableView:(UITableView *)tableView{
+    
+}
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] bk_initWithTitle:@"cancel"
+                                                                                style:UIBarButtonItemStyleDone
+                                                                              handler:^(id sender) {
+        [self.searchBar resignFirstResponder];
+        self.navigationItem.leftBarButtonItem = nil;
+        
+        
+        [self.searchBar deSelect];
+       }];
+    
+    [self.searchBar selectState];
+    return YES;
 }
 
 @end

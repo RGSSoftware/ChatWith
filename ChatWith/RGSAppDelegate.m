@@ -192,7 +192,7 @@
 //                
 //                RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:container];
                 UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
-                if([vc isKindOfClass:[RGSSideMenuViewController class]]){
+                if([vc isKindOfClass:[RGSSideMenuViewController class]] || [vc isKindOfClass:[RGSContactListViewController class]]){
                     RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:vc];
                     self.window.rootViewController = nav;
                 } else {

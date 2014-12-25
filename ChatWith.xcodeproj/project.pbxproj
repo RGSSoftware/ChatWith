@@ -87,6 +87,7 @@
 		22AA4CC11A28A18F008DE41B /* RGSShowModallyAnimatonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AA4CC01A28A18E008DE41B /* RGSShowModallyAnimatonController.m */; };
 		22AA4CC41A28A30F008DE41B /* RGSDismissModallyAnimatonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AA4CC31A28A30F008DE41B /* RGSDismissModallyAnimatonController.m */; };
 		22AA4CC71A28DFDA008DE41B /* UINavigationController+RGSBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AA4CC61A28DFDA008DE41B /* UINavigationController+RGSBlock.m */; };
+		22AC29081A4C698900D466F5 /* RGSSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AC29071A4C698900D466F5 /* RGSSearchBar.m */; };
 		22AD00EB1A0D8686008F9EF7 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00EA1A0D8686008F9EF7 /* NSDate+Utilities.m */; };
 		22AD00F11A0ED43D008F9EF7 /* RGSChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00F01A0ED43D008F9EF7 /* RGSChat.m */; };
 		22AD00F41A1336E8008F9EF7 /* RGSMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00F31A1336E7008F9EF7 /* RGSMessageCell.m */; };
@@ -243,6 +244,8 @@
 		22AA4CC31A28A30F008DE41B /* RGSDismissModallyAnimatonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSDismissModallyAnimatonController.m; sourceTree = "<group>"; };
 		22AA4CC51A28DFDA008DE41B /* UINavigationController+RGSBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+RGSBlock.h"; sourceTree = "<group>"; };
 		22AA4CC61A28DFDA008DE41B /* UINavigationController+RGSBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+RGSBlock.m"; sourceTree = "<group>"; };
+		22AC29061A4C698800D466F5 /* RGSSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSSearchBar.h; sourceTree = "<group>"; };
+		22AC29071A4C698900D466F5 /* RGSSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSSearchBar.m; sourceTree = "<group>"; };
 		22AD00E91A0D8686008F9EF7 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		22AD00EA1A0D8686008F9EF7 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		22AD00EF1A0ED43D008F9EF7 /* RGSChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChat.h; sourceTree = "<group>"; };
@@ -449,6 +452,8 @@
 		22889AD119D3234500F0541D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				22AC29061A4C698800D466F5 /* RGSSearchBar.h */,
+				22AC29071A4C698900D466F5 /* RGSSearchBar.m */,
 				2207E3E61A41FCCA00CE91D9 /* dashBorderView.h */,
 				2207E3E71A41FCCB00CE91D9 /* dashBorderView.m */,
 				22F07A0F1A39652C007E6E2B /* RGSScrollView.h */,
@@ -882,6 +887,7 @@
 				22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */,
 				227BFAF519E31EE0000E7ACC /* RGSChatService.m in Sources */,
 				22C5B0CB1A3739E30018A5F3 /* RGSInitialViewController.m in Sources */,
+				22AC29081A4C698900D466F5 /* RGSSearchBar.m in Sources */,
 				2207E3F41A424B9A00CE91D9 /* RGSSettingViewController.m in Sources */,
 				227472091A277ABB00F61663 /* RGSPopAnimationController.m in Sources */,
 				22126CA11A2ECBC100A983E7 /* RGSMessage.m in Sources */,
