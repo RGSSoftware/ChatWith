@@ -22,6 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet RGSSearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIButton *InviteFriendsButton;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *searchFilterSegmentedControl;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *contactsView;
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LRt-5S-plK">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -518,6 +517,16 @@
                                     <outlet property="delegate" destination="LRt-5S-plK" id="7HC-bN-JQi"/>
                                 </connections>
                             </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pSU-fA-Y5D">
+                                <rect key="frame" x="16" y="118" width="288" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="V5d-Ub-Xdw"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Everybody"/>
+                                    <segment title="Friends Only"/>
+                                </segments>
+                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7b-09-4xt">
                                 <rect key="frame" x="16" y="118" width="288" height="42"/>
                                 <constraints>
@@ -550,22 +559,36 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="60" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Si7-fT-Y5o">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Si7-fT-Y5o">
                                                             <rect key="frame" x="0.0" y="59" width="60" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N4Y-Jr-bcy">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N4Y-Jr-bcy">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         </imageView>
-                                                        <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wh7-ev-OGJ">
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wh7-ev-OGJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
+                                                <constraints>
+                                                    <constraint firstItem="N4Y-Jr-bcy" firstAttribute="leading" secondItem="Wh7-ev-OGJ" secondAttribute="leading" id="2DV-tc-e0M"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Si7-fT-Y5o" secondAttribute="bottom" id="2K8-V4-acw"/>
+                                                    <constraint firstItem="Si7-fT-Y5o" firstAttribute="top" secondItem="HZm-o0-lAS" secondAttribute="topMargin" constant="51" id="9kl-Z6-SBu"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Si7-fT-Y5o" secondAttribute="trailing" id="CaJ-gm-Ho3"/>
+                                                    <constraint firstAttribute="bottomMargin" secondItem="N4Y-Jr-bcy" secondAttribute="bottom" constant="12" id="Fv3-Ma-uUe"/>
+                                                    <constraint firstItem="N4Y-Jr-bcy" firstAttribute="trailing" secondItem="Si7-fT-Y5o" secondAttribute="trailing" id="VIj-Df-1U6"/>
+                                                    <constraint firstItem="N4Y-Jr-bcy" firstAttribute="bottom" secondItem="Wh7-ev-OGJ" secondAttribute="bottom" id="bAH-bN-9ps"/>
+                                                    <constraint firstItem="Si7-fT-Y5o" firstAttribute="leading" secondItem="N4Y-Jr-bcy" secondAttribute="leading" id="fsm-Gx-CJE"/>
+                                                    <constraint firstItem="Wh7-ev-OGJ" firstAttribute="trailing" secondItem="N4Y-Jr-bcy" secondAttribute="trailing" id="iAi-eG-weX"/>
+                                                    <constraint firstItem="N4Y-Jr-bcy" firstAttribute="top" secondItem="HZm-o0-lAS" secondAttribute="top" id="mJ2-om-Ru7"/>
+                                                    <constraint firstItem="Wh7-ev-OGJ" firstAttribute="leading" secondItem="HZm-o0-lAS" secondAttribute="leading" id="qCN-N8-Vxu"/>
+                                                    <constraint firstItem="Wh7-ev-OGJ" firstAttribute="top" secondItem="N4Y-Jr-bcy" secondAttribute="top" id="uCP-kr-g5m"/>
+                                                </constraints>
                                                 <size key="customSize" width="60" height="80"/>
                                                 <connections>
                                                     <outlet property="imageHighlightView" destination="Wh7-ev-OGJ" id="RIh-Dv-wTg"/>
@@ -596,6 +619,7 @@
                             <constraint firstItem="C7D-D2-aaU" firstAttribute="top" secondItem="F19-YL-s03" secondAttribute="bottom" id="HhA-x1-8H5"/>
                             <constraint firstItem="u7b-09-4xt" firstAttribute="top" secondItem="C7D-D2-aaU" secondAttribute="bottom" constant="10" id="IGE-TG-x9S"/>
                             <constraint firstItem="u7b-09-4xt" firstAttribute="leading" secondItem="aif-y2-YsZ" secondAttribute="leadingMargin" constant="16" id="ILG-hk-zJo"/>
+                            <constraint firstItem="pSU-fA-Y5D" firstAttribute="leading" secondItem="u7b-09-4xt" secondAttribute="leading" id="IhL-yA-vca"/>
                             <constraint firstItem="C7D-D2-aaU" firstAttribute="leading" secondItem="F19-YL-s03" secondAttribute="leading" id="TG6-8x-e9j"/>
                             <constraint firstItem="u7b-09-4xt" firstAttribute="leading" secondItem="aif-y2-YsZ" secondAttribute="leading" constant="16" id="TQh-4p-vIY"/>
                             <constraint firstAttribute="trailing" secondItem="u7b-09-4xt" secondAttribute="trailing" constant="16" id="TWh-kj-xWj"/>
@@ -609,11 +633,13 @@
                             <constraint firstAttribute="trailing" secondItem="u7b-09-4xt" secondAttribute="trailing" constant="16" id="eGd-wa-DBo"/>
                             <constraint firstItem="C7D-D2-aaU" firstAttribute="trailing" secondItem="F19-YL-s03" secondAttribute="trailing" id="nSW-UQ-IKy"/>
                             <constraint firstItem="E8R-IH-pSd" firstAttribute="leading" secondItem="aif-y2-YsZ" secondAttribute="leading" id="nwy-gs-17x"/>
+                            <constraint firstItem="pSU-fA-Y5D" firstAttribute="trailing" secondItem="u7b-09-4xt" secondAttribute="trailing" id="nxE-ZC-9xM"/>
                             <constraint firstItem="u7b-09-4xt" firstAttribute="centerX" secondItem="C7D-D2-aaU" secondAttribute="centerX" id="qvi-ZI-EFt"/>
                             <constraint firstItem="C7D-D2-aaU" firstAttribute="leading" secondItem="aif-y2-YsZ" secondAttribute="leading" id="sYO-As-c5W"/>
                             <constraint firstItem="C7D-D2-aaU" firstAttribute="leading" secondItem="F19-YL-s03" secondAttribute="leading" id="tbH-gE-uh6"/>
                             <constraint firstAttribute="bottom" secondItem="E8R-IH-pSd" secondAttribute="bottom" id="x0S-U1-Hcz"/>
                             <constraint firstAttribute="trailing" secondItem="u7b-09-4xt" secondAttribute="trailing" constant="16" id="x7Q-zC-Ajf"/>
+                            <constraint firstItem="pSU-fA-Y5D" firstAttribute="top" secondItem="u7b-09-4xt" secondAttribute="top" id="yzk-JM-mpU"/>
                             <constraint firstItem="E8R-IH-pSd" firstAttribute="top" secondItem="aif-y2-YsZ" secondAttribute="top" constant="108" id="zJW-5d-TH3"/>
                         </constraints>
                         <variation key="default">
@@ -642,6 +668,7 @@
                         <outlet property="collectionView" destination="g4v-bh-3Qf" id="52J-D4-cYA"/>
                         <outlet property="contactsView" destination="E8R-IH-pSd" id="ojJ-wx-1wU"/>
                         <outlet property="searchBar" destination="C7D-D2-aaU" id="DsK-24-ZaY"/>
+                        <outlet property="searchFilterSegmentedControl" destination="pSU-fA-Y5D" id="xUi-4E-uh9"/>
                         <segue destination="y8p-4J-8Sh" kind="unwind" identifier="fromContactToChatListSegue" unwindAction="unwindToChatList:" id="dhZ-8D-Af3"/>
                     </connections>
                 </viewController>

@@ -115,6 +115,14 @@
     [self.searchBar bk_addObserverForKeyPath:@"isFirstResponder" task:^(id target) {
         
     }];
+    
+//    self.InviteFriendsButton.alpha = 0;
+    
+    self.searchFilterSegmentedControl.alpha = 0;
+    self.searchFilterSegmentedControl.tintColor = [UIColor colorWithHexString:@"414141" alpha:.75];
+    [self.searchFilterSegmentedControl setTitleTextAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:20], NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateSelected];
+    [self.searchFilterSegmentedControl setTitleTextAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:20], NSForegroundColorAttributeName : [UIColor colorWithHexString:@"414141"]} forState:UIControlStateNormal];
+    [self.view bringSubviewToFront:self.searchFilterSegmentedControl];
 }
 
 -(void)toChatListScreen:(id)sender{
@@ -258,17 +266,47 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     
 }
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    CGRect dimViewRect = self.view.frame;
+    dimViewRect.size.height = CGRectGetHeight(self.view.frame) - 65;
+    dimViewRect.origin.y = 64;
+    
+    UIView *dimView = [[UIView alloc] initWithFrame:dimViewRect];
+    dimView.backgroundColor = [UIColor blackColor];
+    dimView.alpha = 0;
+    
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] bk_initWithTitle:@"cancel"
                                                                                 style:UIBarButtonItemStyleDone
                                                                               handler:^(id sender) {
+        self.navigationItem.title = @"Contacts";
+                                                                                  
         [self.searchBar resignFirstResponder];
         self.navigationItem.leftBarButtonItem = nil;
         
-        
+        [dimView removeFromSuperview];
+                                                                
         [self.searchBar deSelect];
+        [UIView animateWithDuration:.3 animations:^{
+            self.InviteFriendsButton.alpha = 1;
+            self.searchFilterSegmentedControl.alpha = 0;
+        }];
        }];
     
+    self.navigationItem.title = @"Search";
+    
+//    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0,0,32,32)];
+//    redView.backgroundColor = [UIColor redColor];
+//    self.navigationItem.titleView = redView;
+//    self.navigationItem.titleView.alpha = 0;
+//    self.navigationItem.titleView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:dimView];
+    [self.view sendSubviewToBack:dimView];
     [self.searchBar selectState];
+    [UIView animateWithDuration:.4 animations:^{
+        dimView.alpha = .08;
+        self.InviteFriendsButton.alpha = 0;
+        self.searchFilterSegmentedControl.alpha = 1;
+    }];
     return YES;
 }
 
