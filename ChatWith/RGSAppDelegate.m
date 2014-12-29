@@ -24,6 +24,7 @@
 
 #import "RGSApplicationSessionManagementService.h"
 #import "RGSContactListViewController.h"
+#import "RGSChatListViewController.h"
 #import "RGSChatService.h"
 
 
@@ -197,15 +198,20 @@
 //                container.rightMenuWidth = 150;
 //                
 //                RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:container];
+                
                 UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
-                if([vc isKindOfClass:[RGSSideMenuViewController class]] || [vc isKindOfClass:[RGSContactListViewController class]] || [vc isKindOfClass:[RGSMessageListViewController class]]){
+                
+                if([vc isKindOfClass:[RGSChatListViewController class]]){
                     RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:vc];
                     self.window.rootViewController = nav;
                 } else {
-                    self.window.rootViewController = vc;
+                    if([vc isKindOfClass:[RGSSideMenuViewController class]] || [vc isKindOfClass:[RGSContactListViewController class]] || [vc isKindOfClass:[RGSMessageListViewController class]]){
+                        RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:vc];
+                        self.window.rootViewController = nav;
+                    } else {
+                        self.window.rootViewController = vc;
+                    }
                 }
-                
-                
             }
         }];
         

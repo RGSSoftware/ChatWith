@@ -95,7 +95,6 @@
 		22B1E3171A1967660062701A /* RGSMessageComposerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1E3141A1967660062701A /* RGSMessageComposerView.m */; };
 		22B1E3181A1967660062701A /* CSGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1E3161A1967660062701A /* CSGrowingTextView.m */; };
 		22BE6EE11A14728300D130EB /* RGSManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE01A14728300D130EB /* RGSManagedUser.m */; };
-		22BE6EE71A16305A00D130EB /* UIButton+RGSUIBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE61A16305A00D130EB /* UIButton+RGSUIBackButton.m */; };
 		22BE6EEA1A163B1D00D130EB /* RGSMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE91A163B1D00D130EB /* RGSMessageListViewController.m */; };
 		22C4F4051A3F93CB009CB1C2 /* RGSSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C4F4041A3F93CB009CB1C2 /* RGSSideMenuViewController.m */; };
 		22C4F4081A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C4F4071A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m */; };
@@ -262,8 +261,6 @@
 		22B1E3161A1967660062701A /* CSGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSGrowingTextView.m; sourceTree = "<group>"; };
 		22BE6EDF1A14728300D130EB /* RGSManagedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSManagedUser.h; sourceTree = "<group>"; };
 		22BE6EE01A14728300D130EB /* RGSManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSManagedUser.m; sourceTree = "<group>"; };
-		22BE6EE51A16305A00D130EB /* UIButton+RGSUIBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+RGSUIBackButton.h"; sourceTree = "<group>"; };
-		22BE6EE61A16305A00D130EB /* UIButton+RGSUIBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+RGSUIBackButton.m"; sourceTree = "<group>"; };
 		22BE6EE81A163B1D00D130EB /* RGSMessageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageListViewController.h; sourceTree = "<group>"; };
 		22BE6EE91A163B1D00D130EB /* RGSMessageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessageListViewController.m; sourceTree = "<group>"; };
 		22C4F4031A3F93CB009CB1C2 /* RGSSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSSideMenuViewController.h; sourceTree = "<group>"; };
@@ -416,8 +413,6 @@
 				2287C46919FAB3EA00039555 /* UIImage+RGSinitWithColor.m */,
 				22889ACC19D322E400F0541D /* NSString+alphaOnly.h */,
 				22889ACD19D322E400F0541D /* NSString+alphaOnly.m */,
-				22BE6EE51A16305A00D130EB /* UIButton+RGSUIBackButton.h */,
-				22BE6EE61A16305A00D130EB /* UIButton+RGSUIBackButton.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -872,7 +867,6 @@
 				224A067A1A382BAC00292777 /* NSMutableAttributedString+RGSExtras.m in Sources */,
 				22A18A3519CF44DB004A266E /* LocalStorageService.m in Sources */,
 				22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */,
-				22BE6EE71A16305A00D130EB /* UIButton+RGSUIBackButton.m in Sources */,
 				22A001641A27672500B22EEE /* RGSPopSegue.m in Sources */,
 				223B06811A2F660E00B2344F /* RGSInviteViewController.m in Sources */,
 				2242571B1A3E24A000628405 /* RGSForgotPasswordViewController.m in Sources */,

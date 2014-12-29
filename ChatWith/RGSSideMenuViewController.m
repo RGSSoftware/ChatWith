@@ -17,7 +17,6 @@
 
 #import "RGSBaseViewController+RGSSeparatorExtender.h"
 
-#import "UIButton+RGSUIBackButton.h"
 #import "UIImage+Resize.h"
 
 #import "UINavigationController+RGSBlock.h"
@@ -68,8 +67,8 @@ static dispatch_once_t once_token = 0;
     [backButton addTarget:nil action:nil
          forControlEvents:UIControlEventTouchUpInside];
     [backButton setTitle:@"Terminator" forState:UIControlStateNormal];
-    backButton.titleLeftEdgeInset = 10;
-    backButton.imageLeftEdgeInset = 0;
+    backButton.titleEdgeInsets = UIEdgeInsetsMake(2, 10, 2, 0);
+    backButton.imageEdgeInsets = UIEdgeInsetsMake(2, 0, 2, 0);
     
     backButton.layer.borderWidth = 2;
     

@@ -24,11 +24,11 @@
 
 #import "NSAttributedString+RGSExtras.h"
 
-#import "UIButton+RGSUIBackButton.h"
 
 #import "RGSShowOverviewAnimatonController.h"
 
 #import "RGSSearchBar.h"
+#import "RGSBackBarButtonItem.h"
 @interface RGSContactListViewController ()
 
 @property (nonatomic, strong)RGSShowOverviewAnimatonController *overviewAnimationController;
@@ -76,15 +76,10 @@
     [self.view bringSubviewToFront:self.InviteFriendsButton];
     
     if(self.showLeftBarButtonItem){
-        UIButton *backButton = [UIButton buttonAsCustomBackButton];
-        [backButton addTarget:self action:@selector(toChatListScreen:)
-             forControlEvents:UIControlEventTouchUpInside];
-        [backButton setTitle:@"Cancel" forState:UIControlStateNormal];
-        backButton.titleLeftEdgeInset = -20;
-        backButton.imageLeftEdgeInset = -30;
-        
-        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-        self.navigationItem.leftBarButtonItem = barButton;
+        RGSBackBarButtonItem *backBarButtonItem = [RGSBackBarButtonItem new];
+        [backBarButtonItem addTarget:self action:@selector(toChatListScreen:) forControlEvents:UIControlEventTouchUpInside];
+        [backBarButtonItem setTitle:@"Cancel"];
+        self.navigationItem.leftBarButtonItem = backBarButtonItem;
     }
 
     NSError *error;

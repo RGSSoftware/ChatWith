@@ -24,7 +24,6 @@
 #import "UIImage+Resize.h"
 #import "UIColor+RGSColorWithHexString.h"
 #import "UIImage+RGSinitWithColor.h"
-#import "UIButton+RGSUIBackButton.h"
 #import "RGSBaseViewController+RGSSeparatorExtender.h"
 #import "NSAttributedString+RGSExtras.h"
 #import "UITextView+RGSSelectedRange.h"
@@ -322,18 +321,6 @@ struct {
         _currentUser = [[LocalStorageService shared] savedUser];
     }
     return _currentUser;
-}
-
-- (UIBarButtonItem *)customBarBackButton {
-    UIButton *backButton = [UIButton buttonAsCustomBackButton];
-    [backButton addTarget:self action:@selector(toChatListScreen:)
-         forControlEvents:UIControlEventTouchUpInside];
-    [backButton setTitle:@"Chats" forState:UIControlStateNormal];
-//    backButton.titleLeftEdgeInset = -25;
-//    backButton.imageLeftEdgeInset = -35;
-    
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    return barButton;
 }
 
 - (UIEdgeInsets)messageComposerViewInsert {
