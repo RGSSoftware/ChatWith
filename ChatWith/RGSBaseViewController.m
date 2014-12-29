@@ -35,12 +35,12 @@
                              [UIColor colorWithHexString:@"57d6ff"] ,NSForegroundColorAttributeName,
                              [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName, nil]];
     
-    UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] bk_initWithImage:[[UIImage imageNamed:@"MenuIcon"] resizedImage:CGSizeMake(25, 17)] style:UIBarButtonItemStylePlain handler:^(id sender) {
+    self.menuBarButton = [[UIBarButtonItem alloc] bk_initWithImage:[[UIImage imageNamed:@"MenuIcon"] resizedImage:CGSizeMake(25, 17)] style:UIBarButtonItemStylePlain handler:^(id sender) {
         [self.navigationController pushViewController:[RGSSideMenuViewController shared] animated:YES];
     }];
     
-    menuBarButton.tintColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = menuBarButton;
+    self.menuBarButton.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = self.menuBarButton;
 
 }
 

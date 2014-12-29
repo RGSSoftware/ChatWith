@@ -20,6 +20,7 @@
 #import "UIImage+Resize.h"
 #import "UIColor+RGSColorWithHexString.h"
 #import "UIImage+RGSinitWithColor.h"
+#import "UIImage+Resize.h"
 
 #import "NSAttributedString+RGSExtras.h"
 
@@ -31,6 +32,7 @@
 @interface RGSContactListViewController ()
 
 @property (nonatomic, strong)RGSShowOverviewAnimatonController *overviewAnimationController;
+@property UIView *dimView;
 
 @end
 
@@ -40,25 +42,6 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"Contacts";
-    
-    self.searchBar.backgroundColor = [UIColor clearColor];
-    self.searchBar.backgroundImage = [UIImage imageWithColor:
-                                      [UIColor colorWithHexString:@"414141" alpha:.16]];
-    
-    [self.searchBar setImage:[UIImage imageNamed:@"SearchMagnifyingGlassIcon"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
-    [self.searchBar setImage:[UIImage imageNamed:@"SearchClearIcon"] forSearchBarIcon:UISearchBarIconClear state:UIControlStateNormal];
-    [self.searchBar setPlaceholder:@"Search                                                  "];
-    
-    for (UIView *subview in _searchBar.subviews) {
-        for (UIView *subSubview in subview.subviews) {
-            if ([subSubview isKindOfClass:[UITextField class]]) {
-                UITextField *searchField = (UITextField *)subSubview;
-                searchField.backgroundColor = [UIColor clearColor];
-                searchField.textColor = [UIColor whiteColor];
-                break;
-            }
-        }
-    }
     
     CALayer *maskLayer = [CALayer new];
     maskLayer.frame = self.contactsView.bounds;
@@ -256,58 +239,69 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     return UIStatusBarStyleLightContent;
 }
 
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-    
-    
-}
+- (void)searchBarTextDidBeginEditing:(RGSSearchBar *)searchBar{
 
-- (void)searchDisplayController:(UISearchDisplayController *)controller
- willShowSearchResultsTableView:(UITableView *)tableView{
+    self.navigationItem.title = @"Search";
     
-}
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
-    CGRect dimViewRect = self.view.frame;
-    dimViewRect.size.height = CGRectGetHeight(self.view.frame) - 65;
-    dimViewRect.origin.y = 64;
+    [self addDimViewTo:self.view];
     
-    UIView *dimView = [[UIView alloc] initWithFrame:dimViewRect];
-    dimView.backgroundColor = [UIColor blackColor];
-    dimView.alpha = 0;
+    [searchBar selectState];
+    
+    [UIView animateWithDuration:.4 animations:^{
+        self.dimView.alpha = .08;
+        self.InviteFriendsButton.alpha = 0;
+        self.searchFilterSegmentedControl.alpha = 1;
+    }];
     
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] bk_initWithTitle:@"cancel"
                                                                                 style:UIBarButtonItemStyleDone
                                                                               handler:^(id sender) {
-        self.navigationItem.title = @"Contacts";
+                                                                                  searchBar.text = nil;
                                                                                   
-        [self.searchBar resignFirstResponder];
-        self.navigationItem.leftBarButtonItem = nil;
-        
-        [dimView removeFromSuperview];
-                                                                
-        [self.searchBar deSelect];
-        [UIView animateWithDuration:.3 animations:^{
-            self.InviteFriendsButton.alpha = 1;
-            self.searchFilterSegmentedControl.alpha = 0;
-        }];
-       }];
+                                                                                  [searchBar resignFirstResponder];
+                                                                              }];
     
-    self.navigationItem.title = @"Search";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] bk_initWithTitle:@"done"
+                                                                                 style:UIBarButtonItemStyleDone handler:^(id sender) {
+                                                                                     [searchBar resignFirstResponder];
+                                                                                 }];
     
-//    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0,0,32,32)];
-//    redView.backgroundColor = [UIColor redColor];
-//    self.navigationItem.titleView = redView;
-//    self.navigationItem.titleView.alpha = 0;
-//    self.navigationItem.titleView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:dimView];
-    [self.view sendSubviewToBack:dimView];
-    [self.searchBar selectState];
-    [UIView animateWithDuration:.4 animations:^{
-        dimView.alpha = .08;
-        self.InviteFriendsButton.alpha = 0;
-        self.searchFilterSegmentedControl.alpha = 1;
-    }];
-    return YES;
 }
+- (void)searchBarTextDidEndEditing:(RGSSearchBar *)searchBar{
+    
+    self.navigationItem.title = @"Contacts";
+    
+    [searchBar deSelect];
+    
+    [UIView animateWithDuration:.3
+                     animations:^{
+                         self.InviteFriendsButton.alpha = 1;
+                         self.searchFilterSegmentedControl.alpha = 0;
+                         self.dimView.alpha = 0;
+                     } completion:^(BOOL finished) {
+                         if(finished) [self.dimView removeFromSuperview];
+                     }];
+    
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = self.menuBarButton;
+}
+
+
+- (void)addDimViewTo:(UIView *)view {
+    CGRect dimViewRect = view.frame;
+    dimViewRect.size.height = CGRectGetHeight(view.frame) - 65;
+    dimViewRect.origin.y = 64;
+    
+    self.dimView = [[UIView alloc] initWithFrame:dimViewRect];
+    self.dimView.backgroundColor = [UIColor blackColor];
+    self.dimView.alpha = 0;
+    [view addSubview:self.dimView];
+    [view sendSubviewToBack:self.dimView];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+}
+
 
 @end

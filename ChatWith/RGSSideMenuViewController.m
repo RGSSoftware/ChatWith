@@ -71,6 +71,8 @@ static dispatch_once_t once_token = 0;
     backButton.titleLeftEdgeInset = 10;
     backButton.imageLeftEdgeInset = 0;
     
+    backButton.layer.borderWidth = 2;
+    
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = barButton;
 }

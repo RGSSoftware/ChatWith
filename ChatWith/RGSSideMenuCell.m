@@ -13,6 +13,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
+    
     UIView *view = [[UIView alloc] initWithFrame:self.frame];
     view.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.20];
     self.selectedBackgroundView = view;

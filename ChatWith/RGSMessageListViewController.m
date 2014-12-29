@@ -32,6 +32,7 @@
 #import "RGSMessageComposeImage.h"
 #import "RGSMessageComposerView.h"
 #import "CSGrowingTextView.h"
+#import "RGSBackBarButtonItem.h"
 
 const int maxTextWidth = 260;
 const int cellContentMargin = 5;
@@ -110,7 +111,10 @@ struct {
         self.navigationItem.title = self.receiver.fullName;
     }
     
-    self.navigationItem.leftBarButtonItem = [self customBarBackButton];
+    RGSBackBarButtonItem *backBarButtonItem = [RGSBackBarButtonItem new];
+    [backBarButtonItem addTarget:self action:@selector(toChatListScreen:) forControlEvents:UIControlEventTouchUpInside];
+    [backBarButtonItem setTitle:@"Chats"];
+    self.navigationItem.leftBarButtonItem = backBarButtonItem;
     
     self.tableView.contentInset = [self messageComposerViewInsert];
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationSpacing, 0, CGRectGetHeight(self.messageComposerView.frame), 0);
@@ -325,8 +329,8 @@ struct {
     [backButton addTarget:self action:@selector(toChatListScreen:)
          forControlEvents:UIControlEventTouchUpInside];
     [backButton setTitle:@"Chats" forState:UIControlStateNormal];
-    backButton.titleLeftEdgeInset = -25;
-    backButton.imageLeftEdgeInset = -35;
+//    backButton.titleLeftEdgeInset = -25;
+//    backButton.imageLeftEdgeInset = -35;
     
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     return barButton;

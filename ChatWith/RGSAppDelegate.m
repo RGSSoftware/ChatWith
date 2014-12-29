@@ -39,6 +39,12 @@
 
 - (void)loginAsRRWithBarAsMessagesReceiver
 {
+    
+    self.applicationSessionManager.applicationID = 7632;
+    self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";
+    self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
+    self.applicationSessionManager.accountKey = @"byNoqE9AHiQsoffhPgdt";
+    
     RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
     currentUser.currentUser = [NSNumber numberWithBool:YES];
     currentUser.fullName = @"rr";
@@ -66,13 +72,13 @@
                             [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
                                 if (success) {
                                     
-                                    RGSMessageListViewController *mlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSMessageListViewController"];
-                                    mlvc.chat = chat;
-                                    mlvc.receiver = barUser;
+                                    RGSMessageListViewController *mlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+//                                    mlvc.chat = chat;
+//                                    mlvc.receiver = barUser;
                                     
-                                    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mlvc];
+//                                    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mlvc];
                                     
-                                    self.window.rootViewController = nc;
+                                    self.window.rootViewController = mlvc;
                                     
                                 }
                                 
@@ -117,9 +123,9 @@
                                 [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
                                     if (success) {
                                         
-                                        RGSMessageListViewController *mlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSMessageListViewController"];
-                                        mlvc.chat = chat;
-                                        mlvc.receiver = rrUser;
+                                        RGSMessageListViewController *mlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+//                                        mlvc.chat = chat;
+//                                        mlvc.receiver = rrUser;
                                         
                                         UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mlvc];
                                         
@@ -155,7 +161,7 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
+//    [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
     
     [RGSManagedUser MR_truncateAll];
     [RGSContact MR_truncateAll];
@@ -192,7 +198,7 @@
 //                
 //                RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:container];
                 UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
-                if([vc isKindOfClass:[RGSSideMenuViewController class]] || [vc isKindOfClass:[RGSContactListViewController class]]){
+                if([vc isKindOfClass:[RGSSideMenuViewController class]] || [vc isKindOfClass:[RGSContactListViewController class]] || [vc isKindOfClass:[RGSMessageListViewController class]]){
                     RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:vc];
                     self.window.rootViewController = nav;
                 } else {
@@ -204,6 +210,8 @@
         }];
         
     }
+    
+//    [self loginAsRRWithBarAsMessagesReceiver];
     
     self.window.frame = [[UIScreen mainScreen] bounds];
     [self.window makeKeyAndVisible];

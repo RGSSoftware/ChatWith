@@ -9,4 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface RGSBaseViewController : UIViewController
+
+@property UIBarButtonItem *menuBarButton;
 @end

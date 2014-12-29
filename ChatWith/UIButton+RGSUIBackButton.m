@@ -25,9 +25,13 @@
     button.titleLabel.textAlignment = NSTextAlignmentLeft;
     button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
     
-    UIImage *image = [UIImage imageNamed:@"backButton"];
-    [button setImage:[image resizedImage:CGSizeMake(20, 20)]
+    UIImage *image = [UIImage imageNamed:@"backArrow"];
+    [button setImage:[image resizedImage:CGSizeMake(12, 25)]
             forState:UIControlStateNormal];
+    
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    button.titleEdgeInsets = UIEdgeInsetsMake(2, -2, 2, 0);
+    button.imageEdgeInsets = UIEdgeInsetsMake(0, -7, 2, 0);
     return button;
 }
 
