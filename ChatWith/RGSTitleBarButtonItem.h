@@ -1,5 +1,5 @@
 //
-//  RGSBackBarButtonItem.h
+//  RGSTitleBarButtonItem.h
 //  ChatWith
 //
 //  Created by PC on 12/29/14.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "RGSBarButtonItem.h"
+@interface RGSTitleBarButtonItem : RGSBarButtonItem
 
-@interface RGSBackBarButtonItem : RGSBarButtonItem
+
+
 @end

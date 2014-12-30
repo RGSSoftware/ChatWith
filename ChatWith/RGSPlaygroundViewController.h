@@ -14,4 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 - (IBAction)search:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIView *greenView;
+@property (weak, nonatomic) IBOutlet UIView *redView;
+- (IBAction)convert:(id)sender;
 @end

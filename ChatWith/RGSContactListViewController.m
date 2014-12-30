@@ -29,10 +29,13 @@
 
 #import "RGSSearchBar.h"
 #import "RGSBackBarButtonItem.h"
+#import "RGSTitleBarButtonItem.h"
 @interface RGSContactListViewController ()
 
 @property (nonatomic, strong)RGSShowOverviewAnimatonController *overviewAnimationController;
 @property UIView *dimView;
+
+@property RGSBackBarButtonItem *barBarButtonItem;
 
 @end
 
@@ -76,10 +79,26 @@
     [self.view bringSubviewToFront:self.InviteFriendsButton];
     
     if(self.showLeftBarButtonItem){
-        RGSBackBarButtonItem *backBarButtonItem = [RGSBackBarButtonItem new];
-        [backBarButtonItem addTarget:self action:@selector(toChatListScreen:) forControlEvents:UIControlEventTouchUpInside];
-        [backBarButtonItem setTitle:@"Cancel"];
-        self.navigationItem.leftBarButtonItem = backBarButtonItem;
+        
+        self.barBarButtonItem = [RGSBackBarButtonItem new];
+        [self.barBarButtonItem addTarget:self action:@selector(toChatListScreen:) forControlEvents:UIControlEventTouchUpInside];
+        [self.barBarButtonItem setTitle:@"Cancel"];
+        self.navigationItem.leftBarButtonItem = self.barBarButtonItem;
+        
+        self.navigationItem.title = @"Select Contact";
+    } else{
+        RGSTitleBarButtonItem *titleBarButtonItem = [[RGSTitleBarButtonItem alloc] initWithTitle:@"Cancel" handler:^(id sender) {
+            
+        }];
+        titleBarButtonItem.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+
+        
+        self.navigationItem.rightBarButtonItem = titleBarButtonItem;
+        
+        self.barBarButtonItem = [RGSBackBarButtonItem new];
+        [self.barBarButtonItem addTarget:self action:@selector(toChatListScreen:) forControlEvents:UIControlEventTouchUpInside];
+        [self.barBarButtonItem setTitle:@"Cancel"];
+        self.navigationItem.leftBarButtonItem = self.barBarButtonItem;
     }
 
     NSError *error;
@@ -249,13 +268,19 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     }];
     
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] bk_initWithTitle:@"cancel"
-                                                                                style:UIBarButtonItemStyleDone
-                                                                              handler:^(id sender) {
-                                                                                  searchBar.text = nil;
-                                                                                  
-                                                                                  [searchBar resignFirstResponder];
-                                                                              }];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] bk_initWithTitle:@"cancel"
+//                                                                                style:UIBarButtonItemStyleDone
+//                                                                              handler:^(id sender) {
+//                                                                                  searchBar.text = nil;
+//                                                                                  
+//                                                                                  [searchBar resignFirstResponder];
+//                                                                              }];
+    
+    self.navigationItem.leftBarButtonItem = [[RGSBackBarButtonItem alloc] initWithTitle:@"Cancel" handler:^(id sender) {
+        searchBar.text = nil;
+        
+        [searchBar resignFirstResponder];
+    }];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] bk_initWithTitle:@"done"
                                                                                  style:UIBarButtonItemStyleDone handler:^(id sender) {
@@ -278,7 +303,12 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
                          if(finished) [self.dimView removeFromSuperview];
                      }];
     
-    self.navigationItem.leftBarButtonItem = nil;
+    
+    if(self.barBarButtonItem){
+        self.navigationItem.leftBarButtonItem = self.barBarButtonItem;
+    } else {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
     self.navigationItem.rightBarButtonItem = self.menuBarButton;
 }
 

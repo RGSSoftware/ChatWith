@@ -50,4 +50,8 @@
 //    }];
     
 }
+- (IBAction)convert:(id)sender {
+    self.resultLabel.text = NSStringFromCGRect([self.redView convertRect:self.greenView.frame toView:self.view]);
+    
+}
 @end
