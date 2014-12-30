@@ -98,6 +98,7 @@
         self.barBarButtonItem = [RGSBackBarButtonItem new];
         [self.barBarButtonItem addTarget:self action:@selector(toChatListScreen:) forControlEvents:UIControlEventTouchUpInside];
         [self.barBarButtonItem setTitle:@"Cancel"];
+        [self.barBarButtonItem setTitleColor:[UIColor redColor]];
         self.navigationItem.leftBarButtonItem = self.barBarButtonItem;
     }
 

@@ -22,10 +22,10 @@
     return self.button.titleLabel.text;
 }
 
--(void)setTextColor:(UIColor *)textColor{
+-(void)setTitleColor:(UIColor *)textColor{
     [self.button setTitleColor:textColor forState:UIControlStateNormal];
 }
--(UIColor *)textColor{
+-(UIColor *)titleColor{
     return [self.button titleColorForState:UIControlStateNormal];
 }
 

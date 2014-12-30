@@ -11,7 +11,7 @@
 @interface RGSBarButtonItem : UIBarButtonItem
 
 @property(nonatomic) UIControlContentHorizontalAlignment contentHorizontalAlignment;
-@property(nonatomic) UIColor *textColor;
+@property(nonatomic) UIColor *titleColor;
 @property(nonatomic)UIEdgeInsets titleEdgeInsets;
 @property(nonatomic)UIEdgeInsets imageEdgeInsets;
 
