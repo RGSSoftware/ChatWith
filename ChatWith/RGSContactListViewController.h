@@ -10,12 +10,15 @@
 #import "RGSBaseViewController.h"
 
 @class RGSContact;
+@class RGSContactCell;
 @class RGSContactListViewController;
 @class RGSSearchBar;
 
 @protocol RGSContactListViewControllerDelegate <NSObject>
 
+@optional
 -(void)contactListViewController:(RGSContactListViewController *)contactListViewController didSelectContact:(RGSContact *)contact;
+-(void)contactListViewController:(RGSContactListViewController *)contactListViewController didSelectContactAtIndex:(NSIndexPath *)contactIndex;
 @end
 
 @interface RGSContactListViewController : RGSBaseViewController <UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate>
@@ -31,6 +34,9 @@
 @property (nonatomic, weak) IBOutlet id <RGSContactListViewControllerDelegate> delegate;
 
 @property BOOL showLeftBarButtonItem;
+
+-(RGSContactCell *)contactCellAtIndex:(NSIndexPath *)contactCellIndex;
+-(RGSContact *)contactAtIndex:(NSIndexPath *)contactIndex;
 
 @end
 

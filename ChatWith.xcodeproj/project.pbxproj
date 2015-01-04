@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22041ED81A2764F800210E59 /* RGSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22041ED71A2764F800210E59 /* RGSNavigationController.m */; };
+		22060E501A53813200BA623F /* RGSContactDetailHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 22060E4F1A53813200BA623F /* RGSContactDetailHandler.m */; };
 		2207E3E81A41FCCB00CE91D9 /* dashBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2207E3E71A41FCCB00CE91D9 /* dashBorderView.m */; };
 		2207E3F11A4244B300CE91D9 /* RGSBaseOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2207E3F01A4244B300CE91D9 /* RGSBaseOverviewViewController.m */; };
 		2207E3F41A424B9A00CE91D9 /* RGSSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2207E3F31A424B9A00CE91D9 /* RGSSettingViewController.m */; };
@@ -145,6 +146,8 @@
 /* Begin PBXFileReference section */
 		22041ED61A2764F800210E59 /* RGSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSNavigationController.h; sourceTree = "<group>"; };
 		22041ED71A2764F800210E59 /* RGSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSNavigationController.m; sourceTree = "<group>"; };
+		22060E4E1A53813200BA623F /* RGSContactDetailHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactDetailHandler.h; sourceTree = "<group>"; };
+		22060E4F1A53813200BA623F /* RGSContactDetailHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactDetailHandler.m; sourceTree = "<group>"; };
 		2207E3E61A41FCCA00CE91D9 /* dashBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dashBorderView.h; sourceTree = "<group>"; };
 		2207E3E71A41FCCB00CE91D9 /* dashBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dashBorderView.m; sourceTree = "<group>"; };
 		2207E3EF1A4244B300CE91D9 /* RGSBaseOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSBaseOverviewViewController.h; sourceTree = "<group>"; };
@@ -426,6 +429,8 @@
 		22889AD019D3232600F0541D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				22060E4E1A53813200BA623F /* RGSContactDetailHandler.h */,
+				22060E4F1A53813200BA623F /* RGSContactDetailHandler.m */,
 				22A59D021A5091CB003F0E91 /* RGSPlaygroundViewController.h */,
 				22A59D031A5091CB003F0E91 /* RGSPlaygroundViewController.m */,
 				22C5B0C91A3739E20018A5F3 /* RGSInitialViewController.h */,
@@ -893,6 +898,7 @@
 				2218FDC419DC902E00E491F6 /* RGSUserMangementService.m in Sources */,
 				22F07A0E1A3890E1007E6E2B /* NSString+RGSAttributedString.m in Sources */,
 				22D7BCBF19A8D45100D2C01C /* main.m in Sources */,
+				22060E501A53813200BA623F /* RGSContactDetailHandler.m in Sources */,
 				22DDEB2C1A371DA600B2A691 /* RGSDismissOverviewAnimatonController.m in Sources */,
 				22F418F81A361A53009BF951 /* RGSShowOverviewAnimatonController.m in Sources */,
 				22D7BCC319A8D45100D2C01C /* RGSAppDelegate.m in Sources */,

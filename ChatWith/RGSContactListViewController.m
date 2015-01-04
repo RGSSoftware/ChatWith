@@ -30,6 +30,8 @@
 #import "RGSSearchBar.h"
 #import "RGSBackBarButtonItem.h"
 #import "RGSTitleBarButtonItem.h"
+
+#import "RGSContactDetailHandler.h"
 @interface RGSContactListViewController ()
 
 @property (nonatomic, strong)RGSShowOverviewAnimatonController *overviewAnimationController;
@@ -37,10 +39,20 @@
 
 @property RGSBackBarButtonItem *barBarButtonItem;
 
+@property(nonatomic)RGSContactDetailHandler *contactDetailHandler;
+
 @end
 
 @implementation RGSContactListViewController
-
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        _contactDetailHandler = [RGSContactDetailHandler new];
+        _delegate = _contactDetailHandler;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -87,18 +99,10 @@
         
         self.navigationItem.title = @"Select Contact";
     } else{
-        RGSTitleBarButtonItem *titleBarButtonItem = [[RGSTitleBarButtonItem alloc] initWithTitle:@"Cancel" handler:^(id sender) {
-            
-        }];
-        titleBarButtonItem.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-
-        
-        self.navigationItem.rightBarButtonItem = titleBarButtonItem;
         
         self.barBarButtonItem = [RGSBackBarButtonItem new];
         [self.barBarButtonItem addTarget:self action:@selector(toChatListScreen:) forControlEvents:UIControlEventTouchUpInside];
         [self.barBarButtonItem setTitle:@"Cancel"];
-        [self.barBarButtonItem setTitleColor:[UIColor redColor]];
         self.navigationItem.leftBarButtonItem = self.barBarButtonItem;
     }
 
@@ -218,7 +222,17 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     }
 //
 }
+-(RGSContactCell *)contactCellAtIndex:(NSIndexPath *)contactCellIndex{
+    return (RGSContactCell *)[self.collectionView cellForItemAtIndexPath:contactCellIndex];
+}
+-(RGSContact *)contactAtIndex:(NSIndexPath *)contactIndex{
+    return [_fetchedResultsController objectAtIndexPath:contactIndex];
+}
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if([self.delegate respondsToSelector:@selector(contactListViewController:didSelectContactAtIndex:)]){
+        [self.delegate contactListViewController:self didSelectContactAtIndex:indexPath];
+    }
+    
     if ([self.delegate respondsToSelector:@selector(contactListViewController:didSelectContact:)]) {
         
         RGSContact *contact = [_fetchedResultsController objectAtIndexPath:indexPath];
@@ -228,9 +242,6 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
 
 
 -(NSFetchedResultsController *)fetchedResultsController{
-    
-    
-    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:[RGSContact MR_entityDescription]];
 
@@ -267,26 +278,22 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
         self.InviteFriendsButton.alpha = 0;
         self.searchFilterSegmentedControl.alpha = 1;
     }];
-    
-    
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] bk_initWithTitle:@"cancel"
-//                                                                                style:UIBarButtonItemStyleDone
-//                                                                              handler:^(id sender) {
-//                                                                                  searchBar.text = nil;
-//                                                                                  
-//                                                                                  [searchBar resignFirstResponder];
-//                                                                              }];
-    
-    self.navigationItem.leftBarButtonItem = [[RGSBackBarButtonItem alloc] initWithTitle:@"Cancel" handler:^(id sender) {
+
+    RGSTitleBarButtonItem *cancelBarButtonItem = [[RGSTitleBarButtonItem alloc] initWithTitle:@"Cancel" handler:^(id sender) {
         searchBar.text = nil;
         
         [searchBar resignFirstResponder];
+        
     }];
+    cancelBarButtonItem.titleColor = [UIColor redColor];
+    self.navigationItem.leftBarButtonItem = cancelBarButtonItem;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] bk_initWithTitle:@"done"
-                                                                                 style:UIBarButtonItemStyleDone handler:^(id sender) {
-                                                                                     [searchBar resignFirstResponder];
-                                                                                 }];
+    
+    RGSTitleBarButtonItem *doneBarButtonItem = [[RGSTitleBarButtonItem alloc] initWithTitle:@"Done" handler:^(id sender) {
+        [searchBar resignFirstResponder];
+    }];
+    doneBarButtonItem.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    self.navigationItem.rightBarButtonItem = doneBarButtonItem;
     
 }
 - (void)searchBarTextDidEndEditing:(RGSSearchBar *)searchBar{

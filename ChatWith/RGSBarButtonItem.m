@@ -17,6 +17,7 @@
 
 -(void)setTitle:(NSString *)title{
     [self.button setTitle:title forState:UIControlStateNormal];
+   
 }
 -(NSString *)title{
     return self.button.titleLabel.text;
@@ -110,8 +111,10 @@
     _button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
     
     _button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    
 
     self.customView = _button;
 }
+
 
 @end

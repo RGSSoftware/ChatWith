@@ -181,6 +181,38 @@
         rrUser.password = @"h5ljh4aKOcLw";
         rrUser.entityID = @894248;
         
+        
+        
+        for(int i = 0; i < 20; i++){
+            RGSContact *contact = [RGSContact MR_createEntity];
+            contact.source = currentUser;
+            
+            RGSManagedUser *user = [RGSManagedUser MR_createEntity];
+            user.fullName = [LoremIpsum word];
+            contact.friend = user;
+            
+            switch (i % 4) {
+                case 0:
+                user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"sarah_connor"]);
+                    user.blobID = @0;
+                    break;
+                case 1:
+                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"t1000"]);
+                    user.blobID = @1;
+                    break;
+                case 2:
+                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"joe_morton"]);
+                    user.blobID = @2;
+                    break;
+                case 3:
+                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"john_connor"]);
+                    user.blobID = @3;
+                    break;
+              default:
+                    break;
+            }
+        }
+        
         RGSChat *chat = [RGSChat MR_createEntity];
         chat.sender = currentUser;
         chat.receiver = rrUser;
