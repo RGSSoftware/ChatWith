@@ -225,9 +225,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
 -(RGSContactCell *)contactCellAtIndex:(NSIndexPath *)contactCellIndex{
     return (RGSContactCell *)[self.collectionView cellForItemAtIndexPath:contactCellIndex];
 }
--(RGSContact *)contactAtIndex:(NSIndexPath *)contactIndex{
-    return [_fetchedResultsController objectAtIndexPath:contactIndex];
-}
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if([self.delegate respondsToSelector:@selector(contactListViewController:didSelectContactAtIndex:)]){
         [self.delegate contactListViewController:self didSelectContactAtIndex:indexPath];

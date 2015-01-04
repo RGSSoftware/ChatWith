@@ -36,7 +36,6 @@
 @property BOOL showLeftBarButtonItem;
 
 -(RGSContactCell *)contactCellAtIndex:(NSIndexPath *)contactCellIndex;
--(RGSContact *)contactAtIndex:(NSIndexPath *)contactIndex;
 
 @end
 

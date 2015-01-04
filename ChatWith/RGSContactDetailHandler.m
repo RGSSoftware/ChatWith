@@ -15,84 +15,38 @@
 @implementation RGSContactDetailHandler
 -(void)contactListViewController:(RGSContactListViewController *)contactListViewController didSelectContactAtIndex:(NSIndexPath *)contactIndex{
     RGSContactCell *contactCell = [contactListViewController contactCellAtIndex:contactIndex];
-    RGSContact *contact = [contactListViewController contactAtIndex:contactIndex];
     
     NSLog(@"contactCell.thumbnailImageView.frame:%@", NSStringFromCGRect([contactCell.contentView convertRect:contactCell.thumbnailImageView.frame toView:contactListViewController.view]));
     
     NSLog(@"screen rect:%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
     
-    UIView *snapThumbnailImage = [contactCell.thumbnailImageView snapshotViewAfterScreenUpdates:NO];
-//    snapThumbnailImage.backgroundColor = [UIColor redColor];
-//    snapThumbnailImage.clipsToBounds = YES;
-    
-    
-    
-    snapThumbnailImage.frame = [contactCell.contentView convertRect:contactCell.thumbnailImageView.frame toView:contactListViewController.view];
-    [contactListViewController.view addSubview:snapThumbnailImage];
-    
-//    UIView *yellowView = [UIView new];
-//    yellowView.backgroundColor = [UIColor yellowColor];
-//    CGRect yellowViewFrame = CGRectZero;
-//    yellowViewFrame.origin.x = CGRectGetWidth(snapThumbnailImage.frame)/2;
-//    yellowViewFrame.size = snapThumbnailImage.frame.size;
-//    yellowView.frame = yellowViewFrame;
-//    [snapThumbnailImage addSubview:yellowView];
+
+    CGRect thumbnailImageRect = [contactCell.contentView convertRect:contactCell.thumbnailImageView.frame toView:contactListViewController.view];
     
     float scalingFactor = 1.6;
     
+    
     CGAffineTransform t = CGAffineTransformMakeScale(scalingFactor, scalingFactor);
+    CGRect scaledRect = [self scaleRect:thumbnailImageRect withTrasformation:t];
     
-    float x = CGRectGetMinX(snapThumbnailImage.frame);
-    float y = CGRectGetMinY(snapThumbnailImage.frame);
-    float centerX = snapThumbnailImage.center.x;
-    float centerY = snapThumbnailImage.center.y;
     
-    float scaledX = ((x + -centerX) * scalingFactor) + centerX;
-    float scaledY = ((y + -centerY) * scalingFactor) + centerY;
+    UIImageView *thumbnailImageView = [[UIImageView alloc] initWithFrame:thumbnailImageRect];
+    thumbnailImageView.image = contactCell.thumbnailImageView.image;
+    thumbnailImageView.layer.cornerRadius = 10;
+    thumbnailImageView.layer.masksToBounds = YES;
     
-    CGRect scaledRect = CGRectZero;
-    scaledRect.origin.x = scaledX;
-    scaledRect.origin.y = scaledY;
-    scaledRect.size = CGSizeApplyAffineTransform(snapThumbnailImage.frame.size, t);;
+    [contactListViewController.view addSubview:thumbnailImageView];
     
-
     
     
     if(CGRectContainsRect([UIScreen mainScreen].bounds, scaledRect)){
         NSLog(@"scaled Rect is inside mainScreen");
         
-        [UIView animateWithDuration:1.0 animations:^{
-            snapThumbnailImage.transform = t;
-            
-        } completion:^(BOOL finished) {
-            if(finished){
-                NSLog(@"snapThumbnailImage.frame:%@", NSStringFromCGRect(snapThumbnailImage.frame));
-                CGRect snapThumbnailImageFrame = snapThumbnailImage.frame;
-                UIImageView *largerThumbnailView = [[UIImageView alloc] initWithFrame:snapThumbnailImageFrame];
-                largerThumbnailView.layer.cornerRadius = 10;
-                largerThumbnailView.layer.masksToBounds = YES;
-                
-                UIImage *largerThumbnail;
-                switch ([contact.friend.blobID integerValue]) {
-                    case 0:
-                        largerThumbnail = [UIImage imageNamed:@"sarah_connor"];
-                        break;
-                    case 1:
-                        largerThumbnail = [UIImage imageNamed:@"t1000"];
-                        break;
-                    case 2:
-                        largerThumbnail = [UIImage imageNamed:@"joe_morton"];
-                        break;
-                    case 3:
-                        largerThumbnail = [UIImage imageNamed:@"john_connor"];
-                        break;
-                    default:
-                        break;
-                }
-                largerThumbnailView.image = largerThumbnail;
-                [contactListViewController.view addSubview:largerThumbnailView];
-            }
+        [UIView animateWithDuration:1 animations:^{
+            thumbnailImageView.transform = t;
         }];
+        
+
     } else {
         NSLog(@"scaled Rect is NOT inside mainScreen");
         int padding = 8;
@@ -102,14 +56,14 @@
         UIView *pupleView = [UIView new];
         pupleView.backgroundColor = [UIColor purpleColor];
         CGRect pupleViewFrame = CGRectZero;
-        pupleViewFrame.size = CGSizeMake(20, scaledRect.size.height );
-        pupleViewFrame.origin.y = scaledY + padding;
+        pupleViewFrame.size = CGSizeMake(20, scaledRect.size.height);
+        pupleViewFrame.origin.y = CGRectGetMinY(scaledRect) + padding;
         pupleView.alpha = 0;
         
         [contactListViewController.view addSubview:pupleView];
         
-        if(scaledX < 0.0f){
-            float rightShift = padding -(scaledX);
+        if(CGRectGetMinX(scaledRect) < 0.0f){
+            float rightShift = padding -(CGRectGetMinX(scaledRect));
             
             translation = CGAffineTransformMakeTranslation(rightShift, padding);
             
@@ -129,24 +83,26 @@
         
         CGAffineTransform translationWithScaling = CGAffineTransformScale(translation, scalingFactor, scalingFactor);
         [UIView animateWithDuration:.8 animations:^{
-            snapThumbnailImage.transform = translationWithScaling;
+            thumbnailImageView.transform = translationWithScaling;
             pupleView.alpha = 1;
         }];
     }
-    
-    NSLog(@"Screen.bounds:%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
-    NSLog(@"scaledRect.frame:%@", NSStringFromCGRect(scaledRect));
-//    UIView *snap = [UIView new];
-//    snap.backgroundColor = [UIColor yellowColor];
-//    
-//    snap.frame = CGRectApplyAffineTransform(snapThumbnailImage.frame, t);
-//    [contactListViewController.view addSubview:snap];
-    
-//    snapThumbnailImage.transform = CGAffineTransformScale(snapThumbnailImage.transform, 0.35, 0.35);
-    
-    
-    
 }
 
+-(CGRect)scaleRect:(CGRect)rect withTrasformation:(CGAffineTransform)t{
+    float x = CGRectGetMinX(rect);
+    float y = CGRectGetMinY(rect);
+    float centerX = CGRectGetMaxX(rect) - (CGRectGetWidth(rect)/2);
+    float centerY = CGRectGetMaxY(rect) - (CGRectGetHeight(rect)/2);
+    
+    float scaledX = ((x + -centerX) * t.a) + centerX;
+    float scaledY = ((y + -centerY) * t.d) + centerY;
+    
+    CGRect scaledRect = CGRectZero;
+    scaledRect.origin.x = scaledX;
+    scaledRect.origin.y = scaledY;
+    scaledRect.size = CGSizeApplyAffineTransform(rect.size, t);
+    return scaledRect;
+}
 
 @end
