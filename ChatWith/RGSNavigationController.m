@@ -25,6 +25,7 @@
 #import "RGSContactListViewController.h"
 #import "RGSSideMenuViewController.h"
 
+
 @interface RGSNavigationController ()
 @property(nonatomic, strong)RGSPopSegue *popSegue;
 @end

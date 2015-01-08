@@ -10,6 +10,7 @@
 
 #import "RGSMessageListViewController.h"
 
+
 #import "RGSManagedUser.h"
 #import "RGSContact.h"
 
@@ -40,6 +41,7 @@
 @property RGSBackBarButtonItem *barBarButtonItem;
 
 @property(nonatomic)RGSContactDetailHandler *contactDetailHandler;
+@property RGSContactCell *seletedContactCell;
 
 @end
 
@@ -216,25 +218,28 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
         RGSMessageListViewController *messageListViewController = (RGSMessageListViewController
                                                                    *)[segue destinationViewController];
         messageListViewController.receiver = contact.friend;
-    } else if ([segue.identifier isEqualToString:@"toInviteScreen"]){
-        UIViewController *toVC = [segue destinationViewController];
-//        toVC.transitioningDelegate = [self overviewAnimationController];
     }
-//
 }
 -(RGSContactCell *)contactCellAtIndex:(NSIndexPath *)contactCellIndex{
     return (RGSContactCell *)[self.collectionView cellForItemAtIndexPath:contactCellIndex];
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if([self.delegate respondsToSelector:@selector(contactListViewController:didSelectContactAtIndex:)]){
-        [self.delegate contactListViewController:self didSelectContactAtIndex:indexPath];
-    }
     
-    if ([self.delegate respondsToSelector:@selector(contactListViewController:didSelectContact:)]) {
+    if(![self.delegate respondsToSelector:@selector(contactListViewController:didSelectContact:)] &&
+       ![self.delegate respondsToSelector:@selector(contactListViewController:didSelectContactAtIndex:)]){
+        //show contact detail View
+        self.seletedContactCell = [self contactCellAtIndex:indexPath];
+        [self performSegueWithIdentifier:@"toContactDetailScreen" sender:self];
         
-        RGSContact *contact = [_fetchedResultsController objectAtIndexPath:indexPath];
-        [self.delegate contactListViewController:self didSelectContact:contact];
+    } else {
+        if([self.delegate respondsToSelector:@selector(contactListViewController:didSelectContact:)]){
+             RGSContact *contact = [_fetchedResultsController objectAtIndexPath:indexPath];
+            [self.delegate contactListViewController:self didSelectContact:contact];
+        }
+        if([self.delegate respondsToSelector:@selector(contactListViewController:didSelectContactAtIndex:)]){
+          [self.delegate contactListViewController:self didSelectContactAtIndex:indexPath];
+        }
     }
 }
 

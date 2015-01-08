@@ -13,11 +13,29 @@
 
 #import "UIImage+Resize.h"
 
-const float scaleUpAnimateDuration = .8;
+const BOOL isLeftOffScreen(CGRect rect){
+    return CGRectGetMinX(rect) < 0.0f;
+}
+
+BOOL isBottomOffScreen(CGRect rect){
+    return CGRectGetMaxY(rect) > CGRectGetMaxY([UIScreen mainScreen].bounds);
+}
+
+BOOL isWithinScreenBounds(CGRect rect){
+    return CGRectContainsRect([UIScreen mainScreen].bounds, rect);
+}
+
+const float scaleUpAnimateDuration = .6;
+const float topDetailButtonPadding = 5;
+const float sideDetailButtonPadding = 5;
+
+const float scalingFactor = 1.6;
 
 @interface RGSContactDetailHandler ()
 @property UIButton *chatContactButton;
 @property UIButton *deleteContactButton;
+
+@property UIImageView *thumbnailImageView;
 @end
 
 
@@ -34,98 +52,152 @@ const float scaleUpAnimateDuration = .8;
 -(void)contactListViewController:(RGSContactListViewController *)contactListViewController didSelectContactAtIndex:(NSIndexPath *)contactIndex{
     RGSContactCell *contactCell = [contactListViewController contactCellAtIndex:contactIndex];
     
-    CGRect thumbnailImageRect = [contactCell.contentView convertRect:contactCell.thumbnailImageView.frame toView:contactListViewController.view];
-    NSLog(@"rect:%@", NSStringFromCGRect(thumbnailImageRect));
-    
-    float scalingFactor = 1.6;
-    
-    
-    CGAffineTransform t = CGAffineTransformMakeScale(scalingFactor, scalingFactor);
-    CGRect scaledRect = [self scaleRect:thumbnailImageRect withTrasformation:t];
-    
-    UIImageView *thumbnailImageView = [[UIImageView alloc] initWithFrame:thumbnailImageRect];
-    thumbnailImageView.image = contactCell.thumbnailImageView.image;
-    thumbnailImageView.layer.cornerRadius = 10;
-    thumbnailImageView.layer.masksToBounds = YES;
-    
-    [contactListViewController.view addSubview:thumbnailImageView];
-    
-    
-    
-    
-    
-    
-    self.chatContactButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.chatContactButton.frame = CGRectMake(CGRectGetMaxX(scaledRect) + 5, CGRectGetMinY(scaledRect) + 5, 40, 40);
-    self.chatContactButton.backgroundColor = [UIColor colorWithWhite:0.141 alpha:1.000];
-    [self.chatContactButton setImage:[[UIImage imageNamed:@"chat_Contact"] resizedImage:CGSizeMake(20, 20)] forState:UIControlStateNormal];
-    self.chatContactButton.alpha = 0;
-    self.chatContactButton.layer.cornerRadius = 10;
-    
-    self.deleteContactButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.deleteContactButton.frame = CGRectMake(CGRectGetMaxX(scaledRect) + 5, CGRectGetMaxY(self.chatContactButton.frame) + 5, 40, 40);
-    self.deleteContactButton.backgroundColor = [UIColor colorWithWhite:0.141 alpha:1.000];
-    [self.deleteContactButton setImage:[[UIImage imageNamed:@"delete_Contact"] resizedImage:CGSizeMake(12, 12)] forState:UIControlStateNormal];
-    self.deleteContactButton.alpha = 0;
-    self.deleteContactButton.layer.cornerRadius = 10;
-    
-    [contactListViewController.view addSubview:self.deleteContactButton];
-    [contactListViewController.view addSubview:self.chatContactButton];
-
-    if(CGRectContainsRect([UIScreen mainScreen].bounds, scaledRect)){
-        NSLog(@"scaled Rect is inside mainScreen");
+    CGRect contactCellRect = [contactListViewController.collectionView convertRect:contactCell.frame toView:contactListViewController.view];
+    if(!isBottomOffScreen(contactCellRect)){
         
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
+        
+        UIView *dimView = [[UIView alloc] initWithFrame:contactListViewController.view.frame];
+        dimView.backgroundColor = [UIColor blackColor];
+        dimView.alpha = 0;
+        [dimView bk_whenTapped:^{
+            [UIView animateWithDuration:scaleUpAnimateDuration - .4 animations:^{
+                self.thumbnailImageView.transform = CGAffineTransformScale(self.thumbnailImageView.transform, .6, .6);
+                
+                dimView.alpha = 0;
+                
+                self.chatContactButton.alpha = 0;
+                self.deleteContactButton.alpha = 0;
+            } completion:^(BOOL finished) {
+                if(finished){
+                    [self.thumbnailImageView removeFromSuperview];
+                    [self.chatContactButton removeFromSuperview];
+                    [self.deleteContactButton removeFromSuperview];
+                    [dimView removeFromSuperview];
+                }
+            }];
+            
+        }];
+        [mainWindow addSubview:dimView];
         [UIView animateWithDuration:scaleUpAnimateDuration animations:^{
-            thumbnailImageView.transform = t;
+            dimView.alpha = .21;
         }];
         
-        [self animateDetailButtons];
+        CGRect thumbnailImageRect = [contactCell.contentView convertRect:contactCell.thumbnailImageView.frame toView:contactListViewController.view];
         
+        self.thumbnailImageView = [[UIImageView alloc] initWithFrame:thumbnailImageRect];
+        self.thumbnailImageView.image = contactCell.thumbnailImageView.image;
+        self.thumbnailImageView.layer.cornerRadius = 10;
+        self.thumbnailImageView.layer.masksToBounds = YES;
+        [mainWindow addSubview:self.thumbnailImageView];
+        
+        
+        self.chatContactButton = [self detailContactButtonWithImage:[[UIImage imageNamed:@"chat_Contact"] resizedImage:CGSizeMake(20, 20)]];
+        [mainWindow addSubview:self.chatContactButton];
+        [self.chatContactButton bk_addEventHandler:^(id sender) {
+            [UIView animateWithDuration:scaleUpAnimateDuration - .4 animations:^{
+                self.thumbnailImageView.transform = CGAffineTransformScale(self.thumbnailImageView.transform, .6, .6);
+                
+                dimView.alpha = 0;
+                
+                self.chatContactButton.alpha = 0;
+                self.deleteContactButton.alpha = 0;
+            } completion:^(BOOL finished) {
+                if(finished){
+                    [self.thumbnailImageView removeFromSuperview];
+                    [self.chatContactButton removeFromSuperview];
+                    [self.deleteContactButton removeFromSuperview];
+                    [dimView removeFromSuperview];
+                    
+                    [contactListViewController performSegueWithIdentifier:@"toMessagesScreen" sender:contactCell];
+                }
+            }];
 
-    } else {
-        NSLog(@"scaled Rect is NOT inside mainScreen");
-        int padding = 8;
+        } forControlEvents:UIControlEventTouchUpInside];
         
-        CGAffineTransform translation;
-
-        CGRect chatButtonFrame = self.chatContactButton.frame;
-        CGRect deleteButtonFrame = self.deleteContactButton.frame;
+        self.deleteContactButton = [self detailContactButtonWithImage:[[UIImage imageNamed:@"delete_Contact"] resizedImage:CGSizeMake(12, 12)]];
+        [mainWindow addSubview:self.deleteContactButton];
         
-        if(CGRectGetMinX(scaledRect) < 0.0f){
-            float rightShift = padding -(CGRectGetMinX(scaledRect));
+        CGAffineTransform scalingTransformation = CGAffineTransformMakeScale(scalingFactor, scalingFactor);
+        CGRect scaledRect = [self scaleRect:thumbnailImageRect withTrasformation:scalingTransformation];
+        
+        if(isWithinScreenBounds(scaledRect)){
+            //scaled Rect is inside mainScreen bounds
             
-            translation = CGAffineTransformMakeTranslation(rightShift, padding);
-            
-            
-            chatButtonFrame.origin.x += rightShift;
-            chatButtonFrame.origin.y += padding;
+            CGRect chatButtonFrame = self.chatContactButton.frame;
+            chatButtonFrame.origin.x = CGRectGetMaxX(scaledRect) + sideDetailButtonPadding;
+            chatButtonFrame.origin.y = CGRectGetMinY(scaledRect) + topDetailButtonPadding;
             self.chatContactButton.frame = chatButtonFrame;
             
-            deleteButtonFrame.origin.x += rightShift;
-            deleteButtonFrame.origin.y += padding;
+            CGRect deleteButtonFrame = self.deleteContactButton.frame;
+            deleteButtonFrame.origin.x = CGRectGetMaxX(scaledRect) + sideDetailButtonPadding;
+            deleteButtonFrame.origin.y = CGRectGetMaxY(self.chatContactButton.frame) + topDetailButtonPadding;
             self.deleteContactButton.frame = deleteButtonFrame;
+            
+            [UIView animateWithDuration:scaleUpAnimateDuration animations:^{
+                self.thumbnailImageView.transform = scalingTransformation;
+            }];
+            
+            [self animateDetailButtons];
+            
             
         } else {
-            float leftShift = -(CGRectGetMaxX(scaledRect) - CGRectGetWidth([UIScreen mainScreen].bounds) + padding);
+            //else scaled Rect is NOT inside mainScreen bounds
+            int padding = 8;
             
-            translation = CGAffineTransformMakeTranslation(leftShift, padding);
+            CGAffineTransform translation;
             
-            chatButtonFrame.origin.x = (CGRectGetMinX(scaledRect)+leftShift) - (padding + CGRectGetWidth(self.chatContactButton.frame));
-            chatButtonFrame.origin.y = CGRectGetMinY(scaledRect) + 5 + padding;
-            self.chatContactButton.frame = chatButtonFrame;
+            CGRect chatButtonFrame = self.chatContactButton.frame;
+            CGRect deleteButtonFrame = self.deleteContactButton.frame;
             
+            if(isLeftOffScreen(scaledRect)){
+                float rightShift = padding -(CGRectGetMinX(scaledRect));
+                
+                translation = CGAffineTransformMakeTranslation(rightShift, padding);
+                
+                chatButtonFrame.origin.x = CGRectGetMaxX(scaledRect) + sideDetailButtonPadding + rightShift;
+                chatButtonFrame.origin.y = CGRectGetMinY(scaledRect) + topDetailButtonPadding + padding;
+                self.chatContactButton.frame = chatButtonFrame;
+                
+                deleteButtonFrame.origin.x = CGRectGetMaxX(scaledRect) + sideDetailButtonPadding + rightShift;
+                deleteButtonFrame.origin.y = CGRectGetMaxY(chatButtonFrame) + topDetailButtonPadding;
+                self.deleteContactButton.frame = deleteButtonFrame;
+                
+            } else {
+                //else right off screen
+                float leftShift = -(CGRectGetMaxX(scaledRect) - CGRectGetWidth([UIScreen mainScreen].bounds) + padding);
+                
+                translation = CGAffineTransformMakeTranslation(leftShift, padding);
+                
+                chatButtonFrame.origin.x = (CGRectGetMinX(scaledRect)+leftShift) - (sideDetailButtonPadding + CGRectGetWidth(self.chatContactButton.frame));
+                chatButtonFrame.origin.y = CGRectGetMinY(scaledRect) + topDetailButtonPadding + padding;
+                self.chatContactButton.frame = chatButtonFrame;
+                
+                
+                deleteButtonFrame.origin.x = chatButtonFrame.origin.x;
+                deleteButtonFrame.origin.y = CGRectGetMaxY(chatButtonFrame) + topDetailButtonPadding;
+                self.deleteContactButton.frame = deleteButtonFrame;
+            }
             
-            deleteButtonFrame.origin.x = chatButtonFrame.origin.x;
-            deleteButtonFrame.origin.y = CGRectGetMaxY(chatButtonFrame) + 5;
-            self.deleteContactButton.frame = deleteButtonFrame;
+            CGAffineTransform translationWithScaling = CGAffineTransformScale(translation, scalingFactor, scalingFactor);
+            [UIView animateWithDuration:scaleUpAnimateDuration animations:^{
+                self.thumbnailImageView.transform = translationWithScaling;
+            }];
+            
+            [self animateDetailButtons];
         }
+
         
-        CGAffineTransform translationWithScaling = CGAffineTransformScale(translation, scalingFactor, scalingFactor);
-        [UIView animateWithDuration:scaleUpAnimateDuration animations:^{
-            thumbnailImageView.transform = translationWithScaling;
+    } else {
+       CGPoint contentOffSet = contactListViewController.collectionView.contentOffset;
+        contentOffSet.y += CGRectGetHeight(contactCell.frame) - 4;
+        
+        [UIView animateWithDuration:.1 animations:^{
+            [contactListViewController.collectionView setContentOffset:contentOffSet animated:NO];
+        } completion:^(BOOL finished) {
+            if(finished) [self contactListViewController:contactListViewController didSelectContactAtIndex:contactIndex];
         }];
-        
-        [self animateDetailButtons];
+        return;
     }
 }
 
@@ -143,6 +215,21 @@ const float scaleUpAnimateDuration = .8;
     scaledRect.origin.y = scaledY;
     scaledRect.size = CGSizeApplyAffineTransform(rect.size, t);
     return scaledRect;
+}
+
+-(UIButton *)detailContactButtonWithImage:(UIImage *)image{
+    
+    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    detailButton.frame = CGRectMake(0,
+                                    0,
+                                    40,
+                                    40);
+    detailButton.backgroundColor = [UIColor colorWithWhite:0.141 alpha:1.000];
+    [detailButton setImage:image forState:UIControlStateNormal];
+    detailButton.alpha = 0;
+    detailButton.layer.cornerRadius = 10;
+    
+    return detailButton;
 }
 
 @end
