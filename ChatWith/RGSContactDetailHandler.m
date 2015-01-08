@@ -12,6 +12,7 @@
 #import "RGSManagedUser.h"
 
 #import "UIImage+Resize.h"
+#import "UIView+RGSFrame.h"
 
 const BOOL isLeftOffScreen(CGRect rect){
     return CGRectGetMinX(rect) < 0.0f;
@@ -25,9 +26,16 @@ BOOL isWithinScreenBounds(CGRect rect){
     return CGRectContainsRect([UIScreen mainScreen].bounds, rect);
 }
 
-const float scaleUpAnimateDuration = .6;
+const float scaleUpAnimationDuration = .6;
+
 const float topDetailButtonPadding = 5;
 const float sideDetailButtonPadding = 5;
+
+const float showConfirmationViewAnimationDuration = .4;
+const int CB_Width = 48;
+int paddingBetweenCB = 8;
+int CBs_BottomPadding = 20;
+int CB_LeftPadding = 16;
 
 const float scalingFactor = 1.6;
 
@@ -36,15 +44,19 @@ const float scalingFactor = 1.6;
 @property UIButton *deleteContactButton;
 
 @property UIImageView *thumbnailImageView;
+
+@property UIView *dimView;
+
+@property UIView *confirmationView;
 @end
 
 
 @implementation RGSContactDetailHandler
 - (void)animateDetailButtons {
-    [UIView animateWithDuration:(scaleUpAnimateDuration -.3) delay:.2 options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:(scaleUpAnimationDuration -.3) delay:.2 options:UIViewAnimationOptionCurveLinear animations:^{
         self.chatContactButton.alpha = 1;
     } completion:nil];
-    [UIView animateWithDuration:(scaleUpAnimateDuration -.5) delay:.4 options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:(scaleUpAnimationDuration -.5) delay:.4 options:UIViewAnimationOptionCurveLinear animations:^{
         self.deleteContactButton.alpha = 1;
     } completion:nil];
 }
@@ -57,30 +69,16 @@ const float scalingFactor = 1.6;
         
         UIWindow *mainWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
         
-        UIView *dimView = [[UIView alloc] initWithFrame:contactListViewController.view.frame];
-        dimView.backgroundColor = [UIColor blackColor];
-        dimView.alpha = 0;
-        [dimView bk_whenTapped:^{
-            [UIView animateWithDuration:scaleUpAnimateDuration - .4 animations:^{
-                self.thumbnailImageView.transform = CGAffineTransformScale(self.thumbnailImageView.transform, .6, .6);
-                
-                dimView.alpha = 0;
-                
-                self.chatContactButton.alpha = 0;
-                self.deleteContactButton.alpha = 0;
-            } completion:^(BOOL finished) {
-                if(finished){
-                    [self.thumbnailImageView removeFromSuperview];
-                    [self.chatContactButton removeFromSuperview];
-                    [self.deleteContactButton removeFromSuperview];
-                    [dimView removeFromSuperview];
-                }
-            }];
+        self.dimView = [[UIView alloc] initWithFrame:contactListViewController.view.frame];
+        self.dimView.backgroundColor = [UIColor blackColor];
+        self.dimView.alpha = 0;
+        [self.dimView bk_whenTapped:^{
+            [self dismissOverlayWithCompletion:nil];
             
         }];
-        [mainWindow addSubview:dimView];
-        [UIView animateWithDuration:scaleUpAnimateDuration animations:^{
-            dimView.alpha = .21;
+        [mainWindow addSubview:self.dimView];
+        [UIView animateWithDuration:scaleUpAnimationDuration animations:^{
+            self.dimView.alpha = .21;
         }];
         
         CGRect thumbnailImageRect = [contactCell.contentView convertRect:contactCell.thumbnailImageView.frame toView:contactListViewController.view];
@@ -93,30 +91,56 @@ const float scalingFactor = 1.6;
         
         
         self.chatContactButton = [self detailContactButtonWithImage:[[UIImage imageNamed:@"chat_Contact"] resizedImage:CGSizeMake(20, 20)]];
-        [mainWindow addSubview:self.chatContactButton];
         [self.chatContactButton bk_addEventHandler:^(id sender) {
-            [UIView animateWithDuration:scaleUpAnimateDuration - .4 animations:^{
-                self.thumbnailImageView.transform = CGAffineTransformScale(self.thumbnailImageView.transform, .6, .6);
-                
-                dimView.alpha = 0;
-                
-                self.chatContactButton.alpha = 0;
-                self.deleteContactButton.alpha = 0;
-            } completion:^(BOOL finished) {
-                if(finished){
-                    [self.thumbnailImageView removeFromSuperview];
-                    [self.chatContactButton removeFromSuperview];
-                    [self.deleteContactButton removeFromSuperview];
-                    [dimView removeFromSuperview];
-                    
-                    [contactListViewController performSegueWithIdentifier:@"toMessagesScreen" sender:contactCell];
-                }
+            [self dismissOverlayWithCompletion:^(BOOL finished) {
+                if(finished)[contactListViewController performSegueWithIdentifier:@"toMessagesScreen" sender:contactCell];
             }];
-
         } forControlEvents:UIControlEventTouchUpInside];
+        [mainWindow addSubview:self.chatContactButton];
+        
         
         self.deleteContactButton = [self detailContactButtonWithImage:[[UIImage imageNamed:@"delete_Contact"] resizedImage:CGSizeMake(12, 12)]];
+        [self.deleteContactButton bk_addEventHandler:^(id sender) {
+            UIButton *deleteConButon = [self confirmationButtonWithTitle:@"Delete Contact"];
+            [deleteConButon setFrameOriginY:CGRectGetMaxY([UIScreen mainScreen].bounds) - CBs_BottomPadding - (CB_Width * 2) - paddingBetweenCB];
+            [deleteConButon setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            
+            UIButton *cancelConButton = [self confirmationButtonWithTitle:@"Cancel"];
+            [cancelConButton setFrameOriginY:CGRectGetMaxY([UIScreen mainScreen].bounds) - CBs_BottomPadding - CB_Width];
+            
+            self.confirmationView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+            [self.confirmationView setFrameOriginY:CBs_BottomPadding + (CB_Width * 2) + paddingBetweenCB];
+            self.confirmationView.backgroundColor = [UIColor clearColor];
+            
+            
+            [self.confirmationView bk_whenTapped:^{
+                [self dismissConfirmationView];
+            }];
+            
+            [cancelConButton bk_addEventHandler:^(id sender) {
+                [self dismissConfirmationView];
+            } forControlEvents:UIControlEventTouchUpInside];
+            
+            [deleteConButon bk_addEventHandler:^(id sender) {
+                [self dismissConfirmationView];
+                [self dismissOverlayWithCompletion:^(BOOL finished) {
+                    if(finished){
+                        [contactListViewController deleteContactAtIndex:contactIndex];
+                    }
+                }];
+            } forControlEvents:UIControlEventTouchUpInside];
+            [self.confirmationView addSubview:deleteConButon];
+            [self.confirmationView addSubview:cancelConButton];
+            [mainWindow addSubview:self.confirmationView];
+            
+            [UIView animateWithDuration:showConfirmationViewAnimationDuration animations:^{
+                [self.confirmationView setFrameOriginY:0];
+            }];
+
+            
+        } forControlEvents:UIControlEventTouchUpInside];
         [mainWindow addSubview:self.deleteContactButton];
+        
         
         CGAffineTransform scalingTransformation = CGAffineTransformMakeScale(scalingFactor, scalingFactor);
         CGRect scaledRect = [self scaleRect:thumbnailImageRect withTrasformation:scalingTransformation];
@@ -134,7 +158,7 @@ const float scalingFactor = 1.6;
             deleteButtonFrame.origin.y = CGRectGetMaxY(self.chatContactButton.frame) + topDetailButtonPadding;
             self.deleteContactButton.frame = deleteButtonFrame;
             
-            [UIView animateWithDuration:scaleUpAnimateDuration animations:^{
+            [UIView animateWithDuration:scaleUpAnimationDuration animations:^{
                 self.thumbnailImageView.transform = scalingTransformation;
             }];
             
@@ -180,7 +204,7 @@ const float scalingFactor = 1.6;
             }
             
             CGAffineTransform translationWithScaling = CGAffineTransformScale(translation, scalingFactor, scalingFactor);
-            [UIView animateWithDuration:scaleUpAnimateDuration animations:^{
+            [UIView animateWithDuration:scaleUpAnimationDuration animations:^{
                 self.thumbnailImageView.transform = translationWithScaling;
             }];
             
@@ -230,6 +254,51 @@ const float scalingFactor = 1.6;
     detailButton.layer.cornerRadius = 10;
     
     return detailButton;
+}
+
+-(UIButton *)confirmationButtonWithTitle:(NSString *)title{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setFrameSizeWidth:CGRectGetWidth([UIScreen mainScreen].bounds) - (CB_LeftPadding * 2)];
+    [button setFrameSizeHeight:CB_Width];
+    [button setFrameOriginX:CB_LeftPadding];
+    button.backgroundColor = [UIColor colorWithWhite:0.849 alpha:1.000];
+    button.alpha = .75;
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    button.layer.cornerRadius = 10;
+    return button;
+
+}
+
+-(void)dismissOverlayWithCompletion:(void (^)(BOOL finished))completionFinished{
+    [UIView animateWithDuration:scaleUpAnimationDuration - .4 animations:^{
+        self.thumbnailImageView.transform = CGAffineTransformScale(self.thumbnailImageView.transform, .6, .6);
+        
+        self.dimView.alpha = 0;
+        
+        self.chatContactButton.alpha = 0;
+        self.deleteContactButton.alpha = 0;
+    } completion:^(BOOL finished) {
+        if(finished){
+            [self.thumbnailImageView removeFromSuperview];
+            [self.chatContactButton removeFromSuperview];
+            [self.deleteContactButton removeFromSuperview];
+            [self.dimView removeFromSuperview];
+            if(completionFinished != nil) completionFinished(YES);
+            
+        } else {if(completionFinished != nil) completionFinished(NO);}
+    }];
+}
+
+-(void)dismissConfirmationView{
+    [UIView animateWithDuration:showConfirmationViewAnimationDuration - .1 animations:^{
+        [self.confirmationView setFrameOriginY:(CBs_BottomPadding + (CB_Width * 2) + paddingBetweenCB + 10)];
+    } completion:^(BOOL finished) {
+        if(finished){
+            [self.confirmationView removeFromSuperview];
+        }
+    }];
 }
 
 @end
