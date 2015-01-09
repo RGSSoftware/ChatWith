@@ -908,15 +908,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSContactListViewController.m"
-            timestampString = "442443298.030616"
+            timestampString = "442501336.625086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "-controller:didChangeSection:atIndex:forChangeType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -928,13 +928,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSContactListViewController.m"
-            timestampString = "442443298.030616"
+            timestampString = "442501336.625086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
             landmarkName = "-controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatWith/RGSContactListViewController.m"
+            timestampString = "442501336.625086"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
+            landmarkName = "-controllerDidChangeContent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatWith/RGSContactDetailHandler.m"
+            timestampString = "442508022.935759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "-contactListViewController:didSelectContactAtIndex:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[RGSContactDetailHandler contactListViewController:didSelectContactAtIndex:]"
+                  moduleName = "ChatWith"
+                  urlString = "file:///Users/MBA2/Desktop/ChatWith/ChatWith/RGSContactDetailHandler.m"
+                  timestampString = "442501447.184604"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "211"
+                  endingLineNumber = "211"
+                  offsetFromSymbolStart = "9074">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__77-[RGSContactDetailHandler contactListViewController:didSelectContactAtIndex:]_block_invoke165"
+                  moduleName = "ChatWith"
+                  urlString = "file:///Users/MBA2/Desktop/ChatWith/ChatWith/RGSContactDetailHandler.m"
+                  timestampString = "442501447.185"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "211"
+                  endingLineNumber = "211"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -943,14 +1005,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChatWith/RGSContactListViewController.m"
-            timestampString = "442443298.030616"
+            filePath = "ChatWith/RGSContactDetailHandler.m"
+            timestampString = "442508751.5861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
-            landmarkName = "-controllerDidChangeContent:"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
+            landmarkName = "-dismissConfirmationView"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[RGSContactDetailHandler dismissConfirmationView]"
+                  moduleName = "ChatWith"
+                  urlString = "file:///Users/MBA2/Desktop/ChatWith/ChatWith/RGSContactDetailHandler.m"
+                  timestampString = "442508149.918972"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "335"
+                  endingLineNumber = "335"
+                  offsetFromSymbolStart = "1148">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__50-[RGSContactDetailHandler dismissConfirmationView]_block_invoke"
+                  moduleName = "ChatWith"
+                  urlString = "file:///Users/MBA2/Desktop/ChatWith/ChatWith/RGSContactDetailHandler.m"
+                  timestampString = "442508149.919277"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "335"
+                  endingLineNumber = "335"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

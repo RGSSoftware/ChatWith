@@ -26,6 +26,7 @@
 		221A05611A0D6C7A006B46AD /* RGSChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 221A05601A0D6C7A006B46AD /* RGSChatCell.m */; };
 		222292A21A4147AB00BAF177 /* RGSSideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 222292A11A4147AB00BAF177 /* RGSSideMenuCell.m */; };
 		2230C27E1A5EF85100A2F6DB /* UIView+RGSFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2230C27D1A5EF85100A2F6DB /* UIView+RGSFrame.m */; };
+		2230C2811A60118500A2F6DB /* UIView+RGSGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 2230C2801A60118500A2F6DB /* UIView+RGSGesture.m */; };
 		223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */; };
 		223A1DB21A04459E00A1B3D2 /* RGSContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DB11A04459E00A1B3D2 /* RGSContact.m */; };
 		223B067E1A2F607400B2344F /* IBActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 223B067D1A2F607400B2344F /* IBActionSheet.m */; };
@@ -180,6 +181,8 @@
 		222292A11A4147AB00BAF177 /* RGSSideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSSideMenuCell.m; sourceTree = "<group>"; };
 		2230C27C1A5EF85100A2F6DB /* UIView+RGSFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RGSFrame.h"; sourceTree = "<group>"; };
 		2230C27D1A5EF85100A2F6DB /* UIView+RGSFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RGSFrame.m"; sourceTree = "<group>"; };
+		2230C27F1A60118500A2F6DB /* UIView+RGSGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RGSGesture.h"; sourceTree = "<group>"; };
+		2230C2801A60118500A2F6DB /* UIView+RGSGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RGSGesture.m"; sourceTree = "<group>"; };
 		223A1DA71A013F0200A1B3D2 /* RGSContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactCell.h; sourceTree = "<group>"; };
 		223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactCell.m; sourceTree = "<group>"; };
 		223A1DB01A04459E00A1B3D2 /* RGSContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContact.h; sourceTree = "<group>"; };
@@ -397,6 +400,8 @@
 		22889ACF19D3230D00F0541D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				2230C27F1A60118500A2F6DB /* UIView+RGSGesture.h */,
+				2230C2801A60118500A2F6DB /* UIView+RGSGesture.m */,
 				2230C27C1A5EF85100A2F6DB /* UIView+RGSFrame.h */,
 				2230C27D1A5EF85100A2F6DB /* UIView+RGSFrame.m */,
 				22F07A0C1A3890E1007E6E2B /* NSString+RGSAttributedString.h */,
@@ -917,6 +922,7 @@
 				22AC29081A4C698900D466F5 /* RGSSearchBar.m in Sources */,
 				2207E3F41A424B9A00CE91D9 /* RGSSettingViewController.m in Sources */,
 				227472091A277ABB00F61663 /* RGSPopAnimationController.m in Sources */,
+				2230C2811A60118500A2F6DB /* UIView+RGSGesture.m in Sources */,
 				22126CA11A2ECBC100A983E7 /* RGSMessage.m in Sources */,
 				22E954AD1A526A6F0066ECF4 /* RGSTitleBarButtonItem.m in Sources */,
 				223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */,

@@ -341,13 +341,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section{
 
 -(void)deleteContactAtIndex:(NSIndexPath *)contactIndex{
     RGSContact *contact = [_fetchedResultsController objectAtIndexPath:contactIndex];
-    [contact MR_deleteEntity];
-    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
-//        if (success) {
-//            [self.collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:contactIndex]];
-//        }
-    }];
-    
+    [contact MR_deleteEntity];    
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
