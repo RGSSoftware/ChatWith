@@ -22,4 +22,6 @@
 @dynamic sender;
 @dynamic image;
 
+@dynamic sendStatus;
+
 @end

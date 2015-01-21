@@ -34,6 +34,8 @@
 
 #import "RGSNavigationController.h"
 
+#import <MessageUI/MessageUI.h>
+
 
 
 @implementation RGSAppDelegate
@@ -158,6 +160,12 @@
                                        forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
     
+    //http://stackoverflow.com/questions/12624151/mfmailcomposeviewcontroller-throws-a-viewservicedidterminatewitherror-and-then-e#18130193
+//    [[UINavigationBar appearanceWhenContainedIn:[MFMailComposeViewController class], nil] setTitleTextAttributes:
+//     @{
+//       UITextAttributeFont : [UIFont boldSystemFontOfSize:14.0f],
+//       }];
+    
     
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
@@ -168,86 +176,86 @@
     [RGSContact MR_truncateAll];
     [RGSMessage MR_truncateAll];
     [RGSChat MR_truncateAll];
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
     
     
-    {
-        RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
-        currentUser.currentUser = [NSNumber numberWithBool:YES];
-        currentUser.fullName = @"bar";
-        currentUser.password = @"abc123456";
-        
-        RGSManagedUser *rrUser = [RGSManagedUser MR_createEntity];
-        rrUser.fullName = @"rr";
-        rrUser.password = @"h5ljh4aKOcLw";
-        rrUser.entityID = @894248;
-        
-        
-        
-        for(int i = 0; i < 20; i++){
-            RGSContact *contact = [RGSContact MR_createEntity];
-            contact.source = currentUser;
-            
-            RGSManagedUser *user = [RGSManagedUser MR_createEntity];
-            user.fullName = [LoremIpsum word];
-            contact.friend = user;
-            
-            switch (i % 4) {
-                case 0:
-                user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"sarah_connor"]);
-                    user.blobID = @0;
-                    break;
-                case 1:
-                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"t1000"]);
-                    user.blobID = @1;
-                    break;
-                case 2:
-                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"joe_morton"]);
-                    user.blobID = @2;
-                    break;
-                case 3:
-                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"john_connor"]);
-                    user.blobID = @3;
-                    break;
-              default:
-                    break;
-            }
-        }
-        
-        RGSChat *chat = [RGSChat MR_createEntity];
-        chat.sender = currentUser;
-        chat.receiver = rrUser;
-        chat.lastMessageDate = [NSDate date];
-        [chat addParticipantsObject:currentUser];
-        [chat addParticipantsObject:rrUser];
-        
-        [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
-            if (success) {
-                
-//                UIViewController *vc = [UIViewController new];
-//                vc.view.backgroundColor = [UIColor redColor];
+//    {
+//        RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
+//        currentUser.currentUser = [NSNumber numberWithBool:YES];
+//        currentUser.fullName = @"bar";
+//        currentUser.password = @"abc123456";
+//        
+//        RGSManagedUser *rrUser = [RGSManagedUser MR_createEntity];
+//        rrUser.fullName = @"rr";
+//        rrUser.password = @"h5ljh4aKOcLw";
+//        rrUser.entityID = @894248;
+//        
+//        
+//        
+//        for(int i = 0; i < 20; i++){
+//            RGSContact *contact = [RGSContact MR_createEntity];
+//            contact.source = currentUser;
+//            
+//            RGSManagedUser *user = [RGSManagedUser MR_createEntity];
+//            user.fullName = [LoremIpsum word];
+//            contact.friend = user;
+//            
+//            switch (i % 4) {
+//                case 0:
+//                user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"sarah_connor"]);
+//                    user.blobID = @0;
+//                    break;
+//                case 1:
+//                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"t1000"]);
+//                    user.blobID = @1;
+//                    break;
+//                case 2:
+//                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"joe_morton"]);
+//                    user.blobID = @2;
+//                    break;
+//                case 3:
+//                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"john_connor"]);
+//                    user.blobID = @3;
+//                    break;
+//              default:
+//                    break;
+//            }
+//        }
+//        
+//        RGSChat *chat = [RGSChat MR_createEntity];
+//        chat.receiver = rrUser;
+//        chat.lastMessageDate = [NSDate date];
+//        [chat addParticipantsObject:currentUser];
+//        [chat addParticipantsObject:rrUser];
+//        
+//        [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
+//            if (success) {
 //                
-//                 MFSideMenuContainerViewController *container = [MFSideMenuContainerViewController containerWithCenterViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController] leftMenuViewController:nil rightMenuViewController:vc];
-//                container.rightMenuWidth = 150;
+////                UIViewController *vc = [UIViewController new];
+////                vc.view.backgroundColor = [UIColor redColor];
+////                
+////                 MFSideMenuContainerViewController *container = [MFSideMenuContainerViewController containerWithCenterViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController] leftMenuViewController:nil rightMenuViewController:vc];
+////                container.rightMenuWidth = 150;
+////                
+////                RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:container];
 //                
-//                RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:container];
-                
-                UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
-                
-                if([vc isKindOfClass:[RGSChatListViewController class]]){
-                    RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:vc];
-                    self.window.rootViewController = nav;
-                } else {
-                    if([vc isKindOfClass:[RGSSideMenuViewController class]] || [vc isKindOfClass:[RGSContactListViewController class]] || [vc isKindOfClass:[RGSMessageListViewController class]]){
-                        RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:vc];
-                        self.window.rootViewController = nav;
-                    } else {
-                        self.window.rootViewController = vc;
-                    }
-                }
-            }
-        }];
-        
-    }
+//                UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+//                
+//                if([vc isKindOfClass:[RGSChatListViewController class]]){
+//                    RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:vc];
+//                    self.window.rootViewController = nav;
+//                } else {
+//                    if([vc isKindOfClass:[RGSSideMenuViewController class]] || [vc isKindOfClass:[RGSContactListViewController class]] || [vc isKindOfClass:[RGSMessageListViewController class]]){
+//                        RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:vc];
+//                        self.window.rootViewController = nav;
+//                    } else {
+//                        self.window.rootViewController = vc;
+//                    }
+//                }
+//            }
+//        }];
+//        
+//    }
     
 //    [self loginAsRRWithBarAsMessagesReceiver];
     

@@ -17,11 +17,18 @@
 
 #import "RGSImageBatchRequest.h"
 
+#import "RGSLogReport.h"
+#import "RGSLogService.h"
+
 
 @interface RGSChatService () <QBChatDelegate, QBActionStatusDelegate>
 @property (nonatomic, strong)void(^loginSuccessBlock)(BOOL success);
 @property (nonatomic, strong)void(^getConversationSuccessBlock)(BOOL success, NSArray *);
 @property (nonatomic, strong) NSTimer *presenceTimer;
+
+@property QBChatMessage *qbMessage;
+@property RGSMessage *rgsMessage;
+
 @end
 
 @implementation RGSChatService
@@ -96,22 +103,24 @@ static dispatch_once_t once_token = 0;
 }
 
 -(void)sendMessage:(RGSMessage *)message{
-    QBChatMessage *qbMessage = [QBChatMessage message];
-    qbMessage.text = message.body;
-    qbMessage.recipientID = [message.receiver.entityID integerValue];
-    qbMessage.senderID = [message.sender.entityID integerValue];
+    self.rgsMessage = message;
+    
+    self.qbMessage = [QBChatMessage message];
+    self.qbMessage.text = self.rgsMessage.body;
+    self.qbMessage.recipientID = [self.rgsMessage.receiver.entityID integerValue];
+    self.qbMessage.senderID = [self.rgsMessage.sender.entityID integerValue];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [qbMessage setCustomParameters:params];
+    [self.qbMessage setCustomParameters:params];
     params[@"save_to_history"] = @YES;
     
-    params[@"attributed_text"] = [message.body stringByReplacingOccurrencesOfString:[NSString stringWithUTF8String:"\ufffc"]
+    params[@"attributed_text"] = [self.rgsMessage.body stringByReplacingOccurrencesOfString:[NSString stringWithUTF8String:"\ufffc"]
                                                                          withString:@"{%8*IMAGE*8%}"];
-
-    if (message.images) {
+    
+    if (self.rgsMessage.images) {
         RGSImageBatchRequest *imageBatchUpload = [[RGSImageBatchRequest alloc] init];
         
-        [imageBatchUpload uploadImagesWithMessage:message successBlock:^(NSSet *customObjects) {
+        [imageBatchUpload uploadImagesWithMessage:self.rgsMessage successBlock:^(NSSet *customObjects) {
             
             NSMutableArray *attachments = [NSMutableArray new];
             for (QBCOCustomObject *customObject in customObjects) {
@@ -122,16 +131,36 @@ static dispatch_once_t once_token = 0;
                 [attachments addObject:attachment];
             }
             
-            qbMessage.attachments = attachments;
+            self.qbMessage.attachments = attachments;
             
-            [[QBChat instance] sendMessage:qbMessage];
+           [self sendQBMessage];
         } statusBlock:nil errorBlock:nil];
         [imageBatchUpload startUpload];
     } else {
-        
-        [[QBChat instance] sendMessage:qbMessage];
+        [self sendQBMessage];
     }
+  
+}
+-(void)sendQBMessage{
+    if(!self.rgsMessage || !self.qbMessage) return;
     
+    [[QBChat instance] sendMessage:self.qbMessage sentBlock:^(NSError *error) {
+        if(!error){
+            self.rgsMessage.sendStatus = SendStatusSent;
+            [self.rgsMessage.managedObjectContext MR_saveOnlySelfWithCompletion:nil];
+        } else {
+            self.rgsMessage.sendStatus = SendStatusError;
+            
+            RGSLogReport *logReport = [RGSLogReport MR_createEntity];
+            logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+            logReport.userRequest = UserRequestSendMessage;
+            logReport.failureReason = [error localizedFailureReason];
+            [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+                if(success)[RGSLogService sendLog:logReport successBlock:nil];
+            }];
+        }
+        
+    }];
     
     
 }
@@ -168,6 +197,8 @@ static dispatch_once_t once_token = 0;
     message.chat = chat;
     
     
+    
+    
     if (qbMessage.attachments) {
         RGSImageBatchRequest *imageBatchDownload = [[RGSImageBatchRequest alloc] init];
         
@@ -199,9 +230,8 @@ static dispatch_once_t once_token = 0;
         
         [[NSManagedObjectContext MR_defaultContext] MR_saveOnlySelfAndWait];
     }
-
-
-    
-
+}
+-(BOOL)canReach{
+   return  [[Reachability reachabilityWithHostName:@"www.quickblox.com"] isReachable];
 }
 @end

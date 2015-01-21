@@ -33,6 +33,11 @@
         <relationship name="message" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSMessage" inverseName="images" inverseEntity="RGSMessage" syncable="YES"/>
         <relationship name="messageImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSMessage" inverseName="image" inverseEntity="RGSMessage" syncable="YES"/>
     </entity>
+    <entity name="RGSLogReport" representedClassName="RGSLogReport" syncable="YES">
+        <attribute name="error" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="qBSystemVerisonNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="systemVersionNumber" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="RGSManagedUser" representedClassName="RGSManagedUser" syncable="YES">
         <attribute name="blobID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -76,5 +81,6 @@
         <element name="RGSImage" positionX="-126" positionY="36" width="128" height="105"/>
         <element name="RGSManagedUser" positionX="-333" positionY="-117" width="128" height="418"/>
         <element name="RGSMessage" positionX="-162" positionY="99" width="128" height="148"/>
+        <element name="RGSLogReport" positionX="-126" positionY="36" width="128" height="90"/>
     </elements>
 </model>

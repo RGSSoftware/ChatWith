@@ -11,6 +11,7 @@
 @class RGSMessage;
 
 @interface RGSChatService : NSObject
+@property(readonly)BOOL canReach;
 
 + (instancetype)shared;
 
@@ -19,4 +20,6 @@
 -(void)allConversationsFromUser:(RGSManagedUser *)user startingAt:(NSDate *)startDate successBlock:(void(^)(BOOL success, NSArray *conversations))successBlock;
 
 -(void)sendMessage:(RGSMessage *)message;
+
+
 @end

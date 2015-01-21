@@ -1,6 +1,8 @@
 #include "Pods-ChatWithTests-Kiwi.xcconfig"
 FRAMEWORK_SEARCH_PATHS = ${PODS_CHATWITHTESTS_KIWI_FRAMEWORK_SEARCH_PATHS}
+FRAMEWORK_SEARCH_PATHS[sdk=iphoneos8.0] = ${PODS_CHATWITHTESTS_KIWI_FRAMEWORK_SEARCH_PATHS}
+FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator8.0] = ${PODS_CHATWITHTESTS_KIWI_FRAMEWORK_SEARCH_PATHS}
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/Kiwi" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/BlocksKit" "${PODS_ROOT}/Headers/Public/Kiwi" "${PODS_ROOT}/Headers/Public/LoremIpsum" "${PODS_ROOT}/Headers/Public/MFSideMenu" "${PODS_ROOT}/Headers/Public/MagicalRecord" "${PODS_ROOT}/Headers/Public/OCHamcrest" "${PODS_ROOT}/Headers/Public/OCMock" "${PODS_ROOT}/Headers/Public/OCMockito" "${PODS_ROOT}/Headers/Public/QuickBlox"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/Kiwi" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/BlocksKit" "${PODS_ROOT}/Headers/Public/Kiwi" "${PODS_ROOT}/Headers/Public/LoremIpsum" "${PODS_ROOT}/Headers/Public/MFSideMenu" "${PODS_ROOT}/Headers/Public/MagicalRecord" "${PODS_ROOT}/Headers/Public/OCHamcrest" "${PODS_ROOT}/Headers/Public/OCMock" "${PODS_ROOT}/Headers/Public/OCMockito" "${PODS_ROOT}/Headers/Public/QuickBlox" "${PODS_ROOT}/Headers/Public/Reachability"
 OTHER_LDFLAGS = ${PODS_CHATWITHTESTS_KIWI_OTHER_LDFLAGS} -ObjC
 PODS_ROOT = ${SRCROOT}

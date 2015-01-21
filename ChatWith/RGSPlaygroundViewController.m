@@ -8,6 +8,10 @@
 
 #import "RGSPlaygroundViewController.h"
 
+#import "RGSMessage.h"
+
+#import "RGSChatService.h"
+
 @interface RGSPlaygroundViewController ()
 
 @end
@@ -17,6 +21,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+NSPersistentStoreCoordinator *coordinator = [NSPersistentStoreCoordinator MR_coordinatorWithSqliteStoreNamed:[MagicalRecord defaultStoreName]];
+    
+//    NSManagedObjectContext *context = [NSManagedObjectContext MR_contextWithStoreCoordinator:coordinator];
+    
+//    RGSMessage *message = [RGSMessage MR_createInContext:[NSManagedObjectContext MR_contextWithStoreCoordinator:coordinator]];
+//    message.body = @"message in secondary context";
+//    [message.managedObjectContext MR_saveOnlySelfAndWait];
+//    [context MR_saveOnlySelfWithCompletion:nil];
+//    [context MR_saveOnlySelfAndWait];
+    
+    
+    NSLog(@"------%@",[QBSettings serverChatDomain]);
+    BOOL bl = [[RGSChatService shared] canReach];
+    
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+   
+    NSString *qbsetting = [[QBApplication sharedApplication] restAPIVersion];
+    
+    
+//    {
+//        for(int i = 0; i > 10; i++){
+//            RGSMessage *message = [RGSMessage MR_createEntity];
+//            message.body = @"message in main context";
+//        }
+//    
+//    }
+//    
+//    NSManagedObjectContext *context2 = [NSManagedObjectContext MR_contextWithStoreCoordinator:coordinator];
+//    NSArray *allMessage = [RGSMessage MR_findAllInContext:context2];
+//    RGSMessage *firstMessage = [allMessage firstObject];
+//    NSLog(@"%@", firstMessage.body);
+    
+    
+    
+    
 }
 
 //- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{

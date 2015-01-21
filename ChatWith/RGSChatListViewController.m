@@ -221,12 +221,21 @@ return [[_fetchedResultsController sections] count];
         NSArray *result = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
         if (!result.count == 0) {
             self.showChat = [result firstObject];
-            [self bk_performBlock:^(id obj) {
-                [self performSegueWithIdentifier:@"toMessages" sender:self];
-            } afterDelay:0];
             
+            RGSMessageListViewController *messageListViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSMessageListViewController"];
+            messageListViewController.chat = [result firstObject];
+            messageListViewController.receiver = ((RGSContact *)[result firstObject]).friend;
             
         } else {
+            //create Chat from Contact
+            RGSChat *chat = [RGSChat MR_createEntity];
+            [chat addParticipants:[NSSet setWithObjects:contact.friend, contact.source, nil]];
+        
+            RGSMessageListViewController *messageListViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSMessageListViewController"];
+            messageListViewController.chat = chat;
+            messageListViewController.receiver = contact.friend;
+            
+            [self.navigationController pushViewController:messageListViewController animated:YES];
             
         };
     }];

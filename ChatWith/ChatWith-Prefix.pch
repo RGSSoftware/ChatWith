@@ -21,6 +21,7 @@
     #import <BlocksKit/BKMacros.h>
     #import <BlocksKit/BlocksKit+UIKit.h>
     #import "MFSideMenu.h"
+    #import "Reachability.h"
 
     #import "NSSet+RGSisEmpty.h"
 #endif

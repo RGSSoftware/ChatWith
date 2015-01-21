@@ -48,6 +48,9 @@
     
 }
 -(IBAction)sendEmail:(id)sender{
+    
+    
+    
     MFMailComposeViewController *mcvc = [[MFMailComposeViewController alloc] init];
     mcvc.mailComposeDelegate = self;
     [mcvc setSubject:@"Check out this app"];

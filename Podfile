@@ -5,6 +5,7 @@ pod 'QuickBlox'
 pod 'LoremIpsum', '~> 1.0'
 pod 'BlocksKit'
 pod 'MFSideMenu'
+pod 'Reachability'
 
 
 target :ChatWithTests, :exclusive => true do

@@ -9,17 +9,25 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+typedef NS_ENUM(NSInteger, SendStatus){
+    SendStatusSending,
+    SendStatusSent,
+    SendStatusError
+};
+
 @class RGSChat, RGSImage, RGSManagedUser;
 
 @interface RGSMessage : NSManagedObject
 
-@property (nonatomic, retain) NSString * body;
-@property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSString *body;
+@property (nonatomic, retain) NSDate *date;
 @property (nonatomic, retain) RGSChat *chat;
 @property (nonatomic, retain) NSSet *images;
 @property (nonatomic, retain) RGSManagedUser *receiver;
 @property (nonatomic, retain) RGSManagedUser *sender;
 @property (nonatomic, retain) RGSImage *image;
+
+@property SendStatus sendStatus;
 @end
 
 @interface RGSMessage (CoreDataGeneratedAccessors)

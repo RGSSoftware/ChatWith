@@ -33,6 +33,8 @@
 #import "CSGrowingTextView.h"
 #import "RGSBackBarButtonItem.h"
 
+#import "RGSLogReport.h"
+#import "RGSLogService.h"
 const int maxTextWidth = 260;
 const int cellContentMargin = 5;
 const int leftRightMargin = cellContentMargin * 2;
@@ -713,6 +715,7 @@ struct {
     message.receiver = self.receiver;
     message.chat = self.chat;
     message.body = self.messageComposerView.messageTextView.internalTextView.text;
+    message.sendStatus = SendStatusSending;
     
     message.date = [NSDate date];
     
@@ -737,11 +740,45 @@ struct {
         [messageImages addObject:messageImages];
     }
     
-    [[self managedObjectContext] MR_saveOnlySelfAndWait];
-    self.messageComposerView.messageTextView.internalTextView.text = nil;
-    [self.messageComposeImages removeAllObjects];
+    __block RGSLogReport *logReport;
+    [message.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+        if(success){
+            self.messageComposerView.messageTextView.internalTextView.text = nil;
+            [self.messageComposeImages removeAllObjects];
+            
+            if([[RGSChatService shared] canReach]){
+                [[RGSChatService shared] sendMessage:message];
+
+            } else {
+                message.sendStatus = SendStatusError;
+                
+                logReport = [self logReportWithFailureReason:@"QBSystem is not reachable"];
+                [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+                    if(success)[RGSLogService sendLog:logReport successBlock:nil];
+
+                }];
+              }
+            
+            
+        } else if (error){
+            logReport = [self logReportWithFailureReason:[error localizedFailureReason]];
+            [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+                if(success)[RGSLogService sendLog:logReport successBlock:nil];
+                
+            }];
+        }
+    }];
     
-//    [[RGSChatService shared] sendMessage:message];
+    
+    
+}
+
+-(RGSLogReport *)logReportWithFailureReason:(NSString *)reason{
+    RGSLogReport *logReport = [RGSLogReport MR_createEntity];
+    logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    logReport.userRequest = UserRequestSendMessage;
+    logReport.failureReason = reason;
+    return logReport;
 }
 
 - (void)dealloc {
