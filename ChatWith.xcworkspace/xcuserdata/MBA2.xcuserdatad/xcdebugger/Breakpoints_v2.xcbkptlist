@@ -1005,7 +1005,7 @@
                   symbolName = "-[RGSContactDetailHandler dismissConfirmationView]"
                   moduleName = "ChatWith"
                   urlString = "file:///Users/MBA2/Desktop/ChatWith/ChatWith/RGSContactDetailHandler.m"
-                  timestampString = "443464437.574585"
+                  timestampString = "444355775.340802"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "337"
@@ -1019,7 +1019,7 @@
                   symbolName = "__50-[RGSContactDetailHandler dismissConfirmationView]_block_invoke"
                   moduleName = "ChatWith"
                   urlString = "file:///Users/MBA2/Desktop/ChatWith/ChatWith/RGSContactDetailHandler.m"
-                  timestampString = "443464437.575222"
+                  timestampString = "444355775.341246"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "337"
@@ -1067,7 +1067,7 @@
                   symbolName = "-[RGSChatListViewController contactListViewController:didSelectContact:]"
                   moduleName = "ChatWith"
                   urlString = "file:///Users/MBA2/Desktop/ChatWith/ChatWith/RGSChatListViewController.m"
-                  timestampString = "443464437.584315"
+                  timestampString = "444355775.345377"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "214"
@@ -1081,7 +1081,7 @@
                   symbolName = "__72-[RGSChatListViewController contactListViewController:didSelectContact:]_block_invoke"
                   moduleName = "ChatWith"
                   urlString = "file:///Users/MBA2/Desktop/ChatWith/ChatWith/RGSChatListViewController.m"
-                  timestampString = "443464437.584883"
+                  timestampString = "444355775.345775"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "214"
@@ -1142,7 +1142,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatWith/RGSPlaygroundViewController.m"
@@ -1152,6 +1152,38 @@
             startingLineNumber = "42"
             endingLineNumber = "42"
             landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatWith/RGSMessageListViewController.m"
+            timestampString = "443687171.634768"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "750"
+            endingLineNumber = "750"
+            landmarkName = "-sendMessage:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatWith/RGSMessageListViewController.m"
+            timestampString = "443686770.981097"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "768"
+            endingLineNumber = "768"
+            landmarkName = "-sendMessage:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

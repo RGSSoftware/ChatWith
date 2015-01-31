@@ -144,6 +144,10 @@ struct {
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self scrollToBottomWithAnimation];
+    
+    NSLog(@"message Attachment.frame:%@", NSStringFromCGRect([self.messageComposerView convertRect:self.messageComposerView.addImageButton.frame toView:nil]));
+    NSLog(@"message textView.frame:%@", NSStringFromCGRect([self.messageComposerView convertRect:self.messageComposerView.messageTextView.frame toView:nil]));
+    NSLog(@"message sendButton.frame:%@", NSStringFromCGRect([self.messageComposerView convertRect:self.messageComposerView.sendMessagebButton.frame toView:nil]));
 
 }
 
@@ -715,7 +719,7 @@ struct {
     message.receiver = self.receiver;
     message.chat = self.chat;
     message.body = self.messageComposerView.messageTextView.internalTextView.text;
-    message.sendStatus = SendStatusSending;
+//    message.sendStatus = SendStatusSending;
     
     message.date = [NSDate date];
     
@@ -747,7 +751,7 @@ struct {
             [self.messageComposeImages removeAllObjects];
             
             if([[RGSChatService shared] canReach]){
-                [[RGSChatService shared] sendMessage:message];
+//                [[RGSChatService shared] sendMessage:message];
 
             } else {
                 message.sendStatus = SendStatusError;
@@ -761,6 +765,7 @@ struct {
             
             
         } else if (error){
+            #warning need implementation. Show message "an error has occured, please report for a quick fix" to user. 
             logReport = [self logReportWithFailureReason:[error localizedFailureReason]];
             [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
                 if(success)[RGSLogService sendLog:logReport successBlock:nil];

@@ -11,7 +11,7 @@
 #import "RGSUserMangementService.h"
 #import "RGSChatService.h"
 #import "LocalStorageService.h"
-#import "ApplicationSession.h"
+#import "RGSApplicationSession.h"
 
 #import "UIColor+RGSColorWithHexString.h"
 #import "NSAttributedString+RGSExtras.h"

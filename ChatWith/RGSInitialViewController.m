@@ -24,7 +24,7 @@
 
 #import "LoremIpsum.h"
 
-#import "ApplicationSession.h"
+#import "RGSApplicationSession.h"
 
 #import "RGSApplicationSessionManagementService.h"
 #import "RGSContactListViewController.h"
@@ -64,6 +64,7 @@
     
     [QBRequest createSessionWithSuccessBlock:^(QBResponse *response, QBASession *session) {
         [[self localStorageService].applicationSession MR_deleteEntity];
+        
         [[LocalStorageService shared] crateApplicationSessionWithQBASession:session successBlock:^(BOOL success, NSError *error) {
             if (success) {
                 if (self.localStorageService.savedUser) {

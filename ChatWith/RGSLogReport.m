@@ -12,7 +12,7 @@
 @implementation RGSLogReport
 
 @dynamic systemVersionNumber;
-@dynamic error;
 @dynamic userRequest;
+@dynamic failureReason;
 
 @end

@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "ApplicationSession.h"
+#import "RGSApplicationSession.h"
 
 
-@implementation ApplicationSession
+@implementation RGSApplicationSession
 
 @dynamic entityID;
 @dynamic token;

@@ -77,7 +77,7 @@
 		226E0D0319AB53B4004029D7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
 		227472091A277ABB00F61663 /* RGSPopAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 227472081A277ABB00F61663 /* RGSPopAnimationController.m */; };
 		227ADFBE1A0C071200D03017 /* RGSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 227ADFBD1A0C071200D03017 /* RGSBaseViewController.m */; };
-		227BFAF219E24674000E7ACC /* ApplicationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 227BFAF119E24674000E7ACC /* ApplicationSession.m */; };
+		227BFAF219E24674000E7ACC /* RGSApplicationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 227BFAF119E24674000E7ACC /* RGSApplicationSession.m */; };
 		227BFAF519E31EE0000E7ACC /* RGSChatService.m in Sources */ = {isa = PBXBuildFile; fileRef = 227BFAF419E31EE0000E7ACC /* RGSChatService.m */; };
 		2287C46A19FAB3EA00039555 /* UIImage+RGSinitWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2287C46919FAB3EA00039555 /* UIImage+RGSinitWithColor.m */; };
 		2287C47319FAC58600039555 /* UIColor+RGSColorWithHexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2287C47219FAC58600039555 /* UIColor+RGSColorWithHexString.m */; };
@@ -232,8 +232,8 @@
 		227472081A277ABB00F61663 /* RGSPopAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSPopAnimationController.m; sourceTree = "<group>"; };
 		227ADFBC1A0C071200D03017 /* RGSBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSBaseViewController.h; sourceTree = "<group>"; };
 		227ADFBD1A0C071200D03017 /* RGSBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSBaseViewController.m; sourceTree = "<group>"; };
-		227BFAF019E24674000E7ACC /* ApplicationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationSession.h; sourceTree = "<group>"; };
-		227BFAF119E24674000E7ACC /* ApplicationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationSession.m; sourceTree = "<group>"; };
+		227BFAF019E24674000E7ACC /* RGSApplicationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSApplicationSession.h; sourceTree = "<group>"; };
+		227BFAF119E24674000E7ACC /* RGSApplicationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSApplicationSession.m; sourceTree = "<group>"; };
 		227BFAF319E31EE0000E7ACC /* RGSChatService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChatService.h; sourceTree = "<group>"; };
 		227BFAF419E31EE0000E7ACC /* RGSChatService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChatService.m; sourceTree = "<group>"; };
 		2287C46819FAB3EA00039555 /* UIImage+RGSinitWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RGSinitWithColor.h"; sourceTree = "<group>"; };
@@ -482,6 +482,7 @@
 		22889AD119D3234500F0541D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				224FBF7619D1B7A800A924CA /* Main.storyboard */,
 				22E954AE1A531C1B0066ECF4 /* RGSBarButtonItem.h */,
 				22E954AF1A531C1B0066ECF4 /* RGSBarButtonItem.m */,
 				22E954AB1A526A6F0066ECF4 /* RGSTitleBarButtonItem.h */,
@@ -494,7 +495,6 @@
 				2207E3E71A41FCCB00CE91D9 /* dashBorderView.m */,
 				22F07A0F1A39652C007E6E2B /* RGSScrollView.h */,
 				22F07A101A39652C007E6E2B /* RGSScrollView.m */,
-				224FBF7619D1B7A800A924CA /* Main.storyboard */,
 				223B067C1A2F607400B2344F /* IBActionSheet.h */,
 				223B067D1A2F607400B2344F /* IBActionSheet.m */,
 				22041ED61A2764F800210E59 /* RGSNavigationController.h */,
@@ -549,8 +549,8 @@
 				22AD00F01A0ED43D008F9EF7 /* RGSChat.m */,
 				223A1DB01A04459E00A1B3D2 /* RGSContact.h */,
 				223A1DB11A04459E00A1B3D2 /* RGSContact.m */,
-				227BFAF019E24674000E7ACC /* ApplicationSession.h */,
-				227BFAF119E24674000E7ACC /* ApplicationSession.m */,
+				227BFAF019E24674000E7ACC /* RGSApplicationSession.h */,
+				227BFAF119E24674000E7ACC /* RGSApplicationSession.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -897,7 +897,7 @@
 				22D7BCC619A8D45100D2C01C /* ChatWith.xcdatamodeld in Sources */,
 				22BE6EEA1A163B1D00D130EB /* RGSMessageListViewController.m in Sources */,
 				22F07A111A39652C007E6E2B /* RGSScrollView.m in Sources */,
-				227BFAF219E24674000E7ACC /* ApplicationSession.m in Sources */,
+				227BFAF219E24674000E7ACC /* RGSApplicationSession.m in Sources */,
 				22126C9E1A2ECBC000A983E7 /* RGSImage.m in Sources */,
 				22AA4CC71A28DFDA008DE41B /* UINavigationController+RGSBlock.m in Sources */,
 				224A067A1A382BAC00292777 /* NSMutableAttributedString+RGSExtras.m in Sources */,

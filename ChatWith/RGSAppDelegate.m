@@ -179,332 +179,96 @@
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
     
     
-//    {
-//        RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
-//        currentUser.currentUser = [NSNumber numberWithBool:YES];
-//        currentUser.fullName = @"bar";
-//        currentUser.password = @"abc123456";
-//        
-//        RGSManagedUser *rrUser = [RGSManagedUser MR_createEntity];
-//        rrUser.fullName = @"rr";
-//        rrUser.password = @"h5ljh4aKOcLw";
-//        rrUser.entityID = @894248;
-//        
-//        
-//        
-//        for(int i = 0; i < 20; i++){
-//            RGSContact *contact = [RGSContact MR_createEntity];
-//            contact.source = currentUser;
-//            
-//            RGSManagedUser *user = [RGSManagedUser MR_createEntity];
-//            user.fullName = [LoremIpsum word];
-//            contact.friend = user;
-//            
-//            switch (i % 4) {
-//                case 0:
-//                user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"sarah_connor"]);
-//                    user.blobID = @0;
-//                    break;
-//                case 1:
-//                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"t1000"]);
-//                    user.blobID = @1;
-//                    break;
-//                case 2:
-//                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"joe_morton"]);
-//                    user.blobID = @2;
-//                    break;
-//                case 3:
-//                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"john_connor"]);
-//                    user.blobID = @3;
-//                    break;
-//              default:
-//                    break;
-//            }
-//        }
-//        
-//        RGSChat *chat = [RGSChat MR_createEntity];
-//        chat.receiver = rrUser;
-//        chat.lastMessageDate = [NSDate date];
-//        [chat addParticipantsObject:currentUser];
-//        [chat addParticipantsObject:rrUser];
-//        
-//        [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
-//            if (success) {
-//                
-////                UIViewController *vc = [UIViewController new];
-////                vc.view.backgroundColor = [UIColor redColor];
-////                
-////                 MFSideMenuContainerViewController *container = [MFSideMenuContainerViewController containerWithCenterViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController] leftMenuViewController:nil rightMenuViewController:vc];
-////                container.rightMenuWidth = 150;
-////                
-////                RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:container];
-//                
-//                UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
-//                
-//                if([vc isKindOfClass:[RGSChatListViewController class]]){
-//                    RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:vc];
-//                    self.window.rootViewController = nav;
-//                } else {
-//                    if([vc isKindOfClass:[RGSSideMenuViewController class]] || [vc isKindOfClass:[RGSContactListViewController class]] || [vc isKindOfClass:[RGSMessageListViewController class]]){
-//                        RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:vc];
-//                        self.window.rootViewController = nav;
-//                    } else {
-//                        self.window.rootViewController = vc;
-//                    }
-//                }
-//            }
-//        }];
-//        
-//    }
+    {
+        RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
+        currentUser.currentUser = [NSNumber numberWithBool:YES];
+        currentUser.fullName = @"bar";
+        currentUser.password = @"abc123456";
+        
+        RGSManagedUser *rrUser = [RGSManagedUser MR_createEntity];
+        rrUser.fullName = @"rr";
+        rrUser.password = @"h5ljh4aKOcLw";
+        rrUser.entityID = @894248;
+        
+        
+        
+        for(int i = 0; i < 20; i++){
+            RGSContact *contact = [RGSContact MR_createEntity];
+            contact.source = currentUser;
+            
+            RGSManagedUser *user = [RGSManagedUser MR_createEntity];
+            user.fullName = [LoremIpsum word];
+            contact.friend = user;
+            
+            switch (i % 4) {
+                case 0:
+                user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"sarah_connor"]);
+                    user.blobID = @0;
+                    break;
+                case 1:
+                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"t1000"]);
+                    user.blobID = @1;
+                    break;
+                case 2:
+                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"joe_morton"]);
+                    user.blobID = @2;
+                    break;
+                case 3:
+                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"john_connor"]);
+                    user.blobID = @3;
+                    break;
+              default:
+                    break;
+            }
+        }
+
+        RGSChat *chat = [RGSChat MR_createEntity];
+        chat.receiver = rrUser;
+        
+        RGSMessage *m = [RGSMessage MR_createEntity];
+        m.body = [LoremIpsum wordsWithNumber:9];
+        
+        [chat addMessagesObject:m];
+        chat.lastMessageDate = [NSDate date];
+        [chat addParticipantsObject:currentUser];
+        [chat addParticipantsObject:rrUser];
+        
+        {
+        
+            RGSChat *chat = [RGSChat MR_createEntity];
+            chat.receiver = rrUser;
+            
+            RGSMessage *m = [RGSMessage MR_createEntity];
+            m.body = [LoremIpsum wordsWithNumber:9];
+            
+            [chat addMessagesObject:m];
+            chat.lastMessageDate = [NSDate date];
+            [chat addParticipantsObject:currentUser];
+            [chat addParticipantsObject:rrUser];
+        }
+        
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+
+ 
+            UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+
+            if([vc isKindOfClass:[RGSSideMenuViewController class]] ||
+               [vc isKindOfClass:[RGSContactListViewController class]] ||
+               [vc isKindOfClass:[RGSMessageListViewController class]] ||
+               [vc isKindOfClass:[RGSLoginViewController class]]){
+                RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:vc];
+                self.window.rootViewController = nav;
+            } else {
+                self.window.rootViewController = vc;
+            }
+   
+    }
     
 //    [self loginAsRRWithBarAsMessagesReceiver];
     
     self.window.frame = [[UIScreen mainScreen] bounds];
     [self.window makeKeyAndVisible];
-//    self.applicationSessionManager.applicationID = 7632;
-//    self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";
-//    self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
-//    self.applicationSessionManager.accountKey = @"byNoqE9AHiQsoffhPgdt";
-    
-//    [self loginAsRRWithBarAsMessagesReceiver];
-    
-//    [self loginAsBarWithRRAsMessagesReceiver];
-//
-//    RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
-//    currentUser.currentUser = [NSNumber numberWithBool:YES];
-//    
-//    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
-//    barUser.fullName = @"bar";
-//
-//    RGSContact *contact = [RGSContact MR_createEntity];
-//    contact.source = currentUser;
-//    contact.friend = barUser;
-//    
-//    RGSChat *chat = [RGSChat MR_createEntity];
-//    chat.sender = currentUser;
-//    chat.receiver = barUser;
-//    chat.lastMessageDate = [NSDate date];
-//    [chat addParticipantsObject:currentUser];
-//    [chat addParticipantsObject:barUser];
-//    
-//    for (int i = 0; i < 20; i ++) {
-//        RGSMessage *message = [RGSMessage MR_createEntity];
-//        message.body = [LoremIpsum wordsWithNumber:10];
-//        message.sender = currentUser;
-//        [chat addMessagesObject:message];
-//    }
-//    
-//    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:nil];
 
-
-//
-////    for(int i = 0; i < 60; i++){
-////        RGSManagedUser *testUser = [RGSManagedUser MR_createEntity];
-////        testUser.fullName = @"test";
-////        
-////        Contact *contacTest = [Contact MR_createEntity];
-////        contacTest.source = currentUser;
-////        contacTest.friend = testUser;
-////        
-////        [currentUser addContactsObject:contacTest];
-////    }
-//    
-//    /////////////
-//    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
-//    barUser.fullName = @"bar";
-//    
-//    RGSChat *chat1 = [RGSChat MR_createEntity];
-//    chat1.sender = currentUser;
-//    chat1.receiver = barUser;
-//    chat1.lastMessageDate = [NSDate date];
-//    [chat1 addParticipantsObject:currentUser];
-    
-//    RGSContact *contactBar = [RGSContact MR_createEntity];
-//    contactBar.source = currentUser;
-//    contactBar.friend = barUser;
-//    
-//    [currentUser addContactsObject:contactBar];
-//    //////////////
-//    RGSManagedUser *fooUser = [RGSManagedUser MR_createEntity];
-//    fooUser.fullName = @"foo";
-//    
-//    RGSContact *contactFoo = [RGSContact MR_createEntity];
-//    contactFoo.source = currentUser;
-//    contactFoo.friend = fooUser;
-//    
-//    [currentUser addContactsObject:contactFoo];
-//    ///////////////////
-//    RGSManagedUser *teeUser = [RGSManagedUser MR_createEntity];
-//    teeUser.fullName = @"tee";
-//    
-//    RGSContact *contactTee = [RGSContact MR_createEntity];
-//    contactTee.source = currentUser;
-//    contactTee.friend = teeUser;
-//    
-//    [currentUser addContactsObject:contactTee];
-//    /////////////////
-//    RGSManagedUser *weeUser = [RGSManagedUser MR_createEntity];
-//    weeUser.fullName = @"wee";
-//    
-//    RGSContact *contactWee = [RGSContact MR_createEntity];
-//    contactWee.source = teeUser;
-//    contactWee.friend = weeUser;
-//    
-//    [teeUser addContactsObject:contactWee];
-//    
-//    
-//    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:nil];
-    
-//    RGSChat *chat1 = [RGSChat MR_createEntity];
-//    chat1.sender = currentUser;
-//    chat1.receiver = barUser;
-//    chat1.lastMessageDate = [NSDate date];
-//    [chat1 addParticipantsObject:currentUser];
-    
-//    for (int i = 0; i < 10; i++) {
-//        RGSMessage *message = [RGSMessage MR_createEntity];
-//        message.body = @"Lorem ipsum dolor sit amet, cu wisi inimicus gloriatur nec. Vis id falli eripuit. Ius nusquam detraxit senserit cu, te.";
-//        message.date = [NSDate date];
-//        [chat1 addMessagesObject:message];
-//    }
-    
-//    {
-//        RGSMessage *message = [RGSMessage MR_createEntity];
-//        message.body = @"a Message to current User sent";
-//        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
-//        message.sender = currentUser;
-//        [chat1 addMessagesObject:message];
-//    }
-//
-//    {
-//        RGSMessage *message = [RGSMessage MR_createEntity];
-//        message.body = @"a Message to Bar sent";
-//        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
-//        message.sender = barUser;
-//        [chat1 addMessagesObject:message];
-//    }
-//    {
-//        RGSMessage *message = [RGSMessage MR_createEntity];
-//        message.body = [LoremIpsum wordsWithNumber:19];
-//        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
-//        message.sender = currentUser;
-//        [chat1 addMessagesObject:message];
-//    }
-//    {
-//        RGSMessage *message = [RGSMessage MR_createEntity];
-//        message.body = @"two words";
-//        message.date = [[NSDate dateYesterday] dateByAddingHours:3];
-//        message.sender = currentUser;
-//        [chat1 addMessagesObject:message];
-//    }
-//
-//    [currentUser addChatsObject:chat1];
-//    
-//    for (int i = 0; i < 3; i ++) {
-//        RGSChat *chat = [RGSChat MR_createEntity];
-//        chat.sender = currentUser;
-//        [chat addParticipantsObject:currentUser];
-//        
-//        if (i == 0) {
-//            chat.lastMessageDate = [NSDate dateYesterday];
-//        } else if (i == 1){
-//            chat.lastMessageDate = [NSDate dateWithDaysBeforeNow:2];
-//        } else if (i == 2){
-//            chat.lastMessageDate = [NSDate dateWithDaysBeforeNow:40];
-//        }
-//        [currentUser addChatsObject:chat];
-//    }
-//    
-//    for (int i = 0; i < 20; i ++) {
-//        RGSMessage *message = [RGSMessage MR_createEntity];
-//        message.body = [LoremIpsum wordsWithNumber:10];
-//        message.sender = currentUser;
-//        [chat1 addMessagesObject:message];
-//    }
-
-    
-//    [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
-//        if (success) {
-//
-//            RGSMessageListViewController *mlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSMessageListViewController"];
-//            mlvc.chat = chat1;
-//            
-//            UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mlvc];
-//            //
-//                self.window.rootViewController = nc;
-            
-//            UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSChatListViewController"]];
-//            
-//            self.window.rootViewController = nc;
-
-//        }
-//    }];
-
-////
-//    NSLog(@"simple print-----allUsers.count------{%lu}", (unsigned long)[[RGSManagedUser MR_findAll] count]);
-//    NSLog(@"simple print-----allContacts.count------{%lu}", (unsigned long)[[RGSContact MR_findAll] count]);
-//    NSLog(@"simple print-----allChats.count------{%lu}", (unsigned long)[[RGSChat MR_findAll] count]);
-//    NSLog(@"simple print-----allMessage.count------{%lu}", (unsigned long)[[RGSMessage MR_findAll] count]);
-
-    
- 
-
-
-    
-    
-//    QBSessionParameters *parameters = [QBSessionParameters new];
-//    parameters.userLogin = currentUser.fullName;
-//    parameters.userPassword = currentUser.password;
-//
-//    [QBRequest createSessionWithExtendedParameters:parameters successBlock:^(QBResponse *response, QBASession *session) {
-//        // Sign In to QuickBlox Chat
-////        
-//    } errorBlock:^(QBResponse *response) {
-//        // error handling
-//        NSLog(@"error: %@", response.error);
-//    }];
-    
-
-    
-//    [self.applicationSessionManager createSessionWithCompletion:^(BOOL success) {
-//        if (success) {
-//            if (self.localStorageService.savedUser) {
-//                if (self.localStorageService.savedUser.isSignIn) {
-//                    //login user
-//                    [self.userManager loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.password successBlock:^(BOOL success) {
-//                        if(success){
-//                            //login to chat
-//                            [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
-//                                if(success){
-//                                    //retrieve lastest Converstations From QuickBlox
-//                                    //starting from lastest saved conversation
-//                                    [[RGSChatService shared] allConversationsFromUser:[[LocalStorageService shared] savedUser] startingAt:[LocalStorageService shared].lastestConverstation.lastMessageDate successBlock:^(BOOL success, NSArray *conversations) {
-//                                        if(success) {
-//                                            //save converstations to LocalStorage
-//                                            [[LocalStorageService shared] saveConversations:conversations];
-//                                            //on success, retore last visible screen
-//                                        }
-//                                    }];
-//                                }
-//                            }];
-//                            
-//                        } else {
-//                            //retry to login 3 more times
-//                            [self retryLoginWithMaxAttempts:3];
-//                        }
-//                    }];
-//                }
-//            } else {
-//                self.window.rootViewController = self.loginViewController;
-//            }
-//        }
-//    }];
-    
-    
-//
-//    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSChatListViewController"]];
-//    
-//    self.window.rootViewController = nc;
     return YES;
 }
 -(void)retryLoginWithMaxAttempts:(int)tries{

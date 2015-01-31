@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 @class UserModel;
 @class RGSManagedUser;
-@class ApplicationSession;
+@class RGSApplicationSession;
 @class RGSChat;
 
 @interface LocalStorageService : NSObject
 
-@property (nonatomic, strong)ApplicationSession *applicationSession;
+@property (nonatomic, strong)RGSApplicationSession *applicationSession;
 @property (nonatomic, strong)RGSChat *lastestConverstation;
 
 + (instancetype)shared;

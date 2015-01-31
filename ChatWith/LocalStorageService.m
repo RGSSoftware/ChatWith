@@ -9,7 +9,7 @@
 #import "LocalStorageService.h"
 #import "RGSManagedUser.h"
 
-#import "ApplicationSession.h"
+#import "RGSApplicationSession.h"
 
 @implementation LocalStorageService{
     NSMutableDictionary *messagesHistory;
@@ -120,13 +120,13 @@ static dispatch_once_t once_token = 0;
         successBlock(success, error);
     }];
 }
--(ApplicationSession *)applicationSession{
-    return [ApplicationSession MR_findFirst];
+-(RGSApplicationSession *)applicationSession{
+    return [RGSApplicationSession MR_findFirst];
 }
 
 -(void)crateApplicationSessionWithQBASession:(QBASession *)session successBlock:(void (^)(BOOL, NSError *))successBlock{
     [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
-        ApplicationSession *applicationSession = [ApplicationSession MR_createEntity];
+        RGSApplicationSession *applicationSession = [RGSApplicationSession MR_createEntity];
         applicationSession.applicationID = [NSNumber numberWithUnsignedInteger:session.applicationID];
         applicationSession.userID = [NSNumber numberWithUnsignedInteger:session.userID];
         applicationSession.deviceID = [NSNumber numberWithUnsignedInteger:session.deviceID];

@@ -8,7 +8,7 @@
 
 #import "RGSApplicationSessionManagementService.h"
 #import "LocalStorageService.h"
-#import "ApplicationSession.h"
+#import "RGSApplicationSession.h"
 
 @implementation RGSApplicationSessionManagementService
 

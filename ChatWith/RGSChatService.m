@@ -10,7 +10,7 @@
 #import "RGSChat.h"
 #import "RGSManagedUser.h"
 #import "RGSMessage.h"
-#import "ApplicationSession.h"
+#import "RGSApplicationSession.h"
 #import "RGSImage.h"
 
 #import "LocalStorageService.h"

@@ -10,7 +10,7 @@
 #import "RGSUserMangementService.h"
 #import "RGSChatService.h"
 #import "LocalStorageService.h"
-#import "ApplicationSession.h"
+#import "RGSApplicationSession.h"
 
 #import "NSString+alphaOnly.h"
 

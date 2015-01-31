@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 
 
-@interface ApplicationSession : NSManagedObject
+@interface RGSApplicationSession : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * entityID;
 @property (nonatomic, retain) NSString * token;

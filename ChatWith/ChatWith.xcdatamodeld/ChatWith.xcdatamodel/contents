@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="ApplicationSession" representedClassName="ApplicationSession" syncable="YES">
+    <entity name="RGSApplicationSession" representedClassName="RGSApplicationSession" syncable="YES">
         <attribute name="applicationID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="deviceID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="entityID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -75,12 +75,12 @@
         <relationship name="sender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSManagedUser" inverseName="sentMessages" inverseEntity="RGSManagedUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ApplicationSession" positionX="-36" positionY="-108" width="128" height="150"/>
-        <element name="RGSChat" positionX="88" positionY="81" width="128" height="223"/>
-        <element name="RGSContact" positionX="-315" positionY="342" width="128" height="73"/>
-        <element name="RGSImage" positionX="-126" positionY="36" width="128" height="105"/>
-        <element name="RGSManagedUser" positionX="-333" positionY="-117" width="128" height="418"/>
-        <element name="RGSMessage" positionX="-162" positionY="99" width="128" height="148"/>
-        <element name="RGSLogReport" positionX="-126" positionY="36" width="128" height="90"/>
+        <element name="RGSApplicationSession" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RGSChat" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RGSContact" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RGSImage" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RGSLogReport" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RGSManagedUser" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RGSMessage" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
