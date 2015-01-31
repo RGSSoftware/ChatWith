@@ -11,7 +11,7 @@
 #import "RGSLoginViewController.h"
 #import "RGSMessageListViewController.h"
 #import "RGSUserMangementService.h"
-#import "RGSManagedUser.h"
+#import "RGSUser.h"
 #import "RGSSideMenuViewController.h"
 
 #import "RGSMessage.h"
@@ -48,12 +48,12 @@
     self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
     self.applicationSessionManager.accountKey = @"byNoqE9AHiQsoffhPgdt";
     
-    RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
+    RGSUser *currentUser = [RGSUser MR_createEntity];
     currentUser.currentUser = [NSNumber numberWithBool:YES];
     currentUser.fullName = @"rr";
     currentUser.password = @"h5ljh4aKOcLw";
     //
-    RGSManagedUser *barUser = [RGSManagedUser MR_createEntity];
+    RGSUser *barUser = [RGSUser MR_createEntity];
     barUser.fullName = @"bar";
     barUser.password = @"abc123456";
     barUser.entityID = @2036179;
@@ -99,12 +99,12 @@
 - (void)loginAsBarWithRRAsMessagesReceiver
 {
     {
-        RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
+        RGSUser *currentUser = [RGSUser MR_createEntity];
         currentUser.currentUser = [NSNumber numberWithBool:YES];
         currentUser.fullName = @"bar";
         currentUser.password = @"abc123456";
         
-        RGSManagedUser *rrUser = [RGSManagedUser MR_createEntity];
+        RGSUser *rrUser = [RGSUser MR_createEntity];
         rrUser.fullName = @"rr";
         rrUser.password = @"h5ljh4aKOcLw";
         rrUser.entityID = @894248;
@@ -172,7 +172,7 @@
     
 //    [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
     
-    [RGSManagedUser MR_truncateAll];
+    [RGSUser MR_truncateAll];
     [RGSContact MR_truncateAll];
     [RGSMessage MR_truncateAll];
     [RGSChat MR_truncateAll];
@@ -180,12 +180,12 @@
     
     
     {
-        RGSManagedUser *currentUser = [RGSManagedUser MR_createEntity];
+        RGSUser *currentUser = [RGSUser MR_createEntity];
         currentUser.currentUser = [NSNumber numberWithBool:YES];
         currentUser.fullName = @"bar";
         currentUser.password = @"abc123456";
         
-        RGSManagedUser *rrUser = [RGSManagedUser MR_createEntity];
+        RGSUser *rrUser = [RGSUser MR_createEntity];
         rrUser.fullName = @"rr";
         rrUser.password = @"h5ljh4aKOcLw";
         rrUser.entityID = @894248;
@@ -196,7 +196,7 @@
             RGSContact *contact = [RGSContact MR_createEntity];
             contact.source = currentUser;
             
-            RGSManagedUser *user = [RGSManagedUser MR_createEntity];
+            RGSUser *user = [RGSUser MR_createEntity];
             user.fullName = [LoremIpsum word];
             contact.friend = user;
             

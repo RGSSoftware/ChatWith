@@ -99,10 +99,11 @@
 		22AD00F41A1336E8008F9EF7 /* RGSMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD00F31A1336E7008F9EF7 /* RGSMessageCell.m */; };
 		22B1E3171A1967660062701A /* RGSMessageComposerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1E3141A1967660062701A /* RGSMessageComposerView.m */; };
 		22B1E3181A1967660062701A /* CSGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1E3161A1967660062701A /* CSGrowingTextView.m */; };
-		22BE6EE11A14728300D130EB /* RGSManagedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE01A14728300D130EB /* RGSManagedUser.m */; };
+		22BE6EE11A14728300D130EB /* RGSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE01A14728300D130EB /* RGSUser.m */; };
 		22BE6EEA1A163B1D00D130EB /* RGSMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE6EE91A163B1D00D130EB /* RGSMessageListViewController.m */; };
 		22C4F4051A3F93CB009CB1C2 /* RGSSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C4F4041A3F93CB009CB1C2 /* RGSSideMenuViewController.m */; };
 		22C4F4081A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C4F4071A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m */; };
+		22C53CC81A7D460D00B3489B /* QBASession+RGSApplicationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C53CC71A7D460D00B3489B /* QBASession+RGSApplicationSession.m */; };
 		22C5B0CB1A3739E30018A5F3 /* RGSInitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */; };
 		22D6474B1A211D4B00CD66BD /* RGSOverviewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */; };
 		22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474D1A22599E00CD66BD /* RGSMessageAttachmentViewController.m */; };
@@ -276,14 +277,16 @@
 		22B1E3141A1967660062701A /* RGSMessageComposerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessageComposerView.m; sourceTree = "<group>"; };
 		22B1E3151A1967660062701A /* CSGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSGrowingTextView.h; sourceTree = "<group>"; };
 		22B1E3161A1967660062701A /* CSGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSGrowingTextView.m; sourceTree = "<group>"; };
-		22BE6EDF1A14728300D130EB /* RGSManagedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSManagedUser.h; sourceTree = "<group>"; };
-		22BE6EE01A14728300D130EB /* RGSManagedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSManagedUser.m; sourceTree = "<group>"; };
+		22BE6EDF1A14728300D130EB /* RGSUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSUser.h; sourceTree = "<group>"; };
+		22BE6EE01A14728300D130EB /* RGSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSUser.m; sourceTree = "<group>"; };
 		22BE6EE81A163B1D00D130EB /* RGSMessageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageListViewController.h; sourceTree = "<group>"; };
 		22BE6EE91A163B1D00D130EB /* RGSMessageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessageListViewController.m; sourceTree = "<group>"; };
 		22C4F4031A3F93CB009CB1C2 /* RGSSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSSideMenuViewController.h; sourceTree = "<group>"; };
 		22C4F4041A3F93CB009CB1C2 /* RGSSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSSideMenuViewController.m; sourceTree = "<group>"; };
 		22C4F4061A3F949D009CB1C2 /* RGShowSideMenuAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGShowSideMenuAnimationController.h; sourceTree = "<group>"; };
 		22C4F4071A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGShowSideMenuAnimationController.m; sourceTree = "<group>"; };
+		22C53CC61A7D460D00B3489B /* QBASession+RGSApplicationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QBASession+RGSApplicationSession.h"; sourceTree = "<group>"; };
+		22C53CC71A7D460D00B3489B /* QBASession+RGSApplicationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QBASession+RGSApplicationSession.m"; sourceTree = "<group>"; };
 		22C5B0C91A3739E20018A5F3 /* RGSInitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSInitialViewController.h; sourceTree = "<group>"; };
 		22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSInitialViewController.m; sourceTree = "<group>"; };
 		22D647491A211D4B00CD66BD /* RGSOverviewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSOverviewSegue.h; sourceTree = "<group>"; };
@@ -406,6 +409,8 @@
 		22889ACF19D3230D00F0541D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				22C53CC61A7D460D00B3489B /* QBASession+RGSApplicationSession.h */,
+				22C53CC71A7D460D00B3489B /* QBASession+RGSApplicationSession.m */,
 				2230C27F1A60118500A2F6DB /* UIView+RGSGesture.h */,
 				2230C2801A60118500A2F6DB /* UIView+RGSGesture.m */,
 				2230C27C1A5EF85100A2F6DB /* UIView+RGSFrame.h */,
@@ -543,8 +548,8 @@
 				22126C9D1A2ECBC000A983E7 /* RGSImage.m */,
 				228EABAB1A240E96007D555E /* RGSMessageComposeImage.h */,
 				228EABAC1A240E96007D555E /* RGSMessageComposeImage.m */,
-				22BE6EDF1A14728300D130EB /* RGSManagedUser.h */,
-				22BE6EE01A14728300D130EB /* RGSManagedUser.m */,
+				22BE6EDF1A14728300D130EB /* RGSUser.h */,
+				22BE6EE01A14728300D130EB /* RGSUser.m */,
 				22AD00EF1A0ED43D008F9EF7 /* RGSChat.h */,
 				22AD00F01A0ED43D008F9EF7 /* RGSChat.m */,
 				223A1DB01A04459E00A1B3D2 /* RGSContact.h */,
@@ -907,6 +912,7 @@
 				223B06811A2F660E00B2344F /* RGSInviteViewController.m in Sources */,
 				2242571B1A3E24A000628405 /* RGSForgotPasswordViewController.m in Sources */,
 				22126CA41A2F3FC800A983E7 /* NSSet+RGSisEmpty.m in Sources */,
+				22C53CC81A7D460D00B3489B /* QBASession+RGSApplicationSession.m in Sources */,
 				22AA4CC41A28A30F008DE41B /* RGSDismissModallyAnimatonController.m in Sources */,
 				228EABAD1A240E96007D555E /* RGSMessageComposeImage.m in Sources */,
 				22F5206A1A0073E700FD2CD5 /* UIImage+Resize.m in Sources */,
@@ -942,7 +948,7 @@
 				22DDEB2F1A37240900B2A691 /* RGSBaseAnimationController.m in Sources */,
 				2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */,
 				22A001671A27789F00B22EEE /* RGSPushAnimationController.m in Sources */,
-				22BE6EE11A14728300D130EB /* RGSManagedUser.m in Sources */,
+				22BE6EE11A14728300D130EB /* RGSUser.m in Sources */,
 				223B067E1A2F607400B2344F /* IBActionSheet.m in Sources */,
 				223A1DB21A04459E00A1B3D2 /* RGSContact.m in Sources */,
 				2207E3E81A41FCCB00CE91D9 /* dashBorderView.m in Sources */,

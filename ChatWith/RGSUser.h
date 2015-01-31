@@ -11,7 +11,7 @@
 
 @class RGSChat, RGSContact, RGSMessage;
 
-@interface RGSManagedUser : NSManagedObject
+@interface RGSUser : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * blobID;
 @property (nonatomic, retain) NSDate * createdAt;
@@ -42,7 +42,7 @@
 @property (readonly)BOOL isSignIn;
 @end
 
-@interface RGSManagedUser (CoreDataGeneratedAccessors)
+@interface RGSUser (CoreDataGeneratedAccessors)
 
 - (void)addBefriendObject:(RGSContact *)value;
 - (void)removeBefriendObject:(RGSContact *)value;

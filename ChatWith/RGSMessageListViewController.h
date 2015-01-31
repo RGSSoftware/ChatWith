@@ -7,13 +7,13 @@
 //
 
 #import "RGSBaseViewController.h"
-@class RGSManagedUser;
+@class RGSUser;
 @class RGSChat;
 @class RGSMessageComposerView;
 
 @interface RGSMessageListViewController : RGSBaseViewController <NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong)RGSManagedUser *receiver;
+@property (nonatomic, strong)RGSUser *receiver;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

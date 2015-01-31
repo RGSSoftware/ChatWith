@@ -7,7 +7,7 @@
 //
 
 #import "RGSChat.h"
-#import "RGSManagedUser.h"
+#import "RGSUser.h"
 #import "RGSMessage.h"
 
 

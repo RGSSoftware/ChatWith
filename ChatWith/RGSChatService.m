@@ -8,7 +8,7 @@
 
 #import "RGSChatService.h"
 #import "RGSChat.h"
-#import "RGSManagedUser.h"
+#import "RGSUser.h"
 #import "RGSMessage.h"
 #import "RGSApplicationSession.h"
 #import "RGSImage.h"
@@ -90,7 +90,7 @@ static dispatch_once_t once_token = 0;
     }
 }
 
--(void)allConversationsFromUser:(RGSManagedUser *)user startingAt:(NSDate *)startDate successBlock:(void (^)(BOOL, NSArray *))successBlock{
+-(void)allConversationsFromUser:(RGSUser *)user startingAt:(NSDate *)startDate successBlock:(void (^)(BOOL, NSArray *))successBlock{
     self.getConversationSuccessBlock = successBlock;
     
     NSMutableDictionary *extendedRequest = [NSMutableDictionary new];
@@ -166,18 +166,18 @@ static dispatch_once_t once_token = 0;
 }
 
 - (void)chatDidReceiveMessage:(QBChatMessage *)qbMessage{
-    NSArray *users = [RGSManagedUser MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"(%K = %@) OR (%K = %@)",
+    NSArray *users = [RGSUser MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"(%K = %@) OR (%K = %@)",
                                                               NSStringFromSelector(@selector(entityID)),
                                                               [NSNumber numberWithInteger:qbMessage.senderID],
                                                               NSStringFromSelector(@selector(entityID)),
                                                               [NSNumber numberWithInteger:qbMessage.recipientID]]];
     
-    RGSManagedUser *sender;
-    RGSManagedUser *receiver;
+    RGSUser *sender;
+    RGSUser *receiver;
     
     
     RGSMessage *message = [RGSMessage MR_createEntity];
-    for(RGSManagedUser *user in users){
+    for(RGSUser *user in users){
         if([[NSNumber numberWithUnsignedInteger:qbMessage.senderID] isEqualToNumber:user.entityID]){
             sender = user;
         } else receiver = user;

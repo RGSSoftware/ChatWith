@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import "RGSManagedUser.h"
+#import "RGSUser.h"
 #import "RGSChat.h"
 #import "RGSContact.h"
 #import "RGSMessage.h"
 
 
-@implementation RGSManagedUser
+@implementation RGSUser
 
 @dynamic blobID;
 @dynamic createdAt;

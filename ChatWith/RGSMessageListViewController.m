@@ -10,7 +10,7 @@
 
 #import "RGSMessageAttachmentViewController.h"
 
-#import "RGSManagedUser.h"
+#import "RGSUser.h"
 #import "RGSMessage.h"
 #import "RGSImage.h"
 
@@ -52,7 +52,7 @@ struct {
 
 @property (nonatomic, strong)UITableViewCell *referenceCell;
 
-@property (nonatomic, strong)RGSManagedUser *currentUser;
+@property (nonatomic, strong)RGSUser *currentUser;
 
 @property (nonatomic, strong)UIView *messageComposerViewWithKeyboardImage;
 @property (nonatomic, strong)UIView *keyboard;
@@ -321,7 +321,7 @@ struct {
     return [NSManagedObjectContext MR_defaultContext];
 }
 
--(RGSManagedUser *)currentUser{
+-(RGSUser *)currentUser{
     if (_currentUser == nil)
     {
         _currentUser = [[LocalStorageService shared] savedUser];

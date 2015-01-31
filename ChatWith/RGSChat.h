@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class RGSManagedUser, RGSMessage;
+@class RGSUser, RGSMessage;
 
 @interface RGSChat : NSManagedObject
 
@@ -22,8 +22,8 @@
 @property (nonatomic, retain) NSNumber * unreadMessagesCount;
 @property (nonatomic, retain) NSNumber * userID;
 @property (nonatomic, retain) NSSet *messages;
-@property (nonatomic, retain) RGSManagedUser *receiver;
-@property (nonatomic, retain) RGSManagedUser *sender;
+@property (nonatomic, retain) RGSUser *receiver;
+@property (nonatomic, retain) RGSUser *sender;
 @property (nonatomic, retain) NSSet *participants;
 @end
 
@@ -34,8 +34,8 @@
 - (void)addMessages:(NSSet *)values;
 - (void)removeMessages:(NSSet *)values;
 
-- (void)addParticipantsObject:(RGSManagedUser *)value;
-- (void)removeParticipantsObject:(RGSManagedUser *)value;
+- (void)addParticipantsObject:(RGSUser *)value;
+- (void)removeParticipantsObject:(RGSUser *)value;
 - (void)addParticipants:(NSSet *)values;
 - (void)removeParticipants:(NSSet *)values;
 

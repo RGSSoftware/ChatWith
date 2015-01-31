@@ -7,7 +7,7 @@
 //
 
 #import "RGSUserMangementService.h"
-#import "RGSManagedUser.h"
+#import "RGSUser.h"
 #import "LocalStorageService.h"
 
 
@@ -47,7 +47,7 @@ static dispatch_once_t once_token = 0;
     user.password = password;
     [QBRequest signUp:user
          successBlock:^(QBResponse *response, QBUUser *user) {
-             RGSManagedUser *saveUser = [RGSManagedUser MR_findFirstByAttribute:@"fullName" withValue:user.login];
+             RGSUser *saveUser = [RGSUser MR_findFirstByAttribute:@"fullName" withValue:user.login];
              [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
                  saveUser.entityID = [NSNumber numberWithInteger:user.ID];
              } completion:^(BOOL success, NSError *error) {
@@ -89,7 +89,7 @@ static dispatch_once_t once_token = 0;
 
 -(void)quickBloxLoginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL))results{
     [QBRequest logInWithUserLogin:username password:password successBlock:^(QBResponse *response, QBUUser *user) {
-        RGSManagedUser *currentUser = [[LocalStorageService shared] savedUser];
+        RGSUser *currentUser = [[LocalStorageService shared] savedUser];
         
         [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
             currentUser.entityID = [NSNumber numberWithInteger:user.ID];

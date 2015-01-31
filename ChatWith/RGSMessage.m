@@ -9,7 +9,7 @@
 #import "RGSMessage.h"
 #import "RGSChat.h"
 #import "RGSImage.h"
-#import "RGSManagedUser.h"
+#import "RGSUser.h"
 
 
 @implementation RGSMessage

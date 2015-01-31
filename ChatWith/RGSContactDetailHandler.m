@@ -9,7 +9,7 @@
 #import "RGSContactDetailHandler.h"
 #import "RGSContactCell.h"
 #import "RGSContact.h"
-#import "RGSManagedUser.h"
+#import "RGSUser.h"
 
 #import "UIImage+Resize.h"
 #import "UIView+RGSFrame.h"

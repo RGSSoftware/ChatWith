@@ -13,7 +13,7 @@
 #import "RGSChat.h"
 #import "RGSMessage.h"
 #import "RGSContact.h"
-#import "RGSManagedUser.h"
+#import "RGSUser.h"
 
 #import "RGSChatCell.h"
 

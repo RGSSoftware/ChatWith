@@ -12,7 +12,7 @@
 #import "RGSLoginViewController.h"
 #import "RGSMessageListViewController.h"
 #import "RGSUserMangementService.h"
-#import "RGSManagedUser.h"
+#import "RGSUser.h"
 
 #import "RGSMessage.h"
 #import "RGSChat.h"
@@ -20,6 +20,7 @@
 #import "RGSChat.h"
 #import "RGSContact.h"
 
+#import "QBASession+RGSApplicationSession.h"
 #import "NSDate+Utilities.h"
 
 #import "LoremIpsum.h"
@@ -64,7 +65,20 @@
     
     [QBRequest createSessionWithSuccessBlock:^(QBResponse *response, QBASession *session) {
         [[self localStorageService].applicationSession MR_deleteEntity];
+        RGSApplicationSession *savedApplecationSession = [RGSApplicationSession MR_findFirst];
+        [savedApplecationSession MR_deleteEntity];
         
+        RGSApplicationSession *applicationSession = [session rgsApplicationSession];
+        applicationSession.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+            if (session) {
+                RGSUser *savedUser = [RGSUser MR_findFirstByAttribute:@"currentUser" withValue:@YES];
+                if (savedUser) {
+//                    if (/*auto login is enable*/) {
+//                        //login to QBSystem
+//                    }
+                }
+            }
+        }
         [[LocalStorageService shared] crateApplicationSessionWithQBASession:session successBlock:^(BOOL success, NSError *error) {
             if (success) {
                 if (self.localStorageService.savedUser) {

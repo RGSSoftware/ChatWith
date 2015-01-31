@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class RGSManagedUser;
+@class RGSUser;
 
 @interface RGSContact : NSManagedObject
 
-@property (nonatomic, retain) RGSManagedUser *source;
-@property (nonatomic, retain) RGSManagedUser *friend;
+@property (nonatomic, retain) RGSUser *source;
+@property (nonatomic, retain) RGSUser *friend;
 
 @end

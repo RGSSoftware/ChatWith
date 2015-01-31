@@ -11,7 +11,7 @@
 #import "RGSMessageListViewController.h"
 
 
-#import "RGSManagedUser.h"
+#import "RGSUser.h"
 #import "RGSContact.h"
 
 #import "RGSContactCell.h"

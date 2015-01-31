@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, SendStatus){
     SendStatusError
 };
 
-@class RGSChat, RGSImage, RGSManagedUser;
+@class RGSChat, RGSImage, RGSUser;
 
 @interface RGSMessage : NSManagedObject
 
@@ -23,8 +23,8 @@ typedef NS_ENUM(NSInteger, SendStatus){
 @property (nonatomic, retain) NSDate *date;
 @property (nonatomic, retain) RGSChat *chat;
 @property (nonatomic, retain) NSSet *images;
-@property (nonatomic, retain) RGSManagedUser *receiver;
-@property (nonatomic, retain) RGSManagedUser *sender;
+@property (nonatomic, retain) RGSUser *receiver;
+@property (nonatomic, retain) RGSUser *sender;
 @property (nonatomic, retain) RGSImage *image;
 
 @property SendStatus sendStatus;
