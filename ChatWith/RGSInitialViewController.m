@@ -21,6 +21,7 @@
 #import "RGSContact.h"
 
 #import "QBASession+RGSApplicationSession.h"
+#import "RGSUser+QBUser.h"
 #import "NSDate+Utilities.h"
 
 #import "LoremIpsum.h"
@@ -69,56 +70,76 @@
         [savedApplecationSession MR_deleteEntity];
         
         RGSApplicationSession *applicationSession = [session rgsApplicationSession];
-        applicationSession.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-            if (session) {
+        [applicationSession.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+            if (success) {
                 RGSUser *savedUser = [RGSUser MR_findFirstByAttribute:@"currentUser" withValue:@YES];
                 if (savedUser) {
-//                    if (/*auto login is enable*/) {
-//                        //login to QBSystem
-//                    }
-                }
-            }
-        }
-        [[LocalStorageService shared] crateApplicationSessionWithQBASession:session successBlock:^(BOOL success, NSError *error) {
-            if (success) {
-                if (self.localStorageService.savedUser) {
-                    
-                    if (self.localStorageService.savedUser.isSignIn) {
-                        //login user
-                        [self.userManager loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.password successBlock:^(BOOL success) {
-                            if(success){
-                                //login to chat
-                                [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
-                                    //                                if(success){
-                                    //                                    //retrieve lastest Converstations From QuickBlox
-                                    //                                    //starting from lastest saved conversation
-                                    //                                    [[RGSChatService shared] allConversationsFromUser:[[LocalStorageService shared] savedUser] startingAt:[LocalStorageService shared].lastestConverstation.lastMessageDate successBlock:^(BOOL success, NSArray *conversations) {
-                                    //                                        if(success) {
-                                    //                                            //save converstations to LocalStorage
-                                    //                                            [[LocalStorageService shared] saveConversations:conversations];
-                                    //                                            //on success, retore last visible screen
-                                    //                                        }
-                                    //                                    }];
-                                    //                                }
+                    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"autoLogin"]) {
+                        [QBRequest logInWithUserLogin:savedUser.login password:savedUser.password successBlock:^(QBResponse *response, QBUUser *user) {
+                            savedUser.entityID = [NSNumber numberWithInteger:user.ID];
+                            
+                            [savedUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+                                [[RGSChatService shared] loginUser:[savedUser qbUser] successBlock:^(BOOL success) {
+                                    if (/*has saved last screen*/) {
+                                        //show saved screen
+                                    } else {
+                                        
+                                    }
                                 }];
-                                
-                            } else {
-                                //retry to login 3 more times
-                                [self retryLoginWithMaxAttempts:3];
-                            }
+                            }];
+                            
+                        } errorBlock:^(QBResponse *response) {
+                            
                         }];
-                    } else {
-                        //show loginScreen
-                        //with userName and password in present in fields
-                    }
-                } else {
-                    [self performSegueWithIdentifier:@"toLoginScreen" sender:self];
+                   }
                 }
             }
         }];
+        
     } errorBlock:^(QBResponse *response) {
         
     }];
+     
+//        [[LocalStorageService shared] crateApplicationSessionWithQBASession:session successBlock:^(BOOL success, NSError *error) {
+//            if (success) {
+//                if (self.localStorageService.savedUser) {
+//                    
+//                    if (self.localStorageService.savedUser.isSignIn) {
+//                        //login user
+//                        [self.userManager loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.password successBlock:^(BOOL success) {
+//                            if(success){
+//                                //login to chat
+//                                [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
+//                                    //                                if(success){
+//                                    //                                    //retrieve lastest Converstations From QuickBlox
+//                                    //                                    //starting from lastest saved conversation
+//                                    //                                    [[RGSChatService shared] allConversationsFromUser:[[LocalStorageService shared] savedUser] startingAt:[LocalStorageService shared].lastestConverstation.lastMessageDate successBlock:^(BOOL success, NSArray *conversations) {
+//                                    //                                        if(success) {
+//                                    //                                            //save converstations to LocalStorage
+//                                    //                                            [[LocalStorageService shared] saveConversations:conversations];
+//                                    //                                            //on success, retore last visible screen
+//                                    //                                        }
+//                                    //                                    }];
+//                                    //                                }
+//                                }];
+//                                
+//                            } else {
+//                                //retry to login 3 more times
+//                                [self retryLoginWithMaxAttempts:3];
+//                            }
+//                        }];
+//                    } else {
+//                        //show loginScreen
+//                        //with userName and password in present in fields
+//                    }
+//                } else {
+//                    [self performSegueWithIdentifier:@"toLoginScreen" sender:self];
+//                }
+//            }
+//        }];
+//    } errorBlock:^(QBResponse *response) {
+//        
+//    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

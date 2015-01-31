@@ -349,7 +349,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="qU6-Sp-dDd"/>
                     <connections>
-                        <segue destination="EGF-iH-8R1" kind="show" id="Gvv-9q-q1J"/>
+                        <segue destination="EGF-iH-8R1" kind="show" identifier="toMainApp" id="Gvv-9q-q1J"/>
                         <segue destination="rBb-vm-Qvq" kind="show" identifier="toLoginScreen" id="xT6-nI-bhw"/>
                     </connections>
                 </viewController>

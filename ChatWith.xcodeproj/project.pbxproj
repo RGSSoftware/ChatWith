@@ -104,6 +104,7 @@
 		22C4F4051A3F93CB009CB1C2 /* RGSSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C4F4041A3F93CB009CB1C2 /* RGSSideMenuViewController.m */; };
 		22C4F4081A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C4F4071A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m */; };
 		22C53CC81A7D460D00B3489B /* QBASession+RGSApplicationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C53CC71A7D460D00B3489B /* QBASession+RGSApplicationSession.m */; };
+		22C53CCB1A7D4F9300B3489B /* RGSUser+QBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C53CCA1A7D4F9300B3489B /* RGSUser+QBUser.m */; };
 		22C5B0CB1A3739E30018A5F3 /* RGSInitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */; };
 		22D6474B1A211D4B00CD66BD /* RGSOverviewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */; };
 		22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474D1A22599E00CD66BD /* RGSMessageAttachmentViewController.m */; };
@@ -287,6 +288,8 @@
 		22C4F4071A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGShowSideMenuAnimationController.m; sourceTree = "<group>"; };
 		22C53CC61A7D460D00B3489B /* QBASession+RGSApplicationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QBASession+RGSApplicationSession.h"; sourceTree = "<group>"; };
 		22C53CC71A7D460D00B3489B /* QBASession+RGSApplicationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QBASession+RGSApplicationSession.m"; sourceTree = "<group>"; };
+		22C53CC91A7D4F9300B3489B /* RGSUser+QBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RGSUser+QBUser.h"; sourceTree = "<group>"; };
+		22C53CCA1A7D4F9300B3489B /* RGSUser+QBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RGSUser+QBUser.m"; sourceTree = "<group>"; };
 		22C5B0C91A3739E20018A5F3 /* RGSInitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSInitialViewController.h; sourceTree = "<group>"; };
 		22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSInitialViewController.m; sourceTree = "<group>"; };
 		22D647491A211D4B00CD66BD /* RGSOverviewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSOverviewSegue.h; sourceTree = "<group>"; };
@@ -409,6 +412,8 @@
 		22889ACF19D3230D00F0541D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				22C53CC91A7D4F9300B3489B /* RGSUser+QBUser.h */,
+				22C53CCA1A7D4F9300B3489B /* RGSUser+QBUser.m */,
 				22C53CC61A7D460D00B3489B /* QBASession+RGSApplicationSession.h */,
 				22C53CC71A7D460D00B3489B /* QBASession+RGSApplicationSession.m */,
 				2230C27F1A60118500A2F6DB /* UIView+RGSGesture.h */,
@@ -927,6 +932,7 @@
 				22D7BCBF19A8D45100D2C01C /* main.m in Sources */,
 				223B467B1A6EB3D400B3F22E /* RGSLogReport.m in Sources */,
 				22060E501A53813200BA623F /* RGSContactDetailHandler.m in Sources */,
+				22C53CCB1A7D4F9300B3489B /* RGSUser+QBUser.m in Sources */,
 				22DDEB2C1A371DA600B2A691 /* RGSDismissOverviewAnimatonController.m in Sources */,
 				22F418F81A361A53009BF951 /* RGSShowOverviewAnimatonController.m in Sources */,
 				22D7BCC319A8D45100D2C01C /* RGSAppDelegate.m in Sources */,
