@@ -9,5 +9,7 @@
 #import "RGSLogService.h"
 
 @implementation RGSLogService
++(void)sendLog:(RGSLogReport *)logReport successBlock:(void (^)(BOOL success, NSError *error))successBlock{
+}
 
 @end

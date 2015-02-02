@@ -38,6 +38,7 @@
 
 @interface RGSInitialViewController ()
 
+@property BOOL shouldGoToMainApp;
 @end
 
 @implementation RGSInitialViewController
@@ -57,89 +58,8 @@
     [self.navigationController setNavigationBarHidden:YES];
 }
 -(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    self.applicationSessionManager.applicationID = 7632;
-    self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";
-    self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
-    self.applicationSessionManager.accountKey = @"byNoqE9AHiQsoffhPgdt";
-    
-    [QBRequest createSessionWithSuccessBlock:^(QBResponse *response, QBASession *session) {
-        [[self localStorageService].applicationSession MR_deleteEntity];
-        RGSApplicationSession *savedApplecationSession = [RGSApplicationSession MR_findFirst];
-        [savedApplecationSession MR_deleteEntity];
-        
-        RGSApplicationSession *applicationSession = [session rgsApplicationSession];
-        [applicationSession.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-            if (success) {
-                RGSUser *savedUser = [RGSUser MR_findFirstByAttribute:@"currentUser" withValue:@YES];
-                if (savedUser) {
-                    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"autoLogin"]) {
-                        [QBRequest logInWithUserLogin:savedUser.login password:savedUser.password successBlock:^(QBResponse *response, QBUUser *user) {
-                            savedUser.entityID = [NSNumber numberWithInteger:user.ID];
-                            
-                            [savedUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-                                [[RGSChatService shared] loginUser:[savedUser qbUser] successBlock:^(BOOL success) {
-                                    if (/*has saved last screen*/) {
-                                        //show saved screen
-                                    } else {
-                                        
-                                    }
-                                }];
-                            }];
-                            
-                        } errorBlock:^(QBResponse *response) {
-                            
-                        }];
-                   }
-                }
-            }
-        }];
-        
-    } errorBlock:^(QBResponse *response) {
-        
-    }];
+    if(self.shouldGoToMainApp) [self performSegueWithIdentifier:@"toMainApp" sender:self];
      
-//        [[LocalStorageService shared] crateApplicationSessionWithQBASession:session successBlock:^(BOOL success, NSError *error) {
-//            if (success) {
-//                if (self.localStorageService.savedUser) {
-//                    
-//                    if (self.localStorageService.savedUser.isSignIn) {
-//                        //login user
-//                        [self.userManager loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.password successBlock:^(BOOL success) {
-//                            if(success){
-//                                //login to chat
-//                                [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
-//                                    //                                if(success){
-//                                    //                                    //retrieve lastest Converstations From QuickBlox
-//                                    //                                    //starting from lastest saved conversation
-//                                    //                                    [[RGSChatService shared] allConversationsFromUser:[[LocalStorageService shared] savedUser] startingAt:[LocalStorageService shared].lastestConverstation.lastMessageDate successBlock:^(BOOL success, NSArray *conversations) {
-//                                    //                                        if(success) {
-//                                    //                                            //save converstations to LocalStorage
-//                                    //                                            [[LocalStorageService shared] saveConversations:conversations];
-//                                    //                                            //on success, retore last visible screen
-//                                    //                                        }
-//                                    //                                    }];
-//                                    //                                }
-//                                }];
-//                                
-//                            } else {
-//                                //retry to login 3 more times
-//                                [self retryLoginWithMaxAttempts:3];
-//                            }
-//                        }];
-//                    } else {
-//                        //show loginScreen
-//                        //with userName and password in present in fields
-//                    }
-//                } else {
-//                    [self performSegueWithIdentifier:@"toLoginScreen" sender:self];
-//                }
-//            }
-//        }];
-//    } errorBlock:^(QBResponse *response) {
-//        
-//    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -177,42 +97,6 @@
 
 - (IBAction)unwindToInitViewController:(UIStoryboardSegue *)unwindSegue
 {
-    
-}
--(RGSApplicationSessionManagementService *)applicationSessionManager{
-    return [RGSApplicationSessionManagementService shared];
-}
-
--(RGSUserMangementService *)userManager{
-    return [RGSUserMangementService shared];
-    
-}
-
--(Class)qBSettings{
-    if (_qBSettings == nil)
-    {
-        _qBSettings = [QBSettings class];
-    }
-    return _qBSettings;
-}
-
--(UIWindow *)window{
-    if (_window == nil)
-    {
-        _window = [[UIWindow alloc] init];
-    }
-    return _window;
-}
-
--(LocalStorageService *)localStorageService{
-    return [LocalStorageService shared];
-}
-
--(RGSLoginViewController *)loginViewController{
-    if (_loginViewController == nil)
-    {
-        _loginViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];;
-    }
-    return _loginViewController;
+    self.shouldGoToMainApp = YES;
 }
 @end

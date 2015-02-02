@@ -31,7 +31,6 @@
 		223A1DB21A04459E00A1B3D2 /* RGSContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DB11A04459E00A1B3D2 /* RGSContact.m */; };
 		223B067E1A2F607400B2344F /* IBActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 223B067D1A2F607400B2344F /* IBActionSheet.m */; };
 		223B06811A2F660E00B2344F /* RGSInviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223B06801A2F660E00B2344F /* RGSInviteViewController.m */; };
-		223B467B1A6EB3D400B3F22E /* RGSLogReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 223B467A1A6EB3D400B3F22E /* RGSLogReport.m */; };
 		223B467E1A6EBD4900B3F22E /* RGSLogService.m in Sources */ = {isa = PBXBuildFile; fileRef = 223B467D1A6EBD4900B3F22E /* RGSLogService.m */; };
 		223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D4C5119E456FC0065F630 /* RGSChatListViewController.m */; };
 		2242571B1A3E24A000628405 /* RGSForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2242571A1A3E24A000628405 /* RGSForgotPasswordViewController.m */; };
@@ -105,6 +104,10 @@
 		22C4F4081A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C4F4071A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m */; };
 		22C53CC81A7D460D00B3489B /* QBASession+RGSApplicationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C53CC71A7D460D00B3489B /* QBASession+RGSApplicationSession.m */; };
 		22C53CCB1A7D4F9300B3489B /* RGSUser+QBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C53CCA1A7D4F9300B3489B /* RGSUser+QBUser.m */; };
+		22C53D3B1A7D9FDC00B3489B /* RGSSplashDismissSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C53D3A1A7D9FDC00B3489B /* RGSSplashDismissSegue.m */; };
+		22C53D3E1A7FB71100B3489B /* UILabel+RGSInitWithText.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C53D3D1A7FB71100B3489B /* UILabel+RGSInitWithText.m */; };
+		22C53D411A7FDC0B00B3489B /* NSString+RGSSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C53D401A7FDC0A00B3489B /* NSString+RGSSize.m */; };
+		22C53D471A7FEBB500B3489B /* RGSLogReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C53D461A7FEBB500B3489B /* RGSLogReport.m */; };
 		22C5B0CB1A3739E30018A5F3 /* RGSInitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */; };
 		22D6474B1A211D4B00CD66BD /* RGSOverviewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */; };
 		22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474D1A22599E00CD66BD /* RGSMessageAttachmentViewController.m */; };
@@ -195,8 +198,6 @@
 		223B067D1A2F607400B2344F /* IBActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBActionSheet.m; sourceTree = "<group>"; };
 		223B067F1A2F660E00B2344F /* RGSInviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSInviteViewController.h; sourceTree = "<group>"; };
 		223B06801A2F660E00B2344F /* RGSInviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSInviteViewController.m; sourceTree = "<group>"; };
-		223B46791A6EB3D400B3F22E /* RGSLogReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSLogReport.h; sourceTree = "<group>"; };
-		223B467A1A6EB3D400B3F22E /* RGSLogReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSLogReport.m; sourceTree = "<group>"; };
 		223B467C1A6EBD4900B3F22E /* RGSLogService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSLogService.h; sourceTree = "<group>"; };
 		223B467D1A6EBD4900B3F22E /* RGSLogService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSLogService.m; sourceTree = "<group>"; };
 		223D4C5019E456FC0065F630 /* RGSChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChatListViewController.h; sourceTree = "<group>"; };
@@ -290,6 +291,14 @@
 		22C53CC71A7D460D00B3489B /* QBASession+RGSApplicationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QBASession+RGSApplicationSession.m"; sourceTree = "<group>"; };
 		22C53CC91A7D4F9300B3489B /* RGSUser+QBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RGSUser+QBUser.h"; sourceTree = "<group>"; };
 		22C53CCA1A7D4F9300B3489B /* RGSUser+QBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RGSUser+QBUser.m"; sourceTree = "<group>"; };
+		22C53D391A7D9FDC00B3489B /* RGSSplashDismissSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSSplashDismissSegue.h; sourceTree = "<group>"; };
+		22C53D3A1A7D9FDC00B3489B /* RGSSplashDismissSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSSplashDismissSegue.m; sourceTree = "<group>"; };
+		22C53D3C1A7FB71100B3489B /* UILabel+RGSInitWithText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+RGSInitWithText.h"; sourceTree = "<group>"; };
+		22C53D3D1A7FB71100B3489B /* UILabel+RGSInitWithText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+RGSInitWithText.m"; sourceTree = "<group>"; };
+		22C53D3F1A7FDC0A00B3489B /* NSString+RGSSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RGSSize.h"; sourceTree = "<group>"; };
+		22C53D401A7FDC0A00B3489B /* NSString+RGSSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RGSSize.m"; sourceTree = "<group>"; };
+		22C53D451A7FEBB500B3489B /* RGSLogReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSLogReport.h; sourceTree = "<group>"; };
+		22C53D461A7FEBB500B3489B /* RGSLogReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSLogReport.m; sourceTree = "<group>"; };
 		22C5B0C91A3739E20018A5F3 /* RGSInitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSInitialViewController.h; sourceTree = "<group>"; };
 		22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSInitialViewController.m; sourceTree = "<group>"; };
 		22D647491A211D4B00CD66BD /* RGSOverviewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSOverviewSegue.h; sourceTree = "<group>"; };
@@ -412,6 +421,10 @@
 		22889ACF19D3230D00F0541D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				22C53D3F1A7FDC0A00B3489B /* NSString+RGSSize.h */,
+				22C53D401A7FDC0A00B3489B /* NSString+RGSSize.m */,
+				22C53D3C1A7FB71100B3489B /* UILabel+RGSInitWithText.h */,
+				22C53D3D1A7FB71100B3489B /* UILabel+RGSInitWithText.m */,
 				22C53CC91A7D4F9300B3489B /* RGSUser+QBUser.h */,
 				22C53CCA1A7D4F9300B3489B /* RGSUser+QBUser.m */,
 				22C53CC61A7D460D00B3489B /* QBASession+RGSApplicationSession.h */,
@@ -545,8 +558,8 @@
 			isa = PBXGroup;
 			children = (
 				22D7BCC419A8D45100D2C01C /* ChatWith.xcdatamodeld */,
-				223B46791A6EB3D400B3F22E /* RGSLogReport.h */,
-				223B467A1A6EB3D400B3F22E /* RGSLogReport.m */,
+				22C53D451A7FEBB500B3489B /* RGSLogReport.h */,
+				22C53D461A7FEBB500B3489B /* RGSLogReport.m */,
 				22126C9F1A2ECBC100A983E7 /* RGSMessage.h */,
 				22126CA01A2ECBC100A983E7 /* RGSMessage.m */,
 				22126C9C1A2ECBC000A983E7 /* RGSImage.h */,
@@ -596,6 +609,8 @@
 				22D647491A211D4B00CD66BD /* RGSOverviewSegue.h */,
 				22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */,
 				22DF5F901A068E2900DC4D67 /* RGSPushSegue.h */,
+				22C53D391A7D9FDC00B3489B /* RGSSplashDismissSegue.h */,
+				22C53D3A1A7D9FDC00B3489B /* RGSSplashDismissSegue.m */,
 				22DF5F911A068E2900DC4D67 /* RGSPushSegue.m */,
 				22A001621A27672500B22EEE /* RGSPopSegue.h */,
 				22A001631A27672500B22EEE /* RGSPopSegue.m */,
@@ -930,7 +945,7 @@
 				2218FDC419DC902E00E491F6 /* RGSUserMangementService.m in Sources */,
 				22F07A0E1A3890E1007E6E2B /* NSString+RGSAttributedString.m in Sources */,
 				22D7BCBF19A8D45100D2C01C /* main.m in Sources */,
-				223B467B1A6EB3D400B3F22E /* RGSLogReport.m in Sources */,
+				22C53D3B1A7D9FDC00B3489B /* RGSSplashDismissSegue.m in Sources */,
 				22060E501A53813200BA623F /* RGSContactDetailHandler.m in Sources */,
 				22C53CCB1A7D4F9300B3489B /* RGSUser+QBUser.m in Sources */,
 				22DDEB2C1A371DA600B2A691 /* RGSDismissOverviewAnimatonController.m in Sources */,
@@ -942,6 +957,7 @@
 				22C4F4081A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m in Sources */,
 				22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */,
 				227BFAF519E31EE0000E7ACC /* RGSChatService.m in Sources */,
+				22C53D471A7FEBB500B3489B /* RGSLogReport.m in Sources */,
 				22C5B0CB1A3739E30018A5F3 /* RGSInitialViewController.m in Sources */,
 				22AC29081A4C698900D466F5 /* RGSSearchBar.m in Sources */,
 				2207E3F41A424B9A00CE91D9 /* RGSSettingViewController.m in Sources */,
@@ -954,6 +970,7 @@
 				22DDEB2F1A37240900B2A691 /* RGSBaseAnimationController.m in Sources */,
 				2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */,
 				22A001671A27789F00B22EEE /* RGSPushAnimationController.m in Sources */,
+				22C53D3E1A7FB71100B3489B /* UILabel+RGSInitWithText.m in Sources */,
 				22BE6EE11A14728300D130EB /* RGSUser.m in Sources */,
 				223B067E1A2F607400B2344F /* IBActionSheet.m in Sources */,
 				223A1DB21A04459E00A1B3D2 /* RGSContact.m in Sources */,
@@ -968,6 +985,7 @@
 				22B1E3171A1967660062701A /* RGSMessageComposerView.m in Sources */,
 				22E8A5EA1A168F350031403B /* RGSBaseViewController+RGSSeparatorExtender.m in Sources */,
 				224A067D1A38888400292777 /* RGSRegistrationViewController.m in Sources */,
+				22C53D411A7FDC0B00B3489B /* NSString+RGSSize.m in Sources */,
 				22F5206F1A0074D600FD2CD5 /* UIImage+Alpha.m in Sources */,
 				22B1E3181A1967660062701A /* CSGrowingTextView.m in Sources */,
 				223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */,

@@ -19,6 +19,7 @@
 @interface RGSAppDelegate : UIResponder <UIApplicationDelegate, QBActionStatusDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UIWindow *splashWindow;
 
 @property (nonatomic,strong)Class qBSettings;
 

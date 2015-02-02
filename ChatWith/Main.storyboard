@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="E77-2g-Jfx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rBb-vm-Qvq">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -195,7 +196,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCm-bg-pxw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-413" y="992"/>
+            <point key="canvasLocation" x="-545" y="1584"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="hK0-Dl-wDz">
@@ -316,7 +317,7 @@
         <!--Initial View Controller-->
         <scene sceneID="8d1-6n-CkT">
             <objects>
-                <viewController id="da2-c2-OKh" customClass="RGSInitialViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RGSInitialViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="da2-c2-OKh" customClass="RGSInitialViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0TC-Vv-Kd8"/>
                         <viewControllerLayoutGuide type="bottom" id="zUj-8Q-kcI"/>
@@ -328,20 +329,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="38F-uk-Uhf">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKF-xa-ZRC">
-                                <rect key="frame" x="81" y="140" width="56" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="App lunch Image or App main Logo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmb-9n-U1v">
+                                <rect key="frame" x="16" y="37" width="156" height="145"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="App lunch Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tf0-gJ-Hpd">
-                                <rect key="frame" x="0.0" y="79" width="234" height="82"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="App main Logo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xs-WF-onR">
-                                <rect key="frame" x="3" y="169" width="213" height="82"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -349,8 +340,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="qU6-Sp-dDd"/>
                     <connections>
+                        <outlet property="logo" destination="Fmb-9n-U1v" id="xxj-31-FtX"/>
                         <segue destination="EGF-iH-8R1" kind="show" identifier="toMainApp" id="Gvv-9q-q1J"/>
-                        <segue destination="rBb-vm-Qvq" kind="show" identifier="toLoginScreen" id="xT6-nI-bhw"/>
+                        <segue destination="rBb-vm-Qvq" kind="custom" identifier="toLoginScreen" customClass="RGSSplashDismissSegue" id="xT6-nI-bhw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m64-yk-Wq4" userLabel="First Responder" sceneMemberID="firstResponder"/>

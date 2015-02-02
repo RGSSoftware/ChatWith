@@ -28,5 +28,6 @@
 
 @property (nonatomic, strong)RGSLoginViewController *loginViewController;
 @property (nonatomic, strong)RGSUserMangementService *userManager;
+@property (weak, nonatomic) IBOutlet UILabel *logo;
 
 @end
