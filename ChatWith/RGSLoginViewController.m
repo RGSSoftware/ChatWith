@@ -19,6 +19,9 @@
 #import "NSString+RGSAttributedString.h"
 #import "UIImage+Resize.h"
 
+#import "RGSLogReport.h"
+#import "RGSLogService.h"
+
 
 @interface RGSLoginViewController () <UIAlertViewDelegate>
 @property (nonatomic, strong)NSMutableArray *textFields;
@@ -156,7 +159,7 @@
         
         
     } errorBlock:^(QBResponse *response) {
-        
+        [self handleFatalError:response.error.error];
     }];
 
 }
@@ -226,14 +229,14 @@
     } completion:nil];
     
     
-//    //log error
-//    RGSLogReport *logReport = [RGSLogReport MR_createEntity];
-//    logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-//    logReport.userRequest = UserRequestLogin;
-//    logReport.failureReason = [error localizedFailureReason];
-//    [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-//        if(success)[RGSLogService sendLog:logReport successBlock:nil];
-//    }];
+    //log error
+    RGSLogReport *logReport = [RGSLogReport MR_createEntity];
+    logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    logReport.userRequest = UserRequestLogin;
+    logReport.failureReason = [error localizedFailureReason];
+    [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+        if(success)[RGSLogService sendLog:logReport successBlock:nil];
+    }];
 }
 
 
