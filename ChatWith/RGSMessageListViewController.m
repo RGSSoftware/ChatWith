@@ -745,46 +745,47 @@ struct {
     }
     
     __block RGSLogReport *logReport;
-    [message.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-        if(success){
-            self.messageComposerView.messageTextView.internalTextView.text = nil;
-            [self.messageComposeImages removeAllObjects];
-            
-            if([[RGSChatService shared] canReach]){
-//                [[RGSChatService shared] sendMessage:message];
-
-            } else {
-                message.sendStatus = SendStatusError;
-                
-                logReport = [self logReportWithFailureReason:@"QBSystem is not reachable"];
-                [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-                    if(success)[RGSLogService sendLog:logReport successBlock:nil];
-
-                }];
-              }
-            
-            
-        } else if (error){
-            #warning need implementation. Show message "an error has occured, please report for a quick fix" to user. 
-            logReport = [self logReportWithFailureReason:[error localizedFailureReason]];
-            [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-                if(success)[RGSLogService sendLog:logReport successBlock:nil];
-                
-            }];
-        }
-    }];
+                #warning Refactor error handle to new standard
+//    [message.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+//        if(success){
+//            self.messageComposerView.messageTextView.internalTextView.text = nil;
+//            [self.messageComposeImages removeAllObjects];
+//            
+//            if([[RGSChatService shared] canReach]){
+////                [[RGSChatService shared] sendMessage:message];
+//
+//            } else {
+//                message.sendStatus = SendStatusError;
+//                
+//                logReport = [self logReportWithFailureReason:@"QBSystem is not reachable"];
+//                [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+//                    if(success)[RGSLogService sendLog:logReport successBlock:nil];
+//
+//                }];
+//              }
+//            
+//            
+//        } else if (error){
+//            #warning need implementation. Show message "an error has occured, please report for a quick fix" to user. 
+//            logReport = [self logReportWithFailureReason:[error localizedFailureReason]];
+//            [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+//                if(success)[RGSLogService sendLog:logReport successBlock:nil];
+//                
+//            }];
+//        }
+//    }];
     
     
     
 }
 
--(RGSLogReport *)logReportWithFailureReason:(NSString *)reason{
-    RGSLogReport *logReport = [RGSLogReport MR_createEntity];
-    logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    logReport.userRequest = UserRequestSendMessage;
-    logReport.failureReason = reason;
-    return logReport;
-}
+//-(RGSLogReport *)logReportWithFailureReason:(NSString *)reason{
+//    RGSLogReport *logReport = [RGSLogReport MR_createEntity];
+//    logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+//    logReport.userRequest = UserRequestSendMessage;
+//    logReport.failureReason = reason;
+//    return logReport;
+//}
 
 - (void)dealloc {
     [self deRegisterForKeyboardNotifications];

@@ -123,36 +123,9 @@
     [self performSegueWithIdentifier:@"unwindFromLoginScreenToInitViewScreen" sender:self];
 }
 
-- (void)showAlertAskingForSendPermissionToDeveloper {
-    //ask to send message to devloper
-    NSString *message = @"Oops! this is a really bad. Can I send the problem to the developer so they can fix it?";
-    
-    [UIAlertView bk_showAlertViewWithTitle:nil message:message cancelButtonTitle:nil otherButtonTitles:@[@"YES", @"NO"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-        if (buttonIndex == 0)
-        {
-            //send message Error to devloper
-        }
-    }];
-}
-
 -(IBAction)loginUser:(id)sender{
 
     if ([self isUserCredentialsValid]) {
-        
-//        QBUUser *user = [QBUUser user];
-//        user.login = self.usernameTextField.text;
-//        user.password = self.passwordTextField.text;
-//        
-//        [self tryLoginWithMaxAttempts:3 successBlock:^(QBResponse *response, QBUUser *user) {
-//            if(response.success){
-//                [[LocalStorageService shared] creteCurrentUserWithQBUser:user successBlock:^(BOOL success, NSError *error) {
-//                    if(success){
-//                        [self unwindToInitViewScreen];
-//                    } else {[self showAlertAskingForSendPermissionToDeveloper];}
-//                }];
-//            }
-//        } errorBlock:^(QBResponse *response) {[self showAlertAskingForSendPermissionToDeveloper];}];
-        
         [QBRequest logInWithUserLogin:self.usernameTextField.text password:self.passwordTextField.text successBlock:^(QBResponse *response, QBUUser *user) {
             //display successful login message
             //segway to splah Screen
@@ -170,15 +143,17 @@
                         NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
                         [errorDetail setValue:@"Failed to login to QBChat" forKey:NSLocalizedFailureReasonErrorKey];
                         [errorDetail setValue:@"Couldn't complete login of user because there was a QBChat failure login." forKey:NSLocalizedDescriptionKey];
-                         [self handleFatalError:[NSError errorWithDomain:RGSLoginErrorDomain code:ELTC userInfo:errorDetail]];
+                        [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail]}];
                     }
                 }];
             }];
-            
-            
-            
         } errorBlock:^(QBResponse *response) {
-            [self handleFatalError:response.error.error];
+            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+            [errorDetail setValue:@"error login to QBSystem" forKey:NSLocalizedFailureReasonErrorKey];
+            [errorDetail setValue:@"Couldn't complete login of user because there was a QBSystem failure login." forKey:NSLocalizedDescriptionKey];
+            ;
+            [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail], LogReportLevelSub : response.error.error}];
+
         }];
 
     } else {[self showAlertViewWithMeassage:@"Oops! Username or Password is invalid. Give it another shot."];}
@@ -213,8 +188,7 @@
     return errorView;
 }
 
-- (void)handleFatalError:(NSError *)error
-{
+-(void)handleFatalError:(NSDictionary *)errorDic{
     UIView *errorContainerView = [[UIView alloc] initWithFrame:self.view.frame];
     errorContainerView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:errorContainerView];
@@ -232,7 +206,7 @@
                                   navHeight);
     clearlayer.backgroundColor = [UIColor clearColor].CGColor;
     [maskLayer addSublayer:clearlayer];
-
+    
     CALayer *whiteLayer = [CALayer new];
     whiteLayer.frame = CGRectMake(0,
                                   navHeight,
@@ -251,15 +225,12 @@
         [errorView setFrameOriginY:navHeight];
     } completion:nil];
     
-    
-    //log error
-    RGSLogReport *logReport = [RGSLogReport MR_createEntity];
-    logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    logReport.userRequest = UserRequestLogin;
-    logReport.failureReason = [error localizedFailureReason];
-    [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-        if(success)[RGSLogService sendLog:logReport successBlock:nil];
-    }];
+    RGSLogReport *logReport = [RGSLogReport logReportFromErrorDic:errorDic];
+    if(logReport){
+        [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+            if(success)[RGSLogService sendLog:logReport successBlock:nil];
+        }];
+    }
 }
 
 

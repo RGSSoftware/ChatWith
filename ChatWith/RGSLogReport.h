@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class RGSLogReport;
+
+NSString * const LogReportLevelMain;
+NSString * const LogReportLevelSub;
+
 
 @interface RGSLogReport : NSManagedObject
 
@@ -19,5 +22,7 @@
 @property (nonatomic, retain) NSString * domain;
 @property (nonatomic, retain) NSString * errorDescription;
 @property (nonatomic, retain) RGSLogReport *subReport;
+
++(instancetype)logReportFromErrorDic:(NSDictionary *)errorDic;
 
 @end

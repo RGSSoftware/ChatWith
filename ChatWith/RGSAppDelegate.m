@@ -120,7 +120,7 @@
                             [errorDetail setValue:@"error login to QBSystem" forKey:NSLocalizedFailureReasonErrorKey];
                             [errorDetail setValue:@"Couldn't complete login of user because there was a QBSystem failure login." forKey:NSLocalizedDescriptionKey];
                             ;
-                            [self handleFatalError: @{@"MAINERROR" : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail], @"SUBERROR" : response.error.error}];
+                            [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail], LogReportLevelSub : response.error.error}];
                         }];
                     } else {
                         [self showLoginScreen];
@@ -134,7 +134,7 @@
                 [errorDetail setValue:@"error saving the application session" forKey:NSLocalizedFailureReasonErrorKey];
                 [errorDetail setValue:@"Couldn't complete login of user because there was an error saving the Application Session." forKey:NSLocalizedDescriptionKey];
                ;
-                [self handleFatalError: @{@"MAINERROR" : [NSError errorWithDomain:RGSLoginErrorDomain code:ESAS userInfo:errorDetail], @"SUBERROR" : error}];
+                [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ESAS userInfo:errorDetail], LogReportLevelSub : error}];
             }
         }];
     } errorBlock:^(QBResponse *response) {
@@ -142,7 +142,7 @@
         [errorDetail setValue:@"error creating an application session" forKey:NSLocalizedFailureReasonErrorKey];
         [errorDetail setValue:@"Couldn't complete login of user because couldn't create an application session." forKey:NSLocalizedDescriptionKey];
         ;
-        [self handleFatalError: @{@"MAINERROR" : [NSError errorWithDomain:RGSLoginErrorDomain code:ECAS userInfo:errorDetail], @"SUBERROR" : response.error.error}];
+        [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ECAS userInfo:errorDetail], LogReportLevelSub : response.error.error}];
     }];
 //
 //    [self deleteDataModel];
@@ -404,27 +404,12 @@
         [errorView setFrameOriginY:0];
     } completion:nil];
     
-    RGSLogReport *logReport;
-    id mainError = [errorDic objectForKey:@"MAINERROR"];
-    if(mainError){
-        if([mainError isKindOfClass:[NSError class]]){
-            logReport = [[errorDic objectForKey:@"MAINERROR"] logReport];
-            
-            id subError = [errorDic objectForKey:@"SUBERROR"];
-            if(subError){
-                if([subError isKindOfClass:[NSError class]]){
-                    RGSLogReport *subLogReport = [[errorDic objectForKey:@"SUBERROR"] logReport];
-                    
-                    logReport.subReport = subLogReport;
-                }
-            }
-            
-            [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-                if(success)[RGSLogService sendLog:logReport successBlock:nil];
-            }];
-        }
-    }
-}
+    RGSLogReport *logReport = [RGSLogReport logReportFromErrorDic:errorDic];
+    if(logReport){
+        [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+            if(success)[RGSLogService sendLog:logReport successBlock:nil];
+        }];
+    }}
 
 - (void)showLoginScreen
 {

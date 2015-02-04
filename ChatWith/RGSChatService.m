@@ -150,14 +150,14 @@ static dispatch_once_t once_token = 0;
             [self.rgsMessage.managedObjectContext MR_saveOnlySelfWithCompletion:nil];
         } else {
             self.rgsMessage.sendStatus = SendStatusError;
-            
-            RGSLogReport *logReport = [RGSLogReport MR_createEntity];
-            logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-            logReport.userRequest = UserRequestSendMessage;
-            logReport.failureReason = [error localizedFailureReason];
-            [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-                if(success)[RGSLogService sendLog:logReport successBlock:nil];
-            }];
+             #warning Refactor error handle to new standard
+//            RGSLogReport *logReport = [RGSLogReport MR_createEntity];
+//            logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+//            logReport.userRequest = UserRequestSendMessage;
+//            logReport.failureReason = [error localizedFailureReason];
+//            [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+//                if(success)[RGSLogService sendLog:logReport successBlock:nil];
+//            }];
         }
         
     }];
