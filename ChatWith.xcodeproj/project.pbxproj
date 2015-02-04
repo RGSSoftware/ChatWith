@@ -1127,7 +1127,7 @@
 					/usr/include/libxml2,
 					/usr/include/libxml2.2,
 					"$(SDKROOT)/usr/include/libxml2",
-					"${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "ChatWith/ChatWith-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
@@ -1168,7 +1168,7 @@
 					/usr/include/libxml2,
 					/usr/include/libxml2.2,
 					"$(SDKROOT)/usr/include/libxml2",
-					"${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2\n${SDK_DIR}/usr/include/libxml2",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "ChatWith/ChatWith-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;

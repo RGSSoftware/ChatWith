@@ -989,12 +989,12 @@
                   symbolName = "-[RGSContactDetailHandler dismissConfirmationView]"
                   moduleName = "ChatWith"
                   urlString = "file:///Users/MBA2/Desktop/ChatWith/ChatWith/RGSContactDetailHandler.m"
-                  timestampString = "444591847.859371"
+                  timestampString = "444745613.893899"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "337"
                   endingLineNumber = "337"
-                  offsetFromSymbolStart = "624">
+                  offsetFromSymbolStart = "627">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1003,12 +1003,12 @@
                   symbolName = "__50-[RGSContactDetailHandler dismissConfirmationView]_block_invoke"
                   moduleName = "ChatWith"
                   urlString = "file:///Users/MBA2/Desktop/ChatWith/ChatWith/RGSContactDetailHandler.m"
-                  timestampString = "444591847.860446"
+                  timestampString = "444745613.894228"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "337"
                   endingLineNumber = "337"
-                  offsetFromSymbolStart = "30">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1051,12 +1051,12 @@
                   symbolName = "-[RGSChatListViewController contactListViewController:didSelectContact:]"
                   moduleName = "ChatWith"
                   urlString = "file:///Users/MBA2/Desktop/ChatWith/ChatWith/RGSChatListViewController.m"
-                  timestampString = "444591847.921657"
+                  timestampString = "444745613.901607"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "214"
                   endingLineNumber = "214"
-                  offsetFromSymbolStart = "76">
+                  offsetFromSymbolStart = "89">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1065,12 +1065,12 @@
                   symbolName = "__72-[RGSChatListViewController contactListViewController:didSelectContact:]_block_invoke"
                   moduleName = "ChatWith"
                   urlString = "file:///Users/MBA2/Desktop/ChatWith/ChatWith/RGSChatListViewController.m"
-                  timestampString = "444591847.922007"
+                  timestampString = "444745613.902093"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "214"
                   endingLineNumber = "214"
-                  offsetFromSymbolStart = "50">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>

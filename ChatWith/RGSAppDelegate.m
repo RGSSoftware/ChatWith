@@ -33,6 +33,8 @@
 #import "RGSLogReport.h"
 #import "RGSLogService.h"
 
+#import "RGSMessageComposerView.h"
+
 
 #import "UIImage+RGSinitWithColor.h"
 #import "UIColor+RGSColorWithHexString.h"
@@ -47,7 +49,6 @@
 #import "RGSNavigationController.h"
 
 #import <MessageUI/MessageUI.h>
-
 
 
 
@@ -89,10 +90,10 @@
                                 if (success) {
                                     
                                     RGSMessageListViewController *mlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
-//                                    mlvc.chat = chat;
-//                                    mlvc.receiver = barUser;
+                                    //                                    mlvc.chat = chat;
+                                    //                                    mlvc.receiver = barUser;
                                     
-//                                    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mlvc];
+                                    //                                    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mlvc];
                                     
                                     self.window.rootViewController = mlvc;
                                     
@@ -140,8 +141,8 @@
                                     if (success) {
                                         
                                         RGSMessageListViewController *mlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
-//                                        mlvc.chat = chat;
-//                                        mlvc.receiver = rrUser;
+                                        //                                        mlvc.chat = chat;
+                                        //                                        mlvc.receiver = rrUser;
                                         
                                         UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mlvc];
                                         
@@ -163,32 +164,32 @@
 
 //-(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
 //    [MagicalRecord setupCoreDataStack];
-//    
-////    self.splashWindow = [[UIWindow alloc] initWithFrame:self.window.frame];
-//////    self.splashWindow .windowLevel = UIWindowLevelAlert;
-////    
-//////    [NSTimer bk_scheduledTimerWithTimeInterval:.3 block:^(NSTimer *timer) {
-//////        self.splashWindow .windowLevel = UIWindowLevelNormal;
-//////    } repeats:NO];
-////    
-////    RGSInitialViewController *splashViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSInitialViewController"];
-////    self.splashWindow.rootViewController = splashViewController;
-////    [self.splashWindow makeKeyAndVisible];
-//    
-//    
+//
+//    self.splashWindow = [[UIWindow alloc] initWithFrame:self.window.frame];
+//    self.splashWindow .windowLevel = UIWindowLevelAlert;
+//
+//    [NSTimer bk_scheduledTimerWithTimeInterval:.3 block:^(NSTimer *timer) {
+//        self.splashWindow .windowLevel = UIWindowLevelNormal;
+//    } repeats:NO];
+//
+//    RGSInitialViewController *splashViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSInitialViewController"];
+//    self.splashWindow.rootViewController = splashViewController;
+//    [self.splashWindow makeKeyAndVisible];
+//
+//
 //    RGSInitialViewController *secondSplashVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSInitialViewController"];
-//    
+//
 //    self.applicationSessionManager.applicationID = 7632;
 //    self.applicationSessionManager.authorizationKey = @"mxxS67kN7zNPgHn";
 //    self.applicationSessionManager.authorizationSecret = @"jD6WTRWrXFm72KF";
 //    self.applicationSessionManager.accountKey = @"byNoqE9AHiQsoffhPgdt";
-//    
-//    
-//    
+//
+//
+//
 ////    [QBRequest createSessionWithSuccessBlock:^(QBResponse *response, QBASession *session) {
 ////        RGSApplicationSession *savedApplecationSession = [RGSApplicationSession MR_findFirst];
 ////        [savedApplecationSession MR_deleteEntity];
-////        
+////
 ////        RGSApplicationSession *applicationSession = [session rgsApplicationSession];
 ////        [applicationSession.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
 ////            if (success) {
@@ -197,7 +198,7 @@
 ////                    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"autoLogin"]) {
 ////                        [QBRequest logInWithUserLogin:savedUser.login password:savedUser.password successBlock:^(QBResponse *response, QBUUser *user) {
 ////                            savedUser.entityID = [NSNumber numberWithInteger:user.ID];
-////                            
+////
 ////                            [savedUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
 ////                                [[RGSChatService shared] loginUser:[savedUser qbUser] successBlock:^(BOOL success) {
 ////                                    //remove top window that has splash screen
@@ -210,17 +211,17 @@
 ////                                    }];
 ////                                }];
 ////                            }];
-////                            
+////
 ////                        } errorBlock:^(QBResponse *response) {
 ////                            //display fatal error
 ////                            UIView *errorView = [self fatalErrorView];
 ////                            [errorView setFrameOriginY:CGRectGetHeight(errorView.frame) * -1];
 ////                            [self.splashWindow.rootViewController.view addSubview:errorView];
-////                            
+////
 ////                            [UIView animateWithDuration:.9 animations:^{
 ////                                [errorView setFrameOriginY:0];
 ////                            }];
-////                            
+////
 ////                            //log error
 ////                            RGSLogReport *logReport = [RGSLogReport MR_createEntity];
 ////                            logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -229,10 +230,10 @@
 ////                            [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
 ////                                if(success)[RGSLogService sendLog:logReport successBlock:nil];
 ////                            }];
-////                            
+////
 ////                        }];
 ////                    } else {
-////                        
+////
 ////                        self.window.rootViewController = secondSplashVC;
 ////                        [self.window makeKeyAndVisible];
 ////                        [secondSplashVC performSegueWithIdentifier:@"toLoginScreen" sender:secondSplashVC];
@@ -251,24 +252,24 @@
 ////                    self.window.rootViewController = secondSplashVC;
 ////                    [self.window makeKeyAndVisible];
 ////                    [secondSplashVC performSegueWithIdentifier:@"toLoginScreen" sender:secondSplashVC];
-////                    
+////
 ////                    [UIView animateWithDuration:9 animations:^{
 ////                        self.splashWindow.alpha = 0;
 ////                    } completion:^(BOOL finished) {
 ////                        if(finished)self.splashWindow = nil;
 ////                    }];
 ////                }
-////               
+////
 ////            } else {
 ////                //display fatal error
 ////                UIView *errorView = [self fatalErrorView];
 ////                [errorView setFrameOriginY:CGRectGetHeight(errorView.frame) * -1];
 ////                [self.splashWindow.rootViewController.view addSubview:errorView];
-////                
+////
 ////                [UIView animateWithDuration:.9 animations:^{
 ////                    [errorView setFrameOriginY:0];
 ////                }];
-////                
+////
 ////                //log error
 ////                RGSLogReport *logReport = [RGSLogReport MR_createEntity];
 ////                logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -279,17 +280,17 @@
 ////                }];
 ////            }
 ////        }];
-////        
+////
 ////    } errorBlock:^(QBResponse *response) {
 ////        //display fatal error
 ////        UIView *errorView = [self fatalErrorView];
 ////        [errorView setFrameOriginY:CGRectGetHeight(errorView.frame) * -1];
 ////        [self.splashWindow.rootViewController.view addSubview:errorView];
-////        
+////
 ////        [UIView animateWithDuration:.9 animations:^{
 ////            [errorView setFrameOriginY:0];
 ////        }];
-////        
+////
 ////        //log error
 ////        RGSLogReport *logReport = [RGSLogReport MR_createEntity];
 ////        logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -312,7 +313,7 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    [MagicalRecord setupCoreDataStack];
+    [MagicalRecord setupCoreDataStack];
     
     //Change the alpha value of the navigation bar - technique
     //http://stackoverflow.com/questions/17460209/change-the-alpha-value-of-the-navigation-bar#17542389
@@ -323,255 +324,121 @@
     [[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
     
     //http://stackoverflow.com/questions/12624151/mfmailcomposeviewcontroller-throws-a-viewservicedidterminatewitherror-and-then-e#18130193
-//    [[UINavigationBar appearanceWhenContainedIn:[MFMailComposeViewController class], nil] setTitleTextAttributes:
-//     @{
-//       UITextAttributeFont : [UIFont boldSystemFontOfSize:14.0f],
-//       }];
+    //    [[UINavigationBar appearanceWhenContainedIn:[MFMailComposeViewController class], nil] setTitleTextAttributes:
+    //     @{
+    //       UITextAttributeFont : [UIFont boldSystemFontOfSize:14.0f],
+    //       }];
     
     
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-//    [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
+    self.window.frame = [UIScreen mainScreen].bounds;
+    
     
 //    self.splashWindow = [[UIWindow alloc] initWithFrame:self.window.frame];
-//    self.splashWindow .windowLevel = UIWindowLevelStatusBar;
+//    self.splashWindow .windowLevel = UIWindowLevelAlert;
 //    
-//    [NSTimer bk_scheduledTimerWithTimeInterval:.3 block:^(NSTimer *timer) {
-//        self.splashWindow .windowLevel = UIWindowLevelNormal;
-//    } repeats:NO];
+//    
 //    
 //    RGSInitialViewController *splashViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSInitialViewController"];
 //    self.splashWindow.rootViewController = splashViewController;
 //    [self.splashWindow makeKeyAndVisible];
 //    
-//    
-//    UIView *errorView = [self fatalErrorView];
-//    [errorView setFrameOriginY:CGRectGetHeight(errorView.frame) * -1];
-//    [self.splashWindow.rootViewController.view addSubview:errorView];
-//    
-//    
-//    [UIView animateWithDuration:.9 animations:^{
-//        [errorView setFrameOriginY:0];
-//    }];
-//    RGSInitialViewController *secondSplashVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSInitialViewController"];
-//    
-//    self.window.rootViewController = secondSplashVC;
-//    [self.window makeKeyAndVisible];
-//    [secondSplashVC performSegueWithIdentifier:@"toLoginScreen" sender:secondSplashVC];
-//    
-//    [UIView animateWithDuration:.9 animations:^{
-//        self.splashWindow.alpha = 0;
-//    } completion:^(BOOL finished) {
-//        if(finished){
-//            self.splashWindow = nil;
-////            [self.window makeKeyAndVisible];
-////            self.window.windowLevel = UIWindowLevelNormal;
-//        }
-//        
-//    }];
-    
-//    [RGSUser MR_truncateAll];
-//    [RGSContact MR_truncateAll];
-//    [RGSMessage MR_truncateAll];
-//    [RGSChat MR_truncateAll];
-//    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+//    [NSTimer bk_scheduledTimerWithTimeInterval:.3 block:^(NSTimer *timer) {
+//        self.splashWindow .windowLevel = UIWindowLevelNormal;
+//    } repeats:NO];
     
     
-//    {
-//        RGSUser *currentUser = [RGSUser MR_createEntity];
-//        currentUser.currentUser = [NSNumber numberWithBool:YES];
-//        currentUser.fullName = @"bar";
-//        currentUser.password = @"abc123456";
-//        
-//        RGSUser *rrUser = [RGSUser MR_createEntity];
-//        rrUser.fullName = @"rr";
-//        rrUser.password = @"h5ljh4aKOcLw";
-//        rrUser.entityID = @894248;
-//        
-//        
-//        
-//        for(int i = 0; i < 20; i++){
-//            RGSContact *contact = [RGSContact MR_createEntity];
-//            contact.source = currentUser;
-//            
-//            RGSUser *user = [RGSUser MR_createEntity];
-//            user.fullName = [LoremIpsum word];
-//            contact.friend = user;
-//            
-//            switch (i % 4) {
-//                case 0:
-//                user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"sarah_connor"]);
-//                    user.blobID = @0;
-//                    break;
-//                case 1:
-//                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"t1000"]);
-//                    user.blobID = @1;
-//                    break;
-//                case 2:
-//                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"joe_morton"]);
-//                    user.blobID = @2;
-//                    break;
-//                case 3:
-//                    user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"john_connor"]);
-//                    user.blobID = @3;
-//                    break;
-//              default:
-//                    break;
-//            }
-//        }
-//
-//        RGSChat *chat = [RGSChat MR_createEntity];
-//        chat.receiver = rrUser;
-//        
-//        RGSMessage *m = [RGSMessage MR_createEntity];
-//        m.body = [LoremIpsum wordsWithNumber:9];
-//        
-//        [chat addMessagesObject:m];
-//        chat.lastMessageDate = [NSDate date];
-//        [chat addParticipantsObject:currentUser];
-//        [chat addParticipantsObject:rrUser];
-//        
-//        {
-//        
-//            RGSChat *chat = [RGSChat MR_createEntity];
-//            chat.receiver = rrUser;
-//            
-//            RGSMessage *m = [RGSMessage MR_createEntity];
-//            m.body = [LoremIpsum wordsWithNumber:9];
-//            
-//            [chat addMessagesObject:m];
-//            chat.lastMessageDate = [NSDate date];
-//            [chat addParticipantsObject:currentUser];
-//            [chat addParticipantsObject:rrUser];
-//        }
+    [self deleteDataModel];
+    [self createDataModel];
     
-//        [[NSManagedObjectContext MR_defaultContext] MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-//            
-//            
-//            self.window.frame = [[UIScreen mainScreen] bounds];
-//            
-//            RGSInitialViewController *splashViewController2 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSInitialViewController"];
-//            
-////            self.window.rootViewController = nil;
-//            self.window.rootViewController = splashViewController2;
-//            
-//            
-//            //    [self.window makeKeyAndVisible];
-//            [self.window makeKeyAndVisible];
-//            
-//
-//            [splashViewController2 performSegueWithIdentifier:@"toLoginScreen" sender:splashViewController2];
-////            self.splashWindow = nil;
-//            [UIView animateWithDuration:.5 animations:^{
-//                            self.splashWindow.alpha = 0;
-//                        } completion:^(BOOL finished) {
-//                            if(finished)self.splashWindow = nil;
-//                        }];
-//        }];
-
-//        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
- 
-        
-        
-//            UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
-//
-//            if([vc isKindOfClass:[RGSSideMenuViewController class]] ||
-//               [vc isKindOfClass:[RGSContactListViewController class]] ||
-//               [vc isKindOfClass:[RGSMessageListViewController class]] ||
-//               [vc isKindOfClass:[RGSLoginViewController class]]){
-//                RGSNavigationController *nav = [[RGSNavigationController alloc] initWithRootViewController:vc];
-//                self.window.rootViewController = nav;
-//            } else {
-//                self.window.rootViewController = vc;
-//            }
-   
-//    }
-    
-//    [self loginAsRRWithBarAsMessagesReceiver];
-    
-    
-
     return YES;
 }
--(void)retryLoginWithMaxAttempts:(int)tries{
-    [self.userManager loginUsername:self.localStorageService.savedUser.login password:self.localStorageService.savedUser.login successBlock:^(BOOL success) {
-        __block int currentTry = tries;
-        
-        if(success){
-            //login to chat
-            [[RGSChatService shared] loginUser:[[LocalStorageService shared] savedUserAsQBUUser] successBlock:^(BOOL success) {
-                
-                //on success, retore last visible screen
-                if(success){
-                    
-                }
-            }];
-        } else {
-            if(currentTry != 0){
-                currentTry--;
-                [self retryLoginWithMaxAttempts:currentTry];
-            } else {
-                //after 3 tries and still not success
-                
-                //show loginViewController
-                self.window.rootViewController = self.loginViewController;
-            }
-        }
-    }];
-}
-
-
-
-
--(RGSApplicationSessionManagementService *)applicationSessionManager{
-    return [RGSApplicationSessionManagementService shared];
-}
-
--(RGSUserMangementService *)userManager{
-   return [RGSUserMangementService shared];
+-(void)deleteDataModel{
+    [RGSUser MR_truncateAll];
+    [RGSContact MR_truncateAll];
+    [RGSMessage MR_truncateAll];
+    [RGSChat MR_truncateAll];
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
     
 }
 
--(Class)qBSettings{
-    if (_qBSettings == nil)
-    {
-        _qBSettings = [QBSettings class];
+-(void)createDataModel{
+    
+    RGSUser *rrUser = [RGSUser MR_createEntity];
+    rrUser.fullName = @"rr";
+    rrUser.password = @"h5ljh4aKOcLw";
+    rrUser.entityID = @894248;
+    rrUser.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"terminator"]);
+    rrUser.currentUser = [NSNumber numberWithBool:YES];
+    
+    for(int i = 0; i < 4; i++){
+        
+        RGSUser *user = [RGSUser MR_createEntity];
+        switch (i % 4) {
+            case 0:
+                user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"sarah_connor"]);
+                user.fullName = @"sarah";
+                break;
+            case 1:
+                user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"t1000"]);
+                user.fullName = @"t1000";
+                break;
+            case 2:
+                user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"joe_morton"]);
+                user.fullName = @"joe";
+                break;
+            case 3:
+                user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"john_connor"]);
+                user.fullName = @"john";
+                break;
+            default:
+                break;
+        }
+        
+        RGSContact *contact = [RGSContact MR_createEntity];
+        contact.source = rrUser;
+        contact.friend = user;
+        
+        RGSChat *chat = [RGSChat MR_createEntity];
+        chat.receiver = rrUser;
+        [chat addParticipantsObject:rrUser];
+        [chat addParticipantsObject:user];
+        
+        int rand = arc4random_uniform(30) + 1;
+        for(int i = 0; i < rand; i++){
+            RGSMessage *m = [RGSMessage MR_createEntity];
+            m.body = [LoremIpsum wordsWithNumber:(arc4random_uniform(30) + 1)];
+            switch (i % 2) {
+                case 0:
+                    m.receiver = user;
+                    m.sender = rrUser;
+                    break;
+                case 1:
+                    m.receiver = rrUser;
+                    m.sender = user;
+                    break;
+                default:
+                    break;
+            }
+            [chat addMessagesObject:m];
+        }
     }
-    return _qBSettings;
+    [[NSManagedObjectContext MR_defaultContext] MR_saveOnlySelfAndWait];
+    
 }
-
--(UIWindow *)window{
-    if (_window == nil)
-    {
-        _window = [[UIWindow alloc] init];
-    }
-    return _window;
-}
-
--(LocalStorageService *)localStorageService{
-    return [LocalStorageService shared];
-}
-
--(RGSLoginViewController *)loginViewController{
-    if (_loginViewController == nil)
-    {
-        _loginViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];;
-    }
-    return _loginViewController;
-}
-
 
 -(void)applicationWillTerminate:(UIApplication *)application{
-//    [[QBChat instance] logout];
-//    
-//    [QBRequest logOutWithSuccessBlock:nil errorBlock:nil];
+    //    [[QBChat instance] logout];
+    //
+    //    [QBRequest logOutWithSuccessBlock:nil errorBlock:nil];
 }
 
 -(void)applicationWillResignActive:(UIApplication *)application{
-//    [[QBChat instance] logout];
-//    
-//    [QBRequest logOutWithSuccessBlock:nil errorBlock:nil];
+    //    [[QBChat instance] logout];
+    //
+    //    [QBRequest logOutWithSuccessBlock:nil errorBlock:nil];
 }
 
 -(UIView *)fatalErrorView{
