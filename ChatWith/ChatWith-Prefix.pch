@@ -24,4 +24,6 @@
     #import "Reachability.h"
 
     #import "NSSet+RGSisEmpty.h"
+
+    #import "RGSCategories.h"
 #endif

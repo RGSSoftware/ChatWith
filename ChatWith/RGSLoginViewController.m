@@ -105,6 +105,13 @@
         [textField setLeftView:spacerView];
     }
 }
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [NSTimer bk_scheduledTimerWithTimeInterval:1 block:^(NSTimer *timer) {
+        [self handleFatalError:nil];
+        
+    } repeats:NO];
+}
 
 - (void)unwindToInitViewScreen {
     //segway to next screen
@@ -142,7 +149,93 @@
         } errorBlock:^(QBResponse *response) {[self showAlertAskingForSendPermissionToDeveloper];}];
     } else {[self showAlertViewWithMeassage:@"Oops! Username or Password is invalid. Give it another shot."];}
     
+    
+    [QBRequest logInWithUserLogin:self.usernameTextField.text password:self.passwordTextField.text successBlock:^(QBResponse *response, QBUUser *user) {
+        //display successful login message
+        //segway to splah Screen
+        
+        
+    } errorBlock:^(QBResponse *response) {
+        
+    }];
+
 }
+-(UIView *)fatalErrorView{
+    int topPadding = 7;
+    int bottonPadding = 7;
+    int rightPadding = 10;
+    int leftPadding = 10;
+    
+    UILabel *errorMessageLabel = [UILabel labelWithText:@"An error has occured. Please report for a quicker fix."];
+    errorMessageLabel.textAlignment = NSTextAlignmentCenter;
+    errorMessageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+    errorMessageLabel.textColor = [UIColor whiteColor];
+    errorMessageLabel.numberOfLines = 0;
+    
+    
+    CGSize expectedSize = [errorMessageLabel.text boundingRectWithSize:CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds) - (leftPadding + rightPadding), CGFLOAT_MAX) font:errorMessageLabel.font].size;
+    errorMessageLabel.frame = CGRectMake(leftPadding, topPadding, CGRectGetWidth([UIScreen mainScreen].bounds) - (leftPadding + rightPadding), expectedSize.height);
+    
+    
+    float errorViewHeight = topPadding + expectedSize.height + bottonPadding;
+    UIView *errorView = [UIView new];
+    errorView.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), errorViewHeight);
+    errorView.backgroundColor = [UIColor colorWithHexString:@"e30c28"];
+    
+    [errorView addSubview:errorMessageLabel];
+    
+    return errorView;
+}
+
+- (void)handleFatalError:(NSError *)error
+{
+    UIView *errorContainerView = [[UIView alloc] initWithFrame:self.view.frame];
+    errorContainerView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:errorContainerView];
+    
+    CALayer *maskLayer = [CALayer new];
+    maskLayer.frame = self.view.bounds;
+    errorContainerView.layer.mask = maskLayer;
+    
+    int navHeight = [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height;
+    
+    CALayer *clearlayer = [CALayer new];
+    clearlayer.frame = CGRectMake(0,
+                                  0,
+                                  CGRectGetWidth(self.view.bounds),
+                                  navHeight);
+    clearlayer.backgroundColor = [UIColor clearColor].CGColor;
+    [maskLayer addSublayer:clearlayer];
+
+    CALayer *whiteLayer = [CALayer new];
+    whiteLayer.frame = CGRectMake(0,
+                                  navHeight,
+                                  CGRectGetWidth(self.view.bounds),
+                                  CGRectGetHeight(self.view.bounds) - navHeight);
+    whiteLayer.backgroundColor = [UIColor whiteColor].CGColor;
+    [maskLayer addSublayer:whiteLayer];
+    
+    
+    //display fatal error
+    UIView *errorView = [self fatalErrorView];
+    [errorView setFrameOriginY:CGRectGetHeight(errorView.frame) * -1];
+    [errorContainerView addSubview:errorView];
+    
+    [UIView animateWithDuration:1.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [errorView setFrameOriginY:navHeight];
+    } completion:nil];
+    
+    
+//    //log error
+//    RGSLogReport *logReport = [RGSLogReport MR_createEntity];
+//    logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+//    logReport.userRequest = UserRequestLogin;
+//    logReport.failureReason = [error localizedFailureReason];
+//    [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+//        if(success)[RGSLogService sendLog:logReport successBlock:nil];
+//    }];
+}
+
 
 - (void)showAlertViewWithMeassage:(NSString *)message{
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil

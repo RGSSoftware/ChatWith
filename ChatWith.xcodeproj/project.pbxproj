@@ -247,6 +247,7 @@
 		22889ACA19D322A400F0541D /* RGSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSLoginViewController.m; sourceTree = "<group>"; };
 		22889ACC19D322E400F0541D /* NSString+alphaOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+alphaOnly.h"; sourceTree = "<group>"; };
 		22889ACD19D322E400F0541D /* NSString+alphaOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+alphaOnly.m"; sourceTree = "<group>"; };
+		228DC7761A8259990033E92A /* RGSCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSCategories.h; sourceTree = "<group>"; };
 		228EABA51A23F4A4007D555E /* NSAttributedString+RGSExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RGSExtras.h"; sourceTree = "<group>"; };
 		228EABA61A23F4A4007D555E /* NSAttributedString+RGSExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+RGSExtras.m"; sourceTree = "<group>"; };
 		228EABA81A23FA12007D555E /* UITextView+RGSSelectedRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+RGSSelectedRange.h"; sourceTree = "<group>"; };
@@ -421,6 +422,7 @@
 		22889ACF19D3230D00F0541D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				228DC7761A8259990033E92A /* RGSCategories.h */,
 				22C53D3F1A7FDC0A00B3489B /* NSString+RGSSize.h */,
 				22C53D401A7FDC0A00B3489B /* NSString+RGSSize.m */,
 				22C53D3C1A7FB71100B3489B /* UILabel+RGSInitWithText.h */,
