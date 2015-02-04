@@ -34,9 +34,12 @@
         <relationship name="messageImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSMessage" inverseName="image" inverseEntity="RGSMessage" syncable="YES"/>
     </entity>
     <entity name="RGSLogReport" representedClassName="RGSLogReport" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="domain" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="errorDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="failureReason" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="systemVersionNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userRequest" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="subReport" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RGSLogReport" inverseName="subReport" inverseEntity="RGSLogReport" syncable="YES"/>
     </entity>
     <entity name="RGSMessage" representedClassName="RGSMessage" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
@@ -75,12 +78,12 @@
         <relationship name="sentMessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RGSMessage" inverseName="sender" inverseEntity="RGSMessage" syncable="YES"/>
     </entity>
     <elements>
-        <element name="RGSApplicationSession" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="RGSChat" positionX="0" positionY="0" width="128" height="225"/>
-        <element name="RGSContact" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="RGSImage" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="RGSLogReport" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="RGSMessage" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="RGSUser" positionX="0" positionY="0" width="128" height="420"/>
+        <element name="RGSApplicationSession" positionX="-207" positionY="-132" width="126" height="150"/>
+        <element name="RGSChat" positionX="142" positionY="54" width="128" height="225"/>
+        <element name="RGSContact" positionX="-20" positionY="-138" width="128" height="75"/>
+        <element name="RGSImage" positionX="475" positionY="147" width="128" height="105"/>
+        <element name="RGSLogReport" positionX="-362" positionY="12" width="128" height="133"/>
+        <element name="RGSMessage" positionX="322" positionY="192" width="128" height="150"/>
+        <element name="RGSUser" positionX="-171" positionY="72" width="128" height="420"/>
     </elements>
 </model>

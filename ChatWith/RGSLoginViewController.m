@@ -22,6 +22,8 @@
 #import "RGSLogReport.h"
 #import "RGSLogService.h"
 
+#import "Error.h"
+
 
 @interface RGSLoginViewController () <UIAlertViewDelegate>
 @property (nonatomic, strong)NSMutableArray *textFields;
@@ -137,31 +139,52 @@
 
     if ([self isUserCredentialsValid]) {
         
-        QBUUser *user = [QBUUser user];
-        user.login = self.usernameTextField.text;
-        user.password = self.passwordTextField.text;
+//        QBUUser *user = [QBUUser user];
+//        user.login = self.usernameTextField.text;
+//        user.password = self.passwordTextField.text;
+//        
+//        [self tryLoginWithMaxAttempts:3 successBlock:^(QBResponse *response, QBUUser *user) {
+//            if(response.success){
+//                [[LocalStorageService shared] creteCurrentUserWithQBUser:user successBlock:^(BOOL success, NSError *error) {
+//                    if(success){
+//                        [self unwindToInitViewScreen];
+//                    } else {[self showAlertAskingForSendPermissionToDeveloper];}
+//                }];
+//            }
+//        } errorBlock:^(QBResponse *response) {[self showAlertAskingForSendPermissionToDeveloper];}];
         
-        [self tryLoginWithMaxAttempts:3 successBlock:^(QBResponse *response, QBUUser *user) {
-            if(response.success){
-                [[LocalStorageService shared] creteCurrentUserWithQBUser:user successBlock:^(BOOL success, NSError *error) {
+        [QBRequest logInWithUserLogin:self.usernameTextField.text password:self.passwordTextField.text successBlock:^(QBResponse *response, QBUUser *user) {
+            //display successful login message
+            //segway to splah Screen
+            
+            RGSUser *rgsUser = [user rgsUser];
+            rgsUser.currentUser = [NSNumber numberWithBool:YES];
+            rgsUser.entityID = [NSNumber numberWithInteger:user.ID];
+            
+            [rgsUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+                [[RGSChatService shared] loginUser:user successBlock:^(BOOL success) {
                     if(success){
                         [self unwindToInitViewScreen];
-                    } else {[self showAlertAskingForSendPermissionToDeveloper];}
+                    } else {
+                        
+                        NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                        [errorDetail setValue:@"Failed to login to QBChat" forKey:NSLocalizedFailureReasonErrorKey];
+                        [errorDetail setValue:@"Couldn't complete login of user because there was a QBChat failure login." forKey:NSLocalizedDescriptionKey];
+                         [self handleFatalError:[NSError errorWithDomain:RGSLoginErrorDomain code:ELTC userInfo:errorDetail]];
+                    }
                 }];
-            }
-        } errorBlock:^(QBResponse *response) {[self showAlertAskingForSendPermissionToDeveloper];}];
+            }];
+            
+            
+            
+        } errorBlock:^(QBResponse *response) {
+            [self handleFatalError:response.error.error];
+        }];
+
     } else {[self showAlertViewWithMeassage:@"Oops! Username or Password is invalid. Give it another shot."];}
     
     
-    [QBRequest logInWithUserLogin:self.usernameTextField.text password:self.passwordTextField.text successBlock:^(QBResponse *response, QBUUser *user) {
-        //display successful login message
-        //segway to splah Screen
-        
-        
-    } errorBlock:^(QBResponse *response) {
-        [self handleFatalError:response.error.error];
-    }];
-
+    
 }
 -(UIView *)fatalErrorView{
     int topPadding = 7;

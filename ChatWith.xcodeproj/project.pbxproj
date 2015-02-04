@@ -82,6 +82,9 @@
 		2287C47319FAC58600039555 /* UIColor+RGSColorWithHexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2287C47219FAC58600039555 /* UIColor+RGSColorWithHexString.m */; };
 		22889ACB19D322A400F0541D /* RGSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22889ACA19D322A400F0541D /* RGSLoginViewController.m */; };
 		22889ACE19D322E400F0541D /* NSString+alphaOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 22889ACD19D322E400F0541D /* NSString+alphaOnly.m */; };
+		228DC7791A827AC10033E92A /* QBUUser+RGSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 228DC7781A827AC10033E92A /* QBUUser+RGSUser.m */; };
+		228DC77E1A82A7700033E92A /* RGSLogReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 228DC77D1A82A7700033E92A /* RGSLogReport.m */; };
+		228DC7811A82AEF90033E92A /* NSError+RGSLogReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 228DC7801A82AEF90033E92A /* NSError+RGSLogReport.m */; };
 		228EABA71A23F4A4007D555E /* NSAttributedString+RGSExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABA61A23F4A4007D555E /* NSAttributedString+RGSExtras.m */; };
 		228EABAA1A23FA12007D555E /* UITextView+RGSSelectedRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABA91A23FA12007D555E /* UITextView+RGSSelectedRange.m */; };
 		228EABAD1A240E96007D555E /* RGSMessageComposeImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABAC1A240E96007D555E /* RGSMessageComposeImage.m */; };
@@ -107,7 +110,6 @@
 		22C53D3B1A7D9FDC00B3489B /* RGSSplashDismissSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C53D3A1A7D9FDC00B3489B /* RGSSplashDismissSegue.m */; };
 		22C53D3E1A7FB71100B3489B /* UILabel+RGSInitWithText.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C53D3D1A7FB71100B3489B /* UILabel+RGSInitWithText.m */; };
 		22C53D411A7FDC0B00B3489B /* NSString+RGSSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C53D401A7FDC0A00B3489B /* NSString+RGSSize.m */; };
-		22C53D471A7FEBB500B3489B /* RGSLogReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C53D461A7FEBB500B3489B /* RGSLogReport.m */; };
 		22C5B0CB1A3739E30018A5F3 /* RGSInitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */; };
 		22D6474B1A211D4B00CD66BD /* RGSOverviewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */; };
 		22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474D1A22599E00CD66BD /* RGSMessageAttachmentViewController.m */; };
@@ -248,6 +250,13 @@
 		22889ACC19D322E400F0541D /* NSString+alphaOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+alphaOnly.h"; sourceTree = "<group>"; };
 		22889ACD19D322E400F0541D /* NSString+alphaOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+alphaOnly.m"; sourceTree = "<group>"; };
 		228DC7761A8259990033E92A /* RGSCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSCategories.h; sourceTree = "<group>"; };
+		228DC7771A827AC10033E92A /* QBUUser+RGSUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QBUUser+RGSUser.h"; sourceTree = "<group>"; };
+		228DC7781A827AC10033E92A /* QBUUser+RGSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QBUUser+RGSUser.m"; sourceTree = "<group>"; };
+		228DC77B1A82A08E0033E92A /* Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
+		228DC77C1A82A7700033E92A /* RGSLogReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSLogReport.h; sourceTree = "<group>"; };
+		228DC77D1A82A7700033E92A /* RGSLogReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSLogReport.m; sourceTree = "<group>"; };
+		228DC77F1A82AEF90033E92A /* NSError+RGSLogReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+RGSLogReport.h"; sourceTree = "<group>"; };
+		228DC7801A82AEF90033E92A /* NSError+RGSLogReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+RGSLogReport.m"; sourceTree = "<group>"; };
 		228EABA51A23F4A4007D555E /* NSAttributedString+RGSExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RGSExtras.h"; sourceTree = "<group>"; };
 		228EABA61A23F4A4007D555E /* NSAttributedString+RGSExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+RGSExtras.m"; sourceTree = "<group>"; };
 		228EABA81A23FA12007D555E /* UITextView+RGSSelectedRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+RGSSelectedRange.h"; sourceTree = "<group>"; };
@@ -298,8 +307,6 @@
 		22C53D3D1A7FB71100B3489B /* UILabel+RGSInitWithText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+RGSInitWithText.m"; sourceTree = "<group>"; };
 		22C53D3F1A7FDC0A00B3489B /* NSString+RGSSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RGSSize.h"; sourceTree = "<group>"; };
 		22C53D401A7FDC0A00B3489B /* NSString+RGSSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RGSSize.m"; sourceTree = "<group>"; };
-		22C53D451A7FEBB500B3489B /* RGSLogReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSLogReport.h; sourceTree = "<group>"; };
-		22C53D461A7FEBB500B3489B /* RGSLogReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSLogReport.m; sourceTree = "<group>"; };
 		22C5B0C91A3739E20018A5F3 /* RGSInitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSInitialViewController.h; sourceTree = "<group>"; };
 		22C5B0CA1A3739E30018A5F3 /* RGSInitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSInitialViewController.m; sourceTree = "<group>"; };
 		22D647491A211D4B00CD66BD /* RGSOverviewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSOverviewSegue.h; sourceTree = "<group>"; };
@@ -423,12 +430,16 @@
 			isa = PBXGroup;
 			children = (
 				228DC7761A8259990033E92A /* RGSCategories.h */,
+				228DC77F1A82AEF90033E92A /* NSError+RGSLogReport.h */,
+				228DC7801A82AEF90033E92A /* NSError+RGSLogReport.m */,
 				22C53D3F1A7FDC0A00B3489B /* NSString+RGSSize.h */,
 				22C53D401A7FDC0A00B3489B /* NSString+RGSSize.m */,
 				22C53D3C1A7FB71100B3489B /* UILabel+RGSInitWithText.h */,
 				22C53D3D1A7FB71100B3489B /* UILabel+RGSInitWithText.m */,
 				22C53CC91A7D4F9300B3489B /* RGSUser+QBUser.h */,
 				22C53CCA1A7D4F9300B3489B /* RGSUser+QBUser.m */,
+				228DC7771A827AC10033E92A /* QBUUser+RGSUser.h */,
+				228DC7781A827AC10033E92A /* QBUUser+RGSUser.m */,
 				22C53CC61A7D460D00B3489B /* QBASession+RGSApplicationSession.h */,
 				22C53CC71A7D460D00B3489B /* QBASession+RGSApplicationSession.m */,
 				2230C27F1A60118500A2F6DB /* UIView+RGSGesture.h */,
@@ -559,9 +570,9 @@
 		22889AD319D3237A00F0541D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				228DC77C1A82A7700033E92A /* RGSLogReport.h */,
+				228DC77D1A82A7700033E92A /* RGSLogReport.m */,
 				22D7BCC419A8D45100D2C01C /* ChatWith.xcdatamodeld */,
-				22C53D451A7FEBB500B3489B /* RGSLogReport.h */,
-				22C53D461A7FEBB500B3489B /* RGSLogReport.m */,
 				22126C9F1A2ECBC100A983E7 /* RGSMessage.h */,
 				22126CA01A2ECBC100A983E7 /* RGSMessage.m */,
 				22126C9C1A2ECBC000A983E7 /* RGSImage.h */,
@@ -687,6 +698,7 @@
 		22D7BCB819A8D45100D2C01C /* ChatWith */ = {
 			isa = PBXGroup;
 			children = (
+				228DC77B1A82A08E0033E92A /* Error.h */,
 				22D7BCC119A8D45100D2C01C /* RGSAppDelegate.h */,
 				22D7BCC219A8D45100D2C01C /* RGSAppDelegate.m */,
 				22889AD019D3232600F0541D /* Controller */,
@@ -917,6 +929,7 @@
 				22C4F4051A3F93CB009CB1C2 /* RGSSideMenuViewController.m in Sources */,
 				22A59D041A5091CC003F0E91 /* RGSPlaygroundViewController.m in Sources */,
 				221129C01A2CAA3F00C084BA /* RGSImageBatchRequest.m in Sources */,
+				228DC77E1A82A7700033E92A /* RGSLogReport.m in Sources */,
 				22AD00F41A1336E8008F9EF7 /* RGSMessageCell.m in Sources */,
 				22E954B01A531C1B0066ECF4 /* RGSBarButtonItem.m in Sources */,
 				2252F6B91A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.m in Sources */,
@@ -959,7 +972,6 @@
 				22C4F4081A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m in Sources */,
 				22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */,
 				227BFAF519E31EE0000E7ACC /* RGSChatService.m in Sources */,
-				22C53D471A7FEBB500B3489B /* RGSLogReport.m in Sources */,
 				22C5B0CB1A3739E30018A5F3 /* RGSInitialViewController.m in Sources */,
 				22AC29081A4C698900D466F5 /* RGSSearchBar.m in Sources */,
 				2207E3F41A424B9A00CE91D9 /* RGSSettingViewController.m in Sources */,
@@ -971,11 +983,13 @@
 				22F520701A0074D600FD2CD5 /* UIImage+RoundedCorner.m in Sources */,
 				22DDEB2F1A37240900B2A691 /* RGSBaseAnimationController.m in Sources */,
 				2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */,
+				228DC7791A827AC10033E92A /* QBUUser+RGSUser.m in Sources */,
 				22A001671A27789F00B22EEE /* RGSPushAnimationController.m in Sources */,
 				22C53D3E1A7FB71100B3489B /* UILabel+RGSInitWithText.m in Sources */,
 				22BE6EE11A14728300D130EB /* RGSUser.m in Sources */,
 				223B067E1A2F607400B2344F /* IBActionSheet.m in Sources */,
 				223A1DB21A04459E00A1B3D2 /* RGSContact.m in Sources */,
+				228DC7811A82AEF90033E92A /* NSError+RGSLogReport.m in Sources */,
 				2207E3E81A41FCCB00CE91D9 /* dashBorderView.m in Sources */,
 				2230C27E1A5EF85100A2F6DB /* UIView+RGSFrame.m in Sources */,
 				2287C47319FAC58600039555 /* UIColor+RGSColorWithHexString.m in Sources */,

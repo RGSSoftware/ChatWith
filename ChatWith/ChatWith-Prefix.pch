@@ -26,4 +26,5 @@
     #import "NSSet+RGSisEmpty.h"
 
     #import "RGSCategories.h"
+    #import "Error.h"
 #endif

@@ -2,24 +2,22 @@
 //  RGSLogReport.h
 //  ChatWith
 //
-//  Created by PC on 2/2/15.
+//  Created by PC on 2/4/15.
 //  Copyright (c) 2015 Randel Smith. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class RGSLogReport;
 
 @interface RGSLogReport : NSManagedObject
 
-typedef NS_ENUM(NSInteger, UserRequest){
-    UserRequestSendMessage,
-    UserRequestLogin
-};
-
-
-@property (nonatomic, retain) NSString * systemVersionNumber;
-@property (nonatomic) int32_t userRequest;
 @property (nonatomic, retain) NSString * failureReason;
+@property (nonatomic, retain) NSString * systemVersionNumber;
+@property (nonatomic, retain) NSNumber * code;
+@property (nonatomic, retain) NSString * domain;
+@property (nonatomic, retain) NSString * errorDescription;
+@property (nonatomic, retain) RGSLogReport *subReport;
 
 @end

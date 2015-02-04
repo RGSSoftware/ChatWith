@@ -13,3 +13,8 @@
 #import "NSString+RGSSize.h"
 #import "UILabel+RGSInitWithText.h"
 #import "UIView+RGSFrame.h"
+#import "RGSUser+QBUser.h"
+#import "QBUUser+RGSUser.h"
+#import "QBASession+RGSApplicationSession.h"
+#import "NSError+RGSLogReport.h"
+
