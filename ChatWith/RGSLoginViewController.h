@@ -25,11 +25,14 @@
 @property (nonatomic, strong)Class alertViewClass;
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
 @property (weak, nonatomic) IBOutlet UIButton *forgotButton;
+@property (weak, nonatomic) IBOutlet UISwitch *rememberMeSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *rememberMeLabel;
 
 
 @property (nonatomic, strong)RGSUserMangementService  *userManger;
 
 -(IBAction)loginUser:(id)sender;
 - (IBAction)forgotPassword:(id)sender;
+- (IBAction)rememberMe:(id)sender;
 @end
 

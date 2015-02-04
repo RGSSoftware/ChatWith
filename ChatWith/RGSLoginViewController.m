@@ -91,6 +91,13 @@
     [attributedString setColor:[UIColor colorWithHexString:@"68DAFF"]];
     [attributedString setFont:[self.registerButton.titleLabel.font fontWithSize:13]];
     [self.forgotButton setAttributedTitle:attributedString forState:UIControlStateNormal];
+    
+    self.rememberMeSwitch.onTintColor = [UIColor colorWithHexString:@"57d6ff"];
+    self.rememberMeSwitch.tintColor = [UIColor colorWithWhite:0.810 alpha:1.000];
+    
+    
+    self.rememberMeLabel.userInteractionEnabled = YES;
+    [self.rememberMeLabel addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rememberMeTapped:)]];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -103,10 +110,17 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [NSTimer bk_scheduledTimerWithTimeInterval:1 block:^(NSTimer *timer) {
-        [self handleFatalError:nil];
+}
+-(void)rememberMeTapped:(id)sender{
+    if(self.rememberMeSwitch.isOn){
+        [self.rememberMeSwitch setOn:NO animated:YES];
+        [self rememberMe:self.rememberMeSwitch];
+    } else {
+        [self.rememberMeSwitch setOn:YES animated:YES];
+        [self rememberMe:self.rememberMeSwitch];
         
-    } repeats:NO];
+ 
+    }
 }
 
 - (void)unwindToInitViewScreen {
@@ -284,4 +298,14 @@
 }
 
 
+- (IBAction)rememberMe:(id)sender {
+    if([sender isOn]){
+        self.rememberMeLabel.textColor = [UIColor whiteColor];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"rememberMe"];
+    }else{
+        self.rememberMeLabel.textColor = [sender tintColor];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"rememberMe"];
+    }
+    
+}
 @end
