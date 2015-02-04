@@ -7,22 +7,17 @@
 //
 
 #import "RGSRegistrationViewController.h"
-#import "RGSUserMangementService.h"
-#import "RGSChatService.h"
-#import "LocalStorageService.h"
+
 #import "RGSApplicationSession.h"
 
-#import "NSString+alphaOnly.h"
 
 #import "RGSMessageAttachmentViewController.h"
 
-#import "UIColor+RGSColorWithHexString.h"
-
-#import "NSAttributedString+RGSExtras.h"
-#import "NSMutableAttributedString+RGSExtras.h"
-#import "NSString+RGSAttributedString.h"
-
 #import <Quickblox/QBRequest+QBAuth.h>
+
+#import "RGSUserMangementService.h"
+#import "RGSChatService.h"
+#import "LocalStorageService.h"
 
 
 

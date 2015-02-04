@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Randel Smith. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "RGSBaseViewController.h"
 #import "RGSContactListViewController.h"
 

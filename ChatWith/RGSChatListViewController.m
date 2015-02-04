@@ -8,6 +8,8 @@
 
 #import "RGSChatListViewController.h"
 
+#import "RGSChatCell.h"
+
 #import "RGSMessageListViewController.h"
 
 #import "RGSChat.h"
@@ -15,18 +17,7 @@
 #import "RGSContact.h"
 #import "RGSUser.h"
 
-#import "RGSChatCell.h"
-
 #import "LocalStorageService.h"
-
-#import "UIImage+Resize.h"
-#import "UIColor+RGSColorWithHexString.h"
-#import "UIImage+RGSinitWithColor.h"
-#import "NSDate+Utilities.h"
-#import "UINavigationController+RGSBlock.h"
-
-#import "RGSBaseViewController+RGSSeparatorExtender.h"
-
 
 @interface RGSChatListViewController ()
 

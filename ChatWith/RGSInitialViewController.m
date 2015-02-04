@@ -8,33 +8,22 @@
 
 #import "RGSInitialViewController.h"
 
-#import "LocalStorageService.h"
 #import "RGSLoginViewController.h"
 #import "RGSMessageListViewController.h"
-#import "RGSUserMangementService.h"
-#import "RGSUser.h"
-
-#import "RGSMessage.h"
-#import "RGSChat.h"
-
-#import "RGSChat.h"
-#import "RGSContact.h"
-
-#import "QBASession+RGSApplicationSession.h"
-#import "RGSUser+QBUser.h"
-#import "NSDate+Utilities.h"
-
-#import "LoremIpsum.h"
-
-#import "RGSApplicationSession.h"
-
-#import "RGSApplicationSessionManagementService.h"
 #import "RGSContactListViewController.h"
+
+#import "LocalStorageService.h"
+#import "RGSUserMangementService.h"
+#import "RGSApplicationSessionManagementService.h"
 #import "RGSChatService.h"
 
+#import "RGSUser.h"
+#import "RGSMessage.h"
+#import "RGSChat.h"
+#import "RGSContact.h"
+#import "RGSApplicationSession.h"
 
-#import "UIImage+RGSinitWithColor.h"
-#import "UIColor+RGSColorWithHexString.h"
+#import "LoremIpsum.h"
 
 @interface RGSInitialViewController ()
 

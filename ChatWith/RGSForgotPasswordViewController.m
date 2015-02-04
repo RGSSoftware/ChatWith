@@ -8,11 +8,6 @@
 
 #import "RGSForgotPasswordViewController.h"
 
-#import "UIColor+RGSColorWithHexString.h"
-#import "NSAttributedString+RGSExtras.h"
-#import "NSMutableAttributedString+RGSExtras.h"
-#import "NSString+RGSAttributedString.h"
-
 @interface RGSForgotPasswordViewController ()
 
 @end

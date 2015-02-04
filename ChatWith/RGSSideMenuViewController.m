@@ -7,7 +7,6 @@
 //
 
 #import "RGSSideMenuViewController.h"
-#import "UIColor+RGSColorWithHexString.h"
 
 #import "RGSSideMenuCell.h"
 
@@ -15,11 +14,6 @@
 #import "RGSContactListViewController.h"
 #import "RGSSettingViewController.h"
 
-#import "RGSBaseViewController+RGSSeparatorExtender.h"
-
-#import "UIImage+Resize.h"
-
-#import "UINavigationController+RGSBlock.h"
 #import "RGSBaseViewController.h"
 @implementation RGSSideMenuViewController
 

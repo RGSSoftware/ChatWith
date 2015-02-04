@@ -8,25 +8,14 @@
 
 #import "RGSMessageListViewController.h"
 
+#import "RGSMessageCell.h"
+
 #import "RGSMessageAttachmentViewController.h"
 
 #import "RGSUser.h"
 #import "RGSMessage.h"
 #import "RGSImage.h"
-
 #import "RGSMessage.h"
-
-#import "RGSMessageCell.h"
-
-#import "LocalStorageService.h"
-#import "RGSChatService.h"
-
-#import "UIImage+Resize.h"
-#import "UIColor+RGSColorWithHexString.h"
-#import "UIImage+RGSinitWithColor.h"
-#import "RGSBaseViewController+RGSSeparatorExtender.h"
-#import "NSAttributedString+RGSExtras.h"
-#import "UITextView+RGSSelectedRange.h"
 
 #import "RGSMessageComposeImage.h"
 #import "RGSMessageComposerView.h"
@@ -35,6 +24,9 @@
 
 #import "RGSLogReport.h"
 #import "RGSLogService.h"
+#import "LocalStorageService.h"
+#import "RGSChatService.h"
+
 const int maxTextWidth = 260;
 const int cellContentMargin = 5;
 const int leftRightMargin = cellContentMargin * 2;

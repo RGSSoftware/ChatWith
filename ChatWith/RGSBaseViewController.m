@@ -8,9 +8,6 @@
 
 #import "RGSBaseViewController.h"
 
-#import "UIImage+Resize.h"
-#import "UIColor+RGSColorWithHexString.h"
-
 #import "RGSSideMenuViewController.h"
 
 @interface RGSBaseViewController ()

@@ -11,10 +11,6 @@
 #import "RGSContact.h"
 #import "RGSUser.h"
 
-#import "UIImage+Resize.h"
-#import "UIView+RGSFrame.h"
-#import "UIView+RGSGesture.h"
-
 const BOOL isLeftOffScreen(CGRect rect){
     return CGRectGetMinX(rect) < 0.0f;
 }

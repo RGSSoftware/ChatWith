@@ -7,23 +7,14 @@
 //
 
 #import "RGSLoginViewController.h"
-#import "NSString+alphaOnly.h"
-#import "RGSUserMangementService.h"
-#import "RGSChatService.h"
-#import "LocalStorageService.h"
-#import "RGSApplicationSession.h"
 
-#import "UIColor+RGSColorWithHexString.h"
-#import "NSAttributedString+RGSExtras.h"
-#import "NSMutableAttributedString+RGSExtras.h"
-#import "NSString+RGSAttributedString.h"
-#import "UIImage+Resize.h"
+#import "RGSApplicationSession.h"
 
 #import "RGSLogReport.h"
 #import "RGSLogService.h"
-
-#import "Error.h"
-
+#import "RGSUserMangementService.h"
+#import "RGSChatService.h"
+#import "LocalStorageService.h"
 
 @interface RGSLoginViewController () <UIAlertViewDelegate>
 @property (nonatomic, strong)NSMutableArray *textFields;

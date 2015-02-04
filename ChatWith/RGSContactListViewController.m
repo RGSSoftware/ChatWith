@@ -8,23 +8,14 @@
 
 #import "RGSContactListViewController.h"
 
-#import "RGSMessageListViewController.h"
+#import "RGSContactCell.h"
 
+#import "RGSMessageListViewController.h"
 
 #import "RGSUser.h"
 #import "RGSContact.h"
 
-#import "RGSContactCell.h"
-
 #import "LocalStorageService.h"
-
-#import "UIImage+Resize.h"
-#import "UIColor+RGSColorWithHexString.h"
-#import "UIImage+RGSinitWithColor.h"
-#import "UIImage+Resize.h"
-
-#import "NSAttributedString+RGSExtras.h"
-
 
 #import "RGSShowOverviewAnimatonController.h"
 
