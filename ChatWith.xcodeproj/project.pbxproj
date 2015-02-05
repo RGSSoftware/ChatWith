@@ -85,6 +85,7 @@
 		228DC7791A827AC10033E92A /* QBUUser+RGSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 228DC7781A827AC10033E92A /* QBUUser+RGSUser.m */; };
 		228DC77E1A82A7700033E92A /* RGSLogReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 228DC77D1A82A7700033E92A /* RGSLogReport.m */; };
 		228DC7811A82AEF90033E92A /* NSError+RGSLogReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 228DC7801A82AEF90033E92A /* NSError+RGSLogReport.m */; };
+		228DC7881A83E4B50033E92A /* RGSUser+RGSFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 228DC7871A83E4B40033E92A /* RGSUser+RGSFinder.m */; };
 		228EABA71A23F4A4007D555E /* NSAttributedString+RGSExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABA61A23F4A4007D555E /* NSAttributedString+RGSExtras.m */; };
 		228EABAA1A23FA12007D555E /* UITextView+RGSSelectedRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABA91A23FA12007D555E /* UITextView+RGSSelectedRange.m */; };
 		228EABAD1A240E96007D555E /* RGSMessageComposeImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 228EABAC1A240E96007D555E /* RGSMessageComposeImage.m */; };
@@ -257,6 +258,9 @@
 		228DC77D1A82A7700033E92A /* RGSLogReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSLogReport.m; sourceTree = "<group>"; };
 		228DC77F1A82AEF90033E92A /* NSError+RGSLogReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+RGSLogReport.h"; sourceTree = "<group>"; };
 		228DC7801A82AEF90033E92A /* NSError+RGSLogReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+RGSLogReport.m"; sourceTree = "<group>"; };
+		228DC7851A83E1FA0033E92A /* UserDefaultsKEYS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsKEYS.h; sourceTree = "<group>"; };
+		228DC7861A83E4B40033E92A /* RGSUser+RGSFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RGSUser+RGSFinder.h"; sourceTree = "<group>"; };
+		228DC7871A83E4B40033E92A /* RGSUser+RGSFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RGSUser+RGSFinder.m"; sourceTree = "<group>"; };
 		228EABA51A23F4A4007D555E /* NSAttributedString+RGSExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RGSExtras.h"; sourceTree = "<group>"; };
 		228EABA61A23F4A4007D555E /* NSAttributedString+RGSExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+RGSExtras.m"; sourceTree = "<group>"; };
 		228EABA81A23FA12007D555E /* UITextView+RGSSelectedRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+RGSSelectedRange.h"; sourceTree = "<group>"; };
@@ -430,6 +434,8 @@
 			isa = PBXGroup;
 			children = (
 				228DC7761A8259990033E92A /* RGSCategories.h */,
+				228DC7861A83E4B40033E92A /* RGSUser+RGSFinder.h */,
+				228DC7871A83E4B40033E92A /* RGSUser+RGSFinder.m */,
 				228DC77F1A82AEF90033E92A /* NSError+RGSLogReport.h */,
 				228DC7801A82AEF90033E92A /* NSError+RGSLogReport.m */,
 				22C53D3F1A7FDC0A00B3489B /* NSString+RGSSize.h */,
@@ -698,6 +704,7 @@
 		22D7BCB819A8D45100D2C01C /* ChatWith */ = {
 			isa = PBXGroup;
 			children = (
+				228DC7851A83E1FA0033E92A /* UserDefaultsKEYS.h */,
 				228DC77B1A82A08E0033E92A /* Error.h */,
 				22D7BCC119A8D45100D2C01C /* RGSAppDelegate.h */,
 				22D7BCC219A8D45100D2C01C /* RGSAppDelegate.m */,
@@ -982,6 +989,7 @@
 				223D4C5219E456FC0065F630 /* RGSChatListViewController.m in Sources */,
 				22F520701A0074D600FD2CD5 /* UIImage+RoundedCorner.m in Sources */,
 				22DDEB2F1A37240900B2A691 /* RGSBaseAnimationController.m in Sources */,
+				228DC7881A83E4B50033E92A /* RGSUser+RGSFinder.m in Sources */,
 				2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */,
 				228DC7791A827AC10033E92A /* QBUUser+RGSUser.m in Sources */,
 				22A001671A27789F00B22EEE /* RGSPushAnimationController.m in Sources */,

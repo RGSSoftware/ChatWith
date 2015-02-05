@@ -28,4 +28,5 @@
 
     #import "RGSCategories.h"
     #import "Error.h"
+    #import "UserDefaultsKEYS.h"
 #endif

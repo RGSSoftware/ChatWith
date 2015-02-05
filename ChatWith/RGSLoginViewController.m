@@ -97,7 +97,7 @@
     
     
     self.rememberMeLabel.userInteractionEnabled = YES;
-    [self.rememberMeLabel addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rememberMeTapped:)]];
+    [self.rememberMeLabel addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rememberMeLabelTapped:)]];
     
     
 }
@@ -110,9 +110,9 @@
         [textField setLeftView:spacerView];
     }
     
-    RGSUser *savedUser = [RGSUser MR_findFirstByAttribute:@"currentUser" withValue:@YES];
+    RGSUser *savedUser = [RGSUser findCurrentUser];
         if (savedUser) {
-           if ([[NSUserDefaults standardUserDefaults] boolForKey:@"rememberMe"]) {
+           if ([[NSUserDefaults standardUserDefaults] boolForKey:UDKRememberMe]) {
                self.usernameTextField.text = savedUser.login;
                self.passwordTextField.text = savedUser.password;
            }
@@ -128,17 +128,6 @@
     [NSTimer bk_scheduledTimerWithTimeInterval:1 block:^(NSTimer *timer) {
         [self handleFatalError:nil];
     } repeats:NO];
-}
--(void)rememberMeTapped:(id)sender{
-    if(self.rememberMeSwitch.isOn){
-        [self.rememberMeSwitch setOn:NO animated:YES];
-        [self rememberMe:self.rememberMeSwitch];
-    } else {
-        [self.rememberMeSwitch setOn:YES animated:YES];
-        [self rememberMe:self.rememberMeSwitch];
-        
- 
-    }
 }
 
 - (void)unwindToInitViewScreen {
@@ -311,35 +300,23 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)tryLoginWithMaxAttempts:(int)tries
-                    successBlock:(void (^)(QBResponse *response, QBUUser *user))successBlock
-                      errorBlock:(void (^)(QBResponse *response))errorBlock{
-    QBUUser *user = [QBUUser user];
-    user.login = self.usernameTextField.text;
-    user.password = self.passwordTextField.text;
-    
-    [QBRequest logInWithUserLogin:user.login password:user.password successBlock:^(QBResponse *response, QBUUser *user) {
-        successBlock(response, user);
-        
-    } errorBlock:^(QBResponse *response) {
-        __block int currentTry = tries;
-        if(currentTry != 0){
-            currentTry--;
-            [self tryLoginWithMaxAttempts:currentTry successBlock:successBlock errorBlock:errorBlock];
-        } else {
-            errorBlock(response);
-        }
-    }];
+-(void)rememberMeLabelTapped:(id)sender{
+    if(self.rememberMeSwitch.isOn){
+        [self.rememberMeSwitch setOn:NO animated:YES];
+        [self rememberMe:self.rememberMeSwitch];
+    } else {
+        [self.rememberMeSwitch setOn:YES animated:YES];
+        [self rememberMe:self.rememberMeSwitch];
+    }
 }
-
 
 - (IBAction)rememberMe:(id)sender {
     if([sender isOn]){
         self.rememberMeLabel.textColor = [UIColor whiteColor];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"rememberMe"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:UDKRememberMe];
     }else{
         self.rememberMeLabel.textColor = [sender tintColor];
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"rememberMe"];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:UDKRememberMe];
     }
     
 }

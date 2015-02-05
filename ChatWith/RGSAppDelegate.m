@@ -94,7 +94,7 @@
 //        RGSApplicationSession *applicationSession = [session rgsApplicationSession];
 //        [applicationSession.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
 //            if (success) {
-//                RGSUser *savedUser = [RGSUser MR_findFirstByAttribute:@"currentUser" withValue:@YES];
+//                RGSUser *savedUser = [RGSUser findCurrentUser];
 //                if (savedUser) {
 //                    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"autoLogin"]) {
 //                        [QBRequest logInWithUserLogin:savedUser.login password:savedUser.password successBlock:^(QBResponse *response, QBUUser *user) {
@@ -147,13 +147,13 @@
 //
 //    [self deleteDataModel];
     [self createDataModel];
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"autoLogin"];
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"rememberMe"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:UDKAutoLogin];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:UDKRememberMe];
     return YES;
 }
 
 -(BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"autoLogin"];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:UDKAutoLogin];
 }
 
 -(BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder{

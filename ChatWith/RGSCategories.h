@@ -32,3 +32,4 @@
 #import "UIColor+RGScolorwithHexString.h"
 #import "UIImage+RGSinitWithColor.h"
 #import "NSString+alphaOnly.h"
+#import "RGSUser+RGSFinder.h"
