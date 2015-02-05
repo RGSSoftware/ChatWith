@@ -98,6 +98,8 @@
     
     self.rememberMeLabel.userInteractionEnabled = YES;
     [self.rememberMeLabel addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rememberMeTapped:)]];
+    
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -116,9 +118,16 @@
            }
         }
     
+    [self.container mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(@(CGRectGetMaxY(self.navigationController.navigationBar.frame) + 17));
+    }];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+    [NSTimer bk_scheduledTimerWithTimeInterval:1 block:^(NSTimer *timer) {
+        [self handleFatalError:nil];
+    } repeats:NO];
 }
 -(void)rememberMeTapped:(id)sender{
     if(self.rememberMeSwitch.isOn){
@@ -232,12 +241,29 @@
     
     //display fatal error
     UIView *errorView = [self fatalErrorView];
-    [errorView setFrameOriginY:CGRectGetHeight(errorView.frame) * -1];
+    [errorView setFrameOriginY:[UIApplication sharedApplication].statusBarFrame.size.height];
     [errorContainerView addSubview:errorView];
     
-    [UIView animateWithDuration:1.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        [errorView setFrameOriginY:navHeight];
-    } completion:nil];
+    CGRect finalFrame = errorView.frame;
+    finalFrame.origin.y = navHeight;
+    
+    
+    
+    if(CGRectGetMaxY(finalFrame) >= CGRectGetMinY(self.container.frame)){
+        [self.container mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(@((CGRectGetMaxY(self.navigationController.navigationBar.frame)) + CGRectGetHeight(errorView.frame)));
+                             }];
+        [UIView animateWithDuration:1.3 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+            [errorView setFrameOriginY:navHeight];
+            [self.view layoutIfNeeded];
+        } completion:nil];
+    } else {
+        [UIView animateWithDuration:1.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [errorView setFrameOriginY:navHeight];
+        } completion:nil];
+    }
+    
+    
     
     RGSLogReport *logReport = [RGSLogReport logReportFromErrorDic:errorDic];
     if(logReport){

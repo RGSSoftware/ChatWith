@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *rememberMeSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *rememberMeLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *container;
 
 @property (nonatomic, strong)RGSUserMangementService  *userManger;
 

@@ -6,6 +6,7 @@ pod 'LoremIpsum', '~> 1.0'
 pod 'BlocksKit'
 pod 'MFSideMenu'
 pod 'Reachability'
+pod 'Masonry'
 
 
 target :ChatWithTests, :exclusive => true do

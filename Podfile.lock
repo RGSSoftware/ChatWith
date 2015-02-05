@@ -19,6 +19,7 @@ PODS:
   - MagicalRecord (2.2):
     - MagicalRecord/Core (= 2.2)
   - MagicalRecord/Core (2.2)
+  - Masonry (0.6.1)
   - MFSideMenu (0.5.5)
   - OCHamcrest (4.1.1)
   - OCMock (3.1.2)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - Kiwi
   - LoremIpsum (~> 1.0)
   - MagicalRecord
+  - Masonry
   - MFSideMenu
   - OCMock
   - OCMockito
@@ -43,6 +45,7 @@ SPEC CHECKSUMS:
   Kiwi: 73e1400209055ee9c8ba78c6012b6b642d0fb9f7
   LoremIpsum: a4d378ecaffcb08c7e40cdba3fb935dc41b2272c
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
+  Masonry: 2cb49fd14d203d2db5ca6bb017135b235dde9980
   MFSideMenu: 0493b0f57385dd036cc5443407a31fda6dee81ac
   OCHamcrest: af1c7c5ea345de69ea6c9c2958f65f3044e5c420
   OCMock: ecdd510b73ef397f2f97274785c1e87fd147c49f
