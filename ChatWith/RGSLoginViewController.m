@@ -107,6 +107,15 @@
         [textField setLeftViewMode:UITextFieldViewModeAlways];
         [textField setLeftView:spacerView];
     }
+    
+    RGSUser *savedUser = [RGSUser MR_findFirstByAttribute:@"currentUser" withValue:@YES];
+        if (savedUser) {
+           if ([[NSUserDefaults standardUserDefaults] boolForKey:@"rememberMe"]) {
+               self.usernameTextField.text = savedUser.login;
+               self.passwordTextField.text = savedUser.password;
+           }
+        }
+    
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];

@@ -146,8 +146,9 @@
 //    }];
 //
 //    [self deleteDataModel];
-//    [self createDataModel];
-    
+    [self createDataModel];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"autoLogin"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"rememberMe"];
     return YES;
 }
 
@@ -205,6 +206,7 @@
     
     RGSUser *rrUser = [RGSUser MR_createEntity];
     rrUser.fullName = @"rr";
+    rrUser.login = @"rr";
     rrUser.password = @"h5ljh4aKOcLw";
     rrUser.entityID = @894248;
     rrUser.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"terminator"]);
