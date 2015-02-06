@@ -73,6 +73,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self deleteDataModel];
+    [self createDataModel];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:UDKAutoLogin];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:UDKRememberMe];
     
     [self configAppearance];
     
@@ -88,15 +91,16 @@
     
     
 //    [QBRequest createSessionWithSuccessBlock:^(QBResponse *response, QBASession *session) {
-//        RGSApplicationSession *savedApplecationSession = [RGSApplicationSession MR_findFirst];
-//        [savedApplecationSession MR_deleteEntity];
+////        RGSApplicationSession *savedApplecationSession = [RGSApplicationSession MR_findFirst];
+////        if(savedApplecationSession) [savedApplecationSession MR_deleteEntity];
+//        
 //        
 //        RGSApplicationSession *applicationSession = [session rgsApplicationSession];
 //        [applicationSession.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
 //            if (success) {
 //                RGSUser *savedUser = [RGSUser findCurrentUser];
 //                if (savedUser) {
-//                    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"autoLogin"]) {
+//                    if ([[NSUserDefaults standardUserDefaults] boolForKey:UDKAutoLogin]) {
 //                        [QBRequest logInWithUserLogin:savedUser.login password:savedUser.password successBlock:^(QBResponse *response, QBUUser *user) {
 //                            savedUser.entityID = [NSNumber numberWithInteger:user.ID];
 //                            
@@ -144,11 +148,8 @@
 //        ;
 //        [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ECAS userInfo:errorDetail], LogReportLevelSub : response.error.error}];
 //    }];
-//
-//    [self deleteDataModel];
-    [self createDataModel];
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:UDKAutoLogin];
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:UDKRememberMe];
+
+    
     return YES;
 }
 
@@ -264,7 +265,7 @@
             [chat addMessagesObject:m];
         }
     }
-    [[NSManagedObjectContext MR_defaultContext] MR_saveOnlySelfAndWait];
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
     
 }
 - (void)loginAsRRWithBarAsMessagesReceiver
@@ -328,13 +329,13 @@
     {
         RGSUser *currentUser = [RGSUser MR_createEntity];
         currentUser.currentUser = [NSNumber numberWithBool:YES];
-        currentUser.fullName = @"bar";
-        currentUser.password = @"abc123456";
+        currentUser.fullName = @"rr";
+        currentUser.password = @"h5ljh4aKOcLw";
+        currentUser.entityID = @894248;
         
         RGSUser *rrUser = [RGSUser MR_createEntity];
-        rrUser.fullName = @"rr";
-        rrUser.password = @"h5ljh4aKOcLw";
-        rrUser.entityID = @894248;
+        rrUser.fullName = @"bar";
+        rrUser.password = @"abc123456";
         
         RGSChat *chat = [RGSChat MR_createEntity];
         chat.sender = currentUser;
@@ -425,7 +426,7 @@
     self.window.rootViewController = secondSplashVC;
     [secondSplashVC performSegueWithIdentifier:@"toLoginScreen" sender:secondSplashVC];
     
-    [UIView animateWithDuration:9 animations:^{
+    [UIView animateWithDuration:.9 animations:^{
         self.splashWindow.alpha = 0;
     } completion:^(BOOL finished) {
         if(finished){

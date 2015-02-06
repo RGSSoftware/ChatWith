@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rBb-vm-Qvq">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -139,6 +138,7 @@
                         <outlet property="rememberMeSwitch" destination="NCr-Eu-74Z" id="KLP-BN-2Ni"/>
                         <outlet property="usernameTextField" destination="TOT-6N-ker" id="Iwf-I1-WYC"/>
                         <segue destination="7f8-af-ZJG" kind="unwind" identifier="unwindFromLoginScreenToInitViewScreen" unwindAction="unwindToInitViewController:" id="00g-XM-AdC"/>
+                        <segue destination="7f8-af-ZJG" kind="unwind" identifier="unwindFromLoginScreenToSplashScreen" unwindAction="unwindToSplashScreenThenMainApp:" id="fJX-ka-C7X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4N-tB-izt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1005,59 +1005,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hcx-1f-ccq">
-                                <rect key="frame" x="16" y="20" width="191" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="br8-qN-X6U" id="rSb-gs-i3Y"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66B-uW-RmN">
-                                <rect key="frame" x="16" y="58" width="55" height="30"/>
-                                <state key="normal" title="search">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="search:" destination="br8-qN-X6U" eventType="touchUpInside" id="khw-To-Ia2"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNn-B1-Nxs">
-                                <rect key="frame" x="16" y="96" width="288" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DGZ-cP-i8i">
-                                <rect key="frame" x="16" y="173" width="160" height="284"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FrH-vu-2i3">
-                                        <rect key="frame" x="8" y="8" width="93" height="196"/>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="0.2576392743" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eus-6k-KL2">
-                                <rect key="frame" x="16" y="135" width="160" height="30"/>
-                                <state key="normal" title="Convert">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="convert:" destination="br8-qN-X6U" eventType="touchUpInside" id="Yp7-u8-Aij"/>
-                                </connections>
-                            </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Layer-1" translatesAutoresizingMaskIntoConstraints="NO" id="VfA-UM-lno">
+                                <rect key="frame" x="8" y="16" width="74" height="74"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Layer-2" translatesAutoresizingMaskIntoConstraints="NO" id="MEj-cF-72Y">
+                                <rect key="frame" x="27" y="118" width="37" height="37"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="Layer-2larger" translatesAutoresizingMaskIntoConstraints="NO" id="BVb-tG-bDy">
+                                <rect key="frame" x="72" y="118" width="36" height="36"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="Layer-1larger" translatesAutoresizingMaskIntoConstraints="NO" id="PDW-RT-T2C">
+                                <rect key="frame" x="90" y="16" width="74" height="74"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="Layer-2-copylargest" translatesAutoresizingMaskIntoConstraints="NO" id="HEb-Rs-m2W">
+                                <rect key="frame" x="116" y="118" width="37" height="37"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="Layer-1largest" translatesAutoresizingMaskIntoConstraints="NO" id="uoA-BN-KqJ">
+                                <rect key="frame" x="172" y="16" width="74" height="74"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <outlet property="greenView" destination="FrH-vu-2i3" id="Hdk-De-XUd"/>
-                        <outlet property="redView" destination="DGZ-cP-i8i" id="wMC-8g-tac"/>
-                        <outlet property="resultLabel" destination="WNn-B1-Nxs" id="w0Z-N8-66H"/>
-                        <outlet property="searchButton" destination="66B-uW-RmN" id="VFS-jJ-CAa"/>
-                        <outlet property="textField" destination="hcx-1f-ccq" id="PKG-bB-1gT"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q2t-nw-8aN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1277,6 +1246,12 @@
         <image name="Facebook_Icon" width="89" height="89"/>
         <image name="Forma" width="66" height="66"/>
         <image name="Gplus" width="85" height="88"/>
+        <image name="Layer-1" width="74" height="74"/>
+        <image name="Layer-1larger" width="148" height="148"/>
+        <image name="Layer-1largest" width="222" height="222"/>
+        <image name="Layer-2" width="37" height="37"/>
+        <image name="Layer-2-copylargest" width="111" height="111"/>
+        <image name="Layer-2larger" width="74" height="74"/>
         <image name="Twitter_Icon" width="88" height="72"/>
         <image name="background" width="640" height="1136"/>
         <image name="camera41" width="58" height="41"/>

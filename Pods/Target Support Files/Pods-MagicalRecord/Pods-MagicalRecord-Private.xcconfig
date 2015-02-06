@@ -1,5 +1,5 @@
 #include "Pods-MagicalRecord.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/MagicalRecord" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/BlocksKit" "${PODS_ROOT}/Headers/Public/Kiwi" "${PODS_ROOT}/Headers/Public/LoremIpsum" "${PODS_ROOT}/Headers/Public/MFSideMenu" "${PODS_ROOT}/Headers/Public/MagicalRecord" "${PODS_ROOT}/Headers/Public/Masonry" "${PODS_ROOT}/Headers/Public/OCHamcrest" "${PODS_ROOT}/Headers/Public/OCMock" "${PODS_ROOT}/Headers/Public/OCMockito" "${PODS_ROOT}/Headers/Public/QuickBlox" "${PODS_ROOT}/Headers/Public/Reachability"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/MagicalRecord" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/BlocksKit" "${PODS_ROOT}/Headers/Public/Kiwi" "${PODS_ROOT}/Headers/Public/LoremIpsum" "${PODS_ROOT}/Headers/Public/MBProgressHUD" "${PODS_ROOT}/Headers/Public/MFSideMenu" "${PODS_ROOT}/Headers/Public/MagicalRecord" "${PODS_ROOT}/Headers/Public/Masonry" "${PODS_ROOT}/Headers/Public/OCHamcrest" "${PODS_ROOT}/Headers/Public/OCMock" "${PODS_ROOT}/Headers/Public/OCMockito" "${PODS_ROOT}/Headers/Public/QuickBlox" "${PODS_ROOT}/Headers/Public/Reachability"
 OTHER_LDFLAGS = ${PODS_MAGICALRECORD_OTHER_LDFLAGS} -ObjC
 PODS_ROOT = ${SRCROOT}

@@ -7,6 +7,7 @@ pod 'BlocksKit'
 pod 'MFSideMenu'
 pod 'Reachability'
 pod 'Masonry'
+pod 'MBProgressHUD'
 
 
 target :ChatWithTests, :exclusive => true do

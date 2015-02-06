@@ -48,14 +48,19 @@
     addBarButton.tintColor = [UIColor colorWithHexString:@"46ABCC"];
     self.navigationItem.leftBarButtonItem = addBarButton;
     
-    NSError *error;
+   
+    
+    
+    self.view.layer.borderWidth = 2;
+    self.tableView.contentInset = UIEdgeInsetsZero;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
         // Update to handle the error appropriately.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
-    
-    self.view.layer.borderWidth = 2;
-    self.tableView.contentInset = UIEdgeInsetsZero;
 }
 
 -(void)toContacts:(id)sender{

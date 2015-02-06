@@ -88,4 +88,9 @@
 {
     self.shouldGoToMainApp = YES;
 }
+- (IBAction)unwindToSplashScreenThenMainApp:(UIStoryboardSegue *)unwindSegue
+{
+    self.shouldGoToMainApp = YES;
+}
+
 @end

@@ -44,7 +44,6 @@
 }
 
 -(void)baseInit{
-     _userManger = [RGSUserMangementService new];
     
     _textFields = [NSMutableArray arrayWithCapacity:2];
 }
@@ -104,6 +103,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    self.navigationItem.rightBarButtonItem = nil;
+    
+    
     for (UITextField *textField in self.textFields) {
         UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
         [textField setLeftViewMode:UITextFieldViewModeAlways];
@@ -122,13 +124,6 @@
         make.top.equalTo(@(CGRectGetMaxY(self.navigationController.navigationBar.frame) + 17));
     }];
 }
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    [NSTimer bk_scheduledTimerWithTimeInterval:1 block:^(NSTimer *timer) {
-        [self handleFatalError:nil];
-    } repeats:NO];
-}
 
 - (void)unwindToInitViewScreen {
     //segway to next screen
@@ -138,20 +133,35 @@
 -(IBAction)loginUser:(id)sender{
 
     if ([self isUserCredentialsValid]) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Signing In";
+        
+        UIImageView *doneCheckView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"doneCheck"]];
+        doneCheckView.frame = CGRectMake(0, 0, CGRectGetWidth(doneCheckView.frame)/3, CGRectGetHeight(doneCheckView.frame)/3);
+        hud.customView = doneCheckView;
+        
         [QBRequest logInWithUserLogin:self.usernameTextField.text password:self.passwordTextField.text successBlock:^(QBResponse *response, QBUUser *user) {
             //display successful login message
             //segway to splah Screen
             
             RGSUser *rgsUser = [user rgsUser];
             rgsUser.currentUser = [NSNumber numberWithBool:YES];
+            rgsUser.password = self.passwordTextField.text;
             rgsUser.entityID = [NSNumber numberWithInteger:user.ID];
-            
+        
             [rgsUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-                [[RGSChatService shared] loginUser:user successBlock:^(BOOL success) {
+                [[RGSChatService shared] loginUser:[rgsUser qbUser]  successBlock:^(BOOL success) {
                     if(success){
-                        [self unwindToInitViewScreen];
+                        float delay = 1.1;
+                        hud.mode = MBProgressHUDModeCustomView;
+                        hud.labelText = @"Sign Successful";
+                        [hud hide:YES afterDelay:delay];
+                        [NSTimer bk_scheduledTimerWithTimeInterval:delay + 0.2 block:^(NSTimer *timer) {
+                            [self performSegueWithIdentifier:@"unwindFromLoginScreenToSplashScreen" sender:self];
+
+                        } repeats:NO];
                     } else {
-                        
+                        [hud hide:YES];
                         NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
                         [errorDetail setValue:@"Failed to login to QBChat" forKey:NSLocalizedFailureReasonErrorKey];
                         [errorDetail setValue:@"Couldn't complete login of user because there was a QBChat failure login." forKey:NSLocalizedDescriptionKey];
@@ -160,6 +170,7 @@
                 }];
             }];
         } errorBlock:^(QBResponse *response) {
+            [hud hide:YES];
             NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
             [errorDetail setValue:@"error login to QBSystem" forKey:NSLocalizedFailureReasonErrorKey];
             [errorDetail setValue:@"Couldn't complete login of user because there was a QBSystem failure login." forKey:NSLocalizedDescriptionKey];
