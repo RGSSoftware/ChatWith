@@ -16,11 +16,8 @@
 #import "RGSChatService.h"
 #import "LocalStorageService.h"
 
-@interface RGSLoginViewController () <UIAlertViewDelegate>
+@interface RGSLoginViewController ()
 @property (nonatomic, strong)NSMutableArray *textFields;
-
-@property (nonatomic, strong)UIAlertView *sendToDevloperAlert;
-
 @end
 
 @implementation RGSLoginViewController
@@ -112,13 +109,17 @@
         [textField setLeftView:spacerView];
     }
     
-    RGSUser *savedUser = [RGSUser findCurrentUser];
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        RGSUser *savedUser = [RGSUser findCurrentUser];
         if (savedUser) {
-           if ([[NSUserDefaults standardUserDefaults] boolForKey:UDKRememberMe]) {
-               self.usernameTextField.text = savedUser.login;
-               self.passwordTextField.text = savedUser.password;
-           }
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:UDKRememberMe]) {
+                self.usernameTextField.text = savedUser.login;
+                self.passwordTextField.text = savedUser.password;
+            }
         }
+    });
     
     [self.container mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(@(CGRectGetMaxY(self.navigationController.navigationBar.frame) + 17));
@@ -277,7 +278,7 @@
 - (void)showAlertViewWithMeassage:(NSString *)message{
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
                                                         message:message
-                                                       delegate:self
+                                                       delegate:nil
                                               cancelButtonTitle:@"OKAY"
                                               otherButtonTitles:nil];
     [alertView show];
