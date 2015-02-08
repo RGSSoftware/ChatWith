@@ -29,7 +29,7 @@
     
     [self.navigationController.navigationBar
      setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                             [UIColor colorWithHexString:@"57d6ff"] ,NSForegroundColorAttributeName,
+                             [UIColor whiteColor] ,NSForegroundColorAttributeName,
                              [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName, nil]];
     
     self.menuBarButton = [[UIBarButtonItem alloc] bk_initWithImage:[[UIImage imageNamed:@"MenuIcon"] resizedImage:CGSizeMake(25, 17)] style:UIBarButtonItemStylePlain handler:^(id sender) {

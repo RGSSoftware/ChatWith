@@ -19,6 +19,8 @@
 #import "RGSChatService.h"
 #import "LocalStorageService.h"
 
+#import "RGSBackBarButtonItem.h"
+
 
 
 @interface RGSRegistrationViewController ()
@@ -55,7 +57,32 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationItem.title = @"Registration";
+    self.navigationItem.rightBarButtonItem = nil;
     
+//    self.navigationItem.leftBarButtonItem = [[RGSBackBarButtonItem alloc] initWithTitle:@"Login" handler:^(id sender) {
+//
+//    }];
+//    
+//    UIView *backButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, CGRectGetHeight(self.navigationController.navigationBar.frame))];
+//    backButtonView.layer.borderWidth = 1;
+//    UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backArrow"]];
+//    arrowView.frame = CGRectMake(0, 10, (CGRectGetWidth(arrowView.frame)/3), (CGRectGetHeight(arrowView.frame)/3));
+//    arrowView.contentMode = UIViewContentModeScaleAspectFill;
+//    arrowView.layer.borderColor = [[UIColor whiteColor] CGColor];
+////    arrowView.layer.borderWidth = 1;
+//    [backButtonView addSubview:arrowView];
+////    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButtonView];
+//    
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = backButtonView.frame;
+//    [button addSubview:arrowView];
+//    [button  ]
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    self.navigationItem.leftBarButtonItem = [[RGSBackBarButtonItem alloc] initWithTitle:@"Login" handler:^(id sender) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
     
     [self.textFields addObjectsFromArray:@[self.usernameTextField,
                                            self.passwordTextField,
@@ -101,9 +128,9 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
         [textField setLeftView:spacerView];
     }
     
-    self.scrollView.contentInset = UIEdgeInsetsMake(65, 0, 0, 0);
-    self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(65, 0, 0, 0);
-    self.scrollView.contentOffset = CGPointMake(0, -65);
+//    self.scrollView.contentInset = UIEdgeInsetsMake(65, 0, 0, 0);
+//    self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(65, 0, 0, 0);
+//    self.scrollView.contentOffset = CGPointMake(0, -65);
 
     
 }

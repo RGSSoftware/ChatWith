@@ -89,21 +89,21 @@
     self.InviteFriendsButton.titleLabel.font = [UIFont systemFontOfSize:20];
     [self.view bringSubviewToFront:self.InviteFriendsButton];
     
-    if(self.showLeftBarButtonItem){
-        
-        self.barBarButtonItem = [RGSBackBarButtonItem new];
-        [self.barBarButtonItem addTarget:self action:@selector(toChatListScreen:) forControlEvents:UIControlEventTouchUpInside];
-        [self.barBarButtonItem setTitle:@"Cancel"];
-        self.navigationItem.leftBarButtonItem = self.barBarButtonItem;
-        
-        self.navigationItem.title = @"Select Contact";
-    } else{
-        
-        self.barBarButtonItem = [RGSBackBarButtonItem new];
-        [self.barBarButtonItem addTarget:self action:@selector(toChatListScreen:) forControlEvents:UIControlEventTouchUpInside];
-        [self.barBarButtonItem setTitle:@"Cancel"];
-        self.navigationItem.leftBarButtonItem = self.barBarButtonItem;
-    }
+//    if(self.showLeftBarButtonItem){
+//        
+//        self.barBarButtonItem = [RGSBackBarButtonItem new];
+//        [self.barBarButtonItem addTarget:self action:@selector(toChatListScreen:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.barBarButtonItem setTitle:@"Cancel"];
+//        self.navigationItem.leftBarButtonItem = self.barBarButtonItem;
+//        
+//        self.navigationItem.title = @"Select Contact";
+//    } else{
+//        
+//        self.barBarButtonItem = [RGSBackBarButtonItem new];
+//        [self.barBarButtonItem addTarget:self action:@selector(toChatListScreen:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.barBarButtonItem setTitle:@"Cancel"];
+//        self.navigationItem.leftBarButtonItem = self.barBarButtonItem;
+//    }
 
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {

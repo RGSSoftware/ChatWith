@@ -12,6 +12,8 @@
 
 #import "RGSChatService.h"
 
+#import "RGSBackBarButtonItem.h"
+
 @interface RGSPlaygroundViewController ()
 
 @end
@@ -20,40 +22,74 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-NSPersistentStoreCoordinator *coordinator = [NSPersistentStoreCoordinator MR_coordinatorWithSqliteStoreNamed:[MagicalRecord defaultStoreName]];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     
-//    NSManagedObjectContext *context = [NSManagedObjectContext MR_contextWithStoreCoordinator:coordinator];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setFrame:CGRectMake(0, 20, 220, 40)];
     
-//    RGSMessage *message = [RGSMessage MR_createInContext:[NSManagedObjectContext MR_contextWithStoreCoordinator:coordinator]];
-//    message.body = @"message in secondary context";
-//    [message.managedObjectContext MR_saveOnlySelfAndWait];
-//    [context MR_saveOnlySelfWithCompletion:nil];
-//    [context MR_saveOnlySelfAndWait];
+    [backButton setTitleColor:[UIColor colorWithHexString:@"57d6ff"]
+                     forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor lightGrayColor]
+                     forState:UIControlStateHighlighted];
+    backButton.titleLabel.textAlignment = NSTextAlignmentLeft;
+    backButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.0];
     
-    
-    NSLog(@"------%@",[QBSettings serverChatDomain]);
-    BOOL bl = [[RGSChatService shared] canReach];
-    
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-   
-    NSString *qbsetting = [[QBApplication sharedApplication] restAPIVersion];
+    backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     
     
-//    {
-//        for(int i = 0; i > 10; i++){
-//            RGSMessage *message = [RGSMessage MR_createEntity];
-//            message.body = @"message in main context";
-//        }
+    
+    
+    [backButton setImage:[UIImage imageNamed:@"backArrowlarge"]
+                forState:UIControlStateNormal];
+//    backButton.imageView.layer.cornerRadius = 10;
+    
+//    [backButton setImage:[[UIImage imageNamed:@"backArrow_larger"] resizedImage:CGSizeMake(10, 25)]
+//                forState:UIControlStateNormal];
+    
+    [backButton addTarget:nil action:nil
+         forControlEvents:UIControlEventTouchUpInside];
+    [backButton setTitle:@"Terminator" forState:UIControlStateNormal];
+    backButton.titleEdgeInsets = UIEdgeInsetsMake(2, 10, 2, 0);
+//    backButton.imageEdgeInsets = UIEdgeInsetsMake(25, 25, 25, 25);
+    
+//    backButton.layer.borderWidth = 2;
+    
+    UIImageView *doneCheckView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backArrowlarger2"]];
+    doneCheckView.frame = CGRectMake(0, 20, CGRectGetWidth(doneCheckView.frame)/3, CGRectGetHeight(doneCheckView.frame)/3);
+//    doneCheckView.layer.borderWidth = 1;
+    doneCheckView.layer.borderColor = [[UIColor whiteColor] CGColor];
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 50)];
+    [backView addSubview:doneCheckView];
+//    backView.layer.borderWidth = 1;
+    
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backView];
+    self.navigationItem.leftBarButtonItem = [[RGSBackBarButtonItem alloc] initWithTitle:@"Chat" handler:^(id sender) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(20, 320, 100, 100)];
+        view.backgroundColor = [UIColor redColor];
+        [self.view addSubview:view];
+    }];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
+  }
+
+-(void)handleTimer:(id)sender{
+    RGSBackBarButtonItem *backButton = (RGSBackBarButtonItem *)self.navigationItem.leftBarButtonItem;
+//
+//    backButton.label.textColor = [UIColor whiteColor];
 //    
-//    }
+//    [backButton.arrow setFrameOriginX:-5];
+//    [backButton.arrow setFrameOriginY:15];
 //    
-//    NSManagedObjectContext *context2 = [NSManagedObjectContext MR_contextWithStoreCoordinator:coordinator];
-//    NSArray *allMessage = [RGSMessage MR_findAllInContext:context2];
-//    RGSMessage *firstMessage = [allMessage firstObject];
-//    NSLog(@"%@", firstMessage.body);
-    
-    
+    UILabel *label = backButton.label;
+//
+//    label.font = [UIFont fontWithName:@"HelveticaNeue-Regular" size:16];
+//    
+//    [label setFrameSizeWidth:50];
+    [label setFrameOriginX:8];
+//    [label setFrameOriginY:18];
     
     
 }

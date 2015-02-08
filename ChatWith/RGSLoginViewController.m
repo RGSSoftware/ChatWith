@@ -47,12 +47,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    UILabel *redSquare = [UILabel new];
-    redSquare.frame = CGRectMake(20, 20, 100, 100);
-    redSquare.backgroundColor = [UIColor redColor];
-    
     
     [self.textFields addObjectsFromArray:@[self.usernameTextField, self.passwordTextField]];
     
@@ -99,6 +93,8 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    self.navigationItem.title = @"Login";
     
     self.navigationItem.rightBarButtonItem = nil;
     
@@ -248,8 +244,6 @@
     CGRect finalFrame = errorView.frame;
     finalFrame.origin.y = navHeight;
     
-    
-    
     if(CGRectGetMaxY(finalFrame) >= CGRectGetMinY(self.container.frame)){
         [self.container mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(@((CGRectGetMaxY(self.navigationController.navigationBar.frame)) + CGRectGetHeight(errorView.frame)));
@@ -263,8 +257,6 @@
             [errorView setFrameOriginY:navHeight];
         } completion:nil];
     }
-    
-    
     
     RGSLogReport *logReport = [RGSLogReport logReportFromErrorDic:errorDic];
     if(logReport){

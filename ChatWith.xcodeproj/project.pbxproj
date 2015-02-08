@@ -25,6 +25,7 @@
 		2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */; };
 		221A05611A0D6C7A006B46AD /* RGSChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 221A05601A0D6C7A006B46AD /* RGSChatCell.m */; };
 		222292A21A4147AB00BAF177 /* RGSSideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 222292A11A4147AB00BAF177 /* RGSSideMenuCell.m */; };
+		22240A321A874CFB003342F3 /* RGSBackButtonContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 22240A311A874CFB003342F3 /* RGSBackButtonContainer.m */; };
 		2230C27E1A5EF85100A2F6DB /* UIView+RGSFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2230C27D1A5EF85100A2F6DB /* UIView+RGSFrame.m */; };
 		2230C2811A60118500A2F6DB /* UIView+RGSGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 2230C2801A60118500A2F6DB /* UIView+RGSGesture.m */; };
 		223A1DA91A013F0200A1B3D2 /* RGSContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A1DA81A013F0200A1B3D2 /* RGSContactCell.m */; };
@@ -39,6 +40,7 @@
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250787419F880D100F793EE /* RGSContactListViewController.m */; };
 		2252F6B91A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2252F6B81A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.m */; };
+		225E2CAB1A869F5300596E19 /* RGSPlayGroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 225E2CAA1A869F5300596E19 /* RGSPlayGroundView.m */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
 		2264746B19A90C9E00245A73 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746A19A90C9E00245A73 /* SystemConfiguration.framework */; };
 		2264746D19A90CA800245A73 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746C19A90CA800245A73 /* MobileCoreServices.framework */; };
@@ -189,6 +191,8 @@
 		221A05601A0D6C7A006B46AD /* RGSChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChatCell.m; sourceTree = "<group>"; };
 		222292A01A4147AB00BAF177 /* RGSSideMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSSideMenuCell.h; sourceTree = "<group>"; };
 		222292A11A4147AB00BAF177 /* RGSSideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSSideMenuCell.m; sourceTree = "<group>"; };
+		22240A301A874CFB003342F3 /* RGSBackButtonContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSBackButtonContainer.h; sourceTree = "<group>"; };
+		22240A311A874CFB003342F3 /* RGSBackButtonContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSBackButtonContainer.m; sourceTree = "<group>"; };
 		2230C27C1A5EF85100A2F6DB /* UIView+RGSFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RGSFrame.h"; sourceTree = "<group>"; };
 		2230C27D1A5EF85100A2F6DB /* UIView+RGSFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RGSFrame.m"; sourceTree = "<group>"; };
 		2230C27F1A60118500A2F6DB /* UIView+RGSGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RGSGesture.h"; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 		2250787419F880D100F793EE /* RGSContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactListViewController.m; sourceTree = "<group>"; };
 		2252F6B71A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSCloseSideMenuAnimationController.h; sourceTree = "<group>"; };
 		2252F6B81A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSCloseSideMenuAnimationController.m; sourceTree = "<group>"; };
+		225E2CA91A869F5300596E19 /* RGSPlayGroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSPlayGroundView.h; sourceTree = "<group>"; };
+		225E2CAA1A869F5300596E19 /* RGSPlayGroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSPlayGroundView.m; sourceTree = "<group>"; };
 		2264746819A90C9400245A73 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2264746A19A90C9E00245A73 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2264746C19A90CA800245A73 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -524,6 +530,8 @@
 		22889AD119D3234500F0541D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				225E2CA91A869F5300596E19 /* RGSPlayGroundView.h */,
+				225E2CAA1A869F5300596E19 /* RGSPlayGroundView.m */,
 				224FBF7619D1B7A800A924CA /* Main.storyboard */,
 				22E954AE1A531C1B0066ECF4 /* RGSBarButtonItem.h */,
 				22E954AF1A531C1B0066ECF4 /* RGSBarButtonItem.m */,
@@ -531,6 +539,8 @@
 				22E954AC1A526A6F0066ECF4 /* RGSTitleBarButtonItem.m */,
 				22E954A51A51C4140066ECF4 /* RGSBackBarButtonItem.h */,
 				22E954A61A51C4140066ECF4 /* RGSBackBarButtonItem.m */,
+				22240A301A874CFB003342F3 /* RGSBackButtonContainer.h */,
+				22240A311A874CFB003342F3 /* RGSBackButtonContainer.m */,
 				22AC29061A4C698800D466F5 /* RGSSearchBar.h */,
 				22AC29071A4C698900D466F5 /* RGSSearchBar.m */,
 				2207E3E61A41FCCA00CE91D9 /* dashBorderView.h */,
@@ -964,6 +974,7 @@
 				2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */,
 				223B467E1A6EBD4900B3F22E /* RGSLogService.m in Sources */,
 				2287C46A19FAB3EA00039555 /* UIImage+RGSinitWithColor.m in Sources */,
+				22240A321A874CFB003342F3 /* RGSBackButtonContainer.m in Sources */,
 				2218FDC419DC902E00E491F6 /* RGSUserMangementService.m in Sources */,
 				22F07A0E1A3890E1007E6E2B /* NSString+RGSAttributedString.m in Sources */,
 				22D7BCBF19A8D45100D2C01C /* main.m in Sources */,
@@ -976,6 +987,7 @@
 				22889ACB19D322A400F0541D /* RGSLoginViewController.m in Sources */,
 				228EABA71A23F4A4007D555E /* NSAttributedString+RGSExtras.m in Sources */,
 				22AD00F11A0ED43D008F9EF7 /* RGSChat.m in Sources */,
+				225E2CAB1A869F5300596E19 /* RGSPlayGroundView.m in Sources */,
 				22C4F4081A3F949D009CB1C2 /* RGShowSideMenuAnimationController.m in Sources */,
 				22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */,
 				227BFAF519E31EE0000E7ACC /* RGSChatService.m in Sources */,
