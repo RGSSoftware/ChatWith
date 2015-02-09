@@ -18,6 +18,9 @@
 -(void)loginUsername:(NSString *)username password:(NSString *)password successBlock:(void (^)(BOOL success))success;
 
 -(void)isUsernameTaken:(NSString *)username successBlock:(void (^)(BOOL isTaken))results;
+
++(BOOL)isPasswordValid:(NSString *)password;
++(BOOL)isUserNameValid:(NSString *)username;
 @end
 
 

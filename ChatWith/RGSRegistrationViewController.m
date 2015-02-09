@@ -59,7 +59,7 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"Registration";
     self.navigationItem.rightBarButtonItem = nil;
-        
+    
     self.navigationItem.leftBarButtonItem = [[RGSBackBarButtonItem alloc] initWithTitle:@"Login" handler:^(id sender) {
         [self.navigationController popViewControllerAnimated:YES];
     }];
@@ -174,27 +174,10 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
     } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
 }
 
-- (BOOL)isPasswordValid:(NSString *)password
-{
-    if (password && !(password.length <= 4) && (password.length <=15)) {
-        return YES;
-    }
-    
-    return NO;
-}
-- (BOOL)isUserNameValid:(NSString *)username
-{
-    if(username && !(username.length == 0) && (username.length <= 20)){
-        
-        return [username isAlphaNumeric];
-    }
-    return NO;
-}
-
 
 -(BOOL)isUserCredentialsValid{
-    return ([self isUserNameValid:self.usernameTextField.text] &&
-            [self isPasswordValid:self.passwordTextField.text]);
+    return ([RGSUserMangementService isUserNameValid:self.usernameTextField.text] &&
+            [RGSUserMangementService isPasswordValid:self.passwordTextField.text]);
 }
 
 - (void)showAlertViewWithMeassage:(NSString *)message{

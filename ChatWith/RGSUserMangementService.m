@@ -100,4 +100,21 @@ static dispatch_once_t once_token = 0;
         results(NO);
     }];
 }
+
+- (BOOL)isPasswordValid:(NSString *)password
+{
+    if (password && !(password.length <= 4) && (password.length <=15)) {
+        return YES;
+    }
+    
+    return NO;
+}
+- (BOOL)isUserNameValid:(NSString *)username
+{
+    if(username && !(username.length == 0) && (username.length <= 20)){
+        
+        return [username isAlphaNumeric];
+    }
+    return NO;
+}
 @end

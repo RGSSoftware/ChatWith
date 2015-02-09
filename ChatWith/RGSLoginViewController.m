@@ -277,25 +277,8 @@
 
 }
 -(BOOL)isUserCredentialsValid{
-    return ([self isUserNameValid:self.usernameTextField.text] &&
-            [self isPasswordValid:self.passwordTextField.text]);
-}
-
-- (BOOL)isPasswordValid:(NSString *)password
-{
-    if (password && !(password.length <= 4) && (password.length <=15)) {
-        return YES;
-    }
-    
-    return NO;
-}
-- (BOOL)isUserNameValid:(NSString *)username
-{
-    if(username && !(username.length == 0) && (username.length <= 20)){
-        
-        return [username isAlphaNumeric];
-    }
-    return NO;
+    return ([RGSUserMangementService isUserNameValid:self.usernameTextField.text] &&
+            [RGSUserMangementService isPasswordValid:self.passwordTextField.text]);
 }
 
 - (void)didReceiveMemoryWarning
