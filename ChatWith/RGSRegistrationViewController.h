@@ -9,6 +9,7 @@
 #import "RGSBaseViewController.h"
 
 @interface RGSRegistrationViewController : RGSBaseViewController
+@property (weak, nonatomic) IBOutlet UIView *userImageContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UIButton *addUserImageButtom;
 

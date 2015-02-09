@@ -59,27 +59,7 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"Registration";
     self.navigationItem.rightBarButtonItem = nil;
-    
-//    self.navigationItem.leftBarButtonItem = [[RGSBackBarButtonItem alloc] initWithTitle:@"Login" handler:^(id sender) {
-//
-//    }];
-//    
-//    UIView *backButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, CGRectGetHeight(self.navigationController.navigationBar.frame))];
-//    backButtonView.layer.borderWidth = 1;
-//    UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backArrow"]];
-//    arrowView.frame = CGRectMake(0, 10, (CGRectGetWidth(arrowView.frame)/3), (CGRectGetHeight(arrowView.frame)/3));
-//    arrowView.contentMode = UIViewContentModeScaleAspectFill;
-//    arrowView.layer.borderColor = [[UIColor whiteColor] CGColor];
-////    arrowView.layer.borderWidth = 1;
-//    [backButtonView addSubview:arrowView];
-////    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButtonView];
-//    
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    button.frame = backButtonView.frame;
-//    [button addSubview:arrowView];
-//    [button  ]
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    
+        
     self.navigationItem.leftBarButtonItem = [[RGSBackBarButtonItem alloc] initWithTitle:@"Login" handler:^(id sender) {
         [self.navigationController popViewControllerAnimated:YES];
     }];
@@ -113,6 +93,8 @@
     
     [self.userImage.layer setCornerRadius:10];
     self.userImage.clipsToBounds = YES;
+    
+    self.userImageContainer.layer.borderColor = [[UIColor colorWithWhite:0.830 alpha:1.000] CGColor];
     
     
 }

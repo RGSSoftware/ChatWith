@@ -32,8 +32,6 @@
         _arrow.highlightedImage = [UIImage imageNamed:@"backArrowHightlight"];
         _arrow.frame = CGRectMake(-5, 9, CGRectGetWidth(_arrow.frame)/3, CGRectGetHeight(_arrow.frame)/3);
         
-        
-        
         _label = [UILabel labelWithText:title];
         _label.frame = CGRectMake(8, 12, 50, 20);
         _label.textColor = [UIColor whiteColor];
@@ -68,13 +66,16 @@ return self;
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [touches anyObject];
-    if(!CGRectContainsPoint(self.frame, [touch locationInView:self])){
-        self.label.textColor = [UIColor whiteColor];
-        self.arrow.highlighted = NO;
-    } else {
-        //        self.label.textColor = [UIColor yellowColor];
+    CGRect rect = self.frame;
+    rect.origin.x = 0;
+    rect.origin.y = 20;
+    rect.size.width = rect.size.width + 16;
+    if(CGRectContainsPoint(rect, [touch locationInView:nil])){
         self.label.textColor = [UIColor lightGrayColor];
         self.arrow.highlighted = YES;
+    } else {
+        self.label.textColor = [UIColor whiteColor];
+        self.arrow.highlighted = NO;
     }
 }
 

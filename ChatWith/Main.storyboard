@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rBb-vm-Qvq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jnX-5h-0VD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -245,7 +245,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="br8-qN-X6U" kind="relationship" relationship="rootViewController" id="Tdo-pk-5lz"/>
+                        <segue destination="Irj-PV-mo2" kind="relationship" relationship="rootViewController" id="qGk-aQ-LvT"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="krm-j2-NUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -267,10 +267,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yus-ry-Zbv" customClass="RGSScrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DnN-dp-AwG">
-                                        <rect key="frame" x="34" y="20" width="85" height="85"/>
-                                        <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI7-na-ais">
                                         <rect key="frame" x="149" y="43" width="123" height="40"/>
                                         <state key="normal" title="Add Image">
@@ -326,6 +322,23 @@
                                             <action selector="submit:" destination="Irj-PV-mo2" eventType="touchUpInside" id="Z27-xN-4La"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QPE-M6-gs0">
+                                        <rect key="frame" x="34" y="20" width="85" height="85"/>
+                                        <subviews>
+                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="userPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="DnN-dp-AwG">
+                                                <rect key="frame" x="12" y="8" width="60" height="70"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
@@ -357,6 +370,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="s90-64-xGy"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="addUserImageButtom" destination="gI7-na-ais" id="XlI-WK-5K1"/>
@@ -368,6 +382,7 @@
                         <outlet property="scrollView" destination="yus-ry-Zbv" id="CSZ-jg-N0A"/>
                         <outlet property="submitButton" destination="8lC-Qr-m2r" id="ScE-xH-Yl7"/>
                         <outlet property="userImage" destination="DnN-dp-AwG" id="Jjs-Ar-2U8"/>
+                        <outlet property="userImageContainer" destination="QPE-M6-gs0" id="ghk-SZ-2Cz"/>
                         <outlet property="usernameTextField" destination="Zaw-Oa-dLs" id="ls0-Pm-wHl"/>
                         <segue destination="F9e-0a-DcU" kind="unwind" identifier="unwindRegistrationToInitView" unwindAction="unwindToInitViewController:" id="Lxg-q5-j9b"/>
                     </connections>
@@ -1326,17 +1341,19 @@
         <image name="Layer-2-copylargest" width="111" height="111"/>
         <image name="Layer-2larger" width="74" height="74"/>
         <image name="Twitter_Icon" width="88" height="72"/>
-        <image name="backArrow" width="10" height="25"/>
+        <image name="backArrow" width="30" height="75"/>
         <image name="backArrowlarger2" width="30" height="75"/>
         <image name="backArrowlarger2hightlighted" width="30" height="75"/>
         <image name="background" width="640" height="1136"/>
         <image name="camera41" width="58" height="41"/>
         <image name="em-25" width="121" height="69"/>
         <image name="phone-25" width="69" height="120"/>
+        <image name="userPlaceholder" width="195" height="225"/>
         <image name="white_camera41" width="58" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DzO-4T-oHi"/>
-        <segue reference="Gki-nL-zVj"/>
+        <segue reference="Ilp-jo-k4O"/>
+        <segue reference="qGk-aQ-LvT"/>
     </inferredMetricsTieBreakers>
 </document>
