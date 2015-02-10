@@ -110,11 +110,10 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
         [textField setLeftView:spacerView];
     }
     
-//    self.scrollView.contentInset = UIEdgeInsetsMake(65, 0, 0, 0);
-//    self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(65, 0, 0, 0);
-//    self.scrollView.contentOffset = CGPointMake(0, -65);
-
-    
+    [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.scrollView.superview.mas_top);
+        make.bottom.equalTo(self.scrollView.superview.mas_bottom);
+    }];    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -135,43 +134,76 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
 
 - (IBAction)submit:(id)sender {
     
-    if ([self isUserCredentialsValid]) {
-        [[RGSUserMangementService shared]
-         isUsernameTaken:self.usernameTextField.text
-         successBlock:^(BOOL isTaken) {
-         if(!isTaken){
-             
-             
-             QBUUser *user = [QBUUser user];
-             user.login = self.usernameTextField.text;
-             user.password = self.passwordTextField.text;
-             [QBRequest signUp:user successBlock:^(QBResponse *response, QBUUser *user) {
-                 if(response.success && !response.error){
-                     //login user
-                     [QBRequest logInWithUserLogin:user.login password:user.password successBlock:^(QBResponse *response, QBUUser *user) {
-                         if(response.success){
-                             [[LocalStorageService shared] creteCurrentUserWithQBUser:user successBlock:^(BOOL success, NSError *error) {
-                                 //loign to chat
-                                 [[RGSChatService shared] loginUser:user successBlock:^(BOOL success) {
-                                     
-                                     //on success, instantiate initial ViewController from storyboard
-                                     if(success){
-                                         [self presentViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController] animated:YES completion:nil];
-                                     }
-                                 }];
-                             }];
-                         }
-                     } errorBlock:^(QBResponse *response) {
-                         
-                     }];
-                 }
-             } errorBlock:^(QBResponse *response) {
-                 {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
-             }];
-             
-         } else {[self showAlertViewWithMeassage:@"Oops! Somebody already has that name. Give it another shot."];}
-                                             }];
-    } else {[self showAlertViewWithMeassage:@"Oops! Something's not right. Give it another shot."];}
+    if([RGSUserMangementService isEmailValid:self.emailTextField.text]){
+        [self showAlertViewWithMeassage:@"Yes"];
+    } else {
+        [self showAlertViewWithMeassage:@"NO"];
+    }
+    
+//    if ([self isUserCredentialsValid]) {
+//        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        hud.labelText = @"Checking Username";
+//        
+//        UIImageView *doneCheckView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"doneCheck"]];
+//        doneCheckView.frame = CGRectMake(0, 0, CGRectGetWidth(doneCheckView.frame)/3, CGRectGetHeight(doneCheckView.frame)/3);
+//        hud.customView = doneCheckView;
+//        [[RGSUserMangementService shared]
+//         isUsernameTaken:self.usernameTextField.text
+//         successBlock:^(BOOL isTaken) {
+//             if(!isTaken){
+//                 hud.mode = MBProgressHUDModeCustomView;
+//                 hud.labelText = @"Username available";
+//                 
+//                 [NSTimer bk_scheduledTimerWithTimeInterval:0.8 block:^(NSTimer *timer) {
+//                     hud.mode = MBProgressHUDModeIndeterminate;
+//                     hud.labelText = @"Signing In";
+//                     
+//                     [QBRequest logInWithUserLogin:self.usernameTextField.text password:self.passwordTextField.text successBlock:^(QBResponse *response, QBUUser *user) {
+//                         //display successful login message
+//                         //segway to splah Screen
+//                         
+//                         RGSUser *rgsUser = [user rgsUser];
+//                         rgsUser.currentUser = [NSNumber numberWithBool:YES];
+//                         rgsUser.password = self.passwordTextField.text;
+//                         rgsUser.entityID = [NSNumber numberWithInteger:user.ID];
+//                         
+//                         [rgsUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+//                             [[RGSChatService shared] loginUser:[rgsUser qbUser]  successBlock:^(BOOL success) {
+//                                 if(success){
+//                                     float delay = 1.1;
+//                                     hud.mode = MBProgressHUDModeCustomView;
+//                                     hud.labelText = @"Sign Successful";
+//                                     [hud hide:YES afterDelay:delay];
+//                                     [NSTimer bk_scheduledTimerWithTimeInterval:delay + 0.2 block:^(NSTimer *timer) {
+//                                         [self performSegueWithIdentifier:@"unwindFromRegistrationScreenToSplashScreen" sender:self];
+//                                         
+//                                     } repeats:NO];
+//                                 } else {
+//                                     [hud hide:YES];
+//                                     NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+//                                     [errorDetail setValue:@"Failed to login to QBChat" forKey:NSLocalizedFailureReasonErrorKey];
+//                                     [errorDetail setValue:@"Couldn't complete login of user because there was a QBChat failure login." forKey:NSLocalizedDescriptionKey];
+//                                     [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail]}];
+//                                 }
+//                             }];
+//                         }];
+//                     } errorBlock:^(QBResponse *response) {
+//                         [hud hide:YES];
+//                         NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+//                         [errorDetail setValue:@"error login to QBSystem" forKey:NSLocalizedFailureReasonErrorKey];
+//                         [errorDetail setValue:@"Couldn't complete login of user because there was a QBSystem failure login." forKey:NSLocalizedDescriptionKey];
+//                         ;
+//                         [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail], LogReportLevelSub : response.error.error}];
+//                         
+//                     }];
+//                  } repeats:NO];
+//                 
+//        } else {
+//            [hud hide:YES];
+//            [self showAlertViewWithMeassage:@"Oops! Somebody already has that name. Give it another shot."];
+//        }
+//         }];
+//    } else {[self showAlertViewWithMeassage:@"Oops! Username or Password is invalid. Give it another shot."];}
 }
 
 
@@ -190,5 +222,98 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
     [alertView show];
     
 }
+
+-(UIView *)fatalErrorView{
+    int topPadding = 7;
+    int bottonPadding = 7;
+    int rightPadding = 10;
+    int leftPadding = 10;
+    
+    UILabel *errorMessageLabel = [UILabel labelWithText:@"An error has occured. Please report for a quicker fix."];
+    errorMessageLabel.textAlignment = NSTextAlignmentCenter;
+    errorMessageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+    errorMessageLabel.textColor = [UIColor whiteColor];
+    errorMessageLabel.numberOfLines = 0;
+    
+    
+    CGSize expectedSize = [errorMessageLabel.text boundingRectWithSize:CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds) - (leftPadding + rightPadding), CGFLOAT_MAX) font:errorMessageLabel.font].size;
+    errorMessageLabel.frame = CGRectMake(leftPadding, topPadding, CGRectGetWidth([UIScreen mainScreen].bounds) - (leftPadding + rightPadding), expectedSize.height);
+    
+    
+    float errorViewHeight = topPadding + expectedSize.height + bottonPadding;
+    UIView *errorView = [UIView new];
+    errorView.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), errorViewHeight);
+    errorView.backgroundColor = [UIColor colorWithHexString:@"e30c28"];
+    
+    [errorView addSubview:errorMessageLabel];
+    
+    return errorView;
+}
+
+-(void)handleFatalError:(NSDictionary *)errorDic{
+    UIView *errorContainerView = [[UIView alloc] initWithFrame:self.view.frame];
+    errorContainerView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:errorContainerView];
+    
+    CALayer *maskLayer = [CALayer new];
+    maskLayer.frame = self.view.bounds;
+    errorContainerView.layer.mask = maskLayer;
+    
+    int navHeight = [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height;
+    
+    CALayer *clearlayer = [CALayer new];
+    clearlayer.frame = CGRectMake(0,
+                                  0,
+                                  CGRectGetWidth(self.view.bounds),
+                                  navHeight);
+    clearlayer.backgroundColor = [UIColor clearColor].CGColor;
+    [maskLayer addSublayer:clearlayer];
+    
+    CALayer *whiteLayer = [CALayer new];
+    whiteLayer.frame = CGRectMake(0,
+                                  navHeight,
+                                  CGRectGetWidth(self.view.bounds),
+                                  CGRectGetHeight(self.view.bounds) - navHeight);
+    whiteLayer.backgroundColor = [UIColor whiteColor].CGColor;
+    [maskLayer addSublayer:whiteLayer];
+    
+    
+    //display fatal error
+    UIView *errorView = [self fatalErrorView];
+    [errorView setFrameOriginY:[UIApplication sharedApplication].statusBarFrame.size.height];
+    [errorContainerView addSubview:errorView];
+    
+    CGRect finalFrame = errorView.frame;
+    finalFrame.origin.y = navHeight;
+    
+    if(CGRectGetMaxY(finalFrame) >= CGRectGetMinY(self.scrollView.frame)){
+//        [self.scrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.top.equalTo(@((CGRectGetMaxY(self.navigationController.navigationBar.frame)) + CGRectGetHeight(errorView.frame)));
+//        }];
+        [self.scrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.top.equalTo(@((CGRectGetMaxY(self.navigationController.navigationBar.frame)) + CGRectGetHeight(errorView.frame)));
+             make.top.equalTo(self.scrollView.superview.mas_top).with.offset(CGRectGetHeight(errorView.frame));
+            make.bottom.equalTo(self.scrollView.superview.mas_bottom).with.offset(CGRectGetHeight(errorView.frame));
+        }];
+        [UIView animateWithDuration:1.3 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+            [errorView setFrameOriginY:navHeight];
+            [self.view layoutIfNeeded];
+
+        } completion:nil];
+    } else {
+        [UIView animateWithDuration:1.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [errorView setFrameOriginY:navHeight];
+        } completion:nil];
+    }
+    
+    RGSLogReport *logReport = [RGSLogReport logReportFromErrorDic:errorDic];
+    if(logReport){
+        [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+            if(success)[RGSLogService sendLog:logReport successBlock:nil];
+        }];
+    }
+}
+
+
 
 @end

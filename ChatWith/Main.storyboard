@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jnX-5h-0VD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rBb-vm-Qvq">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -245,12 +246,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Irj-PV-mo2" kind="relationship" relationship="rootViewController" id="qGk-aQ-LvT"/>
+                        <segue destination="Irj-PV-mo2" kind="relationship" relationship="rootViewController" id="4ai-w8-ghn"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="krm-j2-NUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2595" y="175"/>
+            <point key="canvasLocation" x="339" y="783"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="hK0-Dl-wDz">
@@ -264,7 +265,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yus-ry-Zbv" customClass="RGSScrollView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yus-ry-Zbv" customClass="RGSScrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI7-na-ais">
@@ -360,18 +361,19 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Mje-BB-bIg"/>
+                                <exclude reference="XQk-ph-vzd"/>
                                 <exclude reference="bFM-P2-xBx"/>
                                 <exclude reference="fOd-aJ-FbP"/>
                                 <exclude reference="o3J-TA-6UK"/>
                                 <exclude reference="sqC-Ga-Pqc"/>
                                 <exclude reference="x0x-G4-KdX"/>
                                 <exclude reference="jap-Bc-AUm"/>
+                                <exclude reference="kcc-ah-HrD"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="s90-64-xGy"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="addUserImageButtom" destination="gI7-na-ais" id="XlI-WK-5K1"/>
                         <outlet property="emailTextField" destination="Y49-pu-5mZ" id="6uR-fc-PfR"/>
@@ -385,12 +387,13 @@
                         <outlet property="userImageContainer" destination="QPE-M6-gs0" id="ghk-SZ-2Cz"/>
                         <outlet property="usernameTextField" destination="Zaw-Oa-dLs" id="ls0-Pm-wHl"/>
                         <segue destination="F9e-0a-DcU" kind="unwind" identifier="unwindRegistrationToInitView" unwindAction="unwindToInitViewController:" id="Lxg-q5-j9b"/>
+                        <segue destination="F9e-0a-DcU" kind="unwind" identifier="unwindFromRegistrationScreenToSplashScreen" unwindAction="unwindToSplashScreenThenMainApp:" id="H4i-ki-ehZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hMe-zI-n5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="F9e-0a-DcU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="618" y="1568"/>
+            <point key="canvasLocation" x="680" y="1568"/>
         </scene>
         <!--Initial View Controller-->
         <scene sceneID="8d1-6n-CkT">
@@ -1348,12 +1351,12 @@
         <image name="camera41" width="58" height="41"/>
         <image name="em-25" width="121" height="69"/>
         <image name="phone-25" width="69" height="120"/>
-        <image name="userPlaceholder" width="195" height="225"/>
+        <image name="userPlaceholder" width="180" height="210"/>
         <image name="white_camera41" width="58" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DzO-4T-oHi"/>
+        <segue reference="yf2-ba-S4U"/>
         <segue reference="Ilp-jo-k4O"/>
-        <segue reference="qGk-aQ-LvT"/>
+        <segue reference="DzO-4T-oHi"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,6 +8,7 @@ pod 'MFSideMenu'
 pod 'Reachability'
 pod 'Masonry'
 pod 'MBProgressHUD'
+pod 'IQKeyboardManager'
 
 
 target :ChatWithTests, :exclusive => true do

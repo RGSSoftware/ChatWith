@@ -10,8 +10,6 @@
 
 #import "RGSApplicationSession.h"
 
-#import "RGSLogReport.h"
-#import "RGSLogService.h"
 #import "RGSUserMangementService.h"
 #import "RGSChatService.h"
 #import "LocalStorageService.h"

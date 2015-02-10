@@ -30,4 +30,7 @@
     #import "RGSCategories.h"
     #import "Error.h"
     #import "UserDefaultsKEYS.h"
+
+    #import "RGSLogReport.h"
+    #import "RGSLogService.h"
 #endif

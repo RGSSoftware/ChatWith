@@ -21,6 +21,7 @@
 
 +(BOOL)isPasswordValid:(NSString *)password;
 +(BOOL)isUserNameValid:(NSString *)username;
++(BOOL)isEmailValid:(NSString *)email;
 @end
 
 

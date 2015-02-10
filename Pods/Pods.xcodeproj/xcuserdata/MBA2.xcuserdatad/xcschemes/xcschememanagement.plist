@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-LoremIpsum.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,72 +82,77 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0E965D8239D201486744E5BF</key>
+		<key>075E97EF8829F46C4A0C1285</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2D42B962118C94C07E6AF478</key>
+		<key>0B97219C4FBBCF7C50853EFE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4387B2D18E4DE7A47C80F706</key>
+		<key>365401EFDAC89755FF3C00E6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4E927EEDB0D9C17324B76E6A</key>
+		<key>380F64BD618656C8A2C9D4CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>502AF96D7793C22B148D891F</key>
+		<key>3EB751F135642C4327DDFF5F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6CA720817E8D8C2B83454286</key>
+		<key>7EF68A2DE089F16F7217348F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6FF9A994DA78753049B974FB</key>
+		<key>98021525603CD52BBDF46EE9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D7BFDAC01AD7554B27BB0C4</key>
+		<key>A3C95ED523478FE4BC7C1696</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF2D76164450E4DD59596F68</key>
+		<key>CCF4E33D644B1D3232EE0C67</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B7DDD2687F02BC0612213FB5</key>
+		<key>CD6152B20F4039C09C883AFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D04FF1173074844990AFD1BB</key>
+		<key>DD784DF92140CC1C7DE225A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E1E8B9EEC839FF6D7179508C</key>
+		<key>EFA0049E6B7516B4B3C612CE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EF1DA715E25B97759DA556C9</key>
+		<key>FD480FD0FA89A1861C5E7071</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FEE0CBD1109FA8F9F2660F2F</key>
+		<key>FE0ABB75829B68FAB4116BC2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE385814D1AC7172CA31996B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
