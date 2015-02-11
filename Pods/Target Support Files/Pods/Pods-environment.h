@@ -42,13 +42,6 @@
 #define COCOAPODS_VERSION_MINOR_BlocksKit_UIKit 2
 #define COCOAPODS_VERSION_PATCH_BlocksKit_UIKit 5
 
-// IQKeyboardManager
-#define COCOAPODS_POD_AVAILABLE_IQKeyboardManager
-// This library does not follow semantic-versioning,
-// so we were not able to define version macros.
-// Please contact the author.
-// Version: 3.2.1.0.
-
 // LoremIpsum
 #define COCOAPODS_POD_AVAILABLE_LoremIpsum
 #define COCOAPODS_VERSION_MAJOR_LoremIpsum 1

@@ -14,7 +14,6 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - IQKeyboardManager (3.2.1.0)
   - Kiwi (2.3.1)
   - LoremIpsum (1.0.0)
   - MagicalRecord (2.2):
@@ -32,7 +31,6 @@ PODS:
 
 DEPENDENCIES:
   - BlocksKit
-  - IQKeyboardManager
   - Kiwi
   - LoremIpsum (~> 1.0)
   - MagicalRecord
@@ -46,7 +44,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
-  IQKeyboardManager: 167388b27d0194abc50b2ffc3cc16b881a8227df
   Kiwi: 73e1400209055ee9c8ba78c6012b6b642d0fb9f7
   LoremIpsum: a4d378ecaffcb08c7e40cdba3fb935dc41b2272c
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
