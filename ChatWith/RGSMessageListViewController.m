@@ -559,6 +559,11 @@ struct {
     self.keyboardAnimationCurve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
 }
 
+- (void)keyboardDidHidden:(NSNotification*)aNotification
+{
+}
+
+
 - (void)registerForKeyboardNotifications
 {
     
@@ -579,9 +584,6 @@ struct {
     [center removeObserver:self name:UIKeyboardDidHideNotification object:nil];
 }
 
-- (void)keyboardDidHidden:(NSNotification*)aNotification
-{
-}
 
 -(UIView*)findKeyboard
 {

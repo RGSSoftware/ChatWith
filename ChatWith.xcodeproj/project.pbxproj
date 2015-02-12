@@ -39,6 +39,7 @@
 		224A067D1A38888400292777 /* RGSRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224A067C1A38888400292777 /* RGSRegistrationViewController.m */; };
 		224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224FBF7619D1B7A800A924CA /* Main.storyboard */; };
 		2250787519F880D100F793EE /* RGSContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250787419F880D100F793EE /* RGSContactListViewController.m */; };
+		225219651A8C2585009D317C /* RGSNumberToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 225219641A8C2585009D317C /* RGSNumberToolbar.m */; };
 		2252F6B91A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2252F6B81A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.m */; };
 		225E2CAB1A869F5300596E19 /* RGSPlayGroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 225E2CAA1A869F5300596E19 /* RGSPlayGroundView.m */; };
 		2264746919A90C9400245A73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264746819A90C9400245A73 /* CFNetwork.framework */; };
@@ -218,6 +219,8 @@
 		224FBF7619D1B7A800A924CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2250787319F880D100F793EE /* RGSContactListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSContactListViewController.h; sourceTree = "<group>"; };
 		2250787419F880D100F793EE /* RGSContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSContactListViewController.m; sourceTree = "<group>"; };
+		225219631A8C2585009D317C /* RGSNumberToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSNumberToolbar.h; sourceTree = "<group>"; };
+		225219641A8C2585009D317C /* RGSNumberToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSNumberToolbar.m; sourceTree = "<group>"; };
 		2252F6B71A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSCloseSideMenuAnimationController.h; sourceTree = "<group>"; };
 		2252F6B81A40C1AC007B6F1E /* RGSCloseSideMenuAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSCloseSideMenuAnimationController.m; sourceTree = "<group>"; };
 		225E2CA91A869F5300596E19 /* RGSPlayGroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSPlayGroundView.h; sourceTree = "<group>"; };
@@ -530,6 +533,8 @@
 		22889AD119D3234500F0541D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				225219631A8C2585009D317C /* RGSNumberToolbar.h */,
+				225219641A8C2585009D317C /* RGSNumberToolbar.m */,
 				225E2CA91A869F5300596E19 /* RGSPlayGroundView.h */,
 				225E2CAA1A869F5300596E19 /* RGSPlayGroundView.m */,
 				224FBF7619D1B7A800A924CA /* Main.storyboard */,
@@ -1003,6 +1008,7 @@
 				22DDEB2F1A37240900B2A691 /* RGSBaseAnimationController.m in Sources */,
 				228DC7881A83E4B50033E92A /* RGSUser+RGSFinder.m in Sources */,
 				2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */,
+				225219651A8C2585009D317C /* RGSNumberToolbar.m in Sources */,
 				228DC7791A827AC10033E92A /* QBUUser+RGSUser.m in Sources */,
 				22A001671A27789F00B22EEE /* RGSPushAnimationController.m in Sources */,
 				22C53D3E1A7FB71100B3489B /* UILabel+RGSInitWithText.m in Sources */,

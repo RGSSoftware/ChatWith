@@ -12,8 +12,10 @@
 #endif
 
 static NSString * const RGSLoginErrorDomain = @"RGSLoginErrorDomain";
+static NSString * const RGSRegistrationErrorDomain = @"RGSRegistrationErrorDomain";
 
 #define ELTC       101       /* Failed to login to QBChat */
-#define ESAS       102       /* Failed to Saveing Application Session */
+#define ESAS       102       /* Failed to saveing Application Session */
 #define ELTQB      103       /* could't login to QBSystem */
 #define ECAS       104       /* Error creating Application Session */
+#define ERWC       105       /* Failed to register new accout with QBChat */

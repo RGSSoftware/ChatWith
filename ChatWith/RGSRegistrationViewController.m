@@ -21,6 +21,8 @@
 
 #import "RGSBackBarButtonItem.h"
 
+#import "RGSNumberToolbar.h"
+
 
 
 @interface RGSRegistrationViewController ()
@@ -81,7 +83,40 @@
         NSMutableAttributedString *attributedString = [[textField.placeholder attributedString] mutableCopy];
         [attributedString setColor:[UIColor colorWithWhite:0.830 alpha:1.000]];
         textField.attributedPlaceholder = attributedString;
+        
+        textField.returnKeyType = UIReturnKeyDone;
+        [textField setBk_shouldReturnBlock:^BOOL(UITextField *textField) {
+            [textField resignFirstResponder];
+            return NO;
+        }];
     }
+    [self.phonenumberTextField setBk_didBeginEditingBlock:^(UITextField *textField) {
+        
+        UIBarButtonItem *canelButton = [[UIBarButtonItem alloc] bk_initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain handler:^(id sender) {
+            [[UIDevice currentDevice] playInputClick];
+            
+            textField.text = nil;
+            [textField resignFirstResponder];
+        }];
+        canelButton.tintColor = [UIColor whiteColor];
+        
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] bk_initWithTitle:@"Done" style:UIBarButtonItemStyleDone handler:^(id sender) {
+            [[UIDevice currentDevice] playInputClick];
+            
+            [textField resignFirstResponder];
+        }];
+        doneButton.tintColor = [UIColor whiteColor];
+        
+        RGSNumberToolbar *numberToolbar = [[RGSNumberToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+        numberToolbar.barTintColor = [UIColor colorWithHexString:@"5C5C5C" alpha:.85];
+        numberToolbar.items = [NSArray arrayWithObjects:
+                               canelButton,
+                               [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                               doneButton,
+                               nil];
+        [numberToolbar sizeToFit];
+        textField.inputAccessoryView = numberToolbar;
+    }];
     
     [self.buttons addObjectsFromArray:@[self.addUserImageButtom, self.submitButton]];
     for (UIButton *button in self.buttons) {
@@ -94,7 +129,7 @@
     [self.userImage.layer setCornerRadius:10];
     self.userImage.clipsToBounds = YES;
     
-    self.userImageContainer.layer.borderColor = [[UIColor colorWithWhite:0.830 alpha:1.000] CGColor];
+    self.userImageContainer.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.20];
     
     
 }
@@ -113,7 +148,14 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.scrollView.superview.mas_top);
         make.bottom.equalTo(self.scrollView.superview.mas_bottom);
-    }];    
+    }];
+    
+    [self registerForKeyboardNotifications];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self deRegisterForKeyboardNotifications];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -134,76 +176,166 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
 
 - (IBAction)submit:(id)sender {
     
-    if([RGSUserMangementService isEmailValid:self.emailTextField.text]){
-        [self showAlertViewWithMeassage:@"Yes"];
-    } else {
-        [self showAlertViewWithMeassage:@"NO"];
+    for (UITextField *testField in self.textFields) {
+        [testField resignFirstResponder];
     }
-    
-//    if ([self isUserCredentialsValid]) {
-//        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        hud.labelText = @"Checking Username";
-//        
-//        UIImageView *doneCheckView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"doneCheck"]];
-//        doneCheckView.frame = CGRectMake(0, 0, CGRectGetWidth(doneCheckView.frame)/3, CGRectGetHeight(doneCheckView.frame)/3);
-//        hud.customView = doneCheckView;
-//        [[RGSUserMangementService shared]
-//         isUsernameTaken:self.usernameTextField.text
-//         successBlock:^(BOOL isTaken) {
-//             if(!isTaken){
-//                 hud.mode = MBProgressHUDModeCustomView;
-//                 hud.labelText = @"Username available";
-//                 
-//                 [NSTimer bk_scheduledTimerWithTimeInterval:0.8 block:^(NSTimer *timer) {
-//                     hud.mode = MBProgressHUDModeIndeterminate;
-//                     hud.labelText = @"Signing In";
-//                     
-//                     [QBRequest logInWithUserLogin:self.usernameTextField.text password:self.passwordTextField.text successBlock:^(QBResponse *response, QBUUser *user) {
-//                         //display successful login message
-//                         //segway to splah Screen
+    if ([self isUserCredentialsValid]) {
+        if([RGSUserMangementService isEmailValid:self.emailTextField.text]){
+            
+        
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.labelText = @"Checking Username";
+            
+            UIImageView *doneCheckView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"doneCheck"]];
+            doneCheckView.frame = CGRectMake(0, 0, CGRectGetWidth(doneCheckView.frame)/3, CGRectGetHeight(doneCheckView.frame)/3);
+            hud.customView = doneCheckView;
+            [[RGSUserMangementService shared]
+             isUsernameTaken:self.usernameTextField.text
+             successBlock:^(BOOL isTaken) {
+                 if(!isTaken){
+                     hud.mode = MBProgressHUDModeCustomView;
+                     hud.labelText = @"Username available";
+                     [NSTimer bk_scheduledTimerWithTimeInterval:0.8 block:^(NSTimer *timer) {
+                          hud.mode = MBProgressHUDModeIndeterminate;
+                          hud.labelText = @"Creating Account";
+                         
+                         QBUUser *user = [QBUUser user];
+                         user.login = self.usernameTextField.text;
+                         user.password = self.passwordTextField.text;
+                         user.email = self.emailTextField.text;
+                         if(![self.firstnameTextField.text isEqualToString:@""] && ![self.lastnameTextField.text isEqualToString:@""]){
+                             user.fullName = [NSString stringWithFormat:@"%@ %@", self.firstnameTextField.text, self.lastnameTextField.text];
+                         }
+                         if(![self.phonenumberTextField.text isEqualToString:@""]){
+                             user.phone = self.phonenumberTextField.text;
+                         }
+                         [QBRequest signUp:user successBlock:^(QBResponse *response, QBUUser *user) {
+                             if(response.success && !response.error){
+                                 hud.labelText = @"Signing In";
+                                 
+                                 [QBRequest logInWithUserLogin:self.usernameTextField.text password:self.passwordTextField.text successBlock:^(QBResponse *response, QBUUser *user) {
+                                     //display successful login message
+                                     //segway to splah Screen
+                                     
+                                     RGSUser *rgsUser = [user rgsUser];
+                                     rgsUser.currentUser = [NSNumber numberWithBool:YES];
+                                     rgsUser.password = self.passwordTextField.text;
+                                     rgsUser.entityID = [NSNumber numberWithInteger:user.ID];
+                                     
+                                     [rgsUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+                                         [[RGSChatService shared] loginUser:[rgsUser qbUser]  successBlock:^(BOOL success) {
+                                             if(success){
+                                                 float delay = 1.1;
+                                                 hud.mode = MBProgressHUDModeCustomView;
+                                                 hud.labelText = @"Sign Successful";
+                                                 [hud hide:YES afterDelay:delay];
+                                                 [NSTimer bk_scheduledTimerWithTimeInterval:delay + 0.2 block:^(NSTimer *timer) {
+                                                     [self performSegueWithIdentifier:@"unwindFromRegistrationScreenToSplashScreen" sender:self];
+                                                     
+                                                 } repeats:NO];
+                                             } else {
+                                                 [hud hide:YES];
+                                                 NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                                                 [errorDetail setValue:@"Failed to login to QBChat" forKey:NSLocalizedFailureReasonErrorKey];
+                                                 [errorDetail setValue:@"Couldn't complete login of user because there was a QBChat failure login." forKey:NSLocalizedDescriptionKey];
+                                                 [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail]}];
+                                             }
+                                         }];
+                                     }];
+                                 } errorBlock:^(QBResponse *response) {
+                                     [hud hide:YES];
+                                     NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                                     [errorDetail setValue:@"error login to QBSystem" forKey:NSLocalizedFailureReasonErrorKey];
+                                     [errorDetail setValue:@"Couldn't complete login of user because there was a QBSystem failure login." forKey:NSLocalizedDescriptionKey];
+                                     ;
+                                     [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail], LogReportLevelSub : response.error.error}];
+                                     
+                                 }];
+
+                                 
+                             }
+                         } errorBlock:^(QBResponse *response) {
+                             [hud hide:YES];
+                             NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                             [errorDetail setValue:@"error creating new account with QBSystem" forKey:NSLocalizedFailureReasonErrorKey];
+                             [errorDetail setValue:@"Couldn't complete registration of new user because QBSystem failure to create new account." forKey:NSLocalizedDescriptionKey];
+                             
+                             [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSRegistrationErrorDomain code:ERWC userInfo:errorDetail], LogReportLevelSub : response.error.error}];
+                         }];
+                         
+                         
+                         } repeats:NO];
+                     
+                     
+                     
+                     
+//                     [NSTimer bk_scheduledTimerWithTimeInterval:0.8 block:^(NSTimer *timer) {
+//                         hud.mode = MBProgressHUDModeIndeterminate;
+//                         hud.labelText = @"Signing In";
 //                         
-//                         RGSUser *rgsUser = [user rgsUser];
-//                         rgsUser.currentUser = [NSNumber numberWithBool:YES];
-//                         rgsUser.password = self.passwordTextField.text;
-//                         rgsUser.entityID = [NSNumber numberWithInteger:user.ID];
-//                         
-//                         [rgsUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-//                             [[RGSChatService shared] loginUser:[rgsUser qbUser]  successBlock:^(BOOL success) {
-//                                 if(success){
-//                                     float delay = 1.1;
-//                                     hud.mode = MBProgressHUDModeCustomView;
-//                                     hud.labelText = @"Sign Successful";
-//                                     [hud hide:YES afterDelay:delay];
-//                                     [NSTimer bk_scheduledTimerWithTimeInterval:delay + 0.2 block:^(NSTimer *timer) {
-//                                         [self performSegueWithIdentifier:@"unwindFromRegistrationScreenToSplashScreen" sender:self];
-//                                         
-//                                     } repeats:NO];
-//                                 } else {
-//                                     [hud hide:YES];
-//                                     NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-//                                     [errorDetail setValue:@"Failed to login to QBChat" forKey:NSLocalizedFailureReasonErrorKey];
-//                                     [errorDetail setValue:@"Couldn't complete login of user because there was a QBChat failure login." forKey:NSLocalizedDescriptionKey];
-//                                     [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail]}];
-//                                 }
+//                         [QBRequest logInWithUserLogin:self.usernameTextField.text password:self.passwordTextField.text successBlock:^(QBResponse *response, QBUUser *user) {
+//                             //display successful login message
+//                             //segway to splah Screen
+//                             
+//                             RGSUser *rgsUser = [user rgsUser];
+//                             rgsUser.currentUser = [NSNumber numberWithBool:YES];
+//                             rgsUser.password = self.passwordTextField.text;
+//                             rgsUser.entityID = [NSNumber numberWithInteger:user.ID];
+//                             
+//                             [rgsUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+//                                 [[RGSChatService shared] loginUser:[rgsUser qbUser]  successBlock:^(BOOL success) {
+//                                     if(success){
+//                                         float delay = 1.1;
+//                                         hud.mode = MBProgressHUDModeCustomView;
+//                                         hud.labelText = @"Sign Successful";
+//                                         [hud hide:YES afterDelay:delay];
+//                                         [NSTimer bk_scheduledTimerWithTimeInterval:delay + 0.2 block:^(NSTimer *timer) {
+//                                             [self performSegueWithIdentifier:@"unwindFromRegistrationScreenToSplashScreen" sender:self];
+//                                             
+//                                         } repeats:NO];
+//                                     } else {
+//                                         [hud hide:YES];
+//                                         NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+//                                         [errorDetail setValue:@"Failed to login to QBChat" forKey:NSLocalizedFailureReasonErrorKey];
+//                                         [errorDetail setValue:@"Couldn't complete login of user because there was a QBChat failure login." forKey:NSLocalizedDescriptionKey];
+//                                         [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail]}];
+//                                     }
+//                                 }];
 //                             }];
+//                         } errorBlock:^(QBResponse *response) {
+//                             [hud hide:YES];
+//                             NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+//                             [errorDetail setValue:@"error login to QBSystem" forKey:NSLocalizedFailureReasonErrorKey];
+//                             [errorDetail setValue:@"Couldn't complete login of user because there was a QBSystem failure login." forKey:NSLocalizedDescriptionKey];
+//                             ;
+//                             [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail], LogReportLevelSub : response.error.error}];
+//                             
 //                         }];
-//                     } errorBlock:^(QBResponse *response) {
-//                         [hud hide:YES];
-//                         NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-//                         [errorDetail setValue:@"error login to QBSystem" forKey:NSLocalizedFailureReasonErrorKey];
-//                         [errorDetail setValue:@"Couldn't complete login of user because there was a QBSystem failure login." forKey:NSLocalizedDescriptionKey];
-//                         ;
-//                         [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail], LogReportLevelSub : response.error.error}];
-//                         
-//                     }];
-//                  } repeats:NO];
-//                 
-//        } else {
-//            [hud hide:YES];
-//            [self showAlertViewWithMeassage:@"Oops! Somebody already has that name. Give it another shot."];
-//        }
-//         }];
-//    } else {[self showAlertViewWithMeassage:@"Oops! Username or Password is invalid. Give it another shot."];}
+//                      } repeats:NO];
+                     
+            } else {
+                [hud hide:YES];
+                [self showAlertViewWithMeassage:@"Oops! Somebody already has that name. Give it another shot."];
+            }
+         }];
+        } else {
+            [self showshowAlertViewWithMeassage:@"Oops! That email is invalid. Give it another shot." cancelBlock:^{
+                [self.emailTextField becomeFirstResponder];
+            }];
+        }
+    } else {
+        [self showAlertViewWithMeassage:@"Oops! Username or Password is invalid. Give it another shot."];
+    }
+}
+
+-(void)showshowAlertViewWithMeassage:(NSString *)message cancelBlock:(void (^)(void))block{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"OKAY"
+                                              otherButtonTitles:nil];
+    [alertView bk_setCancelBlock:block];
+    [alertView show];
 }
 
 
@@ -218,7 +350,6 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
                                                        delegate:self
                                               cancelButtonTitle:@"OKAY"
                                               otherButtonTitles:nil];
-    
     [alertView show];
     
 }
@@ -314,6 +445,60 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
     }
 }
 
+-(void)keyboardWillChangeFrame:(NSNotification *)aNotification{
+    
+    NSDictionary* info = [aNotification userInfo];
+    CGRect endFrame;
+    [[info valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&endFrame];
+    endFrame = [self.view convertRect:endFrame fromView:self.view];
+    
+    UIEdgeInsets bottomPadding = self.scrollView.contentInset;
+    if(CGRectGetMinY(endFrame) < CGRectGetHeight(self.view.frame)){
+        bottomPadding.bottom = CGRectGetHeight(self.view.frame) - CGRectGetMinY(endFrame) + 5;
+    } else {
+        bottomPadding.bottom = CGRectGetHeight(self.view.frame) - CGRectGetMinY(endFrame);
+    }
+   
+    [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]
+                          delay:0
+                        options:(([[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16) | UIViewAnimationOptionBeginFromCurrentState)
+                     animations:^{
+                         
+                            self.scrollView.contentInset = bottomPadding;
+                            self.scrollView.scrollIndicatorInsets = bottomPadding;
+                     }
+     
+                     completion:nil];
+}
+
+- (void)keyboardDidHidden:(NSNotification*)aNotification
+{
+}
+
+
+- (void)registerForKeyboardNotifications
+{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillChangeFrame:)
+                                                 name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHidden:)
+                                                 name:UIKeyboardDidHideNotification object:nil];
+    
+}
+
+- (void)deRegisterForKeyboardNotifications
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+    [center removeObserver:self name:UIKeyboardDidHideNotification object:nil];
+}
+
+- (void)dealloc {
+    [self deRegisterForKeyboardNotifications];
+}
 
 
 @end

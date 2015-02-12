@@ -64,7 +64,7 @@
 //    RGSInitialViewController *splashViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSInitialViewController"];
 //    self.splashWindow.rootViewController = splashViewController;
 //    [self.splashWindow makeKeyAndVisible];
-
+//
 
     
     return YES;
@@ -73,8 +73,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self deleteDataModel];
-    [self createDataModel];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:UDKAutoLogin];
+//    [self createDataModel];
+//    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:UDKAutoLogin];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:UDKRememberMe];
     
     [self configAppearance];

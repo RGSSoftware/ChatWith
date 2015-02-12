@@ -103,7 +103,7 @@ static dispatch_once_t once_token = 0;
 
 +(BOOL)isPasswordValid:(NSString *)password
 {
-    if (password && !(password.length <= 4) && (password.length <=15)) {
+    if (password && !(password.length <= 8) && (password.length <=15)) {
         return YES;
     }
     
