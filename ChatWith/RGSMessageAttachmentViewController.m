@@ -8,10 +8,7 @@
 
 #import "RGSMessageAttachmentViewController.h"
 
-#import "RGSMessageListViewController.h"
-
-#import "RGSMessageComposerView.h"
-#import "CSGrowingTextView.h"
+#import "RGSButton.h"
 
 
 @interface RGSMessageAttachmentViewController () 
@@ -41,7 +38,7 @@
     CGPoint userTouchCoordinate = [sender locationInView:nil];
     if (sender.state == UIGestureRecognizerStateEnded)
     {
-        if(CGRectContainsPoint(self.cancelAttachmentButton.frame, userTouchCoordinate))return;
+        if(CGRectContainsPoint(self.cancelAttachmentButton.frame, userTouchCoordinate)) return;
         if(!CGRectContainsPoint(self.choosePhotoButton.frame, userTouchCoordinate) ||
            !CGRectContainsPoint(self.takePhotoButton.frame, userTouchCoordinate)){
             

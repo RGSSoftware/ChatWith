@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface RGSPlaygroundViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
@@ -17,4 +18,5 @@
 @property (weak, nonatomic) IBOutlet UIView *greenView;
 @property (weak, nonatomic) IBOutlet UIView *redView;
 - (IBAction)convert:(id)sender;
+
 @end

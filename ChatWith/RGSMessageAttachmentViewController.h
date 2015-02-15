@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "RGSBaseOverviewViewController.h"
 
+@class RGSButton;
+
 @interface RGSMessageAttachmentViewController : RGSBaseOverviewViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-@property (weak, nonatomic) IBOutlet UIButton *choosePhotoButton;
-@property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
+@property (weak, nonatomic) IBOutlet RGSButton *choosePhotoButton;
+@property (weak, nonatomic) IBOutlet RGSButton *takePhotoButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelAttachmentButton;
 
 @property (nonatomic, weak) id delegate;

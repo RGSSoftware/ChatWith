@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jnX-5h-0VD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rBb-vm-Qvq">
     <dependencies>
         <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
@@ -246,7 +246,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Irj-PV-mo2" kind="relationship" relationship="rootViewController" id="4ai-w8-ghn"/>
+                        <segue destination="Irj-PV-mo2" kind="relationship" relationship="rootViewController" id="z0J-CH-E6y"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="krm-j2-NUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -268,15 +268,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yus-ry-Zbv" customClass="RGSScrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="568"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI7-na-ais">
-                                        <rect key="frame" x="149" y="43" width="123" height="40"/>
-                                        <state key="normal" title="Add Image">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="Bfw-jy-8oM" kind="custom" customClass="RGSOverviewSegue" id="Ilp-jo-k4O"/>
-                                        </connections>
-                                    </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="UserName" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zaw-Oa-dLs">
                                         <rect key="frame" x="34" y="118" width="253" height="40"/>
                                         <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -337,6 +328,15 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI7-na-ais">
+                                        <rect key="frame" x="149" y="43" width="123" height="40"/>
+                                        <state key="normal" title="Add Image">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Bfw-jy-8oM" kind="custom" customClass="RGSOverviewSegue" id="Ilp-jo-k4O"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
@@ -925,14 +925,14 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njC-2M-RYI">
                                 <rect key="frame" x="16" y="500" width="288" height="48"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="NvM-3m-CxZ"/>
                                     <constraint firstAttribute="width" constant="288" id="hHK-F4-EUr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                 <state key="normal" title="Cancel">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -944,89 +944,86 @@
                                     <action selector="cancelAttachment:" destination="Bfw-jy-8oM" eventType="touchUpInside" id="a1e-wG-pPj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bR3-On-xkd">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="it7-Wb-rPv" customClass="RGSButton">
+                                <rect key="frame" x="165" y="359" width="140" height="133"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="photo" highlightedImage="photoHighlight" translatesAutoresizingMaskIntoConstraints="NO" id="kha-Xy-uiJ">
+                                        <rect key="frame" x="35" y="17" width="70" height="70"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose Photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eq4-dg-Vvf">
+                                        <rect key="frame" x="8" y="95" width="124" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="2qW-CG-ntw"/>
+                                    <constraint firstAttribute="height" constant="133" id="GMI-mH-sxH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="choosePhoto:" destination="Bfw-jy-8oM" eventType="touchUpInside" id="Bzg-fr-dX4"/>
+                                    <outlet property="image" destination="kha-Xy-uiJ" id="vrE-Jo-t8j"/>
+                                    <outlet property="label" destination="Eq4-dg-Vvf" id="wTg-FR-og9"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSa-kX-3Ol" customClass="RGSButton">
                                 <rect key="frame" x="16" y="359" width="140" height="133"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="3fa-bD-CCX"/>
-                                    <constraint firstAttribute="height" constant="133" id="5jM-Tr-NSb"/>
-                                </constraints>
-                                <inset key="titleEdgeInsets" minX="-68" minY="69" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="36" minY="23" maxX="35" maxY="58"/>
-                                <state key="normal" title="Choose Photo" image="Forma">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="camera" highlightedImage="cameraHighlight" translatesAutoresizingMaskIntoConstraints="NO" id="J4B-SH-eVg">
+                                        <rect key="frame" x="35" y="17" width="70" height="70"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Take Photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1l-jP-pv5">
+                                        <rect key="frame" x="8" y="95" width="124" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="choosePhoto:" destination="Bfw-jy-8oM" eventType="touchUpInside" id="EGA-rg-RhJ"/>
+                                    <action selector="takePhoto:" destination="Bfw-jy-8oM" eventType="touchUpInside" id="aQ0-OY-EpC"/>
+                                    <outlet property="image" destination="J4B-SH-eVg" id="SuT-lC-OXG"/>
+                                    <outlet property="label" destination="q1l-jP-pv5" id="Lkr-tt-9Er"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="kL2-gv-bDh">
-                                <rect key="frame" x="165" y="359" width="139" height="133"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="139" id="WnW-pL-Iko"/>
-                                    <constraint firstAttribute="height" constant="133" id="p9V-wR-iyV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <inset key="titleEdgeInsets" minX="-54" minY="68" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="38" minY="-34" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Take Photo" image="white_camera41">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" title="Take Photo">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="takePhoto:" destination="Bfw-jy-8oM" eventType="touchUpInside" id="bPn-Xd-2wY"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kL2-gv-bDh" firstAttribute="leading" secondItem="bR3-On-xkd" secondAttribute="trailing" constant="9" id="7H5-W6-zNg"/>
-                            <constraint firstItem="bR3-On-xkd" firstAttribute="top" secondItem="1oy-is-Yo9" secondAttribute="bottom" constant="339" id="7kC-VX-hmj"/>
                             <constraint firstAttribute="trailing" secondItem="njC-2M-RYI" secondAttribute="trailing" constant="16" id="Agi-KZ-CSO"/>
                             <constraint firstAttribute="bottom" secondItem="njC-2M-RYI" secondAttribute="bottom" constant="20" id="Dc0-Kf-Wp3"/>
                             <constraint firstItem="8pN-Ec-d4T" firstAttribute="top" secondItem="njC-2M-RYI" secondAttribute="bottom" constant="20" id="Dm0-B2-S5B"/>
-                            <constraint firstItem="bR3-On-xkd" firstAttribute="leading" secondItem="fxL-Ag-nsY" secondAttribute="leading" constant="16" id="FVA-e2-2es"/>
+                            <constraint firstItem="njC-2M-RYI" firstAttribute="top" secondItem="dSa-kX-3Ol" secondAttribute="bottom" constant="8" symbolic="YES" id="F7j-dS-HT4"/>
                             <constraint firstItem="njC-2M-RYI" firstAttribute="leading" secondItem="fxL-Ag-nsY" secondAttribute="leading" constant="16" id="FaN-xX-FMu"/>
-                            <constraint firstItem="njC-2M-RYI" firstAttribute="top" secondItem="bR3-On-xkd" secondAttribute="bottom" constant="8" id="GDx-MF-5ip"/>
-                            <constraint firstItem="bR3-On-xkd" firstAttribute="bottom" secondItem="kL2-gv-bDh" secondAttribute="bottom" id="LS0-Jf-na7"/>
-                            <constraint firstItem="njC-2M-RYI" firstAttribute="top" secondItem="kL2-gv-bDh" secondAttribute="bottom" constant="8" id="Mio-lW-Oyf"/>
-                            <constraint firstAttribute="bottom" secondItem="kL2-gv-bDh" secondAttribute="bottom" constant="71" id="RCe-Zb-zcp"/>
-                            <constraint firstItem="bR3-On-xkd" firstAttribute="top" secondItem="kL2-gv-bDh" secondAttribute="top" id="c5R-3m-S6F"/>
-                            <constraint firstItem="njC-2M-RYI" firstAttribute="top" secondItem="bR3-On-xkd" secondAttribute="bottom" constant="8" symbolic="YES" id="fIo-O5-Wk7"/>
-                            <constraint firstItem="kL2-gv-bDh" firstAttribute="leading" secondItem="bR3-On-xkd" secondAttribute="trailing" constant="9" id="tMD-ZZ-H6C"/>
+                            <constraint firstItem="it7-Wb-rPv" firstAttribute="leading" secondItem="dSa-kX-3Ol" secondAttribute="trailing" constant="9" id="HmT-LO-HXr"/>
+                            <constraint firstItem="njC-2M-RYI" firstAttribute="top" secondItem="it7-Wb-rPv" secondAttribute="bottom" constant="8" id="Nfj-Ut-BHT"/>
+                            <constraint firstAttribute="trailing" secondItem="dSa-kX-3Ol" secondAttribute="trailing" constant="164" id="OL3-fs-xxw"/>
+                            <constraint firstItem="dSa-kX-3Ol" firstAttribute="top" secondItem="it7-Wb-rPv" secondAttribute="top" id="eRn-2X-JnL"/>
+                            <constraint firstItem="dSa-kX-3Ol" firstAttribute="leading" secondItem="njC-2M-RYI" secondAttribute="leading" id="sQX-pN-jJE"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="7kC-VX-hmj"/>
-                                <exclude reference="LS0-Jf-na7"/>
-                                <exclude reference="c5R-3m-S6F"/>
-                                <exclude reference="RCe-Zb-zcp"/>
-                                <exclude reference="fIo-O5-Wk7"/>
                                 <exclude reference="Dm0-B2-S5B"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="N54-6p-zuv"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="cancelAttachmentButton" destination="njC-2M-RYI" id="wAi-LW-rcZ"/>
-                        <outlet property="choosePhotoButton" destination="bR3-On-xkd" id="aia-De-mlt"/>
-                        <outlet property="takePhotoButton" destination="kL2-gv-bDh" id="Mql-Rr-qwT"/>
+                        <outlet property="choosePhotoButton" destination="it7-Wb-rPv" id="RUd-Tm-yBV"/>
+                        <outlet property="takePhotoButton" destination="dSa-kX-3Ol" id="Lrp-Xk-lFf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MIT-VN-HxN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1087,6 +1084,38 @@
                                     <outlet property="label" destination="HaJ-Ge-s0q" id="XI1-jl-n00"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="987-hV-Mw2" customClass="RGSCustomButton">
+                                <rect key="frame" x="22" y="437" width="189" height="111"/>
+                                <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ko2-qf-M0y" customClass="RGSCustomButton">
+                                <rect key="frame" x="172" y="183" width="160" height="284"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1M-gV-Eti">
+                                        <rect key="frame" x="59" y="228" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="camera" highlightedImage="cameraHighlight" translatesAutoresizingMaskIntoConstraints="NO" id="ygg-Bf-L5m">
+                                        <rect key="frame" x="45" y="74" width="70" height="70"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyi-8c-Hp5">
+                                        <rect key="frame" x="59" y="167" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725496529999996" green="0.91372555489999996" blue="0.72156864399999998" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <action selector="action:" destination="br8-qN-X6U" eventType="touchUpInside" id="uT0-02-O1d"/>
+                                    <outlet property="cameraImage" destination="ygg-Bf-L5m" id="e26-rD-F2L"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1115,6 +1144,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="customButton" destination="987-hV-Mw2" id="blI-Xw-0bh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q2t-nw-8aN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1332,7 +1364,6 @@
     </scenes>
     <resources>
         <image name="Facebook_Icon" width="89" height="89"/>
-        <image name="Forma" width="66" height="66"/>
         <image name="Gplus" width="85" height="88"/>
         <image name="Layer-1" width="74" height="74"/>
         <image name="Layer-1larger" width="148" height="148"/>
@@ -1345,15 +1376,18 @@
         <image name="backArrowlarger2" width="30" height="75"/>
         <image name="backArrowlarger2hightlighted" width="30" height="75"/>
         <image name="background" width="640" height="1136"/>
+        <image name="camera" width="140" height="104"/>
         <image name="camera41" width="58" height="41"/>
+        <image name="cameraHighlight" width="140" height="104"/>
         <image name="em-25" width="121" height="69"/>
         <image name="phone-25" width="69" height="120"/>
+        <image name="photo" width="210" height="186"/>
+        <image name="photoHighlight" width="210" height="186"/>
         <image name="userPlaceholder" width="180" height="210"/>
-        <image name="white_camera41" width="58" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DzO-4T-oHi"/>
-        <segue reference="4ai-w8-ghn"/>
+        <segue reference="z0J-CH-E6y"/>
         <segue reference="Ilp-jo-k4O"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -72,7 +72,13 @@
         [self.view addSubview:view];
     }];
     
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
+//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
+    
+    UIImageView *cameraImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera"]];
+    cameraImage.frame = CGRectMake(50, 20, CGRectGetWidth(cameraImage.frame)/3, CGRectGetHeight(cameraImage.frame)/3);
+    cameraImage.userInteractionEnabled = NO;
+    
+//    [self.customButton addSubview:cameraImage];
   }
 
 -(void)handleTimer:(id)sender{
@@ -127,6 +133,10 @@
 }
 - (IBAction)convert:(id)sender {
     self.resultLabel.text = NSStringFromCGRect([self.redView convertRect:self.greenView.frame toView:self.view]);
+    
+}
+- (IBAction)action:(id)sender {
+    
     
 }
 @end

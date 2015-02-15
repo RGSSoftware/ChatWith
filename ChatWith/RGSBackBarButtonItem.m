@@ -10,6 +10,8 @@
 #import "UIImage+Resize.h"
 #import "RGSBackButtonContainer.h"
 
+#import "RGSButton.h"
+
 @interface RGSBackBarButtonItem ()
 
 
@@ -17,6 +19,7 @@
 @property UIView *container;
 
 @property (nonatomic, strong) void(^touchUpInsideHandle)(id sender);
+@property RGSButton *button;
 
 @end
 
@@ -45,15 +48,41 @@
         
         
 //        _container.layer.borderWidth = 1;
+        _button = [[RGSButton alloc] init];
+        [_button bk_addEventHandler:action forControlEvents:UIControlEventTouchUpInside];
         
-        self.customView = [[RGSBackButtonContainer alloc] initWithTitle:title handler:action];
+        
+        _button.image.image = [UIImage imageNamed:@"backArrow"];
+        _button.image.highlightedImage = [UIImage imageNamed:@"backArrowHightlight"];
+        _button.image.frame = CGRectMake(-5, 9, _button.image.image.size.width/3, _button.image.image.size.height/3);
+        
+        
+        _button.label.text = title;
+        _button.label.frame = CGRectMake(8, 12, 50, 20);
+        _button.label.textColor = [UIColor whiteColor];
+        _button.label.font = [UIFont fontWithName:@"HelveticaNeue-Regular" size:16];
+        
+        CGSize labelWidth = [_button.label.text sizeWithAttributes:@{NSFontAttributeName:_button.label.font}];
+        
+        
+        _button.frame = CGRectMake(0, 0, CGRectGetWidth(_button.image.frame) + ceilf(labelWidth.width), 44);
+        _button.touchRect = CGRectMake(0, 20, CGRectGetWidth(_button.image.frame) + ceilf(labelWidth.width), 44);
+        
+        
+        self.customView = _button;
+        
+        _button.layer.borderWidth = 1;
         NSLog(@"simple print-----container.frame------{%@}", _container);
+        
+         NSLog(@"simple print----button.frame in window------{%@}", NSStringFromCGRect([_button convertRect:_button.frame toView:nil]));
         
         self.touchUpInsideHandle = action;
     }
     return self;
 
 }
+
+
 
 -(instancetype)initWithHandler:(void (^)(id))action{
     self = [super init];
