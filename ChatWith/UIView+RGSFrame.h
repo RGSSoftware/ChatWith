@@ -15,5 +15,8 @@
 -(void)setFrameOriginX:(float)x;
 -(void)setFrameOriginY:(float)y;
 
+-(void)setFrameOrigin:(CGPoint)point;
+-(void)setFrameSize:(CGSize)size;
+
 
 @end

@@ -28,6 +28,8 @@
 @interface RGSRegistrationViewController ()
 @property (nonatomic, strong)NSMutableArray *textFields;
 @property (nonatomic, strong)NSMutableArray *buttons;
+
+@property BOOL hasUserImagePlaceholder;
 @end
 
 @implementation RGSRegistrationViewController
@@ -120,7 +122,7 @@
     
     [self.buttons addObjectsFromArray:@[self.addUserImageButtom, self.submitButton]];
     for (UIButton *button in self.buttons) {
-        button.backgroundColor = [UIColor colorWithHexString:@"414141" alpha:.45];
+        button.backgroundColor = [UIColor colorWithHexString:@"353535" alpha:.65];
         [button.layer setCornerRadius:10];
         [button setTitleColor:[UIColor colorWithHexString:@"68DAFF"] forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:20];
@@ -134,7 +136,7 @@
     
 }
 - (void)viewDidLayoutSubviews {
-self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetMaxY(self.submitButton.frame) + 5);
+    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetMaxY(self.submitButton.frame) + 5);
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -149,6 +151,8 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
         make.top.equalTo(self.scrollView.superview.mas_top);
         make.bottom.equalTo(self.scrollView.superview.mas_bottom);
     }];
+    
+    self.hasUserImagePlaceholder = YES;
     
     [self registerForKeyboardNotifications];
 }
@@ -170,6 +174,10 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
 -(void)RGSMessageAttachmentViewController:(RGSMessageAttachmentViewController *)messageAttachmentViewController imageAttachment:(UIImage *)imageAttachment{
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    self.hasUserImagePlaceholder = NO;
+    
+    [self.userImage setFrameOrigin:CGPointMake(0, 0)];
+    [self.userImage setFrameSize:self.userImageContainer.frame.size];
     
     self.userImage.image = imageAttachment;
 }
@@ -214,8 +222,37 @@ self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRect
                                  hud.labelText = @"Signing In";
                                  
                                  [QBRequest logInWithUserLogin:self.usernameTextField.text password:self.passwordTextField.text successBlock:^(QBResponse *response, QBUUser *user) {
-                                     //display successful login message
-                                     //segway to splah Screen
+                                    
+                                     //upload user image
+                                     if(!self.hasUserImagePlaceholder){
+                                         QBCOFile *file = [QBCOFile file];
+                                         file.name = @"image.jpeg";
+                                         file.contentType = @"image/jpeg";
+                                         file.data = UIImageJPEGRepresentation(self.userImage.image, 0.0);
+                                         
+                                         QBCOCustomObject *object = [QBCOCustomObject customObject];
+                                         object.className = @"UserImage";
+                                         
+                                         [QBRequest createObject:object successBlock:^(QBResponse *response, QBCOCustomObject *object) {
+                                             
+                                             [QBRequest uploadFile:file className:@"UserImage" objectID:object.ID fileFieldName:@"image" successBlock:^(QBResponse *response, QBCOFileUploadInfo *info) {
+                                                 
+                                                
+                                                 NSLog(@"file image upload: Resonse status: %ld", response.status);
+                                                 
+                                             } statusBlock:^(QBRequest *request, QBRequestStatus *status) {
+                                                 
+                                                 
+                                             } errorBlock:^(QBResponse *response) {
+                                                 NSLog(@"creating file Image: Response error: %@", [response.error description]);
+                                                 
+                                             }];
+                                         } errorBlock:^(QBResponse *response) {
+                                             NSLog(@"creating MessageImage: Response error: %@", [response.error description]);
+                                             
+                                         }];
+                                         
+                                     }
                                      
                                      RGSUser *rgsUser = [user rgsUser];
                                      rgsUser.currentUser = [NSNumber numberWithBool:YES];

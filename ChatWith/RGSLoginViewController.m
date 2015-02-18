@@ -60,19 +60,16 @@
         textField.attributedPlaceholder = attributedString;
     }
     
+    for(UIButton *button in @[self.loginButton, self.registerButton, self.forgotButton]){
+        button.backgroundColor = [UIColor colorWithHexString:@"353535" alpha:.65];
+        button.layer.cornerRadius = 10;
+    }
     
-    self.loginButton.backgroundColor = [UIColor colorWithHexString:@"414141" alpha:.45];
-    [self.loginButton.layer setCornerRadius:10];
     [self.loginButton setTitleColor:[UIColor colorWithHexString:@"68DAFF"] forState:UIControlStateNormal];
     self.loginButton.titleLabel.font = [UIFont systemFontOfSize:20];
     
-    self.registerButton.backgroundColor = [UIColor colorWithHexString:@"353535" alpha:.65];
-    [self.registerButton.layer setCornerRadius:10];
     [self.registerButton setTitleColor:[UIColor colorWithHexString:@"68DAFF"] forState:UIControlStateNormal];
     self.registerButton.titleLabel.font = [self.registerButton.titleLabel.font fontWithSize:13];
-    
-    self.forgotButton.backgroundColor = [UIColor colorWithHexString:@"353535" alpha:.65];
-    [self.forgotButton.layer setCornerRadius:10];
     
     NSMutableAttributedString *attributedString = [self.forgotButton.currentAttributedTitle mutableCopy];
     [attributedString setAlignment:NSTextAlignmentCenter];

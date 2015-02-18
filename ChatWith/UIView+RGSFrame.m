@@ -29,5 +29,15 @@
     rect.origin.y = y;
     self.frame = rect;
 }
+-(void)setFrameOrigin:(CGPoint)point{
+    CGRect rect = self.frame;
+    rect.origin = point;
+    self.frame = rect;
+}
+-(void)setFrameSize:(CGSize)size{
+    CGRect rect = self.frame;
+    rect.size = size;
+    self.frame = rect;
+}
 
 @end
