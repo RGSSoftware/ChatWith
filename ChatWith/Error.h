@@ -19,3 +19,5 @@ static NSString * const RGSRegistrationErrorDomain = @"RGSRegistrationErrorDomai
 #define ELTQB      103       /* could't login to QBSystem */
 #define ECAS       104       /* Error creating Application Session */
 #define ERWC       105       /* Failed to register new accout with QBChat */
+#define EUUIR      106       /* Error uploading user image on Registration*/
+#define ECQBC      107       /* Error creating QBSystem classes */

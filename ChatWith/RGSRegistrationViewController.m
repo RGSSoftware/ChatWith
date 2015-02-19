@@ -211,8 +211,16 @@
                          user.login = self.usernameTextField.text;
                          user.password = self.passwordTextField.text;
                          user.email = self.emailTextField.text;
-                         if(![self.firstnameTextField.text isEqualToString:@""] && ![self.lastnameTextField.text isEqualToString:@""]){
-                             user.fullName = [NSString stringWithFormat:@"%@ %@", self.firstnameTextField.text, self.lastnameTextField.text];
+                         
+                         if(![self.firstnameTextField.text isEqualToString:@""]){
+                             user.fullName = self.firstnameTextField.text;
+                         }
+                         if(![self.lastnameTextField.text isEqualToString:@""]){
+                             if([user.fullName isEqualToString:@""]){
+                                 user.fullName = self.lastnameTextField.text;
+                             } else {
+                                 user.fullName = [user.fullName stringByAppendingString:[NSString stringWithFormat:@" %@",self.lastnameTextField.text]];
+                             }
                          }
                          if(![self.phonenumberTextField.text isEqualToString:@""]){
                              user.phone = self.phonenumberTextField.text;
@@ -223,6 +231,13 @@
                                  
                                  [QBRequest logInWithUserLogin:self.usernameTextField.text password:self.passwordTextField.text successBlock:^(QBResponse *response, QBUUser *user) {
                                     
+                                     RGSUser *rgsUser = [user rgsUser];
+                                     rgsUser.currentUser = [NSNumber numberWithBool:YES];
+                                     rgsUser.password = self.passwordTextField.text;
+                                     rgsUser.entityID = [NSNumber numberWithInteger:user.ID];
+                                     
+                                     [rgsUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+                                         
                                      //upload user image
                                      if(!self.hasUserImagePlaceholder){
                                          QBCOFile *file = [QBCOFile file];
@@ -233,33 +248,44 @@
                                          QBCOCustomObject *object = [QBCOCustomObject customObject];
                                          object.className = @"UserImage";
                                          
-                                         [QBRequest createObject:object successBlock:^(QBResponse *response, QBCOCustomObject *object) {
-                                             
-                                             [QBRequest uploadFile:file className:@"UserImage" objectID:object.ID fileFieldName:@"image" successBlock:^(QBResponse *response, QBCOFileUploadInfo *info) {
+                                             [QBRequest createObject:object successBlock:^(QBResponse *response, QBCOCustomObject *object) {
                                                  
-                                                
-                                                 NSLog(@"file image upload: Resonse status: %ld", response.status);
-                                                 
-                                             } statusBlock:^(QBRequest *request, QBRequestStatus *status) {
-                                                 
-                                                 
+                                                 [QBRequest uploadFile:file className:@"UserImage" objectID:object.ID fileFieldName:@"image" successBlock:^(QBResponse *response, QBCOFileUploadInfo *info) {
+                                                      NSLog(@"file image upload: Resonse status: %d", response.status);
+                                                     //save user image to CoreData
+                                                     rgsUser.imageData = UIImageJPEGRepresentation(self.userImage.image, 0.0);
+                                                     [rgsUser.managedObjectContext MR_saveOnlySelfWithCompletion:nil];
+                                                     }
+                                                           statusBlock:nil
+                                                            errorBlock:^(QBResponse *response) {
+                                                     NSLog(@"creating file Image: Response error: %@", [response.error description]);
+                                                     NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                                                     [errorDetail setValue:@"error uploading user image to QBSystem" forKey:NSLocalizedFailureReasonErrorKey];
+                                                     [errorDetail setValue:@"There's an error uploading user image on registration." forKey:NSLocalizedDescriptionKey];
+                                                     
+                                                     RGSLogReport *logReport = [RGSLogReport logReportFromErrorDic:@{LogReportLevelMain : [NSError errorWithDomain:RGSRegistrationErrorDomain code:EUUIR userInfo:errorDetail], LogReportLevelSub : response.error.error}];
+                                                     if(logReport){
+                                                         [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+                                                             if(success)[RGSLogService sendLog:logReport successBlock:nil];
+                                                         }];
+                                                     }
+                                                     
+                                                 }];
                                              } errorBlock:^(QBResponse *response) {
-                                                 NSLog(@"creating file Image: Response error: %@", [response.error description]);
+                                                 NSLog(@"creating UserImage: Response error: %@", [response.error description]);
+                                                 NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                                                 [errorDetail setValue:@"error creating UserImage class with QBSystem" forKey:NSLocalizedFailureReasonErrorKey];
+                                                 [errorDetail setValue:@"There's an error creating UserImage class with QBSystem." forKey:NSLocalizedDescriptionKey];
                                                  
+                                                 RGSLogReport *logReport = [RGSLogReport logReportFromErrorDic:@{LogReportLevelMain : [NSError errorWithDomain:RGSRegistrationErrorDomain code:ECQBC userInfo:errorDetail], LogReportLevelSub : response.error.error}];
+                                                 if(logReport){
+                                                     [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+                                                         if(success)[RGSLogService sendLog:logReport successBlock:nil];
+                                                     }];
+                                                 }
                                              }];
-                                         } errorBlock:^(QBResponse *response) {
-                                             NSLog(@"creating MessageImage: Response error: %@", [response.error description]);
-                                             
-                                         }];
-                                         
-                                     }
+                                         }
                                      
-                                     RGSUser *rgsUser = [user rgsUser];
-                                     rgsUser.currentUser = [NSNumber numberWithBool:YES];
-                                     rgsUser.password = self.passwordTextField.text;
-                                     rgsUser.entityID = [NSNumber numberWithInteger:user.ID];
-                                     
-                                     [rgsUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
                                          [[RGSChatService shared] loginUser:[rgsUser qbUser]  successBlock:^(BOOL success) {
                                              if(success){
                                                  float delay = 1.1;
@@ -302,54 +328,6 @@
                          
                          
                          } repeats:NO];
-                     
-                     
-                     
-                     
-//                     [NSTimer bk_scheduledTimerWithTimeInterval:0.8 block:^(NSTimer *timer) {
-//                         hud.mode = MBProgressHUDModeIndeterminate;
-//                         hud.labelText = @"Signing In";
-//                         
-//                         [QBRequest logInWithUserLogin:self.usernameTextField.text password:self.passwordTextField.text successBlock:^(QBResponse *response, QBUUser *user) {
-//                             //display successful login message
-//                             //segway to splah Screen
-//                             
-//                             RGSUser *rgsUser = [user rgsUser];
-//                             rgsUser.currentUser = [NSNumber numberWithBool:YES];
-//                             rgsUser.password = self.passwordTextField.text;
-//                             rgsUser.entityID = [NSNumber numberWithInteger:user.ID];
-//                             
-//                             [rgsUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-//                                 [[RGSChatService shared] loginUser:[rgsUser qbUser]  successBlock:^(BOOL success) {
-//                                     if(success){
-//                                         float delay = 1.1;
-//                                         hud.mode = MBProgressHUDModeCustomView;
-//                                         hud.labelText = @"Sign Successful";
-//                                         [hud hide:YES afterDelay:delay];
-//                                         [NSTimer bk_scheduledTimerWithTimeInterval:delay + 0.2 block:^(NSTimer *timer) {
-//                                             [self performSegueWithIdentifier:@"unwindFromRegistrationScreenToSplashScreen" sender:self];
-//                                             
-//                                         } repeats:NO];
-//                                     } else {
-//                                         [hud hide:YES];
-//                                         NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-//                                         [errorDetail setValue:@"Failed to login to QBChat" forKey:NSLocalizedFailureReasonErrorKey];
-//                                         [errorDetail setValue:@"Couldn't complete login of user because there was a QBChat failure login." forKey:NSLocalizedDescriptionKey];
-//                                         [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail]}];
-//                                     }
-//                                 }];
-//                             }];
-//                         } errorBlock:^(QBResponse *response) {
-//                             [hud hide:YES];
-//                             NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-//                             [errorDetail setValue:@"error login to QBSystem" forKey:NSLocalizedFailureReasonErrorKey];
-//                             [errorDetail setValue:@"Couldn't complete login of user because there was a QBSystem failure login." forKey:NSLocalizedDescriptionKey];
-//                             ;
-//                             [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail], LogReportLevelSub : response.error.error}];
-//                             
-//                         }];
-//                      } repeats:NO];
-                     
             } else {
                 [hud hide:YES];
                 [self showAlertViewWithMeassage:@"Oops! Somebody already has that name. Give it another shot."];
@@ -377,6 +355,7 @@
 
 
 -(BOOL)isUserCredentialsValid{
+    
     return ([RGSUserMangementService isUserNameValid:self.usernameTextField.text] &&
             [RGSUserMangementService isPasswordValid:self.passwordTextField.text]);
 }
@@ -455,12 +434,8 @@
     finalFrame.origin.y = navHeight;
     
     if(CGRectGetMaxY(finalFrame) >= CGRectGetMinY(self.scrollView.frame)){
-//        [self.scrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(@((CGRectGetMaxY(self.navigationController.navigationBar.frame)) + CGRectGetHeight(errorView.frame)));
-//        }];
         [self.scrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(@((CGRectGetMaxY(self.navigationController.navigationBar.frame)) + CGRectGetHeight(errorView.frame)));
-             make.top.equalTo(self.scrollView.superview.mas_top).with.offset(CGRectGetHeight(errorView.frame));
+            make.top.equalTo(self.scrollView.superview.mas_top).with.offset(CGRectGetHeight(errorView.frame));
             make.bottom.equalTo(self.scrollView.superview.mas_bottom).with.offset(CGRectGetHeight(errorView.frame));
         }];
         [UIView animateWithDuration:1.3 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{

@@ -123,6 +123,9 @@
 }
 
 -(IBAction)loginUser:(id)sender{
+    for (UITextField *testField in self.textFields) {
+        [testField resignFirstResponder];
+    }
 
     if ([self isUserCredentialsValid]) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
