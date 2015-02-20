@@ -107,7 +107,7 @@ struct {
     RGSBackBarButtonItem *backBarButtonItem = [RGSBackBarButtonItem new];
 //    [backBarButtonItem addTarget:self action:@selector(toChatListScreen:) forControlEvents:UIControlEventTouchUpInside];
 //    [backBarButtonItem setTitle:@"Chats"];
-    self.navigationItem.leftBarButtonItem = backBarButtonItem;
+//    self.navigationItem.leftBarButtonItem = backBarButtonItem;
     
     self.tableView.contentInset = [self messageComposerViewInsert];
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationSpacing, 0, CGRectGetHeight(self.messageComposerView.frame), 0);

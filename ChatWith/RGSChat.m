@@ -80,8 +80,26 @@
     [self didAccessValueForKey:@"messages"];
     
     [self willChangeValueForKey:@"lastMessageDate"];
+    //Key-Value Coding
     [self setLastMessageDate:[self valueForKeyPath:@"messages.@max.date"]];
     [self didChangeValueForKey:@"lastMessageDate"];
+}
+
+-(void)awakeFromInsert{
+    [super awakeFromInsert];
+    [self observeMessagesChanges];
+}
+-(void)awakeFromFetch{
+    [super awakeFromFetch];
+     [self observeMessagesChanges];
+}
+-(void)prepareForDeletion{
+    [super prepareForDeletion];
+    [self deRegisterForMessagesChanges];
+    
+}
+-(void)deRegisterForMessagesChanges{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
 }
 
 @end

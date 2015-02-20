@@ -901,7 +901,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="yXQ-Ov-jBu"/>
+                    <navigationItem key="navigationItem" id="yXQ-Ov-jBu">
+                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="pNo-FN-Gdr">
+                            <connections>
+                                <segue destination="lcB-Nd-ks1" kind="unwind" unwindAction="unwindToChatList:" id="MOt-eQ-1pe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -1391,8 +1397,8 @@
         <image name="userPlaceholder" width="180" height="210"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uHd-f2-Pye"/>
+        <segue reference="Gki-nL-zVj"/>
         <segue reference="xzz-1T-cJW"/>
-        <segue reference="Ilp-jo-k4O"/>
+        <segue reference="uHd-f2-Pye"/>
     </inferredMetricsTieBreakers>
 </document>

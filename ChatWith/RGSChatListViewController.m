@@ -70,9 +70,9 @@
     
     [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
     
-    [NSTimer bk_scheduledTimerWithTimeInterval:2 block:^(NSTimer *timer) {
-        [self.tableView reloadData];
-    } repeats:YES];
+//    [NSTimer bk_scheduledTimerWithTimeInterval:2 block:^(NSTimer *timer) {
+//        [self.tableView reloadData];
+//    } repeats:YES];
 
     
     
@@ -168,9 +168,12 @@ return [[_fetchedResultsController sections] count];
     }
     
     chatCell.lastestMessageBody.text = lastestMessage.body;
+//    chatCell.lastestMessageBody.numberOfLines = 0;
     [chatCell.lastestMessageBody sizeToFit];
-    chatCell.lastestMessageBody.layer.borderWidth = 0;
-    chatCell.lastestMessageBody.textColor = [UIColor whiteColor];
+    [chatCell.lastestMessageBody sizeToFit];
+    [chatCell.lastestMessageBody sizeToFit];
+
+    chatCell.lastestMessageBody.layer.borderWidth = 1;
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"currentUser != YES"];
     RGSUser *participant = [[chat.participants filteredSetUsingPredicate:predicate] anyObject];
@@ -306,6 +309,9 @@ return [[_fetchedResultsController sections] count];
 {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self name:NSManagedObjectContextDidSaveNotification object:nil];
+}
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+    [self.tableView reloadData];
 }
 
 - (IBAction)unwindToChatList:(UIStoryboardSegue *)unwindSegue
