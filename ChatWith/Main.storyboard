@@ -467,7 +467,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R44-pc-fxp">
                                                     <rect key="frame" x="9" y="13" width="50" height="50"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Czt-ZF-lPI">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Czt-ZF-lPI">
                                                     <rect key="frame" x="4" y="4" width="10" height="10"/>
                                                     <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -494,7 +494,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="alertBadge" destination="Czt-ZF-lPI" id="Df4-T4-mpi"/>
+                                            <outlet property="alertBadge" destination="Czt-ZF-lPI" id="xr6-f8-GFp"/>
                                             <outlet property="lastestMessageBody" destination="i6V-UQ-1bZ" id="czk-Jg-TmE"/>
                                             <outlet property="lastestMessageDate" destination="Oqa-qN-kLy" id="XZ1-IE-WH9"/>
                                             <outlet property="participantImage" destination="R44-pc-fxp" id="BtJ-rc-xKF"/>

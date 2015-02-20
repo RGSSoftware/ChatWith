@@ -792,4 +792,10 @@ struct {
     [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentSize.height -CGRectGetHeight(self.tableView.frame) + self.tableView.contentInset.bottom) animated:YES];
 }
 
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+    [self.tableView reloadData];
+    
+    [self scrollToBottomWithAnimation];
+}
+
 @end

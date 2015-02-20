@@ -27,16 +27,7 @@
 
 @implementation RGSChatListViewController
 
--(id)initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
-    if(self){
-        [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:nil queue:[NSOperationQueue mainQueue]
-                                                      usingBlock:^(NSNotification *note) {
-                                                      }];
-        
-    }
-    return self;
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -126,6 +117,7 @@ return [[_fetchedResultsController sections] count];
 //    }
     chatCell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
     chatCell.selectedBackgroundView = [chatCell customSelectedBackgroundViewWithFrame:chatCell.frame];
+//    chatCell.selectionStyle = UITableViewCellSelectionStyleDefault;
     
     
     RGSChat *chat = [_fetchedResultsController objectAtIndexPath:indexPath];
@@ -168,12 +160,6 @@ return [[_fetchedResultsController sections] count];
     }
     
     chatCell.lastestMessageBody.text = lastestMessage.body;
-//    chatCell.lastestMessageBody.numberOfLines = 0;
-    [chatCell.lastestMessageBody sizeToFit];
-    [chatCell.lastestMessageBody sizeToFit];
-    [chatCell.lastestMessageBody sizeToFit];
-
-    chatCell.lastestMessageBody.layer.borderWidth = 1;
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"currentUser != YES"];
     RGSUser *participant = [[chat.participants filteredSetUsingPredicate:predicate] anyObject];
@@ -189,7 +175,10 @@ return [[_fetchedResultsController sections] count];
     //http://stackoverflow.com/questions/4314640/setting-corner-radius-on-uiimageview-not-working#4314683
     chatCell.participantImage.layer.shouldRasterize = YES;
     [chatCell.participantImage.layer setCornerRadius:10];
+    
     chatCell.alertBadge.layer.cornerRadius = chatCell.alertBadge.bounds.size.width/2;
+//    chatCell.alertBadge = nil;
+//    [chatCell.contentView bringSubviewToFront:chatCell.alertBadge];
     
     // Configure the cell...
 //    cell.layer.borderWidth = 2;
@@ -202,6 +191,19 @@ return [[_fetchedResultsController sections] count];
     
     return chatCell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    RGSChatCell *cell = (RGSChatCell *)[tableView cellForRowAtIndexPath:indexPath];
+//    UIView *backGround = [cell customSelectedBackgroundViewWithFrame:cell.frame];
+//    [cell.contentView addSubview:backGround];
+//    [cell.contentView sendSubviewToBack:backGround];
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
+
+
 
 //ios8 introduces the layoutmargins property on cells and table views
 // therefore, to remove the cell separator leading spacing
