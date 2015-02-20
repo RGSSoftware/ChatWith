@@ -10,10 +10,13 @@
 
 @interface RGSChatCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *receiverImage;
-@property (weak, nonatomic) IBOutlet UILabel *receiverName;
 @property (weak, nonatomic) IBOutlet UILabel *lastestMessageBody;
 @property (weak, nonatomic) IBOutlet UILabel *lastestMessageDate;
+
+@property (weak, nonatomic) IBOutlet UIImageView *participantImage;
+@property (weak, nonatomic) IBOutlet UILabel *participantName;
+
+@property (weak, nonatomic) IBOutlet UIView *alertBadge;
 
 -(UIView *)customSelectedBackgroundViewWithFrame:(CGRect)frame;
 @end

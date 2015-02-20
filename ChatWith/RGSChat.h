@@ -39,4 +39,6 @@
 - (void)addParticipants:(NSSet *)values;
 - (void)removeParticipants:(NSSet *)values;
 
++(id)RGS_createEntity;
+
 @end

@@ -536,11 +536,11 @@
 		22889AD119D3234500F0541D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				224FBF7619D1B7A800A924CA /* Main.storyboard */,
 				225219631A8C2585009D317C /* RGSNumberToolbar.h */,
 				225219641A8C2585009D317C /* RGSNumberToolbar.m */,
 				225E2CA91A869F5300596E19 /* RGSPlayGroundView.h */,
 				225E2CAA1A869F5300596E19 /* RGSPlayGroundView.m */,
-				224FBF7619D1B7A800A924CA /* Main.storyboard */,
 				22E954AE1A531C1B0066ECF4 /* RGSBarButtonItem.h */,
 				22E954AF1A531C1B0066ECF4 /* RGSBarButtonItem.m */,
 				22E954AB1A526A6F0066ECF4 /* RGSTitleBarButtonItem.h */,

@@ -51,16 +51,31 @@
    
     
     
-    self.view.layer.borderWidth = 2;
+//    self.view.layer.borderWidth = 2;
     self.tableView.contentInset = UIEdgeInsetsZero;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-     NSError *error;
+    [super viewWillAppear:animated];
+    
+    NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
         // Update to handle the error appropriately.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+    
+    [NSTimer bk_scheduledTimerWithTimeInterval:2 block:^(NSTimer *timer) {
+        [self.tableView reloadData];
+    } repeats:YES];
+
+    
+    
 }
 
 -(void)toContacts:(id)sender{
@@ -91,11 +106,11 @@ return [[_fetchedResultsController sections] count];
 //    if (indexPath.row == 0) {
 //        return 140;
 //    }
-    return 75;
+    return 76;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    RGSChatCell *cell;
+    RGSChatCell *chatCell;
     
 //    if(indexPath.row == 0){
 //        cell = [tableView dequeueReusableCellWithIdentifier:@"longerChatCell" forIndexPath:indexPath];
@@ -109,33 +124,37 @@ return [[_fetchedResultsController sections] count];
 //        cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
 //        cell.selectedBackgroundView = [cell customSelectedBackgroundViewWithFrame:cell.frame];
 //    }
-    cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
-    cell.selectedBackgroundView = [cell customSelectedBackgroundViewWithFrame:cell.frame];
+    chatCell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
+    chatCell.selectedBackgroundView = [chatCell customSelectedBackgroundViewWithFrame:chatCell.frame];
     
     
     RGSChat *chat = [_fetchedResultsController objectAtIndexPath:indexPath];
     
-    cell.lastestMessageDate.text = chat.lastMessageDate.description;
+    chatCell.lastestMessageDate.text = chat.lastMessageDate.description;
     
-    if ([chat.lastMessageDate isEarlierThanDate:[NSDate date]]) {
-        if ([chat.lastMessageDate isToday]) {
+    RGSMessage *lastestMessage = [[chat.messages sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:NSStringFromSelector(@selector(date)) ascending:NO]]] firstObject];
+    NSDate *lastMessageDate = lastestMessage.date;
+
+    
+    if ([lastestMessage.date isEarlierThanDate:[NSDate date]]) {
+        if ([lastestMessage.date isToday]) {
             static NSDateFormatter *todayDateFormatter = nil;
             if (todayDateFormatter == nil) {
                 todayDateFormatter = [NSDateFormatter new];
                 todayDateFormatter.dateFormat = @"h:mm a";
             }
-            cell.lastestMessageDate.text = [todayDateFormatter stringFromDate:chat.lastMessageDate];
-        } else if ([chat.lastMessageDate isYesterday]){
-            cell.lastestMessageDate.text = @"Yesterday";
+            chatCell.lastestMessageDate.text = [todayDateFormatter stringFromDate:lastestMessage.date];
+        } else if ([lastestMessage.date isYesterday]){
+            chatCell.lastestMessageDate.text = @"Yesterday";
             
-        } else if ([chat.lastMessageDate isSameWeekAsDate:[NSDate date]]){
+        } else if ([lastestMessage.date isSameWeekAsDate:[NSDate date]]){
             static NSDateFormatter *sameweekDateFormatter = nil;
             if (sameweekDateFormatter == nil) {
                 sameweekDateFormatter = [NSDateFormatter new];
                 sameweekDateFormatter.locale = [NSLocale currentLocale];
                 sameweekDateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"EEEE" options:0 locale:[NSLocale currentLocale]];
             }
-            cell.lastestMessageDate.text = [sameweekDateFormatter stringFromDate:chat.lastMessageDate];
+            chatCell.lastestMessageDate.text = [sameweekDateFormatter stringFromDate:lastestMessage.date];
         } else {
             //Earlier than one week
             static NSDateFormatter *earlierWeekDateFormatter = nil;
@@ -144,23 +163,41 @@ return [[_fetchedResultsController sections] count];
                 earlierWeekDateFormatter.locale = [NSLocale currentLocale];
                 earlierWeekDateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"Mdy" options:0 locale:[NSLocale currentLocale]];
             }
-            cell.lastestMessageDate.text = [earlierWeekDateFormatter stringFromDate:chat.lastMessageDate];
+            chatCell.lastestMessageDate.text = [earlierWeekDateFormatter stringFromDate:lastestMessage.date];
         }
     }
     
-    cell.lastestMessageBody.text = ((RGSMessage *)[chat.messages anyObject]).body;
-    cell.receiverName.text = chat.receiver.fullName;
+    chatCell.lastestMessageBody.text = lastestMessage.body;
+    [chatCell.lastestMessageBody sizeToFit];
+    chatCell.lastestMessageBody.layer.borderWidth = 0;
+    chatCell.lastestMessageBody.textColor = [UIColor whiteColor];
     
-    cell.receiverImage.image = [UIImage imageWithColor:[UIColor colorWithWhite:0.731 alpha:1.000]];
-    cell.receiverImage.layer.masksToBounds = YES;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"currentUser != YES"];
+    RGSUser *participant = [[chat.participants filteredSetUsingPredicate:predicate] anyObject];
+    
+    chatCell.participantName.text = participant.login;
+    [chatCell.participantName sizeToFit];
+    chatCell.participantName.layer.borderColor = [[UIColor redColor] CGColor];
+//    chatCell.participantName.layer.borderWidth = 2;
+    
+    chatCell.participantImage.image = [UIImage imageWithData:participant.imageData];
+    chatCell.participantImage.layer.masksToBounds = YES;
     //prevent every frame from requiring a re-mask on all the pixels
     //http://stackoverflow.com/questions/4314640/setting-corner-radius-on-uiimageview-not-working#4314683
-    cell.receiverImage.layer.shouldRasterize = YES;
-    [cell.receiverImage.layer setCornerRadius:10];
+    chatCell.participantImage.layer.shouldRasterize = YES;
+    [chatCell.participantImage.layer setCornerRadius:10];
+    chatCell.alertBadge.layer.cornerRadius = chatCell.alertBadge.bounds.size.width/2;
     
     // Configure the cell...
-    cell.layer.borderWidth = 2;
-    return cell;
+//    cell.layer.borderWidth = 2;
+    
+//    [chatCell.participantName setFrameOriginY:10];
+//    [chatCell.participantName setFrameOriginX:68];
+//    [chatCell.lastestMessageBody setFrameOriginY:27];
+//    [chatCell.lastestMessageBody setFrameOriginX:72];
+    
+    
+    return chatCell;
 }
 
 //ios8 introduces the layoutmargins property on cells and table views
@@ -261,10 +298,6 @@ return [[_fetchedResultsController sections] count];
     self.showChat = nil;
     [self deregisterForNSManagedObjectNotifications];
     
-}
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 }
 -(void)dealloc{
     [self deregisterForNSManagedObjectNotifications];

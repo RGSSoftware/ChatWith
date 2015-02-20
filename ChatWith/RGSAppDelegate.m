@@ -54,18 +54,21 @@
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     [MagicalRecord setupCoreDataStack];
     
+//    [self deleteDataModel];
+//    [self createDataModel];
+    
     [self configAppearance];
-
-    self.splashWindow = [[UIWindow alloc] initWithFrame:self.window.frame];
-    self.splashWindow .windowLevel = UIWindowLevelAlert;
-
-    [NSTimer bk_scheduledTimerWithTimeInterval:.3 block:^(NSTimer *timer) {
-        self.splashWindow .windowLevel = UIWindowLevelNormal;
-    } repeats:NO];
-
-    RGSInitialViewController *splashViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSInitialViewController"];
-    self.splashWindow.rootViewController = splashViewController;
-    [self.splashWindow makeKeyAndVisible];
+//
+//    self.splashWindow = [[UIWindow alloc] initWithFrame:self.window.frame];
+//    self.splashWindow .windowLevel = UIWindowLevelAlert;
+//
+//    [NSTimer bk_scheduledTimerWithTimeInterval:.3 block:^(NSTimer *timer) {
+//        self.splashWindow .windowLevel = UIWindowLevelNormal;
+//    } repeats:NO];
+//
+//    RGSInitialViewController *splashViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSInitialViewController"];
+//    self.splashWindow.rootViewController = splashViewController;
+//    [self.splashWindow makeKeyAndVisible];
 
 
     
@@ -74,8 +77,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self deleteDataModel];
-//    [self createDataModel];
+    
 //    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:UDKAutoLogin];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:UDKRememberMe];
     
@@ -92,64 +94,64 @@
     
     
     
-    [QBRequest createSessionWithSuccessBlock:^(QBResponse *response, QBASession *session) {
-//        RGSApplicationSession *savedApplecationSession = [RGSApplicationSession MR_findFirst];
-//        if(savedApplecationSession) [savedApplecationSession MR_deleteEntity];
-        
-        
-        RGSApplicationSession *applicationSession = [session rgsApplicationSession];
-        [applicationSession.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-            if (success) {
-                RGSUser *savedUser = [RGSUser findCurrentUser];
-                if (savedUser) {
-                    if ([[NSUserDefaults standardUserDefaults] boolForKey:UDKAutoLogin]) {
-                        [QBRequest logInWithUserLogin:savedUser.login password:savedUser.password successBlock:^(QBResponse *response, QBUUser *user) {
-                            savedUser.entityID = [NSNumber numberWithInteger:user.ID];
-                            
-                            [savedUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-                                [[RGSChatService shared] loginUser:[savedUser qbUser] successBlock:^(BOOL success) {
-                                    //remove top window that has splash screen
-                                    
-                                    //animate splashWindow removal
-                                    [UIView animateWithDuration:.5 animations:^{
-                                        self.splashWindow.alpha = 0;
-                                    } completion:^(BOOL finished) {
-                                        if(finished){
-                                            self.splashWindow = nil;
-                                            [self.window makeKeyAndVisible];
-                                        }
-                                    }];
-                                }];
-                            }];
-                        } errorBlock:^(QBResponse *response) {
-                            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-                            [errorDetail setValue:@"error login to QBSystem" forKey:NSLocalizedFailureReasonErrorKey];
-                            [errorDetail setValue:@"Couldn't complete login of user because there was a QBSystem failure login." forKey:NSLocalizedDescriptionKey];
-                            ;
-                            [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail], LogReportLevelSub : response.error.error}];
-                        }];
-                    } else {
-                        [self showLoginScreen];
-                    }
-                } else {
-                    [self showLoginScreen];
-                }
-            } else {
-                
-                NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-                [errorDetail setValue:@"error saving the application session" forKey:NSLocalizedFailureReasonErrorKey];
-                [errorDetail setValue:@"Couldn't complete login of user because there was an error saving the Application Session." forKey:NSLocalizedDescriptionKey];
-               ;
-                [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ESAS userInfo:errorDetail], LogReportLevelSub : error}];
-            }
-        }];
-    } errorBlock:^(QBResponse *response) {
-        NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-        [errorDetail setValue:@"error creating an application session" forKey:NSLocalizedFailureReasonErrorKey];
-        [errorDetail setValue:@"Couldn't complete login of user because couldn't create an application session." forKey:NSLocalizedDescriptionKey];
-        ;
-        [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ECAS userInfo:errorDetail], LogReportLevelSub : response.error.error}];
-    }];
+//    [QBRequest createSessionWithSuccessBlock:^(QBResponse *response, QBASession *session) {
+////        RGSApplicationSession *savedApplecationSession = [RGSApplicationSession MR_findFirst];
+////        if(savedApplecationSession) [savedApplecationSession MR_deleteEntity];
+//        
+//        
+//        RGSApplicationSession *applicationSession = [session rgsApplicationSession];
+//        [applicationSession.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+//            if (success) {
+//                RGSUser *savedUser = [RGSUser findCurrentUser];
+//                if (savedUser) {
+//                    if ([[NSUserDefaults standardUserDefaults] boolForKey:UDKAutoLogin]) {
+//                        [QBRequest logInWithUserLogin:savedUser.login password:savedUser.password successBlock:^(QBResponse *response, QBUUser *user) {
+//                            savedUser.entityID = [NSNumber numberWithInteger:user.ID];
+//                            
+//                            [savedUser.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+//                                [[RGSChatService shared] loginUser:[savedUser qbUser] successBlock:^(BOOL success) {
+//                                    //remove top window that has splash screen
+//                                    
+//                                    //animate splashWindow removal
+//                                    [UIView animateWithDuration:.5 animations:^{
+//                                        self.splashWindow.alpha = 0;
+//                                    } completion:^(BOOL finished) {
+//                                        if(finished){
+//                                            self.splashWindow = nil;
+//                                            [self.window makeKeyAndVisible];
+//                                        }
+//                                    }];
+//                                }];
+//                            }];
+//                        } errorBlock:^(QBResponse *response) {
+//                            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+//                            [errorDetail setValue:@"error login to QBSystem" forKey:NSLocalizedFailureReasonErrorKey];
+//                            [errorDetail setValue:@"Couldn't complete login of user because there was a QBSystem failure login." forKey:NSLocalizedDescriptionKey];
+//                            ;
+//                            [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ELTQB userInfo:errorDetail], LogReportLevelSub : response.error.error}];
+//                        }];
+//                    } else {
+//                        [self showLoginScreen];
+//                    }
+//                } else {
+//                    [self showLoginScreen];
+//                }
+//            } else {
+//                
+//                NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+//                [errorDetail setValue:@"error saving the application session" forKey:NSLocalizedFailureReasonErrorKey];
+//                [errorDetail setValue:@"Couldn't complete login of user because there was an error saving the Application Session." forKey:NSLocalizedDescriptionKey];
+//               ;
+//                [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ESAS userInfo:errorDetail], LogReportLevelSub : error}];
+//            }
+//        }];
+//    } errorBlock:^(QBResponse *response) {
+//        NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+//        [errorDetail setValue:@"error creating an application session" forKey:NSLocalizedFailureReasonErrorKey];
+//        [errorDetail setValue:@"Couldn't complete login of user because couldn't create an application session." forKey:NSLocalizedDescriptionKey];
+//        ;
+//        [self handleFatalError: @{LogReportLevelMain : [NSError errorWithDomain:RGSLoginErrorDomain code:ECAS userInfo:errorDetail], LogReportLevelSub : response.error.error}];
+//    }];
 
     
     return YES;
@@ -157,6 +159,8 @@
 
 -(BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder{
     return [[NSUserDefaults standardUserDefaults] boolForKey:UDKAutoLogin];
+    #warning remove this before build - i'm doing this beuase i think when the app start, it;s trying to restrore the view hiech and not just init the viwe from storyboard
+    return NO;
 }
 
 -(BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder{
@@ -221,18 +225,22 @@
         switch (i % 4) {
             case 0:
                 user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"sarah_connor"]);
+                user.login = @"sarah";
                 user.fullName = @"sarah";
                 break;
             case 1:
                 user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"t1000"]);
+                user.login = @"t1000";
                 user.fullName = @"t1000";
                 break;
             case 2:
                 user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"joe_morton"]);
+                user.login = @"joe";
                 user.fullName = @"joe";
                 break;
             case 3:
                 user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"john_connor"]);
+                user.login = @"john";
                 user.fullName = @"john";
                 break;
             default:
@@ -243,16 +251,17 @@
         contact.source = rrUser;
         contact.friend = user;
         
-        RGSChat *chat = [RGSChat MR_createEntity];
+        RGSChat *chat = [RGSChat RGS_createEntity];
         chat.receiver = rrUser;
         [chat addParticipantsObject:rrUser];
         [chat addParticipantsObject:user];
         
         int rand = arc4random_uniform(30) + 1;
-        for(int i = 0; i < rand; i++){
+        for(int j = 0; j < rand; j++){
             RGSMessage *m = [RGSMessage MR_createEntity];
+            m.date = [NSDate dateWithDaysBeforeNow:20];
             m.body = [LoremIpsum wordsWithNumber:(arc4random_uniform(30) + 1)];
-            switch (i % 2) {
+            switch (j % 2) {
                 case 0:
                     m.receiver = user;
                     m.sender = rrUser;
@@ -263,6 +272,27 @@
                     break;
                 default:
                     break;
+            }
+            
+            if(j == (rand - 1)){
+                switch (i % 4) {
+                    case 0:
+                        m.date = [NSDate date];
+                        break;
+                    case 1:
+                        m.date = [NSDate dateYesterday];
+                        break;
+                    case 2:
+                        m.date = [NSDate dateWithDaysBeforeNow:2];
+                        break;
+                    case 3:
+                        m.date = [NSDate dateWithDaysBeforeNow:8];
+
+                        break;
+                    default:
+                        break;
+                }
+
             }
             [chat addMessagesObject:m];
         }
