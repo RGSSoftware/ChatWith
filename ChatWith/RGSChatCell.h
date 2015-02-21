@@ -19,4 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIView *alertBadge;
 
 -(UIView *)customSelectedBackgroundViewWithFrame:(CGRect)frame;
+
+-(void)setLastestMessageDateWithFormat:(NSDate *)date;
 @end

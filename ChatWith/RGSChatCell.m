@@ -30,4 +30,52 @@
     [super setSelected:selected animated:animated];
     self.alertBadge.backgroundColor = backgroundColor;
 }
+
+-(void)awakeFromNib{
+    UIView *selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
+    selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:0.506 alpha:0.230];
+    self.selectedBackgroundView = selectedBackgroundView;
+    
+    self.participantImage.layer.masksToBounds = YES;
+    //prevent every frame from requiring a re-mask on all the pixels
+    //http://stackoverflow.com/questions/4314640/setting-corner-radius-on-uiimageview-not-working#4314683
+    self.participantImage.layer.shouldRasterize = YES;
+    [self.participantImage.layer setCornerRadius:10];
+    
+     self.alertBadge.layer.cornerRadius = self.alertBadge.bounds.size.width/2;
+}
+
+-(void)setLastestMessageDateWithFormat:(NSDate *)date{
+    if ([date isEarlierThanDate:[NSDate date]]) {
+        if ([date isToday]) {
+            static NSDateFormatter *todayDateFormatter = nil;
+            if (todayDateFormatter == nil) {
+                todayDateFormatter = [NSDateFormatter new];
+                todayDateFormatter.dateFormat = @"h:mm a";
+            }
+            self.lastestMessageDate.text = [todayDateFormatter stringFromDate:date];
+        } else if ([date isYesterday]){
+            self.lastestMessageDate.text = @"Yesterday";
+            
+        } else if ([date isSameWeekAsDate:[NSDate date]]){
+            static NSDateFormatter *sameweekDateFormatter = nil;
+            if (sameweekDateFormatter == nil) {
+                sameweekDateFormatter = [NSDateFormatter new];
+                sameweekDateFormatter.locale = [NSLocale currentLocale];
+                sameweekDateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"EEEE" options:0 locale:[NSLocale currentLocale]];
+            }
+            self.lastestMessageDate.text = [sameweekDateFormatter stringFromDate:date];
+        } else {
+            //Earlier than one week
+            static NSDateFormatter *earlierWeekDateFormatter = nil;
+            if (earlierWeekDateFormatter == nil) {
+                earlierWeekDateFormatter = [NSDateFormatter new];
+                earlierWeekDateFormatter.locale = [NSLocale currentLocale];
+                earlierWeekDateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"Mdy" options:0 locale:[NSLocale currentLocale]];
+            }
+            self.lastestMessageDate.text = [earlierWeekDateFormatter stringFromDate:date];
+        }
+    }
+
+}
 @end

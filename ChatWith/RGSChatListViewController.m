@@ -116,8 +116,6 @@ return [[_fetchedResultsController sections] count];
 //        cell.selectedBackgroundView = [cell customSelectedBackgroundViewWithFrame:cell.frame];
 //    }
     chatCell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
-    chatCell.selectedBackgroundView = [chatCell customSelectedBackgroundViewWithFrame:chatCell.frame];
-//    chatCell.selectionStyle = UITableViewCellSelectionStyleDefault;
     
     
     RGSChat *chat = [_fetchedResultsController objectAtIndexPath:indexPath];
@@ -125,45 +123,10 @@ return [[_fetchedResultsController sections] count];
    
     
     RGSMessage *lastestMessage = [[chat.messages sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:NSStringFromSelector(@selector(date)) ascending:NO]]] firstObject];
-    NSDate *lastMessageDate = lastestMessage.date;
 
     
-    if ([lastestMessage.date isEarlierThanDate:[NSDate date]]) {
-        if ([lastestMessage.date isToday]) {
-            static NSDateFormatter *todayDateFormatter = nil;
-            if (todayDateFormatter == nil) {
-                todayDateFormatter = [NSDateFormatter new];
-                todayDateFormatter.dateFormat = @"h:mm a";
-            }
-            chatCell.lastestMessageDate.text = [todayDateFormatter stringFromDate:lastestMessage.date];
-        } else if ([lastestMessage.date isYesterday]){
-            chatCell.lastestMessageDate.text = @"Yesterday";
-            
-        } else if ([lastestMessage.date isSameWeekAsDate:[NSDate date]]){
-            static NSDateFormatter *sameweekDateFormatter = nil;
-            if (sameweekDateFormatter == nil) {
-                sameweekDateFormatter = [NSDateFormatter new];
-                sameweekDateFormatter.locale = [NSLocale currentLocale];
-                sameweekDateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"EEEE" options:0 locale:[NSLocale currentLocale]];
-            }
-            chatCell.lastestMessageDate.text = [sameweekDateFormatter stringFromDate:lastestMessage.date];
-        } else {
-            //Earlier than one week
-            static NSDateFormatter *earlierWeekDateFormatter = nil;
-            if (earlierWeekDateFormatter == nil) {
-                earlierWeekDateFormatter = [NSDateFormatter new];
-                earlierWeekDateFormatter.locale = [NSLocale currentLocale];
-                earlierWeekDateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"Mdy" options:0 locale:[NSLocale currentLocale]];
-            }
-            chatCell.lastestMessageDate.text = [earlierWeekDateFormatter stringFromDate:lastestMessage.date];
-        }
-    }
-    
-//    [chatCell.lastestMessageBody removeConstraints:chatCell.lastestMessageBody.constraints];
-    NSArray *c = chatCell.constraints;
-    NSArray *c2 = chatCell.lastestMessageBody.constraints;
-    
-    
+    [chatCell setLastestMessageDateWithFormat:lastestMessage.date];
+   
     chatCell.lastestMessageBody.text = lastestMessage.body;
     CGSize expectedSize = [chatCell.lastestMessageBody.text boundingRectWithSize:CGSizeMake(231, 43) font:chatCell.lastestMessageBody.font].size;
     [chatCell.lastestMessageBody mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -175,28 +138,8 @@ return [[_fetchedResultsController sections] count];
     RGSUser *participant = [[chat.participants filteredSetUsingPredicate:predicate] anyObject];
     
     chatCell.participantName.text = participant.login;
-    [chatCell.participantName sizeToFit];
-    chatCell.participantName.layer.borderColor = [[UIColor redColor] CGColor];
-//    chatCell.participantName.layer.borderWidth = 2;
     
     chatCell.participantImage.image = [UIImage imageWithData:participant.imageData];
-    chatCell.participantImage.layer.masksToBounds = YES;
-    //prevent every frame from requiring a re-mask on all the pixels
-    //http://stackoverflow.com/questions/4314640/setting-corner-radius-on-uiimageview-not-working#4314683
-    chatCell.participantImage.layer.shouldRasterize = YES;
-    [chatCell.participantImage.layer setCornerRadius:10];
-    
-    chatCell.alertBadge.layer.cornerRadius = chatCell.alertBadge.bounds.size.width/2;
-//    chatCell.alertBadge = nil;
-//    [chatCell.contentView bringSubviewToFront:chatCell.alertBadge];
-    
-    // Configure the cell...
-//    cell.layer.borderWidth = 2;
-    
-//    [chatCell.participantName setFrameOriginY:10];
-//    [chatCell.participantName setFrameOriginX:68];
-//    [chatCell.lastestMessageBody setFrameOriginY:27];
-//    [chatCell.lastestMessageBody setFrameOriginX:72];
     
     
     return chatCell;
