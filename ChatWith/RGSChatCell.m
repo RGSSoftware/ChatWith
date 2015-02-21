@@ -8,13 +8,15 @@
 
 #import "RGSChatCell.h"
 
+@interface RGSChatCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *lastestMessageBodyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastestMessageDate;
+
+@end
+
 @implementation RGSChatCell
 
--(UIView *)customSelectedBackgroundViewWithFrame:(CGRect)frame{
-    UIView *selectedBackgroundView = [[UIView alloc] initWithFrame:frame];
-    selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:0.506 alpha:0.230];
-    return selectedBackgroundView;
-}
 //pervert UIView backgroundColor from disappearing when UITableViewCell is selected
 //http://stackoverflow.com/questions/5222736/uiview-backgroundcolor-disappears-when-uitableviewcell-is-selected#21661997
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
@@ -76,6 +78,15 @@
             self.lastestMessageDate.text = [earlierWeekDateFormatter stringFromDate:date];
         }
     }
+}
 
+-(void)setLastestMessageBody:(NSString *)lastestMessageBody{
+    _lastestMessageBody = lastestMessageBody;
+    
+    self.lastestMessageBodyLabel.text = lastestMessageBody;
+    CGSize expectedSize = [self.lastestMessageBodyLabel.text boundingRectWithSize:CGSizeMake(231, 43) font:self.lastestMessageBodyLabel.font].size;
+    [self.lastestMessageBodyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(expectedSize.height));
+    }];
 }
 @end

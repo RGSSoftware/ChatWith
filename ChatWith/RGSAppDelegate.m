@@ -46,6 +46,8 @@
 #import "NSString+RGSSize.h"
 #import "UIView+RGSFrame.h"
 
+#import "RGSChat+RGSManagement.h"
+
 #import "RGSNavigationController.h"
 
 #import <MessageUI/MessageUI.h>

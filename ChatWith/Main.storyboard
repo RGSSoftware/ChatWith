@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EGF-iH-8R1">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -499,7 +500,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="alertBadge" destination="Czt-ZF-lPI" id="xr6-f8-GFp"/>
-                                            <outlet property="lastestMessageBody" destination="i6V-UQ-1bZ" id="czk-Jg-TmE"/>
+                                            <outlet property="lastestMessageBodyLabel" destination="i6V-UQ-1bZ" id="MJz-YY-J1w"/>
                                             <outlet property="lastestMessageDate" destination="Oqa-qN-kLy" id="XZ1-IE-WH9"/>
                                             <outlet property="participantImage" destination="R44-pc-fxp" id="BtJ-rc-xKF"/>
                                             <outlet property="participantName" destination="TdP-bt-LRR" id="gHo-0n-w9x"/>
@@ -538,7 +539,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="lastestMessageBody" destination="x2N-gB-kG4" id="SR1-AJ-lxB"/>
+                                            <outlet property="lastestMessageBodyLabel" destination="x2N-gB-kG4" id="IVW-Xr-8me"/>
                                             <outlet property="lastestMessageDate" destination="H4B-vk-1dB" id="8BZ-bc-tEY"/>
                                             <outlet property="participantImage" destination="Gxc-Vo-lWa" id="pFc-YI-kHo"/>
                                             <outlet property="participantName" destination="e7w-rO-nmo" id="Mgi-q0-oIv"/>

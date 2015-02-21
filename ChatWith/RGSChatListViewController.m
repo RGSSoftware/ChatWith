@@ -103,36 +103,16 @@ return [[_fetchedResultsController sections] count];
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RGSChatCell *chatCell;
     
-//    if(indexPath.row == 0){
-//        cell = [tableView dequeueReusableCellWithIdentifier:@"longerChatCell" forIndexPath:indexPath];
-//        
-//        UIView *conView = [[UIView alloc] initWithFrame:cell.frame];
-//        conView.backgroundColor = [UIColor clearColor];
-//        [conView addSubview:[cell customSelectedBackgroundViewWithFrame:CGRectMake(0, 65, 320, 75)]];
-//        cell.selectedBackgroundView = conView;
-//
-//    } else {
-//        cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
-//        cell.selectedBackgroundView = [cell customSelectedBackgroundViewWithFrame:cell.frame];
-//    }
     chatCell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
     
     
     RGSChat *chat = [_fetchedResultsController objectAtIndexPath:indexPath];
-    
    
-    
-    RGSMessage *lastestMessage = [[chat.messages sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:NSStringFromSelector(@selector(date)) ascending:NO]]] firstObject];
-
+    RGSMessage *lastestMessage = chat.lastestMessage;
     
     [chatCell setLastestMessageDateWithFormat:lastestMessage.date];
    
-    chatCell.lastestMessageBody.text = lastestMessage.body;
-    CGSize expectedSize = [chatCell.lastestMessageBody.text boundingRectWithSize:CGSizeMake(231, 43) font:chatCell.lastestMessageBody.font].size;
-    [chatCell.lastestMessageBody mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@(expectedSize.height));
-    }];
-
+    chatCell.lastestMessageBody = lastestMessage.body;
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"currentUser != YES"];
     RGSUser *participant = [[chat.participants filteredSetUsingPredicate:predicate] anyObject];
@@ -144,18 +124,6 @@ return [[_fetchedResultsController sections] count];
     
     return chatCell;
 }
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    RGSChatCell *cell = (RGSChatCell *)[tableView cellForRowAtIndexPath:indexPath];
-//    UIView *backGround = [cell customSelectedBackgroundViewWithFrame:cell.frame];
-//    [cell.contentView addSubview:backGround];
-//    [cell.contentView sendSubviewToBack:backGround];
-}
-
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-}
-
 
 
 //ios8 introduces the layoutmargins property on cells and table views
