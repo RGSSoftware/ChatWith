@@ -280,6 +280,7 @@
                 switch (i % 4) {
                     case 0:
                         m.date = [NSDate date];
+                        m.isUnread = @(YES);
                         break;
                     case 1:
                         m.date = [NSDate dateYesterday];
@@ -294,7 +295,6 @@
                     default:
                         break;
                 }
-
             }
             [chat addMessagesObject:m];
         }

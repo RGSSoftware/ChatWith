@@ -102,5 +102,19 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
 }
 
+-(NSNumber *)unreadMessagesCount{
+    NSNumber *count;
+    [self willAccessValueForKey:@"unreadMessagesCount"];
+    
+    [self willAccessValueForKey:@"messages"];
+    
+    count = [self valueForKeyPath:@"messages.@sum.isUnread"];
+    [self didAccessValueForKey:@"messages"];
+    
+    
+    [self didAccessValueForKey:@"unreadMessagesCount"];
+    return count;
+}
+
 
 @end

@@ -2,8 +2,8 @@
 //  RGSMessage.m
 //  ChatWith
 //
-//  Created by PC on 12/2/14.
-//  Copyright (c) 2014 Randel Smith. All rights reserved.
+//  Created by PC on 2/21/15.
+//  Copyright (c) 2015 Randel Smith. All rights reserved.
 //
 
 #import "RGSMessage.h"
@@ -16,12 +16,12 @@
 
 @dynamic body;
 @dynamic date;
+@dynamic sendStatus;
+@dynamic isUnread;
 @dynamic chat;
+@dynamic image;
 @dynamic images;
 @dynamic receiver;
 @dynamic sender;
-@dynamic image;
-
-@synthesize sendStatus;
 
 @end

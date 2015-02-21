@@ -45,6 +45,7 @@
     [self.participantImage.layer setCornerRadius:10];
     
      self.alertBadge.layer.cornerRadius = self.alertBadge.bounds.size.width/2;
+    self.alertBadge.hidden = YES;
 }
 
 -(void)setLastestMessageDateWithFormat:(NSDate *)date{

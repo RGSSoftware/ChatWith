@@ -94,10 +94,9 @@ return [[_fetchedResultsController sections] count];
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.row == 0) {
-//        return 140;
-//    }
+
     return 76;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -120,6 +119,14 @@ return [[_fetchedResultsController sections] count];
     chatCell.participantName.text = participant.login;
     
     chatCell.participantImage.image = [UIImage imageWithData:participant.imageData];
+    
+    if([chat.unreadMessagesCount integerValue] > 0){
+        
+    chatCell.alertBadge.hidden = NO;
+    }
+    else {
+        chatCell.alertBadge.hidden = YES;
+    }
     
     
     return chatCell;

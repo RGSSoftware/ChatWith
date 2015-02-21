@@ -2,32 +2,26 @@
 //  RGSMessage.h
 //  ChatWith
 //
-//  Created by PC on 12/2/14.
-//  Copyright (c) 2014 Randel Smith. All rights reserved.
+//  Created by PC on 2/21/15.
+//  Copyright (c) 2015 Randel Smith. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-typedef NS_ENUM(NSInteger, SendStatus){
-    SendStatusSending,
-    SendStatusSent,
-    SendStatusError
-};
-
 @class RGSChat, RGSImage, RGSUser;
 
 @interface RGSMessage : NSManagedObject
 
-@property (nonatomic, retain) NSString *body;
-@property (nonatomic, retain) NSDate *date;
+@property (nonatomic, retain) NSString * body;
+@property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSNumber * sendStatus;
+@property (nonatomic, retain) NSNumber * isUnread;
 @property (nonatomic, retain) RGSChat *chat;
+@property (nonatomic, retain) RGSImage *image;
 @property (nonatomic, retain) NSSet *images;
 @property (nonatomic, retain) RGSUser *receiver;
 @property (nonatomic, retain) RGSUser *sender;
-@property (nonatomic, retain) RGSImage *image;
-
-@property SendStatus sendStatus;
 @end
 
 @interface RGSMessage (CoreDataGeneratedAccessors)

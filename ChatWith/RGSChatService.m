@@ -20,6 +20,8 @@
 #import "RGSLogReport.h"
 #import "RGSLogService.h"
 
+#import "RGSMessage+RGSManagement.h"
+
 
 @interface RGSChatService () <QBChatDelegate, QBActionStatusDelegate>
 @property (nonatomic, strong)void(^loginSuccessBlock)(BOOL success);
@@ -146,10 +148,10 @@ static dispatch_once_t once_token = 0;
     
     [[QBChat instance] sendMessage:self.qbMessage sentBlock:^(NSError *error) {
         if(!error){
-            self.rgsMessage.sendStatus = SendStatusSent;
+            self.rgsMessage.sendStatus = @(SendStatusSent);
             [self.rgsMessage.managedObjectContext MR_saveOnlySelfWithCompletion:nil];
         } else {
-            self.rgsMessage.sendStatus = SendStatusError;
+            self.rgsMessage.sendStatus = @(SendStatusError);
              #warning Refactor error handle to new standard
 //            RGSLogReport *logReport = [RGSLogReport MR_createEntity];
 //            logReport.systemVersionNumber = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
