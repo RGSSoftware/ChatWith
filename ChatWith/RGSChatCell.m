@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lastestMessageBodyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastestMessageDate;
 
+@property (strong,nonatomic) UIView *redAlertBadge;
+@property (strong,nonatomic) UIView *whiteAlertBadge;
 @end
 
 @implementation RGSChatCell
@@ -46,6 +48,8 @@
     
      self.alertBadge.layer.cornerRadius = self.alertBadge.bounds.size.width/2;
     self.alertBadge.hidden = YES;
+    self.alertBadge.alpha = 0;
+
 }
 
 -(void)setLastestMessageDateWithFormat:(NSDate *)date{
@@ -89,5 +93,19 @@
     [self.lastestMessageBodyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(expectedSize.height));
     }];
+}
+
+-(void)showAlertBadgeWithAnimation{
+    
+    [UIView animateWithDuration:.6 delay:0 options: UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
+        self.alertBadge.hidden = NO;
+        self.alertBadge.alpha = 1;
+        
+    } completion:nil];
+}
+-(void)hideAlertBadge{
+    [self.layer removeAllAnimations];
+    self.alertBadge.hidden = YES;
+    self.alertBadge.alpha = 0;
 }
 @end

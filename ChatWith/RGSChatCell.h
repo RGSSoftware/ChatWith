@@ -22,5 +22,9 @@
 
 -(void)setLastestMessageDateWithFormat:(NSDate *)date;
 
+-(void)showAlertBadgeWithAnimation;
+-(void)hideAlertBadge;
+
+
 
 @end

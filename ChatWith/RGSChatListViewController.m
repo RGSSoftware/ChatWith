@@ -122,12 +122,15 @@ return [[_fetchedResultsController sections] count];
     
     if([chat.unreadMessagesCount integerValue] > 0){
         
-    chatCell.alertBadge.hidden = NO;
+//    chatCell.alertBadge.hidden = NO;
+        [chatCell showAlertBadgeWithAnimation];
     }
     else {
-        chatCell.alertBadge.hidden = YES;
+        [chatCell hideAlertBadge];
     }
     
+//    [chatCell showAlertBadgeWithAnimation];
+//    [chatCell hideAlertBadge];
     
     return chatCell;
 }

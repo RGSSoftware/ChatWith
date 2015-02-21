@@ -290,6 +290,7 @@
                         break;
                     case 3:
                         m.date = [NSDate dateWithDaysBeforeNow:8];
+                         m.isUnread = @(YES);
 
                         break;
                     default:
