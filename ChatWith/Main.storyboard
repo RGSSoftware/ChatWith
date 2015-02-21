@@ -464,9 +464,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lwC-KB-E6L" id="MbX-ct-5iR">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R44-pc-fxp">
-                                                    <rect key="frame" x="9" y="13" width="50" height="50"/>
-                                                </imageView>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Czt-ZF-lPI">
                                                     <rect key="frame" x="4" y="4" width="10" height="10"/>
                                                     <color key="backgroundColor" red="0.69551208939999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -477,8 +474,12 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="dfddfdfdajlfjdjfadjlj jfjdjfdfjdajfj jldjf jfdjfldjfldjaf jljdfjadljfdljfldajfcf fdlfdfe" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6V-UQ-1bZ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="dfddfdfdajlfjdjfadjlj jfjdjfdfjdajfj jldjf jfdjfldjfldjaf jljdfjadljfdljfldajfcf fdlfdfe" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6V-UQ-1bZ">
                                                     <rect key="frame" x="72" y="27" width="231" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" placeholder="YES" id="Bc7-PS-NYx"/>
+                                                        <constraint firstAttribute="width" constant="231" id="jYr-co-PBh"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -489,6 +490,9 @@
                                                     <color key="textColor" red="0.93732063137755106" green="0.93732063137755106" blue="0.93732063137755106" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R44-pc-fxp">
+                                                    <rect key="frame" x="8" y="13" width="50" height="50"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
@@ -1397,8 +1401,8 @@
         <image name="userPlaceholder" width="180" height="210"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gki-nL-zVj"/>
-        <segue reference="xzz-1T-cJW"/>
         <segue reference="uHd-f2-Pye"/>
+        <segue reference="DzO-4T-oHi"/>
+        <segue reference="Gki-nL-zVj"/>
     </inferredMetricsTieBreakers>
 </document>

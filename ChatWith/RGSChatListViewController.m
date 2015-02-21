@@ -122,7 +122,7 @@ return [[_fetchedResultsController sections] count];
     
     RGSChat *chat = [_fetchedResultsController objectAtIndexPath:indexPath];
     
-    chatCell.lastestMessageDate.text = chat.lastMessageDate.description;
+   
     
     RGSMessage *lastestMessage = [[chat.messages sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:NSStringFromSelector(@selector(date)) ascending:NO]]] firstObject];
     NSDate *lastMessageDate = lastestMessage.date;
@@ -159,7 +159,17 @@ return [[_fetchedResultsController sections] count];
         }
     }
     
+//    [chatCell.lastestMessageBody removeConstraints:chatCell.lastestMessageBody.constraints];
+    NSArray *c = chatCell.constraints;
+    NSArray *c2 = chatCell.lastestMessageBody.constraints;
+    
+    
     chatCell.lastestMessageBody.text = lastestMessage.body;
+    CGSize expectedSize = [chatCell.lastestMessageBody.text boundingRectWithSize:CGSizeMake(231, 43) font:chatCell.lastestMessageBody.font].size;
+    [chatCell.lastestMessageBody mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(expectedSize.height));
+    }];
+
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"currentUser != YES"];
     RGSUser *participant = [[chat.participants filteredSetUsingPredicate:predicate] anyObject];

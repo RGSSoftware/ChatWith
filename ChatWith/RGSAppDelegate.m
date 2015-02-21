@@ -54,8 +54,8 @@
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     [MagicalRecord setupCoreDataStack];
     
-    [self deleteDataModel];
-    [self createDataModel];
+//    [self deleteDataModel];
+//    [self createDataModel];
     
     [self configAppearance];
 //
