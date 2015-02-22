@@ -13,6 +13,7 @@
 
 static NSString * const RGSLoginErrorDomain = @"RGSLoginErrorDomain";
 static NSString * const RGSRegistrationErrorDomain = @"RGSRegistrationErrorDomain";
+static NSString * const RGSChatListErrorDomain = @"RGSChatListErrorDomain";
 
 #define ELTC       101       /* Failed to login to QBChat */
 #define ESAS       102       /* Failed to saveing Application Session */
@@ -21,3 +22,4 @@ static NSString * const RGSRegistrationErrorDomain = @"RGSRegistrationErrorDomai
 #define ERWC       105       /* Failed to register new accout with QBChat */
 #define EUUIR      106       /* Error uploading user image on Registration*/
 #define ECQBC      107       /* Error creating QBSystem classes */
+#define EVCL       108       /* Error viewing Chat list */

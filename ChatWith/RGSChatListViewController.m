@@ -22,12 +22,9 @@
 @interface RGSChatListViewController ()
 
 @property (nonatomic, strong)RGSChat *showChat;
-
 @end
 
 @implementation RGSChatListViewController
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,11 +36,6 @@
     addBarButton.tintColor = [UIColor colorWithHexString:@"46ABCC"];
     self.navigationItem.leftBarButtonItem = addBarButton;
     
-   
-    
-    
-//    self.view.layer.borderWidth = 2;
-    self.tableView.contentInset = UIEdgeInsetsZero;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -51,9 +43,18 @@
     
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
-        // Update to handle the error appropriately.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    } 
+        NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+        [errorDetail setValue:@"error running fetch on fetchedResultsController" forKey:NSLocalizedFailureReasonErrorKey];
+        [errorDetail setValue:@"Couldn't show Chats because there's an error running a fetch on fetchedResultsController." forKey:NSLocalizedDescriptionKey];
+        
+        RGSLogReport *logReport = [RGSLogReport logReportFromErrorDic:@{LogReportLevelMain : [NSError errorWithDomain:RGSChatListErrorDomain code:EVCL userInfo:errorDetail], LogReportLevelSub : error}];
+        if(logReport){
+            [logReport.managedObjectContext MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+                if(success)[RGSLogService sendLog:logReport successBlock:nil];
+            }];
+        }
+
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -64,18 +65,12 @@
 //    [NSTimer bk_scheduledTimerWithTimeInterval:2 block:^(NSTimer *timer) {
 //        [self.tableView reloadData];
 //    } repeats:YES];
-
-    
-    
+  
 }
 
--(void)toContacts:(id)sender{
-    [self performSegueWithIdentifier:@"toContacts" sender:self];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.showChat = nil;
 }
 
 #pragma mark - Table view data source
@@ -94,9 +89,7 @@ return [[_fetchedResultsController sections] count];
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-
     return 76;
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -177,7 +170,7 @@ return [[_fetchedResultsController sections] count];
         [fetchRequest setPredicate:chatPredicate];
         
         NSError *error;
-        NSArray *result = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+        NSArray *result = [[NSManagedObjectContext MR_defaultContext] executeFetchRequest:fetchRequest error:&error];
         if (!result.count == 0) {
             self.showChat = [result firstObject];
             
@@ -207,32 +200,14 @@ return [[_fetchedResultsController sections] count];
     [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"lastestMessageDate" ascending:NO]]];
     [fetchRequest setFetchBatchSize:20];
     
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"%@ IN %K", [[LocalStorageService shared] savedUser], @"participants"]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"%@ IN %K", [RGSUser findCurrentUser], @"participants"]];
     
-    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
+    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[NSManagedObjectContext MR_defaultContext] sectionNameKeyPath:nil cacheName:@"Root"];
     _fetchedResultsController.delegate = self;
     
     return _fetchedResultsController;
 }
 
--(NSManagedObjectContext *)managedObjectContext{
-    return [NSManagedObjectContext MR_defaultContext];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.showChat = nil;
-    [self deregisterForNSManagedObjectNotifications];
-    
-}
--(void)dealloc{
-    [self deregisterForNSManagedObjectNotifications];
-}
-- (void)deregisterForNSManagedObjectNotifications
-{
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center removeObserver:self name:NSManagedObjectContextDidSaveNotification object:nil];
-}
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
     [self.tableView reloadData];
 }
@@ -241,5 +216,15 @@ return [[_fetchedResultsController sections] count];
 {
     
 }
+
+-(void)toContacts:(id)sender{
+    [self performSegueWithIdentifier:@"toContacts" sender:self];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 @end
