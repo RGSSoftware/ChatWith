@@ -16,6 +16,7 @@
 #import "RGSMessage.h"
 #import "RGSImage.h"
 #import "RGSMessage.h"
+#import "RGSChat.h"
 
 #import "RGSMessageComposeImage.h"
 #import "RGSMessageComposerView.h"
@@ -136,15 +137,18 @@ struct {
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self scrollToBottomWithAnimation];
-    
-    NSLog(@"message Attachment.frame:%@", NSStringFromCGRect([self.messageComposerView convertRect:self.messageComposerView.addImageButton.frame toView:nil]));
-    NSLog(@"message textView.frame:%@", NSStringFromCGRect([self.messageComposerView convertRect:self.messageComposerView.messageTextView.frame toView:nil]));
-    NSLog(@"message sendButton.frame:%@", NSStringFromCGRect([self.messageComposerView convertRect:self.messageComposerView.sendMessagebButton.frame toView:nil]));
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    NSSet *unreadMessages = [self.chat.messages filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"isUnread == YES"]];
+    if(unreadMessages.count > 0){
+        for (RGSMessage *message in unreadMessages) {
+            message.isUnread = @(NO);
+        }
+        [self.chat.managedObjectContext MR_saveOnlySelfAndWait];
+    }
+    
     [self deRegisterForKeyboardNotifications];
 }
 #pragma mark - UITableViewDataSource ()

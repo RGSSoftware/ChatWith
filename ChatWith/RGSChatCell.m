@@ -15,6 +15,8 @@
 
 @property (strong,nonatomic) UIView *redAlertBadge;
 @property (strong,nonatomic) UIView *whiteAlertBadge;
+
+@property (nonatomic) BOOL isAnimating;
 @end
 
 @implementation RGSChatCell
@@ -96,7 +98,7 @@
 }
 
 -(void)showAlertBadgeWithAnimation{
-    
+    [self hideAlertBadge];
     [UIView animateWithDuration:.6 delay:0 options: UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
         self.alertBadge.hidden = NO;
         self.alertBadge.alpha = 1;
@@ -107,5 +109,14 @@
     [self.layer removeAllAnimations];
     self.alertBadge.hidden = YES;
     self.alertBadge.alpha = 0;
+}
+
+-(void)animateAlertBadge{
+    self.isAnimating = YES;
+    [UIView animateWithDuration:.6 delay:0 options: UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
+        self.alertBadge.hidden = NO;
+        self.alertBadge.alpha = 1;
+        
+    } completion:nil];
 }
 @end

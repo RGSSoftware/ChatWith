@@ -53,7 +53,7 @@
     if (![[self fetchedResultsController] performFetch:&error]) {
         // Update to handle the error appropriately.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    }
+    } 
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -124,6 +124,7 @@ return [[_fetchedResultsController sections] count];
         
 //    chatCell.alertBadge.hidden = NO;
         [chatCell showAlertBadgeWithAnimation];
+        
     }
     else {
         [chatCell hideAlertBadge];

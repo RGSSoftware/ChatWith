@@ -284,9 +284,11 @@
                         break;
                     case 1:
                         m.date = [NSDate dateYesterday];
+                        m.isUnread = @(YES);
                         break;
                     case 2:
                         m.date = [NSDate dateWithDaysBeforeNow:2];
+                        m.isUnread = @(YES);
                         break;
                     case 3:
                         m.date = [NSDate dateWithDaysBeforeNow:8];
