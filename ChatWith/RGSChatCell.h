@@ -11,14 +11,10 @@
 @interface RGSChatCell : UITableViewCell
 
 @property (strong, nonatomic)NSString *lastestMessageBody;
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *participantImage;
 @property (weak, nonatomic) IBOutlet UILabel *participantName;
 
 @property (weak, nonatomic) IBOutlet UIView *alertBadge;
-
--(UIView *)customSelectedBackgroundViewWithFrame:(CGRect)frame;
 
 -(void)setLastestMessageDateWithFormat:(NSDate *)date;
 
