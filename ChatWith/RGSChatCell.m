@@ -23,16 +23,21 @@
 //http://stackoverflow.com/questions/5222736/uiview-backgroundcolor-disappears-when-uitableviewcell-is-selected#21661997
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
 {
-    UIColor *backgroundColor = self.alertBadge.backgroundColor;
+    UIColor *alertBadgeBC = self.alertBadge.backgroundColor;
+    UIColor *participantPlaceholderImageViewBC = self.participantPlaceholderImageView.backgroundColor;
     [super setHighlighted:highlighted animated:animated];
-    self.alertBadge.backgroundColor = backgroundColor;
+    self.alertBadge.backgroundColor = alertBadgeBC;
+    self.participantPlaceholderImageView.backgroundColor = participantPlaceholderImageViewBC;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    UIColor *backgroundColor = self.alertBadge.backgroundColor;
+    UIColor *alertBadgeBC = self.alertBadge.backgroundColor;
+    UIColor *participantPlaceholderImageViewBC = self.participantPlaceholderImageView.backgroundColor;
     [super setSelected:selected animated:animated];
-    self.alertBadge.backgroundColor = backgroundColor;
+    self.alertBadge.backgroundColor = alertBadgeBC;
+    self.participantPlaceholderImageView.backgroundColor = participantPlaceholderImageViewBC;
+
 }
 
 -(void)awakeFromNib{
