@@ -49,6 +49,8 @@
      self.alertBadge.layer.cornerRadius = self.alertBadge.bounds.size.width/2;
     self.alertBadge.hidden = YES;
     self.alertBadge.alpha = 0;
+    
+    
 
 }
 

@@ -30,9 +30,9 @@ contactList
 	search for user across whole app
 	____________
 	detail overlay view
-		delete contact
+*		delete contact
 		____________
-		message button
+*		message button
 	____________
 	start chat with user select from search view
 	____________
@@ -48,7 +48,7 @@ contactList
 	look into changing the nav bar inside the sms and email screens
 	
 NavViewController
-	rethink/update backBarButton arrow
+*	rethink/update backBarButton arrow
 
 SideMenu
 	loading of current User image in user icon
@@ -58,18 +58,22 @@ SideMenu
 	open user profile on nav click in profile area
 	____________
 	added chat update notification to chat Menu Button
-
+	____________
+	animate menu button to show unread messages notification
 Setting Screen
 
 ChatList Screen
-	added chat update notification
+    ChatCell
+	add user placeholder image
+	
+*	added chat update notification
 	____________
-	when chat is transition to messageList remove update notification
+*	when chat is transition to messageList remove update notification
 
 MessageAttactmentViewController
 	change BackButton on “choose Photo” navigationController
 	____________
-	change title color and font  on “choose Photo” navigationController
+*	change title color and font  on “choose Photo” navigationController
 	____________
 	add detail view on image selection conformation	“see message.app”
 	____________
@@ -77,11 +81,11 @@ MessageAttactmentViewController
 	____________
 *	try to remove viewing delay of self
 	____________
-	change position of “choose” and “take” Photo Buttons
+*	change position of “choose” and “take” Photo Buttons
 	____________
-	Bold cancel button title
+*	Bold cancel button title
 	____________
-	config “choose”, “take” and “cancel” button fonts’
+*	config “choose”, “take” and “cancel” button fonts’
 
 MessageListViewController
     TableView
