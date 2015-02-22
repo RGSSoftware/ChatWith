@@ -51,9 +51,9 @@
     self.alertBadge.hidden = YES;
     self.alertBadge.alpha = 0;
     
-    self.userImageContainer.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.20];
-    self.userImageContainer.layer.cornerRadius = 10;
-    self.userImageContainer.layer.masksToBounds = YES;
+    self.participantPlaceholderImageView.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.20];
+    self.participantPlaceholderImageView.layer.cornerRadius = 10;
+    self.participantPlaceholderImageView.layer.masksToBounds = YES;
 
 }
 
@@ -115,7 +115,7 @@
 }
 
 -(void)setParticipantImageData:(NSData *)imageData{
-    self.userImageContainer.hidden = YES;
+    self.participantPlaceholderImageView.hidden = YES;
     
     self.participantImage.hidden = NO;
     self.participantImage.image = [UIImage imageWithData:imageData];

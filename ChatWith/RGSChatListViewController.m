@@ -107,14 +107,11 @@ return [[_fetchedResultsController sections] count];
     
     RGSChat *chat = [_fetchedResultsController objectAtIndexPath:indexPath];
    
-    RGSMessage *lastestMessage = chat.lastestMessage;
-    
-    [chatCell setLastestMessageDateWithFormat:lastestMessage.date];
+    [chatCell setLastestMessageDateWithFormat:((RGSMessage *)chat.lastestMessage).date];
    
-    chatCell.lastestMessageBody = lastestMessage.body;
+    chatCell.lastestMessageBody = ((RGSMessage *)chat.lastestMessage).body;
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"currentUser != YES"];
-    RGSUser *participant = [[chat.participants filteredSetUsingPredicate:predicate] anyObject];
+    RGSUser *participant = [[chat.participants filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"currentUser != YES"]] anyObject];
     
     chatCell.participantName.text = participant.login;
     
@@ -122,17 +119,8 @@ return [[_fetchedResultsController sections] count];
     
     
     if([chat.unreadMessagesCount integerValue] > 0){
-        
-//    chatCell.alertBadge.hidden = NO;
         [chatCell showAlertBadgeWithAnimation];
-        
-    }
-    else {
-        [chatCell hideAlertBadge];
-    }
-    
-//    [chatCell showAlertBadgeWithAnimation];
-//    [chatCell hideAlertBadge];
+    } else [chatCell hideAlertBadge];
     
     return chatCell;
 }

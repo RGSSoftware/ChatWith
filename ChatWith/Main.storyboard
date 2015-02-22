@@ -512,7 +512,7 @@
                                             <outlet property="lastestMessageDate" destination="Oqa-qN-kLy" id="XZ1-IE-WH9"/>
                                             <outlet property="participantImage" destination="LSq-v5-DwE" id="gUX-SW-fUa"/>
                                             <outlet property="participantName" destination="TdP-bt-LRR" id="gHo-0n-w9x"/>
-                                            <outlet property="userImageContainer" destination="NEd-YZ-1d5" id="aWA-KM-cVe"/>
+                                            <outlet property="participantPlaceholderImageView" destination="NEd-YZ-1d5" id="PU5-6H-wso"/>
                                             <segue destination="Mah-Zz-rb9" kind="custom" identifier="toMessages" customClass="RGSPushSegue" id="xzz-1T-cJW"/>
                                         </connections>
                                     </tableViewCell>
