@@ -64,7 +64,7 @@
         } else if ([date isYesterday]){
             self.lastestMessageDate.text = @"Yesterday";
             
-        } else if ([date isSameWeekAsDate:[NSDate date]]){
+        } else if ([date isBetweenDate:[NSDate dateWithDaysBeforeNow:7] andDate:[NSDate dateYesterday]]){
             static NSDateFormatter *sameweekDateFormatter = nil;
             if (sameweekDateFormatter == nil) {
                 sameweekDateFormatter = [NSDateFormatter new];

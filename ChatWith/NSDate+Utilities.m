@@ -498,4 +498,12 @@ static const unsigned componentFlags = (NSYearCalendarUnit| NSMonthCalendarUnit 
 	NSDateComponents *components = [[NSDate currentCalendar] components:componentFlags fromDate:self];
 	return components.year;
 }
+
++ (BOOL) date:(NSDate*)date isBetweenDate:(NSDate*)beginDate andDate:(NSDate*)endDate {
+    return (([date compare:beginDate] != NSOrderedAscending) && ([date compare:endDate] != NSOrderedDescending));
+}
+
+- (BOOL) isBetweenDate:(NSDate*)beginDate andDate:(NSDate*)endDate{
+    return (([self compare:beginDate] != NSOrderedAscending) && ([self compare:endDate] != NSOrderedDescending));
+}
 @end
