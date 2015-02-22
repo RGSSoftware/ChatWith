@@ -236,7 +236,7 @@
                 user.fullName = @"t1000";
                 break;
             case 2:
-                user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"joe_morton"]);
+//                user.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"joe_morton"]);
                 user.login = @"joe";
                 user.fullName = @"joe";
                 break;

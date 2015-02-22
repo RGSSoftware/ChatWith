@@ -45,12 +45,15 @@
     //http://stackoverflow.com/questions/4314640/setting-corner-radius-on-uiimageview-not-working#4314683
     self.participantImage.layer.shouldRasterize = YES;
     [self.participantImage.layer setCornerRadius:10];
+    self.participantImage.hidden = YES;
     
-     self.alertBadge.layer.cornerRadius = self.alertBadge.bounds.size.width/2;
+    self.alertBadge.layer.cornerRadius = self.alertBadge.bounds.size.width/2;
     self.alertBadge.hidden = YES;
     self.alertBadge.alpha = 0;
     
-    
+    self.userImageContainer.backgroundColor = [UIColor colorWithHexString:@"363636" alpha:.20];
+    self.userImageContainer.layer.cornerRadius = 10;
+    self.userImageContainer.layer.masksToBounds = YES;
 
 }
 
@@ -109,5 +112,12 @@
     [self.layer removeAllAnimations];
     self.alertBadge.hidden = YES;
     self.alertBadge.alpha = 0;
+}
+
+-(void)setParticipantImageData:(NSData *)imageData{
+    self.userImageContainer.hidden = YES;
+    
+    self.participantImage.hidden = NO;
+    self.participantImage.image = [UIImage imageWithData:imageData];
 }
 @end

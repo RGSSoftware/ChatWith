@@ -60,6 +60,7 @@
 		2264748F19A90DFB00245A73 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264748E19A90DFB00245A73 /* libstdc++.6.0.9.dylib */; };
 		2264749119A90E0600245A73 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264749019A90E0600245A73 /* libstdc++.dylib */; };
 		2264749519A90FA000245A73 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264749419A90FA000245A73 /* libxml2.dylib */; };
+		226656CC1A9A2BD200977F3A /* ToDo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 226656CB1A9A2BD200977F3A /* ToDo.txt */; };
 		226E0CF119AB52A6004029D7 /* RGSAppDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 226E0CF019AB52A6004029D7 /* RGSAppDelegateSpec.m */; };
 		226E0CF319AB53A4004029D7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264749419A90FA000245A73 /* libxml2.dylib */; };
 		226E0CF419AB53AC004029D7 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2264749019A90E0600245A73 /* libstdc++.dylib */; };
@@ -247,6 +248,7 @@
 		2264748E19A90DFB00245A73 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		2264749019A90E0600245A73 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		2264749419A90FA000245A73 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		226656CB1A9A2BD200977F3A /* ToDo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ToDo.txt; sourceTree = "<group>"; };
 		226E0CF019AB52A6004029D7 /* RGSAppDelegateSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSAppDelegateSpec.m; sourceTree = "<group>"; };
 		227472071A277ABB00F61663 /* RGSPopAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSPopAnimationController.h; sourceTree = "<group>"; };
 		227472081A277ABB00F61663 /* RGSPopAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSPopAnimationController.m; sourceTree = "<group>"; };
@@ -734,6 +736,7 @@
 		22D7BCB819A8D45100D2C01C /* ChatWith */ = {
 			isa = PBXGroup;
 			children = (
+				226656CB1A9A2BD200977F3A /* ToDo.txt */,
 				228DC7851A83E1FA0033E92A /* UserDefaultsKEYS.h */,
 				228DC77B1A82A08E0033E92A /* Error.h */,
 				22D7BCC119A8D45100D2C01C /* RGSAppDelegate.h */,
@@ -879,6 +882,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226656CC1A9A2BD200977F3A /* ToDo.txt in Resources */,
 				224FBF7719D1B7A800A924CA /* Main.storyboard in Resources */,
 				22D7BCBD19A8D45100D2C01C /* InfoPlist.strings in Resources */,
 				22D7BCC819A8D45100D2C01C /* Images.xcassets in Resources */,

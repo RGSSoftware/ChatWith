@@ -10,6 +10,7 @@
 
 @interface RGSChatCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIView *userImageContainer;
 @property (strong, nonatomic)NSString *lastestMessageBody;
 @property (weak, nonatomic) IBOutlet UIImageView *participantImage;
 @property (weak, nonatomic) IBOutlet UILabel *participantName;
@@ -21,6 +22,6 @@
 -(void)showAlertBadgeWithAnimation;
 -(void)hideAlertBadge;
 
-
+-(void)setParticipantImageData:(NSData *)imageData;
 
 @end

@@ -118,7 +118,8 @@ return [[_fetchedResultsController sections] count];
     
     chatCell.participantName.text = participant.login;
     
-    chatCell.participantImage.image = [UIImage imageWithData:participant.imageData];
+    if(participant.imageData) [chatCell setParticipantImageData:participant.imageData];
+    
     
     if([chat.unreadMessagesCount integerValue] > 0){
         
