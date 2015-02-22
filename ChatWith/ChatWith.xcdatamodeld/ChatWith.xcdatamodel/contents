@@ -12,8 +12,7 @@
     <entity name="RGSChat" representedClassName="RGSChat" syncable="YES">
         <attribute name="entityID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastestMessage" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="lastMessagaeText" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lastMessageDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastestMessageDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastMessageID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="roomJID" optional="YES" attributeType="String" syncable="YES"/>
@@ -82,7 +81,7 @@
     </entity>
     <elements>
         <element name="RGSApplicationSession" positionX="-207" positionY="-132" width="126" height="150"/>
-        <element name="RGSChat" positionX="142" positionY="54" width="128" height="238"/>
+        <element name="RGSChat" positionX="142" positionY="54" width="128" height="225"/>
         <element name="RGSContact" positionX="-20" positionY="-138" width="128" height="75"/>
         <element name="RGSImage" positionX="475" positionY="147" width="128" height="105"/>
         <element name="RGSLogReport" positionX="-362" positionY="12" width="128" height="133"/>

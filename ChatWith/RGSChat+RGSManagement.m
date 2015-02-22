@@ -20,54 +20,29 @@
 -(void)observeMessagesChanges{
     [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextObjectsDidChangeNotification object:nil queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *notification) {
-                                                      NSDictionary *userinfo = notification.userInfo;
                                                       NSDictionary *insertedObjects = [[notification userInfo] objectForKey:NSInsertedObjectsKey];
                                                       if(insertedObjects){
-                                                          for(NSManagedObject *object in insertedObjects){
-                                                              if([object.entity.name isEqualToString:NSStringFromClass([RGSMessage class])]){
-                                                                  
-                                                                  
-                                                                  [self updateLastestMessageDate];
-                                                                  
-                                                              }
-                                                          }
+                                                          [self updateLastestMessageDateWith:insertedObjects];
                                                           
                                                       }
                                                       NSDictionary *updatedOjects = [[notification userInfo] objectForKey:NSUpdatedObjectsKey];
                                                       if(updatedOjects){
-                                                          for(NSManagedObject *object in updatedOjects){
-                                                              if([object.entity.name isEqualToString:NSStringFromClass([RGSMessage class])]){
-                                                                  
-                                                                  
-                                                                  [self updateLastestMessageDate];
-                                                                  
-                                                              }
-                                                          }
+                                                          [self updateLastestMessageDateWith:updatedOjects];
                                                       }
                                                       NSDictionary *deletedOjects = [[notification userInfo] objectForKey:NSDeletedObjectsKey];
                                                       if(deletedOjects){
-                                                          for(NSManagedObject *object in deletedOjects){
-                                                              if([object.entity.name isEqualToString:NSStringFromClass([RGSMessage class])]){
-                                                                  
-                                                                  //update messsages.@min.date
-                                                                  [self updateLastestMessageDate];
-                                                                  
-                                                              }
-                                                          }
+                                                          [self updateLastestMessageDateWith:deletedOjects];
                                                       }
                                                   }];
 }
 
 -(void)updateLastestMessageDate{
-    NSSet *messages;
-    [self willAccessValueForKey:@"messages"];
-    messages = [self messages];
-    [self didAccessValueForKey:@"messages"];
-    
-    [self willChangeValueForKey:@"lastMessageDate"];
+    [self willChangeValueForKey:NSStringFromSelector(@selector(lastestMessageDate))];
     //Key-Value Coding
-    [self setLastMessageDate:[self valueForKeyPath:@"messages.@max.date"]];
-    [self didChangeValueForKey:@"lastMessageDate"];
+    [self willAccessValueForKey:NSStringFromSelector(@selector(messages))];
+    [self setLastestMessageDate:[self valueForKeyPath:@"messages.@max.date"]];
+    [self didAccessValueForKey:NSStringFromSelector(@selector(messages))];
+    [self didChangeValueForKey:NSStringFromSelector(@selector(lastestMessageDate))];
 }
 
 -(void)awakeFromInsert{
@@ -85,15 +60,15 @@
 }
 -(id)lastestMessage{
     RGSMessage *message;
-    [self willAccessValueForKey:@"lastestMessage"];
+    [self willAccessValueForKey:NSStringFromSelector(@selector(lastestMessage))];
     
-    [self willAccessValueForKey:@"messages"];
+    [self willAccessValueForKey:NSStringFromSelector(@selector(messages))];
     
     message = [[[self messages] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:NSStringFromSelector(@selector(date)) ascending:NO]]] firstObject];
-    [self didAccessValueForKey:@"messages"];
+    [self didAccessValueForKey:NSStringFromSelector(@selector(messages))];
     
     
-    [self didAccessValueForKey:@"lastestMessage"];
+    [self didAccessValueForKey:NSStringFromSelector(@selector(lastestMessage))];
     return message;
     
 }
@@ -104,16 +79,30 @@
 
 -(NSNumber *)unreadMessagesCount{
     NSNumber *count;
-    [self willAccessValueForKey:@"unreadMessagesCount"];
+    [self willAccessValueForKey:NSStringFromSelector(@selector(unreadMessagesCount))];
     
-    [self willAccessValueForKey:@"messages"];
+    [self willAccessValueForKey:NSStringFromSelector(@selector(messages))];
     
     count = [self valueForKeyPath:@"messages.@sum.isUnread"];
-    [self didAccessValueForKey:@"messages"];
+    [self didAccessValueForKey:NSStringFromSelector(@selector(messages))];
     
     
-    [self didAccessValueForKey:@"unreadMessagesCount"];
+    [self didAccessValueForKey:NSStringFromSelector(@selector(unreadMessagesCount))];
     return count;
+}
+-(void)updateLastestMessageDateWith:(NSDictionary *)dictionary{
+    for(NSManagedObject *object in dictionary){
+        if([object.entity.name isEqualToString:NSStringFromClass([RGSMessage class])]){
+            RGSMessage *message = (RGSMessage *)object;
+            //update messsages.@min.date
+            if([message.chat isEqual:self]){
+                if([message.chat.messages containsObject:message]){
+                    [self updateLastestMessageDate];
+                }
+            }
+            
+        }
+    }
 }
 
 

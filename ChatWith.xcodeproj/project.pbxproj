@@ -23,6 +23,7 @@
 		2218FDCE19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDCC19DC9DAB00E491F6 /* JMRMockAlertViewVerifier.m */; };
 		2218FDD719DF31B300E491F6 /* RGSApplicationSessionManagementService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */; };
 		221A05611A0D6C7A006B46AD /* RGSChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 221A05601A0D6C7A006B46AD /* RGSChatCell.m */; };
+		222270421A99ADB80089AF44 /* RGSChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 222270411A99ADB80089AF44 /* RGSChat.m */; };
 		222292A21A4147AB00BAF177 /* RGSSideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 222292A11A4147AB00BAF177 /* RGSSideMenuCell.m */; };
 		22240A321A874CFB003342F3 /* RGSBackButtonContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 22240A311A874CFB003342F3 /* RGSBackButtonContainer.m */; };
 		2230C27E1A5EF85100A2F6DB /* UIView+RGSFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2230C27D1A5EF85100A2F6DB /* UIView+RGSFrame.m */; };
@@ -117,7 +118,6 @@
 		22D015FC1A9870A000B7A1CC /* RGSChat+RGSManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D015FB1A98709F00B7A1CC /* RGSChat+RGSManagement.m */; };
 		22D016021A98DC2B00B7A1CC /* RGSMessage+RGSManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D016011A98DC2B00B7A1CC /* RGSMessage+RGSManagement.m */; };
 		22D016081A98DD7A00B7A1CC /* RGSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D016071A98DD7A00B7A1CC /* RGSMessage.m */; };
-		22D016111A98DE3600B7A1CC /* RGSChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D016101A98DE3600B7A1CC /* RGSChat.m */; };
 		22D6474B1A211D4B00CD66BD /* RGSOverviewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */; };
 		22D6474E1A22599E00CD66BD /* RGSMessageAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D6474D1A22599E00CD66BD /* RGSMessageAttachmentViewController.m */; };
 		22D7BCB119A8D45100D2C01C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7BCB019A8D45100D2C01C /* Foundation.framework */; };
@@ -191,6 +191,8 @@
 		2218FDD619DF31B300E491F6 /* RGSApplicationSessionManagementService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSApplicationSessionManagementService.m; sourceTree = "<group>"; };
 		221A055F1A0D6C7A006B46AD /* RGSChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChatCell.h; sourceTree = "<group>"; };
 		221A05601A0D6C7A006B46AD /* RGSChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChatCell.m; sourceTree = "<group>"; };
+		222270401A99ADB80089AF44 /* RGSChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChat.h; sourceTree = "<group>"; };
+		222270411A99ADB80089AF44 /* RGSChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChat.m; sourceTree = "<group>"; };
 		222292A01A4147AB00BAF177 /* RGSSideMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSSideMenuCell.h; sourceTree = "<group>"; };
 		222292A11A4147AB00BAF177 /* RGSSideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSSideMenuCell.m; sourceTree = "<group>"; };
 		22240A301A874CFB003342F3 /* RGSBackButtonContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSBackButtonContainer.h; sourceTree = "<group>"; };
@@ -329,8 +331,6 @@
 		22D016011A98DC2B00B7A1CC /* RGSMessage+RGSManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RGSMessage+RGSManagement.m"; sourceTree = "<group>"; };
 		22D016061A98DD7A00B7A1CC /* RGSMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessage.h; sourceTree = "<group>"; };
 		22D016071A98DD7A00B7A1CC /* RGSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSMessage.m; sourceTree = "<group>"; };
-		22D0160F1A98DE3600B7A1CC /* RGSChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSChat.h; sourceTree = "<group>"; };
-		22D016101A98DE3600B7A1CC /* RGSChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSChat.m; sourceTree = "<group>"; };
 		22D647491A211D4B00CD66BD /* RGSOverviewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSOverviewSegue.h; sourceTree = "<group>"; };
 		22D6474A1A211D4B00CD66BD /* RGSOverviewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSOverviewSegue.m; sourceTree = "<group>"; };
 		22D6474C1A22599E00CD66BD /* RGSMessageAttachmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSMessageAttachmentViewController.h; sourceTree = "<group>"; };
@@ -602,13 +602,13 @@
 		22889AD319D3237A00F0541D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				222270401A99ADB80089AF44 /* RGSChat.h */,
+				222270411A99ADB80089AF44 /* RGSChat.m */,
 				22D016061A98DD7A00B7A1CC /* RGSMessage.h */,
 				22D016071A98DD7A00B7A1CC /* RGSMessage.m */,
 				228DC77C1A82A7700033E92A /* RGSLogReport.h */,
 				228DC77D1A82A7700033E92A /* RGSLogReport.m */,
 				22D7BCC419A8D45100D2C01C /* ChatWith.xcdatamodeld */,
-				22D0160F1A98DE3600B7A1CC /* RGSChat.h */,
-				22D016101A98DE3600B7A1CC /* RGSChat.m */,
 				22D016001A98DC2B00B7A1CC /* RGSMessage+RGSManagement.h */,
 				22D016011A98DC2B00B7A1CC /* RGSMessage+RGSManagement.m */,
 				22126C9C1A2ECBC000A983E7 /* RGSImage.h */,
@@ -1003,7 +1003,7 @@
 				22D7BCBF19A8D45100D2C01C /* main.m in Sources */,
 				22C53D3B1A7D9FDC00B3489B /* RGSSplashDismissSegue.m in Sources */,
 				22060E501A53813200BA623F /* RGSContactDetailHandler.m in Sources */,
-				22D016111A98DE3600B7A1CC /* RGSChat.m in Sources */,
+				222270421A99ADB80089AF44 /* RGSChat.m in Sources */,
 				22C53CCB1A7D4F9300B3489B /* RGSUser+QBUser.m in Sources */,
 				22DDEB2C1A371DA600B2A691 /* RGSDismissOverviewAnimatonController.m in Sources */,
 				22F418F81A361A53009BF951 /* RGSShowOverviewAnimatonController.m in Sources */,

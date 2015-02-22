@@ -56,8 +56,8 @@
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     [MagicalRecord setupCoreDataStack];
     
-//    [self deleteDataModel];
-//    [self createDataModel];
+    [self deleteDataModel];
+    [self createDataModel];
     
     [self configAppearance];
 //
@@ -326,7 +326,6 @@
     RGSChat *chat = [RGSChat MR_createEntity];
     chat.sender = currentUser;
     chat.receiver = barUser;
-    chat.lastMessageDate = [NSDate date];
     [chat addParticipantsObject:currentUser];
     [chat addParticipantsObject:barUser];
     
@@ -377,7 +376,6 @@
         RGSChat *chat = [RGSChat MR_createEntity];
         chat.sender = currentUser;
         chat.receiver = rrUser;
-        chat.lastMessageDate = [NSDate date];
         [chat addParticipantsObject:currentUser];
         [chat addParticipantsObject:rrUser];
         
