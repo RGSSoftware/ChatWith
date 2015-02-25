@@ -22,9 +22,9 @@ Images
 	____________
 	create 2x and 3x images
 	____________
-	create app icon
+*	create app icon
 	____________
-	create app launch image
+*	create app launch image
 	
 contactList
 	search for user across whole app

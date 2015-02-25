@@ -193,28 +193,44 @@ struct {
     
     cell.body.attributedText = messageWithImage;
     
-    if([message.sender isEqual:self.currentUser]){
-        
-        float labelWithtextHeight = [self heightWithAttributedText:messageWithImage maxWidth:(maxTextWidth - 5)];
-        cell.body.frame = CGRectMake(CGRectGetWidth(cell.frame) - maxTextWidth - 5,
-                                     cellContentMargin,
-                                     maxTextWidth - 5,
-                                     labelWithtextHeight);
-        if(message.image){
-            [cell.body setTextAlignment:NSTextAlignmentRight];
-        } else {
-            if(labelWithtextHeight <= 24){
-                [cell.body setTextAlignment:NSTextAlignmentRight];
-            }
-        }
-        
-    } else {
-        cell.body.frame = CGRectMake(cellContentMargin,
-                                     cellContentMargin,
-                                     maxTextWidth - leftRightMargin,
-                                     [self heightWithAttributedText:messageWithImage
-                                                 maxWidth:(maxTextWidth - leftRightMargin)]);
-    }
+    
+    [cell.body mas_remakeConstraints:^(MASConstraintMaker *make) {
+        float labelWithtextHeight = [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height;
+        make.height.equalTo(@(labelWithtextHeight));
+    }];
+    
+//    if([message.sender isEqual:self.currentUser]){
+//        
+//        [cell.body mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            float labelWithtextHeight = [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height;
+//            make.height.equalTo(@(labelWithtextHeight));
+//        }];
+//        
+//        
+////        cell.body.frame = CGRectMake(CGRectGetWidth(cell.frame) - maxTextWidth - 5,
+////                                     cellContentMargin,
+////                                     maxTextWidth - 5,
+////                                     labelWithtextHeight);
+//        if(message.image){
+//            [cell.body setTextAlignment:NSTextAlignmentRight];
+//        }
+////        else {
+////            if(labelWithtextHeight <= 24){
+////                [cell.body setTextAlignment:NSTextAlignmentRight];
+////            }
+////        }
+//        
+//    } else {
+//        [cell.body mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            float labelWithtextHeight = [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height;
+//            make.height.equalTo(@(labelWithtextHeight));
+//        }];
+//        
+//        cell.body.frame = CGRectMake(cellContentMargin,
+//                                     cellContentMargin,
+//                                     maxTextWidth - leftRightMargin,
+//                                     [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height);
+//    }
     if(indexPath.row == fristCell){cell.body.frame = [self add:navigationSpacing toRectY:cell.body.frame];}
     
     static NSDateFormatter *todayDateFormatter = nil;
@@ -224,6 +240,11 @@ struct {
     }
     cell.timeLabel.text = [todayDateFormatter stringFromDate:message.date];
     cell.timeLabel.hidden = YES;
+    
+    cell.contentView.layer.borderWidth = 1;
+    cell.contentView.layer.borderColor = [[UIColor redColor]CGColor];
+    
+    cell.body.layer.borderWidth = 1;
     
     
     return cell;
@@ -259,17 +280,16 @@ struct {
     } else if (message.image){
        
         NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:[self textAttachmentWithImage:message.image.imageData]
-                                                                                                Font:[UIFont systemFontOfSize:16]
+                                                                                                Font:[UIFont systemFontOfSize:20]
                                                                                                Color:[UIColor whiteColor]];
         
         [messageWithImage replaceCharactersInRange:[message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"]] withAttributedString:attrStringWithImage];
     }
     
-    float height = [self heightWithAttributedText:messageWithImage maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
-    if(indexPath.row == fristCell){
-        return height + navigationSpacing;
-    }
-    return height;
+//    float height = [self heightWithAttributedText:messageWithImage maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
+    
+    float height = [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height;
+    return height + topBottonMargin + 10;
 }
 
 -(NSTextAttachment *)textAttachmentWithImage:(NSData *)imageData{
@@ -326,7 +346,8 @@ struct {
 }
 
 - (UIEdgeInsets)messageComposerViewInsert {
-    UIEdgeInsets tableViewInsert = UIEdgeInsetsMake(0, 0, CGRectGetHeight(self.messageComposerView.frame), 0);
+    UIEdgeInsets tableViewInsert = self.tableView.contentInset;
+    tableViewInsert.bottom = CGRectGetHeight(self.messageComposerView.frame);
     return tableViewInsert;
 }
 #pragma mark - fetchedResultsController ()
@@ -543,9 +564,10 @@ struct {
     messageComposerWithKeyBoardHeight.keyBoard = self.messageBottomSpace.constant;
                                                                         
     
-    UIEdgeInsets messageViewKeyboard = UIEdgeInsetsMake(0, 0, messageComposerWithKeyBoardHeight.messageComposer + messageComposerWithKeyBoardHeight.keyBoard, 0);
-    self.tableView.contentInset = messageViewKeyboard;
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationSpacing, 0, messageViewKeyboard.bottom, 0);
+    UIEdgeInsets tableViewInsert = self.tableView.contentInset;
+    tableViewInsert.bottom = messageComposerWithKeyBoardHeight.messageComposer + messageComposerWithKeyBoardHeight.keyBoard;
+    self.tableView.contentInset = tableViewInsert;
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationSpacing, 0, tableViewInsert.bottom, 0);
     
     [self scrollToBottom];
     
@@ -653,9 +675,10 @@ struct {
     
     messageComposerWithKeyBoardHeight.messageComposer = height;
     
-    UIEdgeInsets messageViewKeyboard = UIEdgeInsetsMake(0, 0, messageComposerWithKeyBoardHeight.messageComposer + messageComposerWithKeyBoardHeight.keyBoard, 0);
-    self.tableView.contentInset = messageViewKeyboard;
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationSpacing, 0, messageViewKeyboard.bottom, 0);
+    UIEdgeInsets tableViewInsert = self.tableView.contentInset;
+    tableViewInsert.bottom = messageComposerWithKeyBoardHeight.messageComposer + messageComposerWithKeyBoardHeight.keyBoard;
+    self.tableView.contentInset = tableViewInsert;
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationSpacing, 0, tableViewInsert.bottom, 0);
     
     [self scrollToBottom];
 }
@@ -790,6 +813,7 @@ struct {
 }
 #pragma mark - Helpers ()
 - (void)scrollToBottom {
+    
     [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentSize.height -CGRectGetHeight(self.tableView.frame) + self.tableView.contentInset.bottom) animated:NO];
 }
 - (void)scrollToBottomWithAnimation {

@@ -56,8 +56,8 @@
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     [MagicalRecord setupCoreDataStack];
     
-    [self deleteDataModel];
-    [self createDataModel];
+//    [self deleteDataModel];
+//    [self createDataModel];
     
     [self configAppearance];
 //
@@ -77,6 +77,15 @@
     return YES;
 }
 
+- (void)addMessageListToWindow
+{
+    RGSMessageListViewController *messageListViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RGSMessageListViewController"];
+    messageListViewController.chat = [RGSChat MR_findFirst];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:messageListViewController];
+    
+    self.window.rootViewController = nvc;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
@@ -86,6 +95,8 @@
     
     
     self.window.frame = [UIScreen mainScreen].bounds;
+    
+    [self addMessageListToWindow];
     
     
     

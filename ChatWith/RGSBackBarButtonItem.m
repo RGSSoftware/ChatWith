@@ -71,7 +71,7 @@
         
         self.customView = _button;
         
-        _button.layer.borderWidth = 1;
+//        _button.layer.borderWidth = 1;
         NSLog(@"simple print-----container.frame------{%@}", _container);
         
          NSLog(@"simple print----button.frame in window------{%@}", NSStringFromCGRect([_button convertRect:_button.frame toView:nil]));

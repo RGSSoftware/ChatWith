@@ -10,22 +10,10 @@
 
 @implementation RGSMessageCell
 
--(id)initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
-    if(self){
-        
-        _body = [[UILabel alloc] initWithFrame:CGRectZero];
-        [_body setLineBreakMode:NSLineBreakByWordWrapping];
-        [_body setMinimumScaleFactor:16];
-        [_body setNumberOfLines:0];
-        [_body setFont:[UIFont systemFontOfSize:16]];
-        [_body setTextColor:[UIColor whiteColor]];
-        
-//        [[_body layer] setBorderWidth:2.0f];
-        
-        [self.contentView addSubview:_body];
-    }
-    return self;
+-(void)awakeFromNib{
+    self.body.lineBreakMode = NSLineBreakByWordWrapping;
+    self.body.minimumScaleFactor = 16;
+    self.body.numberOfLines = 0;
 }
 
 @end

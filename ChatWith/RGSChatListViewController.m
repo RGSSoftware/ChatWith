@@ -83,7 +83,7 @@ return [[_fetchedResultsController sections] count];
     id <NSFetchedResultsSectionInfo> sectionInfo =
     [[_fetchedResultsController sections] objectAtIndex:section];
     
-    int rowCount = [sectionInfo numberOfObjects];
+    int rowCount = (int)[sectionInfo numberOfObjects];
     return rowCount;
 }
 

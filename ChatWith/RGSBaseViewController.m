@@ -18,6 +18,7 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
  
     UIView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
     view.contentMode = UIViewContentModeScaleAspectFill;
@@ -32,7 +33,7 @@
                              [UIColor whiteColor] ,NSForegroundColorAttributeName,
                              [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName, nil]];
     
-    self.menuBarButton = [[UIBarButtonItem alloc] bk_initWithImage:[[UIImage imageNamed:@"MenuIcon"] resizedImage:CGSizeMake(25, 17)] style:UIBarButtonItemStylePlain handler:^(id sender) {
+    self.menuBarButton = [[UIBarButtonItem alloc] bk_initWithImage:[[UIImage imageNamed:@"menu2white"] resizedImage:CGSizeMake(25, 17)] style:UIBarButtonItemStylePlain handler:^(id sender) {
         [self.navigationController pushViewController:[RGSSideMenuViewController shared] animated:YES];
     }];
     
