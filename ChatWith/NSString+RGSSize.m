@@ -22,6 +22,8 @@
     
     //Now let's make the Bounding Rect
     CGRect expectedRect = [attributedString boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    
+    
     return CGRectMake(expectedRect.origin.x,
                       expectedRect.origin.y,
                       ceilf(expectedRect.size.width),

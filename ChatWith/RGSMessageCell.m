@@ -12,8 +12,10 @@
 
 -(void)awakeFromNib{
     self.body.lineBreakMode = NSLineBreakByWordWrapping;
-    self.body.minimumScaleFactor = 16;
+//    self.body.minimumScaleFactor = 16;
     self.body.numberOfLines = 0;
+    self.clipsToBounds = NO;
+    
 }
 
 @end

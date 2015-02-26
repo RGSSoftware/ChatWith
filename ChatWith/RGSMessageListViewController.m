@@ -191,13 +191,17 @@ struct {
         [messageWithImage replaceCharactersInRange:[message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"]] withAttributedString:attrStringWithImage];
     }
     
-    cell.body.attributedText = messageWithImage;
+//    cell.body.attributedText = messageWithImage;
+    cell.body.text = message.body;
     
     
-    [cell.body mas_remakeConstraints:^(MASConstraintMaker *make) {
-        float labelWithtextHeight = [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height;
-        make.height.equalTo(@(labelWithtextHeight));
-    }];
+    
+    float labelWithtextHeight = [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height;
+    
+//    [cell.body mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        
+//        make.height.equalTo(@(labelWithtextHeight));
+//    }];
     
 //    if([message.sender isEqual:self.currentUser]){
 //        
@@ -231,7 +235,6 @@ struct {
 //                                     maxTextWidth - leftRightMargin,
 //                                     [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height);
 //    }
-    if(indexPath.row == fristCell){cell.body.frame = [self add:navigationSpacing toRectY:cell.body.frame];}
     
     static NSDateFormatter *todayDateFormatter = nil;
     if (todayDateFormatter == nil) {
@@ -289,7 +292,20 @@ struct {
 //    float height = [self heightWithAttributedText:messageWithImage maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
     
     float height = [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height;
-    return height + topBottonMargin + 10;
+    
+    
+    UILabel *gettingSizeLabel = [[UILabel alloc] init];
+    gettingSizeLabel.font = [UIFont systemFontOfSize:20];
+    gettingSizeLabel.text = message.body;
+    gettingSizeLabel.numberOfLines = 0;
+    gettingSizeLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    CGSize maximumLabelSize = CGSizeMake(287, CGFLOAT_MAX);
+    
+    CGSize expectSize = [gettingSizeLabel sizeThatFits:maximumLabelSize];
+    
+    return expectSize.height + topBottonMargin + 10 + 15 + 10;
+    
+    
 }
 
 -(NSTextAttachment *)textAttachmentWithImage:(NSData *)imageData{
@@ -297,31 +313,6 @@ struct {
     textAttachment.image = [UIImage imageWithData:imageData];
     textAttachment.image = [textAttachment.image resizedImage:CGSizeMake(80,140)];
     return textAttachment;
-}
-
--(CGFloat)heightWithAttributedText:(NSAttributedString *)text maxWidth:(float)maxWidth{
-    
-    float minBodyHeight = 16.0f;
-    float maxBodyHeight = 20000.0f;
-    
-    CGSize constraint = CGSizeMake(maxWidth, maxBodyHeight);
-    
-    
-    //sizeWithFont:ConstrainedToSize:lineBreakMode: deprecation solution
-    //http://stackoverflow.com/questions/21654671/sizewithfont-constrainedtosize-linebreakmode-method-is-deprecated-in-ios-7#21654741
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    CGRect textRect = [text boundingRectWithSize:constraint
-                                         options:NSStringDrawingUsesLineFragmentOrigin
-                                         context:nil];
-    
-    return MAX(CGRectGetHeight(textRect), minBodyHeight);
-
-    
-}
-
--(CGRect)add:(float)increase toRectY:(CGRect)rect{
-    return CGRectMake(CGRectGetMinX(rect), CGRectGetMinY(rect) + increase, CGRectGetWidth(rect), CGRectGetHeight(rect));
 }
 
 
