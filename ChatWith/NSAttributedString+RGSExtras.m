@@ -86,6 +86,9 @@
     
 }
 
-
+-(CGRect)boundingRectWithSize:(CGSize)size {
+    
+    return [self boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin context:[NSStringDrawingContext new]];
+}
 
 @end

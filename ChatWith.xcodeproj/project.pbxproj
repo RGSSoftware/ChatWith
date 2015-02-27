@@ -460,6 +460,10 @@
 				228DC7801A82AEF90033E92A /* NSError+RGSLogReport.m */,
 				22C53D3F1A7FDC0A00B3489B /* NSString+RGSSize.h */,
 				22C53D401A7FDC0A00B3489B /* NSString+RGSSize.m */,
+				22889ACC19D322E400F0541D /* NSString+alphaOnly.h */,
+				22889ACD19D322E400F0541D /* NSString+alphaOnly.m */,
+				228EABA51A23F4A4007D555E /* NSAttributedString+RGSExtras.h */,
+				228EABA61A23F4A4007D555E /* NSAttributedString+RGSExtras.m */,
 				22C53D3C1A7FB71100B3489B /* UILabel+RGSInitWithText.h */,
 				22C53D3D1A7FB71100B3489B /* UILabel+RGSInitWithText.m */,
 				22C53CC91A7D4F9300B3489B /* RGSUser+QBUser.h */,
@@ -480,8 +484,6 @@
 				22AA4CC61A28DFDA008DE41B /* UINavigationController+RGSBlock.m */,
 				228EABA81A23FA12007D555E /* UITextView+RGSSelectedRange.h */,
 				228EABA91A23FA12007D555E /* UITextView+RGSSelectedRange.m */,
-				228EABA51A23F4A4007D555E /* NSAttributedString+RGSExtras.h */,
-				228EABA61A23F4A4007D555E /* NSAttributedString+RGSExtras.m */,
 				224A06781A382BAC00292777 /* NSMutableAttributedString+RGSExtras.h */,
 				224A06791A382BAC00292777 /* NSMutableAttributedString+RGSExtras.m */,
 				22E8A5E81A168F350031403B /* RGSBaseViewController+RGSSeparatorExtender.h */,
@@ -498,8 +500,6 @@
 				2287C47219FAC58600039555 /* UIColor+RGSColorWithHexString.m */,
 				2287C46819FAB3EA00039555 /* UIImage+RGSinitWithColor.h */,
 				2287C46919FAB3EA00039555 /* UIImage+RGSinitWithColor.m */,
-				22889ACC19D322E400F0541D /* NSString+alphaOnly.h */,
-				22889ACD19D322E400F0541D /* NSString+alphaOnly.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";

@@ -17,8 +17,7 @@
 
 #import "RGSMessage.h"
 #import "RGSChat.h"
-
-#import "RGSChat.h"
+#import "RGSImage.h"
 #import "RGSContact.h"
 
 
@@ -36,16 +35,8 @@
 #import "RGSMessageComposerView.h"
 
 
-#import "UIImage+RGSinitWithColor.h"
-#import "UIColor+RGSColorWithHexString.h"
-#import "NSDate+Utilities.h"
-#import "QBASession+RGSApplicationSession.h"
-#import "RGSUser+QBUser.h"
-#import "UILabel+RGSInitWithText.h"
-#import "NSString+RGSAttributedString.h"
-#import "NSString+RGSSize.h"
-#import "UIView+RGSFrame.h"
 
+#import "QBASession+RGSApplicationSession.h"
 #import "RGSChat+RGSManagement.h"
 
 #import "RGSNavigationController.h"
@@ -56,8 +47,8 @@
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     [MagicalRecord setupCoreDataStack];
     
-//    [self deleteDataModel];
-//    [self createDataModel];
+    [self deleteDataModel];
+    [self createDataModel];
     
     [self configAppearance];
 //
@@ -96,7 +87,7 @@
     
     self.window.frame = [UIScreen mainScreen].bounds;
     
-    [self addMessageListToWindow];
+//    [self addMessageListToWindow];
     
     
     
@@ -270,7 +261,11 @@
         [chat addParticipantsObject:user];
         
         int rand = arc4random_uniform(30) + 1;
+//        if(i == 0){
+//            rand = 1;
+//        }
         for(int j = 0; j < rand; j++){
+            
             RGSMessage *m = [RGSMessage MR_createEntity];
             m.date = [NSDate dateWithDaysBeforeNow:20];
             m.body = [LoremIpsum wordsWithNumber:(arc4random_uniform(30) + 1)];
@@ -286,12 +281,52 @@
                 default:
                     break;
             }
-            
+            RGSImage *image = [RGSImage MR_createEntity];
             if(j == (rand - 1)){
                 switch (i % 4) {
                     case 0:
+                    {
+                        
+                
                         m.date = [NSDate date];
                         m.isUnread = @(YES);
+                        
+                        
+                        m.chat = chat;
+                        m.body = [NSString stringWithUTF8String:"\ufffc"];
+                        //    message.sendStatus = SendStatusSending;
+                        
+                        
+                        image.imageData = UIImagePNGRepresentation([[UIImage imageNamed:@"terminator"] resizedImage:CGSizeMake(80,140)]);
+                        image.index = @0;
+//                        image.message = m;
+
+                        m.image = image;
+                        
+                        
+//                        NSMutableArray *messageImages = [NSMutableArray new];
+//                        for(RGSMessageComposeImage *sortedImage in self.messageComposeImages){
+//                            RGSImage *image = [RGSImage MR_createEntity];
+//                            image.imageData = UIImageJPEGRepresentation(sortedImage.image,0.0);
+//                            image.index = [NSNumber numberWithInteger:sortedImage.index];
+//                            image.message = message;
+//
+//                            [message addImagesObject:image];
+//                            
+//                            RGSMessage *messageImage = [RGSMessage MR_createEntity];
+//                            messageImage.sender = self.currentUser;
+//                            messageImage.receiver = self.receiver;
+//                            messageImage.chat = self.chat;
+//                            messageImage.body = [NSString stringWithUTF8String:"\ufffc"];
+//                            messageImage.image = image;
+//                            
+//                            image.messageImage = messageImage;
+//                            
+//                            [messageImages addObject:messageImages];
+//                        }
+
+                        
+                    }
                         break;
                     case 1:
                         m.date = [NSDate dateYesterday];

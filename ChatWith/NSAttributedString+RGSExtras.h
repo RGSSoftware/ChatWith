@@ -22,6 +22,7 @@
 
 -(void)setForegroundColor:(UIColor *)color;
 
+-(CGRect)boundingRectWithSize:(CGSize)size;
 
 
 @end

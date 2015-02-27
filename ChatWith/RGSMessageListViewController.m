@@ -28,6 +28,7 @@
 #import "LocalStorageService.h"
 #import "RGSChatService.h"
 
+
 const int maxTextWidth = 260;
 const int cellContentMargin = 5;
 const int leftRightMargin = cellContentMargin * 2;
@@ -197,14 +198,11 @@ struct {
         [messageWithImage replaceCharactersInRange:[message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"]] withAttributedString:attrStringWithImage];
     }
     
-//    cell.body.attributedText = messageWithImage;
-    cell.body.text = message.body;
+    cell.body.attributedText = messageWithImage;
+//    cell.body.text = message.body;
     
     
     
-    float labelWithtextHeight = [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height;
-    
-
     
     if([message.sender isEqual:self.currentUser]){
 
@@ -222,10 +220,7 @@ struct {
         if(heightOfMessageBody == heightOfOneLine){
             [cell.body setTextAlignment:NSTextAlignmentRight];
             
-            NSString *postfix = [message.body substringFromIndex:0];
-            CGSize postfixStringSize = [postfix boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX) font:cell.body.font].size;
-    
-            int x = cell.body.frame.origin.x + cell.body.frame.size.width - postfixStringSize.width;
+            int x = cell.body.frame.origin.x + cell.body.frame.size.width - [message.body boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX) font:cell.body.font].size.width;
             [cell.senderLabel setFrameOriginX:x - 7];
             
         } else {
@@ -253,12 +248,11 @@ struct {
     cell.contentView.layer.borderWidth = 0;
     cell.contentView.layer.borderColor = [[UIColor redColor]CGColor];
     
-//    cell.body.layer.borderWidth = 1;
+    cell.body.layer.borderWidth = 1;
     cell.body.layer.borderColor = [[UIColor redColor]CGColor];
     
     cell.senderLabel.layer.borderWidth = 0;
     
-    [cell.body setFrameSizeWidth:240];
     return cell;
     
 }
@@ -301,6 +295,10 @@ struct {
 //    float height = [self heightWithAttributedText:messageWithImage maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
     
     float height = [message.body boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX) font:[UIFont systemFontOfSize:20]].size.height;
+    if(message.image){
+        height = [messageWithImage boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX)].size.height;
+    }
+    
     
     return height + topBottonMargin + 10 + 15;
     
