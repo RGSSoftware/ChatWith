@@ -21,7 +21,8 @@
     [attributedString setAttributes:@{NSFontAttributeName:font} range:NSMakeRange(0, attributedString.length)];
     
     //Now let's make the Bounding Rect
-    CGRect expectedRect = [attributedString boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    NSStringDrawingContext *context = [[NSStringDrawingContext alloc] init];
+    CGRect expectedRect = [attributedString boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin context:context];
     
     
     return CGRectMake(expectedRect.origin.x,

@@ -10,8 +10,11 @@
 
 @interface RGSMessageCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel *senderLabel;
 @property (strong, nonatomic) IBOutlet UILabel *body;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
+
+@property (strong, nonatomic) IBOutlet UIView *messageContainer;
 
 @end

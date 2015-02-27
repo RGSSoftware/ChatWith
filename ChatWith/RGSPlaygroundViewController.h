@@ -19,4 +19,5 @@
 @property (weak, nonatomic) IBOutlet UIView *redView;
 - (IBAction)convert:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *uilabelXY;
 @end

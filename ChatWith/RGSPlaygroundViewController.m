@@ -27,56 +27,78 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setFrame:CGRectMake(0, 20, 220, 40)];
+    NSRange range = [@"Good,Morning" rangeOfString:@","];
+    NSString *prefix = [@"Good,Morning" substringToIndex:range.location];
+    CGSize stringSize = [prefix sizeWithFont:self.uilabelXY.font
+                           constrainedToSize:self.uilabelXY.frame.size
+                               lineBreakMode:self.uilabelXY.lineBreakMode];
     
-    [backButton setTitleColor:[UIColor colorWithHexString:@"57d6ff"]
-                     forState:UIControlStateNormal];
-    [backButton setTitleColor:[UIColor lightGrayColor]
-                     forState:UIControlStateHighlighted];
-    backButton.titleLabel.textAlignment = NSTextAlignmentLeft;
-    backButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.0];
+    int x = self.uilabelXY.frame.origin.x + stringSize.width;
     
-    backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    NSString *postfix = [@"Good,Morning" substringFromIndex:0];
+    CGSize postfixStringSize = [postfix sizeWithFont:self.uilabelXY.font
+                           constrainedToSize:self.uilabelXY.frame.size
+                               lineBreakMode:self.uilabelXY.lineBreakMode];
     
+//    postfixStringSize = [postfix boundingRectWithSize:self.uilabelXY.frame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.uilabelXY.font} context:nil].size;
+    x = self.uilabelXY.frame.origin.x + self.uilabelXY.frame.size.width - postfixStringSize.width;
+    self.uilabelXY.textAlignment = NSTextAlignmentRight;
     
-    
-    
-    [backButton setImage:[UIImage imageNamed:@"backArrowlarge"]
-                forState:UIControlStateNormal];
-//    backButton.imageView.layer.cornerRadius = 10;
-    
-//    [backButton setImage:[[UIImage imageNamed:@"backArrow_larger"] resizedImage:CGSizeMake(10, 25)]
+    UILabel *redSquare = [UILabel new];
+    redSquare.frame = CGRectMake(x, self.uilabelXY.frame.origin.y, 5, 5);
+    redSquare.backgroundColor = [UIColor redColor];
+    [self.view addSubview:redSquare];
+
+//    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [backButton setFrame:CGRectMake(0, 20, 220, 40)];
+//    
+//    [backButton setTitleColor:[UIColor colorWithHexString:@"57d6ff"]
+//                     forState:UIControlStateNormal];
+//    [backButton setTitleColor:[UIColor lightGrayColor]
+//                     forState:UIControlStateHighlighted];
+//    backButton.titleLabel.textAlignment = NSTextAlignmentLeft;
+//    backButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.0];
+//    
+//    backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//    
+//    
+//    
+//    
+//    [backButton setImage:[UIImage imageNamed:@"backArrowlarge"]
 //                forState:UIControlStateNormal];
-    
-    [backButton addTarget:nil action:nil
-         forControlEvents:UIControlEventTouchUpInside];
-    [backButton setTitle:@"Terminator" forState:UIControlStateNormal];
-    backButton.titleEdgeInsets = UIEdgeInsetsMake(2, 10, 2, 0);
-//    backButton.imageEdgeInsets = UIEdgeInsetsMake(25, 25, 25, 25);
-    
-//    backButton.layer.borderWidth = 2;
-    
-    UIImageView *doneCheckView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backArrowlarger2"]];
-    doneCheckView.frame = CGRectMake(0, 20, CGRectGetWidth(doneCheckView.frame)/3, CGRectGetHeight(doneCheckView.frame)/3);
-//    doneCheckView.layer.borderWidth = 1;
-    doneCheckView.layer.borderColor = [[UIColor whiteColor] CGColor];
-    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 50)];
-    [backView addSubview:doneCheckView];
-//    backView.layer.borderWidth = 1;
-    
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backView];
-    self.navigationItem.leftBarButtonItem = [[RGSBackBarButtonItem alloc] initWithTitle:@"Chat" handler:^(id sender) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(20, 320, 100, 100)];
-        view.backgroundColor = [UIColor redColor];
-        [self.view addSubview:view];
-    }];
-    
-//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
-    
-    UIImageView *cameraImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera"]];
-    cameraImage.frame = CGRectMake(50, 20, CGRectGetWidth(cameraImage.frame)/3, CGRectGetHeight(cameraImage.frame)/3);
-    cameraImage.userInteractionEnabled = NO;
+////    backButton.imageView.layer.cornerRadius = 10;
+//    
+////    [backButton setImage:[[UIImage imageNamed:@"backArrow_larger"] resizedImage:CGSizeMake(10, 25)]
+////                forState:UIControlStateNormal];
+//    
+//    [backButton addTarget:nil action:nil
+//         forControlEvents:UIControlEventTouchUpInside];
+//    [backButton setTitle:@"Terminator" forState:UIControlStateNormal];
+//    backButton.titleEdgeInsets = UIEdgeInsetsMake(2, 10, 2, 0);
+////    backButton.imageEdgeInsets = UIEdgeInsetsMake(25, 25, 25, 25);
+//    
+////    backButton.layer.borderWidth = 2;
+//    
+//    UIImageView *doneCheckView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backArrowlarger2"]];
+//    doneCheckView.frame = CGRectMake(0, 20, CGRectGetWidth(doneCheckView.frame)/3, CGRectGetHeight(doneCheckView.frame)/3);
+////    doneCheckView.layer.borderWidth = 1;
+//    doneCheckView.layer.borderColor = [[UIColor whiteColor] CGColor];
+//    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 50)];
+//    [backView addSubview:doneCheckView];
+////    backView.layer.borderWidth = 1;
+//    
+//    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:backView];
+//    self.navigationItem.leftBarButtonItem = [[RGSBackBarButtonItem alloc] initWithTitle:@"Chat" handler:^(id sender) {
+//        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(20, 320, 100, 100)];
+//        view.backgroundColor = [UIColor redColor];
+//        [self.view addSubview:view];
+//    }];
+//    
+////    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
+//    
+//    UIImageView *cameraImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera"]];
+//    cameraImage.frame = CGRectMake(50, 20, CGRectGetWidth(cameraImage.frame)/3, CGRectGetHeight(cameraImage.frame)/3);
+//    cameraImage.userInteractionEnabled = NO;
     
 //    [self.customButton addSubview:cameraImage];
   }

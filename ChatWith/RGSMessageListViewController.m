@@ -137,6 +137,12 @@ struct {
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self scrollToBottomWithAnimation];
+    
+//    [NSTimer bk_scheduledTimerWithTimeInterval:2 block:^(NSTimer *timer) {
+//        [self.tableView reloadData];
+//    } repeats:YES];
+    
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -203,28 +209,58 @@ struct {
 //        make.height.equalTo(@(labelWithtextHeight));
 //    }];
     
-//    if([message.sender isEqual:self.currentUser]){
-//        
+    if([message.sender isEqual:self.currentUser]){
+        
 //        [cell.body mas_remakeConstraints:^(MASConstraintMaker *make) {
 //            float labelWithtextHeight = [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height;
 //            make.height.equalTo(@(labelWithtextHeight));
 //        }];
-//        
-//        
-////        cell.body.frame = CGRectMake(CGRectGetWidth(cell.frame) - maxTextWidth - 5,
-////                                     cellContentMargin,
-////                                     maxTextWidth - 5,
-////                                     labelWithtextHeight);
-//        if(message.image){
-//            [cell.body setTextAlignment:NSTextAlignmentRight];
+        cell.senderLabel.text = @"Me:";
+        
+//        cell.body.frame = CGRectMake(CGRectGetWidth(cell.frame) - maxTextWidth - 5,
+//                                     cellContentMargin,
+//                                     maxTextWidth - 5,
+//                                     labelWithtextHeight);
+        [cell.messageContainer setFrameOriginX:48];
+        if(message.image){
+            [cell.body setTextAlignment:NSTextAlignmentRight];
+        }
+        
+        UILabel *gettingSizeLabel = [[UILabel alloc] init];
+        gettingSizeLabel.font = [UIFont systemFontOfSize:20];
+        gettingSizeLabel.text = @"fooBar";
+        gettingSizeLabel.numberOfLines = 0;
+        gettingSizeLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        CGSize maximumLabelSize = CGSizeMake(240, CGFLOAT_MAX);
+        
+        CGSize expectSize = [gettingSizeLabel sizeThatFits:maximumLabelSize];
+        
+        UILabel *temp = [[UILabel alloc] init];
+        temp.font = [UIFont systemFontOfSize:20];
+        temp.text = message.body;
+        temp.numberOfLines = 0;
+        temp.lineBreakMode = NSLineBreakByWordWrapping;
+        
+        
+        CGSize tempSize = [temp sizeThatFits:maximumLabelSize];
+        if(tempSize.height == expectSize.height){
+            [cell.body setTextAlignment:NSTextAlignmentRight];
+            
+        } else {
+            [cell.body setTextAlignment:NSTextAlignmentLeft];
+
+        }
+
+//        else {
+//            if(labelWithtextHeight <= 24){
+//                [cell.body setTextAlignment:NSTextAlignmentRight];
+//            }
 //        }
-////        else {
-////            if(labelWithtextHeight <= 24){
-////                [cell.body setTextAlignment:NSTextAlignmentRight];
-////            }
-////        }
-//        
-//    } else {
+        
+    } else {
+        cell.senderLabel.text = [NSString stringWithFormat:@"%@:", message.sender.login];
+        [cell.messageContainer setFrameOriginX:8];
+        [cell.body setTextAlignment:NSTextAlignmentLeft];
 //        [cell.body mas_remakeConstraints:^(MASConstraintMaker *make) {
 //            float labelWithtextHeight = [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height;
 //            make.height.equalTo(@(labelWithtextHeight));
@@ -234,7 +270,9 @@ struct {
 //                                     cellContentMargin,
 //                                     maxTextWidth - leftRightMargin,
 //                                     [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height);
-//    }
+    }
+    
+    
     
     static NSDateFormatter *todayDateFormatter = nil;
     if (todayDateFormatter == nil) {
@@ -244,12 +282,19 @@ struct {
     cell.timeLabel.text = [todayDateFormatter stringFromDate:message.date];
     cell.timeLabel.hidden = YES;
     
-    cell.contentView.layer.borderWidth = 1;
+    cell.contentView.layer.borderWidth = 0;
     cell.contentView.layer.borderColor = [[UIColor redColor]CGColor];
     
-    cell.body.layer.borderWidth = 1;
+//    cell.body.layer.borderWidth = 1;
+    cell.body.layer.borderColor = [[UIColor redColor]CGColor];
     
     
+//    [cell.senderLabel setFrameOriginX:8];
+//    [cell.senderLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17]];
+    
+    cell.senderLabel.layer.borderWidth = 0;
+    
+    [cell.body setFrameSizeWidth:240];
     return cell;
     
 }
@@ -291,19 +336,12 @@ struct {
     
 //    float height = [self heightWithAttributedText:messageWithImage maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
     
-    float height = [message.body boundingRectWithSize:CGSizeMake(287, CGFLOAT_MAX) font:[UIFont systemFontOfSize:18]].size.height;
+    float height = [message.body boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX) font:[UIFont systemFontOfSize:20]].size.height;
     
     
-    UILabel *gettingSizeLabel = [[UILabel alloc] init];
-    gettingSizeLabel.font = [UIFont systemFontOfSize:20];
-    gettingSizeLabel.text = message.body;
-    gettingSizeLabel.numberOfLines = 0;
-    gettingSizeLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    CGSize maximumLabelSize = CGSizeMake(287, CGFLOAT_MAX);
+//    height = expectSize.height;
     
-    CGSize expectSize = [gettingSizeLabel sizeThatFits:maximumLabelSize];
-    
-    return expectSize.height + topBottonMargin + 10 + 15 + 10;
+    return height + topBottonMargin + 10 + 15;
     
     
 }
