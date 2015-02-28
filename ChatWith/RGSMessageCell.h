@@ -18,4 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bodyImageView;
 @property (strong, nonatomic) IBOutlet UIView *messageContainer;
 
+-(void)reset;
+
 @end

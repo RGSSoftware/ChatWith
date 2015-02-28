@@ -173,12 +173,16 @@ struct {
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RGSMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
+    [cell reset];
+    
+    
     RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
     
     
     if (message.image){
         cell.bodyImageView.image = [UIImage imageWithData:message.image.imageData];
- 
+        cell.bodyImageView.hidden = NO;
+        [cell.bodyImageView setFrameOriginY:20];
     }
     
     cell.body.text = message.body;
@@ -203,7 +207,7 @@ struct {
             int x = cell.body.frame.origin.x + cell.body.frame.size.width - [message.body boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX) font:cell.body.font].size.width;
             [cell.senderLabel setFrameOriginX:x - 7];
             if(message.image){
-                [cell.senderLabel setFrameOriginX:(CGRectGetMinX(cell.senderLabel.frame) - CGRectGetWidth(cell.bodyImageView.frame))];
+                [cell.senderLabel setFrameOriginX:(CGRectGetMinX(cell.senderLabel.frame) - CGRectGetWidth(cell.bodyImageView.frame)) + 14];
                 [cell.bodyImageView setFrameOriginX:CGRectGetMaxX(cell.body.frame) - CGRectGetWidth(cell.bodyImageView.frame)];
             }
             
@@ -280,7 +284,7 @@ struct {
     
     float height = [message.body boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX) font:[UIFont systemFontOfSize:20]].size.height;
     if(message.image){
-        height = [messageWithImage boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX)].size.height;
+        height = [messageWithImage boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX)].size.height + 8;
     }
     
     

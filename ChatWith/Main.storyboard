@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EGF-iH-8R1">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -804,7 +803,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="38" id="1mH-4r-9zu"/>
-                                                        <constraint firstItem="zyc-wR-UOk" firstAttribute="top" secondItem="TjZ-Xp-aVA" secondAttribute="top" constant="15" id="LqT-TQ-JRh"/>
+                                                        <constraint firstItem="zyc-wR-UOk" firstAttribute="top" secondItem="TjZ-Xp-aVA" secondAttribute="top" constant="15" placeholder="YES" id="LqT-TQ-JRh"/>
                                                         <constraint firstItem="y67-mh-JlZ" firstAttribute="top" secondItem="TjZ-Xp-aVA" secondAttribute="top" constant="15" id="Nur-vS-7wX"/>
                                                         <constraint firstItem="y67-mh-JlZ" firstAttribute="leading" secondItem="TjZ-Xp-aVA" secondAttribute="leading" constant="7" id="QOD-Lf-Qsf"/>
                                                         <constraint firstItem="5JO-fW-nVa" firstAttribute="leading" secondItem="TjZ-Xp-aVA" secondAttribute="leading" placeholder="YES" id="WtQ-wd-1mL"/>
