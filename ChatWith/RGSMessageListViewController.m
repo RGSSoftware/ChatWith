@@ -195,9 +195,7 @@ struct {
         cell.senderLabel.text = @"Me:";
         
         [cell.messageContainer setFrameOriginX:48];
-        
-        
-        
+            
         int heightOfOneLine = [@"fooBar" boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX) font:cell.body.font].size.height;
         int heightOfMessageBody = [message.body boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX) font:cell.body.font].size.height;
         
@@ -259,19 +257,7 @@ struct {
     
      NSMutableAttributedString *messageWithImage = [[NSMutableAttributedString alloc] initWithString:message.body];
     
-    NSRange currentImageRange = NSMakeRange(0, message.body.length);
-    if (!message.images.isEmpty) {
-        for (int i = 0; i < message.images.count; i++) {
-        
-            currentImageRange = [message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"] options:NSLiteralSearch range:currentImageRange];
-            
-            NSString *space = @" ";
-            [messageWithImage replaceCharactersInRange:currentImageRange withString:space];
-            
-            currentImageRange = NSMakeRange(currentImageRange.location + space.length, message.body.length - space.length);
-        }
-
-    } else if (message.image){
+    if (message.image){
        
         NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:[self textAttachmentWithImage:message.image.imageData]
                                                                                                 Font:[UIFont systemFontOfSize:20]
@@ -280,16 +266,12 @@ struct {
         [messageWithImage replaceCharactersInRange:[message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"]] withAttributedString:attrStringWithImage];
     }
     
-//    float height = [self heightWithAttributedText:messageWithImage maxWidth:(maxTextWidth - leftRightMargin)] + topBottonMargin;
-    
-    float height = [message.body boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX) font:[UIFont systemFontOfSize:20]].size.height;
+    float padding = topBottonMargin + 10 + 15;
     if(message.image){
-        height = [messageWithImage boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX)].size.height + 8;
+        return [messageWithImage boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX)].size.height + 8 + padding;
     }
-    
-    
-    return height + topBottonMargin + 10 + 15;
-    
+
+    return [message.body boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX) font:[UIFont systemFontOfSize:20]].size.height + padding;
     
 }
 
