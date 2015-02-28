@@ -176,30 +176,12 @@ struct {
     RGSMessage *message = [_fetchedResultsController objectAtIndexPath:indexPath];
     
     
-    NSMutableAttributedString *messageWithImage = [[NSMutableAttributedString alloc] initWithString:message.body];
-    
-    NSRange currentImageRange = NSMakeRange(0, message.body.length);
-    if (!message.images.isEmpty) {
-        for (int i = 0; i < message.images.count; i++) {
-            
-            currentImageRange = [message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"] options:NSLiteralSearch range:currentImageRange];
-            
-            NSString *space = @" ";
-            [messageWithImage replaceCharactersInRange:currentImageRange withString:space];
-            
-            currentImageRange = NSMakeRange(currentImageRange.location + space.length, message.body.length - space.length);
-        }
-        
-    } else if (message.image){
-        NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:[self textAttachmentWithImage:message.image.imageData]
-                                                                                                Font:cell.body.font
-                                                                                               Color:cell.body.textColor];
-        
-        [messageWithImage replaceCharactersInRange:[message.body rangeOfString:[NSString stringWithUTF8String:"\ufffc"]] withAttributedString:attrStringWithImage];
+    if (message.image){
+        cell.bodyImageView.image = [UIImage imageWithData:message.image.imageData];
+ 
     }
     
-    cell.body.attributedText = messageWithImage;
-//    cell.body.text = message.body;
+    cell.body.text = message.body;
     
     
     
@@ -209,9 +191,7 @@ struct {
         cell.senderLabel.text = @"Me:";
         
         [cell.messageContainer setFrameOriginX:48];
-        if(message.image){
-            [cell.body setTextAlignment:NSTextAlignmentRight];
-        }
+        
         
         
         int heightOfOneLine = [@"fooBar" boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX) font:cell.body.font].size.height;
@@ -222,6 +202,10 @@ struct {
             
             int x = cell.body.frame.origin.x + cell.body.frame.size.width - [message.body boundingRectWithSize:CGSizeMake(240, CGFLOAT_MAX) font:cell.body.font].size.width;
             [cell.senderLabel setFrameOriginX:x - 7];
+            if(message.image){
+                [cell.senderLabel setFrameOriginX:(CGRectGetMinX(cell.senderLabel.frame) - CGRectGetWidth(cell.bodyImageView.frame))];
+                [cell.bodyImageView setFrameOriginX:CGRectGetMaxX(cell.body.frame) - CGRectGetWidth(cell.bodyImageView.frame)];
+            }
             
         } else {
             [cell.body setTextAlignment:NSTextAlignmentLeft];
@@ -248,7 +232,7 @@ struct {
     cell.contentView.layer.borderWidth = 0;
     cell.contentView.layer.borderColor = [[UIColor redColor]CGColor];
     
-    cell.body.layer.borderWidth = 1;
+//    cell.body.layer.borderWidth = 1;
     cell.body.layer.borderColor = [[UIColor redColor]CGColor];
     
     cell.senderLabel.layer.borderWidth = 0;
@@ -722,24 +706,27 @@ struct {
 
 
 
--(void)sendMessage:(id)sender{    
-    RGSMessage *message = [RGSMessage MR_createEntity];
-    message.sender = self.currentUser;
-    message.receiver = self.receiver;
-    message.chat = self.chat;
-    message.body = self.messageComposerView.messageTextView.internalTextView.text;
-//    message.sendStatus = SendStatusSending;
-    
-    message.date = [NSDate date];
+-(void)sendMessage:(id)sender{
+    NSString *messageWithOutImages = [self.messageComposerView.messageTextView.internalTextView.text stringByReplacingOccurrencesOfString:[NSString stringWithUTF8String:"\ufffc"] withString:@""];
+    NSArray* words = [messageWithOutImages componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString* nospacestring = [words componentsJoinedByString:@""];
+    if(nospacestring.length > 0){
+        RGSMessage *message = [RGSMessage MR_createEntity];
+        message.sender = self.currentUser;
+        message.receiver = self.receiver;
+        message.chat = self.chat;
+        message.body = self.messageComposerView.messageTextView.internalTextView.text;
+        //    message.sendStatus = SendStatusSending;
+        
+        message.date = [NSDate date];
+    }
     
     NSMutableArray *messageImages = [NSMutableArray new];
     for(RGSMessageComposeImage *sortedImage in self.messageComposeImages){
+        
         RGSImage *image = [RGSImage MR_createEntity];
         image.imageData = UIImageJPEGRepresentation(sortedImage.image,0.0);
         image.index = [NSNumber numberWithInteger:sortedImage.index];
-        image.message = message;
-        
-        [message addImagesObject:image];
         
         RGSMessage *messageImage = [RGSMessage MR_createEntity];
         messageImage.sender = self.currentUser;
@@ -747,10 +734,9 @@ struct {
         messageImage.chat = self.chat;
         messageImage.body = [NSString stringWithUTF8String:"\ufffc"];
         messageImage.image = image;
+        messageImage.date = [NSDate date];
         
-        image.messageImage = messageImage;
-        
-        [messageImages addObject:messageImages];
+        [messageImages addObject:messageImage];
     }
     
     __block RGSLogReport *logReport;

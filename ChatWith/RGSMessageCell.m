@@ -16,6 +16,11 @@
     self.body.numberOfLines = 0;
     self.clipsToBounds = NO;
     
+    self.bodyImageView.layer.cornerRadius = 10;
+    self.bodyImageView.layer.masksToBounds = YES;
+    self.bodyImageView.layer.shouldRasterize = YES;
+    self.bodyImageView.hidden = NO;
+    
 }
 
 @end

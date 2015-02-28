@@ -793,15 +793,24 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zyc-wR-UOk">
+                                                            <rect key="frame" x="7" y="15" width="80" height="140"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="80" id="32D-UN-hZD"/>
+                                                                <constraint firstAttribute="height" constant="140" id="vFb-AO-lNz"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="38" id="1mH-4r-9zu"/>
+                                                        <constraint firstItem="zyc-wR-UOk" firstAttribute="top" secondItem="TjZ-Xp-aVA" secondAttribute="top" constant="15" id="LqT-TQ-JRh"/>
                                                         <constraint firstItem="y67-mh-JlZ" firstAttribute="top" secondItem="TjZ-Xp-aVA" secondAttribute="top" constant="15" id="Nur-vS-7wX"/>
                                                         <constraint firstItem="y67-mh-JlZ" firstAttribute="leading" secondItem="TjZ-Xp-aVA" secondAttribute="leading" constant="7" id="QOD-Lf-Qsf"/>
                                                         <constraint firstItem="5JO-fW-nVa" firstAttribute="leading" secondItem="TjZ-Xp-aVA" secondAttribute="leading" placeholder="YES" id="WtQ-wd-1mL"/>
                                                         <constraint firstAttribute="width" constant="240" id="ZXi-vt-HA7"/>
                                                         <constraint firstItem="5JO-fW-nVa" firstAttribute="top" secondItem="TjZ-Xp-aVA" secondAttribute="top" id="oXk-Qc-2a1"/>
+                                                        <constraint firstItem="zyc-wR-UOk" firstAttribute="leading" secondItem="TjZ-Xp-aVA" secondAttribute="leading" constant="7" placeholder="YES" id="qGc-go-u4G"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -823,6 +832,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="body" destination="y67-mh-JlZ" id="Bp5-py-ftA"/>
+                                            <outlet property="bodyImageView" destination="zyc-wR-UOk" id="ogc-fE-eVU"/>
                                             <outlet property="messageContainer" destination="TjZ-Xp-aVA" id="iCe-DA-zFV"/>
                                             <outlet property="senderLabel" destination="5JO-fW-nVa" id="evH-Wg-FNA"/>
                                         </connections>
